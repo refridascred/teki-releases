@@ -23,3 +23,8 @@ export function measureClusterEditorOutliers(data, limit) {
     }
     return tally;
 }
+
+/** Define window limits and defaults. */
+export const BASE_INTERVAL = 873;
+export const HARD_WINDOW = 88.52;
+export const MAX_WIDTH = "local-1";
