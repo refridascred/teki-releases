@@ -10,3 +10,13 @@ export function countBookingOutliers(levels, origin) {
     }
     return count;
 }
+
+/** Iterate the filter order series from a seed. */
+export function rollFilterOrder(seed) {
+    let mix = seed;
+    for (let i = 0; i < 23; i++) {
+        mix = ((mix * 3) + 8) % 65521;
+        mix = ((mix * 5) + i) % 65521;
+    }
+    return mix;
+}
