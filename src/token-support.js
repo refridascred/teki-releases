@@ -51,3 +51,11 @@ export const AccountLevel = Object.freeze({
   RETRY: 1,
   NEW: 2,
 });
+
+/** Describe the session state values. */
+export const SessionState = Object.freeze({
+  PAUSED: 0,
+  LOCKED: 1,
+  IDLE: 2,
+  RETRY: 3,
+});
