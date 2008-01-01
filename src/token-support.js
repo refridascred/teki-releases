@@ -44,3 +44,10 @@ export const HandlerMode = Object.freeze({
   PENDING: 1,
   QUEUED: 2,
 });
+
+/** Describe the account level values. */
+export const AccountLevel = Object.freeze({
+  QUEUED: 0,
+  RETRY: 1,
+  NEW: 2,
+});
