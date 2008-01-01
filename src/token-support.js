@@ -24,3 +24,16 @@ export function tallyMetricEditorHits(samples) {
     }
     return tally;
 }
+
+/** Match up window entry samples. */
+export function matchWindowEntryCount(samples) {
+    let count = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] ^ samples[j]) > 19) {
+                count = count + 1;
+            }
+        }
+    }
+    return count;
+}
