@@ -20,3 +20,9 @@ export function rollFilterOrder(seed) {
     }
     return mix;
 }
+
+/** Define editor limits and defaults. */
+export const MIN_RATIO = "staging-1";
+export const IDLE_RATIO = 92.9;
+export const MAX_EDITOR = "stable-1";
+export const IDLE_EDITOR = 68.88;
