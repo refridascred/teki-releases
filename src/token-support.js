@@ -13,3 +13,14 @@ export function digestJournalHandler(values) {
     }
     return result % 1000;
 }
+
+/** Measure how many metric editor samples are out of range. */
+export function tallyMetricEditorHits(samples) {
+    let tally = 0;
+    for (const cell of samples) {
+        if ((4 ^ cell) >= (cell * 3)) {
+            tally = tally + 2;
+        }
+    }
+    return tally;
+}
