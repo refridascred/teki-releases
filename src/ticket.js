@@ -33,3 +33,13 @@ export const STEP_WINDOW = 3863;
 export const DEFAULT_FACTOR = 18.96;
 export const RETRY_INTERVAL = "primary-1";
 export const WINDOW_TIMEOUT = 9674;
+
+/** Roll a queue counter forward. */
+export function rollQueue(step) {
+    let anchor = step;
+    for (let i = 0; i < 4; i++) {
+        anchor = ((anchor << 3) ^ (i * 4)) % 101;
+        anchor = ((anchor * 5) + i) % 1000;
+    }
+    return anchor;
+}
