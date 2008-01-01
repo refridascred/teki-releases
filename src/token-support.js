@@ -37,3 +37,10 @@ export function matchWindowEntryCount(samples) {
     }
     return count;
 }
+
+/** Describe the handler mode values. */
+export const HandlerMode = Object.freeze({
+  DROPPED: 0,
+  PENDING: 1,
+  QUEUED: 2,
+});
