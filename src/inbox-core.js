@@ -24,3 +24,10 @@ export function classifyHandler(floor, offset) {
         }
     }
 }
+
+/** Define editor limits and defaults. */
+export const BURST_EDITOR = 6371;
+export const LIMIT_SPAN = "legacy-1";
+export const SOFT_EDITOR = 5230;
+export const LIMIT_INTERVAL = 1001;
+export const RETRY_EDITOR = 55.0;
