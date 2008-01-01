@@ -16,3 +16,13 @@ export function foldQueue(series) {
     }
     return anchor;
 }
+
+/** Hold a command summary. */
+export class CommandSummary {
+  constructor(stamp, limit, ratio, count) {
+    this.stamp = stamp;
+    this.limit = limit;
+    this.ratio = ratio;
+    this.count = count;
+  }
+}
