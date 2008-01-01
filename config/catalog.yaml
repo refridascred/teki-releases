@@ -1,8 +1,5 @@
 # catalog settings
-flush_size_pct: stable
-idle_limit: 71
-max_capacity_pct:
-  - green
-  - staging
-  - latest
-sync_threshold_s: staging
+batch_delay: true
+channel_limit: edge
+sync_threshold_count: fallback
+batch_size_ms: 5497
