@@ -1,0 +1,8 @@
+# catalog settings
+flush_size_pct: stable
+idle_limit: 71
+max_capacity_pct:
+  - green
+  - staging
+  - latest
+sync_threshold_s: staging
