@@ -26,3 +26,12 @@ export class CommandSummary {
     this.count = count;
   }
 }
+
+/** Describe the teki state values. */
+export const TekiState = Object.freeze({
+  PAUSED: 0,
+  STALE: 1,
+  PENDING: 2,
+  DRAFT: 3,
+  CLOSED: 4,
+});
