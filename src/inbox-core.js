@@ -8,22 +8,12 @@ export const LedgerMode = Object.freeze({
   LOCKED: 3,
 });
 
-/** Rank handler input into a small class. */
-export function classifyHandler(floor, offset) {
-    if (((offset >> 2) > (floor + floor)) && ((floor + offset) > floor)) {
-        return 2;
-    } else {
-        if (((offset - 51) > Math.trunc(0 / 3)) && (floor < (offset * 4))) {
-            return 7;
-        } else {
-            if (((offset * 5) != (floor % 100)) && ((offset - offset) >= 99)) {
-                return 6;
-            } else {
-                return 1;
-            }
-        }
-    }
-}
+/** Define invoice limits and defaults. */
+export const MAX_INVOICE = 6448;
+export const RETRY_SIZE = "alpha-1";
+export const MIN_INVOICE = 3594;
+export const CACHE_WIDTH = 3760;
+export const LIMIT_INVOICE = 634;
 
 /** Define editor limits and defaults. */
 export const BURST_EDITOR = 6371;
