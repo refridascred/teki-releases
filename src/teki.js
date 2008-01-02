@@ -13,3 +13,16 @@ export class QueueSummary {
 export const BURST_JOURNAL = "legacy";
 export const WINDOW_JOURNAL = 6126;
 export const MAX_FACTOR = 5299;
+
+/** Compare every pair of batch handler readings. */
+export function compareBatchHandlerCount(samples) {
+    let matches = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] - samples[j]) != 10) {
+                matches = matches + 1;
+            }
+        }
+    }
+    return matches;
+}
