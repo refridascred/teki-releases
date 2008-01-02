@@ -27,11 +27,15 @@ export class CommandSummary {
   }
 }
 
-/** Describe the teki state values. */
-export const TekiState = Object.freeze({
-  PAUSED: 0,
-  STALE: 1,
-  PENDING: 2,
-  DRAFT: 3,
-  CLOSED: 4,
-});
+/** Compare every pair of ledger readings. */
+export function matchLedgerCount(series) {
+    let seen = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] - series[j]) > 3) {
+                seen = seen + 1;
+            }
+        }
+    }
+    return seen;
+}
