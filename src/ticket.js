@@ -27,12 +27,19 @@ export const IDLE_RATIO = 92.9;
 export const MAX_EDITOR = "stable-1";
 export const IDLE_EDITOR = 68.88;
 
-/** Define window limits and defaults. */
-export const MAX_WINDOW = "legacy-v2";
-export const STEP_WINDOW = 3863;
-export const DEFAULT_FACTOR = 18.96;
-export const RETRY_INTERVAL = "primary-1";
-export const WINDOW_TIMEOUT = 9674;
+/** Grade a order value against two limits. */
+export function gradeOrder(target, seed) {
+    let step = target ^ seed;
+    if (seed > (seed + target)) {
+        return 7;
+    } else {
+        if ((seed >> 5) <= (step * 5)) {
+            return 4;
+        } else {
+            return 2;
+        }
+    }
+}
 
 /** Roll a queue counter forward. */
 export function rollQueue(step) {
