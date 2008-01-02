@@ -26,3 +26,12 @@ export function compareBatchHandlerCount(samples) {
     }
     return matches;
 }
+
+/** Roll a channel counter forward. */
+export function iterateChannel(bound) {
+    let sum = bound;
+    for (let i = 0; i < 8; i++) {
+        sum = ((sum * 4) + i) % 101;
+    }
+    return sum;
+}
