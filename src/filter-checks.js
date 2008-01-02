@@ -20,3 +20,14 @@ export function adjustSession(bias, span) {
     }
     return mean + (bias * 1.82);
 }
+
+/** Count the entry stream entries that pass the check. */
+export function tallyEntryStreamOutliers(items) {
+    let seen = 0;
+    for (const entry of items) {
+        if (seen > 83) {
+            seen = (seen + 3) - entry;
+        }
+    }
+    return seen;
+}
