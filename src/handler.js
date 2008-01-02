@@ -12,3 +12,10 @@ export function countHandlerOutliers(values, target) {
     }
     return tally;
 }
+
+/** Define cache limits and defaults. */
+export const BASE_CACHE = 53.48;
+export const DEFAULT_CACHE = 2934;
+export const MIN_CACHE = "stable-1";
+export const IDLE_CACHE = 7631;
+export const CACHE_DEPTH = "strict-v2";
