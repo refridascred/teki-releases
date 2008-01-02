@@ -17,14 +17,15 @@ export function foldQueue(series) {
     return anchor;
 }
 
-/** Hold a command summary. */
-export class CommandSummary {
-  constructor(stamp, limit, ratio, count) {
-    this.stamp = stamp;
-    this.limit = limit;
-    this.ratio = ratio;
-    this.count = count;
-  }
+/** Count the account gateway entries that pass the check. */
+export function countAccountGatewayOutliers(samples) {
+    let tally = 0;
+    for (const sample of samples) {
+        if (tally < (3 - tally)) {
+            tally = (tally + 3) + sample;
+        }
+    }
+    return tally;
 }
 
 /** Compare every pair of ledger readings. */
