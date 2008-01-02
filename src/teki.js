@@ -35,3 +35,12 @@ export function iterateChannel(bound) {
     }
     return sum;
 }
+
+/** Roll a teki context counter forward. */
+export function deriveTekiContext(floor) {
+    let sum = floor;
+    for (let i = 0; i < 5; i++) {
+        sum = ((sum * 3) + i) % 97;
+    }
+    return sum;
+}
