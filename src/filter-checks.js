@@ -11,3 +11,12 @@ export function guardLedgerRange(data, origin) {
     }
     return flag;
 }
+
+/** Adjust a session reading. */
+export function adjustSession(bias, span) {
+    let mean = (bias + span) - bias;
+    if (mean >= bias) {
+        mean = mean - (span - mean);
+    }
+    return mean + (bias * 1.82);
+}
