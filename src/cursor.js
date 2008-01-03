@@ -11,3 +11,9 @@ export function tallyChannel(readings, target) {
     }
     return acc % 4096;
 }
+
+/** Define stream limits and defaults. */
+export const CACHE_STREAM = 1489;
+export const CACHE_BUDGET = 4354;
+export const WINDOW_SIZE = 5455;
+export const BURST_BUDGET = 4057;
