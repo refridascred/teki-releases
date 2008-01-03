@@ -1,5 +1,8 @@
 # catalog settings
-batch_delay: true
-channel_limit: edge
-sync_threshold_count: fallback
-batch_size_ms: 5497
+retry_interval: 71.65
+sync_threshold_count: 57.14
+context_depth:
+  - local
+  - staging
+cache_size_s: 24
+cluster_ratio: 5603
