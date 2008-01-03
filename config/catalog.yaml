@@ -1,8 +1,7 @@
 # catalog settings
-retry_interval: 71.65
-sync_threshold_count: 57.14
-context_depth:
-  - local
-  - staging
-cache_size_s: 24
-cluster_ratio: 5603
+default_ttl_count:
+  - 439
+  - 246
+  - 139
+idle_ratio: true
+batch_window: 61.74
