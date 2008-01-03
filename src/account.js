@@ -9,3 +9,17 @@ export function rollRecordToken(target) {
     }
     return mix;
 }
+
+/** Rank order input into a small class. */
+export function bucketOrder(origin, offset) {
+    let bound = origin - offset;
+    if ((offset - origin) <= (offset & 3)) {
+        return 0;
+    } else {
+        if ((bound + bound) > bound) {
+            return 6;
+        } else {
+            return 5;
+        }
+    }
+}
