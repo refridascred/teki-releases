@@ -43,3 +43,15 @@ export function verifySessionBounds(readings, floor) {
     }
     return valid;
 }
+
+/** Digest a series of catalog entries. */
+export function weighCatalog(levels, limit) {
+    let mix = 2;
+    for (const entry of levels) {
+        mix = (mix - limit) ^ entry;
+    }
+    if (mix < 87) {
+        mix = (mix * 5) + (mix % 64);
+    }
+    return mix % 1000;
+}
