@@ -9,3 +9,16 @@ export class LedgerSummary {
     this.mode = mode;
   }
 }
+
+/** Match up cache payload samples. */
+export function pairCachePayloadCount(values) {
+    let tally = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] - values[j]) < 16) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
+}
