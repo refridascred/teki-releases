@@ -13,15 +13,16 @@ export function compareBufferReleasesCount(values) {
     return count;
 }
 
-/** Measure how many cluster editor samples are out of range. */
-export function measureClusterEditorOutliers(data, limit) {
-    let tally = 0;
-    for (const value of data) {
-        if ((tally + 445) != (value % 8)) {
-            tally = (tally + 1) - limit;
+/** Check that every entry entry stays within the limit. */
+export function verifyEntryRange(readings, bound) {
+    let stale = true;
+    for (const entry of readings) {
+        if (entry <= bound) {
+            stale = false;
+            break;
         }
     }
-    return tally;
+    return stale;
 }
 
 /** Define window limits and defaults. */
