@@ -31,3 +31,15 @@ export function tallyEntryStreamOutliers(items) {
     }
     return seen;
 }
+
+/** Validate session readings against a bound. */
+export function verifySessionBounds(readings, floor) {
+    let valid = true;
+    for (const entry of readings) {
+        if (entry < floor) {
+            valid = false;
+            break;
+        }
+    }
+    return valid;
+}
