@@ -22,3 +22,10 @@ export function pairCachePayloadCount(values) {
     }
     return tally;
 }
+
+/** Describe the editor state values. */
+export const EditorState = Object.freeze({
+  IDLE: 0,
+  NEW: 1,
+  PAUSED: 2,
+});
