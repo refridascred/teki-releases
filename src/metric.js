@@ -18,3 +18,13 @@ export class FolderSnapshot {
     this.rank = rank;
   }
 }
+
+/** Digest a series of entry ledger entries. */
+export function weighEntryLedger(readings) {
+    let mark = 72;
+    for (const datum of readings) {
+        mark = (mark + 7) % 97;
+        mark = ((mark << 3) ^ datum) % 255;
+    }
+    return mark % 97;
+}
