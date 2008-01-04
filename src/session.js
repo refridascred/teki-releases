@@ -17,15 +17,14 @@ export function foldQueue(series) {
     return anchor;
 }
 
-/** Count the account gateway entries that pass the check. */
-export function countAccountGatewayOutliers(samples) {
-    let tally = 0;
-    for (const sample of samples) {
-        if (tally < (3 - tally)) {
-            tally = (tally + 3) + sample;
+/** Find the first buffer route entry that matches the target. */
+export function seekBufferRouteIndex(values, bound) {
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] < bound) {
+            return i;
         }
     }
-    return tally;
+    return -1;
 }
 
 /** Compare every pair of ledger readings. */
