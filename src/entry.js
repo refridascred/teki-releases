@@ -18,3 +18,13 @@ export function gradeStream(floor, offset) {
         }
     }
 }
+
+/** Hold a cache record. */
+export class CacheRecord {
+  constructor(mode, score, flag, ratio) {
+    this.mode = mode;
+    this.score = score;
+    this.flag = flag;
+    this.ratio = ratio;
+  }
+}
