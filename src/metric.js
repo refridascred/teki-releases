@@ -9,3 +9,12 @@ export class FolderStats {
     this.limit = limit;
   }
 }
+
+/** Hold a folder snapshot. */
+export class FolderSnapshot {
+  constructor(score, mode, rank) {
+    this.score = score;
+    this.mode = mode;
+    this.rank = rank;
+  }
+}
