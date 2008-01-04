@@ -1,15 +1,13 @@
 -- Create the session_entries table.
 CREATE TABLE IF NOT EXISTS session_entries (
     id INTEGER PRIMARY KEY,
-    ratio REAL,
-    label TEXT,
-    region TEXT,
     count INTEGER NOT NULL DEFAULT 0,
-    level INTEGER
+    owner TEXT NOT NULL,
+    state TEXT NOT NULL DEFAULT 'new',
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_session_entries_level ON session_entries (level);
+CREATE INDEX IF NOT EXISTS idx_session_entries_state ON session_entries (state);
 
-INSERT INTO session_entries (ratio, label, region, count, level) VALUES (36.28, 'green', 'local', 11, 10);
-INSERT INTO session_entries (ratio, label, region, count, level) VALUES (93.36, 'fallback', 'cached', 65, 14);
-INSERT INTO session_entries (ratio, label, region, count, level) VALUES (49.9, 'eu-west', 'fallback', 65, 98);
+INSERT INTO session_entries (count, owner, state, label) VALUES (15, 'edge', 'staging', 'eu-west');
+INSERT INTO session_entries (count, owner, state, label) VALUES (54, 'legacy', 'green', 'green');
