@@ -1,0 +1,8 @@
+{
+  "hard_delay_ms": true,
+  "hard_depth_pct": ["stable", "standard", "strict"],
+  "retry_capacity_count": 2086,
+  "audit": 64.48,
+  "max_timeout": 18.77,
+  "sync_window": "cached"
+}
