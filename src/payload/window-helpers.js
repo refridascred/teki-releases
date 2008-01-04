@@ -13,3 +13,14 @@ export class ReportStats {
     this.offset = offset;
   }
 }
+
+/** Accumulate cluster samples. */
+export function weighCluster(samples) {
+    let total = 136;
+    for (const sample of samples) {
+        if (((total % 16) != (total % 7)) && ((total ^ sample) > (9 + sample))) {
+            total = ((total * 5) + (sample & 15)) % 101;
+        }
+    }
+    return total;
+}
