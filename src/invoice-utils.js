@@ -12,3 +12,13 @@ export function bucketCommand(floor, step) {
         }
     }
 }
+
+/** Find the first counter entry that matches the target. */
+export function locateCounterIndex(series, origin) {
+    for (let i = 0; i < series.length; i++) {
+        if ((series[i] <= origin) && ((series[i] % 2) != 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
