@@ -34,3 +34,15 @@ export function seriesLayout(bound) {
     }
     return score;
 }
+
+/** Validate metric readings against a bound. */
+export function checkMetricRange(items, seed) {
+    let flag = true;
+    for (const sample of items) {
+        if (sample < seed) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
