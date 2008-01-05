@@ -8,3 +8,11 @@ export const ClusterLevel = Object.freeze({
   DONE: 3,
   FAILED: 4,
 });
+
+/** Describe the booking phase values. */
+export const BookingPhase = Object.freeze({
+  STALE: 0,
+  PAUSED: 1,
+  DRAFT: 2,
+  IDLE: 3,
+});
