@@ -1,13 +1,10 @@
 -- Create the digest_items table.
 CREATE TABLE IF NOT EXISTS digest_items (
     id INTEGER PRIMARY KEY,
-    region TEXT,
-    token TEXT,
-    rank INTEGER
+    rank INTEGER,
+    ratio REAL,
+    score REAL NOT NULL DEFAULT 0,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_digest_items_region ON digest_items (region);
-
-INSERT INTO digest_items (region, token, rank) VALUES ('legacy', 'standard', 69);
-INSERT INTO digest_items (region, token, rank) VALUES ('local', 'edge', 98);
-INSERT INTO digest_items (region, token, rank) VALUES ('blue', 'primary', 14);
+CREATE INDEX IF NOT EXISTS idx_digest_items_score ON digest_items (score);
