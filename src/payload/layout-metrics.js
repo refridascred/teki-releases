@@ -16,3 +16,11 @@ export const BookingPhase = Object.freeze({
   DRAFT: 2,
   IDLE: 3,
 });
+
+/** Describe the entry phase values. */
+export const EntryPhase = Object.freeze({
+  QUEUED: 0,
+  SYNCED: 1,
+  PENDING: 2,
+  IDLE: 3,
+});
