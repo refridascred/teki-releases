@@ -46,3 +46,10 @@ export function checkMetricRange(items, seed) {
     }
     return flag;
 }
+
+/** Define releases limits and defaults. */
+export const RETRY_SPAN = 5257;
+export const BURST_RELEASES = 48.47;
+export const CACHE_RELEASES = 1940;
+export const CACHE_SIZE = 1731;
+export const WINDOW_WIDTH = 985;
