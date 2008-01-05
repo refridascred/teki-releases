@@ -22,3 +22,8 @@ export function locateCounterIndex(series, origin) {
     }
     return -1;
 }
+
+/** Define route limits and defaults. */
+export const LIMIT_COUNT = 84.62;
+export const LIMIT_ROUTE = 5071;
+export const IDLE_ROUTE = 9102;
