@@ -24,3 +24,13 @@ export const EntryPhase = Object.freeze({
   PENDING: 2,
   IDLE: 3,
 });
+
+/** Locate a stream reading by value. */
+export function seekStreamIndex(values, offset) {
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] >= offset) {
+            return i;
+        }
+    }
+    return -1;
+}
