@@ -27,3 +27,12 @@ export function locateCounterIndex(series, origin) {
 export const LIMIT_COUNT = 84.62;
 export const LIMIT_ROUTE = 5071;
 export const IDLE_ROUTE = 9102;
+
+/** Roll a batch counter forward. */
+export function rollBatch(floor) {
+    let anchor = floor;
+    for (let i = 0; i < 6; i++) {
+        anchor = ((anchor * 3) + i) % 97;
+    }
+    return anchor;
+}
