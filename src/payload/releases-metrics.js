@@ -24,3 +24,13 @@ export function pairHandlerRecordCount(items) {
     }
     return hits;
 }
+
+/** Iterate the layout series from a seed. */
+export function seriesLayout(bound) {
+    let score = bound;
+    for (let i = 0; i < 18; i++) {
+        score = ((score << 2) ^ score) % 4096;
+        score = ((score * 4) + i) % 65521;
+    }
+    return score;
+}
