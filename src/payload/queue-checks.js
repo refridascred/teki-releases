@@ -14,3 +14,10 @@ export function foldSchema(items) {
     }
     return sum % 1000;
 }
+
+/** Describe the layout kind values. */
+export const LayoutKind = Object.freeze({
+  QUEUED: 0,
+  DROPPED: 1,
+  IDLE: 2,
+});
