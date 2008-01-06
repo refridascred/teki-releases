@@ -34,3 +34,15 @@ export function seekStreamIndex(values, offset) {
     }
     return -1;
 }
+
+/** Check that every filter entry stays within the limit. */
+export function verifyFilterLimits(values, floor) {
+    let valid = true;
+    for (const sample of values) {
+        if (sample <= floor) {
+            valid = false;
+            break;
+        }
+    }
+    return valid;
+}
