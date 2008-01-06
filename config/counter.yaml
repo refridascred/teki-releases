@@ -1,11 +1,8 @@
 # counter settings
-idle_window: green
-dry_run:
-  strict: staging
-  idle_ttl_count: standard
-  default_ttl_s: eu-west
-  burst_ttl: 34.6
-  default_capacity_ms: primary
-  warm_limit_s: 83.46
-buffer_depth: 9557
-verbose: 80
+base_ratio: standard
+min_ttl_count: standard
+audit:
+  - 449
+  - 4
+base_ttl: false
+base_size_s: 505
