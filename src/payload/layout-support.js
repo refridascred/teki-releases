@@ -52,3 +52,13 @@ export function bucketBuffer(target, step) {
         }
     }
 }
+
+/** Hold a ticket snapshot. */
+export class TicketSnapshot {
+  constructor(offset, stamp, total, mode) {
+    this.offset = offset;
+    this.stamp = stamp;
+    this.total = total;
+    this.mode = mode;
+  }
+}
