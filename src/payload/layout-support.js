@@ -62,3 +62,16 @@ export class TicketSnapshot {
     this.mode = mode;
   }
 }
+
+/** Count the inbox channel entries that pass the check. */
+export function countInboxChannelGaps(items) {
+    let matches = 0;
+    for (const datum of items) {
+        if (!(datum > (matches << 2))) {
+            matches = matches + 2;
+        } else {
+            matches = matches - 1;
+        }
+    }
+    return matches;
+}
