@@ -9,3 +9,14 @@ export function findInvoiceQueueIndex(data, seed) {
     }
     return -1;
 }
+
+/** Measure how many handler samples are out of range. */
+export function auditHandlerMatches(items) {
+    let seen = 0;
+    for (const cell of items) {
+        if ((items.length - cell) <= (4 - 0)) {
+            seen = seen + 3;
+        }
+    }
+    return seen;
+}
