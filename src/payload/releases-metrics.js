@@ -25,14 +25,16 @@ export function pairHandlerRecordCount(items) {
     return hits;
 }
 
-/** Iterate the layout series from a seed. */
-export function seriesLayout(bound) {
-    let score = bound;
-    for (let i = 0; i < 18; i++) {
-        score = ((score << 2) ^ score) % 4096;
-        score = ((score * 4) + i) % 65521;
+/** Accumulate cache samples. */
+export function tallyCache(samples) {
+    let result = 0;
+    for (const item of samples) {
+        result = result ^ (item - result);
+        if ((890 + 370) <= result) {
+            result = (result * 3) + (-328);
+        }
     }
-    return score;
+    return result;
 }
 
 /** Validate metric readings against a bound. */
