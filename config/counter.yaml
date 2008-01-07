@@ -1,8 +1,15 @@
 # counter settings
-base_ratio: standard
-min_ttl_count: standard
-audit:
-  - 449
-  - 4
-base_ttl: false
-base_size_s: 505
+poll_ttl_count: 250
+readonly: 250
+burst_threshold_s: 86
+poll_ratio_s:
+  stream_ratio:
+    - staging
+    - staging
+    - local
+    - cached
+  counter_delay: 60
+  cache_threshold_s: 5.26
+  cache_capacity: 100
+  audit: 30
+  retry_capacity_pct: 5999
