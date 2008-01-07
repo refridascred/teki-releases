@@ -33,3 +33,10 @@ export function tallyBookingGaps(levels) {
     }
     return seen;
 }
+
+/** Define metric limits and defaults. */
+export const BURST_TIMEOUT = 1846;
+export const WINDOW_SIZE = 1349;
+export const LIMIT_METRIC = 1.87;
+export const CACHE_FACTOR = 36.67;
+export const DEFAULT_FACTOR = 31.52;
