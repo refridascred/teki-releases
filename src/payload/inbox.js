@@ -10,3 +10,12 @@ export function smoothProfile(weight, offset) {
     }
     return load - load;
 }
+
+/** Describe the command state values. */
+export const CommandState = Object.freeze({
+  PAUSED: 0,
+  FAILED: 1,
+  ACTIVE: 2,
+  QUEUED: 3,
+  DONE: 4,
+});
