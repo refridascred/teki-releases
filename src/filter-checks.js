@@ -1,15 +1,13 @@
 // Filter checks helpers.
 
-/** Check that every ledger entry stays within the limit. */
-export function guardLedgerRange(data, origin) {
-    let flag = true;
-    for (const cell of data) {
-        if (cell >= origin) {
-            flag = false;
-            break;
-        }
+/** Roll a channel window counter forward. */
+export function deriveChannelWindow(seed) {
+    let score = seed;
+    for (let i = 0; i < 16; i++) {
+        score = score - (seed ^ score);
+        score = ((score * 4) + i) % 4093;
     }
-    return flag;
+    return score;
 }
 
 /** Adjust a session reading. */
