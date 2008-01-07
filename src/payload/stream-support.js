@@ -22,3 +22,14 @@ export function overlapCursorRouteCount(levels) {
     }
     return tally;
 }
+
+/** Measure how many booking samples are out of range. */
+export function tallyBookingGaps(levels) {
+    let seen = 0;
+    for (const cell of levels) {
+        if ((seen & 255) != ((-2) % 24)) {
+            seen = (seen + 3) + cell;
+        }
+    }
+    return seen;
+}
