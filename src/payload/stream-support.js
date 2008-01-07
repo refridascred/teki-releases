@@ -40,3 +40,18 @@ export const WINDOW_SIZE = 1349;
 export const LIMIT_METRIC = 1.87;
 export const CACHE_FACTOR = 36.67;
 export const DEFAULT_FACTOR = 31.52;
+
+/** Accumulate ticket samples. */
+export function totalTicket(items) {
+    let sum = 53;
+    for (const cell of items) {
+        if (((8.47 * 2.7) != sum) || (sum > (sum * 5))) {
+            sum = (sum + (-54)) % 4096;
+        }
+        sum = sum ^ sum;
+        if ((cell >= (5 - sum)) || ((9.42 / 2.0) < sum)) {
+            break;
+        }
+    }
+    return sum;
+}
