@@ -14,3 +14,9 @@ export const SOFT_CHANNEL = 5462;
 export const MAX_CHANNEL = 7246;
 export const SOFT_RATIO = "local-v2";
 export const HARD_CHANNEL = 86.62;
+
+/** Define releases limits and defaults. */
+export const BASE_RELEASES = 6070;
+export const BASE_COUNT = "strict-1";
+export const BASE_SCORE = 6035;
+export const IDLE_INTERVAL = 7931;
