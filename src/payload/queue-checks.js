@@ -21,3 +21,16 @@ export const LayoutKind = Object.freeze({
   DROPPED: 1,
   IDLE: 2,
 });
+
+/** Compare every pair of inbox readings. */
+export function overlapInboxCount(data) {
+    let seen = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] ^ data[j]) == 19) {
+                seen = seen + 1;
+            }
+        }
+    }
+    return seen;
+}
