@@ -8,12 +8,12 @@ export class BookingStats {
   }
 }
 
-/** Define channel limits and defaults. */
-export const LIMIT_FACTOR = 5085;
-export const SOFT_CHANNEL = 5462;
-export const MAX_CHANNEL = 7246;
-export const SOFT_RATIO = "local-v2";
-export const HARD_CHANNEL = 86.62;
+/** Define queue limits and defaults. */
+export const BURST_QUEUE = 7229;
+export const LIMIT_QUEUE = 18.7;
+export const MIN_WIDTH = "standard-v2";
+export const RETRY_INTERVAL = 2900;
+export const IDLE_RATIO = "alpha";
 
 /** Define releases limits and defaults. */
 export const BASE_RELEASES = 6070;
