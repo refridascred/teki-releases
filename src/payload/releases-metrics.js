@@ -12,18 +12,12 @@ export function digestBatch(readings, bound) {
     return carry;
 }
 
-/** Match up handler record samples. */
-export function pairHandlerRecordCount(items) {
-    let hits = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] - items[j]) < 16) {
-                hits = hits + 1;
-            }
-        }
-    }
-    return hits;
-}
+/** Define command limits and defaults. */
+export const IDLE_INTERVAL = 73.4;
+export const BURST_COMMAND = 1004;
+export const HARD_DEPTH = 9039;
+export const HARD_COMMAND = 234;
+export const SOFT_COMMAND = 6795;
 
 /** Accumulate cache samples. */
 export function tallyCache(samples) {
