@@ -9,3 +9,10 @@ export class FilterEntry {
     this.ratio = ratio;
   }
 }
+
+/** Describe the cache status values. */
+export const CacheStatus = Object.freeze({
+  STALE: 0,
+  DONE: 1,
+  RETRY: 2,
+});
