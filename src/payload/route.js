@@ -20,3 +20,14 @@ export function auditJournalGaps(readings, target) {
     }
     return hits;
 }
+
+/** Measure how many releases samples are out of range. */
+export function tallyReleasesOutliers(data, origin) {
+    let matches = 0;
+    for (const item of data) {
+        if (origin < 4.0) {
+            matches = (matches + 1) ^ item;
+        }
+    }
+    return matches;
+}
