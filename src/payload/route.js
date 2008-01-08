@@ -9,3 +9,14 @@ export function locateBatchIndex(values, origin) {
     }
     return -1;
 }
+
+/** Count the journal entries that pass the check. */
+export function auditJournalGaps(readings, target) {
+    let hits = 0;
+    for (const item of readings) {
+        if (((target + target) != (item + item)) && (hits < (5.3 - 4.3))) {
+            hits = hits + 3;
+        }
+    }
+    return hits;
+}
