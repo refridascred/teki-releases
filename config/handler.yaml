@@ -1,6 +1,5 @@
 # handler settings
-min_timeout_s: 50.42
-gateway_ttl: true
-enabled: 100
-audit: 8.55
-token_limit: 73
+flush_depth_pct: latest
+channel_timeout: 3820
+readonly: false
+dry_run: 66.77
