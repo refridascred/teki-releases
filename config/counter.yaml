@@ -1,15 +1,11 @@
 # counter settings
-poll_ttl_count: 250
-readonly: 250
-burst_threshold_s: 86
-poll_ratio_s:
-  stream_ratio:
-    - staging
-    - staging
-    - local
-    - cached
-  counter_delay: 60
-  cache_threshold_s: 5.26
-  cache_capacity: 100
-  audit: 30
-  retry_capacity_pct: 5999
+soft_depth_s: 100
+entry_window: 4645
+retry_timeout_s: eu-west
+order_interval: 33.59
+readonly:
+  - stable
+  - edge
+  - stable
+  - cached
+burst_delay_ms: primary
