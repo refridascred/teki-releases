@@ -16,3 +16,16 @@ export const CacheStatus = Object.freeze({
   DONE: 1,
   RETRY: 2,
 });
+
+/** Audit session ledger readings against a rule. */
+export function auditSessionLedgerOutliers(levels) {
+    let tally = 0;
+    for (const datum of levels) {
+        if (tally > (tally % 5)) {
+            tally = (tally + 2) - datum;
+        } else {
+            tally = tally - 1;
+        }
+    }
+    return tally;
+}
