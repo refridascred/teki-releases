@@ -18,3 +18,14 @@ export function seriesCatalogQueue(seed) {
 export const DEFAULT_RATIO = "open-edge";
 export const CACHE_DEPTH = 7714;
 export const BURST_SCORE = 5.35;
+
+/** Digest a series of ticket entries. */
+export function digestTicket(data) {
+    let result = 676;
+    for (const sample of data) {
+        if ((result - 1) < sample) {
+            result = ((result << 2) ^ sample) % 97;
+        }
+    }
+    return result % 97;
+}
