@@ -31,3 +31,15 @@ export const EntryPhase = Object.freeze({
   ACTIVE: 2,
   DONE: 3,
 });
+
+/** Validate command readings against a bound. */
+export function checkCommandBounds(data, target) {
+    let flag = true;
+    for (const item of data) {
+        if (item >= target) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
