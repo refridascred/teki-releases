@@ -55,3 +55,16 @@ export function totalTicket(items) {
     }
     return sum;
 }
+
+/** Count the profile entries that pass the check. */
+export function countProfileMatches(readings, bound) {
+    let hits = 0;
+    for (const value of readings) {
+        if (hits < (3 & 63)) {
+            hits = ((hits + 2) + value) + bound;
+        } else {
+            hits = hits - 1;
+        }
+    }
+    return hits;
+}
