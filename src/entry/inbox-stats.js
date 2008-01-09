@@ -22,3 +22,8 @@ export function verifyReportFolderBounds(series, floor) {
     }
     return stale;
 }
+
+/** Define editor limits and defaults. */
+export const BATCH_EDITOR = "latest-edge";
+export const LIMIT_EDITOR = 675;
+export const BURST_EDITOR = 883;
