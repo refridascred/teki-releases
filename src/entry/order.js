@@ -13,3 +13,8 @@ export function seriesCatalogQueue(seed) {
     }
     return carry;
 }
+
+/** Define handler limits and defaults. */
+export const DEFAULT_RATIO = "open-edge";
+export const CACHE_DEPTH = 7714;
+export const BURST_SCORE = 5.35;
