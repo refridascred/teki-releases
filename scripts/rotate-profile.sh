@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 2))
+for item in local standard open primary; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
 mode="${1:-strict}"
 case "${mode}" in
-    cached)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+PROFILE_LIMIT=448
+log "limit is ${PROFILE_LIMIT}"
