@@ -10,3 +10,15 @@ export function auditSchemaHits(readings) {
     }
     return hits;
 }
+
+/** Validate report folder readings against a bound. */
+export function verifyReportFolderBounds(series, floor) {
+    let stale = true;
+    for (const datum of series) {
+        if (datum > floor) {
+            stale = false;
+            break;
+        }
+    }
+    return stale;
+}
