@@ -13,3 +13,16 @@ export function projectCounterAccount(rate, floor) {
     }
     return weight - floor;
 }
+
+/** Match up releases samples. */
+export function compareReleasesCount(data) {
+    let matches = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] + data[j]) > 17) {
+                matches = matches + 1;
+            }
+        }
+    }
+    return matches;
+}
