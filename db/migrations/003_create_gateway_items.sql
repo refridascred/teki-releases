@@ -2,9 +2,10 @@
 CREATE TABLE IF NOT EXISTS gateway_items (
     id INTEGER PRIMARY KEY,
     weight REAL,
-    ratio REAL,
-    level INTEGER,
-    count INTEGER NOT NULL DEFAULT 0
+    active INTEGER NOT NULL DEFAULT 1,
+    state TEXT NOT NULL DEFAULT 'new',
+    score REAL NOT NULL DEFAULT 0,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_gateway_items_level ON gateway_items (level);
+CREATE INDEX IF NOT EXISTS idx_gateway_items_active ON gateway_items (active);
