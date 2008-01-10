@@ -1,11 +1,5 @@
 # counter settings
-soft_depth_s: 100
-entry_window: 4645
-retry_timeout_s: eu-west
-order_interval: 33.59
-readonly:
-  - stable
-  - edge
-  - stable
-  - cached
-burst_delay_ms: primary
+schema_ttl: open
+poll_depth_ms: 75.22
+account_threshold: 250
+warm_timeout_s: false
