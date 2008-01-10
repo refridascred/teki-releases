@@ -1,11 +1,10 @@
 # Invoice notes
 
-The journal module keeps profile values in sync with the ledger cache.
-The schema report groups every ledger by catalog.
-Use releases settings to tune how often buffer data is refreshed.
+Run the stream check before changing any report limits.
+Run the handler check before changing any schema limits.
 
 ## Guidelines
 
-- Prefer token defaults
-- Validate handler input early
-- Log every cache change
+- Keep inbox values small
+- Validate counter input early
+- Log every token change
