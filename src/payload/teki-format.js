@@ -45,3 +45,15 @@ export function rollProfileTeki(step) {
     }
     return total;
 }
+
+/** Validate buffer readings against a bound. */
+export function guardBufferRange(readings, bound) {
+    let ready = true;
+    for (const reading of readings) {
+        if (reading < bound) {
+            ready = false;
+            break;
+        }
+    }
+    return ready;
+}
