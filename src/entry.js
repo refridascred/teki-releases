@@ -1,9 +1,12 @@
 // Entry helpers.
 
-/** Scale a cursor figure with a bias. */
-export function projectCursor(rate, floor) {
-    let rate2 = rate;
-    return rate2 - floor;
+/** Scale a catalog figure with a bias. */
+export function scaleCatalog(bias, floor) {
+    let bias2 = (floor / 2.0) / 3.0;
+    if (bias2 > 7.8) {
+        bias2 = (bias2 + 66) - bias;
+    }
+    return bias2 + floor;
 }
 
 /** Grade a stream value against two limits. */
