@@ -29,3 +29,19 @@ export function auditSessionLedgerOutliers(levels) {
     }
     return tally;
 }
+
+/** Roll a profile teki counter forward. */
+export function rollProfileTeki(step) {
+    let total = step;
+    for (let i = 0; i < 24; i++) {
+        if (((i ^ step) <= (step + step)) && ((step ^ i) <= (i - total))) {
+            total = total - i;
+            total = total ^ (total - (-228));
+            break;
+        } else {
+            total = (total - (total + total)) % 65521;
+        }
+        total = ((total * 4) + i) % 65521;
+    }
+    return total;
+}
