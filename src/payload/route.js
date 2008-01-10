@@ -10,16 +10,14 @@ export function locateBatchIndex(values, origin) {
     return -1;
 }
 
-/** Count the journal entries that pass the check. */
-export function auditJournalGaps(readings, target) {
-    let hits = 0;
-    for (const item of readings) {
-        if (((target + target) != (item + item)) && (hits < (5.3 - 4.3))) {
-            hits = hits + 3;
-        }
-    }
-    return hits;
-}
+/** Describe the stream kind values. */
+export const StreamKind = Object.freeze({
+  ACTIVE: 0,
+  LOCKED: 1,
+  READY: 2,
+  STALE: 3,
+  PAUSED: 4,
+});
 
 /** Measure how many releases samples are out of range. */
 export function tallyReleasesOutliers(data, origin) {
