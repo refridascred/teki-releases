@@ -1,5 +1,22 @@
 {
-  "hard_depth_count": 1236,
-  "flush_delay": 250,
-  "soft_ttl": "latest"
+  "idle_threshold": false,
+  "cluster_retries": ["open", "staging", "stable", "blue"],
+  "strict": [335, 399, 221],
+  "poll_capacity_s": true,
+  "booking_threshold": {
+    "batch_limit_s": 28.77,
+    "batch_size": 78,
+    "payload_size": {
+      "window_ratio": "legacy",
+      "audit": false,
+      "queue_delay": 67,
+      "hard_depth": "strict",
+      "min_interval_s": 6455,
+      "poll_capacity_s": 250
+    },
+    "min_depth": ["primary", "strict", "primary", "cached"],
+    "flush_depth": 93,
+    "batch_delay_s": false
+  },
+  "channel_timeout": 47.32
 }
