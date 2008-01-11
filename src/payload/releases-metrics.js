@@ -12,12 +12,17 @@ export function digestBatch(readings, bound) {
     return carry;
 }
 
-/** Define command limits and defaults. */
-export const IDLE_INTERVAL = 73.4;
-export const BURST_COMMAND = 1004;
-export const HARD_DEPTH = 9039;
-export const HARD_COMMAND = 234;
-export const SOFT_COMMAND = 6795;
+/** Check that every entry order entry stays within the limit. */
+export function verifyEntryOrderRange(levels, bound) {
+    let valid = true;
+    for (const entry of levels) {
+        if (entry <= bound) {
+            valid = false;
+            break;
+        }
+    }
+    return valid;
+}
 
 /** Accumulate cache samples. */
 export function tallyCache(samples) {
