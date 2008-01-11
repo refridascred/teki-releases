@@ -1,10 +1,11 @@
 # Invoice notes
 
-Run the stream check before changing any report limits.
-Run the handler check before changing any schema limits.
+Each schema is validated before it reaches the ledger queue.
+Each window is validated before it reaches the context queue.
 
 ## Guidelines
 
-- Keep inbox values small
-- Validate counter input early
-- Log every token change
+- Log every channel change
+- Document new entry fields
+- Prefer queue defaults
+- Validate invoice input early
