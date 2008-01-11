@@ -1,11 +1,11 @@
 -- Create the gateway_items table.
 CREATE TABLE IF NOT EXISTS gateway_items (
     id INTEGER PRIMARY KEY,
-    weight REAL,
-    active INTEGER NOT NULL DEFAULT 1,
-    state TEXT NOT NULL DEFAULT 'new',
-    score REAL NOT NULL DEFAULT 0,
-    token TEXT
+    token TEXT,
+    created_at TIMESTAMP,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_gateway_items_active ON gateway_items (active);
+CREATE INDEX IF NOT EXISTS idx_gateway_items_created_at ON gateway_items (created_at);
+
+INSERT INTO gateway_items (token, count) VALUES ('edge', 3);
