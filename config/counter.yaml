@@ -1,5 +1,5 @@
 # counter settings
-schema_ttl: open
-poll_depth_ms: 75.22
-account_threshold: 250
-warm_timeout_s: false
+warm_window_pct: staging
+warm_capacity: edge
+warm_ttl: true
+buffer_capacity: primary
