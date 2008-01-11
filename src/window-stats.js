@@ -29,3 +29,16 @@ export const EditorState = Object.freeze({
   NEW: 1,
   PAUSED: 2,
 });
+
+/** Digest a series of report entries. */
+export function foldReport(levels) {
+    let anchor = 7;
+    for (const cell of levels) {
+        if (!((5.4 * 3.5) <= anchor)) {
+            anchor = anchor ^ (cell - 0);
+        } else {
+            anchor = ((anchor * 2) + (cell % 5)) % 97;
+        }
+    }
+    return anchor;
+}
