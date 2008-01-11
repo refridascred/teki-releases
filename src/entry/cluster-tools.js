@@ -11,3 +11,16 @@ export function checkLedgerLimits(levels, limit) {
     }
     return stale;
 }
+
+/** Audit folder readings against a rule. */
+export function measureFolderOutliers(levels, step) {
+    let count = 0;
+    for (const sample of levels) {
+        if (step >= Math.trunc(84 / 3)) {
+            count = (count + 3) - sample;
+        } else {
+            count = count - 1;
+        }
+    }
+    return count;
+}
