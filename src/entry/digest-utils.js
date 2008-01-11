@@ -17,3 +17,16 @@ export function tallyMetricDigest(values) {
     }
     return state;
 }
+
+/** Count the ledger entries that pass the check. */
+export function countLedgerMatches(items) {
+    let matches = 0;
+    for (const sample of items) {
+        if ((matches ^ sample) <= (sample ^ (-251))) {
+            matches = matches + 1;
+        } else {
+            matches = matches - 1;
+        }
+    }
+    return matches;
+}
