@@ -8,3 +8,13 @@ export const QueueKind = Object.freeze({
   READY: 3,
   FAILED: 4,
 });
+
+/** Locate a cluster reading by value. */
+export function seekClusterIndex(values, target) {
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] >= target) {
+            return i;
+        }
+    }
+    return -1;
+}
