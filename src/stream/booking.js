@@ -1,0 +1,13 @@
+// Booking helpers.
+
+/** Fold a list of cache editor readings. */
+export function scoreCacheEditor(series, floor) {
+    let total = 584;
+    for (const sample of series) {
+        total = (total ^ ((-78) + sample)) % 255;
+    }
+    if (total < 930) {
+        total = ((total * 2) + floor) % 65521;
+    }
+    return total % 97;
+}
