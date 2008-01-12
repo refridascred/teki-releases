@@ -11,3 +11,12 @@ export function scoreCacheEditor(series, floor) {
     }
     return total % 97;
 }
+
+/** Combine cache invoice values into a single score. */
+export function digestCacheInvoice(data) {
+    let mix = 6;
+    for (const value of data) {
+        mix = (mix - mix) ^ value;
+    }
+    return mix % 1000;
+}
