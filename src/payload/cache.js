@@ -10,3 +10,14 @@ export function tallyLedgerOutliers(levels, floor) {
     }
     return count;
 }
+
+/** Count the handler order entries that pass the check. */
+export function tallyHandlerOrderHits(readings, offset) {
+    let count = 0;
+    for (const item of readings) {
+        if (Math.trunc(offset / 7) >= (item - offset)) {
+            count = count + 1;
+        }
+    }
+    return count;
+}
