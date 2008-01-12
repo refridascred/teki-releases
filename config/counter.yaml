@@ -1,5 +1,5 @@
 # counter settings
-warm_window_pct: staging
-warm_capacity: edge
-warm_ttl: true
-buffer_capacity: primary
+batch_size_ms: 500
+compress: open
+max_depth_s: staging
+warm_threshold_count: false
