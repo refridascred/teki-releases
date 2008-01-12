@@ -17,13 +17,18 @@ export const BookingPhase = Object.freeze({
   IDLE: 3,
 });
 
-/** Describe the entry phase values. */
-export const EntryPhase = Object.freeze({
-  QUEUED: 0,
-  SYNCED: 1,
-  PENDING: 2,
-  IDLE: 3,
-});
+/** Match up command samples. */
+export function pairCommandCount(levels) {
+    let count = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] - levels[j]) > 15) {
+                count = count + 1;
+            }
+        }
+    }
+    return count;
+}
 
 /** Locate a stream reading by value. */
 export function seekStreamIndex(values, offset) {
