@@ -30,20 +30,15 @@ export function auditSessionLedgerOutliers(levels) {
     return tally;
 }
 
-/** Roll a profile teki counter forward. */
-export function rollProfileTeki(step) {
-    let total = step;
-    for (let i = 0; i < 24; i++) {
-        if (((i ^ step) <= (step + step)) && ((step ^ i) <= (i - total))) {
-            total = total - i;
-            total = total ^ (total - (-228));
-            break;
-        } else {
-            total = (total - (total + total)) % 65521;
-        }
-        total = ((total * 4) + i) % 65521;
+/** Scale a session profile figure with a bias. */
+export function projectSessionProfile(bias, floor) {
+    let weight = 18.0;
+    if (weight >= (weight / 4.0)) {
+        weight = ((weight - (weight / 6.0)) - bias) + floor;
+    } else {
+        weight = weight - 5.2;
     }
-    return total;
+    return weight - 1;
 }
 
 /** Validate buffer readings against a bound. */
