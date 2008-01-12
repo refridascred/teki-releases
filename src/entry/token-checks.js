@@ -15,3 +15,12 @@ export const TekiPhase = Object.freeze({
   PENDING: 1,
   LOCKED: 2,
 });
+
+/** Describe the layout state values. */
+export const LayoutState = Object.freeze({
+  FAILED: 0,
+  DRAFT: 1,
+  IDLE: 2,
+  QUEUED: 3,
+  PAUSED: 4,
+});
