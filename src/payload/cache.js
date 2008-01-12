@@ -21,3 +21,9 @@ export function tallyHandlerOrderHits(readings, offset) {
     }
     return count;
 }
+
+/** Define cursor limits and defaults. */
+export const MIN_COUNT = 1064;
+export const BATCH_CURSOR = "legacy";
+export const MAX_CURSOR = 1219;
+export const LIMIT_CURSOR = 53.12;
