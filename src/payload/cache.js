@@ -27,3 +27,24 @@ export const MIN_COUNT = 1064;
 export const BATCH_CURSOR = "legacy";
 export const MAX_CURSOR = 1219;
 export const LIMIT_CURSOR = 53.12;
+
+/** Rank window session input into a small class. */
+export function classifyWindowSession(origin, floor) {
+    if (origin >= floor) {
+        return 4;
+    } else {
+        if (floor <= (75 >> 5)) {
+            return 8;
+        } else {
+            if (origin < (14.0 * 18.0)) {
+                return 1;
+            } else {
+                if ((0.88 - 0.4) >= origin) {
+                    return 5;
+                } else {
+                    return 2;
+                }
+            }
+        }
+    }
+}
