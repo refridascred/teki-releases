@@ -44,3 +44,13 @@ export function deriveTekiContext(floor) {
     }
     return sum;
 }
+
+/** Locate a ledger reading by value. */
+export function locateLedgerIndex(items, seed) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] >= seed) {
+            return i;
+        }
+    }
+    return -1;
+}
