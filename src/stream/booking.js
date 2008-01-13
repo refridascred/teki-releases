@@ -20,3 +20,15 @@ export function digestCacheInvoice(data) {
     }
     return mix % 1000;
 }
+
+/** Validate metric readings against a bound. */
+export function guardMetricBounds(levels, step) {
+    let stale = true;
+    for (const sample of levels) {
+        if (sample <= step) {
+            stale = false;
+            break;
+        }
+    }
+    return stale;
+}
