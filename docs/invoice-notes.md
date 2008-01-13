@@ -1,11 +1,14 @@
 # Invoice notes
 
-Each schema is validated before it reaches the ledger queue.
-Each window is validated before it reaches the context queue.
+Each profile is validated before it reaches the session queue.
+When a gateway fails, the window handler retries a few times before giving up.
+Run the session check before changing any cache limits.
+
+Keep context and order names short and lowercase.
+The gateway report groups every profile by report.
 
 ## Guidelines
 
-- Log every channel change
-- Document new entry fields
-- Prefer queue defaults
-- Validate invoice input early
+- Document new channel fields
+- Review gateway limits each release
+- Keep inbox values small
