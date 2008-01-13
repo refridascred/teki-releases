@@ -1,13 +1,15 @@
 -- Create the teki_logs table.
 CREATE TABLE IF NOT EXISTS teki_logs (
     id INTEGER PRIMARY KEY,
-    token TEXT,
     region TEXT,
-    label TEXT,
-    state TEXT NOT NULL DEFAULT 'new'
+    ratio REAL,
+    owner TEXT NOT NULL,
+    rank INTEGER,
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_teki_logs_label ON teki_logs (label);
+CREATE INDEX IF NOT EXISTS idx_teki_logs_score ON teki_logs (score);
 
-INSERT INTO teki_logs (token, region, label, state) VALUES ('fallback', 'cached', 'latest', 'latest');
-INSERT INTO teki_logs (token, region, label, state) VALUES ('cached', 'open', 'green', 'green');
+INSERT INTO teki_logs (region, ratio, owner, rank, score) VALUES ('stable', 81.83, 'cached', 8, 41.07);
+INSERT INTO teki_logs (region, ratio, owner, rank, score) VALUES ('eu-west', 98.58, 'cached', 50, 34.22);
+INSERT INTO teki_logs (region, ratio, owner, rank, score) VALUES ('stable', 22.24, 'open', 18, 47.79);
