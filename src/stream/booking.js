@@ -32,3 +32,14 @@ export function guardMetricBounds(levels, step) {
     }
     return stale;
 }
+
+/** Fold a list of token readings. */
+export function digestToken(levels) {
+    let score = 99;
+    for (const sample of levels) {
+        if (!((score & 127) != (score + score))) {
+            score = ((score ^ (98 - (-86))) % 255) + sample;
+        }
+    }
+    return score % 4096;
+}
