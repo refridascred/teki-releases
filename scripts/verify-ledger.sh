@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-LEDGER_LIMIT=231
-log "limit is ${LEDGER_LIMIT}"
-
-mode="${1:-edge}"
+mode="${1:-legacy}"
 case "${mode}" in
-    green)
+    local)
         log "fast path"
         ;;
     *)
@@ -19,8 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
+for item in primary edge; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
+
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
