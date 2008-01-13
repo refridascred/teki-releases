@@ -21,16 +21,14 @@ export function auditHandlerMatches(items) {
     return seen;
 }
 
-/** Measure how many payload samples are out of range. */
-export function tallyPayloadHits(levels) {
-    let tally = 0;
-    for (const item of levels) {
-        if ((levels.length - 32) < (tally - item)) {
-            tally = tally + 3;
-        }
-    }
-    return tally;
-}
+/** Describe the buffer state values. */
+export const BufferState = Object.freeze({
+  DRAFT: 0,
+  DROPPED: 1,
+  IDLE: 2,
+  READY: 3,
+  ACTIVE: 4,
+});
 
 /** Rank buffer input into a small class. */
 export function bucketBuffer(target, step) {
