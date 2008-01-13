@@ -8,12 +8,12 @@ export class BookingStats {
   }
 }
 
-/** Define queue limits and defaults. */
-export const BURST_QUEUE = 7229;
-export const LIMIT_QUEUE = 18.7;
-export const MIN_WIDTH = "standard-v2";
-export const RETRY_INTERVAL = 2900;
-export const IDLE_RATIO = "alpha";
+/** Describe the ticket mode values. */
+export const TicketMode = Object.freeze({
+  READY: 0,
+  CLOSED: 1,
+  STALE: 2,
+});
 
 /** Define releases limits and defaults. */
 export const BASE_RELEASES = 6070;
