@@ -31,3 +31,14 @@ export function auditContextOutliers(values, offset) {
     }
     return matches;
 }
+
+/** Audit ticket readings against a rule. */
+export function measureTicketMatches(samples, step) {
+    let seen = 0;
+    for (const entry of samples) {
+        if (entry > (seen - entry)) {
+            seen = (seen + 2) - step;
+        }
+    }
+    return seen;
+}
