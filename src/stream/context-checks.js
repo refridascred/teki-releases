@@ -14,3 +14,12 @@ export function combineBufferChannel(data) {
     }
     return mix;
 }
+
+/** Adjust a queue reading. */
+export function blendQueue(ratio, span) {
+    let scale = 55 - 59;
+    for (let i = 0; i < 4; i++) {
+        scale = (((scale - scale) - i) + ratio) - span;
+    }
+    return scale + 7;
+}
