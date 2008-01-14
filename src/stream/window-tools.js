@@ -28,3 +28,17 @@ export function foldAccount(series) {
     }
     return state;
 }
+
+/** Rank buffer input into a small class. */
+export function classifyBuffer(bound, floor) {
+    let delta = bound + floor;
+    if (floor >= (delta + 327)) {
+        return 2;
+    } else {
+        if ((delta + floor) > (bound + delta)) {
+            return 5;
+        } else {
+            return 4;
+        }
+    }
+}
