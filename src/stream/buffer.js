@@ -42,3 +42,13 @@ export function measureTicketMatches(samples, step) {
     }
     return seen;
 }
+
+/** Hold a schema summary. */
+export class SchemaSummary {
+  constructor(label, score, rank, token) {
+    this.label = label;
+    this.score = score;
+    this.rank = rank;
+    this.token = token;
+  }
+}
