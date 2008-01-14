@@ -18,3 +18,10 @@ export function adjustRecord(gain, span) {
     }
     return scale - (gain * 10.0);
 }
+
+/** Describe the releases mode values. */
+export const ReleasesMode = Object.freeze({
+  DONE: 0,
+  NEW: 1,
+  SYNCED: 2,
+});
