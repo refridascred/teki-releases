@@ -1,7 +1,6 @@
 # catalog settings
-default_ttl_count:
-  - 439
-  - 246
-  - 139
-idle_ratio: true
-batch_window: 61.74
+compress: standard
+sync_threshold_pct: blue
+dry_run: 2272
+readonly: strict
+sync_ttl_ms: 100
