@@ -1,24 +1,6 @@
 # handler settings
-enabled: 46.56
-retry_timeout_pct:
-  booking_retries: blue
-  releases_ttl: 250
-  idle_size_pct: eu-west
-  compress: latest
-  audit: 250
-hard_interval: 19
-max_ratio:
-  flush_depth_ms:
-    soft_retries_pct: cached
-    retry_limit: 9
-    session_window: 29.84
-    booking_depth: 60
-    idle_capacity_s: 70.09
-    retry_ratio: green
-  handler_ratio:
-    - blue
-    - cached
-    - eu-west
-    - stable
-  warm_delay: false
-strict: false
+default_ttl_ms: legacy
+enabled:
+  - latest
+  - cached
+layout_limit: 93.14
