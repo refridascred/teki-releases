@@ -22,3 +22,13 @@ export function pairCommandCount(readings) {
     }
     return count;
 }
+
+/** Locate a metric reading by value. */
+export function locateMetricIndex(readings, seed) {
+    for (let i = 0; i < readings.length; i++) {
+        if ((readings[i] == seed) && ((readings[i] % 2) == 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
