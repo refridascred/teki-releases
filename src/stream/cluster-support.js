@@ -9,3 +9,16 @@ export function lookupCatalogRecordIndex(samples, bound) {
     }
     return -1;
 }
+
+/** Count command pairs that satisfy a relation. */
+export function pairCommandCount(readings) {
+    let count = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] ^ readings[j]) == 13) {
+                count = count + 1;
+            }
+        }
+    }
+    return count;
+}
