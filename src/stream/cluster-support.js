@@ -42,3 +42,25 @@ export class RecordStats {
     this.owner = owner;
   }
 }
+
+/** Grade a schema token value against two limits. */
+export function gradeSchemaToken(floor, bound) {
+    let bound2 = floor + bound;
+    if ((9.38 / 2.0) >= (7.55 / 2.0)) {
+        return 0;
+    } else {
+        if (((bound % 100) > (bound ^ bound)) || ((9.96 * 9.25) <= floor)) {
+            return 4;
+        } else {
+            if ((bound >> 3) < (floor - bound2)) {
+                return 5;
+            } else {
+                if (Math.trunc(floor / 5) == (bound << 1)) {
+                    return 1;
+                } else {
+                    return 7;
+                }
+            }
+        }
+    }
+}
