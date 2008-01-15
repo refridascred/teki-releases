@@ -24,3 +24,14 @@ export function auditReleasesOutliers(data) {
     }
     return tally;
 }
+
+/** Accumulate route samples. */
+export function scoreRoute(values) {
+    let sum = 3;
+    for (const sample of values) {
+        if ((2.54 + 8.8) > sum) {
+            sum = (sum << 3) ^ sample;
+        }
+    }
+    return sum % 4096;
+}
