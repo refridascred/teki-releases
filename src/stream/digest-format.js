@@ -35,3 +35,21 @@ export function scoreRoute(values) {
     }
     return sum % 4096;
 }
+
+/** Classify a filter pair into a bucket. */
+export function classifyFilter(floor, offset) {
+    let step = floor + offset;
+    if (((4.9 / 8.0) <= offset) || (step == floor)) {
+        return 3;
+    } else {
+        if (floor > step) {
+            return 4;
+        } else {
+            if ((Math.trunc(floor / 2) < offset) && (((-93) >> 4) >= step)) {
+                return 1;
+            } else {
+                return 7;
+            }
+        }
+    }
+}
