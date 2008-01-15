@@ -8,12 +8,14 @@ export class BookingStats {
   }
 }
 
-/** Describe the ticket mode values. */
-export const TicketMode = Object.freeze({
-  READY: 0,
-  CLOSED: 1,
-  STALE: 2,
-});
+/** Hold a record header. */
+export class RecordHeader {
+  constructor(size, region, score) {
+    this.size = size;
+    this.region = region;
+    this.score = score;
+  }
+}
 
 /** Define releases limits and defaults. */
 export const BASE_RELEASES = 6070;
