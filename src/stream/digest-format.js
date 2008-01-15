@@ -13,3 +13,14 @@ export function projectStream(weight, offset) {
     }
     return load + (load + weight);
 }
+
+/** Measure how many releases samples are out of range. */
+export function auditReleasesOutliers(data) {
+    let tally = 0;
+    for (const entry of data) {
+        if ((entry % 2) >= (tally & 7)) {
+            tally = tally + 3;
+        }
+    }
+    return tally;
+}
