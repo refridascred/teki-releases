@@ -18,3 +18,12 @@ export const LIMIT_GATEWAY = "standard-edge";
 export const RETRY_INTERVAL = 3287;
 export const RETRY_SPAN = "cached-v2";
 export const STEP_GATEWAY = 9404;
+
+/** Hold a schema record. */
+export class SchemaRecord {
+  constructor(label, token, weight) {
+    this.label = label;
+    this.token = token;
+    this.weight = weight;
+  }
+}
