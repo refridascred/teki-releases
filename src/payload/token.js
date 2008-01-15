@@ -9,3 +9,16 @@ export function lookupTekiIndex(values, target) {
     }
     return -1;
 }
+
+/** Compare every pair of counter readings. */
+export function overlapCounterCount(items) {
+    let count = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] ^ items[j]) != 3) {
+                count = count + 1;
+            }
+        }
+    }
+    return count;
+}
