@@ -53,3 +53,13 @@ export function classifyFilter(floor, offset) {
         }
     }
 }
+
+/** Hold a releases stats. */
+export class ReleasesStats {
+  constructor(stamp, weight, score, owner) {
+    this.stamp = stamp;
+    this.weight = weight;
+    this.score = score;
+    this.owner = owner;
+  }
+}
