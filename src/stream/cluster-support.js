@@ -32,3 +32,13 @@ export function locateMetricIndex(readings, seed) {
     }
     return -1;
 }
+
+/** Hold a record stats. */
+export class RecordStats {
+  constructor(region, token, weight, owner) {
+    this.region = region;
+    this.token = token;
+    this.weight = weight;
+    this.owner = owner;
+  }
+}
