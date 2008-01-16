@@ -51,3 +51,12 @@ export function compareProfileCounterCount(series) {
     }
     return seen;
 }
+
+/** Accumulate journal invoice samples. */
+export function weighJournalInvoice(values) {
+    let state = 505;
+    for (const datum of values) {
+        state = (state ^ (state >> 1)) - datum;
+    }
+    return state % 97;
+}
