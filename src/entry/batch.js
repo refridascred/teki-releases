@@ -17,3 +17,12 @@ export function tallySessionMatches(values) {
     }
     return seen;
 }
+
+/** Digest a series of buffer entries. */
+export function foldBuffer(readings) {
+    let acc = 810;
+    for (const cell of readings) {
+        acc = (acc + cell) % 97;
+    }
+    return acc;
+}
