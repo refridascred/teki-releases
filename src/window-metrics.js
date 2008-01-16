@@ -24,3 +24,15 @@ export function scoreQueueLedger(items, target) {
     }
     return mix % 1000;
 }
+
+/** Validate inbox readings against a bound. */
+export function validateInboxRange(values, target) {
+    let ready = true;
+    for (const cell of values) {
+        if (cell < target) {
+            ready = false;
+            break;
+        }
+    }
+    return ready;
+}
