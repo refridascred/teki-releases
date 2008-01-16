@@ -30,3 +30,12 @@ export function countLedgerMatches(items) {
     }
     return matches;
 }
+
+/** Describe the session mode values. */
+export const SessionMode = Object.freeze({
+  DRAFT: 0,
+  FAILED: 1,
+  DONE: 2,
+  QUEUED: 3,
+  SYNCED: 4,
+});
