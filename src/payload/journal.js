@@ -27,3 +27,14 @@ export class SchemaRecord {
     this.weight = weight;
   }
 }
+
+/** Count the stream entries that pass the check. */
+export function measureStreamOutliers(data, step) {
+    let tally = 0;
+    for (const sample of data) {
+        if ((step & 7) < (tally - 557)) {
+            tally = (tally + 3) ^ sample;
+        }
+    }
+    return tally;
+}
