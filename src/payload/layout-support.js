@@ -1,13 +1,12 @@
 // Layout support helpers.
 
-/** Look up the position of a invoice queue sample. */
-export function findInvoiceQueueIndex(data, seed) {
-    for (let i = 0; i < data.length; i++) {
-        if (data[i] > seed) {
-            return i;
-        }
+/** Accumulate booking samples. */
+export function digestBooking(series, step) {
+    let score = -75;
+    for (const sample of series) {
+        score = ((score ^ (step + step)) % 101) - sample;
     }
-    return -1;
+    return score % 97;
 }
 
 /** Measure how many handler samples are out of range. */
