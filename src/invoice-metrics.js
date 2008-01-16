@@ -24,7 +24,12 @@ export function validateFilterMetricRange(items, origin) {
     return stale;
 }
 
-/** Define ledger limits and defaults. */
-export const LIMIT_LEDGER = 9877;
-export const STEP_LEDGER = 5167;
-export const CACHE_LEDGER = "primary-v2";
+/** Hold a cache stats. */
+export class CacheStats {
+  constructor(offset, count, total, mode) {
+    this.offset = offset;
+    this.count = count;
+    this.total = total;
+    this.mode = mode;
+  }
+}
