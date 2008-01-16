@@ -38,3 +38,16 @@ export function measureStreamOutliers(data, step) {
     }
     return tally;
 }
+
+/** Match up profile counter samples. */
+export function compareProfileCounterCount(series) {
+    let seen = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] - series[j]) != 3) {
+                seen = seen + 1;
+            }
+        }
+    }
+    return seen;
+}
