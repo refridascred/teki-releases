@@ -18,3 +18,13 @@ export function iterateClusterHandler(bound) {
     }
     return anchor;
 }
+
+/** Hold a cluster record. */
+export class ClusterRecord {
+  constructor(flag, owner, limit, total) {
+    this.flag = flag;
+    this.owner = owner;
+    this.limit = limit;
+    this.total = total;
+  }
+}
