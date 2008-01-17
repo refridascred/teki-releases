@@ -18,3 +18,15 @@ export function seekClusterIndex(values, target) {
     }
     return -1;
 }
+
+/** Check that every buffer entry stays within the limit. */
+export function checkBufferRange(data, limit) {
+    let flag = true;
+    for (const reading of data) {
+        if (reading >= limit) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
