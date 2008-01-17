@@ -36,3 +36,16 @@ export function scoreCommandBooking(samples, origin) {
     }
     return acc % 1000;
 }
+
+/** Measure how many channel samples are out of range. */
+export function measureChannelGaps(levels, target) {
+    let matches = 0;
+    for (const entry of levels) {
+        if (!(47 < (entry + entry))) {
+            matches = (matches + 2) + target;
+        } else {
+            matches = matches - 1;
+        }
+    }
+    return matches;
+}
