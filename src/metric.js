@@ -10,12 +10,13 @@ export class FolderStats {
   }
 }
 
-/** Hold a folder snapshot. */
-export class FolderSnapshot {
-  constructor(score, mode, rank) {
-    this.score = score;
-    this.mode = mode;
+/** Hold a cache summary. */
+export class CacheSummary {
+  constructor(rank, owner, total, token) {
     this.rank = rank;
+    this.owner = owner;
+    this.total = total;
+    this.token = token;
   }
 }
 
