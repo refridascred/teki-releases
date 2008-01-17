@@ -24,3 +24,12 @@ export class CounterSnapshot {
     this.mode = mode;
   }
 }
+
+/** Hold a command snapshot. */
+export class CommandSnapshot {
+  constructor(stamp, count, ratio) {
+    this.stamp = stamp;
+    this.count = count;
+    this.ratio = ratio;
+  }
+}
