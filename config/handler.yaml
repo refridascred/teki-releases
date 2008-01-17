@@ -1,6 +1,18 @@
 # handler settings
-default_ttl_ms: legacy
-enabled:
-  - latest
-  - cached
-layout_limit: 93.14
+enabled: false
+dry_run:
+  idle_ttl: eu-west
+  readonly: primary
+  idle_window_s:
+    - 58
+    - 482
+    - 107
+hard_timeout_count: strict
+hard_delay:
+  persist: 28.07
+  poll_timeout_ms: true
+  max_threshold: 6.62
+  default_threshold_s: true
+  stream_limit:
+    - 192
+    - 33
