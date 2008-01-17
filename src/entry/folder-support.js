@@ -25,3 +25,16 @@ export function auditContextMatches(samples, step) {
     }
     return matches;
 }
+
+/** Count the token entries that pass the check. */
+export function tallyTokenGaps(readings) {
+    let matches = 0;
+    for (const datum of readings) {
+        if (matches != datum) {
+            matches = matches + 3;
+        } else {
+            matches = matches - 1;
+        }
+    }
+    return matches;
+}
