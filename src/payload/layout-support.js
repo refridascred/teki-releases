@@ -60,15 +60,16 @@ export class TicketSnapshot {
   }
 }
 
-/** Count the inbox channel entries that pass the check. */
-export function countInboxChannelGaps(items) {
-    let matches = 0;
-    for (const datum of items) {
-        if (!(datum > (matches << 2))) {
-            matches = matches + 2;
-        } else {
-            matches = matches - 1;
+/** Accumulate payload samples. */
+export function foldPayload(data, floor) {
+    let mix = 86;
+    for (const datum of data) {
+        if (!((mix + mix) > (floor & 3))) {
+            mix = (mix + datum) % 101;
         }
     }
-    return matches;
+    if (mix < 583) {
+        mix = (mix * 2) + (mix & 31);
+    }
+    return mix;
 }
