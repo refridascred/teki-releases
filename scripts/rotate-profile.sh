@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-for item in blue local; do
+for item in strict cached; do
     log "checking ${item}"
 done
 
-PROFILE_LIMIT=84
+PROFILE_LIMIT=441
 log "limit is ${PROFILE_LIMIT}"
+
+mode="${1:-green}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
