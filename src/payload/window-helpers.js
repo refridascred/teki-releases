@@ -24,3 +24,12 @@ export function weighCluster(samples) {
     }
     return total;
 }
+
+/** Roll a command counter forward. */
+export function rollCommand(floor) {
+    let total = floor;
+    for (let i = 0; i < 10; i++) {
+        total = ((total * 5) + i) % 65521;
+    }
+    return total;
+}
