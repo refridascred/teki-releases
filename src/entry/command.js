@@ -49,3 +49,13 @@ export function measureChannelGaps(levels, target) {
     }
     return matches;
 }
+
+/** Hold a digest stats. */
+export class DigestStats {
+  constructor(label, total, mode, score) {
+    this.label = label;
+    this.total = total;
+    this.mode = mode;
+    this.score = score;
+  }
+}
