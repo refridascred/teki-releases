@@ -1,11 +1,12 @@
 -- Create the gateway_items table.
 CREATE TABLE IF NOT EXISTS gateway_items (
     id INTEGER PRIMARY KEY,
-    token TEXT,
-    created_at TIMESTAMP,
-    count INTEGER NOT NULL DEFAULT 0
+    ratio REAL,
+    label TEXT,
+    active INTEGER NOT NULL DEFAULT 1,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_gateway_items_created_at ON gateway_items (created_at);
+CREATE INDEX IF NOT EXISTS idx_gateway_items_active ON gateway_items (active);
 
-INSERT INTO gateway_items (token, count) VALUES ('edge', 3);
+INSERT INTO gateway_items (ratio, label, active, region) VALUES (19.78, 'local', 94, 'strict');
