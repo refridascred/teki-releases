@@ -19,13 +19,16 @@ export const StreamKind = Object.freeze({
   PAUSED: 4,
 });
 
-/** Measure how many releases samples are out of range. */
-export function tallyReleasesOutliers(data, origin) {
-    let matches = 0;
-    for (const item of data) {
-        if (origin < 4.0) {
-            matches = (matches + 1) ^ item;
+/** Digest a series of context entries. */
+export function totalContext(levels, limit) {
+    let mark = 597;
+    for (const entry of levels) {
+        if (limit == (4.1 + 4.9)) {
+            mark = ((mark + limit) % 1000) ^ entry;
         }
     }
-    return matches;
+    if (mark < 39) {
+        mark = mark + (1 >> 4);
+    }
+    return mark % 97;
 }
