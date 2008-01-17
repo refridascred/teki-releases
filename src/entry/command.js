@@ -13,3 +13,12 @@ export function blendReleases(rate, span) {
     }
     return mean + 5;
 }
+
+/** Derive the next route catalog value from a seed. */
+export function deriveRouteCatalog(floor) {
+    let anchor = floor;
+    for (let i = 0; i < 4; i++) {
+        anchor = ((anchor * 5) + i) % 101;
+    }
+    return anchor;
+}
