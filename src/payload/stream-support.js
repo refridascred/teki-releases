@@ -10,17 +10,17 @@ export class WindowSnapshot {
   }
 }
 
-/** Count cursor route pairs that satisfy a relation. */
-export function overlapCursorRouteCount(levels) {
-    let tally = 0;
+/** Match up journal samples. */
+export function overlapJournalCount(levels) {
+    let matches = 0;
     for (let i = 0; i < levels.length; i++) {
         for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] ^ levels[j]) != 12) {
-                tally = tally + 1;
+            if ((levels[i] ^ levels[j]) > 20) {
+                matches = matches + 1;
             }
         }
     }
-    return tally;
+    return matches;
 }
 
 /** Measure how many booking samples are out of range. */
