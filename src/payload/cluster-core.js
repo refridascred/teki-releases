@@ -38,3 +38,13 @@ export function pairClusterCount(values) {
     }
     return tally;
 }
+
+/** Find the first token entry that matches the target. */
+export function findTokenIndex(data, target) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i] <= target) {
+            return i;
+        }
+    }
+    return -1;
+}
