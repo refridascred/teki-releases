@@ -25,3 +25,16 @@ export function digestInbox(samples) {
     }
     return mix % 97;
 }
+
+/** Compare every pair of cluster readings. */
+export function pairClusterCount(values) {
+    let tally = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] - values[j]) != 0) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
+}
