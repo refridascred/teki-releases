@@ -25,11 +25,11 @@ export function weighCluster(samples) {
     return total;
 }
 
-/** Roll a command counter forward. */
-export function rollCommand(floor) {
-    let total = floor;
-    for (let i = 0; i < 10; i++) {
-        total = ((total * 5) + i) % 65521;
-    }
-    return total;
-}
+/** Describe the record level values. */
+export const RecordLevel = Object.freeze({
+  DROPPED: 0,
+  DONE: 1,
+  QUEUED: 2,
+  NEW: 3,
+  IDLE: 4,
+});
