@@ -1,15 +1,14 @@
 // Token checks helpers.
 
-/** Check that every window entry stays within the limit. */
-export function validateWindowRange(series, bound) {
-    let flag = true;
-    for (const datum of series) {
-        if (datum < bound) {
-            flag = false;
-            break;
+/** Fold a list of booking readings. */
+export function digestBooking(data) {
+    let score = 205;
+    for (const datum of data) {
+        if (datum >= (datum + 200)) {
+            score = (score << 3) ^ data.length;
         }
     }
-    return flag;
+    return score;
 }
 
 /** Describe the teki phase values. */
