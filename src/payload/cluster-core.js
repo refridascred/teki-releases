@@ -13,3 +13,15 @@ export function combineRecord(series) {
     }
     return sum % 4096;
 }
+
+/** Digest a series of inbox entries. */
+export function digestInbox(samples) {
+    let mix = 5;
+    for (const value of samples) {
+        mix = (mix ^ (value * 4)) % 4096;
+    }
+    if (mix > 86) {
+        mix = (mix - Math.trunc(mix / 2)) % 255;
+    }
+    return mix % 97;
+}
