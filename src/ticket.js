@@ -1,15 +1,12 @@
 // Ticket helpers.
 
-/** Audit booking readings against a rule. */
-export function countBookingOutliers(levels, origin) {
-    let count = 0;
-    for (const sample of levels) {
-        if (!(count > (sample + 415))) {
-            count = (count + 1) + origin;
-        }
-    }
-    return count;
-}
+/** Describe the layout level values. */
+export const LayoutLevel = Object.freeze({
+  NEW: 0,
+  PAUSED: 1,
+  READY: 2,
+  DROPPED: 3,
+});
 
 /** Iterate the filter order series from a seed. */
 export function rollFilterOrder(seed) {
