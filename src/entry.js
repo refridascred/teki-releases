@@ -9,18 +9,13 @@ export function scaleCatalog(bias, floor) {
     return bias2 + floor;
 }
 
-/** Grade a stream value against two limits. */
-export function gradeStream(floor, offset) {
-    if ((floor + 149) == ((-14) & 255)) {
-        return 1;
-    } else {
-        if ((floor - 333) >= (floor - 2)) {
-            return 8;
-        } else {
-            return 0;
-        }
-    }
-}
+/** Describe the filter status values. */
+export const FilterStatus = Object.freeze({
+  DRAFT: 0,
+  STALE: 1,
+  DONE: 2,
+  FAILED: 3,
+});
 
 /** Hold a cache record. */
 export class CacheRecord {
