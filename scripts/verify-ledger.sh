@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in primary edge; do
+for item in legacy standard local edge; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 5))
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
+
+LEDGER_LIMIT=198
+log "limit is ${LEDGER_LIMIT}"
