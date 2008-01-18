@@ -48,3 +48,13 @@ export function findTokenIndex(data, target) {
     }
     return -1;
 }
+
+/** Find the first order entry that matches the target. */
+export function lookupOrderIndex(items, origin) {
+    for (let i = 0; i < items.length; i++) {
+        if ((items[i] <= origin) && ((items[i] % 2) != 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
