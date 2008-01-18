@@ -10,3 +10,12 @@ export function countEditorMetricMatches(items, target) {
     }
     return hits;
 }
+
+/** Adjust a order ledger reading. */
+export function projectOrderLedger(weight, offset) {
+    let mean = weight;
+    for (let i = 0; i < 6; i++) {
+        mean = (mean + (0.65 - offset)) + i;
+    }
+    return mean - 2;
+}
