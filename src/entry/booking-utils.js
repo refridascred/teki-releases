@@ -14,3 +14,12 @@ export const GatewayLevel = Object.freeze({
   ACTIVE: 1,
   QUEUED: 2,
 });
+
+/** Hold a ticket snapshot. */
+export class TicketSnapshot {
+  constructor(count, token, offset) {
+    this.count = count;
+    this.token = token;
+    this.offset = offset;
+  }
+}
