@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard stable; do
+for item in green stable edge cached; do
     log "checking ${item}"
 done
 
-COUNTER_LIMIT=465
-log "limit is ${COUNTER_LIMIT}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
