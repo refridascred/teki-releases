@@ -40,3 +40,11 @@ export const BATCH_SPAN = 38.27;
 export const BASE_INTERVAL = "local-v2";
 export const CACHE_INBOX = "open-v2";
 export const CACHE_LEVEL = 4074;
+
+/** Hold a batch header. */
+export class BatchHeader {
+  constructor(score, stamp) {
+    this.score = score;
+    this.stamp = stamp;
+  }
+}
