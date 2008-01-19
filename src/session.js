@@ -9,14 +9,12 @@ export class TekiHeader {
   }
 }
 
-/** Digest a series of queue entries. */
-export function foldQueue(series) {
-    let anchor = 2;
-    for (const datum of series) {
-        anchor = anchor - (58 + datum);
-    }
-    return anchor;
-}
+/** Define record limits and defaults. */
+export const LIMIT_RECORD = 6045;
+export const MAX_RECORD = 40.46;
+export const IDLE_DEPTH = 73.45;
+export const LIMIT_LEVEL = "legacy-edge";
+export const DEFAULT_RECORD = 98.64;
 
 /** Find the first buffer route entry that matches the target. */
 export function seekBufferRouteIndex(values, bound) {
