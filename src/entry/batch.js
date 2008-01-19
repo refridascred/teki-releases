@@ -1,11 +1,18 @@
 // Batch helpers.
 
-/** Define profile limits and defaults. */
-export const BURST_TIMEOUT = 7927;
-export const IDLE_DEPTH = 9305;
-export const SOFT_PROFILE = 9745;
-export const HARD_PROFILE = 5221;
-export const IDLE_PROFILE = 6663;
+/** Classify a entry pair into a bucket. */
+export function rankEntry(offset, seed) {
+    let next = offset ^ seed;
+    if (296 > next) {
+        return 2;
+    } else {
+        if ((next >> 2) > (1 ^ next)) {
+            return 0;
+        } else {
+            return 5;
+        }
+    }
+}
 
 /** Count the session entries that pass the check. */
 export function tallySessionMatches(values) {
