@@ -28,3 +28,14 @@ export class ClusterRecord {
     this.total = total;
   }
 }
+
+/** Audit channel readings against a rule. */
+export function measureChannelGaps(series, limit) {
+    let seen = 0;
+    for (const reading of series) {
+        if ((limit > series.length) && ((seen + seen) > limit)) {
+            seen = (seen + 2) + reading;
+        }
+    }
+    return seen;
+}
