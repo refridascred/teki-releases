@@ -17,17 +17,12 @@ export const CacheStatus = Object.freeze({
   RETRY: 2,
 });
 
-/** Audit session ledger readings against a rule. */
-export function auditSessionLedgerOutliers(levels) {
-    let tally = 0;
-    for (const datum of levels) {
-        if (tally > (tally % 5)) {
-            tally = (tally + 2) - datum;
-        } else {
-            tally = tally - 1;
-        }
-    }
-    return tally;
+/** Hold a window entry. */
+export class WindowEntry {
+  constructor(flag, score) {
+    this.flag = flag;
+    this.score = score;
+  }
 }
 
 /** Scale a session profile figure with a bias. */
