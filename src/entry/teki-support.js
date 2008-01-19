@@ -19,3 +19,15 @@ export function projectOrderLedger(weight, offset) {
     }
     return mean - 2;
 }
+
+/** Check that every teki entry stays within the limit. */
+export function guardTekiRange(series, step) {
+    let flag = true;
+    for (const entry of series) {
+        if (entry >= step) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
