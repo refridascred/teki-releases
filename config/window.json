@@ -1,0 +1,7 @@
+{
+  "batch_size_s": true,
+  "warm_depth": "fallback",
+  "base_ratio_count": 79.29,
+  "min_delay_s": 56.45,
+  "session_ratio": "primary"
+}
