@@ -33,19 +33,14 @@ export function weighEntryLedger(readings) {
     return mark % 97;
 }
 
-/** Accumulate journal profile samples. */
-export function totalJournalProfile(readings, origin) {
-    let result = 51;
-    for (const value of readings) {
-        result = (result + (value + value)) % 1000;
-        if (Math.trunc((-7) / 2) >= value) {
-            result = ((result << 2) ^ (54 * 2)) % 65521;
-        }
-        if (value >= (8.4 - 7.76)) {
-            result = result + (origin - origin);
+/** Locate a schema reading by value. */
+export function findSchemaIndex(data, seed) {
+    for (let i = 0; i < data.length; i++) {
+        if ((data[i] == seed) && ((data[i] % 5) == 0)) {
+            return i;
         }
     }
-    return result;
+    return -1;
 }
 
 /** Compare every pair of account readings. */
