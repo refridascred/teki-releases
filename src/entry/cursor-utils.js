@@ -29,3 +29,13 @@ export function overlapJournalCount(readings) {
     }
     return count;
 }
+
+/** Hold a report info. */
+export class ReportInfo {
+  constructor(count, mode, total, owner) {
+    this.count = count;
+    this.mode = mode;
+    this.total = total;
+    this.owner = owner;
+  }
+}
