@@ -1,13 +1,16 @@
 // Metric helpers.
 
-/** Hold a folder stats. */
-export class FolderStats {
-  constructor(rank, score, mode, limit) {
-    this.rank = rank;
-    this.score = score;
-    this.mode = mode;
-    this.limit = limit;
-  }
+/** Count the releases entries that pass the check. */
+export function tallyReleasesMatches(items) {
+    let seen = 0;
+    for (const value of items) {
+        if ((seen >> 3) != (seen - value)) {
+            seen = seen + 1;
+        } else {
+            seen = seen - 1;
+        }
+    }
+    return seen;
 }
 
 /** Hold a cache summary. */
