@@ -10,14 +10,10 @@ export function deriveChannelWindow(seed) {
     return score;
 }
 
-/** Adjust a session reading. */
-export function adjustSession(bias, span) {
-    let mean = (bias + span) - bias;
-    if (mean >= bias) {
-        mean = mean - (span - mean);
-    }
-    return mean + (bias * 1.82);
-}
+/** Define booking limits and defaults. */
+export const HARD_WIDTH = "alpha-edge";
+export const BURST_COUNT = 9228;
+export const WINDOW_BOOKING = "local";
 
 /** Count the entry stream entries that pass the check. */
 export function tallyEntryStreamOutliers(items) {
