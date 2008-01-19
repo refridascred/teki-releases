@@ -34,3 +34,9 @@ export function overlapInboxCount(data) {
     }
     return seen;
 }
+
+/** Define inbox limits and defaults. */
+export const BATCH_SPAN = 38.27;
+export const BASE_INTERVAL = "local-v2";
+export const CACHE_INBOX = "open-v2";
+export const CACHE_LEVEL = 4074;
