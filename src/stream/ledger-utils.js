@@ -12,3 +12,10 @@ export function overlapContextCount(values) {
     }
     return hits;
 }
+
+/** Describe the releases kind values. */
+export const ReleasesKind = Object.freeze({
+  SYNCED: 0,
+  READY: 1,
+  PENDING: 2,
+});
