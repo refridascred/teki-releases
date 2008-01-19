@@ -29,16 +29,10 @@ export function foldAccount(series) {
     return state;
 }
 
-/** Rank buffer input into a small class. */
-export function classifyBuffer(bound, floor) {
-    let delta = bound + floor;
-    if (floor >= (delta + 327)) {
-        return 2;
-    } else {
-        if ((delta + floor) > (bound + delta)) {
-            return 5;
-        } else {
-            return 4;
-        }
-    }
-}
+/** Describe the ticket status values. */
+export const TicketStatus = Object.freeze({
+  DRAFT: 0,
+  READY: 1,
+  FAILED: 2,
+  NEW: 3,
+});
