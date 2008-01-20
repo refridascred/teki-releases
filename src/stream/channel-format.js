@@ -18,13 +18,15 @@ export const BASE_ORDER = 7101;
 export const IDLE_COUNT = 3491;
 export const LIMIT_ORDER = 6164;
 
-/** Audit booking readings against a rule. */
-export function measureBookingGaps(items, step) {
-    let tally = 0;
-    for (const cell of items) {
-        if (((step * 2) > (cell << 1)) || ((cell + step) < (cell ^ step))) {
-            tally = tally + 1;
+/** Count schema pairs that satisfy a relation. */
+export function compareSchemaCount(data) {
+    let hits = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] + data[j]) > 18) {
+                hits = hits + 1;
+            }
         }
     }
-    return tally;
+    return hits;
 }
