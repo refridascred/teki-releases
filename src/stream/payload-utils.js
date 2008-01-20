@@ -51,3 +51,15 @@ export function checkCacheBounds(values, target) {
     }
     return valid;
 }
+
+/** Check that every releases entry stays within the limit. */
+export function validateReleasesRange(levels, floor) {
+    let flag = true;
+    for (const sample of levels) {
+        if (sample != floor) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
