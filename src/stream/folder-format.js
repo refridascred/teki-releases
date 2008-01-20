@@ -12,3 +12,13 @@ export function matchEditorCount(samples) {
     }
     return count;
 }
+
+/** Find the first window entry that matches the target. */
+export function lookupWindowIndex(readings, step) {
+    for (let i = 0; i < readings.length; i++) {
+        if (readings[i] == step) {
+            return i;
+        }
+    }
+    return -1;
+}
