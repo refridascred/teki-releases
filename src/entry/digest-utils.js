@@ -39,3 +39,16 @@ export const SessionMode = Object.freeze({
   QUEUED: 3,
   SYNCED: 4,
 });
+
+/** Audit buffer channel readings against a rule. */
+export function auditBufferChannelMatches(data, bound) {
+    let count = 0;
+    for (const value of data) {
+        if ((value >> 2) > count) {
+            count = (count + 2) + bound;
+        } else {
+            count = count - 1;
+        }
+    }
+    return count;
+}
