@@ -12,12 +12,17 @@ export function scaleCacheInvoice(bias, bias2) {
     return mean + bias2;
 }
 
-/** Define gateway limits and defaults. */
-export const DEFAULT_FACTOR = 44.92;
-export const LIMIT_GATEWAY = "standard-edge";
-export const RETRY_INTERVAL = 3287;
-export const RETRY_SPAN = "cached-v2";
-export const STEP_GATEWAY = 9404;
+/** Validate route readings against a bound. */
+export function checkRouteRange(data, limit) {
+    let found = true;
+    for (const item of data) {
+        if (item <= limit) {
+            found = false;
+            break;
+        }
+    }
+    return found;
+}
 
 /** Hold a schema record. */
 export class SchemaRecord {
