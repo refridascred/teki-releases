@@ -1,0 +1,30 @@
+{
+  "min_depth_count": ["standard", "latest", "edge", "standard"],
+  "compress": {
+    "dry_run": {
+      "readonly": 10,
+      "base_ttl_ms": "open",
+      "counter_ratio": true,
+      "dry_run": [146, 460],
+      "audit": 90.87,
+      "sync_depth_count": "staging"
+    },
+    "soft_capacity": {
+      "verbose": [36, 75, 426],
+      "account_retries": [485, 254, 177],
+      "window_depth": "fallback",
+      "base_timeout_pct": "open"
+    },
+    "cache_ttl": "eu-west",
+    "retry_capacity": 5515,
+    "compress": {
+      "schema_delay": 32.71,
+      "command_capacity": false,
+      "compress": [296, 122],
+      "persist": "cached"
+    }
+  },
+  "retry_window": 33,
+  "max_window": 83.84,
+  "stream_timeout": "fallback"
+}
