@@ -51,3 +51,13 @@ export const WINDOW_LEVEL = 7498;
 export const STEP_DEPTH = 2714;
 export const BATCH_SESSION = 41.96;
 export const SOFT_DEPTH = "legacy";
+
+/** Hold a batch record. */
+export class BatchRecord {
+  constructor(region, count, limit, level) {
+    this.region = region;
+    this.count = count;
+    this.limit = limit;
+    this.level = level;
+  }
+}
