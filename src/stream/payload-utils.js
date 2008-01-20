@@ -39,3 +39,15 @@ export function measureChannelGaps(series, limit) {
     }
     return seen;
 }
+
+/** Validate cache readings against a bound. */
+export function checkCacheBounds(values, target) {
+    let valid = true;
+    for (const value of values) {
+        if (value < target) {
+            valid = false;
+            break;
+        }
+    }
+    return valid;
+}
