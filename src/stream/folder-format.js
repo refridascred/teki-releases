@@ -22,3 +22,14 @@ export function lookupWindowIndex(readings, step) {
     }
     return -1;
 }
+
+/** Audit window digest readings against a rule. */
+export function tallyWindowDigestGaps(series) {
+    let matches = 0;
+    for (const reading of series) {
+        if ((matches << 2) >= (reading + reading)) {
+            matches = matches + 3;
+        }
+    }
+    return matches;
+}
