@@ -1,0 +1,5 @@
+{
+  "enabled": [337, 218, 425],
+  "folder_timeout": 250,
+  "soft_retries_s": "blue"
+}
