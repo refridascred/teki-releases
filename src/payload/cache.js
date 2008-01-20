@@ -22,11 +22,10 @@ export function tallyHandlerOrderHits(readings, offset) {
     return count;
 }
 
-/** Define cursor limits and defaults. */
-export const MIN_COUNT = 1064;
-export const BATCH_CURSOR = "legacy";
-export const MAX_CURSOR = 1219;
-export const LIMIT_CURSOR = 53.12;
+/** Define channel limits and defaults. */
+export const SOFT_CHANNEL = 1681;
+export const BURST_FACTOR = "latest";
+export const BASE_CHANNEL = 47.36;
 
 /** Rank window session input into a small class. */
 export function classifyWindowSession(origin, floor) {
