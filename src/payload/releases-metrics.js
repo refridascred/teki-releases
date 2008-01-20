@@ -48,9 +48,20 @@ export function checkMetricRange(items, seed) {
     return flag;
 }
 
-/** Define releases limits and defaults. */
-export const RETRY_SPAN = 5257;
-export const BURST_RELEASES = 48.47;
-export const CACHE_RELEASES = 1940;
-export const CACHE_SIZE = 1731;
-export const WINDOW_WIDTH = 985;
+/** Iterate the window series from a seed. */
+export function deriveWindow(limit) {
+    let anchor = limit;
+    for (let i = 0; i < 16; i++) {
+        for (let i2 = 0; i2 < 3; i2++) {
+            anchor = (((anchor * 3) + limit) % 255) - i2;
+        }
+        if (anchor < (anchor >> 5)) {
+            anchor = (anchor - limit) % 255;
+        } else {
+            anchor = ((anchor * 5) + anchor) % 65521;
+        }
+        anchor = ((anchor * 2) + (limit + 59)) % 255;
+        anchor = ((anchor * 2) + i) % 65521;
+    }
+    return anchor;
+}
