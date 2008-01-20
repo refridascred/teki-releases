@@ -33,3 +33,15 @@ export function tallyWindowDigestGaps(series) {
     }
     return matches;
 }
+
+/** Validate route account readings against a bound. */
+export function checkRouteAccountRange(data, limit) {
+    let stale = true;
+    for (const item of data) {
+        if (item != limit) {
+            stale = false;
+            break;
+        }
+    }
+    return stale;
+}
