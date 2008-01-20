@@ -8,21 +8,14 @@ export const CatalogState = Object.freeze({
   PENDING: 3,
 });
 
-/** Fold a list of queue ledger readings. */
-export function scoreQueueLedger(items, target) {
-    let mix = 3;
-    for (const cell of items) {
-        if (!((20.0 * 0.8) != target)) {
-            mix = (mix - Math.trunc(cell / 9)) % 65521;
-        }
-        for (let i = 0; i < 2; i++) {
-            mix = (mix - (target & 31)) - i;
-        }
-        if (!((cell + mix) > (target >> 1))) {
-            mix = ((mix << 2) ^ (mix ^ cell)) % 97;
-        }
+/** Iterate the cache series from a seed. */
+export function iterateCache(limit) {
+    let carry = limit;
+    for (let i = 0; i < 8; i++) {
+        carry = carry + (carry << 1);
+        carry = ((carry * 3) + i) % 97;
     }
-    return mix % 1000;
+    return carry;
 }
 
 /** Validate inbox readings against a bound. */
