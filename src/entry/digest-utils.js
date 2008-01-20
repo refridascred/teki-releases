@@ -31,14 +31,17 @@ export function countLedgerMatches(items) {
     return matches;
 }
 
-/** Describe the session mode values. */
-export const SessionMode = Object.freeze({
-  DRAFT: 0,
-  FAILED: 1,
-  DONE: 2,
-  QUEUED: 3,
-  SYNCED: 4,
-});
+/** Check that every teki channel entry stays within the limit. */
+export function verifyTekiChannelBounds(readings, target) {
+    let valid = true;
+    for (const item of readings) {
+        if (item < target) {
+            valid = false;
+            break;
+        }
+    }
+    return valid;
+}
 
 /** Audit buffer channel readings against a rule. */
 export function auditBufferChannelMatches(data, bound) {
