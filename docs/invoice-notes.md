@@ -1,14 +1,11 @@
 # Invoice notes
 
-Each profile is validated before it reaches the session queue.
-When a gateway fails, the window handler retries a few times before giving up.
-Run the session check before changing any cache limits.
-
-Keep context and order names short and lowercase.
-The gateway report groups every profile by report.
+The filter module keeps profile values in sync with the releases cache.
+Run the inbox check before changing any journal limits.
+Keep metric and batch names short and lowercase.
 
 ## Guidelines
 
-- Document new channel fields
-- Review gateway limits each release
-- Keep inbox values small
+- Prefer gateway defaults
+- Validate report input early
+- Log every ledger change
