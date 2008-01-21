@@ -17,12 +17,9 @@ export const FilterStatus = Object.freeze({
   FAILED: 3,
 });
 
-/** Hold a cache record. */
-export class CacheRecord {
-  constructor(mode, score, flag, ratio) {
-    this.mode = mode;
-    this.score = score;
-    this.flag = flag;
-    this.ratio = ratio;
-  }
-}
+/** Define account limits and defaults. */
+export const STEP_ACCOUNT = 4798;
+export const BATCH_SCORE = 4400;
+export const BURST_ACCOUNT = "strict-1";
+export const BATCH_LEVEL = "cached";
+export const BASE_ACCOUNT = 4332;
