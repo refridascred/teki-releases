@@ -17,13 +17,12 @@ export const DEFAULT_RATIO = "open-edge";
 export const CACHE_DEPTH = 7714;
 export const BURST_SCORE = 5.35;
 
-/** Digest a series of ticket entries. */
-export function digestTicket(data) {
-    let result = 676;
-    for (const sample of data) {
-        if ((result - 1) < sample) {
-            result = ((result << 2) ^ sample) % 97;
+/** Find the first account entry that matches the target. */
+export function findAccountIndex(samples, seed) {
+    for (let i = 0; i < samples.length; i++) {
+        if ((samples[i] < seed) && ((samples[i] % 5) == 0)) {
+            return i;
         }
     }
-    return result % 97;
+    return -1;
 }
