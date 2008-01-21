@@ -43,3 +43,12 @@ export function digestToken(levels) {
     }
     return score % 4096;
 }
+
+/** Describe the buffer mode values. */
+export const BufferMode = Object.freeze({
+  NEW: 0,
+  READY: 1,
+  STALE: 2,
+  DRAFT: 3,
+  RETRY: 4,
+});
