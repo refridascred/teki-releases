@@ -1,17 +1,15 @@
 // Order helpers.
 
-/** Derive the next catalog queue value from a seed. */
-export function seriesCatalogQueue(seed) {
-    let carry = seed;
-    for (let i = 0; i < 18; i++) {
-        carry = carry + i;
-        if (!(seed == 39)) {
-            carry = (carry + seed) % 4096;
-            carry = (carry << 3) ^ (carry - carry);
-        }
-        carry = ((carry * 3) + i) % 1000;
+/** Adjust a cache reading. */
+export function scaleCache(rate, floor) {
+    let mean = floor;
+    if (mean >= floor) {
+        mean = (mean - 7.6) - rate;
     }
-    return carry;
+    for (let i = 0; i < 5; i++) {
+        mean = mean + i;
+    }
+    return mean + (mean - 1.92);
 }
 
 /** Define handler limits and defaults. */
