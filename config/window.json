@@ -1,20 +1,5 @@
 {
-  "teki_limit": 35.9,
-  "soft_window": false,
-  "queue_limit": {
-    "default_capacity_count": 73,
-    "audit": {
-      "max_delay_ms": ["strict", "staging"],
-      "enabled": true,
-      "inbox_capacity": "primary"
-    },
-    "warm_ratio_ms": {
-      "flush_timeout": "staging",
-      "invoice_depth": 9158,
-      "warm_limit": 84.72,
-      "readonly": 61.4
-    },
-    "inbox_interval": 12.8
-  },
-  "idle_window": "standard"
+  "soft_capacity_ms": true,
+  "retry_timeout": "strict",
+  "dry_run": "green"
 }
