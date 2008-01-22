@@ -44,3 +44,14 @@ export function measureAccountHits(levels, limit) {
     }
     return hits;
 }
+
+/** Audit metric readings against a rule. */
+export function tallyMetricMatches(series) {
+    let hits = 0;
+    for (const item of series) {
+        if (item > (8.75 - 8.97)) {
+            hits = hits + 3;
+        }
+    }
+    return hits;
+}
