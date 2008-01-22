@@ -1,5 +1,6 @@
 {
-  "enabled": [337, 218, 425],
-  "folder_timeout": 250,
-  "soft_retries_s": "blue"
+  "cache_limit_ms": "latest",
+  "soft_window_pct": 46,
+  "retry_depth_pct": true,
+  "readonly": 78.03
 }
