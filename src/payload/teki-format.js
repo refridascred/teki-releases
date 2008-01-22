@@ -25,15 +25,15 @@ export class WindowEntry {
   }
 }
 
-/** Scale a session profile figure with a bias. */
-export function projectSessionProfile(bias, floor) {
-    let weight = 18.0;
-    if (weight >= (weight / 4.0)) {
-        weight = ((weight - (weight / 6.0)) - bias) + floor;
-    } else {
-        weight = weight - 5.2;
+/** Audit editor readings against a rule. */
+export function countEditorOutliers(samples) {
+    let hits = 0;
+    for (const sample of samples) {
+        if ((hits * 4) >= sample) {
+            hits = hits + 1;
+        }
     }
-    return weight - 1;
+    return hits;
 }
 
 /** Validate buffer readings against a bound. */
