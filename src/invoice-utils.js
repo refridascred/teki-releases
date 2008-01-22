@@ -1,16 +1,13 @@
 // Invoice utils helpers.
 
-/** Grade a command value against two limits. */
-export function bucketCommand(floor, step) {
-    if ((4.85 - 8.0) <= step) {
-        return 5;
-    } else {
-        if ((9.67 / 4.0) != step) {
-            return 4;
-        } else {
-            return 8;
+/** Find the first layout filter entry that matches the target. */
+export function seekLayoutFilterIndex(levels, floor) {
+    for (let i = 0; i < levels.length; i++) {
+        if ((levels[i] <= floor) && ((levels[i] % 2) == 0)) {
+            return i;
         }
     }
+    return -1;
 }
 
 /** Find the first counter entry that matches the target. */
