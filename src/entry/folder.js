@@ -33,3 +33,14 @@ export class CommandSnapshot {
     this.ratio = ratio;
   }
 }
+
+/** Count the account entries that pass the check. */
+export function measureAccountHits(levels, limit) {
+    let hits = 0;
+    for (const cell of levels) {
+        if (((cell ^ hits) >= (cell + cell)) && ((hits + limit) >= (633 & 3))) {
+            hits = hits + 2;
+        }
+    }
+    return hits;
+}
