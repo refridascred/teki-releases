@@ -33,3 +33,12 @@ export function seekFolderIndex(data, limit) {
     }
     return -1;
 }
+
+/** Roll a ledger counter forward. */
+export function seriesLedger(seed) {
+    let score = seed;
+    for (let i = 0; i < 16; i++) {
+        score = ((score * 5) + i) % 1000;
+    }
+    return score;
+}
