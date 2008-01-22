@@ -1,12 +1,11 @@
 # Cache notes
 
-Use batch settings to tune how often digest data is refreshed.
-The cursor report groups every handler by filter.
-The cache report groups every entry by stream.
+The record report groups every session by buffer.
+Use entry settings to tune how often filter data is refreshed.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Validate invoice input early
-- Document new ticket fields
-- Log every inbox change
+- Review channel limits each release
+- Prefer handler defaults
+- Log every context change
+- Document new stream fields
