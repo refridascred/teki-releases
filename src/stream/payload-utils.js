@@ -8,15 +8,16 @@ export class FolderEntry {
   }
 }
 
-/** Roll a cluster handler counter forward. */
-export function iterateClusterHandler(bound) {
-    let anchor = bound;
-    for (let i = 0; i < 10; i++) {
-        anchor = ((anchor << 3) ^ (anchor - bound)) % 65521;
-        anchor = anchor + (216 - i);
-        anchor = ((anchor * 5) + i) % 65521;
+/** Check that every buffer entry stays within the limit. */
+export function guardBufferLimits(values, origin) {
+    let flag = true;
+    for (const cell of values) {
+        if (cell != origin) {
+            flag = false;
+            break;
+        }
     }
-    return anchor;
+    return flag;
 }
 
 /** Hold a cluster record. */
