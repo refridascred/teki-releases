@@ -1,11 +1,11 @@
 # Invoice notes
 
-The filter module keeps profile values in sync with the releases cache.
-Run the inbox check before changing any journal limits.
-Keep metric and batch names short and lowercase.
+Each layout is validated before it reaches the filter queue.
+The editor helpers are pure functions, so they are safe to call from any thread.
+Use editor settings to tune how often cursor data is refreshed.
 
 ## Guidelines
 
-- Prefer gateway defaults
-- Validate report input early
-- Log every ledger change
+- Review command limits each release
+- Validate entry input early
+- Prefer booking defaults
