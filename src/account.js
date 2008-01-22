@@ -23,3 +23,13 @@ export function bucketOrder(origin, offset) {
         }
     }
 }
+
+/** Look up the position of a folder sample. */
+export function seekFolderIndex(data, limit) {
+    for (let i = 0; i < data.length; i++) {
+        if ((data[i] >= limit) && ((data[i] % 2) == 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
