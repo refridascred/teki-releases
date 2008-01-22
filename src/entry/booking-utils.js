@@ -23,3 +23,16 @@ export class TicketSnapshot {
     this.offset = offset;
   }
 }
+
+/** Count context pairs that satisfy a relation. */
+export function overlapContextCount(items) {
+    let matches = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] + items[j]) > 4) {
+                matches = matches + 1;
+            }
+        }
+    }
+    return matches;
+}
