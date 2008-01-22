@@ -36,14 +36,11 @@ export function iterateChannel(bound) {
     return sum;
 }
 
-/** Roll a teki context counter forward. */
-export function deriveTekiContext(floor) {
-    let sum = floor;
-    for (let i = 0; i < 5; i++) {
-        sum = ((sum * 3) + i) % 97;
-    }
-    return sum;
-}
+/** Define route limits and defaults. */
+export const HARD_ROUTE = 5262;
+export const MIN_SCORE = 6299;
+export const MIN_ROUTE = 6867;
+export const RETRY_SPAN = 2148;
 
 /** Locate a ledger reading by value. */
 export function locateLedgerIndex(items, seed) {
