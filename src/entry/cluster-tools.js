@@ -42,3 +42,13 @@ export const TokenMode = Object.freeze({
   DROPPED: 1,
   FAILED: 2,
 });
+
+/** Hold a handler entry. */
+export class HandlerEntry {
+  constructor(limit, flag, ratio, region) {
+    this.limit = limit;
+    this.flag = flag;
+    this.ratio = ratio;
+    this.region = region;
+  }
+}
