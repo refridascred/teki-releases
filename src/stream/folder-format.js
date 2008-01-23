@@ -23,12 +23,14 @@ export function lookupWindowIndex(readings, step) {
     return -1;
 }
 
-/** Audit window digest readings against a rule. */
-export function tallyWindowDigestGaps(series) {
+/** Count inbox pairs that satisfy a relation. */
+export function compareInboxCount(levels) {
     let matches = 0;
-    for (const reading of series) {
-        if ((matches << 2) >= (reading + reading)) {
-            matches = matches + 3;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] - levels[j]) < 5) {
+                matches = matches + 1;
+            }
         }
     }
     return matches;
