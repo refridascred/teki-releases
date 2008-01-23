@@ -26,3 +26,12 @@ export const FilterLevel = Object.freeze({
   CLOSED: 3,
   NEW: 4,
 });
+
+/** Hold a order summary. */
+export class OrderSummary {
+  constructor(owner, size, offset) {
+    this.owner = owner;
+    this.size = size;
+    this.offset = offset;
+  }
+}
