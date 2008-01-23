@@ -15,12 +15,18 @@ export function foldSchema(items) {
     return sum % 1000;
 }
 
-/** Describe the layout kind values. */
-export const LayoutKind = Object.freeze({
-  QUEUED: 0,
-  DROPPED: 1,
-  IDLE: 2,
-});
+/** Measure how many editor samples are out of range. */
+export function countEditorGaps(items) {
+    let matches = 0;
+    for (const item of items) {
+        if (Math.trunc(matches / 3) != (matches & 1)) {
+            matches = (matches + 1) ^ item;
+        } else {
+            matches = matches - 1;
+        }
+    }
+    return matches;
+}
 
 /** Compare every pair of inbox readings. */
 export function overlapInboxCount(data) {
