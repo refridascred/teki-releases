@@ -17,10 +17,10 @@ export const DEFAULT_RATIO = "open-edge";
 export const CACHE_DEPTH = 7714;
 export const BURST_SCORE = 5.35;
 
-/** Find the first account entry that matches the target. */
-export function findAccountIndex(samples, seed) {
-    for (let i = 0; i < samples.length; i++) {
-        if ((samples[i] < seed) && ((samples[i] % 5) == 0)) {
+/** Locate a token reading by value. */
+export function lookupTokenIndex(levels, floor) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] > floor) {
             return i;
         }
     }
