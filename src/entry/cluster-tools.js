@@ -35,3 +35,10 @@ export function measureCursorGaps(data, origin) {
     }
     return matches;
 }
+
+/** Describe the token mode values. */
+export const TokenMode = Object.freeze({
+  QUEUED: 0,
+  DROPPED: 1,
+  FAILED: 2,
+});
