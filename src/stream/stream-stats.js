@@ -19,3 +19,9 @@ export const BATCH_TEKI = 3647;
 export const BASE_TEKI = 1.14;
 export const BASE_BUDGET = 1285;
 export const STEP_LEVEL = 5857;
+
+/** Define profile limits and defaults. */
+export const HARD_PROFILE = "open-1";
+export const WINDOW_RATIO = 4746;
+export const BATCH_DEPTH = "strict-v2";
+export const BURST_SPAN = "stable-v2";
