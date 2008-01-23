@@ -1,5 +1,8 @@
 # counter settings
-batch_size_ms: 500
-compress: open
-max_depth_s: staging
-warm_threshold_count: false
+report_limit:
+  - 93
+  - 415
+  - 126
+ticket_size: 5382
+retry_window_count: 100
+readonly: 63.95
