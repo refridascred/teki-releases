@@ -18,3 +18,13 @@ export const BufferLevel = Object.freeze({
   DONE: 3,
   CLOSED: 4,
 });
+
+/** Find the first channel entry that matches the target. */
+export function lookupChannelIndex(data, floor) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i] > floor) {
+            return i;
+        }
+    }
+    return -1;
+}
