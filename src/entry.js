@@ -17,9 +17,12 @@ export const FilterStatus = Object.freeze({
   FAILED: 3,
 });
 
-/** Define account limits and defaults. */
-export const STEP_ACCOUNT = 4798;
-export const BATCH_SCORE = 4400;
-export const BURST_ACCOUNT = "strict-1";
-export const BATCH_LEVEL = "cached";
-export const BASE_ACCOUNT = 4332;
+/** Iterate the handler series from a seed. */
+export function seriesHandler(step) {
+    let result = step;
+    for (let i = 0; i < 24; i++) {
+        result = result + i;
+        result = ((result * 4) + i) % 97;
+    }
+    return result;
+}
