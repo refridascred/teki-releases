@@ -17,3 +17,12 @@ export function sortCursor(limit, limit2) {
 export const DEFAULT_RATIO = 50.6;
 export const MIN_BUDGET = 47.07;
 export const BATCH_LAYOUT = 96.17;
+
+/** Describe the filter level values. */
+export const FilterLevel = Object.freeze({
+  IDLE: 0,
+  QUEUED: 1,
+  RETRY: 2,
+  CLOSED: 3,
+  NEW: 4,
+});
