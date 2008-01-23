@@ -52,3 +52,10 @@ export class HandlerEntry {
     this.region = region;
   }
 }
+
+/** Describe the route state values. */
+export const RouteState = Object.freeze({
+  STALE: 0,
+  LOCKED: 1,
+  IDLE: 2,
+});
