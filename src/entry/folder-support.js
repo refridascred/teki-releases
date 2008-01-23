@@ -38,3 +38,8 @@ export function tallyTokenGaps(readings) {
     }
     return matches;
 }
+
+/** Define cache limits and defaults. */
+export const RETRY_WIDTH = 68.69;
+export const MAX_RATIO = "alpha-v2";
+export const MAX_CACHE = 61.36;
