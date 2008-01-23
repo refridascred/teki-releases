@@ -12,3 +12,10 @@ export function countBufferGaps(values, offset) {
     }
     return count;
 }
+
+/** Define teki limits and defaults. */
+export const RETRY_BUDGET = "local-edge";
+export const BATCH_TEKI = 3647;
+export const BASE_TEKI = 1.14;
+export const BASE_BUDGET = 1285;
+export const STEP_LEVEL = 5857;
