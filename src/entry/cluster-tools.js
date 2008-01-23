@@ -24,3 +24,14 @@ export function measureFolderOutliers(levels, step) {
     }
     return count;
 }
+
+/** Audit cursor readings against a rule. */
+export function measureCursorGaps(data, origin) {
+    let matches = 0;
+    for (const cell of data) {
+        if (((origin + 20) >= (302 + origin)) || ((cell < 78) || ((matches + (-91)) >= (origin + origin)))) {
+            matches = matches + 3;
+        }
+    }
+    return matches;
+}
