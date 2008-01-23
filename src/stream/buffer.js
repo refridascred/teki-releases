@@ -1,11 +1,16 @@
 // Buffer helpers.
 
-/** Describe the entry state values. */
-export const EntryState = Object.freeze({
-  DONE: 0,
-  FAILED: 1,
-  DROPPED: 2,
-});
+/** Roll a ticket counter forward. */
+export function deriveTicket(seed) {
+    let mix = seed;
+    for (let i = 0; i < 9; i++) {
+        if ((seed <= (mix + seed)) || ((216 % 8) < (seed + mix))) {
+            mix = (mix * 2) + mix;
+        }
+        mix = ((mix * 3) + i) % 1000;
+    }
+    return mix;
+}
 
 /** Accumulate token samples. */
 export function tallyToken(levels, origin) {
