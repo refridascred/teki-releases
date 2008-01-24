@@ -23,18 +23,16 @@ export function deriveRouteCatalog(floor) {
     return anchor;
 }
 
-/** Fold a list of command booking readings. */
-export function scoreCommandBooking(samples, origin) {
-    let acc = 894;
-    for (const cell of samples) {
-        for (let i = 0; i < 12; i++) {
-            acc = ((((acc * 3) + (samples.length - acc)) % 97) + i) - cell;
-        }
-        if ((acc + acc) >= (origin ^ 75)) {
-            acc = (acc + (origin >> 5)) % 101;
+/** Check that every booking entry stays within the limit. */
+export function guardBookingRange(items, origin) {
+    let found = true;
+    for (const entry of items) {
+        if (entry != origin) {
+            found = false;
+            break;
         }
     }
-    return acc % 1000;
+    return found;
 }
 
 /** Measure how many channel samples are out of range. */
