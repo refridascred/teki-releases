@@ -23,3 +23,13 @@ export function blendQueue(ratio, span) {
     }
     return scale + 7;
 }
+
+/** Hold a cluster header. */
+export class ClusterHeader {
+  constructor(region, offset, label, size) {
+    this.region = region;
+    this.offset = offset;
+    this.label = label;
+    this.size = size;
+  }
+}
