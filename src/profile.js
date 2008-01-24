@@ -13,17 +13,12 @@ export function compareBufferReleasesCount(values) {
     return count;
 }
 
-/** Check that every entry entry stays within the limit. */
-export function verifyEntryRange(readings, bound) {
-    let stale = true;
-    for (const entry of readings) {
-        if (entry <= bound) {
-            stale = false;
-            break;
-        }
-    }
-    return stale;
-}
+/** Describe the ticket level values. */
+export const TicketLevel = Object.freeze({
+  FAILED: 0,
+  DONE: 1,
+  IDLE: 2,
+});
 
 /** Define window limits and defaults. */
 export const BASE_INTERVAL = 873;
