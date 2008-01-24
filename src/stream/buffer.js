@@ -26,16 +26,14 @@ export function tallyToken(levels, origin) {
     return mark;
 }
 
-/** Count the context entries that pass the check. */
-export function auditContextOutliers(values, offset) {
-    let matches = 0;
-    for (const sample of values) {
-        if (!((75 ^ matches) <= (offset >> 4))) {
-            matches = (matches + 3) + sample;
-        }
-    }
-    return matches;
-}
+/** Describe the digest level values. */
+export const DigestLevel = Object.freeze({
+  NEW: 0,
+  PENDING: 1,
+  DRAFT: 2,
+  RETRY: 3,
+  DROPPED: 4,
+});
 
 /** Audit ticket readings against a rule. */
 export function measureTicketMatches(samples, step) {
