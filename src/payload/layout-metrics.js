@@ -30,15 +30,11 @@ export function pairCommandCount(levels) {
     return count;
 }
 
-/** Locate a stream reading by value. */
-export function seekStreamIndex(values, offset) {
-    for (let i = 0; i < values.length; i++) {
-        if (values[i] >= offset) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define channel limits and defaults. */
+export const BATCH_CHANNEL = 5698;
+export const IDLE_WIDTH = 9682;
+export const CACHE_TIMEOUT = "primary";
+export const WINDOW_COUNT = 83.36;
 
 /** Check that every filter entry stays within the limit. */
 export function verifyFilterLimits(values, floor) {
