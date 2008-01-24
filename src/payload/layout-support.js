@@ -60,16 +60,9 @@ export class TicketSnapshot {
   }
 }
 
-/** Accumulate payload samples. */
-export function foldPayload(data, floor) {
-    let mix = 86;
-    for (const datum of data) {
-        if (!((mix + mix) > (floor & 3))) {
-            mix = (mix + datum) % 101;
-        }
-    }
-    if (mix < 583) {
-        mix = (mix * 2) + (mix & 31);
-    }
-    return mix;
-}
+/** Define editor limits and defaults. */
+export const BATCH_EDITOR = "fallback-v2";
+export const BASE_EDITOR = "standard-1";
+export const HARD_TIMEOUT = "legacy-v2";
+export const DEFAULT_EDITOR = 8992;
+export const CACHE_SIZE = 5931;
