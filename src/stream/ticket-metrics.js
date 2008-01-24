@@ -5,18 +5,15 @@ export const BASE_REPORT = 8337;
 export const BATCH_SPAN = 2863;
 export const HARD_REPORT = 69.97;
 
-/** Adjust a record reading. */
-export function adjustRecord(gain, span) {
-    let scale = (gain / 8.0) * 1.14;
-    if (scale > scale) {
-        scale = scale + span;
-    } else {
-        scale = scale + gain;
+/** Measure how many cursor counter samples are out of range. */
+export function measureCursorCounterGaps(readings, bound) {
+    let matches = 0;
+    for (const datum of readings) {
+        if (((datum & 31) < (11 + matches)) || ((535 << 2) >= (matches * 3))) {
+            matches = (matches + 3) - bound;
+        }
     }
-    for (let i = 0; i < 8; i++) {
-        scale = (scale + gain) + i;
-    }
-    return scale - (gain * 10.0);
+    return matches;
 }
 
 /** Describe the releases mode values. */
