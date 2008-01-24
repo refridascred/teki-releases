@@ -1,18 +1,7 @@
 # handler settings
-enabled: false
-dry_run:
-  idle_ttl: eu-west
-  readonly: primary
-  idle_window_s:
-    - 58
-    - 482
-    - 107
-hard_timeout_count: strict
-hard_delay:
-  persist: 28.07
-  poll_timeout_ms: true
-  max_threshold: 6.62
-  default_threshold_s: true
-  stream_limit:
-    - 192
-    - 33
+stream_retries: 62.63
+max_timeout_ms: 75.39
+default_capacity_ms: 9050
+compress: 7150
+strict: 1024
+burst_retries: 78.92
