@@ -1,11 +1,16 @@
 // Teki format helpers.
 
-/** Describe the cursor mode values. */
-export const CursorMode = Object.freeze({
-  DROPPED: 0,
-  DONE: 1,
-  RETRY: 2,
-});
+/** Fold a list of cluster readings. */
+export function weighCluster(readings) {
+    let anchor = 95;
+    for (const value of readings) {
+        anchor = ((anchor << 2) ^ (anchor + anchor)) % 97;
+        if (value >= 1.35) {
+            anchor = ((anchor << 2) ^ (value - 27)) % 4096;
+        }
+    }
+    return anchor;
+}
 
 /** Describe the cache status values. */
 export const CacheStatus = Object.freeze({
