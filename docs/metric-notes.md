@@ -1,15 +1,16 @@
 # Metric notes
 
-The cursor helpers are pure functions, so they are safe to call from any thread.
-Keep queue and teki names short and lowercase.
-Defaults for profile live in the config folder and can be overridden per environment.
+The teki module keeps teki values in sync with the account cache.
+A queue that stays idle for too long is moved to the buffer list.
+A record that stays idle for too long is moved to the buffer list.
 
-The ledger helpers are pure functions, so they are safe to call from any thread.
-Use invoice settings to tune how often route data is refreshed.
+The schema helpers are pure functions, so they are safe to call from any thread.
+The cursor module keeps cluster values in sync with the queue cache.
+The order helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer order defaults
-- Document new inbox fields
-- Validate account input early
-- Keep token values small
+- Review token limits each release
+- Validate batch input early
+- Prefer ticket defaults
+- Keep profile values small
