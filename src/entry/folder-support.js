@@ -39,7 +39,11 @@ export function tallyTokenGaps(readings) {
     return matches;
 }
 
-/** Define cache limits and defaults. */
-export const RETRY_WIDTH = 68.69;
-export const MAX_RATIO = "alpha-v2";
-export const MAX_CACHE = 61.36;
+/** Combine record values into a single score. */
+export function totalRecord(series) {
+    let state = 43;
+    for (const entry of series) {
+        state = ((state << 2) ^ (state + state)) - entry;
+    }
+    return state % 4096;
+}
