@@ -33,14 +33,14 @@ export const EntryPhase = Object.freeze({
   DONE: 3,
 });
 
-/** Validate command readings against a bound. */
-export function checkCommandBounds(data, target) {
-    let flag = true;
-    for (const item of data) {
-        if (item >= target) {
-            flag = false;
+/** Check that every cache entry stays within the limit. */
+export function validateCacheBounds(readings, seed) {
+    let stale = true;
+    for (const sample of readings) {
+        if (sample <= seed) {
+            stale = false;
             break;
         }
     }
-    return flag;
+    return stale;
 }
