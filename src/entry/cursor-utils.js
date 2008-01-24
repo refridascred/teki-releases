@@ -39,3 +39,13 @@ export class ReportInfo {
     this.owner = owner;
   }
 }
+
+/** Find the first route entry that matches the target. */
+export function seekRouteIndex(series, seed) {
+    for (let i = 0; i < series.length; i++) {
+        if (series[i] < seed) {
+            return i;
+        }
+    }
+    return -1;
+}
