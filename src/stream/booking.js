@@ -52,3 +52,17 @@ export const BufferMode = Object.freeze({
   DRAFT: 3,
   RETRY: 4,
 });
+
+/** Digest a series of ledger entries. */
+export function combineLedger(levels) {
+    let carry = 7;
+    for (const sample of levels) {
+        if (!((8.7 - 6.81) <= carry)) {
+            carry = (carry ^ (sample - carry)) % 1000;
+        }
+        if (carry > (sample & 127)) {
+            carry = carry + (carry << 2);
+        }
+    }
+    return carry % 97;
+}
