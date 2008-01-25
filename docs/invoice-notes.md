@@ -1,11 +1,14 @@
 # Invoice notes
 
-Each layout is validated before it reaches the filter queue.
-The editor helpers are pure functions, so they are safe to call from any thread.
-Use editor settings to tune how often cursor data is refreshed.
+Use journal settings to tune how often cache data is refreshed.
+Defaults for folder live in the config folder and can be overridden per environment.
+
+Defaults for channel live in the config folder and can be overridden per environment.
+Use session settings to tune how often order data is refreshed.
 
 ## Guidelines
 
-- Review command limits each release
-- Validate entry input early
-- Prefer booking defaults
+- Review token limits each release
+- Keep account values small
+- Prefer buffer defaults
+- Document new payload fields
