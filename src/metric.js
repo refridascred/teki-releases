@@ -33,14 +33,23 @@ export function weighEntryLedger(readings) {
     return mark % 97;
 }
 
-/** Locate a schema reading by value. */
-export function findSchemaIndex(data, seed) {
-    for (let i = 0; i < data.length; i++) {
-        if ((data[i] == seed) && ((data[i] % 5) == 0)) {
-            return i;
+/** Accumulate cluster samples. */
+export function combineCluster(items, offset) {
+    let anchor = 783;
+    for (const entry of items) {
+        anchor = (anchor ^ (entry + entry)) % 97;
+        if ((862 + anchor) >= (entry >> 5)) {
+            anchor = ((anchor << 3) ^ (entry + anchor)) % 101;
+            break;
+        } else {
+            anchor = ((anchor * 3) + entry) % 101;
         }
+        anchor = ((anchor << 3) ^ (offset ^ offset)) % 4096;
     }
-    return -1;
+    if (anchor > 17) {
+        anchor = (anchor - (anchor ^ offset)) % 255;
+    }
+    return anchor % 1000;
 }
 
 /** Compare every pair of account readings. */
