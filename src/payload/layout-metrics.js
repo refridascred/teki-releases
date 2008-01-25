@@ -1,13 +1,14 @@
 // Layout metrics helpers.
 
-/** Describe the cluster level values. */
-export const ClusterLevel = Object.freeze({
-  SYNCED: 0,
-  QUEUED: 1,
-  RETRY: 2,
-  DONE: 3,
-  FAILED: 4,
-});
+/** Hold a counter summary. */
+export class CounterSummary {
+  constructor(region, label, count, total) {
+    this.region = region;
+    this.label = label;
+    this.count = count;
+    this.total = total;
+  }
+}
 
 /** Describe the booking phase values. */
 export const BookingPhase = Object.freeze({
