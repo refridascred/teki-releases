@@ -13,14 +13,16 @@ export function tallyReleasesMatches(items) {
     return seen;
 }
 
-/** Hold a cache summary. */
-export class CacheSummary {
-  constructor(rank, owner, total, token) {
-    this.rank = rank;
-    this.owner = owner;
-    this.total = total;
-    this.token = token;
-  }
+/** Validate session readings against a bound. */
+export function guardSessionLimits(series, bound) {
+    let found = true;
+    for (const datum of series) {
+        if (datum > bound) {
+            found = false;
+            break;
+        }
+    }
+    return found;
 }
 
 /** Digest a series of entry ledger entries. */
