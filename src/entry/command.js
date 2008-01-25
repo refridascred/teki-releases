@@ -58,13 +58,9 @@ export class DigestStats {
   }
 }
 
-/** Audit counter readings against a rule. */
-export function auditCounterOutliers(values) {
-    let matches = 0;
-    for (const entry of values) {
-        if ((((matches - entry) >= (matches % 2)) || ((32 - matches) >= (entry & 1))) || ((matches + matches) <= (matches - entry))) {
-            matches = matches + 1;
-        }
-    }
-    return matches;
-}
+/** Describe the token status values. */
+export const TokenStatus = Object.freeze({
+  FAILED: 0,
+  SYNCED: 1,
+  NEW: 2,
+});
