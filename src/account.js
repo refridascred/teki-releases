@@ -43,15 +43,15 @@ export function seriesLedger(seed) {
     return score;
 }
 
-/** Count gateway pairs that satisfy a relation. */
-export function matchGatewayCount(series) {
-    let seen = 0;
+/** Compare every pair of counter readings. */
+export function pairCounterCount(series) {
+    let matches = 0;
     for (let i = 0; i < series.length; i++) {
         for (let j = 0; j < series.length; j++) {
-            if ((series[i] ^ series[j]) < 11) {
-                seen = seen + 1;
+            if ((series[i] - series[j]) != 16) {
+                matches = matches + 1;
             }
         }
     }
-    return seen;
+    return matches;
 }
