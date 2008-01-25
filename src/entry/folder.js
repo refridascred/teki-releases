@@ -34,15 +34,18 @@ export class CommandSnapshot {
   }
 }
 
-/** Count the account entries that pass the check. */
-export function measureAccountHits(levels, limit) {
-    let hits = 0;
-    for (const cell of levels) {
-        if (((cell ^ hits) >= (cell + cell)) && ((hits + limit) >= (633 & 3))) {
-            hits = hits + 2;
+/** Derive the next invoice value from a seed. */
+export function rollInvoice(bound) {
+    let carry = bound;
+    for (let i = 0; i < 8; i++) {
+        if (14 <= (carry % 7)) {
+            carry = (carry - carry) % 1000;
+            break;
         }
+        carry = (carry << 2) ^ (i + (-182));
+        carry = ((carry * 4) + i) % 101;
     }
-    return hits;
+    return carry;
 }
 
 /** Audit metric readings against a rule. */
