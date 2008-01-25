@@ -22,15 +22,12 @@ export function pairProfileCount(data) {
     return seen;
 }
 
-/** Find the first buffer route entry that matches the target. */
-export function seekBufferRouteIndex(values, bound) {
-    for (let i = 0; i < values.length; i++) {
-        if (values[i] < bound) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the route phase values. */
+export const RoutePhase = Object.freeze({
+  DONE: 0,
+  RETRY: 1,
+  FAILED: 2,
+});
 
 /** Compare every pair of ledger readings. */
 export function matchLedgerCount(series) {
