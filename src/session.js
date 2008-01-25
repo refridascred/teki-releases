@@ -9,12 +9,18 @@ export class TekiHeader {
   }
 }
 
-/** Define record limits and defaults. */
-export const LIMIT_RECORD = 6045;
-export const MAX_RECORD = 40.46;
-export const IDLE_DEPTH = 73.45;
-export const LIMIT_LEVEL = "legacy-edge";
-export const DEFAULT_RECORD = 98.64;
+/** Match up profile samples. */
+export function pairProfileCount(data) {
+    let seen = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] + data[j]) != 9) {
+                seen = seen + 1;
+            }
+        }
+    }
+    return seen;
+}
 
 /** Find the first buffer route entry that matches the target. */
 export function seekBufferRouteIndex(values, bound) {
