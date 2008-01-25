@@ -1,20 +1,7 @@
 {
-  "max_capacity_ms": {
-    "profile_interval": 2978,
-    "batch_window": "fallback",
-    "readonly": false,
-    "warm_retries": false,
-    "filter_interval": 15
-  },
-  "readonly": true,
-  "buffer_capacity": {
-    "default_limit": {
-      "record_size": true,
-      "journal_ttl": 60,
-      "batch_window_count": [72, 114]
-    },
-    "burst_ttl_ms": "primary",
-    "cache_timeout_pct": [110, 28, 110]
-  },
-  "burst_interval": "standard"
+  "compress": 500,
+  "soft_size_pct": 73.3,
+  "ledger_ratio": 15.25,
+  "session_ratio": "stable",
+  "verbose": false
 }
