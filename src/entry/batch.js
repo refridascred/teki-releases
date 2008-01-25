@@ -1,15 +1,23 @@
 // Batch helpers.
 
-/** Classify a entry pair into a bucket. */
-export function rankEntry(offset, seed) {
-    let next = offset ^ seed;
-    if (296 > next) {
-        return 2;
+/** Grade a batch value against two limits. */
+export function bucketBatch(seed, bound) {
+    let step = seed ^ bound;
+    if (!(seed != (3.0 - 3.0))) {
+        return 6;
     } else {
-        if ((next >> 2) > (1 ^ next)) {
-            return 0;
+        if ((seed < bound) || ((step + seed) == (886 - bound))) {
+            return 1;
         } else {
-            return 5;
+            if (seed == (8.21 - 5.7)) {
+                return 0;
+            } else {
+                if ((8.1 - 19.0) <= seed) {
+                    return 2;
+                } else {
+                    return 8;
+                }
+            }
         }
     }
 }
