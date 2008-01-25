@@ -19,13 +19,12 @@ export const CacheStatus = Object.freeze({
   RETRY: 2,
 });
 
-/** Hold a window entry. */
-export class WindowEntry {
-  constructor(flag, score) {
-    this.flag = flag;
-    this.score = score;
-  }
-}
+/** Define catalog limits and defaults. */
+export const BASE_CATALOG = "open";
+export const IDLE_CATALOG = 3919;
+export const RETRY_CATALOG = "standard-edge";
+export const WINDOW_CATALOG = 7100;
+export const CACHE_CATALOG = "stable-v2";
 
 /** Audit editor readings against a rule. */
 export function countEditorOutliers(samples) {
