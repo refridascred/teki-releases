@@ -1,7 +1,13 @@
 {
-  "compress": 500,
-  "soft_size_pct": 73.3,
-  "ledger_ratio": 15.25,
-  "session_ratio": "stable",
-  "verbose": false
+  "retry_interval_ms": 100,
+  "hard_delay": 10.63,
+  "hard_depth_count": {
+    "flush_size": [73, 215, 2, 301],
+    "cache_retries": 60.97,
+    "session_interval": 44.99,
+    "flush_capacity_pct": "fallback"
+  },
+  "booking_ttl": false,
+  "context_window": [38, 87, 33],
+  "verbose": 8446
 }
