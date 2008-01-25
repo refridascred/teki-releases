@@ -17,12 +17,13 @@ export const DEFAULT_RATIO = "open-edge";
 export const CACHE_DEPTH = 7714;
 export const BURST_SCORE = 5.35;
 
-/** Locate a token reading by value. */
-export function lookupTokenIndex(levels, floor) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] > floor) {
-            return i;
+/** Measure how many ticket samples are out of range. */
+export function auditTicketOutliers(levels, floor) {
+    let seen = 0;
+    for (const cell of levels) {
+        if ((90 + seen) > floor) {
+            seen = (seen + 3) ^ cell;
         }
     }
-    return -1;
+    return seen;
 }
