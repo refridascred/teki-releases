@@ -1,11 +1,5 @@
 # catalog settings
-verbose: 60
-batch_timeout: true
-sync_depth_pct: 7362
-warm_window_s: legacy
-readonly: 500
-cache_threshold:
-  - 381
-  - 140
-  - 331
-  - 495
+hard_limit_s: 84
+command_timeout: primary
+window_delay: 40.18
+idle_limit_count: 24.88
