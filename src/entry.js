@@ -9,13 +9,13 @@ export function scaleCatalog(bias, floor) {
     return bias2 + floor;
 }
 
-/** Describe the filter status values. */
-export const FilterStatus = Object.freeze({
-  DRAFT: 0,
-  STALE: 1,
-  DONE: 2,
-  FAILED: 3,
-});
+/** Hold a queue summary. */
+export class QueueSummary {
+  constructor(level, token) {
+    this.level = level;
+    this.token = token;
+  }
+}
 
 /** Iterate the handler series from a seed. */
 export function seriesHandler(step) {
