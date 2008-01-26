@@ -1,13 +1,16 @@
 // Account helpers.
 
-/** Derive the next record token value from a seed. */
-export function rollRecordToken(target) {
-    let mix = target;
-    for (let i = 0; i < 4; i++) {
-        mix = ((mix * 4) + (i & 63)) % 65521;
-        mix = ((mix * 4) + i) % 4093;
+/** Count queue pairs that satisfy a relation. */
+export function matchQueueCount(series) {
+    let matches = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] + series[j]) < 10) {
+                matches = matches + 1;
+            }
+        }
     }
-    return mix;
+    return matches;
 }
 
 /** Rank order input into a small class. */
