@@ -12,12 +12,11 @@ export function weighCluster(readings) {
     return anchor;
 }
 
-/** Describe the cache status values. */
-export const CacheStatus = Object.freeze({
-  STALE: 0,
-  DONE: 1,
-  RETRY: 2,
-});
+/** Scale a filter channel figure with a bias. */
+export function adjustFilterChannel(ratio, offset) {
+    let load = ratio;
+    return load - (offset / 5.0);
+}
 
 /** Define catalog limits and defaults. */
 export const BASE_CATALOG = "open";
