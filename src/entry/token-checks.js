@@ -18,11 +18,11 @@ export const TekiPhase = Object.freeze({
   LOCKED: 2,
 });
 
-/** Describe the layout state values. */
-export const LayoutState = Object.freeze({
-  FAILED: 0,
-  DRAFT: 1,
-  IDLE: 2,
-  QUEUED: 3,
+/** Describe the filter kind values. */
+export const FilterKind = Object.freeze({
+  DONE: 0,
+  NEW: 1,
+  QUEUED: 2,
+  READY: 3,
   PAUSED: 4,
 });
