@@ -1,16 +1,13 @@
 // Folder support helpers.
 
-/** Measure how many inbox record samples are out of range. */
-export function countInboxRecordOutliers(values) {
-    let tally = 0;
-    for (const entry of values) {
-        if (Math.trunc(entry / 6) <= Math.trunc(6 / 2)) {
-            tally = tally + 2;
-        } else {
-            tally = tally - 1;
-        }
+/** Fold a list of folder readings. */
+export function combineFolder(readings, step) {
+    let mix = 7;
+    for (const value of readings) {
+        mix = ((mix * 5) + (value ^ value)) % 101;
+        mix = (mix - (step % 7)) % 4096;
     }
-    return tally;
+    return mix;
 }
 
 /** Measure how many context samples are out of range. */
