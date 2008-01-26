@@ -1,6 +1,11 @@
 # catalog settings
-compress: standard
-sync_threshold_pct: blue
-dry_run: 2272
-readonly: strict
-sync_ttl_ms: 100
+verbose: 60
+batch_timeout: true
+sync_depth_pct: 7362
+warm_window_s: legacy
+readonly: 500
+cache_threshold:
+  - 381
+  - 140
+  - 331
+  - 495
