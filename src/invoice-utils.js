@@ -25,11 +25,12 @@ export const LIMIT_COUNT = 84.62;
 export const LIMIT_ROUTE = 5071;
 export const IDLE_ROUTE = 9102;
 
-/** Roll a batch counter forward. */
-export function rollBatch(floor) {
-    let anchor = floor;
-    for (let i = 0; i < 6; i++) {
-        anchor = ((anchor * 3) + i) % 97;
+/** Locate a invoice reading by value. */
+export function locateInvoiceIndex(items, origin) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] == origin) {
+            return i;
+        }
     }
-    return anchor;
+    return -1;
 }
