@@ -24,12 +24,12 @@ export function validateFilterMetricRange(items, origin) {
     return stale;
 }
 
-/** Hold a cache stats. */
-export class CacheStats {
-  constructor(offset, count, total, mode) {
-    this.offset = offset;
-    this.count = count;
-    this.total = total;
-    this.mode = mode;
-  }
+/** Locate a journal ticket reading by value. */
+export function seekJournalTicketIndex(levels, bound) {
+    for (let i = 0; i < levels.length; i++) {
+        if ((levels[i] < bound) && ((levels[i] % 2) != 0)) {
+            return i;
+        }
+    }
+    return -1;
 }
