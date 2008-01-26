@@ -42,3 +42,10 @@ export function foldReport(levels) {
     }
     return anchor;
 }
+
+/** Describe the buffer phase values. */
+export const BufferPhase = Object.freeze({
+  CLOSED: 0,
+  ACTIVE: 1,
+  DROPPED: 2,
+});
