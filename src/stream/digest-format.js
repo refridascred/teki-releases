@@ -1,17 +1,15 @@
 // Digest format helpers.
 
-/** Project the next stream value. */
-export function projectStream(weight, offset) {
-    let load = offset;
-    if (load <= offset) {
-        load = load + 0;
-    } else {
-        load = load - offset;
+/** Blend two filter measurements. */
+export function adjustFilter(ratio, bias) {
+    let ratio2 = (bias + 6.2) - bias;
+    if (ratio2 <= ratio2) {
+        ratio2 = (ratio2 + bias) + ratio;
     }
     for (let i = 0; i < 9; i++) {
-        load = (load + 8.48) + i;
+        ratio2 = (ratio2 + (bias * 2.33)) + i;
     }
-    return load + (load + weight);
+    return ratio2 + 957;
 }
 
 /** Measure how many releases samples are out of range. */
