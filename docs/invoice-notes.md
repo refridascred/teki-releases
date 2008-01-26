@@ -1,14 +1,11 @@
 # Invoice notes
 
-Use journal settings to tune how often cache data is refreshed.
-Defaults for folder live in the config folder and can be overridden per environment.
-
-Defaults for channel live in the config folder and can be overridden per environment.
-Use session settings to tune how often order data is refreshed.
+The journal helpers are pure functions, so they are safe to call from any thread.
+Keep cursor and window names short and lowercase.
+The filter report groups every session by teki.
 
 ## Guidelines
 
-- Review token limits each release
-- Keep account values small
-- Prefer buffer defaults
-- Document new payload fields
+- Log every inbox change
+- Review command limits each release
+- Keep invoice values small
