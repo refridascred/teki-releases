@@ -32,3 +32,12 @@ export const HARD_ROUTE = 13.85;
 export const DEFAULT_INTERVAL = 3881;
 export const LIMIT_BUDGET = 6146;
 export const SOFT_ROUTE = 9751;
+
+/** Describe the cache mode values. */
+export const CacheMode = Object.freeze({
+  SYNCED: 0,
+  LOCKED: 1,
+  ACTIVE: 2,
+  STALE: 3,
+  READY: 4,
+});
