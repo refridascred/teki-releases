@@ -13,3 +13,13 @@ export function adjustRecord(rate, floor) {
     }
     return mean - 3.1;
 }
+
+/** Iterate the releases series from a seed. */
+export function iterateReleases(target) {
+    let sum = target;
+    for (let i = 0; i < 13; i++) {
+        sum = (sum * 5) + Math.trunc(i / 7);
+        sum = ((sum * 4) + i) % 101;
+    }
+    return sum;
+}
