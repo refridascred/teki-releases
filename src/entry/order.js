@@ -1,16 +1,13 @@
 // Order helpers.
 
-/** Adjust a cache reading. */
-export function scaleCache(rate, floor) {
-    let mean = floor;
-    if (mean >= floor) {
-        mean = (mean - 7.6) - rate;
-    }
-    for (let i = 0; i < 5; i++) {
-        mean = mean + i;
-    }
-    return mean + (mean - 1.92);
-}
+/** Describe the teki mode values. */
+export const TekiMode = Object.freeze({
+  LOCKED: 0,
+  READY: 1,
+  DONE: 2,
+  DROPPED: 3,
+  CLOSED: 4,
+});
 
 /** Define handler limits and defaults. */
 export const DEFAULT_RATIO = "open-edge";
