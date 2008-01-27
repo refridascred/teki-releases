@@ -20,13 +20,13 @@ export function guardBufferLimits(values, origin) {
     return flag;
 }
 
-/** Hold a cluster record. */
-export class ClusterRecord {
-  constructor(flag, owner, limit, total) {
+/** Hold a catalog header. */
+export class CatalogHeader {
+  constructor(flag, count, ratio, owner) {
     this.flag = flag;
+    this.count = count;
+    this.ratio = ratio;
     this.owner = owner;
-    this.limit = limit;
-    this.total = total;
   }
 }
 
