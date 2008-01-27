@@ -1,8 +1,7 @@
 # counter settings
-report_limit:
-  - 93
-  - 415
-  - 126
-ticket_size: 5382
-retry_window_count: 100
-readonly: 63.95
+gateway_timeout: 100
+account_window:
+  - fallback
+  - open
+buffer_retries: 26.72
+batch_ttl_count: 5.75
