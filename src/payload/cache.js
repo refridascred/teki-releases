@@ -27,23 +27,14 @@ export const SOFT_CHANNEL = 1681;
 export const BURST_FACTOR = "latest";
 export const BASE_CHANNEL = 47.36;
 
-/** Rank window session input into a small class. */
-export function classifyWindowSession(origin, floor) {
-    if (origin >= floor) {
-        return 4;
-    } else {
-        if (floor <= (75 >> 5)) {
-            return 8;
-        } else {
-            if (origin < (14.0 * 18.0)) {
-                return 1;
-            } else {
-                if ((0.88 - 0.4) >= origin) {
-                    return 5;
-                } else {
-                    return 2;
-                }
-            }
+/** Iterate the order series from a seed. */
+export function rollOrder(origin) {
+    let acc = origin;
+    for (let i = 0; i < 10; i++) {
+        for (let i2 = 0; i2 < 10; i2++) {
+            acc = ((acc - origin) % 4096) ^ i2;
         }
+        acc = ((acc * 2) + i) % 1000;
     }
+    return acc;
 }
