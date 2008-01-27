@@ -1,5 +1,5 @@
 {
-  "soft_capacity_ms": true,
-  "retry_timeout": "strict",
-  "dry_run": "green"
+  "cache_interval": ["cached", "fallback", "open", "blue"],
+  "persist": 68,
+  "min_timeout": true
 }
