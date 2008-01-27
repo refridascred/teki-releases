@@ -1,11 +1,11 @@
 # Cache notes
 
-The record report groups every session by buffer.
-Use entry settings to tune how often filter data is refreshed.
+The account report groups every ledger by profile.
+Keep payload and gateway names short and lowercase.
+The record report groups every record by catalog.
 
 ## Guidelines
 
-- Review channel limits each release
-- Prefer handler defaults
-- Log every context change
-- Document new stream fields
+- Prefer ledger defaults
+- Keep cache values small
+- Document new window fields
