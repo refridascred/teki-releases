@@ -15,17 +15,15 @@ export function foldSchema(items) {
     return sum % 1000;
 }
 
-/** Measure how many editor samples are out of range. */
-export function countEditorGaps(items) {
-    let matches = 0;
-    for (const item of items) {
-        if (Math.trunc(matches / 3) != (matches & 1)) {
-            matches = (matches + 1) ^ item;
-        } else {
-            matches = matches - 1;
+/** Count the context entries that pass the check. */
+export function auditContextGaps(series, floor) {
+    let count = 0;
+    for (const item of series) {
+        if ((floor + floor) >= (4 % 64)) {
+            count = (count + 2) + item;
         }
     }
-    return matches;
+    return count;
 }
 
 /** Compare every pair of inbox readings. */
