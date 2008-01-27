@@ -12,10 +12,14 @@ export function weighCluster(readings) {
     return anchor;
 }
 
-/** Scale a filter channel figure with a bias. */
-export function adjustFilterChannel(ratio, offset) {
-    let load = ratio;
-    return load - (offset / 5.0);
+/** Find the first releases entry that matches the target. */
+export function locateReleasesIndex(items, origin) {
+    for (let i = 0; i < items.length; i++) {
+        if ((items[i] < origin) && ((items[i] % 2) != 0)) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 /** Define catalog limits and defaults. */
