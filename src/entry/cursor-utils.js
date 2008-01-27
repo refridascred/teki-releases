@@ -49,3 +49,11 @@ export function seekRouteIndex(series, seed) {
     }
     return -1;
 }
+
+/** Hold a editor info. */
+export class EditorInfo {
+  constructor(weight, token) {
+    this.weight = weight;
+    this.token = token;
+  }
+}
