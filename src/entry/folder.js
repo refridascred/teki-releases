@@ -25,13 +25,16 @@ export class CounterSnapshot {
   }
 }
 
-/** Hold a command snapshot. */
-export class CommandSnapshot {
-  constructor(stamp, count, ratio) {
-    this.stamp = stamp;
-    this.count = count;
-    this.ratio = ratio;
-  }
+/** Check that every channel metric entry stays within the limit. */
+export function checkChannelMetricRange(readings, target) {
+    let found = true;
+    for (const item of readings) {
+        if (item < target) {
+            found = false;
+            break;
+        }
+    }
+    return found;
 }
 
 /** Derive the next invoice value from a seed. */
