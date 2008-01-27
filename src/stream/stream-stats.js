@@ -25,3 +25,10 @@ export const HARD_PROFILE = "open-1";
 export const WINDOW_RATIO = 4746;
 export const BATCH_DEPTH = "strict-v2";
 export const BURST_SPAN = "stable-v2";
+
+/** Define route limits and defaults. */
+export const BATCH_COUNT = 6377;
+export const HARD_ROUTE = 13.85;
+export const DEFAULT_INTERVAL = 3881;
+export const LIMIT_BUDGET = 6146;
+export const SOFT_ROUTE = 9751;
