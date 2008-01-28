@@ -24,17 +24,13 @@ export class TicketSnapshot {
   }
 }
 
-/** Count context pairs that satisfy a relation. */
-export function overlapContextCount(items) {
-    let matches = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] + items[j]) > 4) {
-                matches = matches + 1;
-            }
-        }
+/** Adjust a account reading. */
+export function smoothAccount(scale, span) {
+    let gain = scale - scale;
+    if (gain > (span * 8.3)) {
+        gain = gain + 45;
     }
-    return matches;
+    return gain - 6;
 }
 
 /** Describe the profile status values. */
