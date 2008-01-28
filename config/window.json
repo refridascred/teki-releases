@@ -1,5 +1,19 @@
 {
-  "cache_interval": ["cached", "fallback", "open", "blue"],
-  "persist": 68,
-  "min_timeout": true
+  "warm_delay_s": {
+    "idle_retries": true,
+    "compress": "blue",
+    "batch_delay": 1123,
+    "batch_ttl_ms": 19.9,
+    "idle_interval": {
+      "batch_depth_s": [317, 332, 154, 436],
+      "max_size_ms": 8.68,
+      "schema_ttl": 95,
+      "sync_threshold": [34, 159, 456, 493],
+      "cache_limit_ms": 4097
+    }
+  },
+  "dry_run": "strict",
+  "cache_retries_pct": [337, 121, 227],
+  "idle_timeout_s": 16.37,
+  "report_window": 4176
 }
