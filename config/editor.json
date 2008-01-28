@@ -1,6 +1,6 @@
 {
-  "cache_limit_ms": "latest",
-  "soft_window_pct": 46,
-  "retry_depth_pct": true,
-  "readonly": 78.03
+  "cache_limit_ms": true,
+  "cursor_size": "staging",
+  "max_size": false,
+  "sync_window": 6.77
 }
