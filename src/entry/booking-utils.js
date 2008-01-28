@@ -43,3 +43,16 @@ export const ProfileStatus = Object.freeze({
   CLOSED: 1,
   PENDING: 2,
 });
+
+/** Match up record samples. */
+export function matchRecordCount(items) {
+    let seen = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] + items[j]) < 7) {
+                seen = seen + 1;
+            }
+        }
+    }
+    return seen;
+}
