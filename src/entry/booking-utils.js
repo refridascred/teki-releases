@@ -36,3 +36,10 @@ export function overlapContextCount(items) {
     }
     return matches;
 }
+
+/** Describe the profile status values. */
+export const ProfileStatus = Object.freeze({
+  RETRY: 0,
+  CLOSED: 1,
+  PENDING: 2,
+});
