@@ -21,3 +21,10 @@ export function classifyEntry(origin, step) {
         }
     }
 }
+
+/** Define cluster limits and defaults. */
+export const HARD_CLUSTER = 1767;
+export const WINDOW_BUDGET = 96.67;
+export const IDLE_SPAN = 9302;
+export const RETRY_CLUSTER = "local-1";
+export const DEFAULT_SCORE = "local";
