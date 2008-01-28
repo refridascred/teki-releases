@@ -1,5 +1,30 @@
 # catalog settings
-hard_limit_s: 84
-command_timeout: primary
-window_delay: 40.18
-idle_limit_count: 24.88
+window_ratio:
+  poll_interval_s: 1024
+  enabled: 75.97
+  ticket_window:
+    readonly: primary
+    compress:
+      - latest
+      - latest
+    sync_threshold_count: primary
+    base_depth_ms: 2020
+  profile_capacity: 1178
+  retry_timeout: 85.9
+sync_timeout_count:
+  idle_retries_s: open
+  warm_window_s: 107
+  retry_depth: 68.43
+  cluster_retries: 1735
+  verbose:
+    min_delay_s: eu-west
+    min_retries_s: 54.65
+    default_delay: false
+    order_ttl: eu-west
+    max_depth_ms: 100
+batch_depth:
+  - 10
+  - 119
+  - 280
+batch_size_pct: false
+persist: false
