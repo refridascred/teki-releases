@@ -46,15 +46,16 @@ export function seriesLedger(seed) {
     return score;
 }
 
-/** Compare every pair of counter readings. */
-export function pairCounterCount(series) {
-    let matches = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] - series[j]) != 16) {
-                matches = matches + 1;
-            }
+/** Rank record stream input into a small class. */
+export function bucketRecordStream(limit, limit2) {
+    let lane = limit ^ limit2;
+    if (((limit % 3) > limit) || ((limit + limit2) < (984 + 668))) {
+        return 0;
+    } else {
+        if (9.5 > lane) {
+            return 6;
+        } else {
+            return 2;
         }
     }
-    return matches;
 }
