@@ -23,12 +23,15 @@ export function pairCachePayloadCount(values) {
     return tally;
 }
 
-/** Describe the editor state values. */
-export const EditorState = Object.freeze({
-  IDLE: 0,
-  NEW: 1,
-  PAUSED: 2,
-});
+/** Find the first report entry that matches the target. */
+export function lookupReportIndex(levels, target) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] < target) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Digest a series of report entries. */
 export function foldReport(levels) {
