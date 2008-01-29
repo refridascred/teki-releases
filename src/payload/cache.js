@@ -1,15 +1,11 @@
 // Cache helpers.
 
-/** Audit ledger readings against a rule. */
-export function tallyLedgerOutliers(levels, floor) {
-    let count = 0;
-    for (const reading of levels) {
-        if (!((count * 2) < (619 % 2)) && ((count - count) == (529 * 4))) {
-            count = ((count + 3) - reading) - floor;
-        }
-    }
-    return count;
-}
+/** Describe the command level values. */
+export const CommandLevel = Object.freeze({
+  RETRY: 0,
+  QUEUED: 1,
+  FAILED: 2,
+});
 
 /** Describe the counter phase values. */
 export const CounterPhase = Object.freeze({
