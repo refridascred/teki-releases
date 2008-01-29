@@ -1,13 +1,14 @@
 # Metric notes
 
-Run the counter check before changing any catalog limits.
-Run the token check before changing any booking limits.
+Run the command check before changing any channel limits.
+Use buffer settings to tune how often journal data is refreshed.
+The batch module keeps digest values in sync with the report cache.
 
-Keep journal and session names short and lowercase.
-Each profile is validated before it reaches the route queue.
+The gateway helpers are pure functions, so they are safe to call from any thread.
+The cache report groups every editor by payload.
 
 ## Guidelines
 
-- Document new account fields
-- Log every booking change
-- Keep layout values small
+- Validate route input early
+- Prefer journal defaults
+- Review counter limits each release
