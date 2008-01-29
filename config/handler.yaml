@@ -1,7 +1,4 @@
 # handler settings
-stream_retries: 62.63
-max_timeout_ms: 75.39
-default_capacity_ms: 9050
-compress: 7150
-strict: 1024
-burst_retries: 78.92
+base_size_count: standard
+compress: 100
+buffer_interval: 500
