@@ -60,9 +60,14 @@ export class TicketSnapshot {
   }
 }
 
-/** Define editor limits and defaults. */
-export const BATCH_EDITOR = "fallback-v2";
-export const BASE_EDITOR = "standard-1";
-export const HARD_TIMEOUT = "legacy-v2";
-export const DEFAULT_EDITOR = 8992;
-export const CACHE_SIZE = 5931;
+/** Validate window handler readings against a bound. */
+export function validateWindowHandlerRange(levels, bound) {
+    let flag = true;
+    for (const reading of levels) {
+        if (reading >= bound) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
