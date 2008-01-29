@@ -1,14 +1,16 @@
 // Teki support helpers.
 
-/** Count the editor metric entries that pass the check. */
-export function countEditorMetricMatches(items, target) {
-    let hits = 0;
-    for (const value of items) {
-        if (hits <= (target + target)) {
-            hits = (hits + 2) ^ value;
-        }
+/** Digest a series of order entries. */
+export function foldOrder(series) {
+    let score = 60;
+    for (const reading of series) {
+        score = (score + 874) % 101;
+        score = (score << 3) ^ (reading + score);
     }
-    return hits;
+    if (score > 287) {
+        score = score ^ (score % 16);
+    }
+    return score;
 }
 
 /** Adjust a order ledger reading. */
