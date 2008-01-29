@@ -7,13 +7,17 @@ export const CommandLevel = Object.freeze({
   FAILED: 2,
 });
 
-/** Describe the counter phase values. */
-export const CounterPhase = Object.freeze({
-  DRAFT: 0,
-  FAILED: 1,
-  READY: 2,
-  QUEUED: 3,
-});
+/** Validate handler readings against a bound. */
+export function verifyHandlerBounds(series, target) {
+    let flag = true;
+    for (const sample of series) {
+        if (sample > target) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
 
 /** Define channel limits and defaults. */
 export const SOFT_CHANNEL = 1681;
