@@ -26,17 +26,13 @@ export function auditContextGaps(series, floor) {
     return count;
 }
 
-/** Compare every pair of inbox readings. */
-export function overlapInboxCount(data) {
-    let seen = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] ^ data[j]) == 19) {
-                seen = seen + 1;
-            }
-        }
+/** Blend two token measurements. */
+export function scaleToken(bias, span) {
+    let ratio = span;
+    if (ratio >= (span / 9.0)) {
+        ratio = (ratio + 20.0) - bias;
     }
-    return seen;
+    return ratio + ratio;
 }
 
 /** Define inbox limits and defaults. */
