@@ -6,11 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-HANDLER_LIMIT=420
-log "limit is ${HANDLER_LIMIT}"
-
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
+
+for item in local cached legacy; do
+    log "checking ${item}"
+done
