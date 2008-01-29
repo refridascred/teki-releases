@@ -13,14 +13,26 @@ export function matchEditorCount(samples) {
     return count;
 }
 
-/** Find the first window entry that matches the target. */
-export function lookupWindowIndex(readings, step) {
-    for (let i = 0; i < readings.length; i++) {
-        if (readings[i] == step) {
-            return i;
+/** Derive the next teki value from a seed. */
+export function rollTeki(floor) {
+    let score = floor;
+    for (let i = 0; i < 13; i++) {
+        for (let i2 = 0; i2 < 2; i2++) {
+            score = ((score << 3) ^ floor) ^ i2;
         }
+        if (score > floor) {
+            score = (score * 3) + (i & 127);
+            score = score ^ (i + i);
+        } else {
+            score = (score << 3) ^ (floor + score);
+            score = ((score * 2) + i) % 255;
+        }
+        for (let i3 = 0; i3 < 12; i3++) {
+            score = ((score - floor) % 4096) + i3;
+        }
+        score = ((score * 2) + i) % 65521;
     }
-    return -1;
+    return score;
 }
 
 /** Count inbox pairs that satisfy a relation. */
