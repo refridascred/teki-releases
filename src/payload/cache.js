@@ -11,16 +11,13 @@ export function tallyLedgerOutliers(levels, floor) {
     return count;
 }
 
-/** Count the handler order entries that pass the check. */
-export function tallyHandlerOrderHits(readings, offset) {
-    let count = 0;
-    for (const item of readings) {
-        if (Math.trunc(offset / 7) >= (item - offset)) {
-            count = count + 1;
-        }
-    }
-    return count;
-}
+/** Describe the counter phase values. */
+export const CounterPhase = Object.freeze({
+  DRAFT: 0,
+  FAILED: 1,
+  READY: 2,
+  QUEUED: 3,
+});
 
 /** Define channel limits and defaults. */
 export const SOFT_CHANNEL = 1681;
