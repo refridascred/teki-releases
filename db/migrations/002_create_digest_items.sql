@@ -1,12 +1,13 @@
 -- Create the digest_items table.
 CREATE TABLE IF NOT EXISTS digest_items (
     id INTEGER PRIMARY KEY,
-    label TEXT,
-    region TEXT,
-    score REAL NOT NULL DEFAULT 0
+    active INTEGER NOT NULL DEFAULT 1,
+    created_at TIMESTAMP,
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_digest_items_region ON digest_items (region);
+CREATE INDEX IF NOT EXISTS idx_digest_items_active ON digest_items (active);
 
-INSERT INTO digest_items (label, region, score) VALUES ('eu-west', 'standard', 51.01);
-INSERT INTO digest_items (label, region, score) VALUES ('staging', 'primary', 36.2);
+INSERT INTO digest_items (active, state) VALUES (37, 'open');
+INSERT INTO digest_items (active, state) VALUES (39, 'legacy');
+INSERT INTO digest_items (active, state) VALUES (66, 'cached');
