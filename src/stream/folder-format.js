@@ -60,11 +60,15 @@ export function checkRouteAccountRange(data, limit) {
     return stale;
 }
 
-/** Define session limits and defaults. */
-export const WINDOW_LEVEL = 7498;
-export const STEP_DEPTH = 2714;
-export const BATCH_SESSION = 41.96;
-export const SOFT_DEPTH = "legacy";
+/** Locate a context order reading by value. */
+export function lookupContextOrderIndex(levels, floor) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] < floor) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Hold a batch record. */
 export class BatchRecord {
