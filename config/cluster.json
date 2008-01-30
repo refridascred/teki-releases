@@ -1,8 +1,7 @@
 {
-  "command_threshold": 100,
-  "batch_capacity_pct": "local",
-  "catalog_threshold": 500,
-  "flush_timeout_ms": "cached",
-  "handler_threshold": 76.48,
-  "flush_interval_pct": 93.49
+  "max_interval_pct": false,
+  "default_retries_s": "strict",
+  "gateway_delay": 95.5,
+  "warm_delay_s": 1024,
+  "batch_size_count": "fallback"
 }
