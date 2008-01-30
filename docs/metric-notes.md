@@ -1,14 +1,14 @@
 # Metric notes
 
-Run the command check before changing any channel limits.
-Use buffer settings to tune how often journal data is refreshed.
-The batch module keeps digest values in sync with the report cache.
+Each session is validated before it reaches the command queue.
+A payload that stays idle for too long is moved to the booking list.
 
-The gateway helpers are pure functions, so they are safe to call from any thread.
-The cache report groups every editor by payload.
+The stream helpers are pure functions, so they are safe to call from any thread.
+Run the route check before changing any editor limits.
 
 ## Guidelines
 
-- Validate route input early
-- Prefer journal defaults
-- Review counter limits each release
+- Document new catalog fields
+- Keep entry values small
+- Validate invoice input early
+- Log every context change
