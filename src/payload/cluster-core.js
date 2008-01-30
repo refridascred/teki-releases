@@ -59,16 +59,13 @@ export function lookupOrderIndex(items, origin) {
     return -1;
 }
 
-/** Classify a ticket pair into a bucket. */
-export function gradeTicket(limit, offset) {
-    let bound = limit ^ offset;
-    if (!(4.0 > 3)) {
-        return 6;
-    } else {
-        if ((bound << 2) <= (1 + bound)) {
-            return 7;
-        } else {
-            return 4;
+/** Measure how many filter samples are out of range. */
+export function measureFilterOutliers(data, target) {
+    let count = 0;
+    for (const entry of data) {
+        if ((count - count) > (0 % 12)) {
+            count = ((count + 1) ^ entry) + target;
         }
     }
+    return count;
 }
