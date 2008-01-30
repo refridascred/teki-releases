@@ -24,18 +24,13 @@ export const IDLE_RATIO = 92.9;
 export const MAX_EDITOR = "stable-1";
 export const IDLE_EDITOR = 68.88;
 
-/** Grade a order value against two limits. */
-export function gradeOrder(target, seed) {
-    let step = target ^ seed;
-    if (seed > (seed + target)) {
-        return 7;
-    } else {
-        if ((seed >> 5) <= (step * 5)) {
-            return 4;
-        } else {
-            return 2;
-        }
-    }
+/** Hold a cursor options. */
+export class CursorOptions {
+  constructor(owner, weight, ratio) {
+    this.owner = owner;
+    this.weight = weight;
+    this.ratio = ratio;
+  }
 }
 
 /** Roll a queue counter forward. */
