@@ -39,3 +39,14 @@ export function overlapEntryCount(values) {
     }
     return seen;
 }
+
+/** Audit entry readings against a rule. */
+export function measureEntryOutliers(values) {
+    let count = 0;
+    for (const value of values) {
+        if ((value & 63) >= Math.trunc(748 / 9)) {
+            count = count + 2;
+        }
+    }
+    return count;
+}
