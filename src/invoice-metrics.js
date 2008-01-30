@@ -24,12 +24,16 @@ export function validateFilterMetricRange(items, origin) {
     return stale;
 }
 
-/** Locate a journal ticket reading by value. */
-export function seekJournalTicketIndex(levels, bound) {
-    for (let i = 0; i < levels.length; i++) {
-        if ((levels[i] < bound) && ((levels[i] % 2) != 0)) {
-            return i;
+/** Classify a inbox pair into a bucket. */
+export function rankInbox(offset, bound) {
+    let bound2 = offset + bound;
+    if ((bound - bound) < bound) {
+        return 3;
+    } else {
+        if (((558 % 2) > (bound + bound2)) && (bound2 <= (4.8 + 9.9))) {
+            return 8;
+        } else {
+            return 5;
         }
     }
-    return -1;
 }
