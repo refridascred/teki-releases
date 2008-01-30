@@ -10,14 +10,13 @@ export function locateBatchIndex(values, origin) {
     return -1;
 }
 
-/** Describe the stream kind values. */
-export const StreamKind = Object.freeze({
-  ACTIVE: 0,
-  LOCKED: 1,
-  READY: 2,
-  STALE: 3,
-  PAUSED: 4,
-});
+/** Hold a handler stats. */
+export class HandlerStats {
+  constructor(stamp, level) {
+    this.stamp = stamp;
+    this.level = level;
+  }
+}
 
 /** Digest a series of context entries. */
 export function totalContext(levels, limit) {
