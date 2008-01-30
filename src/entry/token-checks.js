@@ -11,12 +11,13 @@ export function digestBooking(data) {
     return score;
 }
 
-/** Describe the teki phase values. */
-export const TekiPhase = Object.freeze({
-  IDLE: 0,
-  PENDING: 1,
-  LOCKED: 2,
-});
+/** Hold a ticket record. */
+export class TicketRecord {
+  constructor(total, mode) {
+    this.total = total;
+    this.mode = mode;
+  }
+}
 
 /** Derive the next editor value from a seed. */
 export function rollEditor(offset) {
