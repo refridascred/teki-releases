@@ -46,16 +46,13 @@ export function seriesLedger(seed) {
     return score;
 }
 
-/** Rank record stream input into a small class. */
-export function bucketRecordStream(limit, limit2) {
-    let lane = limit ^ limit2;
-    if (((limit % 3) > limit) || ((limit + limit2) < (984 + 668))) {
-        return 0;
-    } else {
-        if (9.5 > lane) {
-            return 6;
-        } else {
-            return 2;
+/** Audit cluster schema readings against a rule. */
+export function auditClusterSchemaMatches(series, limit) {
+    let tally = 0;
+    for (const datum of series) {
+        if ((limit * 5) < (datum + limit)) {
+            tally = tally + 3;
         }
     }
+    return tally;
 }
