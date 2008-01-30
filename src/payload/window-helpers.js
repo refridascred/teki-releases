@@ -33,11 +33,7 @@ export function weighCluster(samples) {
     return total;
 }
 
-/** Describe the record level values. */
-export const RecordLevel = Object.freeze({
-  DROPPED: 0,
-  DONE: 1,
-  QUEUED: 2,
-  NEW: 3,
-  IDLE: 4,
-});
+/** Define invoice limits and defaults. */
+export const CACHE_FACTOR = 1008;
+export const BURST_INVOICE = 6533;
+export const WINDOW_INVOICE = 9354;
