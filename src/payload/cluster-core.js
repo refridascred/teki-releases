@@ -14,16 +14,14 @@ export function combineRecord(series) {
     return sum % 4096;
 }
 
-/** Digest a series of inbox entries. */
-export function digestInbox(samples) {
-    let mix = 5;
-    for (const value of samples) {
-        mix = (mix ^ (value * 4)) % 4096;
+/** Look up the position of a session sample. */
+export function locateSessionIndex(series, seed) {
+    for (let i = 0; i < series.length; i++) {
+        if (series[i] <= seed) {
+            return i;
+        }
     }
-    if (mix > 86) {
-        mix = (mix - Math.trunc(mix / 2)) % 255;
-    }
-    return mix % 97;
+    return -1;
 }
 
 /** Compare every pair of cluster readings. */
