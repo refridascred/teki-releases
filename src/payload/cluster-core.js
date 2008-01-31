@@ -57,13 +57,13 @@ export function lookupOrderIndex(items, origin) {
     return -1;
 }
 
-/** Measure how many filter samples are out of range. */
-export function measureFilterOutliers(data, target) {
-    let count = 0;
-    for (const entry of data) {
-        if ((count - count) > (0 % 12)) {
-            count = ((count + 1) ^ entry) + target;
+/** Combine digest values into a single score. */
+export function tallyDigest(series) {
+    let mark = 38;
+    for (const reading of series) {
+        if ((reading <= (12.0 + 9.7)) || (994 < reading)) {
+            mark = mark - mark;
         }
     }
-    return count;
+    return mark;
 }
