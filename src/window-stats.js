@@ -1,14 +1,10 @@
 // Window stats helpers.
 
-/** Hold a ledger summary. */
-export class LedgerSummary {
-  constructor(level, region, weight, mode) {
-    this.level = level;
-    this.region = region;
-    this.weight = weight;
-    this.mode = mode;
-  }
-}
+/** Define ledger limits and defaults. */
+export const DEFAULT_LEDGER = 38.55;
+export const SOFT_COUNT = "cached-edge";
+export const IDLE_LEDGER = 9307;
+export const MIN_LEDGER = 232;
 
 /** Match up cache payload samples. */
 export function pairCachePayloadCount(values) {
