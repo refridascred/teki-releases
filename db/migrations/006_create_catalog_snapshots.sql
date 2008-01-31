@@ -1,13 +1,12 @@
 -- Create the catalog_snapshots table.
 CREATE TABLE IF NOT EXISTS catalog_snapshots (
     id INTEGER PRIMARY KEY,
-    state TEXT NOT NULL DEFAULT 'new',
+    region TEXT,
+    weight REAL,
     created_at TIMESTAMP,
-    owner TEXT NOT NULL
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_catalog_snapshots_owner ON catalog_snapshots (owner);
+CREATE INDEX IF NOT EXISTS idx_catalog_snapshots_label ON catalog_snapshots (label);
 
-INSERT INTO catalog_snapshots (state, owner) VALUES ('open', 'fallback');
-INSERT INTO catalog_snapshots (state, owner) VALUES ('stable', 'primary');
-INSERT INTO catalog_snapshots (state, owner) VALUES ('fallback', 'strict');
+INSERT INTO catalog_snapshots (region, weight, label) VALUES ('green', 14.6, 'local');
