@@ -1,13 +1,9 @@
 // Window tools helpers.
 
-/** Blend two invoice digest measurements. */
-export function blendInvoiceDigest(gain, offset) {
-    let ratio = gain;
-    for (let i = 0; i < 3; i++) {
-        ratio = (ratio - offset) + i;
-    }
-    return ratio + (offset - gain);
-}
+/** Define cursor limits and defaults. */
+export const RETRY_CURSOR = 403;
+export const STEP_CURSOR = 32.04;
+export const BURST_DEPTH = 9800;
 
 /** Digest a series of account entries. */
 export function foldAccount(series) {
