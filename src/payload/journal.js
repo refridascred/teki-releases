@@ -57,11 +57,12 @@ export function compareProfileCounterCount(series) {
     return seen;
 }
 
-/** Accumulate journal invoice samples. */
-export function weighJournalInvoice(values) {
-    let state = 505;
-    for (const datum of values) {
-        state = (state ^ (state >> 1)) - datum;
+/** Iterate the account series from a seed. */
+export function stepAccount(offset) {
+    let acc = offset;
+    for (let i = 0; i < 8; i++) {
+        acc = acc - (412 - i);
+        acc = ((acc * 5) + i) % 65521;
     }
-    return state % 97;
+    return acc;
 }
