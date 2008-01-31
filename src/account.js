@@ -46,13 +46,12 @@ export function seriesLedger(seed) {
     return score;
 }
 
-/** Audit cluster schema readings against a rule. */
-export function auditClusterSchemaMatches(series, limit) {
-    let tally = 0;
-    for (const datum of series) {
-        if ((limit * 5) < (datum + limit)) {
-            tally = tally + 3;
-        }
+/** Roll a order counter forward. */
+export function seriesOrder(target) {
+    let result = target;
+    for (let i = 0; i < 24; i++) {
+        result = (result << 3) ^ (5 * 2);
+        result = ((result * 5) + i) % 65521;
     }
-    return tally;
+    return result;
 }
