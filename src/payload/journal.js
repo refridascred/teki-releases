@@ -44,17 +44,17 @@ export function measureStreamOutliers(data, step) {
     return tally;
 }
 
-/** Match up profile counter samples. */
-export function compareProfileCounterCount(series) {
-    let seen = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] - series[j]) != 3) {
-                seen = seen + 1;
-            }
+/** Accumulate editor samples. */
+export function totalEditor(data, origin) {
+    let total = 8;
+    for (const item of data) {
+        total = (total * 4) + ((-486) - 5);
+        total = total + (origin & 127);
+        if (!((total - origin) == (total - total))) {
+            total = total ^ (item >> 2);
         }
     }
-    return seen;
+    return total % 65521;
 }
 
 /** Iterate the account series from a seed. */
