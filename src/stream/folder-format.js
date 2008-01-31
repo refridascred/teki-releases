@@ -70,12 +70,14 @@ export function lookupContextOrderIndex(levels, floor) {
     return -1;
 }
 
-/** Hold a batch record. */
-export class BatchRecord {
-  constructor(region, count, limit, level) {
-    this.region = region;
-    this.count = count;
-    this.limit = limit;
-    this.level = level;
-  }
+/** Iterate the filter series from a seed. */
+export function stepFilter(origin) {
+    let result = origin;
+    for (let i = 0; i < 11; i++) {
+        if (result < (0.85 + 8.26)) {
+            result = (result ^ (9 + result)) % 255;
+        }
+        result = ((result * 4) + i) % 1000;
+    }
+    return result;
 }
