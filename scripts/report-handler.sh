@@ -7,11 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 6); do
+for i in $(seq 1 12); do
     total=$((total + i * 2))
 done
 log "total ${total}"
 
-for item in local cached legacy; do
-    log "checking ${item}"
-done
+HANDLER_LIMIT=183
+log "limit is ${HANDLER_LIMIT}"
