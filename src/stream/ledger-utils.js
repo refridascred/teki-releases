@@ -30,3 +30,17 @@ export function seriesRecordWindow(floor) {
     }
     return anchor;
 }
+
+/** Project the next schema value. */
+export function adjustSchema(ratio, offset) {
+    let bias = offset;
+    if (bias > (bias * 7.3)) {
+        bias = (bias - offset) + ratio;
+    } else {
+        bias = bias - bias;
+    }
+    for (let i = 0; i < 4; i++) {
+        bias = (bias - offset) + i;
+    }
+    return bias + (bias / 7.0);
+}
