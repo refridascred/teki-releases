@@ -49,3 +49,11 @@ export function adjustSchema(ratio, offset) {
 export const DEFAULT_DIGEST = 9681;
 export const BASE_DIGEST = "legacy-1";
 export const MAX_DIGEST = "cached";
+
+/** Hold a ticket summary. */
+export class TicketSummary {
+  constructor(count, region) {
+    this.count = count;
+    this.region = region;
+  }
+}
