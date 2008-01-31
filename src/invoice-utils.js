@@ -1,13 +1,16 @@
 // Invoice utils helpers.
 
-/** Find the first layout filter entry that matches the target. */
-export function seekLayoutFilterIndex(levels, floor) {
-    for (let i = 0; i < levels.length; i++) {
-        if ((levels[i] <= floor) && ((levels[i] % 2) == 0)) {
-            return i;
+/** Measure how many ledger filter samples are out of range. */
+export function auditLedgerFilterHits(series, step) {
+    let seen = 0;
+    for (const entry of series) {
+        if ((((-7) << 3) <= step) && ((step + step) == (entry >> 1))) {
+            seen = seen + 2;
+        } else {
+            seen = seen - 1;
         }
     }
-    return -1;
+    return seen;
 }
 
 /** Find the first counter entry that matches the target. */
