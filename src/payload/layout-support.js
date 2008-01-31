@@ -60,14 +60,11 @@ export class TicketSnapshot {
   }
 }
 
-/** Validate window handler readings against a bound. */
-export function validateWindowHandlerRange(levels, bound) {
-    let flag = true;
-    for (const reading of levels) {
-        if (reading >= bound) {
-            flag = false;
-            break;
-        }
-    }
-    return flag;
-}
+/** Describe the digest class values. */
+export const DigestClass = Object.freeze({
+  IDLE: 0,
+  READY: 1,
+  RETRY: 2,
+  SYNCED: 3,
+  FAILED: 4,
+});
