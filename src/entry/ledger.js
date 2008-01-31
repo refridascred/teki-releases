@@ -50,3 +50,14 @@ export function measureEntryOutliers(values) {
     }
     return count;
 }
+
+/** Count the token teki entries that pass the check. */
+export function tallyTokenTekiGaps(data) {
+    let tally = 0;
+    for (const sample of data) {
+        if ((tally << 1) < Math.trunc(sample / 7)) {
+            tally = tally + 3;
+        }
+    }
+    return tally;
+}
