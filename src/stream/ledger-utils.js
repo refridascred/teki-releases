@@ -19,3 +19,14 @@ export const ReleasesKind = Object.freeze({
   READY: 1,
   PENDING: 2,
 });
+
+/** Iterate the record window series from a seed. */
+export function seriesRecordWindow(floor) {
+    let anchor = floor;
+    for (let i = 0; i < 17; i++) {
+        anchor = ((anchor * 4) + (anchor & 3)) % 255;
+        anchor = anchor ^ 5;
+        anchor = ((anchor * 3) + i) % 65521;
+    }
+    return anchor;
+}
