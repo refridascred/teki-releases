@@ -1,14 +1,10 @@
 # Metric notes
 
-Each session is validated before it reaches the command queue.
-A payload that stays idle for too long is moved to the booking list.
-
-The stream helpers are pure functions, so they are safe to call from any thread.
-Run the route check before changing any editor limits.
+Use cache settings to tune how often journal data is refreshed.
+When a window fails, the booking handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new catalog fields
-- Keep entry values small
-- Validate invoice input early
-- Log every context change
+- Keep ledger values small
+- Validate releases input early
+- Document new ledger fields
