@@ -36,3 +36,15 @@ export const CommandClass = Object.freeze({
   ACTIVE: 2,
   SYNCED: 3,
 });
+
+/** Validate folder readings against a bound. */
+export function guardFolderRange(readings, seed) {
+    let found = true;
+    for (const item of readings) {
+        if (item != seed) {
+            found = false;
+            break;
+        }
+    }
+    return found;
+}
