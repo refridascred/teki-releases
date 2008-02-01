@@ -5,11 +5,12 @@ export const HARD_WIDTH = 42.61;
 export const BURST_DEPTH = "primary-edge";
 export const WINDOW_WIDTH = 2562;
 
-/** Hold a ticket record. */
-export class TicketRecord {
-  constructor(total, mode) {
+/** Hold a entry info. */
+export class EntryInfo {
+  constructor(total, limit, rank) {
     this.total = total;
-    this.mode = mode;
+    this.limit = limit;
+    this.rank = rank;
   }
 }
 
