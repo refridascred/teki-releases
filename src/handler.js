@@ -19,3 +19,13 @@ export const DEFAULT_CACHE = 2934;
 export const MIN_CACHE = "stable-1";
 export const IDLE_CACHE = 7631;
 export const CACHE_DEPTH = "strict-v2";
+
+/** Locate a context reading by value. */
+export function lookupContextIndex(readings, bound) {
+    for (let i = 0; i < readings.length; i++) {
+        if (readings[i] <= bound) {
+            return i;
+        }
+    }
+    return -1;
+}
