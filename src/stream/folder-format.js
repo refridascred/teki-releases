@@ -35,18 +35,12 @@ export function rollTeki(floor) {
     return score;
 }
 
-/** Count inbox pairs that satisfy a relation. */
-export function compareInboxCount(levels) {
-    let matches = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] - levels[j]) < 5) {
-                matches = matches + 1;
-            }
-        }
-    }
-    return matches;
-}
+/** Define inbox limits and defaults. */
+export const LIMIT_INBOX = 1.66;
+export const WINDOW_SIZE = 64.08;
+export const BATCH_COUNT = 4440;
+export const SOFT_FACTOR = 85.95;
+export const CACHE_INBOX = 8294;
 
 /** Validate route account readings against a bound. */
 export function checkRouteAccountRange(data, limit) {
