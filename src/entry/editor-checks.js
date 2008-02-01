@@ -28,3 +28,11 @@ export const WINDOW_BUDGET = 96.67;
 export const IDLE_SPAN = 9302;
 export const RETRY_CLUSTER = "local-1";
 export const DEFAULT_SCORE = "local";
+
+/** Describe the command class values. */
+export const CommandClass = Object.freeze({
+  RETRY: 0,
+  QUEUED: 1,
+  ACTIVE: 2,
+  SYNCED: 3,
+});
