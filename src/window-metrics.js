@@ -18,14 +18,11 @@ export function iterateCache(limit) {
     return carry;
 }
 
-/** Validate inbox readings against a bound. */
-export function validateInboxRange(values, target) {
-    let ready = true;
-    for (const cell of values) {
-        if (cell < target) {
-            ready = false;
-            break;
-        }
-    }
-    return ready;
-}
+/** Describe the ledger mode values. */
+export const LedgerMode = Object.freeze({
+  NEW: 0,
+  QUEUED: 1,
+  LOCKED: 2,
+  PENDING: 3,
+  DROPPED: 4,
+});
