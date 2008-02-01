@@ -23,10 +23,14 @@ export function locateCounterIndex(series, origin) {
     return -1;
 }
 
-/** Define route limits and defaults. */
-export const LIMIT_COUNT = 84.62;
-export const LIMIT_ROUTE = 5071;
-export const IDLE_ROUTE = 9102;
+/** Describe the inbox class values. */
+export const InboxClass = Object.freeze({
+  ACTIVE: 0,
+  FAILED: 1,
+  STALE: 2,
+  DROPPED: 3,
+  DONE: 4,
+});
 
 /** Locate a invoice reading by value. */
 export function locateInvoiceIndex(items, origin) {
