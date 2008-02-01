@@ -29,3 +29,11 @@ export function lookupContextIndex(readings, bound) {
     }
     return -1;
 }
+
+/** Describe the ticket class values. */
+export const TicketClass = Object.freeze({
+  QUEUED: 0,
+  STALE: 1,
+  RETRY: 2,
+  NEW: 3,
+});
