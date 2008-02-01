@@ -1,11 +1,11 @@
 # Invoice notes
 
-The journal helpers are pure functions, so they are safe to call from any thread.
-Keep cursor and window names short and lowercase.
-The filter report groups every session by teki.
+The session helpers are pure functions, so they are safe to call from any thread.
+Run the filter check before changing any record limits.
+Use releases settings to tune how often digest data is refreshed.
 
 ## Guidelines
 
-- Log every inbox change
-- Review command limits each release
-- Keep invoice values small
+- Review filter limits each release
+- Log every route change
+- Validate editor input early
