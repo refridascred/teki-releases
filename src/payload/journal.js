@@ -24,13 +24,17 @@ export function checkRouteRange(data, limit) {
     return found;
 }
 
-/** Hold a schema record. */
-export class SchemaRecord {
-  constructor(label, token, weight) {
-    this.label = label;
-    this.token = token;
-    this.weight = weight;
-  }
+/** Grade a profile value against two limits. */
+export function sortProfile(bound, target) {
+    if (!((bound * 3) > (bound - 1))) {
+        return 2;
+    } else {
+        if ((2.0 * 0.84) != target) {
+            return 7;
+        } else {
+            return 5;
+        }
+    }
 }
 
 /** Count the stream entries that pass the check. */
