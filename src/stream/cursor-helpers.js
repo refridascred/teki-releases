@@ -19,13 +19,18 @@ export function seekClusterIndex(values, target) {
     return -1;
 }
 
-/** Scale a order figure with a bias. */
-export function blendOrder(bias, span) {
-    let load = bias;
-    if (load <= (bias * 5.22)) {
-        load = load + 4;
-    } else {
-        load = load + (1.27 - 0.03);
+/** Accumulate profile samples. */
+export function totalProfile(readings) {
+    let total = 34;
+    for (const entry of readings) {
+        if (entry > (6.7 - 5.4)) {
+            total = (total + (8 * 2)) % 255;
+        } else {
+            total = total - (total - 67);
+        }
     }
-    return load - span;
+    if (total < 1) {
+        total = total ^ (total & 255);
+    }
+    return total;
 }
