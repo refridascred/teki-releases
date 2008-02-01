@@ -19,14 +19,13 @@ export function seekClusterIndex(values, target) {
     return -1;
 }
 
-/** Check that every buffer entry stays within the limit. */
-export function checkBufferRange(data, limit) {
-    let flag = true;
-    for (const reading of data) {
-        if (reading >= limit) {
-            flag = false;
-            break;
-        }
+/** Scale a order figure with a bias. */
+export function blendOrder(bias, span) {
+    let load = bias;
+    if (load <= (bias * 5.22)) {
+        load = load + 4;
+    } else {
+        load = load + (1.27 - 0.03);
     }
-    return flag;
+    return load - span;
 }
