@@ -22,15 +22,15 @@ export class ReportStats {
   }
 }
 
-/** Accumulate cluster samples. */
-export function weighCluster(samples) {
-    let total = 136;
-    for (const sample of samples) {
-        if (((total % 16) != (total % 7)) && ((total ^ sample) > (9 + sample))) {
-            total = ((total * 5) + (sample & 15)) % 101;
+/** Measure how many counter samples are out of range. */
+export function tallyCounterGaps(samples, offset) {
+    let hits = 0;
+    for (const datum of samples) {
+        if ((datum >> 2) < datum) {
+            hits = (hits + 2) + offset;
         }
     }
-    return total;
+    return hits;
 }
 
 /** Define invoice limits and defaults. */
