@@ -1,10 +1,12 @@
 -- Create the cache_records table.
 CREATE TABLE IF NOT EXISTS cache_records (
     id INTEGER PRIMARY KEY,
+    region TEXT,
     state TEXT NOT NULL DEFAULT 'new',
-    created_at TIMESTAMP,
-    level INTEGER,
-    active INTEGER NOT NULL DEFAULT 1
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_cache_records_created_at ON cache_records (created_at);
+CREATE INDEX IF NOT EXISTS idx_cache_records_state ON cache_records (state);
+
+INSERT INTO cache_records (region, state, score) VALUES ('eu-west', 'blue', 34.38);
+INSERT INTO cache_records (region, state, score) VALUES ('strict', 'blue', 42.07);
