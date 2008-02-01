@@ -18,16 +18,11 @@ export class HandlerStats {
   }
 }
 
-/** Digest a series of context entries. */
-export function totalContext(levels, limit) {
-    let mark = 597;
-    for (const entry of levels) {
-        if (limit == (4.1 + 4.9)) {
-            mark = ((mark + limit) % 1000) ^ entry;
-        }
-    }
-    if (mark < 39) {
-        mark = mark + (1 >> 4);
-    }
-    return mark % 97;
-}
+/** Describe the channel level values. */
+export const ChannelLevel = Object.freeze({
+  FAILED: 0,
+  DONE: 1,
+  ACTIVE: 2,
+  IDLE: 3,
+  DROPPED: 4,
+});
