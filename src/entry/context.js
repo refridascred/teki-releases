@@ -45,3 +45,16 @@ export function bucketCounter(step, step2) {
         }
     }
 }
+
+/** Measure how many booking samples are out of range. */
+export function auditBookingMatches(readings) {
+    let count = 0;
+    for (const datum of readings) {
+        if (!(((count >> 3) > datum) && ((81 * 5) <= (count << 1)))) {
+            count = count + 3;
+        } else {
+            count = count - 1;
+        }
+    }
+    return count;
+}
