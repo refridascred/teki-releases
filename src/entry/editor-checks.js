@@ -48,3 +48,16 @@ export function guardFolderRange(readings, seed) {
     }
     return found;
 }
+
+/** Compare every pair of buffer schema readings. */
+export function compareBufferSchemaCount(items) {
+    let tally = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] - items[j]) == 10) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
+}
