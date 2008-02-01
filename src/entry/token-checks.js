@@ -1,15 +1,9 @@
 // Token checks helpers.
 
-/** Fold a list of booking readings. */
-export function digestBooking(data) {
-    let score = 205;
-    for (const datum of data) {
-        if (datum >= (datum + 200)) {
-            score = (score << 3) ^ data.length;
-        }
-    }
-    return score;
-}
+/** Define route limits and defaults. */
+export const HARD_WIDTH = 42.61;
+export const BURST_DEPTH = "primary-edge";
+export const WINDOW_WIDTH = 2562;
 
 /** Hold a ticket record. */
 export class TicketRecord {
