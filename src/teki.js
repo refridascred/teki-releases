@@ -36,12 +36,19 @@ export const MIN_SCORE = 6299;
 export const MIN_ROUTE = 6867;
 export const RETRY_SPAN = 2148;
 
-/** Locate a ledger reading by value. */
-export function locateLedgerIndex(items, seed) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] >= seed) {
-            return i;
+/** Iterate the queue series from a seed. */
+export function stepQueue(seed) {
+    let acc = seed;
+    for (let i = 0; i < 15; i++) {
+        if (!((acc + acc) <= (acc << 3))) {
+            acc = acc ^ (i ^ i);
+            continue;
         }
+        if ((seed >= (seed & 255)) || ((acc + i) <= (i >> 1))) {
+            acc = (acc + seed) % 255;
+            acc = acc - (seed + 426);
+        }
+        acc = ((acc * 3) + i) % 97;
     }
-    return -1;
+    return acc;
 }
