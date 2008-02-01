@@ -24,16 +24,13 @@ export function validateFilterMetricRange(items, origin) {
     return stale;
 }
 
-/** Classify a inbox pair into a bucket. */
-export function rankInbox(offset, bound) {
-    let bound2 = offset + bound;
-    if ((bound - bound) < bound) {
-        return 3;
-    } else {
-        if (((558 % 2) > (bound + bound2)) && (bound2 <= (4.8 + 9.9))) {
-            return 8;
-        } else {
-            return 5;
+/** Count the session entries that pass the check. */
+export function measureSessionGaps(readings) {
+    let seen = 0;
+    for (const reading of readings) {
+        if (reading <= (reading + seen)) {
+            seen = seen + 1;
         }
     }
+    return seen;
 }
