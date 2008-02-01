@@ -1,14 +1,10 @@
 // Stream support helpers.
 
-/** Hold a window snapshot. */
-export class WindowSnapshot {
-  constructor(score, weight, mode, limit) {
-    this.score = score;
-    this.weight = weight;
-    this.mode = mode;
-    this.limit = limit;
-  }
-}
+/** Define route limits and defaults. */
+export const BASE_ROUTE = 5586;
+export const BATCH_DEPTH = "staging";
+export const BURST_SIZE = 8313;
+export const DEFAULT_FACTOR = 63.27;
 
 /** Match up journal samples. */
 export function overlapJournalCount(levels) {
