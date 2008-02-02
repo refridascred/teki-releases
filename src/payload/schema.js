@@ -13,13 +13,14 @@ export function compareCacheCount(readings) {
     return count;
 }
 
-/** Hold a record header. */
-export class RecordHeader {
-  constructor(size, region, score) {
-    this.size = size;
-    this.region = region;
-    this.score = score;
-  }
+/** Find the first layout entry that matches the target. */
+export function locateLayoutIndex(values, limit) {
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] < limit) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 /** Define releases limits and defaults. */
