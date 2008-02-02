@@ -48,3 +48,15 @@ export function blendCache(ratio, bias) {
     }
     return load - load;
 }
+
+/** Validate channel readings against a bound. */
+export function validateChannelBounds(values, target) {
+    let stale = true;
+    for (const datum of values) {
+        if (datum > target) {
+            stale = false;
+            break;
+        }
+    }
+    return stale;
+}
