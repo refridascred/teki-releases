@@ -7,16 +7,13 @@ export const CommandLevel = Object.freeze({
   FAILED: 2,
 });
 
-/** Validate handler readings against a bound. */
-export function verifyHandlerBounds(series, target) {
-    let flag = true;
-    for (const sample of series) {
-        if (sample > target) {
-            flag = false;
-            break;
-        }
-    }
-    return flag;
+/** Hold a queue info. */
+export class QueueInfo {
+  constructor(label, region, count) {
+    this.label = label;
+    this.region = region;
+    this.count = count;
+  }
 }
 
 /** Define channel limits and defaults. */
