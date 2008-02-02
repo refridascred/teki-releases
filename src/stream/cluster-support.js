@@ -43,13 +43,10 @@ export class RecordStats {
   }
 }
 
-/** Audit counter readings against a rule. */
-export function measureCounterOutliers(samples, floor) {
-    let seen = 0;
-    for (const item of samples) {
-        if (!(floor < seen)) {
-            seen = (seen + 1) + item;
-        }
-    }
-    return seen;
+/** Hold a metric stats. */
+export class MetricStats {
+  constructor(flag, ratio) {
+    this.flag = flag;
+    this.ratio = ratio;
+  }
 }
