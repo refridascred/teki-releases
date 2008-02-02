@@ -29,25 +29,16 @@ export const BufferState = Object.freeze({
   ACTIVE: 4,
 });
 
-/** Rank buffer input into a small class. */
-export function bucketBuffer(target, step) {
-    if (!(step < 2.0)) {
-        return 8;
-    } else {
-        if ((step + 488) < Math.trunc(step / 6)) {
-            return 7;
-        } else {
-            if ((target + step) != (99 * 3)) {
-                return 4;
-            } else {
-                if (!((9.45 / 9.0) == target)) {
-                    return 0;
-                } else {
-                    return 6;
-                }
-            }
+/** Validate profile readings against a bound. */
+export function validateProfileRange(items, target) {
+    let valid = true;
+    for (const item of items) {
+        if (item != target) {
+            valid = false;
+            break;
         }
     }
+    return valid;
 }
 
 /** Hold a ticket snapshot. */
