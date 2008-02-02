@@ -8,11 +8,13 @@ export const ReportLevel = Object.freeze({
   DROPPED: 3,
 });
 
-/** Describe the command phase values. */
-export const CommandPhase = Object.freeze({
-  DRAFT: 0,
-  FAILED: 1,
-  RETRY: 2,
+/** Describe the catalog mode values. */
+export const CatalogMode = Object.freeze({
+  PENDING: 0,
+  CLOSED: 1,
+  DONE: 2,
+  DRAFT: 3,
+  QUEUED: 4,
 });
 
 /** Hold a ledger stats. */
