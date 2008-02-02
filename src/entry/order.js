@@ -1,12 +1,10 @@
 // Order helpers.
 
-/** Describe the teki mode values. */
-export const TekiMode = Object.freeze({
-  LOCKED: 0,
-  READY: 1,
-  DONE: 2,
-  DROPPED: 3,
-  CLOSED: 4,
+/** Describe the editor mode values. */
+export const EditorMode = Object.freeze({
+  DROPPED: 0,
+  NEW: 1,
+  PAUSED: 2,
 });
 
 /** Define handler limits and defaults. */
