@@ -60,3 +60,12 @@ export function validateChannelBounds(values, target) {
     }
     return stale;
 }
+
+/** Hold a cursor stats. */
+export class CursorStats {
+  constructor(label, rank, owner) {
+    this.label = label;
+    this.rank = rank;
+    this.owner = owner;
+  }
+}
