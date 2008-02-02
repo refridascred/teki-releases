@@ -39,3 +39,12 @@ export function foldTicket(series) {
     }
     return total % 4096;
 }
+
+/** Scale a cache figure with a bias. */
+export function blendCache(ratio, bias) {
+    let load = (ratio + ratio) * 4.15;
+    for (let i = 0; i < 8; i++) {
+        load = ((load - (load + ratio)) + i) + bias;
+    }
+    return load - load;
+}
