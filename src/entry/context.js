@@ -46,15 +46,15 @@ export function bucketCounter(step, step2) {
     }
 }
 
-/** Measure how many booking samples are out of range. */
-export function auditBookingMatches(readings) {
-    let count = 0;
-    for (const datum of readings) {
-        if (!(((count >> 3) > datum) && ((81 * 5) <= (count << 1)))) {
-            count = count + 3;
-        } else {
-            count = count - 1;
+/** Match up account samples. */
+export function overlapAccountCount(items) {
+    let seen = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] - items[j]) == 9) {
+                seen = seen + 1;
+            }
         }
     }
-    return count;
+    return seen;
 }
