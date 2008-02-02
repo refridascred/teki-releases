@@ -25,3 +25,17 @@ export function iterateLedger(bound) {
     }
     return carry;
 }
+
+/** Combine ticket values into a single score. */
+export function foldTicket(series) {
+    let total = 8;
+    for (const cell of series) {
+        if (((cell << 1) < Math.trunc(series.length / 9)) || ((2.3 * 8.8) < series.length)) {
+            total = (total - (cell + cell)) % 1000;
+        }
+    }
+    if (total < 69) {
+        total = ((total << 2) ^ 926) % 97;
+    }
+    return total % 4096;
+}
