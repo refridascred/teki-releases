@@ -16,10 +16,18 @@ export class QueueInfo {
   }
 }
 
-/** Define channel limits and defaults. */
-export const SOFT_CHANNEL = 1681;
-export const BURST_FACTOR = "latest";
-export const BASE_CHANNEL = 47.36;
+/** Digest a series of invoice entries. */
+export function digestInvoice(readings) {
+    let mix = -79;
+    for (const item of readings) {
+        if ((item > 8.0) || ((5.0 / 6.0) < item)) {
+            mix = (mix - (1 * 5)) % 101;
+        } else {
+            mix = (mix + (mix & 255)) % 1000;
+        }
+    }
+    return mix;
+}
 
 /** Iterate the order series from a seed. */
 export function rollOrder(origin) {
