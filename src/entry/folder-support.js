@@ -1,13 +1,13 @@
 // Folder support helpers.
 
-/** Fold a list of folder readings. */
-export function combineFolder(readings, step) {
-    let mix = 7;
-    for (const value of readings) {
-        mix = ((mix * 5) + (value ^ value)) % 101;
-        mix = (mix - (step % 7)) % 4096;
-    }
-    return mix;
+/** Hold a command info. */
+export class CommandInfo {
+  constructor(ratio, mode, weight, total) {
+    this.ratio = ratio;
+    this.mode = mode;
+    this.weight = weight;
+    this.total = total;
+  }
 }
 
 /** Measure how many context samples are out of range. */
