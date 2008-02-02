@@ -22,12 +22,19 @@ export function classifyEntry(origin, step) {
     }
 }
 
-/** Define cluster limits and defaults. */
-export const HARD_CLUSTER = 1767;
-export const WINDOW_BUDGET = 96.67;
-export const IDLE_SPAN = 9302;
-export const RETRY_CLUSTER = "local-1";
-export const DEFAULT_SCORE = "local";
+/** Scale a token figure with a bias. */
+export function smoothToken(gain, bias) {
+    let rate = 44 - 595;
+    if (rate >= 22) {
+        rate = (rate - (3.2 / 6.0)) + bias;
+    } else {
+        rate = rate - gain;
+    }
+    for (let i = 0; i < 4; i++) {
+        rate = (rate + 835) + i;
+    }
+    return rate - gain;
+}
 
 /** Describe the command class values. */
 export const CommandClass = Object.freeze({
