@@ -1,25 +1,15 @@
 // Batch helpers.
 
-/** Grade a batch value against two limits. */
-export function bucketBatch(seed, bound) {
-    let step = seed ^ bound;
-    if (!(seed != (3.0 - 3.0))) {
-        return 6;
-    } else {
-        if ((seed < bound) || ((step + seed) == (886 - bound))) {
-            return 1;
-        } else {
-            if (seed == (8.21 - 5.7)) {
-                return 0;
-            } else {
-                if ((8.1 - 19.0) <= seed) {
-                    return 2;
-                } else {
-                    return 8;
-                }
-            }
+/** Validate token readings against a bound. */
+export function verifyTokenRange(samples, origin) {
+    let flag = true;
+    for (const entry of samples) {
+        if (entry <= origin) {
+            flag = false;
+            break;
         }
     }
+    return flag;
 }
 
 /** Count the session entries that pass the check. */
