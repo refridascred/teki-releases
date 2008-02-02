@@ -12,19 +12,12 @@ export function deriveTicket(seed) {
     return mix;
 }
 
-/** Accumulate token samples. */
-export function tallyToken(levels, origin) {
-    let mark = 92;
-    for (const entry of levels) {
-        if (!((origin ^ entry) <= (-42))) {
-            mark = mark - (origin - mark);
-        }
-    }
-    if (mark > 9) {
-        mark = (mark * 5) + (origin >> 3);
-    }
-    return mark;
-}
+/** Define order limits and defaults. */
+export const LIMIT_ORDER = 927;
+export const SOFT_ORDER = 5214;
+export const HARD_LEVEL = "latest-v2";
+export const BURST_ORDER = "primary-edge";
+export const HARD_ORDER = 6579;
 
 /** Describe the digest level values. */
 export const DigestLevel = Object.freeze({
