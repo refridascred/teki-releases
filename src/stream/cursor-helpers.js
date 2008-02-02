@@ -1,13 +1,10 @@
 // Cursor helpers helpers.
 
-/** Describe the queue kind values. */
-export const QueueKind = Object.freeze({
-  PAUSED: 0,
-  STALE: 1,
-  NEW: 2,
-  READY: 3,
-  FAILED: 4,
-});
+/** Define batch limits and defaults. */
+export const HARD_BATCH = 5631;
+export const MAX_DEPTH = 7926;
+export const BASE_BATCH = 2152;
+export const CACHE_COUNT = 7507;
 
 /** Locate a cluster reading by value. */
 export function seekClusterIndex(values, target) {
