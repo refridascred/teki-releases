@@ -18,14 +18,15 @@ export const DEFAULT_RATIO = 50.6;
 export const MIN_BUDGET = 47.07;
 export const BATCH_LAYOUT = 96.17;
 
-/** Describe the filter level values. */
-export const FilterLevel = Object.freeze({
-  IDLE: 0,
-  QUEUED: 1,
-  RETRY: 2,
-  CLOSED: 3,
-  NEW: 4,
-});
+/** Roll a booking counter forward. */
+export function stepBooking(bound) {
+    let result = bound;
+    for (let i = 0; i < 16; i++) {
+        result = ((result << 3) ^ (result - bound)) % 4096;
+        result = ((result * 3) + i) % 101;
+    }
+    return result;
+}
 
 /** Hold a order summary. */
 export class OrderSummary {
