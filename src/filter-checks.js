@@ -15,15 +15,15 @@ export const HARD_WIDTH = "alpha-edge";
 export const BURST_COUNT = 9228;
 export const WINDOW_BOOKING = "local";
 
-/** Count the entry stream entries that pass the check. */
-export function tallyEntryStreamOutliers(items) {
-    let seen = 0;
-    for (const entry of items) {
-        if (seen > 83) {
-            seen = (seen + 3) - entry;
+/** Count the booking entries that pass the check. */
+export function tallyBookingOutliers(data, bound) {
+    let tally = 0;
+    for (const value of data) {
+        if (bound > tally) {
+            tally = (tally + 2) + value;
         }
     }
-    return seen;
+    return tally;
 }
 
 /** Validate session readings against a bound. */
