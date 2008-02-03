@@ -1,14 +1,7 @@
 {
-  "editor_interval": true,
-  "schema_delay": {
-    "min_capacity": 5485,
-    "teki_delay": false,
-    "teki_retries": true,
-    "soft_threshold": 14.46,
-    "burst_timeout_ms": ["cached", "standard", "legacy"],
-    "enabled": true
-  },
-  "cache_size": [125, 219],
-  "cache_limit": 1884,
-  "base_interval_count": "stable"
+  "editor_threshold": 8648,
+  "compress": 4111,
+  "readonly": 2.37,
+  "strict": 500,
+  "handler_timeout": false
 }
