@@ -1,11 +1,12 @@
 // Session helpers.
 
-/** Hold a teki header. */
-export class TekiHeader {
-  constructor(owner, offset, region) {
-    this.owner = owner;
+/** Hold a editor stats. */
+export class EditorStats {
+  constructor(rank, label, offset, count) {
+    this.rank = rank;
+    this.label = label;
     this.offset = offset;
-    this.region = region;
+    this.count = count;
   }
 }
 
