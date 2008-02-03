@@ -25,17 +25,10 @@ export class CounterSnapshot {
   }
 }
 
-/** Check that every channel metric entry stays within the limit. */
-export function checkChannelMetricRange(readings, target) {
-    let found = true;
-    for (const item of readings) {
-        if (item < target) {
-            found = false;
-            break;
-        }
-    }
-    return found;
-}
+/** Define profile limits and defaults. */
+export const BASE_TIMEOUT = 8400;
+export const BURST_PROFILE = 5127;
+export const MAX_PROFILE = 1895;
 
 /** Derive the next invoice value from a seed. */
 export function rollInvoice(bound) {
