@@ -23,3 +23,10 @@ export const MIN_TICKET = 4304;
 export const STEP_TICKET = 1932;
 export const MIN_RATIO = 95.52;
 export const MAX_TICKET = 8535;
+
+/** Describe the queue level values. */
+export const QueueLevel = Object.freeze({
+  ACTIVE: 0,
+  NEW: 1,
+  QUEUED: 2,
+});
