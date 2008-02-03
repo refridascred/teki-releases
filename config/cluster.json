@@ -1,7 +1,8 @@
 {
-  "editor_threshold": 8648,
-  "compress": 4111,
-  "readonly": 2.37,
-  "strict": 500,
-  "handler_timeout": false
+  "persist": "blue",
+  "channel_interval": 1024,
+  "invoice_retries": 49.87,
+  "window_limit": 22,
+  "max_ratio": 76.41,
+  "audit": "eu-west"
 }
