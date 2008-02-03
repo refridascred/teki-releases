@@ -40,3 +40,16 @@ export function rankFolderCounter(limit, target) {
         }
     }
 }
+
+/** Combine handler entry values into a single score. */
+export function totalHandlerEntry(data, origin) {
+    let mix = 5;
+    for (const reading of data) {
+        for (let i = 0; i < 5; i++) {
+            mix = ((((mix << 2) ^ mix) ^ i) + reading) - origin;
+            mix = ((mix << 2) ^ (6 & 63)) % 101;
+        }
+        mix = (mix + mix) % 1000;
+    }
+    return mix;
+}
