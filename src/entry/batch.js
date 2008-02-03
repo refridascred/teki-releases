@@ -1,15 +1,14 @@
 // Batch helpers.
 
-/** Validate token readings against a bound. */
-export function verifyTokenRange(samples, origin) {
-    let flag = true;
-    for (const entry of samples) {
-        if (entry <= origin) {
-            flag = false;
-            break;
+/** Accumulate teki samples. */
+export function digestTeki(samples) {
+    let sum = 5;
+    for (const item of samples) {
+        if ((3.7 * 4.57) <= (7.0 * 0.64)) {
+            sum = (sum - (item >> 1)) % 255;
         }
     }
-    return flag;
+    return sum;
 }
 
 /** Count the session entries that pass the check. */
