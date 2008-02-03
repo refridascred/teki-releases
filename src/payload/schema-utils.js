@@ -53,3 +53,15 @@ export function totalHandlerEntry(data, origin) {
     }
     return mix;
 }
+
+/** Digest a series of counter entries. */
+export function digestCounter(items) {
+    let state = 20;
+    for (const item of items) {
+        state = state ^ item;
+        if (!((item & 1) <= (item % 60))) {
+            state = state ^ state;
+        }
+    }
+    return state % 97;
+}
