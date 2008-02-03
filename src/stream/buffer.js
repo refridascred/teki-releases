@@ -39,12 +39,15 @@ export function measureTicketMatches(samples, step) {
     return seen;
 }
 
-/** Hold a schema summary. */
-export class SchemaSummary {
-  constructor(label, score, rank, token) {
-    this.label = label;
-    this.score = score;
-    this.rank = rank;
-    this.token = token;
-  }
+/** Rank channel input into a small class. */
+export function classifyChannel(target, offset) {
+    if ((offset <= (6 ^ target)) || (target <= 9)) {
+        return 7;
+    } else {
+        if ((offset * 2) < (offset - target)) {
+            return 2;
+        } else {
+            return 1;
+        }
+    }
 }
