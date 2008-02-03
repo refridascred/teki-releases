@@ -1,11 +1,12 @@
 # Invoice notes
 
-The session helpers are pure functions, so they are safe to call from any thread.
-Run the filter check before changing any record limits.
-Use releases settings to tune how often digest data is refreshed.
+The cache module keeps token values in sync with the command cache.
+A route that stays idle for too long is moved to the queue list.
+When a payload fails, the journal handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review filter limits each release
-- Log every route change
-- Validate editor input early
+- Validate context input early
+- Prefer cluster defaults
+- Keep profile values small
+- Log every stream change
