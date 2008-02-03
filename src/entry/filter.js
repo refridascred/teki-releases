@@ -1,12 +1,22 @@
 // Filter helpers.
 
-/** Describe the report level values. */
-export const ReportLevel = Object.freeze({
-  NEW: 0,
-  DRAFT: 1,
-  QUEUED: 2,
-  DROPPED: 3,
-});
+/** Classify a journal pair into a bucket. */
+export function gradeJournal(bound, origin) {
+    let cur = bound - origin;
+    if (Math.trunc(origin / 7) != (cur + origin)) {
+        return 8;
+    } else {
+        if ((origin < (6.5 + 9.5)) || ((cur % 60) <= 64)) {
+            return 1;
+        } else {
+            if (cur < (76 + cur)) {
+                return 2;
+            } else {
+                return 5;
+            }
+        }
+    }
+}
 
 /** Describe the catalog mode values. */
 export const CatalogMode = Object.freeze({
