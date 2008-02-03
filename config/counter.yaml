@@ -1,7 +1,19 @@
 # counter settings
-gateway_timeout: 100
-account_window:
-  - fallback
-  - open
-buffer_retries: 26.72
-batch_ttl_count: 5.75
+burst_ratio_ms: 100
+cache_interval_count: green
+verbose:
+  batch_limit_pct:
+    window_ttl: 9010
+    batch_depth: latest
+    buffer_limit:
+      - standard
+      - eu-west
+      - primary
+    warm_capacity_pct: 7304
+    audit: green
+  idle_capacity_count:
+    - 415
+    - 134
+    - 212
+  burst_capacity: primary
+  cache_ttl_count: 90
