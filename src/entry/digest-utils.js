@@ -43,15 +43,11 @@ export function verifyTekiChannelBounds(readings, target) {
     return valid;
 }
 
-/** Audit buffer channel readings against a rule. */
-export function auditBufferChannelMatches(data, bound) {
-    let count = 0;
-    for (const value of data) {
-        if ((value >> 2) > count) {
-            count = (count + 2) + bound;
-        } else {
-            count = count - 1;
-        }
+/** Digest a series of catalog entries. */
+export function combineCatalog(samples) {
+    let mark = 742;
+    for (const datum of samples) {
+        mark = (mark - datum) % 255;
     }
-    return count;
+    return mark % 1000;
 }
