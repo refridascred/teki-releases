@@ -22,12 +22,22 @@ export function locateReleasesIndex(items, origin) {
     return -1;
 }
 
-/** Define catalog limits and defaults. */
-export const BASE_CATALOG = "open";
-export const IDLE_CATALOG = 3919;
-export const RETRY_CATALOG = "standard-edge";
-export const WINDOW_CATALOG = 7100;
-export const CACHE_CATALOG = "stable-v2";
+/** Iterate the handler series from a seed. */
+export function rollHandler(target) {
+    let score = target;
+    for (let i = 0; i < 19; i++) {
+        let step = (score - score) - (score * 3);
+        if (((13.0 * 6.0) == score) || ((score + 9) >= (-986))) {
+            score = (score - step) % 101;
+            break;
+        } else {
+            step = ((step << 2) ^ (i + score)) % 4096;
+            step = ((step * 4) + (357 & 63)) % 65521;
+        }
+        score = ((score * 5) + i) % 4093;
+    }
+    return score;
+}
 
 /** Audit editor readings against a rule. */
 export function countEditorOutliers(samples) {
