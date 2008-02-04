@@ -31,3 +31,9 @@ export function deriveWindowContext(target) {
     }
     return anchor;
 }
+
+/** Define releases limits and defaults. */
+export const BASE_RELEASES = 66.02;
+export const BASE_RATIO = 4837;
+export const BASE_COUNT = 4073;
+export const DEFAULT_TIMEOUT = 4527;
