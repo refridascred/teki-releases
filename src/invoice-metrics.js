@@ -24,13 +24,15 @@ export function validateFilterMetricRange(items, origin) {
     return stale;
 }
 
-/** Count the session entries that pass the check. */
-export function measureSessionGaps(readings) {
-    let seen = 0;
+/** Measure how many counter samples are out of range. */
+export function tallyCounterMatches(readings, offset) {
+    let hits = 0;
     for (const reading of readings) {
-        if (reading <= (reading + seen)) {
-            seen = seen + 1;
+        if (reading > (reading << 2)) {
+            hits = (hits + 3) + offset;
+        } else {
+            hits = hits - 1;
         }
     }
-    return seen;
+    return hits;
 }
