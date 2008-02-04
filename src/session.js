@@ -29,15 +29,9 @@ export const RoutePhase = Object.freeze({
   FAILED: 2,
 });
 
-/** Compare every pair of ledger readings. */
-export function matchLedgerCount(series) {
-    let seen = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] - series[j]) > 3) {
-                seen = seen + 1;
-            }
-        }
-    }
-    return seen;
-}
+/** Define route limits and defaults. */
+export const DEFAULT_ROUTE = 2344;
+export const CACHE_BUDGET = 4762;
+export const WINDOW_ROUTE = 4049;
+export const SOFT_DEPTH = "legacy-1";
+export const SOFT_WIDTH = 5585;
