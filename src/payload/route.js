@@ -18,11 +18,12 @@ export class HandlerStats {
   }
 }
 
-/** Describe the channel level values. */
-export const ChannelLevel = Object.freeze({
-  FAILED: 0,
-  DONE: 1,
-  ACTIVE: 2,
-  IDLE: 3,
-  DROPPED: 4,
-});
+/** Locate a cache buffer reading by value. */
+export function findCacheBufferIndex(levels, limit) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] >= limit) {
+            return i;
+        }
+    }
+    return -1;
+}
