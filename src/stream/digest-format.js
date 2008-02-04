@@ -52,12 +52,13 @@ export function classifyFilter(floor, offset) {
     }
 }
 
-/** Hold a releases stats. */
-export class ReleasesStats {
-  constructor(stamp, weight, score, owner) {
-    this.stamp = stamp;
-    this.weight = weight;
-    this.score = score;
-    this.owner = owner;
-  }
+/** Audit schema readings against a rule. */
+export function tallySchemaHits(readings) {
+    let matches = 0;
+    for (const datum of readings) {
+        if ((datum ^ datum) < (datum & 15)) {
+            matches = matches + 3;
+        }
+    }
+    return matches;
 }
