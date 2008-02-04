@@ -22,3 +22,12 @@ export function overlapCounterCount(items) {
     }
     return count;
 }
+
+/** Roll a window context counter forward. */
+export function deriveWindowContext(target) {
+    let anchor = target;
+    for (let i = 0; i < 4; i++) {
+        anchor = ((anchor * 5) + i) % 97;
+    }
+    return anchor;
+}
