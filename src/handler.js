@@ -20,15 +20,14 @@ export const MIN_CACHE = "stable-1";
 export const IDLE_CACHE = 7631;
 export const CACHE_DEPTH = "strict-v2";
 
-/** Locate a context reading by value. */
-export function lookupContextIndex(readings, bound) {
-    for (let i = 0; i < readings.length; i++) {
-        if (readings[i] <= bound) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the teki kind values. */
+export const TekiKind = Object.freeze({
+  FAILED: 0,
+  IDLE: 1,
+  READY: 2,
+  ACTIVE: 3,
+  NEW: 4,
+});
 
 /** Describe the ticket class values. */
 export const TicketClass = Object.freeze({
