@@ -1,8 +1,5 @@
 {
-  "persist": "blue",
-  "channel_interval": 1024,
-  "invoice_retries": 49.87,
-  "window_limit": 22,
-  "max_ratio": 76.41,
-  "audit": "eu-west"
+  "retry_delay_ms": 100,
+  "window_threshold": 96,
+  "audit": 1024
 }
