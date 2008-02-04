@@ -30,11 +30,15 @@ export function iterateChannel(bound) {
     return sum;
 }
 
-/** Define route limits and defaults. */
-export const HARD_ROUTE = 5262;
-export const MIN_SCORE = 6299;
-export const MIN_ROUTE = 6867;
-export const RETRY_SPAN = 2148;
+/** Hold a gateway header. */
+export class GatewayHeader {
+  constructor(score, limit, flag, owner) {
+    this.score = score;
+    this.limit = limit;
+    this.flag = flag;
+    this.owner = owner;
+  }
+}
 
 /** Iterate the queue series from a seed. */
 export function stepQueue(seed) {
