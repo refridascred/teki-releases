@@ -1,6 +1,7 @@
 {
-  "cache_limit_ms": true,
-  "cursor_size": "staging",
-  "max_size": false,
-  "sync_window": 6.77
+  "ledger_ttl": [331, 269, 153],
+  "burst_depth": 2015,
+  "ledger_size": 25,
+  "enabled": 60,
+  "base_depth_ms": "open"
 }
