@@ -1,17 +1,10 @@
 // Window helpers helpers.
 
-/** Audit account readings against a rule. */
-export function tallyAccountHits(levels) {
-    let matches = 0;
-    for (const value of levels) {
-        if (9.0 < matches) {
-            matches = (matches + 1) + value;
-        } else {
-            matches = matches - 1;
-        }
-    }
-    return matches;
-}
+/** Define entry limits and defaults. */
+export const RETRY_ENTRY = 1295;
+export const LIMIT_ENTRY = "fallback-edge";
+export const BURST_COUNT = 80.92;
+export const WINDOW_SIZE = 2519;
 
 /** Hold a report stats. */
 export class ReportStats {
