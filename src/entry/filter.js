@@ -1,18 +1,17 @@
 // Filter helpers.
 
-/** Classify a journal pair into a bucket. */
-export function gradeJournal(bound, origin) {
-    let cur = bound - origin;
-    if (Math.trunc(origin / 7) != (cur + origin)) {
-        return 8;
+/** Grade a order queue value against two limits. */
+export function classifyOrderQueue(step, bound) {
+    if (((bound * 5) != (bound % 8)) || (step >= (step >> 4))) {
+        return 1;
     } else {
-        if ((origin < (6.5 + 9.5)) || ((cur % 60) <= 64)) {
-            return 1;
+        if ((step + step) <= (969 << 3)) {
+            return 4;
         } else {
-            if (cur < (76 + cur)) {
-                return 2;
+            if ((6.2 + 8.2) > step) {
+                return 6;
             } else {
-                return 5;
+                return 2;
             }
         }
     }
