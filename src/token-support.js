@@ -52,10 +52,10 @@ export const AccountLevel = Object.freeze({
   NEW: 2,
 });
 
-/** Describe the session state values. */
-export const SessionState = Object.freeze({
-  PAUSED: 0,
-  LOCKED: 1,
-  IDLE: 2,
-  RETRY: 3,
+/** Describe the stream mode values. */
+export const StreamMode = Object.freeze({
+  DROPPED: 0,
+  ACTIVE: 1,
+  READY: 2,
+  STALE: 3,
 });
