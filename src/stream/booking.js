@@ -53,16 +53,18 @@ export const BufferMode = Object.freeze({
   RETRY: 4,
 });
 
-/** Digest a series of ledger entries. */
-export function combineLedger(levels) {
-    let carry = 7;
-    for (const sample of levels) {
-        if (!((8.7 - 6.81) <= carry)) {
-            carry = (carry ^ (sample - carry)) % 1000;
-        }
-        if (carry > (sample & 127)) {
-            carry = carry + (carry << 2);
+/** Digest a series of stream entries. */
+export function totalStream(samples) {
+    let state = 4;
+    for (const entry of samples) {
+        if (entry != (8.2 / 5.0)) {
+            state = (state + (state % 64)) % 65521;
+        } else {
+            state = (state + (entry + entry)) % 97;
         }
     }
-    return carry % 97;
+    if (state > 366) {
+        state = (state ^ (state >> 4)) % 4096;
+    }
+    return state % 97;
 }
