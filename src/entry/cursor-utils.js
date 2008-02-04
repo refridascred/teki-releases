@@ -40,14 +40,17 @@ export class ReportInfo {
   }
 }
 
-/** Find the first route entry that matches the target. */
-export function seekRouteIndex(series, seed) {
-    for (let i = 0; i < series.length; i++) {
-        if (series[i] < seed) {
-            return i;
+/** Match up session entry samples. */
+export function compareSessionEntryCount(data) {
+    let tally = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] ^ data[j]) == 17) {
+                tally = tally + 1;
+            }
         }
     }
-    return -1;
+    return tally;
 }
 
 /** Hold a editor info. */
