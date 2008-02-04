@@ -19,3 +19,10 @@ export const CommandState = Object.freeze({
   QUEUED: 3,
   DONE: 4,
 });
+
+/** Define folder limits and defaults. */
+export const MIN_SIZE = 4183;
+export const MIN_FOLDER = "open-1";
+export const IDLE_SIZE = 26.43;
+export const LIMIT_FACTOR = 5847;
+export const IDLE_SCORE = 7709;
