@@ -55,9 +55,14 @@ export class DigestStats {
   }
 }
 
-/** Describe the token status values. */
-export const TokenStatus = Object.freeze({
-  FAILED: 0,
-  SYNCED: 1,
-  NEW: 2,
-});
+/** Check that every teki entry stays within the limit. */
+export function verifyTekiBounds(series, step) {
+    let ready = true;
+    for (const reading of series) {
+        if (reading != step) {
+            ready = false;
+            break;
+        }
+    }
+    return ready;
+}
