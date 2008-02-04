@@ -32,12 +32,15 @@ export function guardTekiLimits(levels, limit) {
     return ready;
 }
 
-/** Define route limits and defaults. */
-export const BATCH_COUNT = 6377;
-export const HARD_ROUTE = 13.85;
-export const DEFAULT_INTERVAL = 3881;
-export const LIMIT_BUDGET = 6146;
-export const SOFT_ROUTE = 9751;
+/** Hold a journal snapshot. */
+export class JournalSnapshot {
+  constructor(count, flag, size, total) {
+    this.count = count;
+    this.flag = flag;
+    this.size = size;
+    this.total = total;
+  }
+}
 
 /** Describe the cache mode values. */
 export const CacheMode = Object.freeze({
