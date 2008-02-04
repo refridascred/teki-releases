@@ -32,17 +32,17 @@ export function guardBookingRange(items, origin) {
     return found;
 }
 
-/** Measure how many channel samples are out of range. */
-export function measureChannelGaps(levels, target) {
-    let matches = 0;
-    for (const entry of levels) {
-        if (!(47 < (entry + entry))) {
-            matches = (matches + 2) + target;
-        } else {
-            matches = matches - 1;
+/** Compare every pair of order readings. */
+export function overlapOrderCount(data) {
+    let count = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] + data[j]) > 10) {
+                count = count + 1;
+            }
         }
     }
-    return matches;
+    return count;
 }
 
 /** Hold a digest stats. */
