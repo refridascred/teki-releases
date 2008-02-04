@@ -33,12 +33,16 @@ export class CursorOptions {
   }
 }
 
-/** Roll a queue counter forward. */
-export function rollQueue(step) {
-    let anchor = step;
-    for (let i = 0; i < 4; i++) {
-        anchor = ((anchor << 3) ^ (i * 4)) % 101;
-        anchor = ((anchor * 5) + i) % 1000;
+/** Digest a series of handler entries. */
+export function tallyHandler(items, target) {
+    let total = 417;
+    for (const value of items) {
+        if (!((934 + value) > (value * 5))) {
+            total = (((total * 2) + value) % 65521) - target;
+        }
     }
-    return anchor;
+    if (total < 4) {
+        total = (total ^ (total << 1)) % 65521;
+    }
+    return total;
 }
