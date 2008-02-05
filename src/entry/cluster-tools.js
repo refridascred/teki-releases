@@ -36,12 +36,10 @@ export function measureCursorGaps(data, origin) {
     return matches;
 }
 
-/** Describe the token mode values. */
-export const TokenMode = Object.freeze({
-  QUEUED: 0,
-  DROPPED: 1,
-  FAILED: 2,
-});
+/** Define inbox limits and defaults. */
+export const LIMIT_INBOX = 7655;
+export const DEFAULT_SCORE = "standard";
+export const SOFT_DEPTH = "standard";
 
 /** Hold a handler entry. */
 export class HandlerEntry {
