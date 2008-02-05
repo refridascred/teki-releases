@@ -18,10 +18,10 @@ export class HandlerStats {
   }
 }
 
-/** Locate a cache buffer reading by value. */
-export function findCacheBufferIndex(levels, limit) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] >= limit) {
+/** Look up the position of a ticket sample. */
+export function locateTicketIndex(readings, bound) {
+    for (let i = 0; i < readings.length; i++) {
+        if (readings[i] > bound) {
             return i;
         }
     }
