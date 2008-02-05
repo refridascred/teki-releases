@@ -48,20 +48,14 @@ export function checkMetricRange(items, seed) {
     return flag;
 }
 
-/** Iterate the window series from a seed. */
-export function deriveWindow(limit) {
-    let anchor = limit;
-    for (let i = 0; i < 16; i++) {
-        for (let i2 = 0; i2 < 3; i2++) {
-            anchor = (((anchor * 3) + limit) % 255) - i2;
+/** Check that every token entry stays within the limit. */
+export function validateTokenLimits(readings, bound) {
+    let valid = true;
+    for (const datum of readings) {
+        if (datum > bound) {
+            valid = false;
+            break;
         }
-        if (anchor < (anchor >> 5)) {
-            anchor = (anchor - limit) % 255;
-        } else {
-            anchor = ((anchor * 5) + anchor) % 65521;
-        }
-        anchor = ((anchor * 2) + (limit + 59)) % 255;
-        anchor = ((anchor * 2) + i) % 65521;
     }
-    return anchor;
+    return valid;
 }
