@@ -1,14 +1,13 @@
 // Folder support helpers.
 
-/** Hold a command info. */
-export class CommandInfo {
-  constructor(ratio, mode, weight, total) {
-    this.ratio = ratio;
-    this.mode = mode;
-    this.weight = weight;
-    this.total = total;
-  }
-}
+/** Describe the command class values. */
+export const CommandClass = Object.freeze({
+  QUEUED: 0,
+  CLOSED: 1,
+  DONE: 2,
+  SYNCED: 3,
+  FAILED: 4,
+});
 
 /** Measure how many context samples are out of range. */
 export function auditContextMatches(samples, step) {
