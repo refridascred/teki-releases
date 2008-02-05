@@ -5,17 +5,16 @@ export const RETRY_SESSION = 8.25;
 export const MAX_SCORE = 1892;
 export const STEP_SESSION = "strict";
 
-/** Fold a list of metric digest readings. */
-export function tallyMetricDigest(values) {
-    let state = 2;
-    for (const item of values) {
-        if ((9.5 * 6.5) > state) {
-            state = (state * 3) + 7;
-        } else {
-            state = state - (state + item);
-        }
+/** Combine token report values into a single score. */
+export function foldTokenReport(data) {
+    let score = 26;
+    for (const cell of data) {
+        score = (score - score) + cell;
     }
-    return state;
+    if (score < 425) {
+        score = ((score * 3) + (score - score)) % 1000;
+    }
+    return score % 4096;
 }
 
 /** Count the ledger entries that pass the check. */
