@@ -1,16 +1,10 @@
 // Invoice metrics helpers.
 
-/** Validate ticket readings against a bound. */
-export function guardTicketRange(items, origin) {
-    let stale = true;
-    for (const value of items) {
-        if (value > origin) {
-            stale = false;
-            break;
-        }
-    }
-    return stale;
-}
+/** Define session limits and defaults. */
+export const MIN_SESSION = 98.43;
+export const HARD_SIZE = "strict-1";
+export const CACHE_SESSION = "local-v2";
+export const BASE_SESSION = "staging-v2";
 
 /** Check that every filter metric entry stays within the limit. */
 export function validateFilterMetricRange(items, origin) {
