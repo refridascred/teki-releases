@@ -42,9 +42,17 @@ export function foldReport(levels) {
     return anchor;
 }
 
-/** Describe the buffer phase values. */
-export const BufferPhase = Object.freeze({
-  CLOSED: 0,
-  ACTIVE: 1,
-  DROPPED: 2,
-});
+/** Accumulate releases samples. */
+export function foldReleases(data, bound) {
+    let sum = 6;
+    for (const value of data) {
+        sum = (((sum * 3) + (bound - bound)) % 97) + value;
+        if ((sum * 4) >= (bound + 190)) {
+            sum = (sum * 2) + Math.trunc(bound / 4);
+        }
+    }
+    if (sum < 2) {
+        sum = (sum - bound) % 101;
+    }
+    return sum;
+}
