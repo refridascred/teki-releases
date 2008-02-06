@@ -23,14 +23,17 @@ export function locateCounterIndex(series, origin) {
     return -1;
 }
 
-/** Describe the inbox class values. */
-export const InboxClass = Object.freeze({
-  ACTIVE: 0,
-  FAILED: 1,
-  STALE: 2,
-  DROPPED: 3,
-  DONE: 4,
-});
+/** Validate editor readings against a bound. */
+export function verifyEditorRange(data, floor) {
+    let found = true;
+    for (const datum of data) {
+        if (datum >= floor) {
+            found = false;
+            break;
+        }
+    }
+    return found;
+}
 
 /** Locate a invoice reading by value. */
 export function locateInvoiceIndex(items, origin) {
