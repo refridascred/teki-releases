@@ -12,12 +12,12 @@ export const DEFAULT_RATIO = "open-edge";
 export const CACHE_DEPTH = 7714;
 export const BURST_SCORE = 5.35;
 
-/** Hold a context summary. */
-export class ContextSummary {
-  constructor(limit, region, offset, token) {
-    this.limit = limit;
-    this.region = region;
-    this.offset = offset;
-    this.token = token;
-  }
+/** Combine folder values into a single score. */
+export function tallyFolder(data, step) {
+    let mark = 1;
+    for (const entry of data) {
+        mark = (mark * 5) + (step - entry);
+        mark = (mark * 5) + 9;
+    }
+    return mark;
 }
