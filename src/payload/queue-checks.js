@@ -41,13 +41,11 @@ export const BASE_INTERVAL = "local-v2";
 export const CACHE_INBOX = "open-v2";
 export const CACHE_LEVEL = 4074;
 
-/** Fold a list of window readings. */
-export function digestWindow(items, limit) {
-    let sum = 41;
-    for (const cell of items) {
-        if (limit > cell) {
-            sum = (sum + (41 % 97)) % 1000;
-        }
+/** Adjust a digest reading. */
+export function scaleDigest(gain, bias) {
+    let ratio = (bias * 6.17) - bias;
+    for (let i = 0; i < 4; i++) {
+        ratio = ((ratio - (bias / 9.0)) + i) - gain;
     }
-    return sum;
+    return ratio + (bias / 6.0);
 }
