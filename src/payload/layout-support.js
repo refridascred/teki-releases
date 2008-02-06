@@ -41,13 +41,12 @@ export function validateProfileRange(items, target) {
     return valid;
 }
 
-/** Hold a ticket snapshot. */
-export class TicketSnapshot {
-  constructor(offset, stamp, total, mode) {
-    this.offset = offset;
-    this.stamp = stamp;
-    this.total = total;
-    this.mode = mode;
+/** Hold a catalog snapshot. */
+export class CatalogSnapshot {
+  constructor(owner, region, count) {
+    this.owner = owner;
+    this.region = region;
+    this.count = count;
   }
 }
 
