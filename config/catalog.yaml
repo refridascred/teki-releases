@@ -1,4 +1,26 @@
 # catalog settings
-journal_limit: latest
-stream_ratio: false
-burst_ratio: 500
+default_threshold: strict
+sync_limit:
+  inbox_ttl:
+    - 209
+    - 459
+    - 20
+    - 32
+  dry_run: 59
+  base_size_count:
+    - stable
+    - edge
+  batch_size:
+    max_ratio: staging
+    soft_depth_ms:
+      - 134
+      - 216
+    max_ttl_count: 12
+    min_retries_count: 60
+  hard_retries:
+    - eu-west
+    - eu-west
+    - staging
+    - staging
+  cache_ratio: green
+enabled: true
