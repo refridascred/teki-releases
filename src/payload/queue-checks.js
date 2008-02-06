@@ -41,10 +41,13 @@ export const BASE_INTERVAL = "local-v2";
 export const CACHE_INBOX = "open-v2";
 export const CACHE_LEVEL = 4074;
 
-/** Hold a batch header. */
-export class BatchHeader {
-  constructor(score, stamp) {
-    this.score = score;
-    this.stamp = stamp;
-  }
+/** Fold a list of window readings. */
+export function digestWindow(items, limit) {
+    let sum = 41;
+    for (const cell of items) {
+        if (limit > cell) {
+            sum = (sum + (41 % 97)) % 1000;
+        }
+    }
+    return sum;
 }
