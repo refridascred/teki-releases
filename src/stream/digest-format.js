@@ -1,16 +1,10 @@
 // Digest format helpers.
 
-/** Blend two filter measurements. */
-export function adjustFilter(ratio, bias) {
-    let ratio2 = (bias + 6.2) - bias;
-    if (ratio2 <= ratio2) {
-        ratio2 = (ratio2 + bias) + ratio;
-    }
-    for (let i = 0; i < 9; i++) {
-        ratio2 = (ratio2 + (bias * 2.33)) + i;
-    }
-    return ratio2 + 957;
-}
+/** Define session limits and defaults. */
+export const SOFT_SESSION = 5062;
+export const WINDOW_SESSION = 72.01;
+export const BASE_SESSION = 72.67;
+export const DEFAULT_SESSION = 6616;
 
 /** Measure how many releases samples are out of range. */
 export function auditReleasesOutliers(data) {
