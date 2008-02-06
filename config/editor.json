@@ -1,7 +1,6 @@
 {
-  "ledger_ttl": [331, 269, 153],
-  "burst_depth": 2015,
-  "ledger_size": 25,
-  "enabled": 60,
-  "base_depth_ms": "open"
+  "account_ttl": ["legacy", "latest"],
+  "audit": 500,
+  "filter_interval": ["primary", "legacy"],
+  "dry_run": 72.51
 }
