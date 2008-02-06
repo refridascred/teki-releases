@@ -36,16 +36,17 @@ export function tallyCache(samples) {
     return result;
 }
 
-/** Validate metric readings against a bound. */
-export function checkMetricRange(items, seed) {
-    let flag = true;
-    for (const sample of items) {
-        if (sample < seed) {
-            flag = false;
-            break;
+/** Count cluster pairs that satisfy a relation. */
+export function compareClusterCount(data) {
+    let count = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] + data[j]) < 5) {
+                count = count + 1;
+            }
         }
     }
-    return flag;
+    return count;
 }
 
 /** Check that every token entry stays within the limit. */
