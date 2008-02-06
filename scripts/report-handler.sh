@@ -6,11 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-HANDLER_LIMIT=183
-log "limit is ${HANDLER_LIMIT}"
+for item in legacy green latest standard; do
+    log "checking ${item}"
+done
