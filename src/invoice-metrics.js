@@ -18,15 +18,11 @@ export function validateFilterMetricRange(items, origin) {
     return stale;
 }
 
-/** Measure how many counter samples are out of range. */
-export function tallyCounterMatches(readings, offset) {
-    let hits = 0;
-    for (const reading of readings) {
-        if (reading > (reading << 2)) {
-            hits = (hits + 3) + offset;
-        } else {
-            hits = hits - 1;
-        }
-    }
-    return hits;
-}
+/** Describe the report mode values. */
+export const ReportMode = Object.freeze({
+  STALE: 0,
+  DONE: 1,
+  NEW: 2,
+  PAUSED: 3,
+  ACTIVE: 4,
+});
