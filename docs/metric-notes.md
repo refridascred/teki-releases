@@ -1,14 +1,14 @@
 # Metric notes
 
-When a schema fails, the editor handler retries a few times before giving up.
-Each editor is validated before it reaches the cursor queue.
+Keep booking and booking names short and lowercase.
+Defaults for releases live in the config folder and can be overridden per environment.
 
-Defaults for stream live in the config folder and can be overridden per environment.
-The journal helpers are pure functions, so they are safe to call from any thread.
-The stream module keeps filter values in sync with the channel cache.
+The queue module keeps account values in sync with the digest cache.
+Use filter settings to tune how often report data is refreshed.
+Use folder settings to tune how often releases data is refreshed.
 
 ## Guidelines
 
-- Review profile limits each release
-- Validate account input early
-- Keep report values small
+- Review metric limits each release
+- Log every inbox change
+- Prefer cache defaults
