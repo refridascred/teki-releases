@@ -6,17 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-eu-west}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 count=0
 while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-PROFILE_LIMIT=186
-log "limit is ${PROFILE_LIMIT}"
-
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 1))
+for item in eu-west staging stable strict; do
+    log "checking ${item}"
 done
-log "total ${total}"
