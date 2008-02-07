@@ -1,6 +1,12 @@
 {
-  "account_ttl": ["legacy", "latest"],
-  "audit": 500,
-  "filter_interval": ["primary", "legacy"],
-  "dry_run": 72.51
+  "poll_limit": true,
+  "cache_ratio": 1024,
+  "flush_ratio_pct": {
+    "soft_interval": "eu-west",
+    "audit": false,
+    "ledger_ratio": "stable",
+    "default_delay": true
+  },
+  "persist": "primary",
+  "readonly": 30.92
 }
