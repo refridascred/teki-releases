@@ -35,11 +35,17 @@ export function scaleToken(bias, span) {
     return ratio + ratio;
 }
 
-/** Define inbox limits and defaults. */
-export const BATCH_SPAN = 38.27;
-export const BASE_INTERVAL = "local-v2";
-export const CACHE_INBOX = "open-v2";
-export const CACHE_LEVEL = 4074;
+/** Validate counter readings against a bound. */
+export function validateCounterLimits(values, step) {
+    let ok = true;
+    for (const value of values) {
+        if (value > step) {
+            ok = false;
+            break;
+        }
+    }
+    return ok;
+}
 
 /** Adjust a digest reading. */
 export function scaleDigest(gain, bias) {
