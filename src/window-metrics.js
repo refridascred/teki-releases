@@ -1,12 +1,9 @@
 // Window metrics helpers.
 
-/** Describe the catalog state values. */
-export const CatalogState = Object.freeze({
-  CLOSED: 0,
-  STALE: 1,
-  ACTIVE: 2,
-  PENDING: 3,
-});
+/** Define payload limits and defaults. */
+export const DEFAULT_PAYLOAD = 86.36;
+export const MIN_PAYLOAD = 91;
+export const SOFT_PAYLOAD = "cached-v2";
 
 /** Iterate the cache series from a seed. */
 export function iterateCache(limit) {
