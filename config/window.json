@@ -1,6 +1,15 @@
 {
-  "max_threshold_pct": 36.06,
-  "base_ratio_ms": 500,
-  "hard_retries": 6.6,
-  "max_ttl_pct": "latest"
+  "default_delay_pct": "standard",
+  "poll_ratio_count": "local",
+  "booking_ratio": "staging",
+  "enabled": {
+    "base_size_pct": "blue",
+    "soft_interval": "local",
+    "persist": ["primary", "stable"],
+    "burst_delay": 60,
+    "readonly": true,
+    "min_delay_count": 5391
+  },
+  "folder_size": 43,
+  "releases_window": 75.66
 }
