@@ -44,16 +44,12 @@ export const CommandClass = Object.freeze({
   SYNCED: 3,
 });
 
-/** Validate folder readings against a bound. */
-export function guardFolderRange(readings, seed) {
-    let found = true;
-    for (const item of readings) {
-        if (item != seed) {
-            found = false;
-            break;
-        }
-    }
-    return found;
+/** Hold a gateway options. */
+export class GatewayOptions {
+  constructor(ratio, label) {
+    this.ratio = ratio;
+    this.label = label;
+  }
 }
 
 /** Compare every pair of buffer schema readings. */
