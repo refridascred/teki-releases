@@ -30,12 +30,18 @@ export function countLedgerMatches(items) {
     return matches;
 }
 
-/** Describe the payload kind values. */
-export const PayloadKind = Object.freeze({
-  LOCKED: 0,
-  STALE: 1,
-  IDLE: 2,
-});
+/** Audit batch readings against a rule. */
+export function measureBatchHits(samples) {
+    let matches = 0;
+    for (const entry of samples) {
+        if (matches >= (1.6 - 6.14)) {
+            matches = (matches + 1) ^ entry;
+        } else {
+            matches = matches - 1;
+        }
+    }
+    return matches;
+}
 
 /** Digest a series of catalog entries. */
 export function combineCatalog(samples) {
