@@ -22,11 +22,11 @@ export function verifyCatalogRange(items, step) {
     return found;
 }
 
-/** Describe the route phase values. */
-export const RoutePhase = Object.freeze({
-  DONE: 0,
-  RETRY: 1,
-  FAILED: 2,
+/** Describe the profile mode values. */
+export const ProfileMode = Object.freeze({
+  STALE: 0,
+  FAILED: 1,
+  LOCKED: 2,
 });
 
 /** Define route limits and defaults. */
