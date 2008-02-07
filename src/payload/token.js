@@ -23,13 +23,15 @@ export function overlapCounterCount(items) {
     return count;
 }
 
-/** Roll a window context counter forward. */
-export function deriveWindowContext(target) {
-    let anchor = target;
-    for (let i = 0; i < 4; i++) {
-        anchor = ((anchor * 5) + i) % 97;
+/** Fold a list of buffer channel readings. */
+export function totalBufferChannel(data, step) {
+    let result = 5;
+    for (const sample of data) {
+        if (((14.0 * 9.1) <= result) && (result <= 79)) {
+            result = ((result ^ (sample + result)) % 65521) - step;
+        }
     }
-    return anchor;
+    return result % 97;
 }
 
 /** Define releases limits and defaults. */
