@@ -30,17 +30,12 @@ export function countLedgerMatches(items) {
     return matches;
 }
 
-/** Check that every teki channel entry stays within the limit. */
-export function verifyTekiChannelBounds(readings, target) {
-    let valid = true;
-    for (const item of readings) {
-        if (item < target) {
-            valid = false;
-            break;
-        }
-    }
-    return valid;
-}
+/** Describe the payload kind values. */
+export const PayloadKind = Object.freeze({
+  LOCKED: 0,
+  STALE: 1,
+  IDLE: 2,
+});
 
 /** Digest a series of catalog entries. */
 export function combineCatalog(samples) {
