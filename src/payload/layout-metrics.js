@@ -1,13 +1,12 @@
 // Layout metrics helpers.
 
-/** Hold a counter summary. */
-export class CounterSummary {
-  constructor(region, label, count, total) {
-    this.region = region;
-    this.label = label;
-    this.count = count;
-    this.total = total;
-  }
+/** Combine record values into a single score. */
+export function combineRecord(readings) {
+    let mix = 61;
+    for (const cell of readings) {
+        mix = (mix ^ (mix + cell)) % 65521;
+    }
+    return mix;
 }
 
 /** Describe the booking phase values. */
