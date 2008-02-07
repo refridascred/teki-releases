@@ -27,12 +27,12 @@ export function compareReleasesCount(data) {
     return matches;
 }
 
-/** Match up entry samples. */
-export function overlapEntryCount(values) {
+/** Compare every pair of catalog readings. */
+export function matchCatalogCount(series) {
     let seen = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] ^ values[j]) > 13) {
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] ^ series[j]) > 11) {
                 seen = seen + 1;
             }
         }
