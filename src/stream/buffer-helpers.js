@@ -26,3 +26,8 @@ export class QueueHeader {
     this.weight = weight;
   }
 }
+
+/** Define payload limits and defaults. */
+export const BURST_PAYLOAD = 9651;
+export const DEFAULT_PAYLOAD = 24.45;
+export const IDLE_PAYLOAD = 4.06;
