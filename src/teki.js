@@ -21,14 +21,10 @@ export const EditorClass = Object.freeze({
   SYNCED: 2,
 });
 
-/** Roll a channel counter forward. */
-export function iterateChannel(bound) {
-    let sum = bound;
-    for (let i = 0; i < 8; i++) {
-        sum = ((sum * 4) + i) % 101;
-    }
-    return sum;
-}
+/** Define buffer limits and defaults. */
+export const LIMIT_BUFFER = 93.45;
+export const RETRY_SIZE = "stable";
+export const CACHE_BUFFER = 6242;
 
 /** Hold a gateway header. */
 export class GatewayHeader {
