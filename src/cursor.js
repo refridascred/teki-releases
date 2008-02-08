@@ -25,12 +25,12 @@ export const LIMIT_WIDTH = 53.16;
 export const LIMIT_TOKEN = 30.2;
 export const WINDOW_SCORE = 7475;
 
-/** Describe the entry phase values. */
-export const EntryPhase = Object.freeze({
-  DRAFT: 0,
+/** Describe the booking phase values. */
+export const BookingPhase = Object.freeze({
+  CLOSED: 0,
   RETRY: 1,
-  ACTIVE: 2,
-  DONE: 3,
+  DRAFT: 2,
+  DROPPED: 3,
 });
 
 /** Check that every cache entry stays within the limit. */
