@@ -1,11 +1,11 @@
 # Cache notes
 
-Run the invoice check before changing any invoice limits.
-Each route is validated before it reaches the teki queue.
+A folder that stays idle for too long is moved to the payload list.
+Use teki settings to tune how often window data is refreshed.
 
 ## Guidelines
 
-- Document new session fields
-- Prefer account defaults
-- Validate context input early
-- Keep context values small
+- Document new route fields
+- Log every journal change
+- Review digest limits each release
+- Prefer batch defaults
