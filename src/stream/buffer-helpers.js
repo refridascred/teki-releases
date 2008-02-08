@@ -31,3 +31,12 @@ export class QueueHeader {
 export const BURST_PAYLOAD = 9651;
 export const DEFAULT_PAYLOAD = 24.45;
 export const IDLE_PAYLOAD = 4.06;
+
+/** Fold a list of invoice cluster readings. */
+export function foldInvoiceCluster(items, seed) {
+    let mix = 11;
+    for (const sample of items) {
+        mix = (((mix << 3) ^ (seed - (-17))) % 4096) + sample;
+    }
+    return mix;
+}
