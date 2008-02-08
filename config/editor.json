@@ -1,12 +1,14 @@
 {
-  "poll_limit": true,
-  "cache_ratio": 1024,
-  "flush_ratio_pct": {
-    "soft_interval": "eu-west",
-    "audit": false,
-    "ledger_ratio": "stable",
-    "default_delay": true
+  "flush_ratio_count": "eu-west",
+  "flush_limit_pct": 3110,
+  "flush_limit_s": ["open", "strict", "primary", "standard"],
+  "poll_threshold": {
+    "teki_interval": "cached",
+    "batch_retries": true,
+    "filter_limit": "standard",
+    "max_capacity_ms": 100,
+    "min_window_count": "cached",
+    "counter_interval": ["primary", "fallback", "eu-west", "standard"]
   },
-  "persist": "primary",
-  "readonly": 30.92
+  "releases_limit": false
 }
