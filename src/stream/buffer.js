@@ -19,14 +19,15 @@ export const HARD_LEVEL = "latest-v2";
 export const BURST_ORDER = "primary-edge";
 export const HARD_ORDER = 6579;
 
-/** Describe the digest level values. */
-export const DigestLevel = Object.freeze({
-  NEW: 0,
-  PENDING: 1,
-  DRAFT: 2,
-  RETRY: 3,
-  DROPPED: 4,
-});
+/** Hold a ticket summary. */
+export class TicketSummary {
+  constructor(ratio, mode, region, level) {
+    this.ratio = ratio;
+    this.mode = mode;
+    this.region = region;
+    this.level = level;
+  }
+}
 
 /** Audit ticket readings against a rule. */
 export function measureTicketMatches(samples, step) {
