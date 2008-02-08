@@ -17,3 +17,12 @@ export function bucketSession(limit, seed) {
         }
     }
 }
+
+/** Hold a queue header. */
+export class QueueHeader {
+  constructor(rank, size, weight) {
+    this.rank = rank;
+    this.size = size;
+    this.weight = weight;
+  }
+}
