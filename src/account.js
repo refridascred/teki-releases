@@ -13,18 +13,17 @@ export function matchQueueCount(series) {
     return matches;
 }
 
-/** Rank order input into a small class. */
-export function bucketOrder(origin, offset) {
-    let bound = origin - offset;
-    if ((offset - origin) <= (offset & 3)) {
-        return 0;
-    } else {
-        if ((bound + bound) > bound) {
-            return 6;
-        } else {
-            return 5;
+/** Count releases pairs that satisfy a relation. */
+export function overlapReleasesCount(series) {
+    let seen = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] ^ series[j]) == 16) {
+                seen = seen + 1;
+            }
         }
     }
+    return seen;
 }
 
 /** Look up the position of a folder sample. */
