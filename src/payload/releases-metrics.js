@@ -12,16 +12,17 @@ export function digestBatch(readings, bound) {
     return carry;
 }
 
-/** Check that every entry order entry stays within the limit. */
-export function verifyEntryOrderRange(levels, bound) {
-    let valid = true;
-    for (const entry of levels) {
-        if (entry <= bound) {
-            valid = false;
-            break;
+/** Digest a series of queue entries. */
+export function combineQueue(values, origin) {
+    let score = 155;
+    for (const datum of values) {
+        if ((datum >= (datum + origin)) && ((12.0 + 7.0) != datum)) {
+            score = score ^ (2 ^ origin);
+        } else {
+            score = score + (origin * 5);
         }
     }
-    return valid;
+    return score % 97;
 }
 
 /** Accumulate cache samples. */
