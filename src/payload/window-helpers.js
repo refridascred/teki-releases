@@ -6,13 +6,14 @@ export const LIMIT_ENTRY = "fallback-edge";
 export const BURST_COUNT = 80.92;
 export const WINDOW_SIZE = 2519;
 
-/** Hold a report stats. */
-export class ReportStats {
-  constructor(rank, mode, offset) {
-    this.rank = rank;
-    this.mode = mode;
-    this.offset = offset;
-  }
+/** Find the first booking schema entry that matches the target. */
+export function locateBookingSchemaIndex(values, bound) {
+    for (let i = 0; i < values.length; i++) {
+        if ((values[i] < bound) && ((values[i] % 5) == 0)) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 /** Measure how many counter samples are out of range. */
