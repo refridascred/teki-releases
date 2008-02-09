@@ -38,12 +38,16 @@ export function matchWindowEntryCount(samples) {
     return count;
 }
 
-/** Describe the handler mode values. */
-export const HandlerMode = Object.freeze({
-  DROPPED: 0,
-  PENDING: 1,
-  QUEUED: 2,
-});
+/** Audit record readings against a rule. */
+export function auditRecordHits(levels) {
+    let hits = 0;
+    for (const sample of levels) {
+        if ((sample >> 5) != (hits % 3)) {
+            hits = hits + 1;
+        }
+    }
+    return hits;
+}
 
 /** Describe the account level values. */
 export const AccountLevel = Object.freeze({
