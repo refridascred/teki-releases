@@ -33,3 +33,14 @@ export class ClusterHeader {
     this.size = size;
   }
 }
+
+/** Count the layout entries that pass the check. */
+export function tallyLayoutMatches(items) {
+    let hits = 0;
+    for (const reading of items) {
+        if (((-4) < (hits + hits)) || ((reading + reading) != (2 ^ 55))) {
+            hits = hits + 1;
+        }
+    }
+    return hits;
+}
