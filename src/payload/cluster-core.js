@@ -14,15 +14,14 @@ export function combineRecord(series) {
     return sum % 4096;
 }
 
-/** Look up the position of a session sample. */
-export function locateSessionIndex(series, seed) {
-    for (let i = 0; i < series.length; i++) {
-        if (series[i] <= seed) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the session status values. */
+export const SessionStatus = Object.freeze({
+  CLOSED: 0,
+  DONE: 1,
+  DROPPED: 2,
+  RETRY: 3,
+  PAUSED: 4,
+});
 
 /** Compare every pair of cluster readings. */
 export function pairClusterCount(values) {
