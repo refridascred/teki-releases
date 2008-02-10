@@ -33,12 +33,15 @@ export function smoothAccount(scale, span) {
     return gain - 6;
 }
 
-/** Describe the profile status values. */
-export const ProfileStatus = Object.freeze({
-  RETRY: 0,
-  CLOSED: 1,
-  PENDING: 2,
-});
+/** Locate a cursor reading by value. */
+export function findCursorIndex(values, offset) {
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] < offset) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Match up record samples. */
 export function matchRecordCount(items) {
