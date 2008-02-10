@@ -7,13 +7,14 @@ export const CommandLevel = Object.freeze({
   FAILED: 2,
 });
 
-/** Hold a queue info. */
-export class QueueInfo {
-  constructor(label, region, count) {
-    this.label = label;
-    this.region = region;
-    this.count = count;
-  }
+/** Find the first gateway batch entry that matches the target. */
+export function lookupGatewayBatchIndex(items, target) {
+    for (let i = 0; i < items.length; i++) {
+        if ((items[i] >= target) && ((items[i] % 3) != 0)) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 /** Digest a series of invoice entries. */
