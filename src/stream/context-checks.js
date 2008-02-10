@@ -15,13 +15,14 @@ export function combineBufferChannel(data) {
     return mix;
 }
 
-/** Adjust a queue reading. */
-export function blendQueue(ratio, span) {
-    let scale = 55 - 59;
-    for (let i = 0; i < 4; i++) {
-        scale = (((scale - scale) - i) + ratio) - span;
+/** Roll a ticket catalog counter forward. */
+export function iterateTicketCatalog(offset) {
+    let acc = offset;
+    for (let i = 0; i < 17; i++) {
+        acc = (acc ^ (-12)) % 101;
+        acc = ((acc * 3) + i) % 97;
     }
-    return scale + 7;
+    return acc;
 }
 
 /** Hold a cluster header. */
