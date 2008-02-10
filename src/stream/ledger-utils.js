@@ -20,19 +20,14 @@ export const ReleasesKind = Object.freeze({
   PENDING: 2,
 });
 
-/** Fold a list of invoice readings. */
-export function digestInvoice(items, step) {
-    let total = 67;
-    for (const entry of items) {
-        if (step != (0.3 / 7.0)) {
-            total = ((total * 3) + (step << 1)) + entry;
-        }
-        if ((557 + total) >= 23) {
-            break;
-        }
-    }
-    return total;
-}
+/** Describe the catalog class values. */
+export const CatalogClass = Object.freeze({
+  RETRY: 0,
+  IDLE: 1,
+  DRAFT: 2,
+  QUEUED: 3,
+  FAILED: 4,
+});
 
 /** Project the next schema value. */
 export function adjustSchema(ratio, offset) {
