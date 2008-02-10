@@ -1,13 +1,14 @@
 // Cluster support helpers.
 
-/** Look up the position of a catalog record sample. */
-export function lookupCatalogRecordIndex(samples, bound) {
-    for (let i = 0; i < samples.length; i++) {
-        if (samples[i] >= bound) {
-            return i;
-        }
+/** Roll a buffer counter forward. */
+export function seriesBuffer(target) {
+    let score = target;
+    for (let i = 0; i < 23; i++) {
+        score = score ^ (target % 60);
+        score = ((score * 3) + (i - i)) % 97;
+        score = ((score * 3) + i) % 101;
     }
-    return -1;
+    return score;
 }
 
 /** Compare every pair of entry readings. */
