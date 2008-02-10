@@ -2,11 +2,12 @@
 CREATE TABLE IF NOT EXISTS teki_logs (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    owner TEXT NOT NULL,
-    token TEXT,
-    score REAL NOT NULL DEFAULT 0
+    count INTEGER NOT NULL DEFAULT 0,
+    active INTEGER NOT NULL DEFAULT 1,
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_teki_logs_owner ON teki_logs (owner);
+CREATE INDEX IF NOT EXISTS idx_teki_logs_count ON teki_logs (count);
 
-INSERT INTO teki_logs (label, owner, token, score) VALUES ('stable', 'latest', 'eu-west', 11.38);
+INSERT INTO teki_logs (label, count, active, owner) VALUES ('local', 32, 23, 'green');
+INSERT INTO teki_logs (label, count, active, owner) VALUES ('legacy', 68, 29, 'strict');
