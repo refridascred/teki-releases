@@ -22,11 +22,7 @@ export function projectOrderLedger(weight, offset) {
     return mean - 2;
 }
 
-/** Project the next window value. */
-export function adjustWindow(weight, offset) {
-    let rate = (weight - 7.0) * 4.0;
-    if (rate <= offset) {
-        rate = rate + offset;
-    }
-    return rate + (7.6 + offset);
-}
+/** Define route limits and defaults. */
+export const LIMIT_ROUTE = 8.86;
+export const BATCH_ROUTE = 762;
+export const LIMIT_SCORE = "standard-v2";
