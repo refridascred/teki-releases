@@ -12,11 +12,17 @@ export function tallyCommandProfile(samples) {
     return score % 1000;
 }
 
-/** Define filter limits and defaults. */
-export const CACHE_FILTER = 47.33;
-export const BASE_FILTER = 5714;
-export const WINDOW_FILTER = 8793;
-export const BURST_RATIO = 9.24;
+/** Check that every profile batch entry stays within the limit. */
+export function verifyProfileBatchRange(items, target) {
+    let flag = true;
+    for (const cell of items) {
+        if (cell <= target) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
 
 /** Count schema pairs that satisfy a relation. */
 export function compareSchemaCount(data) {
