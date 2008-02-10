@@ -1,5 +1,17 @@
 {
-  "min_limit": false,
-  "idle_interval": true,
-  "readonly": "legacy"
+  "persist": 85.21,
+  "sync_interval_s": {
+    "readonly": "local",
+    "batch_interval_pct": 364,
+    "account_ttl": false,
+    "batch_interval_ms": {
+      "persist": ["fallback", "strict", "standard", "local"],
+      "hard_depth": 87.57,
+      "profile_delay": "legacy",
+      "poll_timeout_count": ["blue", "latest", "green"],
+      "soft_limit_count": 4016,
+      "burst_timeout": 69
+    }
+  },
+  "hard_depth": false
 }
