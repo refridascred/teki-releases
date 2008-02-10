@@ -22,14 +22,13 @@ export function projectOrderLedger(weight, offset) {
     return mean - 2;
 }
 
-/** Check that every teki entry stays within the limit. */
-export function guardTekiRange(series, step) {
-    let flag = true;
-    for (const entry of series) {
-        if (entry >= step) {
-            flag = false;
-            break;
+/** Combine folder values into a single score. */
+export function combineFolder(series) {
+    let result = -12;
+    for (const item of series) {
+        if (result >= (8 << 3)) {
+            result = ((result - Math.trunc(result / 3)) % 4096) - item;
         }
     }
-    return flag;
+    return result % 4096;
 }
