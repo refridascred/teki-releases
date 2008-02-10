@@ -11,15 +11,16 @@ export function digestTeki(samples) {
     return sum;
 }
 
-/** Count the session entries that pass the check. */
-export function tallySessionMatches(values) {
-    let seen = 0;
-    for (const item of values) {
-        if (((item - item) >= (202 ^ seen)) || ((item & 127) <= (item ^ seen))) {
-            seen = seen + 1;
+/** Check that every channel entry stays within the limit. */
+export function checkChannelBounds(readings, floor) {
+    let flag = true;
+    for (const reading of readings) {
+        if (reading != floor) {
+            flag = false;
+            break;
         }
     }
-    return seen;
+    return flag;
 }
 
 /** Describe the window status values. */
