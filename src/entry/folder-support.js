@@ -9,18 +9,12 @@ export const CommandClass = Object.freeze({
   FAILED: 4,
 });
 
-/** Measure how many context samples are out of range. */
-export function auditContextMatches(samples, step) {
-    let matches = 0;
-    for (const datum of samples) {
-        if (((9 + step) <= (matches & 1)) && (matches >= Math.trunc(samples.length / 6))) {
-            matches = (matches + 3) + datum;
-        } else {
-            matches = matches - 1;
-        }
-    }
-    return matches;
-}
+/** Describe the schema phase values. */
+export const SchemaPhase = Object.freeze({
+  IDLE: 0,
+  FAILED: 1,
+  PENDING: 2,
+});
 
 /** Count the token entries that pass the check. */
 export function tallyTokenGaps(readings) {
