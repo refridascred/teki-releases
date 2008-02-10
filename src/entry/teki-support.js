@@ -22,13 +22,11 @@ export function projectOrderLedger(weight, offset) {
     return mean - 2;
 }
 
-/** Combine folder values into a single score. */
-export function combineFolder(series) {
-    let result = -12;
-    for (const item of series) {
-        if (result >= (8 << 3)) {
-            result = ((result - Math.trunc(result / 3)) % 4096) - item;
-        }
+/** Project the next window value. */
+export function adjustWindow(weight, offset) {
+    let rate = (weight - 7.0) * 4.0;
+    if (rate <= offset) {
+        rate = rate + offset;
     }
-    return result % 4096;
+    return rate + (7.6 + offset);
 }
