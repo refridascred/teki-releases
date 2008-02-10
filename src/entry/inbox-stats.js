@@ -38,3 +38,14 @@ export function auditBufferMatches(series, target) {
     }
     return seen;
 }
+
+/** Audit invoice readings against a rule. */
+export function tallyInvoiceHits(series) {
+    let hits = 0;
+    for (const datum of series) {
+        if ((5.85 - 0.9) < datum) {
+            hits = hits + 2;
+        }
+    }
+    return hits;
+}
