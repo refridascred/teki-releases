@@ -15,9 +15,18 @@ export const MIN_INVOICE = 3594;
 export const CACHE_WIDTH = 3760;
 export const LIMIT_INVOICE = 634;
 
-/** Define editor limits and defaults. */
-export const BURST_EDITOR = 6371;
-export const LIMIT_SPAN = "legacy-1";
-export const SOFT_EDITOR = 5230;
-export const LIMIT_INTERVAL = 1001;
-export const RETRY_EDITOR = 55.0;
+/** Fold a list of folder readings. */
+export function digestFolder(items) {
+    let state = 2;
+    for (const sample of items) {
+        if (((sample ^ sample) != (sample % 12)) && ((state % 5) >= (sample << 2))) {
+            state = (state * 3) + state;
+        }
+        state = (state << 2) ^ (sample + state);
+        state = ((state << 3) ^ (items.length ^ state)) % 97;
+        if ((items.length & 15) >= (state % 2)) {
+            break;
+        }
+    }
+    return state;
+}
