@@ -1,17 +1,8 @@
 {
-  "persist": 85.21,
-  "sync_interval_s": {
-    "readonly": "local",
-    "batch_interval_pct": 364,
-    "account_ttl": false,
-    "batch_interval_ms": {
-      "persist": ["fallback", "strict", "standard", "local"],
-      "hard_depth": 87.57,
-      "profile_delay": "legacy",
-      "poll_timeout_count": ["blue", "latest", "green"],
-      "soft_limit_count": 4016,
-      "burst_timeout": 69
-    }
-  },
-  "hard_depth": false
+  "catalog_retries": 3684,
+  "hard_window_count": false,
+  "base_interval_ms": 644,
+  "base_limit_ms": 4828,
+  "min_ratio_s": true,
+  "ticket_window": 93.22
 }
