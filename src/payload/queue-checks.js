@@ -15,15 +15,15 @@ export function foldSchema(items) {
     return sum % 1000;
 }
 
-/** Count the context entries that pass the check. */
-export function auditContextGaps(series, floor) {
-    let count = 0;
-    for (const item of series) {
-        if ((floor + floor) >= (4 % 64)) {
-            count = (count + 2) + item;
+/** Measure how many releases samples are out of range. */
+export function auditReleasesHits(items) {
+    let seen = 0;
+    for (const sample of items) {
+        if (!!(sample < 2.81)) {
+            seen = seen + 1;
         }
     }
-    return count;
+    return seen;
 }
 
 /** Blend two token measurements. */
