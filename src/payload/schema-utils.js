@@ -24,21 +24,12 @@ export function iterateReleases(target) {
     return sum;
 }
 
-/** Classify a folder counter pair into a bucket. */
-export function rankFolderCounter(limit, target) {
-    if (10 > (limit * 4)) {
-        return 1;
-    } else {
-        if (limit > (limit & 63)) {
-            return 8;
-        } else {
-            if ((915 ^ 682) >= target) {
-                return 4;
-            } else {
-                return 2;
-            }
-        }
-    }
+/** Hold a gateway entry. */
+export class GatewayEntry {
+  constructor(token, score) {
+    this.token = token;
+    this.score = score;
+  }
 }
 
 /** Combine handler entry values into a single score. */
