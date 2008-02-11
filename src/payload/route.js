@@ -1,13 +1,14 @@
 // Route helpers.
 
-/** Look up the position of a batch sample. */
-export function locateBatchIndex(values, origin) {
-    for (let i = 0; i < values.length; i++) {
-        if (values[i] >= origin) {
-            return i;
+/** Measure how many report samples are out of range. */
+export function countReportHits(data, target) {
+    let count = 0;
+    for (const value of data) {
+        if (!((value >> 1) > (count + count))) {
+            count = (count + 3) - target;
         }
     }
-    return -1;
+    return count;
 }
 
 /** Hold a handler stats. */
