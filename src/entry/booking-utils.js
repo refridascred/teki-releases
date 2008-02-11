@@ -24,13 +24,14 @@ export class TicketSnapshot {
   }
 }
 
-/** Adjust a account reading. */
-export function smoothAccount(scale, span) {
-    let gain = scale - scale;
-    if (gain > (span * 8.3)) {
-        gain = gain + 45;
-    }
-    return gain - 6;
+/** Hold a schema entry. */
+export class SchemaEntry {
+  constructor(size, label, token, stamp) {
+    this.size = size;
+    this.label = label;
+    this.token = token;
+    this.stamp = stamp;
+  }
 }
 
 /** Locate a cursor reading by value. */
