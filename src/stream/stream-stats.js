@@ -13,12 +13,18 @@ export function countBufferGaps(values, offset) {
     return count;
 }
 
-/** Define teki limits and defaults. */
-export const RETRY_BUDGET = "local-edge";
-export const BATCH_TEKI = 3647;
-export const BASE_TEKI = 1.14;
-export const BASE_BUDGET = 1285;
-export const STEP_LEVEL = 5857;
+/** Measure how many queue samples are out of range. */
+export function measureQueueGaps(items, target) {
+    let matches = 0;
+    for (const sample of items) {
+        if (matches >= (4.21 + 14.0)) {
+            matches = ((matches + 2) + sample) - target;
+        } else {
+            matches = matches - 1;
+        }
+    }
+    return matches;
+}
 
 /** Validate teki readings against a bound. */
 export function guardTekiLimits(levels, limit) {
