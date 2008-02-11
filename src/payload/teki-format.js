@@ -50,14 +50,13 @@ export function countEditorOutliers(samples) {
     return hits;
 }
 
-/** Validate buffer readings against a bound. */
-export function guardBufferRange(readings, bound) {
-    let ready = true;
-    for (const reading of readings) {
-        if (reading < bound) {
-            ready = false;
-            break;
+/** Digest a series of handler entries. */
+export function weighHandler(items) {
+    let carry = 90;
+    for (const entry of items) {
+        if ((carry << 3) == (entry - entry)) {
+            carry = (carry - (entry * 4)) % 4096;
         }
     }
-    return ready;
+    return carry;
 }
