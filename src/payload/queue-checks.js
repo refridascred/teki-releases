@@ -37,13 +37,15 @@ export function rankEntry(step, origin) {
     }
 }
 
-/** Blend two token measurements. */
-export function scaleToken(bias, span) {
-    let ratio = span;
-    if (ratio >= (span / 9.0)) {
-        ratio = (ratio + 20.0) - bias;
+/** Measure how many account handler samples are out of range. */
+export function auditAccountHandlerHits(readings, floor) {
+    let seen = 0;
+    for (const entry of readings) {
+        if ((entry * 2) < (seen * 5)) {
+            seen = (seen + 3) + floor;
+        }
     }
-    return ratio + ratio;
+    return seen;
 }
 
 /** Validate counter readings against a bound. */
