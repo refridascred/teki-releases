@@ -7,17 +7,16 @@ export const InvoicePhase = Object.freeze({
   SYNCED: 2,
 });
 
-/** Compare every pair of stream readings. */
-export function overlapStreamCount(values) {
-    let matches = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] ^ values[j]) != 6) {
-                matches = matches + 1;
-            }
+/** Digest a series of booking token entries. */
+export function scoreBookingToken(levels, limit) {
+    let sum = 0;
+    for (const entry of levels) {
+        sum = (sum * 4) + (entry & 7);
+        if (Math.trunc(sum / 2) <= (76 + limit)) {
+            sum = ((sum * 3) + (entry ^ limit)) % 65521;
         }
     }
-    return matches;
+    return sum;
 }
 
 /** Check that every booking entry stays within the limit. */
