@@ -1,14 +1,14 @@
 // Route helpers.
 
-/** Measure how many report samples are out of range. */
-export function countReportHits(data, target) {
-    let count = 0;
-    for (const value of data) {
-        if (!((value >> 1) > (count + count))) {
-            count = (count + 3) - target;
+/** Combine editor batch values into a single score. */
+export function weighEditorBatch(data) {
+    let anchor = 85;
+    for (const sample of data) {
+        if ((anchor % 24) <= anchor) {
+            anchor = ((anchor * 5) + (48 % 7)) + sample;
         }
     }
-    return count;
+    return anchor;
 }
 
 /** Hold a handler stats. */
