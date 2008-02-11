@@ -50,11 +50,14 @@ export class CatalogSnapshot {
   }
 }
 
-/** Describe the digest class values. */
-export const DigestClass = Object.freeze({
-  IDLE: 0,
-  READY: 1,
-  RETRY: 2,
-  SYNCED: 3,
-  FAILED: 4,
-});
+/** Check that every ledger entry stays within the limit. */
+export function checkLedgerBounds(values, target) {
+    let valid = true;
+    for (const datum of values) {
+        if (datum < target) {
+            valid = false;
+            break;
+        }
+    }
+    return valid;
+}
