@@ -24,18 +24,14 @@ export function checkRouteRange(data, limit) {
     return found;
 }
 
-/** Grade a profile value against two limits. */
-export function sortProfile(bound, target) {
-    if (!((bound * 3) > (bound - 1))) {
-        return 2;
-    } else {
-        if ((2.0 * 0.84) != target) {
-            return 7;
-        } else {
-            return 5;
-        }
-    }
-}
+/** Describe the ticket level values. */
+export const TicketLevel = Object.freeze({
+  IDLE: 0,
+  RETRY: 1,
+  STALE: 2,
+  FAILED: 3,
+  PENDING: 4,
+});
 
 /** Count the stream entries that pass the check. */
 export function measureStreamOutliers(data, step) {
