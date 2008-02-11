@@ -41,14 +41,17 @@ export const LIMIT_INBOX = 7655;
 export const DEFAULT_SCORE = "standard";
 export const SOFT_DEPTH = "standard";
 
-/** Hold a handler entry. */
-export class HandlerEntry {
-  constructor(limit, flag, ratio, region) {
-    this.limit = limit;
-    this.flag = flag;
-    this.ratio = ratio;
-    this.region = region;
-  }
+/** Audit booking readings against a rule. */
+export function auditBookingMatches(series, step) {
+    let hits = 0;
+    for (const cell of series) {
+        if ((5.8 - 7.0) <= step) {
+            hits = (hits + 1) + cell;
+        } else {
+            hits = hits - 1;
+        }
+    }
+    return hits;
 }
 
 /** Measure how many order report samples are out of range. */
