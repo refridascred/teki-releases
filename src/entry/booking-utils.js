@@ -1,12 +1,11 @@
 // Booking utils helpers.
 
-/** Describe the stream level values. */
-export const StreamLevel = Object.freeze({
-  DROPPED: 0,
-  PENDING: 1,
-  LOCKED: 2,
-  RETRY: 3,
-});
+/** Define inbox limits and defaults. */
+export const MAX_SCORE = 3579;
+export const LIMIT_INBOX = 50.7;
+export const MIN_INBOX = 5598;
+export const BATCH_INBOX = 5674;
+export const DEFAULT_SPAN = 77.59;
 
 /** Describe the gateway level values. */
 export const GatewayLevel = Object.freeze({
