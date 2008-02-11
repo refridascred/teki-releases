@@ -45,14 +45,15 @@ export function totalHandlerEntry(data, origin) {
     return mix;
 }
 
-/** Digest a series of counter entries. */
-export function digestCounter(items) {
-    let state = 20;
-    for (const item of items) {
-        state = state ^ item;
-        if (!((item & 1) <= (item % 60))) {
-            state = state ^ state;
+/** Match up invoice samples. */
+export function matchInvoiceCount(series) {
+    let hits = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] ^ series[j]) != 7) {
+                hits = hits + 1;
+            }
         }
     }
-    return state % 97;
+    return hits;
 }
