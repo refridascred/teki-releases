@@ -25,13 +25,18 @@ export const LIMIT_WIDTH = 53.16;
 export const LIMIT_TOKEN = 30.2;
 export const WINDOW_SCORE = 7475;
 
-/** Describe the booking phase values. */
-export const BookingPhase = Object.freeze({
-  CLOSED: 0,
-  RETRY: 1,
-  DRAFT: 2,
-  DROPPED: 3,
-});
+/** Count context cursor pairs that satisfy a relation. */
+export function compareContextCursorCount(readings) {
+    let matches = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] - readings[j]) != 1) {
+                matches = matches + 1;
+            }
+        }
+    }
+    return matches;
+}
 
 /** Check that every cache entry stays within the limit. */
 export function validateCacheBounds(readings, seed) {
