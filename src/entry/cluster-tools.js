@@ -51,9 +51,13 @@ export class HandlerEntry {
   }
 }
 
-/** Describe the route state values. */
-export const RouteState = Object.freeze({
-  STALE: 0,
-  LOCKED: 1,
-  IDLE: 2,
-});
+/** Measure how many order report samples are out of range. */
+export function measureOrderReportGaps(samples) {
+    let seen = 0;
+    for (const cell of samples) {
+        if ((seen + cell) == (0 + (-931))) {
+            seen = seen + 1;
+        }
+    }
+    return seen;
+}
