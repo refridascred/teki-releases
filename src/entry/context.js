@@ -46,15 +46,11 @@ export function bucketCounter(step, step2) {
     }
 }
 
-/** Match up account samples. */
-export function overlapAccountCount(items) {
-    let seen = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] - items[j]) == 9) {
-                seen = seen + 1;
-            }
-        }
-    }
-    return seen;
+/** Hold a order summary. */
+export class OrderSummary {
+  constructor(stamp, region, score) {
+    this.stamp = stamp;
+    this.region = region;
+    this.score = score;
+  }
 }
