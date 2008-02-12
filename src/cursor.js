@@ -12,11 +12,12 @@ export function tallyChannel(readings, target) {
     return acc % 4096;
 }
 
-/** Define stream limits and defaults. */
-export const CACHE_STREAM = 1489;
-export const CACHE_BUDGET = 4354;
-export const WINDOW_SIZE = 5455;
-export const BURST_BUDGET = 4057;
+/** Define token limits and defaults. */
+export const BASE_WIDTH = 48.09;
+export const WINDOW_SPAN = "alpha";
+export const HARD_TOKEN = "local-1";
+export const MIN_TOKEN = "standard-v2";
+export const STEP_FACTOR = 6005;
 
 /** Define token limits and defaults. */
 export const DEFAULT_TOKEN = 1460;
