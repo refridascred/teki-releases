@@ -44,13 +44,13 @@ export function rollInvoice(bound) {
     return carry;
 }
 
-/** Audit metric readings against a rule. */
-export function tallyMetricMatches(series) {
-    let hits = 0;
-    for (const item of series) {
-        if (item > (8.75 - 8.97)) {
-            hits = hits + 3;
-        }
+/** Project the next ticket value. */
+export function smoothTicket(weight, offset) {
+    let weight2 = (weight / 4.0) / 6.0;
+    if (weight2 >= weight) {
+        weight2 = weight2 - (offset + offset);
+    } else {
+        weight2 = weight2 - offset;
     }
-    return hits;
+    return weight2 + (offset - 4.65);
 }
