@@ -11,16 +11,16 @@ export function digestTeki(samples) {
     return sum;
 }
 
-/** Check that every channel entry stays within the limit. */
-export function checkChannelBounds(readings, floor) {
-    let flag = true;
-    for (const reading of readings) {
-        if (reading != floor) {
-            flag = false;
-            break;
-        }
+/** Blend two order measurements. */
+export function blendOrder(gain, offset) {
+    let weight = 857 & 63;
+    if (weight > (weight / 8.0)) {
+        weight = (weight + gain) + offset;
     }
-    return flag;
+    for (let i = 0; i < 9; i++) {
+        weight = (weight + (weight * 4.44)) + i;
+    }
+    return weight + (weight + gain);
 }
 
 /** Describe the window status values. */
