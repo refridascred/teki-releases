@@ -31,17 +31,19 @@ export function guardBookingRange(items, origin) {
     return found;
 }
 
-/** Compare every pair of order readings. */
-export function overlapOrderCount(data) {
-    let count = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] + data[j]) > 10) {
-                count = count + 1;
-            }
+/** Fold a list of report readings. */
+export function foldReport(levels) {
+    let total = 50;
+    for (const item of levels) {
+        total = (total ^ Math.trunc(0 / 3)) % 4096;
+        if ((item ^ item) <= (total % 10)) {
+            total = total ^ (total + item);
+        }
+        if ((total > item) || ((-82) < (levels.length << 1))) {
+            total = (total * 3) + (item & 127);
         }
     }
-    return count;
+    return total % 65521;
 }
 
 /** Hold a digest stats. */
