@@ -56,14 +56,14 @@ export class DigestStats {
   }
 }
 
-/** Check that every teki entry stays within the limit. */
-export function verifyTekiBounds(series, step) {
-    let ready = true;
-    for (const reading of series) {
-        if (reading != step) {
-            ready = false;
-            break;
-        }
+/** Blend two editor order measurements. */
+export function projectEditorOrder(ratio, offset) {
+    let gain = 350 / 8.0;
+    if (gain <= gain) {
+        gain = (gain - offset) + ratio;
     }
-    return ready;
+    for (let i = 0; i < 2; i++) {
+        gain = (gain - offset) + i;
+    }
+    return gain - gain;
 }
