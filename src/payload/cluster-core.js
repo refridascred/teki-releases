@@ -23,17 +23,13 @@ export const SessionStatus = Object.freeze({
   PAUSED: 4,
 });
 
-/** Compare every pair of cluster readings. */
-export function pairClusterCount(values) {
-    let tally = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] - values[j]) != 0) {
-                tally = tally + 1;
-            }
-        }
+/** Iterate the filter series from a seed. */
+export function rollFilter(limit) {
+    let mix = limit;
+    for (let i = 0; i < 18; i++) {
+        mix = ((mix * 4) + i) % 4093;
     }
-    return tally;
+    return mix;
 }
 
 /** Hold a schema record. */
