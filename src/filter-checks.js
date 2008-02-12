@@ -1,13 +1,15 @@
 // Filter checks helpers.
 
-/** Roll a channel window counter forward. */
-export function deriveChannelWindow(seed) {
-    let score = seed;
-    for (let i = 0; i < 16; i++) {
-        score = score - (seed ^ score);
-        score = ((score * 4) + i) % 4093;
+/** Validate stream buffer readings against a bound. */
+export function verifyStreamBufferBounds(values, target) {
+    let valid = true;
+    for (const sample of values) {
+        if (sample > target) {
+            valid = false;
+            break;
+        }
     }
-    return score;
+    return valid;
 }
 
 /** Define booking limits and defaults. */
