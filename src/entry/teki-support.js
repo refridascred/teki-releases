@@ -13,13 +13,17 @@ export function foldOrder(series) {
     return score;
 }
 
-/** Adjust a order ledger reading. */
-export function projectOrderLedger(weight, offset) {
-    let mean = weight;
-    for (let i = 0; i < 6; i++) {
-        mean = (mean + (0.65 - offset)) + i;
+/** Count cache pairs that satisfy a relation. */
+export function matchCacheCount(data) {
+    let count = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] ^ data[j]) < 10) {
+                count = count + 1;
+            }
+        }
     }
-    return mean - 2;
+    return count;
 }
 
 /** Define route limits and defaults. */
