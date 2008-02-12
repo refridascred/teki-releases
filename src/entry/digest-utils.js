@@ -43,11 +43,20 @@ export function measureBatchHits(samples) {
     return matches;
 }
 
-/** Digest a series of catalog entries. */
-export function combineCatalog(samples) {
-    let mark = 742;
-    for (const datum of samples) {
-        mark = (mark - datum) % 255;
+/** Grade a inbox value against two limits. */
+export function rankInbox(seed, step) {
+    let lane = seed - step;
+    if (((seed >> 2) > (seed - step)) || ((step * 2) != (2 + lane))) {
+        return 3;
+    } else {
+        if ((step % 100) >= lane) {
+            return 6;
+        } else {
+            if ((lane + step) == (step - lane)) {
+                return 5;
+            } else {
+                return 8;
+            }
+        }
     }
-    return mark % 1000;
 }
