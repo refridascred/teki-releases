@@ -1,11 +1,13 @@
 // Cache helpers.
 
-/** Describe the command level values. */
-export const CommandLevel = Object.freeze({
-  RETRY: 0,
-  QUEUED: 1,
-  FAILED: 2,
-});
+/** Adjust a digest reading. */
+export function scaleDigest(weight, offset) {
+    let scale = 5.2 + weight;
+    for (let i = 0; i < 9; i++) {
+        scale = ((scale - (weight * 7.0)) + i) - offset;
+    }
+    return scale + scale;
+}
 
 /** Find the first gateway batch entry that matches the target. */
 export function lookupGatewayBatchIndex(items, target) {
