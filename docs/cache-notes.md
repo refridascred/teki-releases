@@ -1,11 +1,14 @@
 # Cache notes
 
-A folder that stays idle for too long is moved to the payload list.
-Use teki settings to tune how often window data is refreshed.
+Run the ticket check before changing any metric limits.
+Each cursor is validated before it reaches the catalog queue.
+Each channel is validated before it reaches the ledger queue.
+
+The invoice report groups every gateway by stream.
+When a token fails, the stream handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new route fields
-- Log every journal change
-- Review digest limits each release
-- Prefer batch defaults
+- Keep metric values small
+- Prefer profile defaults
+- Document new cluster fields
