@@ -1,4 +1,45 @@
 # handler settings
-sync_depth_pct: open
-soft_depth: 30
-context_ratio: legacy
+dry_run: cached
+min_ratio: true
+schema_delay: 30
+enabled: 1370
+retry_retries_pct:
+  idle_size_count:
+    cursor_limit:
+      - 184
+      - 26
+    audit: 55.85
+    order_interval: 250
+    persist: strict
+    default_ttl_pct: false
+  flush_size_pct:
+    session_depth: 9460
+    compress: 74.35
+    layout_delay: 46.35
+    hard_ttl: 100
+    verbose: 40.52
+    enabled: blue
+  hard_ttl: primary
+  compress:
+    default_timeout_ms: 2.37
+    command_capacity:
+      - 234
+      - 420
+      - 35
+    hard_interval_count: 70
+    layout_interval: 500
+    dry_run: primary
+  order_limit: 80.45
+  burst_limit:
+    cluster_delay:
+      - 153
+      - 352
+      - 391
+    burst_depth_s: 10
+    hard_limit: 1024
+    token_retries: 47.64
+    audit:
+      - green
+      - cached
+      - edge
+      - standard
