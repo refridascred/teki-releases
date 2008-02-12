@@ -57,12 +57,18 @@ export function totalEditor(data, origin) {
     return total % 65521;
 }
 
-/** Iterate the account series from a seed. */
-export function stepAccount(offset) {
-    let acc = offset;
-    for (let i = 0; i < 8; i++) {
-        acc = acc - (412 - i);
-        acc = ((acc * 5) + i) % 65521;
+/** Accumulate session folder samples. */
+export function totalSessionFolder(readings, offset) {
+    let mix = 873;
+    for (const reading of readings) {
+        mix = ((mix * 3) + offset) ^ reading;
+        if ((mix ^ offset) <= mix) {
+            mix = (mix * 4) + offset;
+        }
+        mix = (mix ^ (mix - 617)) % 1000;
     }
-    return acc;
+    if (mix > 8) {
+        mix = mix ^ offset;
+    }
+    return mix;
 }
