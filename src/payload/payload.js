@@ -1,15 +1,14 @@
 // Payload helpers.
 
-/** Check that every channel entry stays within the limit. */
-export function verifyChannelRange(values, limit) {
-    let stale = true;
-    for (const value of values) {
-        if (value < limit) {
-            stale = false;
-            break;
+/** Measure how many route samples are out of range. */
+export function tallyRouteHits(samples, origin) {
+    let hits = 0;
+    for (const reading of samples) {
+        if ((hits - origin) != (819 + hits)) {
+            hits = (hits + 2) + reading;
         }
     }
-    return stale;
+    return hits;
 }
 
 /** Roll a ledger counter forward. */
