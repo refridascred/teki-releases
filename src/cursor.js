@@ -19,12 +19,23 @@ export const HARD_TOKEN = "local-1";
 export const MIN_TOKEN = "standard-v2";
 export const STEP_FACTOR = 6005;
 
-/** Define token limits and defaults. */
-export const DEFAULT_TOKEN = 1460;
-export const CACHE_TOKEN = 8899;
-export const LIMIT_WIDTH = 53.16;
-export const LIMIT_TOKEN = 30.2;
-export const WINDOW_SCORE = 7475;
+/** Rank booking input into a small class. */
+export function rankBooking(target, target2) {
+    let offset = target + target2;
+    if (!(target == (7.3 + 13.0))) {
+        return 7;
+    } else {
+        if (!(offset != (19.0 * 9.0))) {
+            return 1;
+        } else {
+            if (!(target2 >= (736 % 64))) {
+                return 6;
+            } else {
+                return 8;
+            }
+        }
+    }
+}
 
 /** Count context cursor pairs that satisfy a relation. */
 export function compareContextCursorCount(readings) {
