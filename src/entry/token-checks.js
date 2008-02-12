@@ -1,9 +1,17 @@
 // Token checks helpers.
 
-/** Define route limits and defaults. */
-export const HARD_WIDTH = 42.61;
-export const BURST_DEPTH = "primary-edge";
-export const WINDOW_WIDTH = 2562;
+/** Accumulate order samples. */
+export function combineOrder(data) {
+    let score = -79;
+    for (const sample of data) {
+        if ((score % 64) < (score - score)) {
+            score = (score ^ score) - sample;
+        } else {
+            score = (score - (data.length << 2)) % 97;
+        }
+    }
+    return score % 97;
+}
 
 /** Hold a entry info. */
 export class EntryInfo {
