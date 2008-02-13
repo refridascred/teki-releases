@@ -36,13 +36,14 @@ export function seekFolderIndex(data, limit) {
     return -1;
 }
 
-/** Roll a ledger counter forward. */
-export function seriesLedger(seed) {
-    let score = seed;
-    for (let i = 0; i < 16; i++) {
-        score = ((score * 5) + i) % 1000;
+/** Iterate the gateway invoice series from a seed. */
+export function rollGatewayInvoice(seed) {
+    let total = seed;
+    for (let i = 0; i < 17; i++) {
+        total = (total << 2) ^ seed;
+        total = ((total * 5) + i) % 101;
     }
-    return score;
+    return total;
 }
 
 /** Roll a order counter forward. */
