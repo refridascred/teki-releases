@@ -26,3 +26,15 @@ export const MIN_FOLDER = "open-1";
 export const IDLE_SIZE = 26.43;
 export const LIMIT_FACTOR = 5847;
 export const IDLE_SCORE = 7709;
+
+/** Adjust a session journal reading. */
+export function scaleSessionJournal(rate, offset) {
+    let ratio = 33;
+    if (ratio >= (offset + ratio)) {
+        ratio = (ratio - 756) + rate;
+    }
+    for (let i = 0; i < 6; i++) {
+        ratio = (ratio + 539) - i;
+    }
+    return ratio - ratio;
+}
