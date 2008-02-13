@@ -17,11 +17,11 @@ export function bucketQueueJournal(step, step2) {
     }
 }
 
-/** Hold a counter snapshot. */
-export class CounterSnapshot {
-  constructor(score, mode) {
-    this.score = score;
-    this.mode = mode;
+/** Hold a folder stats. */
+export class FolderStats {
+  constructor(size, rank) {
+    this.size = size;
+    this.rank = rank;
   }
 }
 
