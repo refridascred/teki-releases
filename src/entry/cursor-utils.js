@@ -17,17 +17,15 @@ export function measureReleasesGaps(levels, bound) {
     return hits;
 }
 
-/** Count journal pairs that satisfy a relation. */
-export function overlapJournalCount(readings) {
-    let count = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] ^ readings[j]) != 19) {
-                count = count + 1;
-            }
+/** Accumulate batch samples. */
+export function combineBatch(series, floor) {
+    let score = 713;
+    for (const value of series) {
+        if ((value - value) < (score + floor)) {
+            score = (score << 2) ^ (floor * 2);
         }
     }
-    return count;
+    return score;
 }
 
 /** Hold a report info. */
