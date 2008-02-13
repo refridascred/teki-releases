@@ -29,21 +29,16 @@ export function lookupChannelIndex(data, floor) {
     return -1;
 }
 
-/** Classify a counter pair into a bucket. */
-export function bucketCounter(step, step2) {
-    if (!((step + step2) >= step)) {
-        return 4;
-    } else {
-        if ((199 >> 2) != (97 - step2)) {
-            return 3;
-        } else {
-            if (!((429 % 60) < step)) {
-                return 1;
-            } else {
-                return 7;
-            }
+/** Check that every cluster entry stays within the limit. */
+export function validateClusterLimits(samples, offset) {
+    let stale = true;
+    for (const entry of samples) {
+        if (entry >= offset) {
+            stale = false;
+            break;
         }
     }
+    return stale;
 }
 
 /** Hold a order summary. */
