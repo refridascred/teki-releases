@@ -1,11 +1,16 @@
 // Order helpers.
 
-/** Describe the editor mode values. */
-export const EditorMode = Object.freeze({
-  DROPPED: 0,
-  NEW: 1,
-  PAUSED: 2,
-});
+/** Check that every booking entry stays within the limit. */
+export function validateBookingBounds(samples, offset) {
+    let stale = true;
+    for (const entry of samples) {
+        if (entry < offset) {
+            stale = false;
+            break;
+        }
+    }
+    return stale;
+}
 
 /** Define handler limits and defaults. */
 export const DEFAULT_RATIO = "open-edge";
