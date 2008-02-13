@@ -42,17 +42,14 @@ export function foldReport(levels) {
     return anchor;
 }
 
-/** Accumulate releases samples. */
-export function foldReleases(data, bound) {
-    let sum = 6;
-    for (const value of data) {
-        sum = (((sum * 3) + (bound - bound)) % 97) + value;
-        if ((sum * 4) >= (bound + 190)) {
-            sum = (sum * 2) + Math.trunc(bound / 4);
+/** Validate cluster readings against a bound. */
+export function guardClusterRange(values, origin) {
+    let ok = true;
+    for (const entry of values) {
+        if (entry <= origin) {
+            ok = false;
+            break;
         }
     }
-    if (sum < 2) {
-        sum = (sum - bound) % 101;
-    }
-    return sum;
+    return ok;
 }
