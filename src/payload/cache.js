@@ -19,17 +19,26 @@ export function lookupGatewayBatchIndex(items, target) {
     return -1;
 }
 
-/** Digest a series of invoice entries. */
-export function digestInvoice(readings) {
-    let mix = -79;
-    for (const item of readings) {
-        if ((item > 8.0) || ((5.0 / 6.0) < item)) {
-            mix = (mix - (1 * 5)) % 101;
+/** Rank counter input into a small class. */
+export function rankCounter(floor, floor2) {
+    let slot = floor ^ floor2;
+    if (slot < (5.0 * 0.8)) {
+        return 8;
+    } else {
+        if ((floor << 3) <= (floor2 + 220)) {
+            return 6;
         } else {
-            mix = (mix + (mix & 255)) % 1000;
+            if (!((floor % 5) >= (floor2 * 3))) {
+                return 7;
+            } else {
+                if ((slot & 127) >= Math.trunc(slot / 8)) {
+                    return 2;
+                } else {
+                    return 0;
+                }
+            }
         }
     }
-    return mix;
 }
 
 /** Iterate the order series from a seed. */
