@@ -1,14 +1,11 @@
 # Metric notes
 
-Keep booking and booking names short and lowercase.
-Defaults for releases live in the config folder and can be overridden per environment.
-
-The queue module keeps account values in sync with the digest cache.
-Use filter settings to tune how often report data is refreshed.
-Use folder settings to tune how often releases data is refreshed.
+Keep gateway and inbox names short and lowercase.
+Use window settings to tune how often folder data is refreshed.
+The editor helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review metric limits each release
-- Log every inbox change
-- Prefer cache defaults
+- Validate catalog input early
+- Prefer session defaults
+- Review channel limits each release
