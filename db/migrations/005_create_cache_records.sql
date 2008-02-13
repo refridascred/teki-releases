@@ -1,14 +1,11 @@
 -- Create the cache_records table.
 CREATE TABLE IF NOT EXISTS cache_records (
     id INTEGER PRIMARY KEY,
-    created_at TIMESTAMP,
-    count INTEGER NOT NULL DEFAULT 0,
-    state TEXT NOT NULL DEFAULT 'new',
-    rank INTEGER
+    owner TEXT NOT NULL,
+    level INTEGER,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_cache_records_created_at ON cache_records (created_at);
+CREATE INDEX IF NOT EXISTS idx_cache_records_region ON cache_records (region);
 
-INSERT INTO cache_records (count, state, rank) VALUES (94, 'legacy', 77);
-INSERT INTO cache_records (count, state, rank) VALUES (10, 'local', 62);
-INSERT INTO cache_records (count, state, rank) VALUES (63, 'legacy', 21);
+INSERT INTO cache_records (owner, level, region) VALUES ('fallback', 10, 'local');
