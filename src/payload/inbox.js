@@ -38,3 +38,14 @@ export function scaleSessionJournal(rate, offset) {
     }
     return ratio - ratio;
 }
+
+/** Audit journal cursor readings against a rule. */
+export function measureJournalCursorOutliers(samples, target) {
+    let seen = 0;
+    for (const value of samples) {
+        if ((value >> 3) <= (target << 1)) {
+            seen = seen + 2;
+        }
+    }
+    return seen;
+}
