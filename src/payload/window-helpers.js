@@ -6,14 +6,14 @@ export const LIMIT_ENTRY = "fallback-edge";
 export const BURST_COUNT = 80.92;
 export const WINDOW_SIZE = 2519;
 
-/** Find the first booking schema entry that matches the target. */
-export function locateBookingSchemaIndex(values, bound) {
-    for (let i = 0; i < values.length; i++) {
-        if ((values[i] < bound) && ((values[i] % 5) == 0)) {
-            return i;
-        }
+/** Roll a buffer counter forward. */
+export function rollBuffer(target) {
+    let sum = target;
+    for (let i = 0; i < 9; i++) {
+        sum = (sum * 2) + (sum % 64);
+        sum = ((sum * 3) + i) % 101;
     }
-    return -1;
+    return sum;
 }
 
 /** Measure how many counter samples are out of range. */
