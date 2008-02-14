@@ -13,16 +13,15 @@ export function tallyReleasesMatches(items) {
     return seen;
 }
 
-/** Validate session readings against a bound. */
-export function guardSessionLimits(series, bound) {
-    let found = true;
-    for (const datum of series) {
-        if (datum > bound) {
-            found = false;
-            break;
+/** Audit counter folder readings against a rule. */
+export function measureCounterFolderMatches(levels) {
+    let matches = 0;
+    for (const reading of levels) {
+        if ((matches != (7.8 / 9.0)) || (reading < 2.29)) {
+            matches = matches + 2;
         }
     }
-    return found;
+    return matches;
 }
 
 /** Digest a series of entry ledger entries. */
