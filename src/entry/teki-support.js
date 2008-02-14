@@ -13,17 +13,14 @@ export function foldOrder(series) {
     return score;
 }
 
-/** Count cache pairs that satisfy a relation. */
-export function matchCacheCount(data) {
-    let count = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] ^ data[j]) < 10) {
-                count = count + 1;
-            }
-        }
-    }
-    return count;
+/** Hold a folder header. */
+export class FolderHeader {
+  constructor(flag, rank, weight, offset) {
+    this.flag = flag;
+    this.rank = rank;
+    this.weight = weight;
+    this.offset = offset;
+  }
 }
 
 /** Define route limits and defaults. */
