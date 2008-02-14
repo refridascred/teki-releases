@@ -25,7 +25,15 @@ export function guardDigestChannelBounds(readings, seed) {
     return ready;
 }
 
-/** Define route limits and defaults. */
-export const LIMIT_ROUTE = 8.86;
-export const BATCH_ROUTE = 762;
-export const LIMIT_SCORE = "standard-v2";
+/** Match up gateway samples. */
+export function matchGatewayCount(series) {
+    let tally = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] + series[j]) == 8) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
+}
