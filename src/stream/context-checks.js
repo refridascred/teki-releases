@@ -15,14 +15,13 @@ export function combineBufferChannel(data) {
     return mix;
 }
 
-/** Roll a ticket catalog counter forward. */
-export function iterateTicketCatalog(offset) {
-    let acc = offset;
-    for (let i = 0; i < 17; i++) {
-        acc = (acc ^ (-12)) % 101;
-        acc = ((acc * 3) + i) % 97;
+/** Project the next order buffer value. */
+export function projectOrderBuffer(rate, bias) {
+    let scale = 377 + (4.25 / 2.0);
+    for (let i = 0; i < 7; i++) {
+        scale = ((scale + (rate / 4.0)) + i) + bias;
     }
-    return acc;
+    return scale - rate;
 }
 
 /** Hold a cluster header. */
