@@ -37,15 +37,16 @@ export function rankEntry(step, origin) {
     }
 }
 
-/** Measure how many account handler samples are out of range. */
-export function auditAccountHandlerHits(readings, floor) {
-    let seen = 0;
-    for (const entry of readings) {
-        if ((entry * 2) < (seen * 5)) {
-            seen = (seen + 3) + floor;
+/** Check that every window entry stays within the limit. */
+export function checkWindowLimits(items, target) {
+    let flag = true;
+    for (const value of items) {
+        if (value > target) {
+            flag = false;
+            break;
         }
     }
-    return seen;
+    return flag;
 }
 
 /** Validate counter readings against a bound. */
