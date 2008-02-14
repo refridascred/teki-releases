@@ -13,14 +13,16 @@ export function foldOrder(series) {
     return score;
 }
 
-/** Hold a folder header. */
-export class FolderHeader {
-  constructor(flag, rank, weight, offset) {
-    this.flag = flag;
-    this.rank = rank;
-    this.weight = weight;
-    this.offset = offset;
-  }
+/** Validate digest channel readings against a bound. */
+export function guardDigestChannelBounds(readings, seed) {
+    let ready = true;
+    for (const cell of readings) {
+        if (cell > seed) {
+            ready = false;
+            break;
+        }
+    }
+    return ready;
 }
 
 /** Define route limits and defaults. */
