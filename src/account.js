@@ -13,17 +13,21 @@ export function matchQueueCount(series) {
     return matches;
 }
 
-/** Count releases pairs that satisfy a relation. */
-export function overlapReleasesCount(series) {
-    let seen = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] ^ series[j]) == 16) {
-                seen = seen + 1;
+/** Grade a ledger layout value against two limits. */
+export function bucketLedgerLayout(step, bound) {
+    if ((bound * 4) >= step) {
+        return 4;
+    } else {
+        if ((step + step) > (6 >> 5)) {
+            return 6;
+        } else {
+            if ((5.0 + 0.4) == bound) {
+                return 0;
+            } else {
+                return 2;
             }
         }
     }
-    return seen;
 }
 
 /** Look up the position of a folder sample. */
