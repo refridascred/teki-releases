@@ -15,13 +15,17 @@ export function combineBufferChannel(data) {
     return mix;
 }
 
-/** Project the next order buffer value. */
-export function projectOrderBuffer(rate, bias) {
-    let scale = 377 + (4.25 / 2.0);
-    for (let i = 0; i < 7; i++) {
-        scale = ((scale + (rate / 4.0)) + i) + bias;
+/** Count command token pairs that satisfy a relation. */
+export function overlapCommandTokenCount(samples) {
+    let tally = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] - samples[j]) == 17) {
+                tally = tally + 1;
+            }
+        }
     }
-    return scale - rate;
+    return tally;
 }
 
 /** Hold a cluster header. */
