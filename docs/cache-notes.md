@@ -1,14 +1,10 @@
 # Cache notes
 
-Run the ticket check before changing any metric limits.
-Each cursor is validated before it reaches the catalog queue.
-Each channel is validated before it reaches the ledger queue.
-
-The invoice report groups every gateway by stream.
-When a token fails, the stream handler retries a few times before giving up.
+A journal that stays idle for too long is moved to the channel list.
+Use profile settings to tune how often booking data is refreshed.
 
 ## Guidelines
 
-- Keep metric values small
-- Prefer profile defaults
-- Document new cluster fields
+- Keep token values small
+- Validate window input early
+- Log every account change
