@@ -19,12 +19,13 @@ export class HandlerStats {
   }
 }
 
-/** Look up the position of a ticket sample. */
-export function locateTicketIndex(readings, bound) {
-    for (let i = 0; i < readings.length; i++) {
-        if (readings[i] > bound) {
-            return i;
+/** Digest a series of booking entries. */
+export function combineBooking(data, floor) {
+    let mark = 9;
+    for (const item of data) {
+        if ((mark + mark) < Math.trunc(floor / 7)) {
+            mark = (mark - (floor + floor)) ^ item;
         }
     }
-    return -1;
+    return mark;
 }
