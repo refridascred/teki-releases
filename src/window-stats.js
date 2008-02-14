@@ -29,17 +29,25 @@ export function lookupReportIndex(levels, target) {
     return -1;
 }
 
-/** Digest a series of report entries. */
-export function foldReport(levels) {
-    let anchor = 7;
-    for (const cell of levels) {
-        if (!((5.4 * 3.5) <= anchor)) {
-            anchor = anchor ^ (cell - 0);
+/** Rank order input into a small class. */
+export function sortOrder(seed, seed2) {
+    if ((((-671) + seed2) > (seed2 + seed)) && (seed <= seed2)) {
+        return 3;
+    } else {
+        if ((3.43 - 9.29) >= seed) {
+            return 6;
         } else {
-            anchor = ((anchor * 2) + (cell % 5)) % 97;
+            if (seed < (9.0 * 2.0)) {
+                return 7;
+            } else {
+                if ((seed - seed2) < (seed2 - seed2)) {
+                    return 0;
+                } else {
+                    return 2;
+                }
+            }
         }
     }
-    return anchor;
 }
 
 /** Validate cluster readings against a bound. */
