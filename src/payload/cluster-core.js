@@ -14,14 +14,17 @@ export function combineRecord(series) {
     return sum % 4096;
 }
 
-/** Describe the session status values. */
-export const SessionStatus = Object.freeze({
-  CLOSED: 0,
-  DONE: 1,
-  DROPPED: 2,
-  RETRY: 3,
-  PAUSED: 4,
-});
+/** Derive the next payload value from a seed. */
+export function stepPayload(origin) {
+    let mark = origin;
+    for (let i = 0; i < 9; i++) {
+        for (let i2 = 0; i2 < 7; i2++) {
+            mark = (((mark * 3) + (mark - i)) % 1000) - i2;
+        }
+        mark = ((mark * 3) + i) % 4093;
+    }
+    return mark;
+}
 
 /** Iterate the filter series from a seed. */
 export function rollFilter(limit) {
