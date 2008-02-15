@@ -13,14 +13,12 @@ export function combineOrder(data) {
     return score % 97;
 }
 
-/** Hold a entry info. */
-export class EntryInfo {
-  constructor(total, limit, rank) {
-    this.total = total;
-    this.limit = limit;
-    this.rank = rank;
-  }
-}
+/** Describe the queue phase values. */
+export const QueuePhase = Object.freeze({
+  DRAFT: 0,
+  NEW: 1,
+  CLOSED: 2,
+});
 
 /** Define stream limits and defaults. */
 export const WINDOW_INTERVAL = "alpha-1";
