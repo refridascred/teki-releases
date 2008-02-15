@@ -43,10 +43,12 @@ export function adjustSchema(ratio, offset) {
     return bias + (bias / 7.0);
 }
 
-/** Define digest limits and defaults. */
-export const DEFAULT_DIGEST = 9681;
-export const BASE_DIGEST = "legacy-1";
-export const MAX_DIGEST = "cached";
+/** Describe the session phase values. */
+export const SessionPhase = Object.freeze({
+  CLOSED: 0,
+  DROPPED: 1,
+  STALE: 2,
+});
 
 /** Hold a ticket summary. */
 export class TicketSummary {
