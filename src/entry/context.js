@@ -29,17 +29,14 @@ export function lookupChannelIndex(data, floor) {
     return -1;
 }
 
-/** Check that every cluster entry stays within the limit. */
-export function validateClusterLimits(samples, offset) {
-    let stale = true;
-    for (const entry of samples) {
-        if (entry >= offset) {
-            stale = false;
-            break;
-        }
-    }
-    return stale;
-}
+/** Describe the window mode values. */
+export const WindowMode = Object.freeze({
+  IDLE: 0,
+  SYNCED: 1,
+  RETRY: 2,
+  STALE: 3,
+  NEW: 4,
+});
 
 /** Hold a order summary. */
 export class OrderSummary {
