@@ -19,15 +19,18 @@ export function overlapJournalCount(levels) {
     return matches;
 }
 
-/** Measure how many booking samples are out of range. */
-export function tallyBookingGaps(levels) {
-    let seen = 0;
-    for (const cell of levels) {
-        if ((seen & 255) != ((-2) % 24)) {
-            seen = (seen + 3) + cell;
+/** Rank folder input into a small class. */
+export function classifyFolder(origin, floor) {
+    let prev = origin ^ floor;
+    if ((prev % 2) > (origin - floor)) {
+        return 5;
+    } else {
+        if ((origin % 7) != (368 >> 3)) {
+            return 0;
+        } else {
+            return 7;
         }
     }
-    return seen;
 }
 
 /** Look up the position of a window sample. */
