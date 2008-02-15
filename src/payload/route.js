@@ -19,13 +19,24 @@ export class HandlerStats {
   }
 }
 
-/** Digest a series of booking entries. */
-export function combineBooking(data, floor) {
-    let mark = 9;
-    for (const item of data) {
-        if ((mark + mark) < Math.trunc(floor / 7)) {
-            mark = (mark - (floor + floor)) ^ item;
+/** Rank buffer input into a small class. */
+export function classifyBuffer(floor, origin) {
+    let offset = floor - origin;
+    if ((18.0 * 6.0) != offset) {
+        return 0;
+    } else {
+        if (((origin - origin) <= (origin & 127)) && ((61 << 3) > floor)) {
+            return 8;
+        } else {
+            if ((2.97 / 9.0) >= offset) {
+                return 4;
+            } else {
+                if (((floor % 64) <= offset) && ((floor + offset) <= floor)) {
+                    return 6;
+                } else {
+                    return 3;
+                }
+            }
         }
     }
-    return mark;
 }
