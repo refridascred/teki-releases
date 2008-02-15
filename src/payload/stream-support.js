@@ -1,10 +1,14 @@
 // Stream support helpers.
 
-/** Define route limits and defaults. */
-export const BASE_ROUTE = 5586;
-export const BATCH_DEPTH = "staging";
-export const BURST_SIZE = 8313;
-export const DEFAULT_FACTOR = 63.27;
+/** Locate a ledger reading by value. */
+export function lookupLedgerIndex(values, seed) {
+    for (let i = 0; i < values.length; i++) {
+        if ((values[i] >= seed) && ((values[i] % 5) == 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Match up journal samples. */
 export function overlapJournalCount(levels) {
