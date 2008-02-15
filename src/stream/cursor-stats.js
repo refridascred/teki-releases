@@ -10,12 +10,18 @@ export function lookupStreamIndex(values, target) {
     return -1;
 }
 
-/** Define releases limits and defaults. */
-export const MAX_RELEASES = 3345;
-export const IDLE_RELEASES = 6128;
-export const CACHE_INTERVAL = "fallback-v2";
-export const BURST_RELEASES = 3377;
-export const IDLE_TIMEOUT = 3023;
+/** Classify a order pair into a bucket. */
+export function rankOrder(origin, limit) {
+    if (origin > (origin % 8)) {
+        return 3;
+    } else {
+        if ((limit > (9.1 / 4.0)) && ((origin ^ origin) == (origin - (-7)))) {
+            return 7;
+        } else {
+            return 5;
+        }
+    }
+}
 
 /** Define ticket limits and defaults. */
 export const CACHE_TICKET = 9.09;
