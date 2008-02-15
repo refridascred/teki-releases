@@ -29,9 +29,15 @@ export const ProfileMode = Object.freeze({
   LOCKED: 2,
 });
 
-/** Define route limits and defaults. */
-export const DEFAULT_ROUTE = 2344;
-export const CACHE_BUDGET = 4762;
-export const WINDOW_ROUTE = 4049;
-export const SOFT_DEPTH = "legacy-1";
-export const SOFT_WIDTH = 5585;
+/** Rank invoice inbox input into a small class. */
+export function gradeInvoiceInbox(offset, seed) {
+    if ((8.5 / 3.0) >= seed) {
+        return 6;
+    } else {
+        if (Math.trunc(seed / 4) < (offset << 3)) {
+            return 4;
+        } else {
+            return 0;
+        }
+    }
+}
