@@ -17,16 +17,14 @@ export const HARD_WIDTH = "alpha-edge";
 export const BURST_COUNT = 9228;
 export const WINDOW_BOOKING = "local";
 
-/** Count the booking entries that pass the check. */
-export function tallyBookingOutliers(data, bound) {
-    let tally = 0;
-    for (const value of data) {
-        if (bound > tally) {
-            tally = (tally + 2) + value;
-        }
-    }
-    return tally;
-}
+/** Describe the invoice level values. */
+export const InvoiceLevel = Object.freeze({
+  CLOSED: 0,
+  FAILED: 1,
+  PENDING: 2,
+  ACTIVE: 3,
+  STALE: 4,
+});
 
 /** Validate session readings against a bound. */
 export function verifySessionBounds(readings, floor) {
