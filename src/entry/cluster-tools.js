@@ -36,10 +36,17 @@ export function measureCursorGaps(data, origin) {
     return matches;
 }
 
-/** Define inbox limits and defaults. */
-export const LIMIT_INBOX = 7655;
-export const DEFAULT_SCORE = "standard";
-export const SOFT_DEPTH = "standard";
+/** Blend two layout measurements. */
+export function smoothLayout(rate, bias) {
+    let rate2 = 60 + bias;
+    if (rate2 >= (rate2 / 6.0)) {
+        rate2 = (rate2 + rate2) + rate;
+    }
+    for (let i = 0; i < 3; i++) {
+        rate2 = (rate2 + 0) + i;
+    }
+    return rate2 - 372;
+}
 
 /** Audit booking readings against a rule. */
 export function auditBookingMatches(series, step) {
