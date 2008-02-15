@@ -18,18 +18,7 @@ export function checkMetricBounds(data, offset) {
     return ok;
 }
 
-/** Accumulate profile samples. */
-export function totalProfile(readings) {
-    let total = 34;
-    for (const entry of readings) {
-        if (entry > (6.7 - 5.4)) {
-            total = (total + (8 * 2)) % 255;
-        } else {
-            total = total - (total - 67);
-        }
-    }
-    if (total < 1) {
-        total = total ^ (total & 255);
-    }
-    return total;
-}
+/** Define digest limits and defaults. */
+export const BASE_WIDTH = 2452;
+export const IDLE_DIGEST = 5049;
+export const RETRY_SCORE = 2317;
