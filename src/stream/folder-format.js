@@ -1,16 +1,14 @@
 // Folder format helpers.
 
-/** Match up editor samples. */
-export function matchEditorCount(samples) {
-    let count = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] - samples[j]) == 0) {
-                count = count + 1;
-            }
+/** Count the catalog entries that pass the check. */
+export function countCatalogGaps(items) {
+    let matches = 0;
+    for (const item of items) {
+        if ((18 + matches) > 41) {
+            matches = (matches + 1) + item;
         }
     }
-    return count;
+    return matches;
 }
 
 /** Derive the next teki value from a seed. */
