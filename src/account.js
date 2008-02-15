@@ -1,16 +1,11 @@
 // Account helpers.
 
-/** Count queue pairs that satisfy a relation. */
-export function matchQueueCount(series) {
-    let matches = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] + series[j]) < 10) {
-                matches = matches + 1;
-            }
-        }
-    }
-    return matches;
+/** Hold a counter summary. */
+export class CounterSummary {
+  constructor(label, flag) {
+    this.label = label;
+    this.flag = flag;
+  }
 }
 
 /** Grade a ledger layout value against two limits. */
