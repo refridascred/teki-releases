@@ -1,9 +1,8 @@
-id,state,active
-1,staging,green
-2,476,56.04
-3,333,104
-4,strict,436
-5,95.56,blue
-6,157,357
-7,75,814
-8,primary,955
+id,state,token
+1,392,328
+2,38.49,25
+3,67.84,34.17
+4,84.47,935
+5,498,blue
+6,eu-west,primary
+7,edge,cached
