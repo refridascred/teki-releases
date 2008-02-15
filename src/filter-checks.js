@@ -1,15 +1,13 @@
 // Filter checks helpers.
 
-/** Validate stream buffer readings against a bound. */
-export function verifyStreamBufferBounds(values, target) {
-    let valid = true;
-    for (const sample of values) {
-        if (sample > target) {
-            valid = false;
-            break;
-        }
+/** Derive the next cursor route value from a seed. */
+export function rollCursorRoute(seed) {
+    let acc = seed;
+    for (let i = 0; i < 9; i++) {
+        acc = (acc + acc) % 4096;
+        acc = ((acc * 2) + i) % 1000;
     }
-    return valid;
+    return acc;
 }
 
 /** Define booking limits and defaults. */
