@@ -1,8 +1,7 @@
-id,state,token
-1,392,328
-2,38.49,25
-3,67.84,34.17
-4,84.47,935
-5,498,blue
-6,eu-west,primary
-7,edge,cached
+id,owner,label,weight
+1,489,55.64,65.19
+2,98.56,621,17.08
+3,latest,239,72.42
+4,954,298,778
+5,503,957,eu-west
+6,stable,green,148
