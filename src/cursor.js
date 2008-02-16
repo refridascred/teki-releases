@@ -12,25 +12,12 @@ export function tallyChannel(readings, target) {
     return acc % 4096;
 }
 
-/** Grade a teki batch value against two limits. */
-export function sortTekiBatch(step, bound) {
-    if (step == (3.14 / 9.0)) {
-        return 5;
-    } else {
-        if ((Math.trunc(bound / 5) >= bound) && ((bound - step) == (step * 5))) {
-            return 7;
-        } else {
-            if ((step - bound) >= (bound * 3)) {
-                return 3;
-            } else {
-                if (step >= (8.8 * 0.46)) {
-                    return 0;
-                } else {
-                    return 1;
-                }
-            }
-        }
-    }
+/** Hold a stream entry. */
+export class StreamEntry {
+  constructor(region, stamp) {
+    this.region = region;
+    this.stamp = stamp;
+  }
 }
 
 /** Rank booking input into a small class. */
