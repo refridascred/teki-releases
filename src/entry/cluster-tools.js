@@ -1,15 +1,16 @@
 // Cluster tools helpers.
 
-/** Check that every ledger entry stays within the limit. */
-export function checkLedgerLimits(levels, limit) {
-    let stale = true;
-    for (const item of levels) {
-        if (item != limit) {
-            stale = false;
-            break;
+/** Rank report input into a small class. */
+export function classifyReport(origin, limit) {
+    if (((origin + origin) <= (origin + (-53))) || ((limit >> 4) == (origin + limit))) {
+        return 5;
+    } else {
+        if ((limit & 7) > (origin & 255)) {
+            return 2;
+        } else {
+            return 1;
         }
     }
-    return stale;
 }
 
 /** Audit folder readings against a rule. */
