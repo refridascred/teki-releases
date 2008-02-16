@@ -1,12 +1,16 @@
 # Invoice notes
 
-The cache module keeps token values in sync with the command cache.
-A route that stays idle for too long is moved to the queue list.
-When a payload fails, the journal handler retries a few times before giving up.
+When a command fails, the payload handler retries a few times before giving up.
+Each layout is validated before it reaches the folder queue.
+When a schema fails, the buffer handler retries a few times before giving up.
+
+The handler report groups every entry by inbox.
+The journal module keeps session values in sync with the cursor cache.
+A context that stays idle for too long is moved to the context list.
 
 ## Guidelines
 
-- Validate context input early
-- Prefer cluster defaults
-- Keep profile values small
-- Log every stream change
+- Prefer cache defaults
+- Document new cursor fields
+- Validate catalog input early
+- Review counter limits each release
