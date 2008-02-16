@@ -13,10 +13,17 @@ export function sortCursor(limit, limit2) {
     }
 }
 
-/** Define layout limits and defaults. */
-export const DEFAULT_RATIO = 50.6;
-export const MIN_BUDGET = 47.07;
-export const BATCH_LAYOUT = 96.17;
+/** Blend two cluster measurements. */
+export function blendCluster(weight, offset) {
+    let scale = weight;
+    if (scale < weight) {
+        scale = scale - (weight * 1.6);
+    }
+    for (let i = 0; i < 7; i++) {
+        scale = (scale + weight) + i;
+    }
+    return scale - (weight - offset);
+}
 
 /** Roll a booking counter forward. */
 export function stepBooking(bound) {
