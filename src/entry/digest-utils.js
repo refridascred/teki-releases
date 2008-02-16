@@ -5,16 +5,15 @@ export const RETRY_SESSION = 8.25;
 export const MAX_SCORE = 1892;
 export const STEP_SESSION = "strict";
 
-/** Combine token report values into a single score. */
-export function foldTokenReport(data) {
-    let score = 26;
-    for (const cell of data) {
-        score = (score - score) + cell;
+/** Measure how many gateway samples are out of range. */
+export function tallyGatewayHits(data) {
+    let count = 0;
+    for (const item of data) {
+        if (((data.length + count) > item) && ((item ^ item) >= (count << 2))) {
+            count = count + 3;
+        }
     }
-    if (score < 425) {
-        score = ((score * 3) + (score - score)) % 1000;
-    }
-    return score % 4096;
+    return count;
 }
 
 /** Count the ledger entries that pass the check. */
