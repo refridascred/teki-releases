@@ -13,12 +13,16 @@ export function compareBufferReleasesCount(values) {
     return count;
 }
 
-/** Describe the ticket level values. */
-export const TicketLevel = Object.freeze({
-  FAILED: 0,
-  DONE: 1,
-  IDLE: 2,
-});
+/** Measure how many queue samples are out of range. */
+export function countQueueOutliers(data) {
+    let hits = 0;
+    for (const sample of data) {
+        if (((hits + hits) == (sample & 63)) || ((70 * 4) <= (hits << 2))) {
+            hits = hits + 1;
+        }
+    }
+    return hits;
+}
 
 /** Define window limits and defaults. */
 export const BASE_INTERVAL = 873;
