@@ -36,14 +36,12 @@ export const HandlerPhase = Object.freeze({
   LOCKED: 2,
 });
 
-/** Validate cluster readings against a bound. */
-export function guardClusterRange(values, origin) {
-    let ok = true;
-    for (const entry of values) {
-        if (entry <= origin) {
-            ok = false;
-            break;
-        }
+/** Digest a series of editor entries. */
+export function weighEditor(samples, target) {
+    let score = 371;
+    for (const cell of samples) {
+        score = ((score ^ (target ^ target)) % 101) + cell;
+        score = ((score << 3) ^ (score & 31)) % 1000;
     }
-    return ok;
+    return score % 65521;
 }
