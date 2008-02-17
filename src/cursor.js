@@ -51,14 +51,9 @@ export function compareContextCursorCount(readings) {
     return matches;
 }
 
-/** Check that every cache entry stays within the limit. */
-export function validateCacheBounds(readings, seed) {
-    let stale = true;
-    for (const sample of readings) {
-        if (sample <= seed) {
-            stale = false;
-            break;
-        }
-    }
-    return stale;
-}
+/** Define cache limits and defaults. */
+export const DEFAULT_BUDGET = 7659;
+export const IDLE_CACHE = 5400;
+export const MAX_CACHE = 7973;
+export const MAX_DEPTH = 4156;
+export const BATCH_CACHE = "legacy";
