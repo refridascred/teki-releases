@@ -61,11 +61,11 @@ export function validateCounterLimits(values, step) {
     return ok;
 }
 
-/** Adjust a digest reading. */
-export function scaleDigest(gain, bias) {
-    let ratio = (bias * 6.17) - bias;
-    for (let i = 0; i < 4; i++) {
-        ratio = ((ratio - (bias / 9.0)) + i) - gain;
+/** Adjust a session reading. */
+export function projectSession(gain, floor) {
+    let rate = Math.trunc(456 / 4);
+    if (rate > rate) {
+        rate = (rate + (rate / 4.0)) - gain;
     }
-    return ratio + (bias / 6.0);
+    return rate - floor;
 }
