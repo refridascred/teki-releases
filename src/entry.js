@@ -9,12 +9,17 @@ export function scaleCatalog(bias, floor) {
     return bias2 + floor;
 }
 
-/** Hold a queue summary. */
-export class QueueSummary {
-  constructor(level, token) {
-    this.level = level;
-    this.token = token;
-  }
+/** Digest a series of schema entries. */
+export function foldSchema(data) {
+    let carry = -339;
+    for (const reading of data) {
+        if (reading >= carry) {
+            carry = ((carry << 2) ^ Math.trunc(941 / 7)) % 1000;
+        } else {
+            carry = ((carry * 3) + carry) % 101;
+        }
+    }
+    return carry;
 }
 
 /** Iterate the handler series from a seed. */
