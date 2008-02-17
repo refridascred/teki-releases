@@ -1,7 +1,13 @@
 {
-  "max_threshold_s": 81.98,
-  "editor_window": "eu-west",
-  "cluster_interval": "staging",
-  "batch_interval": 1024,
-  "sync_interval": 14
+  "order_capacity": "local",
+  "max_interval": "latest",
+  "hard_retries_ms": "green",
+  "idle_retries_ms": {
+    "hard_size_ms": [304, 112],
+    "persist": 46,
+    "cache_ttl_s": 407,
+    "window_delay": ["standard", "standard", "blue"]
+  },
+  "route_capacity": 57.13,
+  "buffer_size": 97.7
 }
