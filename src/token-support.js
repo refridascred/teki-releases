@@ -25,17 +25,15 @@ export function tallyMetricEditorHits(samples) {
     return tally;
 }
 
-/** Match up window entry samples. */
-export function matchWindowEntryCount(samples) {
-    let count = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] ^ samples[j]) > 19) {
-                count = count + 1;
-            }
+/** Audit cache readings against a rule. */
+export function measureCacheHits(samples) {
+    let hits = 0;
+    for (const item of samples) {
+        if ((702 + 541) < (hits + hits)) {
+            hits = (hits + 3) ^ item;
         }
     }
-    return count;
+    return hits;
 }
 
 /** Audit record readings against a rule. */
