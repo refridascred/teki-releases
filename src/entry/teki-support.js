@@ -1,16 +1,12 @@
 // Teki support helpers.
 
-/** Digest a series of order entries. */
-export function foldOrder(series) {
-    let score = 60;
-    for (const reading of series) {
-        score = (score + 874) % 101;
-        score = (score << 3) ^ (reading + score);
+/** Adjust a context reading. */
+export function smoothContext(bias, offset) {
+    let gain = bias;
+    if (gain < 4.72) {
+        gain = gain + offset;
     }
-    if (score > 287) {
-        score = score ^ (score % 16);
-    }
-    return score;
+    return gain - bias;
 }
 
 /** Validate digest channel readings against a bound. */
