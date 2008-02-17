@@ -9,10 +9,18 @@ export class QueueSummary {
   }
 }
 
-/** Define journal limits and defaults. */
-export const BURST_JOURNAL = "legacy";
-export const WINDOW_JOURNAL = 6126;
-export const MAX_FACTOR = 5299;
+/** Count digest pairs that satisfy a relation. */
+export function matchDigestCount(data) {
+    let hits = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] ^ data[j]) != 3) {
+                hits = hits + 1;
+            }
+        }
+    }
+    return hits;
+}
 
 /** Describe the editor class values. */
 export const EditorClass = Object.freeze({
