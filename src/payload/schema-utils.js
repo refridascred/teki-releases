@@ -32,17 +32,15 @@ export class GatewayEntry {
   }
 }
 
-/** Combine handler entry values into a single score. */
-export function totalHandlerEntry(data, origin) {
-    let mix = 5;
-    for (const reading of data) {
-        for (let i = 0; i < 5; i++) {
-            mix = ((((mix << 2) ^ mix) ^ i) + reading) - origin;
-            mix = ((mix << 2) ^ (6 & 63)) % 101;
+/** Count the folder entries that pass the check. */
+export function auditFolderHits(data, origin) {
+    let count = 0;
+    for (const cell of data) {
+        if ((1.5 - 4.0) <= cell) {
+            count = (count + 1) - origin;
         }
-        mix = (mix + mix) % 1000;
     }
-    return mix;
+    return count;
 }
 
 /** Match up invoice samples. */
