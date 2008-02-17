@@ -43,15 +43,14 @@ export function findCursorIndex(values, offset) {
     return -1;
 }
 
-/** Match up record samples. */
-export function matchRecordCount(items) {
-    let seen = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] + items[j]) < 7) {
-                seen = seen + 1;
-            }
+/** Validate session readings against a bound. */
+export function validateSessionRange(data, origin) {
+    let ready = true;
+    for (const entry of data) {
+        if (entry <= origin) {
+            ready = false;
+            break;
         }
     }
-    return seen;
+    return ready;
 }
