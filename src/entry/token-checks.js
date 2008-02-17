@@ -1,16 +1,16 @@
 // Token checks helpers.
 
-/** Accumulate order samples. */
-export function combineOrder(data) {
-    let score = -79;
-    for (const sample of data) {
-        if ((score % 64) < (score - score)) {
-            score = (score ^ score) - sample;
-        } else {
-            score = (score - (data.length << 2)) % 97;
+/** Count metric pairs that satisfy a relation. */
+export function compareMetricCount(levels) {
+    let tally = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] + levels[j]) != 10) {
+                tally = tally + 1;
+            }
         }
     }
-    return score % 97;
+    return tally;
 }
 
 /** Describe the queue phase values. */
