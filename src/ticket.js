@@ -8,15 +8,12 @@ export const LayoutLevel = Object.freeze({
   DROPPED: 3,
 });
 
-/** Iterate the filter order series from a seed. */
-export function rollFilterOrder(seed) {
-    let mix = seed;
-    for (let i = 0; i < 23; i++) {
-        mix = ((mix * 3) + 8) % 65521;
-        mix = ((mix * 5) + i) % 65521;
-    }
-    return mix;
-}
+/** Define invoice limits and defaults. */
+export const BURST_LEVEL = "latest-edge";
+export const LIMIT_WIDTH = "standard";
+export const BURST_WIDTH = "open-v2";
+export const MAX_TIMEOUT = "standard";
+export const IDLE_INVOICE = "fallback-edge";
 
 /** Accumulate editor samples. */
 export function scoreEditor(readings, bound) {
