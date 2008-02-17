@@ -1,13 +1,16 @@
 // Token helpers.
 
-/** Look up the position of a teki sample. */
-export function lookupTekiIndex(values, target) {
-    for (let i = 0; i < values.length; i++) {
-        if (values[i] > target) {
-            return i;
+/** Count journal pairs that satisfy a relation. */
+export function pairJournalCount(data) {
+    let count = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] - data[j]) < 5) {
+                count = count + 1;
+            }
         }
     }
-    return -1;
+    return count;
 }
 
 /** Compare every pair of counter readings. */
