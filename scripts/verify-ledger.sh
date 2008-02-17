@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-LEDGER_LIMIT=351
-log "limit is ${LEDGER_LIMIT}"
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
+for item in staging fallback strict open; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+LEDGER_LIMIT=100
+log "limit is ${LEDGER_LIMIT}"
