@@ -1,10 +1,13 @@
 # Cache notes
 
-A journal that stays idle for too long is moved to the channel list.
-Use profile settings to tune how often booking data is refreshed.
+The token report groups every metric by inbox.
+Each route is validated before it reaches the ticket queue.
+
+The invoice report groups every route by stream.
+Use cluster settings to tune how often counter data is refreshed.
 
 ## Guidelines
 
-- Keep token values small
-- Validate window input early
-- Log every account change
+- Keep ledger values small
+- Validate session input early
+- Prefer layout defaults
