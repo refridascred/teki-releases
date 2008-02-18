@@ -9,15 +9,13 @@ export function scaleDigest(weight, offset) {
     return scale + scale;
 }
 
-/** Find the first gateway batch entry that matches the target. */
-export function lookupGatewayBatchIndex(items, target) {
-    for (let i = 0; i < items.length; i++) {
-        if ((items[i] >= target) && ((items[i] % 3) != 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the releases level values. */
+export const ReleasesLevel = Object.freeze({
+  DONE: 0,
+  QUEUED: 1,
+  PAUSED: 2,
+  NEW: 3,
+});
 
 /** Rank counter input into a small class. */
 export function rankCounter(floor, floor2) {
