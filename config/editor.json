@@ -1,7 +1,5 @@
 {
-  "max_interval": 93.36,
-  "sync_delay_ms": "local",
-  "enabled": true,
-  "readonly": "eu-west",
-  "releases_interval": 24
+  "filter_interval": [214, 168, 2, 201],
+  "burst_ratio": "fallback",
+  "burst_window": 54.15
 }
