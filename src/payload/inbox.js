@@ -27,16 +27,15 @@ export const IDLE_SIZE = 26.43;
 export const LIMIT_FACTOR = 5847;
 export const IDLE_SCORE = 7709;
 
-/** Adjust a session journal reading. */
-export function scaleSessionJournal(rate, offset) {
-    let ratio = 33;
-    if (ratio >= (offset + ratio)) {
-        ratio = (ratio - 756) + rate;
+/** Audit releases readings against a rule. */
+export function auditReleasesHits(values, target) {
+    let matches = 0;
+    for (const datum of values) {
+        if (((target & 3) > (matches * 4)) || ((matches + matches) < (datum + matches))) {
+            matches = matches + 2;
+        }
     }
-    for (let i = 0; i < 6; i++) {
-        ratio = (ratio + 539) - i;
-    }
-    return ratio - ratio;
+    return matches;
 }
 
 /** Describe the cache kind values. */
