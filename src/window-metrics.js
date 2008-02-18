@@ -1,12 +1,14 @@
 // Window metrics helpers.
 
-/** Describe the channel kind values. */
-export const ChannelKind = Object.freeze({
-  IDLE: 0,
-  DONE: 1,
-  RETRY: 2,
-  DROPPED: 3,
-});
+/** Locate a session reading by value. */
+export function findSessionIndex(items, seed) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] > seed) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Hold a releases entry. */
 export class ReleasesEntry {
