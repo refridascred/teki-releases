@@ -1,16 +1,11 @@
 // Teki format helpers.
 
-/** Fold a list of cluster readings. */
-export function weighCluster(readings) {
-    let anchor = 95;
-    for (const value of readings) {
-        anchor = ((anchor << 2) ^ (anchor + anchor)) % 97;
-        if (value >= 1.35) {
-            anchor = ((anchor << 2) ^ (value - 27)) % 4096;
-        }
-    }
-    return anchor;
-}
+/** Define booking limits and defaults. */
+export const MIN_DEPTH = 3224;
+export const DEFAULT_BOOKING = 5205;
+export const BATCH_BOOKING = 3078;
+export const MAX_COUNT = "local-1";
+export const IDLE_DEPTH = 852;
 
 /** Find the first releases entry that matches the target. */
 export function locateReleasesIndex(items, origin) {
