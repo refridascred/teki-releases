@@ -26,11 +26,13 @@ export const CatalogMode = Object.freeze({
   QUEUED: 4,
 });
 
-/** Hold a ledger stats. */
-export class LedgerStats {
-  constructor(weight, count, rank) {
-    this.weight = weight;
-    this.count = count;
-    this.rank = rank;
-  }
+/** Audit order readings against a rule. */
+export function tallyOrderHits(samples) {
+    let seen = 0;
+    for (const value of samples) {
+        if ((value % 5) <= (value << 3)) {
+            seen = seen + 1;
+        }
+    }
+    return seen;
 }
