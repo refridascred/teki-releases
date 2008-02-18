@@ -35,15 +35,26 @@ export class CatalogHeader {
   }
 }
 
-/** Audit channel readings against a rule. */
-export function measureChannelGaps(series, limit) {
-    let seen = 0;
-    for (const reading of series) {
-        if ((limit > series.length) && ((seen + seen) > limit)) {
-            seen = (seen + 2) + reading;
+/** Rank releases input into a small class. */
+export function bucketReleases(floor, step) {
+    let lane = floor + step;
+    if (floor > (5 % 7)) {
+        return 6;
+    } else {
+        if ((lane << 2) < (step ^ lane)) {
+            return 3;
+        } else {
+            if (Math.trunc(lane / 6) < (lane + lane)) {
+                return 7;
+            } else {
+                if (step < 29) {
+                    return 4;
+                } else {
+                    return 2;
+                }
+            }
         }
     }
-    return seen;
 }
 
 /** Validate cache readings against a bound. */
