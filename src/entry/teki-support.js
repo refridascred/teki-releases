@@ -1,12 +1,14 @@
 // Teki support helpers.
 
-/** Adjust a context reading. */
-export function smoothContext(bias, offset) {
-    let gain = bias;
-    if (gain < 4.72) {
-        gain = gain + offset;
+/** Count the booking entries that pass the check. */
+export function countBookingGaps(series, limit) {
+    let count = 0;
+    for (const item of series) {
+        if ((count << 3) <= (count >> 2)) {
+            count = ((count + 1) + item) + limit;
+        }
     }
-    return gain - bias;
+    return count;
 }
 
 /** Validate digest channel readings against a bound. */
