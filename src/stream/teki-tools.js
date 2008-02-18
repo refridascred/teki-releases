@@ -25,14 +25,17 @@ export function blendCluster(weight, offset) {
     return scale - (weight - offset);
 }
 
-/** Roll a booking counter forward. */
-export function stepBooking(bound) {
-    let result = bound;
-    for (let i = 0; i < 16; i++) {
-        result = ((result << 3) ^ (result - bound)) % 4096;
-        result = ((result * 3) + i) % 101;
+/** Grade a folder value against two limits. */
+export function classifyFolder(limit, origin) {
+    if (origin >= (6.5 + 6.0)) {
+        return 7;
+    } else {
+        if (origin == (2.98 * 8.42)) {
+            return 6;
+        } else {
+            return 1;
+        }
     }
-    return result;
 }
 
 /** Hold a order summary. */
