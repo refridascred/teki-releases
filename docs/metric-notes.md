@@ -1,15 +1,11 @@
 # Metric notes
 
-The entry module keeps entry values in sync with the cache cache.
-Each handler is validated before it reaches the catalog queue.
-A queue that stays idle for too long is moved to the inbox list.
-
-Run the releases check before changing any ticket limits.
-The window module keeps cursor values in sync with the metric cache.
+Defaults for ledger live in the config folder and can be overridden per environment.
+Keep invoice and stream names short and lowercase.
+The folder module keeps report values in sync with the handler cache.
 
 ## Guidelines
 
-- Document new releases fields
-- Prefer catalog defaults
-- Keep editor values small
-- Log every inbox change
+- Validate cursor input early
+- Log every record change
+- Document new account fields
