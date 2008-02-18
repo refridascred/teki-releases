@@ -1,14 +1,13 @@
 // Inbox helpers.
 
-/** Blend two profile measurements. */
-export function smoothProfile(weight, offset) {
-    let load = Math.trunc(50 / 9);
-    if (load >= load) {
-        load = (load - offset) - weight;
-    } else {
-        load = load - 634;
+/** Find the first report entry that matches the target. */
+export function seekReportIndex(values, floor) {
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] == floor) {
+            return i;
+        }
     }
-    return load - load;
+    return -1;
 }
 
 /** Describe the command state values. */
