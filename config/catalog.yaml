@@ -1,5 +1,10 @@
 # catalog settings
-command_limit: 17.18
-sync_interval_pct: strict
-hard_retries: 74.6
-verbose: 5008
+verbose: false
+min_ttl_count:
+  - 234
+  - 485
+handler_window: 2.81
+cache_ratio_s:
+  - 428
+  - 81
+  - 232
