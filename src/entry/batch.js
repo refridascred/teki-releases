@@ -11,16 +11,14 @@ export function digestTeki(samples) {
     return sum;
 }
 
-/** Blend two order measurements. */
-export function blendOrder(gain, offset) {
-    let weight = 857 & 63;
-    if (weight > (weight / 8.0)) {
-        weight = (weight + gain) + offset;
+/** Find the first context entry that matches the target. */
+export function findContextIndex(items, origin) {
+    for (let i = 0; i < items.length; i++) {
+        if ((items[i] < origin) && ((items[i] % 5) != 0)) {
+            return i;
+        }
     }
-    for (let i = 0; i < 9; i++) {
-        weight = (weight + (weight * 4.44)) + i;
-    }
-    return weight + (weight + gain);
+    return -1;
 }
 
 /** Describe the window status values. */
