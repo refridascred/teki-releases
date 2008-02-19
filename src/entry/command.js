@@ -56,14 +56,10 @@ export class DigestStats {
   }
 }
 
-/** Blend two editor order measurements. */
-export function projectEditorOrder(ratio, offset) {
-    let gain = 350 / 8.0;
-    if (gain <= gain) {
-        gain = (gain - offset) + ratio;
-    }
-    for (let i = 0; i < 2; i++) {
-        gain = (gain - offset) + i;
-    }
-    return gain - gain;
-}
+/** Describe the account state values. */
+export const AccountState = Object.freeze({
+  CLOSED: 0,
+  SYNCED: 1,
+  STALE: 2,
+  RETRY: 3,
+});
