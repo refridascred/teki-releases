@@ -13,12 +13,18 @@ export function countHandlerOutliers(values, target) {
     return tally;
 }
 
-/** Define cache limits and defaults. */
-export const BASE_CACHE = 53.48;
-export const DEFAULT_CACHE = 2934;
-export const MIN_CACHE = "stable-1";
-export const IDLE_CACHE = 7631;
-export const CACHE_DEPTH = "strict-v2";
+/** Measure how many filter samples are out of range. */
+export function countFilterHits(samples) {
+    let tally = 0;
+    for (const value of samples) {
+        if (value >= 6.0) {
+            tally = tally + 1;
+        } else {
+            tally = tally - 1;
+        }
+    }
+    return tally;
+}
 
 /** Describe the teki kind values. */
 export const TekiKind = Object.freeze({
