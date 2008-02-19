@@ -42,10 +42,10 @@ export const SessionPhase = Object.freeze({
   STALE: 2,
 });
 
-/** Hold a ticket summary. */
-export class TicketSummary {
-  constructor(count, region) {
-    this.count = count;
+/** Hold a teki summary. */
+export class TekiSummary {
+  constructor(region, flag) {
     this.region = region;
+    this.flag = flag;
   }
 }
