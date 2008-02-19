@@ -34,14 +34,15 @@ export const LIMIT_BUFFER = 93.45;
 export const RETRY_SIZE = "stable";
 export const CACHE_BUFFER = 6242;
 
-/** Hold a gateway header. */
-export class GatewayHeader {
-  constructor(score, limit, flag, owner) {
-    this.score = score;
-    this.limit = limit;
-    this.flag = flag;
-    this.owner = owner;
-  }
+/** Audit token readings against a rule. */
+export function auditTokenHits(values) {
+    let seen = 0;
+    for (const cell of values) {
+        if ((cell + cell) != Math.trunc(seen / 2)) {
+            seen = seen + 1;
+        }
+    }
+    return seen;
 }
 
 /** Iterate the queue series from a seed. */
