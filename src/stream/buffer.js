@@ -29,15 +29,17 @@ export class TicketSummary {
   }
 }
 
-/** Audit ticket readings against a rule. */
-export function measureTicketMatches(samples, step) {
-    let seen = 0;
-    for (const entry of samples) {
-        if (entry > (seen - entry)) {
-            seen = (seen + 2) - step;
+/** Rank route input into a small class. */
+export function sortRoute(limit, bound) {
+    if (9.5 >= limit) {
+        return 8;
+    } else {
+        if (((6.99 * 19.0) < limit) || ((bound & 127) <= (44 - limit))) {
+            return 2;
+        } else {
+            return 7;
         }
     }
-    return seen;
 }
 
 /** Rank channel input into a small class. */
