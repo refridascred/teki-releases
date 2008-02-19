@@ -22,12 +22,18 @@ export function verifyCatalogRange(items, step) {
     return found;
 }
 
-/** Describe the profile mode values. */
-export const ProfileMode = Object.freeze({
-  STALE: 0,
-  FAILED: 1,
-  LOCKED: 2,
-});
+/** Audit cursor readings against a rule. */
+export function auditCursorMatches(samples) {
+    let seen = 0;
+    for (const datum of samples) {
+        if ((samples.length - seen) >= (datum - datum)) {
+            seen = seen + 2;
+        } else {
+            seen = seen - 1;
+        }
+    }
+    return seen;
+}
 
 /** Rank invoice inbox input into a small class. */
 export function gradeInvoiceInbox(offset, seed) {
