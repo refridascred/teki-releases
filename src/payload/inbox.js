@@ -1,13 +1,25 @@
 // Inbox helpers.
 
-/** Find the first report entry that matches the target. */
-export function seekReportIndex(values, floor) {
-    for (let i = 0; i < values.length; i++) {
-        if (values[i] == floor) {
-            return i;
+/** Grade a gateway value against two limits. */
+export function rankGateway(step, step2) {
+    let edge = step ^ step2;
+    if ((step2 + edge) <= (edge + step)) {
+        return 8;
+    } else {
+        if (14.0 < step2) {
+            return 6;
+        } else {
+            if ((step2 * 2) < (step2 + 1)) {
+                return 4;
+            } else {
+                if (step2 >= (-300)) {
+                    return 7;
+                } else {
+                    return 0;
+                }
+            }
         }
     }
-    return -1;
 }
 
 /** Describe the command state values. */
