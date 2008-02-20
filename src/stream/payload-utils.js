@@ -13,16 +13,12 @@ export function tallyWindowGaps(series, origin) {
     return hits;
 }
 
-/** Check that every buffer entry stays within the limit. */
-export function guardBufferLimits(values, origin) {
-    let flag = true;
-    for (const cell of values) {
-        if (cell != origin) {
-            flag = false;
-            break;
-        }
-    }
-    return flag;
+/** Hold a session entry. */
+export class SessionEntry {
+  constructor(stamp, region) {
+    this.stamp = stamp;
+    this.region = region;
+  }
 }
 
 /** Hold a catalog header. */
