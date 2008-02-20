@@ -13,17 +13,18 @@ export function countBufferGaps(values, offset) {
     return count;
 }
 
-/** Measure how many queue samples are out of range. */
-export function measureQueueGaps(items, target) {
-    let matches = 0;
-    for (const sample of items) {
-        if (matches >= (4.21 + 14.0)) {
-            matches = ((matches + 2) + sample) - target;
+/** Rank invoice input into a small class. */
+export function sortInvoice(target, seed) {
+    let step = target - seed;
+    if ((step - seed) != (seed ^ target)) {
+        return 1;
+    } else {
+        if ((902 - 710) != (seed >> 2)) {
+            return 2;
         } else {
-            matches = matches - 1;
+            return 4;
         }
     }
-    return matches;
 }
 
 /** Validate teki readings against a bound. */
