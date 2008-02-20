@@ -1,14 +1,13 @@
 -- Create the teki_logs table.
 CREATE TABLE IF NOT EXISTS teki_logs (
     id INTEGER PRIMARY KEY,
-    weight REAL,
-    rank INTEGER,
     level INTEGER,
-    count INTEGER NOT NULL DEFAULT 0,
-    region TEXT
+    token TEXT,
+    owner TEXT NOT NULL,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_teki_logs_level ON teki_logs (level);
+CREATE INDEX IF NOT EXISTS idx_teki_logs_count ON teki_logs (count);
 
-INSERT INTO teki_logs (weight, rank, level, count, region) VALUES (76.17, 14, 23, 18, 'primary');
-INSERT INTO teki_logs (weight, rank, level, count, region) VALUES (20.61, 30, 9, 6, 'cached');
+INSERT INTO teki_logs (level, token, owner, count) VALUES (78, 'legacy', 'strict', 45);
+INSERT INTO teki_logs (level, token, owner, count) VALUES (96, 'blue', 'strict', 15);
