@@ -1,8 +1,6 @@
 # counter settings
-sync_window:
-  - fallback
-  - latest
-  - stable
-compress: 51
-retry_capacity_pct: strict
-batch_window_s: 52
+batch_depth_ms: legacy
+readonly: 31
+dry_run: 30
+channel_timeout: 0.99
+idle_timeout: 22.87
