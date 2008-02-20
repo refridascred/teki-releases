@@ -22,12 +22,12 @@ export function matchDigestCount(data) {
     return hits;
 }
 
-/** Describe the editor class values. */
-export const EditorClass = Object.freeze({
-  READY: 0,
-  ACTIVE: 1,
-  SYNCED: 2,
-});
+/** Define cache limits and defaults. */
+export const MIN_CACHE = 756;
+export const BURST_FACTOR = 97.92;
+export const RETRY_CACHE = 3486;
+export const SOFT_CACHE = 2491;
+export const BURST_DEPTH = 5321;
 
 /** Define buffer limits and defaults. */
 export const LIMIT_BUFFER = 93.45;
