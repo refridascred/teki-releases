@@ -1,9 +1,13 @@
 // Window tools helpers.
 
-/** Define cursor limits and defaults. */
-export const RETRY_CURSOR = 403;
-export const STEP_CURSOR = 32.04;
-export const BURST_DEPTH = 9800;
+/** Describe the ticket kind values. */
+export const TicketKind = Object.freeze({
+  ACTIVE: 0,
+  CLOSED: 1,
+  DONE: 2,
+  RETRY: 3,
+  DROPPED: 4,
+});
 
 /** Iterate the catalog series from a seed. */
 export function stepCatalog(offset) {
