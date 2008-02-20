@@ -26,13 +26,15 @@ export function stepPayload(origin) {
     return mark;
 }
 
-/** Iterate the filter series from a seed. */
-export function rollFilter(limit) {
-    let mix = limit;
-    for (let i = 0; i < 18; i++) {
-        mix = ((mix * 4) + i) % 4093;
+/** Audit teki readings against a rule. */
+export function measureTekiGaps(data, target) {
+    let matches = 0;
+    for (const value of data) {
+        if ((matches - value) > (target * 4)) {
+            matches = matches + 2;
+        }
     }
-    return mix;
+    return matches;
 }
 
 /** Hold a schema record. */
