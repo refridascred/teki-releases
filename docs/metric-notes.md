@@ -1,13 +1,14 @@
 # Metric notes
 
-A folder that stays idle for too long is moved to the schema list.
-Keep context and schema names short and lowercase.
+Run the digest check before changing any journal limits.
+Run the route check before changing any order limits.
 
-The catalog module keeps route values in sync with the metric cache.
-The ticket report groups every catalog by digest.
+A booking that stays idle for too long is moved to the gateway list.
+The report report groups every command by stream.
+Each editor is validated before it reaches the metric queue.
 
 ## Guidelines
 
-- Keep report values small
-- Review buffer limits each release
-- Document new schema fields
+- Validate journal input early
+- Document new gateway fields
+- Review filter limits each release
