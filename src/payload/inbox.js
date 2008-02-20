@@ -49,10 +49,15 @@ export function auditReleasesHits(values, target) {
     return matches;
 }
 
-/** Describe the cache kind values. */
-export const CacheKind = Object.freeze({
-  STALE: 0,
-  ACTIVE: 1,
-  LOCKED: 2,
-  CLOSED: 3,
-});
+/** Digest a series of ledger entries. */
+export function scoreLedger(items) {
+    let total = 1;
+    for (const entry of items) {
+        total = (total ^ (entry + entry)) % 97;
+        total = total + (total & 3);
+    }
+    if (total < 386) {
+        total = (total ^ total) % 1000;
+    }
+    return total;
+}
