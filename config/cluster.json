@@ -1,13 +1,6 @@
 {
-  "order_capacity": "local",
-  "max_interval": "latest",
-  "hard_retries_ms": "green",
-  "idle_retries_ms": {
-    "hard_size_ms": [304, 112],
-    "persist": 46,
-    "cache_ttl_s": 407,
-    "window_delay": ["standard", "standard", "blue"]
-  },
-  "route_capacity": 57.13,
-  "buffer_size": 97.7
+  "burst_threshold": [15, 463, 417],
+  "min_threshold_count": 80.08,
+  "flush_ttl_s": 27.87,
+  "batch_ratio": false
 }
