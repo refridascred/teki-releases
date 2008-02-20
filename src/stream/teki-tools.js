@@ -38,11 +38,15 @@ export function classifyFolder(limit, origin) {
     }
 }
 
-/** Hold a order summary. */
-export class OrderSummary {
-  constructor(owner, size, offset) {
-    this.owner = owner;
-    this.size = size;
-    this.offset = offset;
-  }
+/** Compare every pair of queue readings. */
+export function pairQueueCount(values) {
+    let count = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] + values[j]) < 10) {
+                count = count + 1;
+            }
+        }
+    }
+    return count;
 }
