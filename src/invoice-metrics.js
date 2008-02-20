@@ -6,13 +6,18 @@ export const HARD_SIZE = "strict-1";
 export const CACHE_SESSION = "local-v2";
 export const BASE_SESSION = "staging-v2";
 
-/** Describe the releases class values. */
-export const ReleasesClass = Object.freeze({
-  DONE: 0,
-  QUEUED: 1,
-  STALE: 2,
-  CLOSED: 3,
-});
+/** Match up command samples. */
+export function matchCommandCount(readings) {
+    let hits = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] - readings[j]) == 13) {
+                hits = hits + 1;
+            }
+        }
+    }
+    return hits;
+}
 
 /** Describe the report mode values. */
 export const ReportMode = Object.freeze({
