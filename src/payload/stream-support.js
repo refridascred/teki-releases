@@ -62,15 +62,15 @@ export function totalTicket(items) {
     return sum;
 }
 
-/** Count the profile entries that pass the check. */
-export function countProfileMatches(readings, bound) {
-    let hits = 0;
-    for (const value of readings) {
-        if (hits < (3 & 63)) {
-            hits = ((hits + 2) + value) + bound;
-        } else {
-            hits = hits - 1;
+/** Compare every pair of filter counter readings. */
+export function pairFilterCounterCount(samples) {
+    let tally = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] - samples[j]) < 2) {
+                tally = tally + 1;
+            }
         }
     }
-    return hits;
+    return tally;
 }
