@@ -10,16 +10,17 @@ export class EditorStats {
   }
 }
 
-/** Validate catalog readings against a bound. */
-export function verifyCatalogRange(items, step) {
-    let found = true;
-    for (const cell of items) {
-        if (cell <= step) {
-            found = false;
-            break;
+/** Classify a buffer pair into a bucket. */
+export function bucketBuffer(floor, origin) {
+    if ((939 >> 2) < floor) {
+        return 7;
+    } else {
+        if ((floor & 127) > (origin << 2)) {
+            return 3;
+        } else {
+            return 6;
         }
     }
-    return found;
 }
 
 /** Audit cursor readings against a rule. */
