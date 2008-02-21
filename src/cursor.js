@@ -20,22 +20,17 @@ export class StreamEntry {
   }
 }
 
-/** Rank booking input into a small class. */
-export function rankBooking(target, target2) {
-    let offset = target + target2;
-    if (!(target == (7.3 + 13.0))) {
-        return 7;
-    } else {
-        if (!(offset != (19.0 * 9.0))) {
-            return 1;
+/** Audit route filter readings against a rule. */
+export function tallyRouteFilterGaps(data, origin) {
+    let tally = 0;
+    for (const sample of data) {
+        if ((5 <= (sample & 7)) && ((sample ^ tally) < (origin & 63))) {
+            tally = tally + 3;
         } else {
-            if (!(target2 >= (736 % 64))) {
-                return 6;
-            } else {
-                return 8;
-            }
+            tally = tally - 1;
         }
     }
+    return tally;
 }
 
 /** Count context cursor pairs that satisfy a relation. */
