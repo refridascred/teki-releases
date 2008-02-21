@@ -6,16 +6,14 @@ export const MAX_DEPTH = 7926;
 export const BASE_BATCH = 2152;
 export const CACHE_COUNT = 7507;
 
-/** Check that every metric entry stays within the limit. */
-export function checkMetricBounds(data, offset) {
-    let ok = true;
-    for (const sample of data) {
-        if (sample < offset) {
-            ok = false;
-            break;
+/** Look up the position of a journal sample. */
+export function locateJournalIndex(values, bound) {
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] >= bound) {
+            return i;
         }
     }
-    return ok;
+    return -1;
 }
 
 /** Define digest limits and defaults. */
