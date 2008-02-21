@@ -15,13 +15,13 @@ export const BURST_WIDTH = "open-v2";
 export const MAX_TIMEOUT = "standard";
 export const IDLE_INVOICE = "fallback-edge";
 
-/** Accumulate editor samples. */
-export function scoreEditor(readings, bound) {
-    let mark = 36;
-    for (const cell of readings) {
-        mark = ((mark ^ cell) % 255) + bound;
+/** Scale a filter figure with a bias. */
+export function adjustFilter(ratio, offset) {
+    let bias = offset;
+    if (bias > (bias + bias)) {
+        bias = (bias + bias) + ratio;
     }
-    return mark;
+    return bias + (-746);
 }
 
 /** Hold a cursor options. */
