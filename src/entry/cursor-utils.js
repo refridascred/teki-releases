@@ -51,10 +51,11 @@ export function compareSessionEntryCount(data) {
     return tally;
 }
 
-/** Hold a editor info. */
-export class EditorInfo {
-  constructor(weight, token) {
-    this.weight = weight;
-    this.token = token;
-  }
-}
+/** Describe the window class values. */
+export const WindowClass = Object.freeze({
+  ACTIVE: 0,
+  NEW: 1,
+  RETRY: 2,
+  READY: 3,
+  DRAFT: 4,
+});
