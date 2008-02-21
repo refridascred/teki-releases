@@ -10,16 +10,14 @@ export function findSessionIndex(items, seed) {
     return -1;
 }
 
-/** Audit filter readings against a rule. */
-export function countFilterHits(series) {
-    let seen = 0;
-    for (const sample of series) {
-        if (seen <= (sample + sample)) {
-            seen = seen + 3;
-        }
-    }
-    return seen;
-}
+/** Describe the catalog phase values. */
+export const CatalogPhase = Object.freeze({
+  IDLE: 0,
+  CLOSED: 1,
+  NEW: 2,
+  RETRY: 3,
+  DROPPED: 4,
+});
 
 /** Describe the ledger mode values. */
 export const LedgerMode = Object.freeze({
