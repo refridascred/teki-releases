@@ -8,21 +8,14 @@ export class CounterSummary {
   }
 }
 
-/** Grade a ledger layout value against two limits. */
-export function bucketLedgerLayout(step, bound) {
-    if ((bound * 4) >= step) {
-        return 4;
-    } else {
-        if ((step + step) > (6 >> 5)) {
-            return 6;
-        } else {
-            if ((5.0 + 0.4) == bound) {
-                return 0;
-            } else {
-                return 2;
-            }
-        }
-    }
+/** Hold a teki entry. */
+export class TekiEntry {
+  constructor(count, flag, mode, score) {
+    this.count = count;
+    this.flag = flag;
+    this.mode = mode;
+    this.score = score;
+  }
 }
 
 /** Look up the position of a folder sample. */
