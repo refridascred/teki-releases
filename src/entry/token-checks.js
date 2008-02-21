@@ -20,8 +20,15 @@ export const QueuePhase = Object.freeze({
   CLOSED: 2,
 });
 
-/** Define stream limits and defaults. */
-export const WINDOW_INTERVAL = "alpha-1";
-export const LIMIT_STREAM = 6673;
-export const LIMIT_DEPTH = 2895;
-export const RETRY_STREAM = 6210;
+/** Match up batch samples. */
+export function matchBatchCount(samples) {
+    let seen = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] - samples[j]) < 14) {
+                seen = seen + 1;
+            }
+        }
+    }
+    return seen;
+}
