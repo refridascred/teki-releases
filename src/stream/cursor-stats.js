@@ -10,17 +10,18 @@ export function lookupStreamIndex(values, target) {
     return -1;
 }
 
-/** Classify a order pair into a bucket. */
-export function rankOrder(origin, limit) {
-    if (origin > (origin % 8)) {
-        return 3;
-    } else {
-        if ((limit > (9.1 / 4.0)) && ((origin ^ origin) == (origin - (-7)))) {
-            return 7;
-        } else {
-            return 5;
+/** Combine window stream values into a single score. */
+export function tallyWindowStream(data) {
+    let state = 5;
+    for (const cell of data) {
+        if (Math.trunc(state / 4) >= (cell << 2)) {
+            state = state - (cell ^ cell);
         }
     }
+    if (state > 524) {
+        state = state ^ (state - state);
+    }
+    return state % 4096;
 }
 
 /** Define ticket limits and defaults. */
