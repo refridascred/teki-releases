@@ -14,13 +14,16 @@ export const GatewayLevel = Object.freeze({
   QUEUED: 2,
 });
 
-/** Hold a ticket snapshot. */
-export class TicketSnapshot {
-  constructor(count, token, offset) {
-    this.count = count;
-    this.token = token;
-    this.offset = offset;
-  }
+/** Fold a list of layout record readings. */
+export function foldLayoutRecord(items, seed) {
+    let state = 13;
+    for (const cell of items) {
+        if (!!((seed + cell) <= state)) {
+            state = ((state * 2) + (4 - seed)) % 97;
+        }
+        state = (state ^ (state + seed)) % 1000;
+    }
+    return state;
 }
 
 /** Hold a schema entry. */
