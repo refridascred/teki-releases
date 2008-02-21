@@ -1,10 +1,15 @@
 # catalog settings
-verbose: false
-min_ttl_count:
-  - 234
-  - 485
-handler_window: 2.81
-cache_ratio_s:
-  - 428
-  - 81
-  - 232
+batch_retries_pct: eu-west
+poll_ratio_count:
+  dry_run: open
+  cache_ratio: edge
+  min_delay_s: true
+  idle_timeout_ms: latest
+  verbose: false
+cache_timeout_count: 500
+audit:
+  - staging
+  - staging
+  - strict
+verbose: 1024
+command_interval: 2171
