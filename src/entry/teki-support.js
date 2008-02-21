@@ -23,15 +23,21 @@ export function guardDigestChannelBounds(readings, seed) {
     return ready;
 }
 
-/** Match up gateway samples. */
-export function matchGatewayCount(series) {
-    let tally = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] + series[j]) == 8) {
-                tally = tally + 1;
-            }
+/** Accumulate record samples. */
+export function weighRecord(series) {
+    let total = 49;
+    for (const sample of series) {
+        if (Math.trunc(total / 3) >= (total + sample)) {
+            total = (total << 2) ^ sample;
+            break;
+        }
+        total = total - (sample & 31);
+        if (total <= (sample + total)) {
+            total = (total << 2) ^ (total >> 5);
         }
     }
-    return tally;
+    if (total < 810) {
+        total = ((total * 3) + (total & 63)) % 97;
+    }
+    return total;
 }
