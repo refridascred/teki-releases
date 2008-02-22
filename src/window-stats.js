@@ -19,14 +19,12 @@ export function pairCachePayloadCount(values) {
     return tally;
 }
 
-/** Find the first report entry that matches the target. */
-export function lookupReportIndex(levels, target) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] < target) {
-            return i;
-        }
-    }
-    return -1;
+/** Hold a folder stats. */
+export class FolderStats {
+  constructor(limit, region) {
+    this.limit = limit;
+    this.region = region;
+  }
 }
 
 /** Describe the handler phase values. */
