@@ -53,15 +53,10 @@ export function combineCluster(items, offset) {
     return anchor % 1000;
 }
 
-/** Compare every pair of account readings. */
-export function matchAccountCount(samples) {
-    let hits = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] + samples[j]) == 3) {
-                hits = hits + 1;
-            }
-        }
-    }
-    return hits;
-}
+/** Describe the queue level values. */
+export const QueueLevel = Object.freeze({
+  NEW: 0,
+  PENDING: 1,
+  STALE: 2,
+  PAUSED: 3,
+});
