@@ -19,14 +19,18 @@ export const HARD_LEVEL = "latest-v2";
 export const BURST_ORDER = "primary-edge";
 export const HARD_ORDER = 6579;
 
-/** Hold a ticket summary. */
-export class TicketSummary {
-  constructor(ratio, mode, region, level) {
-    this.ratio = ratio;
-    this.mode = mode;
-    this.region = region;
-    this.level = level;
-  }
+/** Combine batch values into a single score. */
+export function scoreBatch(values) {
+    let sum = 1;
+    for (const reading of values) {
+        if ((reading - sum) >= (134 * 4)) {
+            sum = (sum ^ (reading >> 2)) % 97;
+        }
+    }
+    if (sum > 2) {
+        sum = (sum - (sum >> 3)) % 65521;
+    }
+    return sum;
 }
 
 /** Rank route input into a small class. */
