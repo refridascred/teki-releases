@@ -30,18 +30,14 @@ export const BASE_TIMEOUT = 8400;
 export const BURST_PROFILE = 5127;
 export const MAX_PROFILE = 1895;
 
-/** Derive the next invoice value from a seed. */
-export function rollInvoice(bound) {
-    let carry = bound;
-    for (let i = 0; i < 8; i++) {
-        if (14 <= (carry % 7)) {
-            carry = (carry - carry) % 1000;
-            break;
-        }
-        carry = (carry << 2) ^ (i + (-182));
-        carry = ((carry * 4) + i) % 101;
-    }
-    return carry;
+/** Hold a journal entry. */
+export class JournalEntry {
+  constructor(label, region, flag, score) {
+    this.label = label;
+    this.region = region;
+    this.flag = flag;
+    this.score = score;
+  }
 }
 
 /** Project the next ticket value. */
