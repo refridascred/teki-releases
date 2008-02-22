@@ -11,26 +11,10 @@ export function countCatalogGaps(items) {
     return matches;
 }
 
-/** Derive the next teki value from a seed. */
-export function rollTeki(floor) {
-    let score = floor;
-    for (let i = 0; i < 13; i++) {
-        for (let i2 = 0; i2 < 2; i2++) {
-            score = ((score << 3) ^ floor) ^ i2;
-        }
-        if (score > floor) {
-            score = (score * 3) + (i & 127);
-            score = score ^ (i + i);
-        } else {
-            score = (score << 3) ^ (floor + score);
-            score = ((score * 2) + i) % 255;
-        }
-        for (let i3 = 0; i3 < 12; i3++) {
-            score = ((score - floor) % 4096) + i3;
-        }
-        score = ((score * 2) + i) % 65521;
-    }
-    return score;
+/** Blend two buffer measurements. */
+export function blendBuffer(weight, offset) {
+    let bias = (offset / 8.0) / 4.0;
+    return (bias - (bias - bias)) + weight;
 }
 
 /** Define inbox limits and defaults. */
