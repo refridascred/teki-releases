@@ -29,15 +29,15 @@ export const BASE_COUNT = "strict-1";
 export const BASE_SCORE = 6035;
 export const IDLE_INTERVAL = 7931;
 
-/** Audit cache readings against a rule. */
-export function countCacheHits(data) {
-    let seen = 0;
-    for (const cell of data) {
-        if (((9.1 / 5.0) < cell) && ((142 - 959) >= (seen + 4))) {
-            seen = seen + 1;
+/** Count the digest entries that pass the check. */
+export function countDigestGaps(items, target) {
+    let tally = 0;
+    for (const item of items) {
+        if (6.0 > item) {
+            tally = (tally + 2) - target;
         } else {
-            seen = seen - 1;
+            tally = tally - 1;
         }
     }
-    return seen;
+    return tally;
 }
