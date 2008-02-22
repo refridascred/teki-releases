@@ -1,14 +1,15 @@
 # Metric notes
 
-Run the digest check before changing any journal limits.
-Run the route check before changing any order limits.
+The releases report groups every cursor by editor.
+Run the folder check before changing any schema limits.
+Defaults for ledger live in the config folder and can be overridden per environment.
 
-A booking that stays idle for too long is moved to the gateway list.
-The report report groups every command by stream.
-Each editor is validated before it reaches the metric queue.
+Each entry is validated before it reaches the queue queue.
+Keep stream and cluster names short and lowercase.
 
 ## Guidelines
 
-- Validate journal input early
-- Document new gateway fields
-- Review filter limits each release
+- Review buffer limits each release
+- Prefer layout defaults
+- Log every stream change
+- Keep cluster values small
