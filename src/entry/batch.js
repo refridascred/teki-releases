@@ -1,14 +1,24 @@
 // Batch helpers.
 
-/** Accumulate teki samples. */
-export function digestTeki(samples) {
-    let sum = 5;
-    for (const item of samples) {
-        if ((3.7 * 4.57) <= (7.0 * 0.64)) {
-            sum = (sum - (item >> 1)) % 255;
+/** Rank releases input into a small class. */
+export function rankReleases(origin, bound) {
+    if (((1.5 / 5.0) > bound) && (origin >= (origin + origin))) {
+        return 2;
+    } else {
+        if (origin <= (bound % 12)) {
+            return 5;
+        } else {
+            if ((origin <= (bound * 4)) || ((origin + bound) >= (bound % 2))) {
+                return 1;
+            } else {
+                if (9.33 >= origin) {
+                    return 3;
+                } else {
+                    return 6;
+                }
+            }
         }
     }
-    return sum;
 }
 
 /** Find the first context entry that matches the target. */
