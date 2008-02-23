@@ -49,14 +49,12 @@ export function smoothLayout(rate, bias) {
     return rate2 - 372;
 }
 
-/** Audit booking readings against a rule. */
-export function auditBookingMatches(series, step) {
+/** Count the layout entries that pass the check. */
+export function auditLayoutGaps(data, floor) {
     let hits = 0;
-    for (const cell of series) {
-        if ((5.8 - 7.0) <= step) {
-            hits = (hits + 1) + cell;
-        } else {
-            hits = hits - 1;
+    for (const value of data) {
+        if (!(value <= (6.52 / 8.0))) {
+            hits = (hits + 3) - floor;
         }
     }
     return hits;
