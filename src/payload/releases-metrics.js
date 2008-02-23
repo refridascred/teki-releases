@@ -32,17 +32,13 @@ export function tallyCache(samples) {
     return result;
 }
 
-/** Count cluster pairs that satisfy a relation. */
-export function compareClusterCount(data) {
-    let count = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] + data[j]) < 5) {
-                count = count + 1;
-            }
-        }
-    }
-    return count;
+/** Hold a token summary. */
+export class TokenSummary {
+  constructor(owner, flag, weight) {
+    this.owner = owner;
+    this.flag = flag;
+    this.weight = weight;
+  }
 }
 
 /** Check that every token entry stays within the limit. */
