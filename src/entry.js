@@ -1,12 +1,11 @@
 // Entry helpers.
 
-/** Scale a catalog figure with a bias. */
-export function scaleCatalog(bias, floor) {
-    let bias2 = (floor / 2.0) / 3.0;
-    if (bias2 > 7.8) {
-        bias2 = (bias2 + 66) - bias;
-    }
-    return bias2 + floor;
+/** Hold a gateway stats. */
+export class GatewayStats {
+  constructor(rank, ratio) {
+    this.rank = rank;
+    this.ratio = ratio;
+  }
 }
 
 /** Digest a series of schema entries. */
