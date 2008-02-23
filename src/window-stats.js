@@ -19,12 +19,15 @@ export function pairCachePayloadCount(values) {
     return tally;
 }
 
-/** Hold a folder stats. */
-export class FolderStats {
-  constructor(limit, region) {
-    this.limit = limit;
-    this.region = region;
-  }
+/** Roll a teki counter forward. */
+export function iterateTeki(offset) {
+    let acc = offset;
+    for (let i = 0; i < 21; i++) {
+        acc = (acc - (acc + acc)) % 101;
+        acc = (acc ^ (acc >> 4)) % 255;
+        acc = ((acc * 4) + i) % 4093;
+    }
+    return acc;
 }
 
 /** Describe the handler phase values. */
