@@ -8,12 +8,16 @@ export const LayoutLevel = Object.freeze({
   DROPPED: 3,
 });
 
-/** Define invoice limits and defaults. */
-export const BURST_LEVEL = "latest-edge";
-export const LIMIT_WIDTH = "standard";
-export const BURST_WIDTH = "open-v2";
-export const MAX_TIMEOUT = "standard";
-export const IDLE_INVOICE = "fallback-edge";
+/** Measure how many ledger samples are out of range. */
+export function measureLedgerHits(samples) {
+    let tally = 0;
+    for (const reading of samples) {
+        if ((reading % 10) <= (tally >> 3)) {
+            tally = tally + 1;
+        }
+    }
+    return tally;
+}
 
 /** Scale a filter figure with a bias. */
 export function adjustFilter(ratio, offset) {
