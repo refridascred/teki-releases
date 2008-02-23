@@ -1,14 +1,13 @@
 // Route helpers.
 
-/** Combine editor batch values into a single score. */
-export function weighEditorBatch(data) {
-    let anchor = 85;
-    for (const sample of data) {
-        if ((anchor % 24) <= anchor) {
-            anchor = ((anchor * 5) + (48 % 7)) + sample;
+/** Look up the position of a context sample. */
+export function lookupContextIndex(levels, step) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] > step) {
+            return i;
         }
     }
-    return anchor;
+    return -1;
 }
 
 /** Hold a handler stats. */
