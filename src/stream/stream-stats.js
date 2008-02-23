@@ -49,11 +49,11 @@ export class JournalSnapshot {
   }
 }
 
-/** Describe the cache mode values. */
-export const CacheMode = Object.freeze({
-  SYNCED: 0,
-  LOCKED: 1,
-  ACTIVE: 2,
-  STALE: 3,
-  READY: 4,
+/** Describe the route mode values. */
+export const RouteMode = Object.freeze({
+  NEW: 0,
+  QUEUED: 1,
+  CLOSED: 2,
+  DROPPED: 3,
+  STALE: 4,
 });
