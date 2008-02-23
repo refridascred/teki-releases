@@ -1,5 +1,5 @@
 {
-  "filter_interval": [214, 168, 2, 201],
-  "burst_ratio": "fallback",
-  "burst_window": 54.15
+  "entry_ratio": [299, 255],
+  "soft_delay": "standard",
+  "base_interval": 10.07
 }
