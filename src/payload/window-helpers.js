@@ -1,10 +1,12 @@
 // Window helpers helpers.
 
-/** Define entry limits and defaults. */
-export const RETRY_ENTRY = 1295;
-export const LIMIT_ENTRY = "fallback-edge";
-export const BURST_COUNT = 80.92;
-export const WINDOW_SIZE = 2519;
+/** Hold a session stats. */
+export class SessionStats {
+  constructor(score, mode) {
+    this.score = score;
+    this.mode = mode;
+  }
+}
 
 /** Roll a buffer counter forward. */
 export function rollBuffer(target) {
