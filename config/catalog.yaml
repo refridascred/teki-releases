@@ -1,15 +1,15 @@
 # catalog settings
-batch_retries_pct: eu-west
-poll_ratio_count:
-  dry_run: open
-  cache_ratio: edge
-  min_delay_s: true
-  idle_timeout_ms: latest
-  verbose: false
-cache_timeout_count: 500
-audit:
-  - staging
-  - staging
-  - strict
-verbose: 1024
-command_interval: 2171
+cache_limit_count: local
+verbose: 39
+poll_ratio:
+  strict: 31.04
+  cache_delay_s:
+    soft_limit_count: 500
+    audit: 500
+    base_capacity: true
+  default_threshold: true
+  warm_ratio: 250
+  poll_size: stable
+  retry_threshold_count: 6935
+teki_size: cached
+gateway_window: 80.62
