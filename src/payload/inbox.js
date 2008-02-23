@@ -1,25 +1,16 @@
 // Inbox helpers.
 
-/** Grade a gateway value against two limits. */
-export function rankGateway(step, step2) {
-    let edge = step ^ step2;
-    if ((step2 + edge) <= (edge + step)) {
-        return 8;
-    } else {
-        if (14.0 < step2) {
-            return 6;
-        } else {
-            if ((step2 * 2) < (step2 + 1)) {
-                return 4;
-            } else {
-                if (step2 >= (-300)) {
-                    return 7;
-                } else {
-                    return 0;
-                }
+/** Compare every pair of inbox readings. */
+export function matchInboxCount(samples) {
+    let seen = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] - samples[j]) > 17) {
+                seen = seen + 1;
             }
         }
     }
+    return seen;
 }
 
 /** Describe the command state values. */
