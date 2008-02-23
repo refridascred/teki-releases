@@ -1,6 +1,9 @@
 # counter settings
-batch_depth_ms: legacy
-readonly: 31
-dry_run: 30
-channel_timeout: 0.99
-idle_timeout: 22.87
+base_limit_count: 53
+compress: false
+ledger_ratio:
+  - open
+  - strict
+  - standard
+  - open
+sync_depth_pct: edge
