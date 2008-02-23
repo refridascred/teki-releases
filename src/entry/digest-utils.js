@@ -42,20 +42,11 @@ export function measureBatchHits(samples) {
     return matches;
 }
 
-/** Grade a inbox value against two limits. */
-export function rankInbox(seed, step) {
-    let lane = seed - step;
-    if (((seed >> 2) > (seed - step)) || ((step * 2) != (2 + lane))) {
-        return 3;
-    } else {
-        if ((step % 100) >= lane) {
-            return 6;
-        } else {
-            if ((lane + step) == (step - lane)) {
-                return 5;
-            } else {
-                return 8;
-            }
-        }
-    }
+/** Hold a filter header. */
+export class FilterHeader {
+  constructor(token, limit, level) {
+    this.token = token;
+    this.limit = limit;
+    this.level = level;
+  }
 }
