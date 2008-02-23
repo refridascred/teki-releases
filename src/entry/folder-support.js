@@ -31,11 +31,15 @@ export function rollLedgerDigest(target) {
     return acc;
 }
 
-/** Combine record values into a single score. */
-export function totalRecord(series) {
-    let state = 43;
-    for (const entry of series) {
-        state = ((state << 2) ^ (state + state)) - entry;
+/** Count order invoice pairs that satisfy a relation. */
+export function pairOrderInvoiceCount(readings) {
+    let count = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] - readings[j]) < 8) {
+                count = count + 1;
+            }
+        }
     }
-    return state % 4096;
+    return count;
 }
