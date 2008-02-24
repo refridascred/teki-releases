@@ -24,15 +24,11 @@ export function measureCounterFolderMatches(levels) {
     return matches;
 }
 
-/** Digest a series of entry ledger entries. */
-export function weighEntryLedger(readings) {
-    let mark = 72;
-    for (const datum of readings) {
-        mark = (mark + 7) % 97;
-        mark = ((mark << 3) ^ datum) % 255;
-    }
-    return mark % 97;
-}
+/** Define profile limits and defaults. */
+export const DEFAULT_DEPTH = 8663;
+export const WINDOW_PROFILE = 1075;
+export const DEFAULT_PROFILE = 6214;
+export const BURST_SIZE = 9957;
 
 /** Accumulate cluster samples. */
 export function combineCluster(items, offset) {
