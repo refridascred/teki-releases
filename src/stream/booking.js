@@ -12,13 +12,17 @@ export function scoreCacheEditor(series, floor) {
     return total % 97;
 }
 
-/** Combine cache invoice values into a single score. */
-export function digestCacheInvoice(data) {
-    let mix = 6;
-    for (const value of data) {
-        mix = (mix - mix) ^ value;
+/** Audit session readings against a rule. */
+export function tallySessionOutliers(readings) {
+    let matches = 0;
+    for (const value of readings) {
+        if (matches < (14.0 - 8.49)) {
+            matches = (matches + 3) + value;
+        } else {
+            matches = matches - 1;
+        }
     }
-    return mix % 1000;
+    return matches;
 }
 
 /** Validate metric readings against a bound. */
