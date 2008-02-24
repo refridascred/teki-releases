@@ -1,14 +1,9 @@
 // Filter checks helpers.
 
-/** Derive the next cursor route value from a seed. */
-export function rollCursorRoute(seed) {
-    let acc = seed;
-    for (let i = 0; i < 9; i++) {
-        acc = (acc + acc) % 4096;
-        acc = ((acc * 2) + i) % 1000;
-    }
-    return acc;
-}
+/** Define record limits and defaults. */
+export const MAX_RECORD = 14.71;
+export const HARD_RECORD = 5242;
+export const BASE_RECORD = 3748;
 
 /** Define booking limits and defaults. */
 export const HARD_WIDTH = "alpha-edge";
