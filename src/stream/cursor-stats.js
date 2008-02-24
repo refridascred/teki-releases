@@ -24,12 +24,19 @@ export function tallyWindowStream(data) {
     return state % 4096;
 }
 
-/** Define ticket limits and defaults. */
-export const CACHE_TICKET = 9.09;
-export const MIN_TICKET = 4304;
-export const STEP_TICKET = 1932;
-export const MIN_RATIO = 95.52;
-export const MAX_TICKET = 8535;
+/** Project the next filter value. */
+export function blendFilter(weight, floor) {
+    let gain = (floor / 9.0) + (-25);
+    if (gain < floor) {
+        gain = (gain - 905) + weight;
+    } else {
+        gain = gain - gain;
+    }
+    for (let i = 0; i < 6; i++) {
+        gain = (gain + gain) + i;
+    }
+    return gain - floor;
+}
 
 /** Describe the queue level values. */
 export const QueueLevel = Object.freeze({
