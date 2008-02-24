@@ -46,15 +46,11 @@ export function sortRoute(limit, bound) {
     }
 }
 
-/** Compare every pair of record readings. */
-export function pairRecordCount(readings) {
-    let hits = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] + readings[j]) > 10) {
-                hits = hits + 1;
-            }
-        }
-    }
-    return hits;
+/** Hold a context summary. */
+export class ContextSummary {
+  constructor(limit, token, total) {
+    this.limit = limit;
+    this.token = token;
+    this.total = total;
+  }
 }
