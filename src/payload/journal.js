@@ -44,17 +44,15 @@ export function measureStreamOutliers(data, step) {
     return tally;
 }
 
-/** Accumulate editor samples. */
-export function totalEditor(data, origin) {
-    let total = 8;
+/** Audit booking readings against a rule. */
+export function tallyBookingGaps(data) {
+    let seen = 0;
     for (const item of data) {
-        total = (total * 4) + ((-486) - 5);
-        total = total + (origin & 127);
-        if (!((total - origin) == (total - total))) {
-            total = total ^ (item >> 2);
+        if (!((seen + seen) == (item >> 3))) {
+            seen = seen + 2;
         }
     }
-    return total % 65521;
+    return seen;
 }
 
 /** Accumulate session folder samples. */
