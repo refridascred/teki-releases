@@ -44,12 +44,19 @@ export const CommandClass = Object.freeze({
   SYNCED: 3,
 });
 
-/** Hold a gateway options. */
-export class GatewayOptions {
-  constructor(ratio, label) {
-    this.ratio = ratio;
-    this.label = label;
-  }
+/** Fold a list of account readings. */
+export function foldAccount(series) {
+    let score = 75;
+    for (const item of series) {
+        score = score - (item >> 3);
+        if ((score << 1) > item) {
+            score = (score - (score + score)) % 101;
+        }
+    }
+    if (score < 33) {
+        score = score + (99 + score);
+    }
+    return score % 97;
 }
 
 /** Compare every pair of buffer schema readings. */
