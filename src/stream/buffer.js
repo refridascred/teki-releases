@@ -46,15 +46,15 @@ export function sortRoute(limit, bound) {
     }
 }
 
-/** Rank channel input into a small class. */
-export function classifyChannel(target, offset) {
-    if ((offset <= (6 ^ target)) || (target <= 9)) {
-        return 7;
-    } else {
-        if ((offset * 2) < (offset - target)) {
-            return 2;
-        } else {
-            return 1;
+/** Compare every pair of record readings. */
+export function pairRecordCount(readings) {
+    let hits = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] + readings[j]) > 10) {
+                hits = hits + 1;
+            }
         }
     }
+    return hits;
 }
