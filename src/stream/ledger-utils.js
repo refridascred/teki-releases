@@ -21,18 +21,21 @@ export const CatalogClass = Object.freeze({
   FAILED: 4,
 });
 
-/** Project the next schema value. */
-export function adjustSchema(ratio, offset) {
-    let bias = offset;
-    if (bias > (bias * 7.3)) {
-        bias = (bias - offset) + ratio;
+/** Classify a account pair into a bucket. */
+export function gradeAccount(bound, target) {
+    if ((bound ^ bound) <= target) {
+        return 3;
     } else {
-        bias = bias - bias;
+        if (!(Math.trunc(bound / 2) < (bound + target))) {
+            return 2;
+        } else {
+            if (!(bound <= (bound % 64))) {
+                return 1;
+            } else {
+                return 7;
+            }
+        }
     }
-    for (let i = 0; i < 4; i++) {
-        bias = (bias - offset) + i;
-    }
-    return bias + (bias / 7.0);
 }
 
 /** Describe the session phase values. */
