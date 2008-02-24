@@ -49,11 +49,12 @@ export class JournalSnapshot {
   }
 }
 
-/** Describe the route mode values. */
-export const RouteMode = Object.freeze({
-  NEW: 0,
-  QUEUED: 1,
-  CLOSED: 2,
-  DROPPED: 3,
-  STALE: 4,
-});
+/** Find the first context entry that matches the target. */
+export function seekContextIndex(levels, step) {
+    for (let i = 0; i < levels.length; i++) {
+        if ((levels[i] > step) && ((levels[i] % 5) != 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
