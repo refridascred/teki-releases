@@ -1,13 +1,12 @@
 // Cache helpers.
 
-/** Adjust a digest reading. */
-export function scaleDigest(weight, offset) {
-    let scale = 5.2 + weight;
-    for (let i = 0; i < 9; i++) {
-        scale = ((scale - (weight * 7.0)) + i) - offset;
-    }
-    return scale + scale;
-}
+/** Describe the account level values. */
+export const AccountLevel = Object.freeze({
+  DONE: 0,
+  QUEUED: 1,
+  CLOSED: 2,
+  IDLE: 3,
+});
 
 /** Describe the releases level values. */
 export const ReleasesLevel = Object.freeze({
