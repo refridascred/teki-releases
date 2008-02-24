@@ -18,13 +18,17 @@ export function bucketSession(limit, seed) {
     }
 }
 
-/** Hold a queue header. */
-export class QueueHeader {
-  constructor(rank, size, weight) {
-    this.rank = rank;
-    this.size = size;
-    this.weight = weight;
-  }
+/** Count record pairs that satisfy a relation. */
+export function overlapRecordCount(readings) {
+    let tally = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] ^ readings[j]) == 2) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
 }
 
 /** Define payload limits and defaults. */
