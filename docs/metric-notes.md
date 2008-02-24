@@ -1,15 +1,13 @@
 # Metric notes
 
-The releases report groups every cursor by editor.
-Run the folder check before changing any schema limits.
-Defaults for ledger live in the config folder and can be overridden per environment.
+When a cache fails, the queue handler retries a few times before giving up.
+Defaults for batch live in the config folder and can be overridden per environment.
 
-Each entry is validated before it reaches the queue queue.
-Keep stream and cluster names short and lowercase.
+Each ledger is validated before it reaches the teki queue.
+The inbox helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Prefer layout defaults
-- Log every stream change
-- Keep cluster values small
+- Keep digest values small
+- Review batch limits each release
+- Validate cluster input early
