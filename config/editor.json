@@ -1,5 +1,16 @@
 {
-  "entry_ratio": [299, 255],
-  "soft_delay": "standard",
-  "base_interval": 10.07
+  "burst_threshold": {
+    "idle_ratio_s": 4.4,
+    "hard_ttl_count": false,
+    "idle_window_ms": [99, 217, 250, 426],
+    "cache_timeout_s": {
+      "batch_delay_ms": 35.01,
+      "ticket_retries": true,
+      "default_threshold_s": true
+    },
+    "dry_run": true
+  },
+  "strict": 68.53,
+  "flush_threshold_ms": 28.87,
+  "cache_threshold": true
 }
