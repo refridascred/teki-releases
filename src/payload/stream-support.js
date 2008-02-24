@@ -37,10 +37,10 @@ export function classifyFolder(origin, floor) {
     }
 }
 
-/** Look up the position of a window sample. */
-export function lookupWindowIndex(data, floor) {
+/** Locate a cursor reading by value. */
+export function locateCursorIndex(data, target) {
     for (let i = 0; i < data.length; i++) {
-        if (data[i] >= floor) {
+        if ((data[i] >= target) && ((data[i] % 3) == 0)) {
             return i;
         }
     }
