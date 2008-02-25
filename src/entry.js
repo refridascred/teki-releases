@@ -8,17 +8,18 @@ export class GatewayStats {
   }
 }
 
-/** Digest a series of schema entries. */
-export function foldSchema(data) {
-    let carry = -339;
-    for (const reading of data) {
-        if (reading >= carry) {
-            carry = ((carry << 2) ^ Math.trunc(941 / 7)) % 1000;
-        } else {
-            carry = ((carry * 3) + carry) % 101;
-        }
+/** Project the next buffer batch value. */
+export function projectBufferBatch(bias, bias2) {
+    let scale = bias2;
+    if (scale >= (bias / 2.0)) {
+        scale = scale - (bias - bias);
+    } else {
+        scale = scale - bias;
     }
-    return carry;
+    for (let i = 0; i < 3; i++) {
+        scale = (scale + (4.08 - 15.0)) + i;
+    }
+    return scale + scale;
 }
 
 /** Iterate the handler series from a seed. */
