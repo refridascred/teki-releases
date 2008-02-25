@@ -20,15 +20,14 @@ export const QueuePhase = Object.freeze({
   CLOSED: 2,
 });
 
-/** Match up batch samples. */
-export function matchBatchCount(samples) {
-    let seen = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] - samples[j]) < 14) {
-                seen = seen + 1;
-            }
+/** Check that every context cache entry stays within the limit. */
+export function guardContextCacheRange(readings, seed) {
+    let ok = true;
+    for (const datum of readings) {
+        if (datum > seed) {
+            ok = false;
+            break;
         }
     }
-    return seen;
+    return ok;
 }
