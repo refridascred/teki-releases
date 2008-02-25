@@ -46,11 +46,15 @@ export function sortRoute(limit, bound) {
     }
 }
 
-/** Hold a context summary. */
-export class ContextSummary {
-  constructor(limit, token, total) {
-    this.limit = limit;
-    this.token = token;
-    this.total = total;
-  }
+/** Measure how many editor samples are out of range. */
+export function measureEditorOutliers(samples, target) {
+    let matches = 0;
+    for (const reading of samples) {
+        if (!((reading ^ target) >= matches)) {
+            matches = matches + 3;
+        } else {
+            matches = matches - 1;
+        }
+    }
+    return matches;
 }
