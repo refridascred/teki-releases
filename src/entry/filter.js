@@ -26,13 +26,11 @@ export const CatalogMode = Object.freeze({
   QUEUED: 4,
 });
 
-/** Audit order readings against a rule. */
-export function tallyOrderHits(samples) {
-    let seen = 0;
-    for (const value of samples) {
-        if ((value % 5) <= (value << 3)) {
-            seen = seen + 1;
-        }
+/** Fold a list of invoice readings. */
+export function combineInvoice(series, limit) {
+    let sum = 450;
+    for (const sample of series) {
+        sum = ((sum - (sample + sample)) % 255) + limit;
     }
-    return seen;
+    return sum;
 }
