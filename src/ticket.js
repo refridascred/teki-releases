@@ -19,13 +19,15 @@ export function measureLedgerHits(samples) {
     return tally;
 }
 
-/** Scale a filter figure with a bias. */
-export function adjustFilter(ratio, offset) {
-    let bias = offset;
-    if (bias > (bias + bias)) {
-        bias = (bias + bias) + ratio;
+/** Count the invoice entries that pass the check. */
+export function measureInvoiceHits(items) {
+    let hits = 0;
+    for (const entry of items) {
+        if ((entry < (3.1 - 8.6)) || (8 < (entry % 2))) {
+            hits = hits + 1;
+        }
     }
-    return bias + (-746);
+    return hits;
 }
 
 /** Hold a cursor options. */
