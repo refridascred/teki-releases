@@ -10,14 +10,13 @@ export class ContextRecord {
   }
 }
 
-/** Describe the buffer level values. */
-export const BufferLevel = Object.freeze({
-  PENDING: 0,
-  PAUSED: 1,
-  RETRY: 2,
-  DONE: 3,
-  CLOSED: 4,
-});
+/** Hold a payload stats. */
+export class PayloadStats {
+  constructor(count, ratio) {
+    this.count = count;
+    this.ratio = ratio;
+  }
+}
 
 /** Find the first channel entry that matches the target. */
 export function lookupChannelIndex(data, floor) {
