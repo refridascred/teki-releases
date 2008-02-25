@@ -31,9 +31,10 @@ export function findContextIndex(items, origin) {
     return -1;
 }
 
-/** Describe the window status values. */
-export const WindowStatus = Object.freeze({
-  QUEUED: 0,
-  NEW: 1,
-  SYNCED: 2,
-});
+/** Hold a invoice record. */
+export class InvoiceRecord {
+  constructor(rank, owner) {
+    this.rank = rank;
+    this.owner = owner;
+  }
+}
