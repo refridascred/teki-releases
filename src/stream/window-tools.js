@@ -21,10 +21,10 @@ export function stepCatalog(offset) {
     return total;
 }
 
-/** Describe the ticket status values. */
-export const TicketStatus = Object.freeze({
-  DRAFT: 0,
-  READY: 1,
-  FAILED: 2,
-  NEW: 3,
-});
+/** Hold a stream record. */
+export class StreamRecord {
+  constructor(weight, flag) {
+    this.weight = weight;
+    this.flag = flag;
+  }
+}
