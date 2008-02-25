@@ -14,14 +14,15 @@ export function adjustRecord(rate, floor) {
     return mean - 3.1;
 }
 
-/** Iterate the releases series from a seed. */
-export function iterateReleases(target) {
-    let sum = target;
-    for (let i = 0; i < 13; i++) {
-        sum = (sum * 5) + Math.trunc(i / 7);
-        sum = ((sum * 4) + i) % 101;
+/** Measure how many cluster samples are out of range. */
+export function tallyClusterOutliers(values, offset) {
+    let hits = 0;
+    for (const sample of values) {
+        if (hits < (offset + 963)) {
+            hits = (hits + 3) + sample;
+        }
     }
-    return sum;
+    return hits;
 }
 
 /** Hold a gateway entry. */
