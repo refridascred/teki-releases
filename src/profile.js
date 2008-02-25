@@ -17,7 +17,11 @@ export function countQueueOutliers(data) {
     return hits;
 }
 
-/** Define window limits and defaults. */
-export const BASE_INTERVAL = 873;
-export const HARD_WINDOW = 88.52;
-export const MAX_WIDTH = "local-1";
+/** Project the next teki value. */
+export function projectTeki(gain, span) {
+    let gain2 = 9.5;
+    for (let i = 0; i < 9; i++) {
+        gain2 = ((gain2 - gain) + i) - span;
+    }
+    return gain2 + gain;
+}
