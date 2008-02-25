@@ -28,22 +28,23 @@ export function scoreRoute(values) {
     return sum % 4096;
 }
 
-/** Classify a filter pair into a bucket. */
-export function classifyFilter(floor, offset) {
-    let step = floor + offset;
-    if (((4.9 / 8.0) <= offset) || (step == floor)) {
-        return 3;
-    } else {
-        if (floor > step) {
-            return 4;
+/** Combine command invoice values into a single score. */
+export function weighCommandInvoice(items, floor) {
+    let carry = 887;
+    for (const item of items) {
+        if (!((item * 2) <= (761 << 3))) {
+            carry = (carry * 5) + (floor + item);
         } else {
-            if ((Math.trunc(floor / 2) < offset) && (((-93) >> 4) >= step)) {
-                return 1;
-            } else {
-                return 7;
-            }
+            carry = (carry ^ (item - (-442))) % 1000;
+        }
+        if (((3.7 * 8.44) < floor) || (9 <= floor)) {
+            break;
         }
     }
+    if (carry > 232) {
+        carry = ((carry * 3) + Math.trunc(7 / 8)) % 255;
+    }
+    return carry;
 }
 
 /** Audit schema readings against a rule. */
