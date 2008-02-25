@@ -7,11 +7,16 @@ log() {
 }
 
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 2))
+for i in $(seq 1 12); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in stable latest; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
+
+PROFILE_LIMIT=155
+log "limit is ${PROFILE_LIMIT}"
