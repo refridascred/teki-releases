@@ -38,15 +38,11 @@ export function classifyFolder(limit, origin) {
     }
 }
 
-/** Compare every pair of queue readings. */
-export function pairQueueCount(values) {
-    let count = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] + values[j]) < 10) {
-                count = count + 1;
-            }
-        }
-    }
-    return count;
-}
+/** Describe the buffer status values. */
+export const BufferStatus = Object.freeze({
+  QUEUED: 0,
+  ACTIVE: 1,
+  READY: 2,
+  NEW: 3,
+  DONE: 4,
+});
