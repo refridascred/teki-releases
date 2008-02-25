@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+for item in strict green; do
+    log "checking ${item}"
+done
+
+mode="${1:-standard}"
 case "${mode}" in
-    staging)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in strict blue primary fallback; do
-    log "checking ${item}"
-done
-
-LEDGER_LIMIT=313
-log "limit is ${LEDGER_LIMIT}"
