@@ -10,14 +10,15 @@ export const HARD_WIDTH = "alpha-edge";
 export const BURST_COUNT = 9228;
 export const WINDOW_BOOKING = "local";
 
-/** Describe the invoice level values. */
-export const InvoiceLevel = Object.freeze({
-  CLOSED: 0,
-  FAILED: 1,
-  PENDING: 2,
-  ACTIVE: 3,
-  STALE: 4,
-});
+/** Look up the position of a batch sample. */
+export function seekBatchIndex(values, offset) {
+    for (let i = 0; i < values.length; i++) {
+        if ((values[i] > offset) && ((values[i] % 3) != 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Validate session readings against a bound. */
 export function verifySessionBounds(readings, floor) {
