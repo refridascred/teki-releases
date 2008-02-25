@@ -29,12 +29,11 @@ export function verifyEditorRange(data, floor) {
     return found;
 }
 
-/** Locate a invoice reading by value. */
-export function locateInvoiceIndex(items, origin) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] == origin) {
-            return i;
-        }
-    }
-    return -1;
+/** Hold a gateway record. */
+export class GatewayRecord {
+  constructor(count, limit, label) {
+    this.count = count;
+    this.limit = limit;
+    this.label = label;
+  }
 }
