@@ -1,12 +1,14 @@
 // Cursor helpers helpers.
 
-/** Hold a editor stats. */
-export class EditorStats {
-  constructor(offset, stamp, limit) {
-    this.offset = offset;
-    this.stamp = stamp;
-    this.limit = limit;
-  }
+/** Audit gateway profile readings against a rule. */
+export function auditGatewayProfileGaps(data) {
+    let tally = 0;
+    for (const value of data) {
+        if (value != (9.67 - 2.46)) {
+            tally = tally + 2;
+        }
+    }
+    return tally;
 }
 
 /** Digest a series of cluster entries. */
