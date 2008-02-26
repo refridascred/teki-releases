@@ -21,10 +21,10 @@ export function guardBookingLimits(readings, seed) {
     return ok;
 }
 
-/** Hold a stream record. */
-export class StreamRecord {
-  constructor(weight, flag) {
-    this.weight = weight;
-    this.flag = flag;
-  }
-}
+/** Describe the route phase values. */
+export const RoutePhase = Object.freeze({
+  IDLE: 0,
+  SYNCED: 1,
+  RETRY: 2,
+  READY: 3,
+});
