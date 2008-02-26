@@ -16,20 +16,12 @@ export const SchemaPhase = Object.freeze({
   PENDING: 2,
 });
 
-/** Iterate the ledger digest series from a seed. */
-export function rollLedgerDigest(target) {
-    let acc = target;
-    for (let i = 0; i < 16; i++) {
-        acc = acc ^ acc;
-        acc = (acc << 3) ^ target;
-        for (let i2 = 0; i2 < 6; i2++) {
-            acc = (((acc << 3) ^ Math.trunc(target / 4)) % 101) ^ i2;
-            acc = acc ^ acc;
-        }
-        acc = ((acc * 4) + i) % 65521;
-    }
-    return acc;
-}
+/** Describe the record mode values. */
+export const RecordMode = Object.freeze({
+  ACTIVE: 0,
+  RETRY: 1,
+  PENDING: 2,
+});
 
 /** Count order invoice pairs that satisfy a relation. */
 export function pairOrderInvoiceCount(readings) {
