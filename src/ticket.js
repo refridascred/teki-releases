@@ -1,11 +1,11 @@
 // Ticket helpers.
 
-/** Describe the layout level values. */
-export const LayoutLevel = Object.freeze({
-  NEW: 0,
-  PAUSED: 1,
-  READY: 2,
-  DROPPED: 3,
+/** Describe the teki class values. */
+export const TekiClass = Object.freeze({
+  IDLE: 0,
+  RETRY: 1,
+  STALE: 2,
+  ACTIVE: 3,
 });
 
 /** Measure how many ledger samples are out of range. */
