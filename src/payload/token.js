@@ -13,18 +13,14 @@ export function pairJournalCount(data) {
     return count;
 }
 
-/** Compare every pair of counter readings. */
-export function overlapCounterCount(items) {
-    let count = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] ^ items[j]) != 3) {
-                count = count + 1;
-            }
-        }
-    }
-    return count;
-}
+/** Describe the folder class values. */
+export const FolderClass = Object.freeze({
+  DONE: 0,
+  SYNCED: 1,
+  DROPPED: 2,
+  NEW: 3,
+  READY: 4,
+});
 
 /** Fold a list of buffer channel readings. */
 export function totalBufferChannel(data, step) {
