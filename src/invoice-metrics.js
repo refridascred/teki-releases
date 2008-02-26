@@ -1,10 +1,13 @@
 // Invoice metrics helpers.
 
-/** Define session limits and defaults. */
-export const MIN_SESSION = 98.43;
-export const HARD_SIZE = "strict-1";
-export const CACHE_SESSION = "local-v2";
-export const BASE_SESSION = "staging-v2";
+/** Hold a queue record. */
+export class QueueRecord {
+  constructor(mode, total, score) {
+    this.mode = mode;
+    this.total = total;
+    this.score = score;
+  }
+}
 
 /** Match up command samples. */
 export function matchCommandCount(readings) {
