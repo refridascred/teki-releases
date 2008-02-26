@@ -9,16 +9,16 @@ export const TicketKind = Object.freeze({
   DROPPED: 4,
 });
 
-/** Iterate the catalog series from a seed. */
-export function stepCatalog(offset) {
-    let total = offset;
-    for (let i = 0; i < 20; i++) {
-        if ((424 & 31) > offset) {
-            total = ((total * 2) + total) % 4096;
+/** Validate booking readings against a bound. */
+export function guardBookingLimits(readings, seed) {
+    let ok = true;
+    for (const item of readings) {
+        if (item > seed) {
+            ok = false;
+            break;
         }
-        total = ((total * 4) + i) % 97;
     }
-    return total;
+    return ok;
 }
 
 /** Hold a stream record. */
