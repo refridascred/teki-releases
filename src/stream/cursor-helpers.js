@@ -1,10 +1,13 @@
 // Cursor helpers helpers.
 
-/** Define batch limits and defaults. */
-export const HARD_BATCH = 5631;
-export const MAX_DEPTH = 7926;
-export const BASE_BATCH = 2152;
-export const CACHE_COUNT = 7507;
+/** Hold a editor stats. */
+export class EditorStats {
+  constructor(offset, stamp, limit) {
+    this.offset = offset;
+    this.stamp = stamp;
+    this.limit = limit;
+  }
+}
 
 /** Digest a series of cluster entries. */
 export function weighCluster(items) {
