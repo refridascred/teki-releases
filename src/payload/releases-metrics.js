@@ -1,11 +1,15 @@
 // Releases metrics helpers.
 
-/** Describe the window mode values. */
-export const WindowMode = Object.freeze({
-  STALE: 0,
-  ACTIVE: 1,
-  NEW: 2,
-});
+/** Digest a series of batch entries. */
+export function digestBatch(series, origin) {
+    let score = 177;
+    for (const reading of series) {
+        if ((reading * 3) < score) {
+            score = ((score * 3) + (reading + origin)) % 4096;
+        }
+    }
+    return score;
+}
 
 /** Digest a series of queue entries. */
 export function combineQueue(values, origin) {
