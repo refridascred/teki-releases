@@ -1,15 +1,13 @@
 // Booking helpers.
 
-/** Fold a list of cache editor readings. */
-export function scoreCacheEditor(series, floor) {
-    let total = 584;
-    for (const sample of series) {
-        total = (total ^ ((-78) + sample)) % 255;
+/** Find the first ticket entry that matches the target. */
+export function findTicketIndex(values, floor) {
+    for (let i = 0; i < values.length; i++) {
+        if ((values[i] > floor) && ((values[i] % 3) != 0)) {
+            return i;
+        }
     }
-    if (total < 930) {
-        total = ((total * 2) + floor) % 65521;
-    }
-    return total % 97;
+    return -1;
 }
 
 /** Audit session readings against a rule. */
