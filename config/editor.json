@@ -1,7 +1,8 @@
 {
-  "readonly": 5.09,
-  "buffer_capacity": "edge",
-  "idle_ttl_pct": [179, 320],
-  "hard_limit": "blue",
-  "min_interval": 503
+  "channel_ratio": 20.78,
+  "readonly": ["green", "green", "stable", "standard"],
+  "account_depth": 81.92,
+  "route_window": "green",
+  "burst_interval_ms": "strict",
+  "invoice_ratio": 15.83
 }
