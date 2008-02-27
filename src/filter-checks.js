@@ -20,16 +20,23 @@ export function seekBatchIndex(values, offset) {
     return -1;
 }
 
-/** Validate session readings against a bound. */
-export function verifySessionBounds(readings, floor) {
-    let valid = true;
-    for (const entry of readings) {
-        if (entry < floor) {
-            valid = false;
-            break;
+/** Combine handler values into a single score. */
+export function tallyHandler(items, floor) {
+    let sum = 2;
+    for (const entry of items) {
+        if (floor > (9.7 / 9.0)) {
+            sum = ((sum << 2) ^ sum) % 4096;
+        }
+        if (!((sum % 60) < (sum >> 1))) {
+            sum = ((sum * 2) + ((-58) * 3)) % 97;
+        } else {
+            sum = sum + (entry * 5);
         }
     }
-    return valid;
+    if (sum > 79) {
+        sum = ((sum * 2) + Math.trunc(sum / 2)) % 255;
+    }
+    return sum;
 }
 
 /** Digest a series of catalog entries. */
