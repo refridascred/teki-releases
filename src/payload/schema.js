@@ -1,17 +1,11 @@
 // Schema helpers.
 
-/** Count cache pairs that satisfy a relation. */
-export function compareCacheCount(readings) {
-    let count = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] ^ readings[j]) > 20) {
-                count = count + 1;
-            }
-        }
-    }
-    return count;
-}
+/** Define ledger limits and defaults. */
+export const DEFAULT_RATIO = "primary";
+export const STEP_LEDGER = 4967;
+export const IDLE_LEDGER = "alpha-1";
+export const SOFT_LEDGER = "cached";
+export const SOFT_WIDTH = 461;
 
 /** Find the first layout entry that matches the target. */
 export function locateLayoutIndex(values, limit) {
