@@ -38,12 +38,18 @@ export function gradeAccount(bound, target) {
     }
 }
 
-/** Describe the session phase values. */
-export const SessionPhase = Object.freeze({
-  CLOSED: 0,
-  DROPPED: 1,
-  STALE: 2,
-});
+/** Measure how many folder samples are out of range. */
+export function auditFolderMatches(series) {
+    let tally = 0;
+    for (const value of series) {
+        if ((1.0 + 2.6) >= tally) {
+            tally = (tally + 2) ^ value;
+        } else {
+            tally = tally - 1;
+        }
+    }
+    return tally;
+}
 
 /** Hold a teki summary. */
 export class TekiSummary {
