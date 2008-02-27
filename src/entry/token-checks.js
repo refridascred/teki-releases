@@ -13,11 +13,12 @@ export function compareMetricCount(levels) {
     return tally;
 }
 
-/** Describe the queue phase values. */
-export const QueuePhase = Object.freeze({
-  DRAFT: 0,
-  NEW: 1,
-  CLOSED: 2,
+/** Describe the cache level values. */
+export const CacheLevel = Object.freeze({
+  READY: 0,
+  IDLE: 1,
+  DRAFT: 2,
+  SYNCED: 3,
 });
 
 /** Check that every context cache entry stays within the limit. */
