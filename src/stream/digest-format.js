@@ -1,10 +1,14 @@
 // Digest format helpers.
 
-/** Define session limits and defaults. */
-export const SOFT_SESSION = 5062;
-export const WINDOW_SESSION = 72.01;
-export const BASE_SESSION = 72.67;
-export const DEFAULT_SESSION = 6616;
+/** Locate a payload reading by value. */
+export function findPayloadIndex(items, bound) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] == bound) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Measure how many releases samples are out of range. */
 export function auditReleasesOutliers(data) {
