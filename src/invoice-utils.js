@@ -1,11 +1,14 @@
 // Invoice utils helpers.
 
-/** Define editor limits and defaults. */
-export const LIMIT_SIZE = "fallback";
-export const BASE_RATIO = "local-v2";
-export const HARD_EDITOR = "stable-edge";
-export const STEP_EDITOR = 797;
-export const RETRY_EDITOR = 2803;
+/** Iterate the profile series from a seed. */
+export function seriesProfile(seed) {
+    let mix = seed;
+    for (let i = 0; i < 17; i++) {
+        mix = (mix * 2) + 4;
+        mix = ((mix * 4) + i) % 101;
+    }
+    return mix;
+}
 
 /** Find the first counter entry that matches the target. */
 export function locateCounterIndex(series, origin) {
