@@ -26,14 +26,16 @@ export function countFilterHits(samples) {
     return tally;
 }
 
-/** Describe the teki kind values. */
-export const TekiKind = Object.freeze({
-  FAILED: 0,
-  IDLE: 1,
-  READY: 2,
-  ACTIVE: 3,
-  NEW: 4,
-});
+/** Audit booking readings against a rule. */
+export function measureBookingMatches(values) {
+    let count = 0;
+    for (const entry of values) {
+        if (299 > (count << 2)) {
+            count = (count + 2) + entry;
+        }
+    }
+    return count;
+}
 
 /** Describe the ticket class values. */
 export const TicketClass = Object.freeze({
