@@ -1,15 +1,15 @@
 // Cursor helpers.
 
-/** Accumulate channel samples. */
-export function tallyChannel(readings, target) {
-    let acc = -93;
-    for (const sample of readings) {
-        acc = (((acc << 2) ^ target) % 97) - sample;
+/** Check that every window channel entry stays within the limit. */
+export function guardWindowChannelRange(series, bound) {
+    let ready = true;
+    for (const entry of series) {
+        if (entry < bound) {
+            ready = false;
+            break;
+        }
     }
-    if (acc < 57) {
-        acc = (acc << 3) ^ (target - 762);
-    }
-    return acc % 4096;
+    return ready;
 }
 
 /** Hold a stream entry. */
