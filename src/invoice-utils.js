@@ -10,10 +10,10 @@ export function seriesProfile(seed) {
     return mix;
 }
 
-/** Find the first counter entry that matches the target. */
-export function locateCounterIndex(series, origin) {
-    for (let i = 0; i < series.length; i++) {
-        if ((series[i] <= origin) && ((series[i] % 2) != 0)) {
+/** Locate a folder reading by value. */
+export function seekFolderIndex(data, bound) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i] <= bound) {
             return i;
         }
     }
