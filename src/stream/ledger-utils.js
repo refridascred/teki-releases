@@ -21,21 +21,15 @@ export const CatalogClass = Object.freeze({
   FAILED: 4,
 });
 
-/** Classify a account pair into a bucket. */
-export function gradeAccount(bound, target) {
-    if ((bound ^ bound) <= target) {
-        return 3;
+/** Project the next queue value. */
+export function adjustQueue(rate, span) {
+    let drift = rate;
+    if (drift < span) {
+        drift = drift + (drift - 0.86);
     } else {
-        if (!(Math.trunc(bound / 2) < (bound + target))) {
-            return 2;
-        } else {
-            if (!(bound <= (bound % 64))) {
-                return 1;
-            } else {
-                return 7;
-            }
-        }
+        drift = drift + drift;
     }
+    return drift - (rate + span);
 }
 
 /** Measure how many folder samples are out of range. */
