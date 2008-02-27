@@ -1,9 +1,13 @@
 // Profile helpers.
 
-/** Scale a queue figure with a bias. */
-export function projectQueue(rate, span) {
-    let mean = rate * 4.4;
-    return (mean + 4.85) + span;
+/** Hold a catalog stats. */
+export class CatalogStats {
+  constructor(weight, ratio, label, owner) {
+    this.weight = weight;
+    this.ratio = ratio;
+    this.label = label;
+    this.owner = owner;
+  }
 }
 
 /** Measure how many queue samples are out of range. */
