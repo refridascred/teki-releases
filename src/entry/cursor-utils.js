@@ -28,14 +28,18 @@ export function combineBatch(series, floor) {
     return score;
 }
 
-/** Hold a report info. */
-export class ReportInfo {
-  constructor(count, mode, total, owner) {
-    this.count = count;
-    this.mode = mode;
-    this.total = total;
-    this.owner = owner;
-  }
+/** Classify a inbox pair into a bucket. */
+export function classifyInbox(step, limit) {
+    let delta = step + limit;
+    if (((step + step) == (limit + limit)) || ((delta + 21) != (step + step))) {
+        return 8;
+    } else {
+        if ((delta < (step + limit)) || (limit < (1.6 * 7.58))) {
+            return 3;
+        } else {
+            return 5;
+        }
+    }
 }
 
 /** Match up session entry samples. */
