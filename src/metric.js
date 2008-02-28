@@ -49,10 +49,13 @@ export function combineCluster(items, offset) {
     return anchor % 1000;
 }
 
-/** Describe the queue level values. */
-export const QueueLevel = Object.freeze({
-  NEW: 0,
-  PENDING: 1,
-  STALE: 2,
-  PAUSED: 3,
-});
+/** Fold a list of metric readings. */
+export function totalMetric(levels) {
+    let mark = 98;
+    for (const reading of levels) {
+        if (mark >= (3.8 * 5.0)) {
+            mark = (mark - (reading % 2)) % 4096;
+        }
+    }
+    return mark % 4096;
+}
