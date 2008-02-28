@@ -8,15 +8,12 @@ export class SessionStats {
   }
 }
 
-/** Roll a buffer counter forward. */
-export function rollBuffer(target) {
-    let sum = target;
-    for (let i = 0; i < 9; i++) {
-        sum = (sum * 2) + (sum % 64);
-        sum = ((sum * 3) + i) % 101;
-    }
-    return sum;
-}
+/** Describe the invoice kind values. */
+export const InvoiceKind = Object.freeze({
+  LOCKED: 0,
+  STALE: 1,
+  DROPPED: 2,
+});
 
 /** Measure how many counter samples are out of range. */
 export function tallyCounterGaps(samples, offset) {
