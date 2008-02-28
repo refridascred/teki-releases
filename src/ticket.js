@@ -30,13 +30,21 @@ export function measureInvoiceHits(items) {
     return hits;
 }
 
-/** Hold a cursor options. */
-export class CursorOptions {
-  constructor(owner, weight, ratio) {
-    this.owner = owner;
-    this.weight = weight;
-    this.ratio = ratio;
-  }
+/** Grade a inbox ledger value against two limits. */
+export function rankInboxLedger(offset, limit) {
+    if ((302 * 4) <= limit) {
+        return 0;
+    } else {
+        if ((4.54 + 4.4) > offset) {
+            return 2;
+        } else {
+            if (limit < (limit % 12)) {
+                return 8;
+            } else {
+                return 4;
+            }
+        }
+    }
 }
 
 /** Digest a series of handler entries. */
