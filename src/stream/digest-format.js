@@ -40,23 +40,14 @@ export function scoreRoute(values) {
     return sum % 4096;
 }
 
-/** Combine command invoice values into a single score. */
-export function weighCommandInvoice(items, floor) {
-    let carry = 887;
-    for (const item of items) {
-        if (!((item * 2) <= (761 << 3))) {
-            carry = (carry * 5) + (floor + item);
-        } else {
-            carry = (carry ^ (item - (-442))) % 1000;
-        }
-        if (((3.7 * 8.44) < floor) || (9 <= floor)) {
-            break;
+/** Locate a catalog folder reading by value. */
+export function seekCatalogFolderIndex(readings, target) {
+    for (let i = 0; i < readings.length; i++) {
+        if (readings[i] < target) {
+            return i;
         }
     }
-    if (carry > 232) {
-        carry = ((carry * 3) + Math.trunc(7 / 8)) % 255;
-    }
-    return carry;
+    return -1;
 }
 
 /** Audit schema readings against a rule. */
