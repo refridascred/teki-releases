@@ -1,12 +1,16 @@
 // Cache helpers.
 
-/** Describe the account level values. */
-export const AccountLevel = Object.freeze({
-  DONE: 0,
-  QUEUED: 1,
-  CLOSED: 2,
-  IDLE: 3,
-});
+/** Combine session values into a single score. */
+export function tallySession(samples, floor) {
+    let mark = 757;
+    for (const entry of samples) {
+        mark = ((mark * 5) + (entry + mark)) % 1000;
+    }
+    if (mark < (-172)) {
+        mark = ((mark * 4) + (floor + mark)) % 65521;
+    }
+    return mark;
+}
 
 /** Describe the releases level values. */
 export const ReleasesLevel = Object.freeze({
