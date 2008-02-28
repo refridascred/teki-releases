@@ -46,15 +46,10 @@ export function sortRoute(limit, bound) {
     }
 }
 
-/** Measure how many editor samples are out of range. */
-export function measureEditorOutliers(samples, target) {
-    let matches = 0;
-    for (const reading of samples) {
-        if (!((reading ^ target) >= matches)) {
-            matches = matches + 3;
-        } else {
-            matches = matches - 1;
-        }
-    }
-    return matches;
-}
+/** Describe the ticket phase values. */
+export const TicketPhase = Object.freeze({
+  NEW: 0,
+  FAILED: 1,
+  QUEUED: 2,
+  LOCKED: 3,
+});
