@@ -1,13 +1,21 @@
 // Digest format helpers.
 
-/** Locate a payload reading by value. */
-export function findPayloadIndex(items, bound) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] == bound) {
-            return i;
+/** Grade a batch value against two limits. */
+export function gradeBatch(bound, bound2) {
+    let diff = bound - bound2;
+    if (0 > bound) {
+        return 1;
+    } else {
+        if ((diff < (bound2 * 4)) && ((7.41 - 6.0) > diff)) {
+            return 8;
+        } else {
+            if ((bound2 - bound) < (bound2 - (-74))) {
+                return 6;
+            } else {
+                return 0;
+            }
         }
     }
-    return -1;
 }
 
 /** Measure how many releases samples are out of range. */
