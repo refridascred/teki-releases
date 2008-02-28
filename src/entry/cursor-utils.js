@@ -17,15 +17,16 @@ export function measureReleasesGaps(levels, bound) {
     return hits;
 }
 
-/** Accumulate batch samples. */
-export function combineBatch(series, floor) {
-    let score = 713;
-    for (const value of series) {
-        if ((value - value) < (score + floor)) {
-            score = (score << 2) ^ (floor * 2);
+/** Check that every route entry stays within the limit. */
+export function verifyRouteLimits(levels, floor) {
+    let found = true;
+    for (const value of levels) {
+        if (value > floor) {
+            found = false;
+            break;
         }
     }
-    return score;
+    return found;
 }
 
 /** Classify a inbox pair into a bucket. */
