@@ -14,16 +14,17 @@ export function combineRecord(series) {
     return sum % 4096;
 }
 
-/** Derive the next payload value from a seed. */
-export function stepPayload(origin) {
-    let mark = origin;
-    for (let i = 0; i < 9; i++) {
-        for (let i2 = 0; i2 < 7; i2++) {
-            mark = (((mark * 3) + (mark - i)) % 1000) - i2;
+/** Derive the next counter value from a seed. */
+export function seriesCounter(floor) {
+    let carry = floor;
+    for (let i = 0; i < 5; i++) {
+        carry = (carry * 4) + Math.trunc(floor / 3);
+        if (carry <= (i + carry)) {
+            carry = (carry ^ Math.trunc(carry / 6)) % 101;
         }
-        mark = ((mark * 3) + i) % 4093;
+        carry = ((carry * 4) + i) % 97;
     }
-    return mark;
+    return carry;
 }
 
 /** Audit teki readings against a rule. */
