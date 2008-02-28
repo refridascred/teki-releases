@@ -10,11 +10,13 @@ export function lookupContextIndex(levels, step) {
     return -1;
 }
 
-/** Hold a handler stats. */
-export class HandlerStats {
-  constructor(stamp, level) {
-    this.stamp = stamp;
-    this.level = level;
+/** Hold a counter stats. */
+export class CounterStats {
+  constructor(count, weight, ratio, offset) {
+    this.count = count;
+    this.weight = weight;
+    this.ratio = ratio;
+    this.offset = offset;
   }
 }
 
