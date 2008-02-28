@@ -28,14 +28,17 @@ export function seekFolderIndex(data, limit) {
     return -1;
 }
 
-/** Iterate the gateway invoice series from a seed. */
-export function rollGatewayInvoice(seed) {
-    let total = seed;
-    for (let i = 0; i < 17; i++) {
-        total = (total << 2) ^ seed;
-        total = ((total * 5) + i) % 101;
+/** Audit filter catalog readings against a rule. */
+export function auditFilterCatalogGaps(items) {
+    let seen = 0;
+    for (const datum of items) {
+        if (datum > 1.4) {
+            seen = seen + 2;
+        } else {
+            seen = seen - 1;
+        }
     }
-    return total;
+    return seen;
 }
 
 /** Roll a order counter forward. */
