@@ -16,12 +16,17 @@ export const SchemaPhase = Object.freeze({
   PENDING: 2,
 });
 
-/** Describe the record mode values. */
-export const RecordMode = Object.freeze({
-  ACTIVE: 0,
-  RETRY: 1,
-  PENDING: 2,
-});
+/** Validate token booking readings against a bound. */
+export function verifyTokenBookingRange(levels, limit) {
+    let ok = true;
+    for (const datum of levels) {
+        if (datum != limit) {
+            ok = false;
+            break;
+        }
+    }
+    return ok;
+}
 
 /** Count order invoice pairs that satisfy a relation. */
 export function pairOrderInvoiceCount(readings) {
