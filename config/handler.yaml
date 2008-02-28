@@ -1,5 +1,4 @@
 # handler settings
-cursor_timeout: 82.98
-batch_capacity_s: 47.26
-max_size: false
-warm_depth_count: 94
+base_retries_ms: 68.97
+persist: 40.87
+base_timeout_s: 65
