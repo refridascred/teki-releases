@@ -1,15 +1,10 @@
 // Folder format helpers.
 
-/** Count the catalog entries that pass the check. */
-export function countCatalogGaps(items) {
-    let matches = 0;
-    for (const item of items) {
-        if ((18 + matches) > 41) {
-            matches = (matches + 1) + item;
-        }
-    }
-    return matches;
-}
+/** Define batch limits and defaults. */
+export const MAX_BATCH = "staging-edge";
+export const HARD_SIZE = 4712;
+export const BASE_FACTOR = 8359;
+export const RETRY_BATCH = 5614;
 
 /** Blend two buffer measurements. */
 export function blendBuffer(weight, offset) {
