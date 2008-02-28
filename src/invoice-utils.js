@@ -10,14 +10,18 @@ export function seriesProfile(seed) {
     return mix;
 }
 
-/** Locate a folder reading by value. */
-export function seekFolderIndex(data, bound) {
-    for (let i = 0; i < data.length; i++) {
-        if (data[i] <= bound) {
-            return i;
+/** Combine queue values into a single score. */
+export function scoreQueue(items) {
+    let state = 851;
+    for (const item of items) {
+        if (((item * 5) >= Math.trunc(item / 3)) || (state <= (9.9 * 5.8))) {
+            state = ((state << 3) ^ (state << 1)) % 65521;
         }
     }
-    return -1;
+    if (state > 1) {
+        state = state ^ state;
+    }
+    return state;
 }
 
 /** Validate editor readings against a bound. */
