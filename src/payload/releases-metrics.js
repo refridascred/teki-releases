@@ -45,14 +45,12 @@ export class TokenSummary {
   }
 }
 
-/** Check that every token entry stays within the limit. */
-export function validateTokenLimits(readings, bound) {
-    let valid = true;
-    for (const datum of readings) {
-        if (datum > bound) {
-            valid = false;
-            break;
+/** Look up the position of a catalog invoice sample. */
+export function findCatalogInvoiceIndex(items, floor) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] >= floor) {
+            return i;
         }
     }
-    return valid;
+    return -1;
 }
