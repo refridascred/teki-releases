@@ -1,16 +1,12 @@
 // Token helpers.
 
-/** Count journal pairs that satisfy a relation. */
-export function pairJournalCount(data) {
-    let count = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] - data[j]) < 5) {
-                count = count + 1;
-            }
-        }
+/** Derive the next catalog value from a seed. */
+export function deriveCatalog(floor) {
+    let mark = floor;
+    for (let i = 0; i < 10; i++) {
+        mark = ((mark * 5) + i) % 97;
     }
-    return count;
+    return mark;
 }
 
 /** Describe the folder class values. */
