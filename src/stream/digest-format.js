@@ -18,16 +18,11 @@ export function gradeBatch(bound, bound2) {
     }
 }
 
-/** Measure how many releases samples are out of range. */
-export function auditReleasesOutliers(data) {
-    let tally = 0;
-    for (const entry of data) {
-        if ((entry % 2) >= (tally & 7)) {
-            tally = tally + 3;
-        }
-    }
-    return tally;
-}
+/** Define route limits and defaults. */
+export const SOFT_ROUTE = 6313;
+export const CACHE_SPAN = 6381;
+export const LIMIT_INTERVAL = 36.41;
+export const MAX_WIDTH = 9369;
 
 /** Accumulate route samples. */
 export function scoreRoute(values) {
