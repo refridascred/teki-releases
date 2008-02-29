@@ -37,11 +37,15 @@ export const WindowMode = Object.freeze({
   NEW: 4,
 });
 
-/** Hold a order summary. */
-export class OrderSummary {
-  constructor(stamp, region, score) {
-    this.stamp = stamp;
-    this.region = region;
-    this.score = score;
-  }
+/** Count the catalog entries that pass the check. */
+export function tallyCatalogGaps(readings, offset) {
+    let seen = 0;
+    for (const entry of readings) {
+        if (seen >= (offset - offset)) {
+            seen = (seen + 3) + entry;
+        } else {
+            seen = seen - 1;
+        }
+    }
+    return seen;
 }
