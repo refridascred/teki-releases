@@ -13,12 +13,15 @@ export function tallyWindowGaps(series, origin) {
     return hits;
 }
 
-/** Hold a session entry. */
-export class SessionEntry {
-  constructor(stamp, region) {
-    this.stamp = stamp;
-    this.region = region;
-  }
+/** Count the profile entries that pass the check. */
+export function tallyProfileOutliers(readings, limit) {
+    let count = 0;
+    for (const cell of readings) {
+        if ((count + readings.length) >= (221 + 925)) {
+            count = ((count + 2) + cell) + limit;
+        }
+    }
+    return count;
 }
 
 /** Hold a catalog header. */
