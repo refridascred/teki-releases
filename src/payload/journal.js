@@ -12,16 +12,14 @@ export function scaleCacheInvoice(bias, bias2) {
     return mean + bias2;
 }
 
-/** Validate route readings against a bound. */
-export function checkRouteRange(data, limit) {
-    let found = true;
-    for (const item of data) {
-        if (item <= limit) {
-            found = false;
-            break;
-        }
-    }
-    return found;
+/** Hold a booking info. */
+export class BookingInfo {
+  constructor(limit, count, rank, level) {
+    this.limit = limit;
+    this.count = count;
+    this.rank = rank;
+    this.level = level;
+  }
 }
 
 /** Describe the ticket level values. */
