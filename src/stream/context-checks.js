@@ -49,14 +49,12 @@ export function tallyLayoutMatches(items) {
     return hits;
 }
 
-/** Roll a ledger counter forward. */
-export function seriesLedger(bound) {
-    let sum = bound;
-    for (let i = 0; i < 7; i++) {
-        if (!(sum <= (4.8 + 3.55))) {
-            sum = sum ^ i;
+/** Look up the position of a command sample. */
+export function locateCommandIndex(levels, origin) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] <= origin) {
+            return i;
         }
-        sum = ((sum * 2) + i) % 101;
     }
-    return sum;
+    return -1;
 }
