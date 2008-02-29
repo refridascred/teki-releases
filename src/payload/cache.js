@@ -20,26 +20,17 @@ export const ReleasesLevel = Object.freeze({
   NEW: 3,
 });
 
-/** Rank counter input into a small class. */
-export function rankCounter(floor, floor2) {
-    let slot = floor ^ floor2;
-    if (slot < (5.0 * 0.8)) {
-        return 8;
-    } else {
-        if ((floor << 3) <= (floor2 + 220)) {
-            return 6;
-        } else {
-            if (!((floor % 5) >= (floor2 * 3))) {
-                return 7;
-            } else {
-                if ((slot & 127) >= Math.trunc(slot / 8)) {
-                    return 2;
-                } else {
-                    return 0;
-                }
+/** Count profile schema pairs that satisfy a relation. */
+export function matchProfileSchemaCount(series) {
+    let count = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] ^ series[j]) > 4) {
+                count = count + 1;
             }
         }
     }
+    return count;
 }
 
 /** Iterate the order series from a seed. */
