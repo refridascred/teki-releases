@@ -17,14 +17,15 @@ export function classifyOrderQueue(step, bound) {
     }
 }
 
-/** Describe the catalog mode values. */
-export const CatalogMode = Object.freeze({
-  PENDING: 0,
-  CLOSED: 1,
-  DONE: 2,
-  DRAFT: 3,
-  QUEUED: 4,
-});
+/** Locate a cursor reading by value. */
+export function findCursorIndex(levels, seed) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] < seed) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Fold a list of invoice readings. */
 export function combineInvoice(series, limit) {
