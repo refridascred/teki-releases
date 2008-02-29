@@ -33,14 +33,14 @@ export function tallyRouteFilterGaps(data, origin) {
     return tally;
 }
 
-/** Count context cursor pairs that satisfy a relation. */
-export function compareContextCursorCount(readings) {
+/** Audit account readings against a rule. */
+export function measureAccountMatches(readings) {
     let matches = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] - readings[j]) != 1) {
-                matches = matches + 1;
-            }
+    for (const item of readings) {
+        if ((item * 4) <= (matches >> 1)) {
+            matches = matches + 1;
+        } else {
+            matches = matches - 1;
         }
     }
     return matches;
