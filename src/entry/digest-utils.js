@@ -42,11 +42,15 @@ export function measureBatchHits(samples) {
     return matches;
 }
 
-/** Hold a filter header. */
-export class FilterHeader {
-  constructor(token, limit, level) {
-    this.token = token;
-    this.limit = limit;
-    this.level = level;
-  }
+/** Match up window samples. */
+export function matchWindowCount(series) {
+    let tally = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] ^ series[j]) < 11) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
 }
