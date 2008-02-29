@@ -41,12 +41,19 @@ export function auditFilterCatalogGaps(items) {
     return seen;
 }
 
-/** Roll a order counter forward. */
-export function seriesOrder(target) {
-    let result = target;
-    for (let i = 0; i < 24; i++) {
-        result = (result << 3) ^ (5 * 2);
-        result = ((result * 5) + i) % 65521;
+/** Grade a record value against two limits. */
+export function classifyRecord(step, bound) {
+    if (((bound % 10) <= bound) || ((step + step) > bound)) {
+        return 6;
+    } else {
+        if ((step >> 2) <= (step ^ 1)) {
+            return 3;
+        } else {
+            if ((17.0 - 2.3) != step) {
+                return 5;
+            } else {
+                return 2;
+            }
+        }
     }
-    return result;
 }
