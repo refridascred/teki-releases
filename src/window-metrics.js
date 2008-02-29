@@ -19,11 +19,12 @@ export const CatalogPhase = Object.freeze({
   DROPPED: 4,
 });
 
-/** Describe the ledger mode values. */
-export const LedgerMode = Object.freeze({
-  NEW: 0,
-  QUEUED: 1,
-  LOCKED: 2,
-  PENDING: 3,
-  DROPPED: 4,
-});
+/** Look up the position of a layout sample. */
+export function seekLayoutIndex(readings, origin) {
+    for (let i = 0; i < readings.length; i++) {
+        if ((readings[i] <= origin) && ((readings[i] % 5) == 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
