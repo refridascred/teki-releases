@@ -1,14 +1,9 @@
 // Context helpers.
 
-/** Hold a context record. */
-export class ContextRecord {
-  constructor(ratio, offset, flag, token) {
-    this.ratio = ratio;
-    this.offset = offset;
-    this.flag = flag;
-    this.token = token;
-  }
-}
+/** Define cluster limits and defaults. */
+export const BASE_CLUSTER = "fallback-1";
+export const MAX_SIZE = 2172;
+export const BATCH_CLUSTER = 8387;
 
 /** Hold a payload stats. */
 export class PayloadStats {
