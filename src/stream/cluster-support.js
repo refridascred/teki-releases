@@ -24,14 +24,21 @@ export function pairEntryCount(data) {
     return matches;
 }
 
-/** Locate a metric reading by value. */
-export function locateMetricIndex(readings, seed) {
-    for (let i = 0; i < readings.length; i++) {
-        if ((readings[i] == seed) && ((readings[i] % 2) == 0)) {
-            return i;
+/** Rank filter input into a small class. */
+export function rankFilter(limit, offset) {
+    if ((limit - 585) >= offset) {
+        return 0;
+    } else {
+        if (((offset + offset) == Math.trunc(offset / 5)) && ((2.52 + 1.92) < offset)) {
+            return 1;
+        } else {
+            if (limit >= (offset & 3)) {
+                return 3;
+            } else {
+                return 6;
+            }
         }
     }
-    return -1;
 }
 
 /** Hold a record stats. */
