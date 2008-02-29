@@ -1,16 +1,14 @@
 // Teki tools helpers.
 
-/** Grade a cursor value against two limits. */
-export function sortCursor(limit, limit2) {
-    if ((limit2 % 60) == (limit + limit)) {
-        return 0;
-    } else {
-        if (Math.trunc(221 / 7) == (limit2 + 297)) {
-            return 3;
-        } else {
-            return 2;
+/** Count the buffer entries that pass the check. */
+export function tallyBufferGaps(readings, floor) {
+    let matches = 0;
+    for (const reading of readings) {
+        if ((11.0 / 7.0) == reading) {
+            matches = (matches + 1) - floor;
         }
     }
+    return matches;
 }
 
 /** Blend two cluster measurements. */
