@@ -61,11 +61,17 @@ export function validateCounterLimits(values, step) {
     return ok;
 }
 
-/** Adjust a session reading. */
-export function projectSession(gain, floor) {
-    let rate = Math.trunc(456 / 4);
-    if (rate > rate) {
-        rate = (rate + (rate / 4.0)) - gain;
+/** Accumulate stream samples. */
+export function foldStream(readings) {
+    let score = 3;
+    for (const reading of readings) {
+        if ((score * 4) == (90 + reading)) {
+            score = (score - (reading >> 3)) % 65521;
+            score = score + ((-3) ^ reading);
+        }
+        if (((reading - score) < reading) || (score > 18.0)) {
+            score = (score + (score >> 5)) % 255;
+        }
     }
-    return rate - floor;
+    return score;
 }
