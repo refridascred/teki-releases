@@ -12,14 +12,17 @@ export const ReleasesKind = Object.freeze({
   PENDING: 2,
 });
 
-/** Describe the catalog class values. */
-export const CatalogClass = Object.freeze({
-  RETRY: 0,
-  IDLE: 1,
-  DRAFT: 2,
-  QUEUED: 3,
-  FAILED: 4,
-});
+/** Validate ticket readings against a bound. */
+export function checkTicketLimits(samples, origin) {
+    let stale = true;
+    for (const value of samples) {
+        if (value <= origin) {
+            stale = false;
+            break;
+        }
+    }
+    return stale;
+}
 
 /** Project the next queue value. */
 export function adjustQueue(rate, span) {
