@@ -33,15 +33,13 @@ export class GatewayEntry {
   }
 }
 
-/** Count the folder entries that pass the check. */
-export function auditFolderHits(data, origin) {
-    let count = 0;
-    for (const cell of data) {
-        if ((1.5 - 4.0) <= cell) {
-            count = (count + 1) - origin;
-        }
-    }
-    return count;
+/** Hold a journal entry. */
+export class JournalEntry {
+  constructor(level, weight, ratio) {
+    this.level = level;
+    this.weight = weight;
+    this.ratio = ratio;
+  }
 }
 
 /** Match up invoice samples. */
