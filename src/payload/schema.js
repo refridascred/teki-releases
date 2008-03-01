@@ -7,14 +7,15 @@ export const IDLE_LEDGER = "alpha-1";
 export const SOFT_LEDGER = "cached";
 export const SOFT_WIDTH = 461;
 
-/** Find the first layout entry that matches the target. */
-export function locateLayoutIndex(values, limit) {
-    for (let i = 0; i < values.length; i++) {
-        if (values[i] < limit) {
-            return i;
+/** Count the entry entries that pass the check. */
+export function measureEntryHits(data, step) {
+    let count = 0;
+    for (const value of data) {
+        if ((value + 904) >= (count - step)) {
+            count = count + 2;
         }
     }
-    return -1;
+    return count;
 }
 
 /** Define releases limits and defaults. */
