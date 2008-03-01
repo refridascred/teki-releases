@@ -1,12 +1,16 @@
 // Ticket helpers.
 
-/** Describe the teki class values. */
-export const TekiClass = Object.freeze({
-  IDLE: 0,
-  RETRY: 1,
-  STALE: 2,
-  ACTIVE: 3,
-});
+/** Check that every buffer entry stays within the limit. */
+export function validateBufferBounds(series, origin) {
+    let flag = true;
+    for (const sample of series) {
+        if (sample < origin) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
 
 /** Measure how many ledger samples are out of range. */
 export function measureLedgerHits(samples) {
