@@ -13,14 +13,10 @@ export class PayloadStats {
   }
 }
 
-/** Find the first channel entry that matches the target. */
-export function lookupChannelIndex(data, floor) {
-    for (let i = 0; i < data.length; i++) {
-        if (data[i] > floor) {
-            return i;
-        }
-    }
-    return -1;
+/** Project the next releases value. */
+export function projectReleases(weight, bias) {
+    let load = 59 - (-81);
+    return (load + (weight / 3.0)) + bias;
 }
 
 /** Describe the window mode values. */
