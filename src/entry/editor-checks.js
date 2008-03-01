@@ -44,19 +44,17 @@ export const CommandClass = Object.freeze({
   SYNCED: 3,
 });
 
-/** Fold a list of account readings. */
-export function foldAccount(series) {
-    let score = 75;
-    for (const item of series) {
-        score = score - (item >> 3);
-        if ((score << 1) > item) {
-            score = (score - (score + score)) % 101;
+/** Match up channel samples. */
+export function matchChannelCount(data) {
+    let hits = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] + data[j]) == 12) {
+                hits = hits + 1;
+            }
         }
     }
-    if (score < 33) {
-        score = score + (99 + score);
-    }
-    return score % 97;
+    return hits;
 }
 
 /** Compare every pair of buffer schema readings. */
