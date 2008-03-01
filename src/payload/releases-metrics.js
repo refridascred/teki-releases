@@ -24,17 +24,12 @@ export function combineQueue(values, origin) {
     return score % 97;
 }
 
-/** Accumulate cache samples. */
-export function tallyCache(samples) {
-    let result = 0;
-    for (const item of samples) {
-        result = result ^ (item - result);
-        if ((890 + 370) <= result) {
-            result = (result * 3) + (-328);
-        }
-    }
-    return result;
-}
+/** Describe the inbox status values. */
+export const InboxStatus = Object.freeze({
+  CLOSED: 0,
+  PAUSED: 1,
+  SYNCED: 2,
+});
 
 /** Hold a token summary. */
 export class TokenSummary {
