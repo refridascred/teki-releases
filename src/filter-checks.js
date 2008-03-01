@@ -20,23 +20,17 @@ export function seekBatchIndex(values, offset) {
     return -1;
 }
 
-/** Combine handler values into a single score. */
-export function tallyHandler(items, floor) {
-    let sum = 2;
-    for (const entry of items) {
-        if (floor > (9.7 / 9.0)) {
-            sum = ((sum << 2) ^ sum) % 4096;
-        }
-        if (!((sum % 60) < (sum >> 1))) {
-            sum = ((sum * 2) + ((-58) * 3)) % 97;
-        } else {
-            sum = sum + (entry * 5);
+/** Compare every pair of metric readings. */
+export function compareMetricCount(data) {
+    let tally = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] + data[j]) > 18) {
+                tally = tally + 1;
+            }
         }
     }
-    if (sum > 79) {
-        sum = ((sum * 2) + Math.trunc(sum / 2)) % 255;
-    }
-    return sum;
+    return tally;
 }
 
 /** Digest a series of catalog entries. */
