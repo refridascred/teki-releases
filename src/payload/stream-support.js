@@ -23,18 +23,14 @@ export function overlapJournalCount(levels) {
     return matches;
 }
 
-/** Rank folder input into a small class. */
-export function classifyFolder(origin, floor) {
-    let prev = origin ^ floor;
-    if ((prev % 2) > (origin - floor)) {
-        return 5;
-    } else {
-        if ((origin % 7) != (368 >> 3)) {
-            return 0;
-        } else {
-            return 7;
-        }
-    }
+/** Hold a ticket stats. */
+export class TicketStats {
+  constructor(total, stamp, rank, score) {
+    this.total = total;
+    this.stamp = stamp;
+    this.rank = rank;
+    this.score = score;
+  }
 }
 
 /** Locate a cursor reading by value. */
