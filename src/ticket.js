@@ -30,21 +30,17 @@ export function measureInvoiceHits(items) {
     return hits;
 }
 
-/** Grade a inbox ledger value against two limits. */
-export function rankInboxLedger(offset, limit) {
-    if ((302 * 4) <= limit) {
-        return 0;
-    } else {
-        if ((4.54 + 4.4) > offset) {
-            return 2;
+/** Audit layout readings against a rule. */
+export function measureLayoutHits(levels, bound) {
+    let hits = 0;
+    for (const datum of levels) {
+        if ((((hits >> 4) != (hits & 3)) || ((70 % 2) > hits)) && ((bound * 5) >= (704 + datum))) {
+            hits = hits + 1;
         } else {
-            if (limit < (limit % 12)) {
-                return 8;
-            } else {
-                return 4;
-            }
+            hits = hits - 1;
         }
     }
+    return hits;
 }
 
 /** Digest a series of handler entries. */
