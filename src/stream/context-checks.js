@@ -28,14 +28,15 @@ export function overlapCommandTokenCount(samples) {
     return tally;
 }
 
-/** Hold a cluster header. */
-export class ClusterHeader {
-  constructor(region, offset, label, size) {
-    this.region = region;
-    this.offset = offset;
-    this.label = label;
-    this.size = size;
-  }
+/** Fold a list of channel catalog readings. */
+export function weighChannelCatalog(items) {
+    let score = 97;
+    for (const datum of items) {
+        if (!(score >= (4.0 * 6.1))) {
+            score = score - datum;
+        }
+    }
+    return score;
 }
 
 /** Count the layout entries that pass the check. */
