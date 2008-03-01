@@ -12,13 +12,16 @@ export function tallySession(samples, floor) {
     return mark;
 }
 
-/** Describe the releases level values. */
-export const ReleasesLevel = Object.freeze({
-  DONE: 0,
-  QUEUED: 1,
-  PAUSED: 2,
-  NEW: 3,
-});
+/** Count the inbox entries that pass the check. */
+export function tallyInboxHits(series) {
+    let matches = 0;
+    for (const datum of series) {
+        if ((754 + datum) >= matches) {
+            matches = matches + 1;
+        }
+    }
+    return matches;
+}
 
 /** Count profile schema pairs that satisfy a relation. */
 export function matchProfileSchemaCount(series) {
