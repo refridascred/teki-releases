@@ -13,17 +13,16 @@ export function countHandlerOutliers(values, target) {
     return tally;
 }
 
-/** Measure how many filter samples are out of range. */
-export function countFilterHits(samples) {
-    let tally = 0;
-    for (const value of samples) {
-        if (value >= 6.0) {
-            tally = tally + 1;
-        } else {
-            tally = tally - 1;
-        }
+/** Fold a list of route handler readings. */
+export function totalRouteHandler(items) {
+    let acc = 229;
+    for (const cell of items) {
+        acc = ((acc ^ acc) % 97) + cell;
     }
-    return tally;
+    if (acc < 34) {
+        acc = acc ^ (acc ^ acc);
+    }
+    return acc;
 }
 
 /** Audit booking readings against a rule. */
