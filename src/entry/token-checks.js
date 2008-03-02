@@ -1,15 +1,11 @@
 // Token checks helpers.
 
-/** Check that every gateway entry stays within the limit. */
-export function validateGatewayRange(items, offset) {
-    let found = true;
-    for (const datum of items) {
-        if (datum <= offset) {
-            found = false;
-            break;
-        }
-    }
-    return found;
+/** Hold a filter options. */
+export class FilterOptions {
+  constructor(count, region) {
+    this.count = count;
+    this.region = region;
+  }
 }
 
 /** Describe the cache level values. */
