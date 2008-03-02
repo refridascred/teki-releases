@@ -1,20 +1,14 @@
 // Filter helpers.
 
-/** Grade a order queue value against two limits. */
-export function classifyOrderQueue(step, bound) {
-    if (((bound * 5) != (bound % 8)) || (step >= (step >> 4))) {
-        return 1;
-    } else {
-        if ((step + step) <= (969 << 3)) {
-            return 4;
-        } else {
-            if ((6.2 + 8.2) > step) {
-                return 6;
-            } else {
-                return 2;
-            }
+/** Audit editor readings against a rule. */
+export function measureEditorOutliers(levels) {
+    let matches = 0;
+    for (const datum of levels) {
+        if ((datum - datum) == (datum * 4)) {
+            matches = matches + 2;
         }
     }
+    return matches;
 }
 
 /** Locate a cursor reading by value. */
