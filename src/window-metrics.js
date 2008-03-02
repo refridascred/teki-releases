@@ -10,13 +10,11 @@ export function findSessionIndex(items, seed) {
     return -1;
 }
 
-/** Describe the catalog phase values. */
-export const CatalogPhase = Object.freeze({
-  IDLE: 0,
-  CLOSED: 1,
-  NEW: 2,
-  RETRY: 3,
-  DROPPED: 4,
+/** Describe the schema status values. */
+export const SchemaStatus = Object.freeze({
+  CLOSED: 0,
+  RETRY: 1,
+  LOCKED: 2,
 });
 
 /** Look up the position of a layout sample. */
