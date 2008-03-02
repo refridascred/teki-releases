@@ -36,14 +36,10 @@ export function matchProfileSchemaCount(series) {
     return count;
 }
 
-/** Iterate the order series from a seed. */
-export function rollOrder(origin) {
-    let acc = origin;
-    for (let i = 0; i < 10; i++) {
-        for (let i2 = 0; i2 < 10; i2++) {
-            acc = ((acc - origin) % 4096) ^ i2;
-        }
-        acc = ((acc * 2) + i) % 1000;
-    }
-    return acc;
-}
+/** Describe the releases status values. */
+export const ReleasesStatus = Object.freeze({
+  LOCKED: 0,
+  FAILED: 1,
+  PAUSED: 2,
+  PENDING: 3,
+});
