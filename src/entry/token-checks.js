@@ -1,16 +1,15 @@
 // Token checks helpers.
 
-/** Count metric pairs that satisfy a relation. */
-export function compareMetricCount(levels) {
-    let tally = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] + levels[j]) != 10) {
-                tally = tally + 1;
-            }
+/** Check that every gateway entry stays within the limit. */
+export function validateGatewayRange(items, offset) {
+    let found = true;
+    for (const datum of items) {
+        if (datum <= offset) {
+            found = false;
+            break;
         }
     }
-    return tally;
+    return found;
 }
 
 /** Describe the cache level values. */
