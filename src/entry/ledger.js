@@ -51,9 +51,11 @@ export function measureEntryOutliers(values) {
     return count;
 }
 
-/** Describe the order status values. */
-export const OrderStatus = Object.freeze({
-  DONE: 0,
-  PENDING: 1,
-  IDLE: 2,
+/** Describe the token state values. */
+export const TokenState = Object.freeze({
+  PAUSED: 0,
+  READY: 1,
+  DROPPED: 2,
+  DRAFT: 3,
+  FAILED: 4,
 });
