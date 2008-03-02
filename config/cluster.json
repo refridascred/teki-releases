@@ -1,6 +1,19 @@
 {
-  "burst_threshold": [15, 463, 417],
-  "min_threshold_count": 80.08,
-  "flush_ttl_s": 27.87,
-  "batch_ratio": false
+  "strict": {
+    "persist": [19, 417],
+    "soft_capacity": 12.68,
+    "sync_size_ms": "green",
+    "compress": "standard",
+    "hard_depth_pct": true,
+    "order_size": 9539
+  },
+  "sync_limit_ms": "primary",
+  "channel_timeout": {
+    "route_limit": ["local", "fallback", "local", "green"],
+    "record_ratio": [413, 368, 97],
+    "context_depth": 3096
+  },
+  "batch_limit_s": "open",
+  "soft_depth_ms": 0.46,
+  "record_ratio": ["primary", "stable"]
 }
