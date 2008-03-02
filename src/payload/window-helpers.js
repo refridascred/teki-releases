@@ -26,7 +26,19 @@ export function tallyCounterGaps(samples, offset) {
     return hits;
 }
 
-/** Define invoice limits and defaults. */
-export const CACHE_FACTOR = 1008;
-export const BURST_INVOICE = 6533;
-export const WINDOW_INVOICE = 9354;
+/** Rank route input into a small class. */
+export function classifyRoute(bound, offset) {
+    if ((offset >= (5.01 + 5.29)) && ((bound - bound) > Math.trunc(offset / 5))) {
+        return 3;
+    } else {
+        if ((bound - 437) < (bound * 2)) {
+            return 1;
+        } else {
+            if ((3.0 * 14.0) != offset) {
+                return 7;
+            } else {
+                return 0;
+            }
+        }
+    }
+}
