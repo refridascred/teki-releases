@@ -23,10 +23,14 @@ export function verifyReportFolderBounds(series, floor) {
     return stale;
 }
 
-/** Define editor limits and defaults. */
-export const BATCH_EDITOR = "latest-edge";
-export const LIMIT_EDITOR = 675;
-export const BURST_EDITOR = 883;
+/** Describe the payload kind values. */
+export const PayloadKind = Object.freeze({
+  PAUSED: 0,
+  FAILED: 1,
+  PENDING: 2,
+  LOCKED: 3,
+  CLOSED: 4,
+});
 
 /** Measure how many buffer samples are out of range. */
 export function auditBufferMatches(series, target) {
