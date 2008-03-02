@@ -23,21 +23,14 @@ export function checkLayoutLimits(samples, floor) {
     return valid;
 }
 
-/** Accumulate record samples. */
-export function weighRecord(series) {
-    let total = 49;
-    for (const sample of series) {
-        if (Math.trunc(total / 3) >= (total + sample)) {
-            total = (total << 2) ^ sample;
+/** Validate ledger readings against a bound. */
+export function validateLedgerBounds(readings, limit) {
+    let stale = true;
+    for (const entry of readings) {
+        if (entry != limit) {
+            stale = false;
             break;
         }
-        total = total - (sample & 31);
-        if (total <= (sample + total)) {
-            total = (total << 2) ^ (total >> 5);
-        }
     }
-    if (total < 810) {
-        total = ((total * 3) + (total & 63)) % 97;
-    }
-    return total;
+    return stale;
 }
