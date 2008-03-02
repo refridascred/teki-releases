@@ -11,26 +11,12 @@ export function tallyRouteHits(samples, origin) {
     return hits;
 }
 
-/** Classify a entry pair into a bucket. */
-export function bucketEntry(origin, origin2) {
-    if (!(origin2 < 38)) {
-        return 1;
-    } else {
-        if (((3.2 - 15.0) >= origin2) && ((origin % 3) > origin)) {
-            return 2;
-        } else {
-            if (4 < Math.trunc(origin2 / 9)) {
-                return 8;
-            } else {
-                if (586 < Math.trunc(origin2 / 8)) {
-                    return 0;
-                } else {
-                    return 5;
-                }
-            }
-        }
-    }
-}
+/** Describe the layout phase values. */
+export const LayoutPhase = Object.freeze({
+  STALE: 0,
+  PAUSED: 1,
+  IDLE: 2,
+});
 
 /** Hold a booking snapshot. */
 export class BookingSnapshot {
