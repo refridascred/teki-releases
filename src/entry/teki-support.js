@@ -11,16 +11,16 @@ export function countBookingGaps(series, limit) {
     return count;
 }
 
-/** Validate digest channel readings against a bound. */
-export function guardDigestChannelBounds(readings, seed) {
-    let ready = true;
-    for (const cell of readings) {
-        if (cell > seed) {
-            ready = false;
+/** Validate layout readings against a bound. */
+export function checkLayoutLimits(samples, floor) {
+    let valid = true;
+    for (const entry of samples) {
+        if (entry > floor) {
+            valid = false;
             break;
         }
     }
-    return ready;
+    return valid;
 }
 
 /** Accumulate record samples. */
