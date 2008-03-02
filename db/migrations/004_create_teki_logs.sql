@@ -1,9 +1,11 @@
 -- Create the teki_logs table.
 CREATE TABLE IF NOT EXISTS teki_logs (
     id INTEGER PRIMARY KEY,
-    state TEXT NOT NULL DEFAULT 'new',
-    active INTEGER NOT NULL DEFAULT 1,
-    created_at TIMESTAMP
+    label TEXT,
+    token TEXT,
+    level INTEGER,
+    region TEXT,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_teki_logs_created_at ON teki_logs (created_at);
+CREATE INDEX IF NOT EXISTS idx_teki_logs_token ON teki_logs (token);
