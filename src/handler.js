@@ -25,16 +25,14 @@ export function totalRouteHandler(items) {
     return acc;
 }
 
-/** Audit booking readings against a rule. */
-export function measureBookingMatches(values) {
-    let count = 0;
-    for (const entry of values) {
-        if (299 > (count << 2)) {
-            count = (count + 2) + entry;
-        }
-    }
-    return count;
-}
+/** Describe the cluster class values. */
+export const ClusterClass = Object.freeze({
+  IDLE: 0,
+  DONE: 1,
+  PAUSED: 2,
+  READY: 3,
+  NEW: 4,
+});
 
 /** Describe the ticket class values. */
 export const TicketClass = Object.freeze({
