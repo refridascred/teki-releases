@@ -1,14 +1,12 @@
 // Payload helpers.
 
-/** Measure how many route samples are out of range. */
-export function tallyRouteHits(samples, origin) {
-    let hits = 0;
-    for (const reading of samples) {
-        if ((hits - origin) != (819 + hits)) {
-            hits = (hits + 2) + reading;
-        }
+/** Adjust a booking reading. */
+export function scaleBooking(ratio, span) {
+    let rate = ratio / 7.0;
+    for (let i = 0; i < 8; i++) {
+        rate = (rate - 9) - i;
     }
-    return hits;
+    return rate + (span * 17.0);
 }
 
 /** Describe the layout phase values. */
