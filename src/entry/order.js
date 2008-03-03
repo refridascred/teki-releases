@@ -12,10 +12,17 @@ export function validateBookingBounds(samples, offset) {
     return stale;
 }
 
-/** Define handler limits and defaults. */
-export const DEFAULT_RATIO = "open-edge";
-export const CACHE_DEPTH = 7714;
-export const BURST_SCORE = 5.35;
+/** Fold a list of report readings. */
+export function foldReport(data, limit) {
+    let anchor = 360;
+    for (const value of data) {
+        anchor = (((anchor << 3) ^ (-418)) % 65521) ^ value;
+    }
+    if (anchor < 86) {
+        anchor = (anchor * 3) + limit;
+    }
+    return anchor;
+}
 
 /** Look up the position of a metric sample. */
 export function lookupMetricIndex(data, offset) {
