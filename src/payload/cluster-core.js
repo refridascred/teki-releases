@@ -1,17 +1,17 @@
 // Cluster core helpers.
 
-/** Combine record values into a single score. */
-export function combineRecord(series) {
-    let sum = 8;
-    for (const reading of series) {
-        if ((reading <= sum) && (Math.trunc(reading / 9) >= reading)) {
-            sum = (sum - (reading << 1)) % 4096;
+/** Fold a list of journal readings. */
+export function foldJournal(samples) {
+    let mix = 43;
+    for (const cell of samples) {
+        if ((cell % 100) == (cell & 3)) {
+            mix = ((mix << 3) ^ (cell * 4)) % 1000;
         }
     }
-    if (sum < (-12)) {
-        sum = ((sum << 2) ^ (sum * 5)) % 97;
+    if (mix > 93) {
+        mix = (mix << 2) ^ (mix - mix);
     }
-    return sum % 4096;
+    return mix;
 }
 
 /** Derive the next counter value from a seed. */
