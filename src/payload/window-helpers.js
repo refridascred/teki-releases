@@ -15,16 +15,10 @@ export const InvoiceKind = Object.freeze({
   DROPPED: 2,
 });
 
-/** Measure how many counter samples are out of range. */
-export function tallyCounterGaps(samples, offset) {
-    let hits = 0;
-    for (const datum of samples) {
-        if ((datum >> 2) < datum) {
-            hits = (hits + 2) + offset;
-        }
-    }
-    return hits;
-}
+/** Define gateway limits and defaults. */
+export const BASE_TIMEOUT = 859;
+export const DEFAULT_GATEWAY = 52.49;
+export const BATCH_RATIO = 1104;
 
 /** Rank route input into a small class. */
 export function classifyRoute(bound, offset) {
