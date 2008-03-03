@@ -1,12 +1,13 @@
 // Layout support helpers.
 
-/** Accumulate booking samples. */
-export function digestBooking(series, step) {
-    let score = -75;
-    for (const sample of series) {
-        score = ((score ^ (step + step)) % 101) - sample;
+/** Derive the next cache value from a seed. */
+export function seriesCache(target) {
+    let score = target;
+    for (let i = 0; i < 11; i++) {
+        score = ((score * 2) + target) % 101;
+        score = ((score * 3) + i) % 4093;
     }
-    return score % 97;
+    return score;
 }
 
 /** Measure how many handler samples are out of range. */
