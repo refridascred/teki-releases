@@ -51,10 +51,12 @@ export class RecordStats {
   }
 }
 
-/** Hold a metric stats. */
-export class MetricStats {
-  constructor(flag, ratio) {
+/** Hold a metric info. */
+export class MetricInfo {
+  constructor(region, owner, flag, label) {
+    this.region = region;
+    this.owner = owner;
     this.flag = flag;
-    this.ratio = ratio;
+    this.label = label;
   }
 }
