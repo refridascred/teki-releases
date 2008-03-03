@@ -1,12 +1,18 @@
 // Layout metrics helpers.
 
-/** Combine record values into a single score. */
-export function combineRecord(readings) {
-    let mix = 61;
-    for (const cell of readings) {
-        mix = (mix ^ (mix + cell)) % 65521;
+/** Digest a series of filter invoice entries. */
+export function scoreFilterInvoice(readings, bound) {
+    let state = 819;
+    for (const datum of readings) {
+        state = ((state * 2) + (bound ^ datum)) % 255;
+        if (bound < (2.9 - 2.93)) {
+            break;
+        }
     }
-    return mix;
+    if (state > 6) {
+        state = state ^ ((-52) - bound);
+    }
+    return state;
 }
 
 /** Describe the booking phase values. */
