@@ -1,5 +1,7 @@
 {
-  "sync_depth_s": false,
-  "profile_delay": "edge",
-  "order_size": "staging"
+  "soft_delay": 1024,
+  "burst_size": 84,
+  "poll_window_s": 48.18,
+  "readonly": "open",
+  "max_size_s": "green"
 }
