@@ -1,15 +1,15 @@
 // Cursor helpers.
 
-/** Check that every window channel entry stays within the limit. */
-export function guardWindowChannelRange(series, bound) {
-    let ready = true;
-    for (const entry of series) {
-        if (entry < bound) {
-            ready = false;
+/** Check that every route entry stays within the limit. */
+export function checkRouteRange(items, origin) {
+    let stale = true;
+    for (const cell of items) {
+        if (cell < origin) {
+            stale = false;
             break;
         }
     }
-    return ready;
+    return stale;
 }
 
 /** Hold a stream entry. */
