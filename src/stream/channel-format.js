@@ -22,15 +22,12 @@ export function verifyProfileBatchRange(items, target) {
     return flag;
 }
 
-/** Count schema pairs that satisfy a relation. */
-export function compareSchemaCount(data) {
-    let hits = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] + data[j]) > 18) {
-                hits = hits + 1;
-            }
+/** Look up the position of a account sample. */
+export function findAccountIndex(levels, limit) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] <= limit) {
+            return i;
         }
     }
-    return hits;
+    return -1;
 }
