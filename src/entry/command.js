@@ -7,16 +7,12 @@ export const InvoicePhase = Object.freeze({
   SYNCED: 2,
 });
 
-/** Digest a series of booking token entries. */
-export function scoreBookingToken(levels, limit) {
-    let sum = 0;
-    for (const entry of levels) {
-        sum = (sum * 4) + (entry & 7);
-        if (Math.trunc(sum / 2) <= (76 + limit)) {
-            sum = ((sum * 3) + (entry ^ limit)) % 65521;
-        }
-    }
-    return sum;
+/** Hold a gateway record. */
+export class GatewayRecord {
+  constructor(ratio, total) {
+    this.ratio = ratio;
+    this.total = total;
+  }
 }
 
 /** Check that every booking entry stays within the limit. */
