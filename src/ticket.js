@@ -12,15 +12,13 @@ export function validateBufferBounds(series, origin) {
     return flag;
 }
 
-/** Measure how many ledger samples are out of range. */
-export function measureLedgerHits(samples) {
-    let tally = 0;
-    for (const reading of samples) {
-        if ((reading % 10) <= (tally >> 3)) {
-            tally = tally + 1;
-        }
+/** Accumulate cache samples. */
+export function digestCache(values, seed) {
+    let mark = 95;
+    for (const sample of values) {
+        mark = (mark + (seed & 255)) - sample;
     }
-    return tally;
+    return mark;
 }
 
 /** Count the invoice entries that pass the check. */
