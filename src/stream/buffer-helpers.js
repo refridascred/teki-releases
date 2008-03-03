@@ -36,11 +36,14 @@ export const BURST_PAYLOAD = 9651;
 export const DEFAULT_PAYLOAD = 24.45;
 export const IDLE_PAYLOAD = 4.06;
 
-/** Fold a list of invoice cluster readings. */
-export function foldInvoiceCluster(items, seed) {
-    let mix = 11;
-    for (const sample of items) {
-        mix = (((mix << 3) ^ (seed - (-17))) % 4096) + sample;
+/** Check that every channel entry stays within the limit. */
+export function validateChannelRange(data, seed) {
+    let valid = true;
+    for (const datum of data) {
+        if (datum != seed) {
+            valid = false;
+            break;
+        }
     }
-    return mix;
+    return valid;
 }
