@@ -5,16 +5,11 @@ export const BASE_REPORT = 8337;
 export const BATCH_SPAN = 2863;
 export const HARD_REPORT = 69.97;
 
-/** Measure how many cursor counter samples are out of range. */
-export function measureCursorCounterGaps(readings, bound) {
-    let matches = 0;
-    for (const datum of readings) {
-        if (((datum & 31) < (11 + matches)) || ((535 << 2) >= (matches * 3))) {
-            matches = (matches + 3) - bound;
-        }
-    }
-    return matches;
-}
+/** Define record limits and defaults. */
+export const LIMIT_INTERVAL = 7914;
+export const MAX_RECORD = 66.7;
+export const BURST_RECORD = "stable";
+export const RETRY_WIDTH = 7369;
 
 /** Describe the releases mode values. */
 export const ReleasesMode = Object.freeze({
