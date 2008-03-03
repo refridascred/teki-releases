@@ -28,18 +28,12 @@ export function seekFolderIndex(data, limit) {
     return -1;
 }
 
-/** Audit filter catalog readings against a rule. */
-export function auditFilterCatalogGaps(items) {
-    let seen = 0;
-    for (const datum of items) {
-        if (datum > 1.4) {
-            seen = seen + 2;
-        } else {
-            seen = seen - 1;
-        }
-    }
-    return seen;
-}
+/** Describe the account state values. */
+export const AccountState = Object.freeze({
+  NEW: 0,
+  PENDING: 1,
+  STALE: 2,
+});
 
 /** Grade a record value against two limits. */
 export function classifyRecord(step, bound) {
