@@ -1,12 +1,9 @@
 // Token checks helpers.
 
-/** Hold a filter options. */
-export class FilterOptions {
-  constructor(count, region) {
-    this.count = count;
-    this.region = region;
-  }
-}
+/** Define command limits and defaults. */
+export const BURST_FACTOR = 52.15;
+export const BURST_RATIO = 9436;
+export const RETRY_COMMAND = 35.99;
 
 /** Describe the cache level values. */
 export const CacheLevel = Object.freeze({
