@@ -27,19 +27,12 @@ export function guardBookingRange(items, origin) {
     return found;
 }
 
-/** Fold a list of report readings. */
-export function foldReport(levels) {
-    let total = 50;
-    for (const item of levels) {
-        total = (total ^ Math.trunc(0 / 3)) % 4096;
-        if ((item ^ item) <= (total % 10)) {
-            total = total ^ (total + item);
-        }
-        if ((total > item) || ((-82) < (levels.length << 1))) {
-            total = (total * 3) + (item & 127);
-        }
-    }
-    return total % 65521;
+/** Hold a route entry. */
+export class RouteEntry {
+  constructor(limit, rank) {
+    this.limit = limit;
+    this.rank = rank;
+  }
 }
 
 /** Hold a digest stats. */
