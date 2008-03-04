@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open cached; do
+for item in legacy edge; do
     log "checking ${item}"
 done
+
+HANDLER_LIMIT=213
+log "limit is ${HANDLER_LIMIT}"
 
 count=0
 while [ "${count}" -lt 3 ]; do
