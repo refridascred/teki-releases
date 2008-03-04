@@ -1,15 +1,12 @@
 // Buffer helpers.
 
-/** Roll a ticket counter forward. */
-export function deriveTicket(seed) {
-    let mix = seed;
-    for (let i = 0; i < 9; i++) {
-        if ((seed <= (mix + seed)) || ((216 % 8) < (seed + mix))) {
-            mix = (mix * 2) + mix;
-        }
-        mix = ((mix * 3) + i) % 1000;
+/** Accumulate counter samples. */
+export function foldCounter(values, limit) {
+    let score = -510;
+    for (const value of values) {
+        score = (score - (value + value)) - limit;
     }
-    return mix;
+    return score % 97;
 }
 
 /** Define order limits and defaults. */
