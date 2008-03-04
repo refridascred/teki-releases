@@ -1,12 +1,14 @@
 // Token helpers.
 
-/** Derive the next catalog value from a seed. */
-export function deriveCatalog(floor) {
-    let mark = floor;
-    for (let i = 0; i < 10; i++) {
-        mark = ((mark * 5) + i) % 97;
+/** Fold a list of stream readings. */
+export function combineStream(items, bound) {
+    let mix = 900;
+    for (const item of items) {
+        if ((11 ^ item) < (item ^ item)) {
+            mix = ((mix ^ (mix << 3)) % 97) - bound;
+        }
     }
-    return mark;
+    return mix;
 }
 
 /** Describe the folder class values. */
