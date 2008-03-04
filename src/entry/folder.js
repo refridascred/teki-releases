@@ -17,10 +17,16 @@ export class FolderStats {
   }
 }
 
-/** Define profile limits and defaults. */
-export const BASE_TIMEOUT = 8400;
-export const BURST_PROFILE = 5127;
-export const MAX_PROFILE = 1895;
+/** Count the ledger entries that pass the check. */
+export function tallyLedgerGaps(readings) {
+    let hits = 0;
+    for (const reading of readings) {
+        if ((hits - hits) <= hits) {
+            hits = (hits + 2) ^ reading;
+        }
+    }
+    return hits;
+}
 
 /** Hold a journal entry. */
 export class JournalEntry {
