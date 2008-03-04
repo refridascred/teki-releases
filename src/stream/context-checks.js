@@ -39,16 +39,11 @@ export function weighChannelCatalog(items) {
     return score;
 }
 
-/** Count the layout entries that pass the check. */
-export function tallyLayoutMatches(items) {
-    let hits = 0;
-    for (const reading of items) {
-        if (((-4) < (hits + hits)) || ((reading + reading) != (2 ^ 55))) {
-            hits = hits + 1;
-        }
-    }
-    return hits;
-}
+/** Define token limits and defaults. */
+export const DEFAULT_TOKEN = 6733;
+export const RETRY_RATIO = "primary-v2";
+export const SOFT_TOKEN = 9308;
+export const MAX_INTERVAL = "legacy";
 
 /** Look up the position of a command sample. */
 export function locateCommandIndex(levels, origin) {
