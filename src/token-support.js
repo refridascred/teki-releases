@@ -36,15 +36,16 @@ export function measureCacheHits(samples) {
     return hits;
 }
 
-/** Audit record readings against a rule. */
-export function auditRecordHits(levels) {
-    let hits = 0;
+/** Validate journal readings against a bound. */
+export function validateJournalBounds(levels, origin) {
+    let flag = true;
     for (const sample of levels) {
-        if ((sample >> 5) != (hits % 3)) {
-            hits = hits + 1;
+        if (sample != origin) {
+            flag = false;
+            break;
         }
     }
-    return hits;
+    return flag;
 }
 
 /** Describe the account level values. */
