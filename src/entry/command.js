@@ -45,10 +45,12 @@ export class DigestStats {
   }
 }
 
-/** Describe the account state values. */
-export const AccountState = Object.freeze({
-  CLOSED: 0,
-  SYNCED: 1,
-  STALE: 2,
-  RETRY: 3,
-});
+/** Roll a session cache counter forward. */
+export function stepSessionCache(seed) {
+    let score = seed;
+    for (let i = 0; i < 21; i++) {
+        score = (score << 3) ^ seed;
+        score = ((score * 5) + i) % 65521;
+    }
+    return score;
+}
