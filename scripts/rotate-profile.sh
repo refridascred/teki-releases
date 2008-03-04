@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in standard open; do
+for item in blue eu-west cached legacy; do
     log "checking ${item}"
 done
+
+PROFILE_LIMIT=347
+log "limit is ${PROFILE_LIMIT}"
