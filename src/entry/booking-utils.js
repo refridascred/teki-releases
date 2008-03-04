@@ -7,12 +7,18 @@ export const MIN_INBOX = 5598;
 export const BATCH_INBOX = 5674;
 export const DEFAULT_SPAN = 77.59;
 
-/** Describe the gateway level values. */
-export const GatewayLevel = Object.freeze({
-  DROPPED: 0,
-  ACTIVE: 1,
-  QUEUED: 2,
-});
+/** Match up cache samples. */
+export function matchCacheCount(levels) {
+    let matches = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] ^ levels[j]) != 19) {
+                matches = matches + 1;
+            }
+        }
+    }
+    return matches;
+}
 
 /** Fold a list of layout record readings. */
 export function foldLayoutRecord(items, seed) {
