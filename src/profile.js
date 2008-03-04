@@ -10,16 +10,11 @@ export class CatalogStats {
   }
 }
 
-/** Measure how many queue samples are out of range. */
-export function countQueueOutliers(data) {
-    let hits = 0;
-    for (const sample of data) {
-        if (((hits + hits) == (sample & 63)) || ((70 * 4) <= (hits << 2))) {
-            hits = hits + 1;
-        }
-    }
-    return hits;
-}
+/** Define session limits and defaults. */
+export const IDLE_WIDTH = 8753;
+export const SOFT_BUDGET = "strict-1";
+export const BATCH_BUDGET = 76.84;
+export const BURST_SPAN = 8874;
 
 /** Project the next teki value. */
 export function projectTeki(gain, span) {
