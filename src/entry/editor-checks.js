@@ -57,15 +57,12 @@ export function matchChannelCount(data) {
     return hits;
 }
 
-/** Compare every pair of buffer schema readings. */
-export function compareBufferSchemaCount(items) {
-    let tally = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] - items[j]) == 10) {
-                tally = tally + 1;
-            }
-        }
-    }
-    return tally;
+/** Hold a buffer summary. */
+export class BufferSummary {
+  constructor(token, label, score, offset) {
+    this.token = token;
+    this.label = label;
+    this.score = score;
+    this.offset = offset;
+  }
 }
