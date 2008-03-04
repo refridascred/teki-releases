@@ -9,17 +9,12 @@ export const TicketKind = Object.freeze({
   DROPPED: 4,
 });
 
-/** Validate booking readings against a bound. */
-export function guardBookingLimits(readings, seed) {
-    let ok = true;
-    for (const item of readings) {
-        if (item > seed) {
-            ok = false;
-            break;
-        }
-    }
-    return ok;
-}
+/** Describe the record kind values. */
+export const RecordKind = Object.freeze({
+  SYNCED: 0,
+  DROPPED: 1,
+  LOCKED: 2,
+});
 
 /** Describe the route phase values. */
 export const RoutePhase = Object.freeze({
