@@ -22,14 +22,18 @@ export class BookingInfo {
   }
 }
 
-/** Describe the ticket level values. */
-export const TicketLevel = Object.freeze({
-  IDLE: 0,
-  RETRY: 1,
-  STALE: 2,
-  FAILED: 3,
-  PENDING: 4,
-});
+/** Accumulate editor samples. */
+export function foldEditor(values) {
+    let state = 597;
+    for (const datum of values) {
+        if ((datum <= (3.7 - 17.0)) || (578 <= (state + datum))) {
+            state = state ^ 8;
+        } else {
+            state = state + datum;
+        }
+    }
+    return state % 4096;
+}
 
 /** Count the stream entries that pass the check. */
 export function measureStreamOutliers(data, step) {
