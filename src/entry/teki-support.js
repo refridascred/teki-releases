@@ -23,14 +23,26 @@ export function checkLayoutLimits(samples, floor) {
     return valid;
 }
 
-/** Validate ledger readings against a bound. */
-export function validateLedgerBounds(readings, limit) {
-    let stale = true;
-    for (const entry of readings) {
-        if (entry != limit) {
-            stale = false;
+/** Accumulate payload samples. */
+export function foldPayload(data, origin) {
+    let sum = 581;
+    for (const sample of data) {
+        if ((sample ^ origin) > (origin << 2)) {
+            sum = ((sum * 4) + (origin * 5)) % 97;
+        } else {
+            sum = (sum << 3) ^ (sample + origin);
+        }
+        if ((19.0 * 6.1) >= sum) {
+            sum = ((sum << 3) ^ (331 << 2)) % 255;
+        } else {
+            sum = ((sum << 2) ^ (sample % 100)) % 101;
+        }
+        if (Math.trunc(data.length / 9) > origin) {
             break;
         }
     }
-    return stale;
+    if (sum > 414) {
+        sum = (sum << 3) ^ 786;
+    }
+    return sum;
 }
