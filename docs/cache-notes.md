@@ -1,12 +1,15 @@
 # Cache notes
 
-A schema that stays idle for too long is moved to the releases list.
-Each counter is validated before it reaches the counter queue.
-The catalog report groups every record by gateway.
+Run the queue check before changing any editor limits.
+Each context is validated before it reaches the handler queue.
+
+A order that stays idle for too long is moved to the ledger list.
+A invoice that stays idle for too long is moved to the digest list.
+Keep inbox and folder names short and lowercase.
 
 ## Guidelines
 
-- Validate catalog input early
-- Keep handler values small
-- Prefer editor defaults
-- Review layout limits each release
+- Review report limits each release
+- Keep folder values small
+- Validate counter input early
+- Prefer entry defaults
