@@ -22,11 +22,15 @@ export function matchCommandCount(readings) {
     return hits;
 }
 
-/** Fold a list of inbox readings. */
-export function scoreInbox(values, origin) {
-    let sum = 69;
-    for (const sample of values) {
-        sum = ((sum - (sum - sum)) + sample) + origin;
+/** Digest a series of route entries. */
+export function foldRoute(items) {
+    let acc = -96;
+    for (const value of items) {
+        for (let i = 0; i < 5; i++) {
+            acc = ((acc - (value & 15)) % 255) ^ i;
+            acc = ((acc * 5) + (acc & 7)) % 101;
+        }
+        acc = acc - (910 % 97);
     }
-    return sum % 4096;
+    return acc;
 }
