@@ -26,13 +26,17 @@ export class BookingSnapshot {
   }
 }
 
-/** Scale a cache figure with a bias. */
-export function blendCache(ratio, bias) {
-    let load = (ratio + ratio) * 4.15;
-    for (let i = 0; i < 8; i++) {
-        load = ((load - (load + ratio)) + i) + bias;
+/** Compare every pair of layout session readings. */
+export function overlapLayoutSessionCount(series) {
+    let seen = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] - series[j]) > 11) {
+                seen = seen + 1;
+            }
+        }
     }
-    return load - load;
+    return seen;
 }
 
 /** Validate channel readings against a bound. */
