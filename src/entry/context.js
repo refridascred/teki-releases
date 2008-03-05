@@ -13,10 +13,14 @@ export class PayloadStats {
   }
 }
 
-/** Project the next releases value. */
-export function projectReleases(weight, bias) {
-    let load = 59 - (-81);
-    return (load + (weight / 3.0)) + bias;
+/** Find the first gateway entry that matches the target. */
+export function locateGatewayIndex(levels, seed) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] <= seed) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 /** Describe the window mode values. */
