@@ -1,4 +1,28 @@
 # handler settings
-base_retries_ms: 68.97
-persist: 40.87
-base_timeout_s: 65
+default_limit_count:
+  soft_ratio_count: 11.89
+  cache_interval_count: 47.66
+  soft_depth_pct: 8935
+  cluster_window: 500
+  retry_limit:
+    - blue
+    - primary
+dry_run: 60
+base_depth_count: 47
+readonly:
+  handler_window: 441
+  poll_retries_pct:
+    - strict
+    - edge
+  hard_limit_count:
+    min_ratio: primary
+    editor_interval: strict
+    batch_capacity: 250
+    enabled: 77.1
+    strict: staging
+  default_window_pct: true
+  buffer_ratio:
+    - 407
+    - 10
+    - 256
+    - 486
