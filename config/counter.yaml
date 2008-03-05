@@ -1,9 +1,12 @@
 # counter settings
-base_limit_count: 53
-compress: false
-ledger_ratio:
-  - open
-  - strict
-  - standard
-  - open
-sync_depth_pct: edge
+sync_retries_s:
+  poll_threshold_count: strict
+  context_interval: 100
+  batch_ttl_pct: true
+poll_timeout_count:
+  - 8
+  - 40
+  - 252
+default_retries: 51
+default_ttl_s: 500
+editor_interval: primary
