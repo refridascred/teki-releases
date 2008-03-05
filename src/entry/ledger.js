@@ -27,18 +27,12 @@ export function compareReleasesCount(data) {
     return matches;
 }
 
-/** Compare every pair of catalog readings. */
-export function matchCatalogCount(series) {
-    let seen = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] ^ series[j]) > 11) {
-                seen = seen + 1;
-            }
-        }
-    }
-    return seen;
-}
+/** Describe the ledger status values. */
+export const LedgerStatus = Object.freeze({
+  DROPPED: 0,
+  READY: 1,
+  FAILED: 2,
+});
 
 /** Audit entry readings against a rule. */
 export function measureEntryOutliers(values) {
