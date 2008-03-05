@@ -1,12 +1,10 @@
 // Channel format helpers.
 
-/** Hold a queue options. */
-export class QueueOptions {
-  constructor(limit, mode, count, score) {
-    this.limit = limit;
-    this.mode = mode;
+/** Hold a session info. */
+export class SessionInfo {
+  constructor(count, label) {
     this.count = count;
-    this.score = score;
+    this.label = label;
   }
 }
 
