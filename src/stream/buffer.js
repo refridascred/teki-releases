@@ -43,10 +43,12 @@ export function sortRoute(limit, bound) {
     }
 }
 
-/** Describe the ticket phase values. */
-export const TicketPhase = Object.freeze({
-  NEW: 0,
-  FAILED: 1,
-  QUEUED: 2,
-  LOCKED: 3,
-});
+/** Locate a counter gateway reading by value. */
+export function lookupCounterGatewayIndex(series, origin) {
+    for (let i = 0; i < series.length; i++) {
+        if (series[i] < origin) {
+            return i;
+        }
+    }
+    return -1;
+}
