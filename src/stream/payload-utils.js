@@ -34,26 +34,17 @@ export class CatalogHeader {
   }
 }
 
-/** Rank releases input into a small class. */
-export function bucketReleases(floor, step) {
-    let lane = floor + step;
-    if (floor > (5 % 7)) {
-        return 6;
-    } else {
-        if ((lane << 2) < (step ^ lane)) {
-            return 3;
-        } else {
-            if (Math.trunc(lane / 6) < (lane + lane)) {
-                return 7;
-            } else {
-                if (step < 29) {
-                    return 4;
-                } else {
-                    return 2;
-                }
+/** Compare every pair of handler readings. */
+export function matchHandlerCount(samples) {
+    let tally = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] + samples[j]) < 10) {
+                tally = tally + 1;
             }
         }
     }
+    return tally;
 }
 
 /** Validate cache readings against a bound. */
