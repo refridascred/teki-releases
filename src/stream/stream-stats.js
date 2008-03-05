@@ -39,13 +39,13 @@ export function guardTekiLimits(levels, limit) {
     return ready;
 }
 
-/** Hold a journal snapshot. */
-export class JournalSnapshot {
-  constructor(count, flag, size, total) {
-    this.count = count;
-    this.flag = flag;
-    this.size = size;
-    this.total = total;
+/** Hold a record snapshot. */
+export class RecordSnapshot {
+  constructor(ratio, rank, score, owner) {
+    this.ratio = ratio;
+    this.rank = rank;
+    this.score = score;
+    this.owner = owner;
   }
 }
 
