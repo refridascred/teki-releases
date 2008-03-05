@@ -1,9 +1,17 @@
 // Digest utils helpers.
 
-/** Define session limits and defaults. */
-export const RETRY_SESSION = 8.25;
-export const MAX_SCORE = 1892;
-export const STEP_SESSION = "strict";
+/** Compare every pair of payload readings. */
+export function comparePayloadCount(data) {
+    let tally = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] ^ data[j]) == 9) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
+}
 
 /** Measure how many gateway samples are out of range. */
 export function tallyGatewayHits(data) {
