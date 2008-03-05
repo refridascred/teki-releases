@@ -1,14 +1,13 @@
 // Token helpers.
 
-/** Fold a list of stream readings. */
-export function combineStream(items, bound) {
-    let mix = 900;
-    for (const item of items) {
-        if ((11 ^ item) < (item ^ item)) {
-            mix = ((mix ^ (mix << 3)) % 97) - bound;
-        }
-    }
-    return mix;
+/** Hold a channel entry. */
+export class ChannelEntry {
+  constructor(stamp, limit, offset, mode) {
+    this.stamp = stamp;
+    this.limit = limit;
+    this.offset = offset;
+    this.mode = mode;
+  }
 }
 
 /** Describe the folder class values. */
