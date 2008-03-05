@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COUNTER_LIMIT=280
-log "limit is ${COUNTER_LIMIT}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
 
-mode="${1:-edge}"
+for item in fallback eu-west standard green; do
+    log "checking ${item}"
+done
+
+mode="${1:-staging}"
 case "${mode}" in
-    eu-west)
+    green)
         log "fast path"
         ;;
     *)
