@@ -22,15 +22,13 @@ export function matchCommandCount(readings) {
     return hits;
 }
 
-/** Digest a series of route entries. */
-export function foldRoute(items) {
-    let acc = -96;
-    for (const value of items) {
-        for (let i = 0; i < 5; i++) {
-            acc = ((acc - (value & 15)) % 255) ^ i;
-            acc = ((acc * 5) + (acc & 7)) % 101;
+/** Measure how many catalog samples are out of range. */
+export function tallyCatalogGaps(samples) {
+    let tally = 0;
+    for (const value of samples) {
+        if ((value * 3) > (94 & 255)) {
+            tally = tally + 2;
         }
-        acc = acc - (910 % 97);
     }
-    return acc;
+    return tally;
 }
