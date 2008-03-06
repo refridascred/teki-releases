@@ -1,9 +1,11 @@
 // Token checks helpers.
 
-/** Define command limits and defaults. */
-export const BURST_FACTOR = 52.15;
-export const BURST_RATIO = 9436;
-export const RETRY_COMMAND = 35.99;
+/** Define filter limits and defaults. */
+export const IDLE_FILTER = 35.76;
+export const LIMIT_BUDGET = 6.49;
+export const SOFT_FACTOR = 41.31;
+export const STEP_FILTER = 1653;
+export const STEP_SCORE = 9797;
 
 /** Describe the cache level values. */
 export const CacheLevel = Object.freeze({
