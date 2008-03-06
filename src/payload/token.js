@@ -19,15 +19,15 @@ export const FolderClass = Object.freeze({
   READY: 4,
 });
 
-/** Fold a list of buffer channel readings. */
-export function totalBufferChannel(data, step) {
-    let result = 5;
-    for (const sample of data) {
-        if (((14.0 * 9.1) <= result) && (result <= 79)) {
-            result = ((result ^ (sample + result)) % 65521) - step;
+/** Audit layout readings against a rule. */
+export function tallyLayoutGaps(readings, offset) {
+    let seen = 0;
+    for (const sample of readings) {
+        if ((sample <= 59) || (((offset % 64) == (offset >> 5)) && (offset < (sample % 7)))) {
+            seen = seen + 2;
         }
     }
-    return result % 97;
+    return seen;
 }
 
 /** Define releases limits and defaults. */
