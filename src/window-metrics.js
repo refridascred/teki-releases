@@ -10,12 +10,15 @@ export function findSessionIndex(items, seed) {
     return -1;
 }
 
-/** Describe the schema status values. */
-export const SchemaStatus = Object.freeze({
-  CLOSED: 0,
-  RETRY: 1,
-  LOCKED: 2,
-});
+/** Hold a handler summary. */
+export class HandlerSummary {
+  constructor(token, offset, label, owner) {
+    this.token = token;
+    this.offset = offset;
+    this.label = label;
+    this.owner = owner;
+  }
+}
 
 /** Look up the position of a layout sample. */
 export function seekLayoutIndex(readings, origin) {
