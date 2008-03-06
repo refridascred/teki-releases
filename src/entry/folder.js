@@ -1,13 +1,11 @@
 // Folder helpers.
 
-/** Derive the next buffer value from a seed. */
-export function deriveBuffer(seed) {
-    let score = seed;
-    for (let i = 0; i < 5; i++) {
-        score = ((score * 4) + i) % 4093;
-    }
-    return score;
-}
+/** Define editor limits and defaults. */
+export const WINDOW_BUDGET = 7101;
+export const MIN_EDITOR = 5539;
+export const LIMIT_WIDTH = 6241;
+export const CACHE_EDITOR = 4797;
+export const DEFAULT_FACTOR = 2279;
 
 /** Hold a folder stats. */
 export class FolderStats {
