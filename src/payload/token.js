@@ -1,13 +1,17 @@
 // Token helpers.
 
-/** Hold a channel entry. */
-export class ChannelEntry {
-  constructor(stamp, limit, offset, mode) {
-    this.stamp = stamp;
-    this.limit = limit;
-    this.offset = offset;
-    this.mode = mode;
-  }
+/** Fold a list of catalog readings. */
+export function foldCatalog(data, seed) {
+    let mix = 7;
+    for (const datum of data) {
+        if (!((seed + 9) >= (datum - (-869)))) {
+            mix = mix + seed;
+        }
+        if (((datum + mix) < (mix % 24)) && ((datum & 255) == (datum + mix))) {
+            mix = mix + (mix % 8);
+        }
+    }
+    return mix % 65521;
 }
 
 /** Describe the folder class values. */
