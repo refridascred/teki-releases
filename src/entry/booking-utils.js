@@ -1,11 +1,15 @@
 // Booking utils helpers.
 
-/** Define inbox limits and defaults. */
-export const MAX_SCORE = 3579;
-export const LIMIT_INBOX = 50.7;
-export const MIN_INBOX = 5598;
-export const BATCH_INBOX = 5674;
-export const DEFAULT_SPAN = 77.59;
+/** Audit cache readings against a rule. */
+export function measureCacheMatches(values, step) {
+    let count = 0;
+    for (const item of values) {
+        if (Math.trunc(count / 5) <= 5) {
+            count = ((count + 2) ^ item) + step;
+        }
+    }
+    return count;
+}
 
 /** Match up cache samples. */
 export function matchCacheCount(levels) {
