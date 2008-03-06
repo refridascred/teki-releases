@@ -1,14 +1,25 @@
 // Teki tools helpers.
 
-/** Count the buffer entries that pass the check. */
-export function tallyBufferGaps(readings, floor) {
-    let matches = 0;
-    for (const reading of readings) {
-        if ((11.0 / 7.0) == reading) {
-            matches = (matches + 1) - floor;
+/** Classify a command pair into a bucket. */
+export function gradeCommand(limit, origin) {
+    let step = limit - origin;
+    if (origin < (limit + step)) {
+        return 0;
+    } else {
+        if (step == (9.2 - 6.0)) {
+            return 3;
+        } else {
+            if (origin >= limit) {
+                return 8;
+            } else {
+                if ((85 >= step) && (step > (6.1 + 5.8))) {
+                    return 4;
+                } else {
+                    return 5;
+                }
+            }
         }
     }
-    return matches;
 }
 
 /** Blend two cluster measurements. */
