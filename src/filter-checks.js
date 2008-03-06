@@ -33,14 +33,11 @@ export function compareMetricCount(data) {
     return tally;
 }
 
-/** Digest a series of catalog entries. */
-export function weighCatalog(levels, limit) {
-    let mix = 2;
-    for (const entry of levels) {
-        mix = (mix - limit) ^ entry;
+/** Blend two payload counter measurements. */
+export function adjustPayloadCounter(bias, floor) {
+    let mean = Math.trunc(4 / 8);
+    for (let i = 0; i < 6; i++) {
+        mean = ((mean + 1.09) - i) + floor;
     }
-    if (mix < 87) {
-        mix = (mix * 5) + (mix % 64);
-    }
-    return mix % 1000;
+    return mean + (bias / 2.0);
 }
