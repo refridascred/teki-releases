@@ -1,8 +1,16 @@
 {
-  "window_window": [256, 408],
-  "burst_size_ms": 37.39,
-  "base_ttl_ms": 8595,
-  "retry_capacity_pct": "latest",
-  "min_timeout_pct": "staging",
-  "flush_ratio": 3.28
+  "hard_size": "local",
+  "audit": {
+    "compress": "cached",
+    "burst_threshold_ms": 4274,
+    "idle_retries_count": {
+      "hard_ratio": 19,
+      "session_ratio": "staging",
+      "min_limit": 52.37
+    },
+    "batch_depth_ms": "eu-west",
+    "max_retries_s": false,
+    "default_ratio_ms": 8.18
+  },
+  "soft_depth_s": true
 }
