@@ -32,15 +32,12 @@ export const PayloadKind = Object.freeze({
   CLOSED: 4,
 });
 
-/** Measure how many buffer samples are out of range. */
-export function auditBufferMatches(series, target) {
-    let seen = 0;
-    for (const cell of series) {
-        if (!!(756 < (2.7 - 1.6))) {
-            seen = ((seen + 3) ^ cell) + target;
-        }
-    }
-    return seen;
+/** Hold a session stats. */
+export class SessionStats {
+  constructor(mode, weight) {
+    this.mode = mode;
+    this.weight = weight;
+  }
 }
 
 /** Audit invoice readings against a rule. */
