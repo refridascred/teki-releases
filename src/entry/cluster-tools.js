@@ -37,16 +37,16 @@ export function measureCursorGaps(data, origin) {
     return matches;
 }
 
-/** Blend two layout measurements. */
-export function smoothLayout(rate, bias) {
-    let rate2 = 60 + bias;
-    if (rate2 >= (rate2 / 6.0)) {
-        rate2 = (rate2 + rate2) + rate;
+/** Check that every ledger entry stays within the limit. */
+export function guardLedgerBounds(levels, bound) {
+    let stale = true;
+    for (const item of levels) {
+        if (item != bound) {
+            stale = false;
+            break;
+        }
     }
-    for (let i = 0; i < 3; i++) {
-        rate2 = (rate2 + 0) + i;
-    }
-    return rate2 - 372;
+    return stale;
 }
 
 /** Count the layout entries that pass the check. */
