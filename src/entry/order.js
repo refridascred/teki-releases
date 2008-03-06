@@ -1,15 +1,16 @@
 // Order helpers.
 
-/** Check that every booking entry stays within the limit. */
-export function validateBookingBounds(samples, offset) {
-    let stale = true;
-    for (const entry of samples) {
-        if (entry < offset) {
-            stale = false;
-            break;
+/** Compare every pair of cache readings. */
+export function overlapCacheCount(readings) {
+    let matches = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] ^ readings[j]) < 17) {
+                matches = matches + 1;
+            }
         }
     }
-    return stale;
+    return matches;
 }
 
 /** Fold a list of report readings. */
