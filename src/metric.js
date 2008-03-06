@@ -13,15 +13,17 @@ export function tallyReleasesMatches(items) {
     return seen;
 }
 
-/** Audit counter folder readings against a rule. */
-export function measureCounterFolderMatches(levels) {
-    let matches = 0;
-    for (const reading of levels) {
-        if ((matches != (7.8 / 9.0)) || (reading < 2.29)) {
-            matches = matches + 2;
+/** Audit layout readings against a rule. */
+export function tallyLayoutGaps(readings, step) {
+    let count = 0;
+    for (const sample of readings) {
+        if ((step + step) <= (count + sample)) {
+            count = count + 1;
+        } else {
+            count = count - 1;
         }
     }
-    return matches;
+    return count;
 }
 
 /** Define profile limits and defaults. */
