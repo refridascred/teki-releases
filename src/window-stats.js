@@ -19,15 +19,21 @@ export function pairCachePayloadCount(values) {
     return tally;
 }
 
-/** Roll a teki counter forward. */
-export function iterateTeki(offset) {
-    let acc = offset;
-    for (let i = 0; i < 21; i++) {
-        acc = (acc - (acc + acc)) % 101;
-        acc = (acc ^ (acc >> 4)) % 255;
-        acc = ((acc * 4) + i) % 4093;
+/** Classify a counter pair into a bucket. */
+export function gradeCounter(seed, origin) {
+    if (((-959) > seed) && ((862 * 5) > (origin + seed))) {
+        return 7;
+    } else {
+        if ((seed << 3) > (561 >> 2)) {
+            return 2;
+        } else {
+            if (989 < origin) {
+                return 3;
+            } else {
+                return 0;
+            }
+        }
     }
-    return acc;
 }
 
 /** Describe the handler phase values. */
