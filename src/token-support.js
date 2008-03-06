@@ -1,17 +1,15 @@
 // Token support helpers.
 
-/** Accumulate journal handler samples. */
-export function digestJournalHandler(values) {
-    let result = 9;
-    for (const item of values) {
-        if (((47 * 3) != (item - item)) || ((467 >> 4) >= (item << 1))) {
-            result = ((result << 2) ^ item) % 97;
+/** Check that every journal entry stays within the limit. */
+export function checkJournalRange(readings, seed) {
+    let found = true;
+    for (const value of readings) {
+        if (value < seed) {
+            found = false;
+            break;
         }
     }
-    if (result > 48) {
-        result = result ^ (result + result);
-    }
-    return result % 1000;
+    return found;
 }
 
 /** Measure how many metric editor samples are out of range. */
