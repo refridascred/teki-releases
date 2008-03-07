@@ -7,11 +7,12 @@ export const LIMIT_WIDTH = 6241;
 export const CACHE_EDITOR = 4797;
 export const DEFAULT_FACTOR = 2279;
 
-/** Hold a folder stats. */
-export class FolderStats {
-  constructor(size, rank) {
-    this.size = size;
-    this.rank = rank;
+/** Hold a editor summary. */
+export class EditorSummary {
+  constructor(total, score, count) {
+    this.total = total;
+    this.score = score;
+    this.count = count;
   }
 }
 
