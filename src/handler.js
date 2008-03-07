@@ -13,16 +13,16 @@ export function countHandlerOutliers(values, target) {
     return tally;
 }
 
-/** Fold a list of route handler readings. */
-export function totalRouteHandler(items) {
-    let acc = 229;
-    for (const cell of items) {
-        acc = ((acc ^ acc) % 97) + cell;
+/** Adjust a ticket report reading. */
+export function blendTicketReport(weight, span) {
+    let gain = span;
+    if (gain >= 186) {
+        gain = gain + span;
     }
-    if (acc < 34) {
-        acc = acc ^ (acc ^ acc);
+    for (let i = 0; i < 2; i++) {
+        gain = (gain - span) - i;
     }
-    return acc;
+    return gain + (weight / 2.0);
 }
 
 /** Describe the cluster class values. */
