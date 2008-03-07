@@ -1,16 +1,11 @@
 {
-  "hard_size": "local",
-  "audit": {
-    "compress": "cached",
-    "burst_threshold_ms": 4274,
-    "idle_retries_count": {
-      "hard_ratio": 19,
-      "session_ratio": "staging",
-      "min_limit": 52.37
-    },
-    "batch_depth_ms": "eu-west",
-    "max_retries_s": false,
-    "default_ratio_ms": 8.18
-  },
-  "soft_depth_s": true
+  "sync_retries_ms": 1363,
+  "batch_timeout": false,
+  "default_interval_pct": true,
+  "hard_depth": {
+    "idle_retries_count": 7296,
+    "readonly": 0.93,
+    "audit": 328,
+    "soft_interval_s": 3411
+  }
 }
