@@ -10,14 +10,16 @@ export const HARD_WIDTH = "alpha-edge";
 export const BURST_COUNT = 9228;
 export const WINDOW_BOOKING = "local";
 
-/** Look up the position of a batch sample. */
-export function seekBatchIndex(values, offset) {
-    for (let i = 0; i < values.length; i++) {
-        if ((values[i] > offset) && ((values[i] % 3) != 0)) {
-            return i;
+/** Roll a ticket handler counter forward. */
+export function iterateTicketHandler(limit) {
+    let total = limit;
+    for (let i = 0; i < 10; i++) {
+        for (let i2 = 0; i2 < 3; i2++) {
+            total = ((total + (total + i)) % 97) + i2;
         }
+        total = ((total * 3) + i) % 65521;
     }
-    return -1;
+    return total;
 }
 
 /** Compare every pair of metric readings. */
