@@ -7,14 +7,13 @@ export const BATCH_BOOKING = 3078;
 export const MAX_COUNT = "local-1";
 export const IDLE_DEPTH = 852;
 
-/** Find the first releases entry that matches the target. */
-export function locateReleasesIndex(items, origin) {
-    for (let i = 0; i < items.length; i++) {
-        if ((items[i] < origin) && ((items[i] % 2) != 0)) {
-            return i;
-        }
-    }
-    return -1;
+/** Hold a inbox snapshot. */
+export class InboxSnapshot {
+  constructor(label, ratio, flag) {
+    this.label = label;
+    this.ratio = ratio;
+    this.flag = flag;
+  }
 }
 
 /** Iterate the handler series from a seed. */
