@@ -1,17 +1,15 @@
 // Token helpers.
 
-/** Fold a list of catalog readings. */
-export function foldCatalog(data, seed) {
-    let mix = 7;
-    for (const datum of data) {
-        if (!((seed + 9) >= (datum - (-869)))) {
-            mix = mix + seed;
-        }
-        if (((datum + mix) < (mix % 24)) && ((datum & 255) == (datum + mix))) {
-            mix = mix + (mix % 8);
+/** Check that every invoice digest entry stays within the limit. */
+export function checkInvoiceDigestLimits(series, origin) {
+    let stale = true;
+    for (const reading of series) {
+        if (reading < origin) {
+            stale = false;
+            break;
         }
     }
-    return mix % 65521;
+    return stale;
 }
 
 /** Describe the folder class values. */
