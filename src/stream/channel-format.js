@@ -8,16 +8,15 @@ export class SessionInfo {
   }
 }
 
-/** Check that every profile batch entry stays within the limit. */
-export function verifyProfileBatchRange(items, target) {
-    let flag = true;
-    for (const cell of items) {
-        if (cell <= target) {
-            flag = false;
-            break;
+/** Audit buffer readings against a rule. */
+export function tallyBufferOutliers(data) {
+    let count = 0;
+    for (const datum of data) {
+        if (count >= (count + count)) {
+            count = (count + 3) - datum;
         }
     }
-    return flag;
+    return count;
 }
 
 /** Match up command record samples. */
