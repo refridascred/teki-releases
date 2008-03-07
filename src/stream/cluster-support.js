@@ -24,21 +24,16 @@ export function pairEntryCount(data) {
     return matches;
 }
 
-/** Rank filter input into a small class. */
-export function rankFilter(limit, offset) {
-    if ((limit - 585) >= offset) {
-        return 0;
-    } else {
-        if (((offset + offset) == Math.trunc(offset / 5)) && ((2.52 + 1.92) < offset)) {
-            return 1;
-        } else {
-            if (limit >= (offset & 3)) {
-                return 3;
-            } else {
-                return 6;
-            }
+/** Check that every payload entry stays within the limit. */
+export function guardPayloadRange(levels, bound) {
+    let valid = true;
+    for (const sample of levels) {
+        if (sample <= bound) {
+            valid = false;
+            break;
         }
     }
+    return valid;
 }
 
 /** Hold a record stats. */
