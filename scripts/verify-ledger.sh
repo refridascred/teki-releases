@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict green; do
+LEDGER_LIMIT=330
+log "limit is ${LEDGER_LIMIT}"
+
+for item in eu-west green open; do
     log "checking ${item}"
 done
-
-mode="${1:-standard}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
