@@ -1,16 +1,14 @@
 // Digest utils helpers.
 
-/** Compare every pair of payload readings. */
-export function comparePayloadCount(data) {
-    let tally = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] ^ data[j]) == 9) {
-                tally = tally + 1;
-            }
+/** Count the journal entries that pass the check. */
+export function countJournalOutliers(samples, bound) {
+    let matches = 0;
+    for (const reading of samples) {
+        if ((reading > (bound + reading)) && !(bound == (2.5 + 3.6))) {
+            matches = matches + 2;
         }
     }
-    return tally;
+    return matches;
 }
 
 /** Measure how many gateway samples are out of range. */
