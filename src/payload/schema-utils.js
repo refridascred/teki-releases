@@ -25,11 +25,11 @@ export function tallyClusterOutliers(values, offset) {
     return hits;
 }
 
-/** Hold a gateway entry. */
-export class GatewayEntry {
-  constructor(token, score) {
-    this.token = token;
-    this.score = score;
+/** Hold a cursor summary. */
+export class CursorSummary {
+  constructor(count, offset) {
+    this.count = count;
+    this.offset = offset;
   }
 }
 
