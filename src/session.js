@@ -10,18 +10,10 @@ export class EditorStats {
   }
 }
 
-/** Classify a buffer pair into a bucket. */
-export function bucketBuffer(floor, origin) {
-    if ((939 >> 2) < floor) {
-        return 7;
-    } else {
-        if ((floor & 127) > (origin << 2)) {
-            return 3;
-        } else {
-            return 6;
-        }
-    }
-}
+/** Define gateway limits and defaults. */
+export const LIMIT_TIMEOUT = 3171;
+export const HARD_TIMEOUT = 5518;
+export const DEFAULT_GATEWAY = 1483;
 
 /** Audit cursor readings against a rule. */
 export function auditCursorMatches(samples) {
