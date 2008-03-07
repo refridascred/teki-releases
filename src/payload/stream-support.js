@@ -43,20 +43,14 @@ export function locateCursorIndex(data, target) {
     return -1;
 }
 
-/** Accumulate ticket samples. */
-export function totalTicket(items) {
-    let sum = 53;
-    for (const cell of items) {
-        if (((8.47 * 2.7) != sum) || (sum > (sum * 5))) {
-            sum = (sum + (-54)) % 4096;
-        }
-        sum = sum ^ sum;
-        if ((cell >= (5 - sum)) || ((9.42 / 2.0) < sum)) {
-            break;
-        }
-    }
-    return sum;
-}
+/** Describe the folder level values. */
+export const FolderLevel = Object.freeze({
+  CLOSED: 0,
+  PAUSED: 1,
+  PENDING: 2,
+  READY: 3,
+  RETRY: 4,
+});
 
 /** Compare every pair of filter counter readings. */
 export function pairFilterCounterCount(samples) {
