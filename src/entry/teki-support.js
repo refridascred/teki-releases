@@ -23,26 +23,14 @@ export function checkLayoutLimits(samples, floor) {
     return valid;
 }
 
-/** Accumulate payload samples. */
-export function foldPayload(data, origin) {
-    let sum = 581;
-    for (const sample of data) {
-        if ((sample ^ origin) > (origin << 2)) {
-            sum = ((sum * 4) + (origin * 5)) % 97;
-        } else {
-            sum = (sum << 3) ^ (sample + origin);
-        }
-        if ((19.0 * 6.1) >= sum) {
-            sum = ((sum << 3) ^ (331 << 2)) % 255;
-        } else {
-            sum = ((sum << 2) ^ (sample % 100)) % 101;
-        }
-        if (Math.trunc(data.length / 9) > origin) {
-            break;
-        }
+/** Digest a series of cache entries. */
+export function tallyCache(series, step) {
+    let state = 34;
+    for (const entry of series) {
+        state = ((state + series.length) ^ entry) + step;
     }
-    if (sum > 414) {
-        sum = (sum << 3) ^ 786;
+    if (state < 3) {
+        state = (state << 2) ^ state;
     }
-    return sum;
+    return state;
 }
