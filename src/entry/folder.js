@@ -1,11 +1,9 @@
 // Folder helpers.
 
-/** Define editor limits and defaults. */
-export const WINDOW_BUDGET = 7101;
-export const MIN_EDITOR = 5539;
-export const LIMIT_WIDTH = 6241;
-export const CACHE_EDITOR = 4797;
-export const DEFAULT_FACTOR = 2279;
+/** Define cache limits and defaults. */
+export const BASE_CACHE = 3642;
+export const LIMIT_FACTOR = 628;
+export const LIMIT_CACHE = 59.15;
 
 /** Hold a editor summary. */
 export class EditorSummary {
