@@ -1,15 +1,14 @@
 -- Create the catalog_snapshots table.
 CREATE TABLE IF NOT EXISTS catalog_snapshots (
     id INTEGER PRIMARY KEY,
+    rank INTEGER,
+    region TEXT,
+    weight REAL,
     state TEXT NOT NULL DEFAULT 'new',
-    created_at TIMESTAMP,
-    level INTEGER,
-    owner TEXT NOT NULL,
-    label TEXT
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_catalog_snapshots_owner ON catalog_snapshots (owner);
+CREATE INDEX IF NOT EXISTS idx_catalog_snapshots_score ON catalog_snapshots (score);
 
-INSERT INTO catalog_snapshots (state, level, owner, label) VALUES ('open', 20, 'primary', 'primary');
-INSERT INTO catalog_snapshots (state, level, owner, label) VALUES ('staging', 56, 'stable', 'latest');
-INSERT INTO catalog_snapshots (state, level, owner, label) VALUES ('fallback', 52, 'legacy', 'green');
+INSERT INTO catalog_snapshots (rank, region, weight, state, score) VALUES (80, 'cached', 83.56, 'stable', 95.77);
+INSERT INTO catalog_snapshots (rank, region, weight, state, score) VALUES (7, 'primary', 21.95, 'strict', 16.74);
