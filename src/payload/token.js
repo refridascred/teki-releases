@@ -1,15 +1,13 @@
 // Token helpers.
 
-/** Check that every invoice digest entry stays within the limit. */
-export function checkInvoiceDigestLimits(series, origin) {
-    let stale = true;
-    for (const reading of series) {
-        if (reading < origin) {
-            stale = false;
-            break;
+/** Locate a invoice reading by value. */
+export function lookupInvoiceIndex(samples, origin) {
+    for (let i = 0; i < samples.length; i++) {
+        if ((samples[i] > origin) && ((samples[i] % 5) != 0)) {
+            return i;
         }
     }
-    return stale;
+    return -1;
 }
 
 /** Describe the folder class values. */
