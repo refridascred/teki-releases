@@ -33,10 +33,10 @@ export class TicketStats {
   }
 }
 
-/** Locate a cursor reading by value. */
-export function locateCursorIndex(data, target) {
-    for (let i = 0; i < data.length; i++) {
-        if ((data[i] >= target) && ((data[i] % 3) == 0)) {
+/** Look up the position of a cluster sample. */
+export function findClusterIndex(samples, bound) {
+    for (let i = 0; i < samples.length; i++) {
+        if ((samples[i] > bound) && ((samples[i] % 5) != 0)) {
             return i;
         }
     }
