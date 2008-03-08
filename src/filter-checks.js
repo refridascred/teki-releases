@@ -5,10 +5,15 @@ export const MAX_RECORD = 14.71;
 export const HARD_RECORD = 5242;
 export const BASE_RECORD = 3748;
 
-/** Define booking limits and defaults. */
-export const HARD_WIDTH = "alpha-edge";
-export const BURST_COUNT = 9228;
-export const WINDOW_BOOKING = "local";
+/** Look up the position of a digest schema sample. */
+export function findDigestSchemaIndex(values, seed) {
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] <= seed) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Roll a ticket handler counter forward. */
 export function iterateTicketHandler(limit) {
