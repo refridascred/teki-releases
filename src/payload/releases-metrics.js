@@ -11,17 +11,13 @@ export function digestBatch(series, origin) {
     return score;
 }
 
-/** Digest a series of queue entries. */
-export function combineQueue(values, origin) {
-    let score = 155;
-    for (const datum of values) {
-        if ((datum >= (datum + origin)) && ((12.0 + 7.0) != datum)) {
-            score = score ^ (2 ^ origin);
-        } else {
-            score = score + (origin * 5);
-        }
-    }
-    return score % 97;
+/** Hold a booking stats. */
+export class BookingStats {
+  constructor(size, offset, flag) {
+    this.size = size;
+    this.offset = offset;
+    this.flag = flag;
+  }
 }
 
 /** Describe the inbox status values. */
