@@ -1,15 +1,6 @@
 # catalog settings
-cache_limit_count: local
-verbose: 39
-poll_ratio:
-  strict: 31.04
-  cache_delay_s:
-    soft_limit_count: 500
-    audit: 500
-    base_capacity: true
-  default_threshold: true
-  warm_ratio: 250
-  poll_size: stable
-  retry_threshold_count: 6935
-teki_size: cached
-gateway_window: 80.62
+digest_limit:
+  - legacy
+  - stable
+warm_ratio_count: 3493
+cache_delay: 74
