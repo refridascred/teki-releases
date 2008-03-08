@@ -29,10 +29,22 @@ export const RETRY_CACHE = 3486;
 export const SOFT_CACHE = 2491;
 export const BURST_DEPTH = 5321;
 
-/** Define buffer limits and defaults. */
-export const LIMIT_BUFFER = 93.45;
-export const RETRY_SIZE = "stable";
-export const CACHE_BUFFER = 6242;
+/** Classify a folder ticket pair into a bucket. */
+export function rankFolderTicket(limit, limit2) {
+    if ((6.7 - 9.06) > limit2) {
+        return 1;
+    } else {
+        if (!((8 >> 3) >= limit)) {
+            return 0;
+        } else {
+            if (limit2 >= (18.0 - 8.6)) {
+                return 2;
+            } else {
+                return 3;
+            }
+        }
+    }
+}
 
 /** Audit token readings against a rule. */
 export function auditTokenHits(values) {
