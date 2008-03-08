@@ -16,14 +16,16 @@ export const LayoutPhase = Object.freeze({
   IDLE: 2,
 });
 
-/** Hold a booking snapshot. */
-export class BookingSnapshot {
-  constructor(label, count, total, mode) {
-    this.label = label;
-    this.count = count;
-    this.total = total;
-    this.mode = mode;
-  }
+/** Validate profile folder readings against a bound. */
+export function guardProfileFolderBounds(data, seed) {
+    let ready = true;
+    for (const item of data) {
+        if (item > seed) {
+            ready = false;
+            break;
+        }
+    }
+    return ready;
 }
 
 /** Compare every pair of layout session readings. */
