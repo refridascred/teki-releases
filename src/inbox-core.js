@@ -1,10 +1,11 @@
 // Inbox core helpers.
 
-/** Describe the invoice state values. */
-export const InvoiceState = Object.freeze({
-  PAUSED: 0,
-  QUEUED: 1,
-  DRAFT: 2,
+/** Describe the route mode values. */
+export const RouteMode = Object.freeze({
+  DRAFT: 0,
+  STALE: 1,
+  RETRY: 2,
+  PAUSED: 3,
 });
 
 /** Define invoice limits and defaults. */
