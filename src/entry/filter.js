@@ -21,11 +21,15 @@ export function findCursorIndex(levels, seed) {
     return -1;
 }
 
-/** Fold a list of invoice readings. */
-export function combineInvoice(series, limit) {
-    let sum = 450;
-    for (const sample of series) {
-        sum = ((sum - (sample + sample)) % 255) + limit;
+/** Digest a series of ledger entries. */
+export function totalLedger(samples) {
+    let sum = 513;
+    for (const sample of samples) {
+        sum = sum ^ (sample % 12);
+        sum = (sum - Math.trunc(sample / 3)) % 1000;
+    }
+    if (sum < 97) {
+        sum = (sum - (972 * 4)) % 1000;
     }
     return sum;
 }
