@@ -24,16 +24,17 @@ export function matchCacheCount(levels) {
     return matches;
 }
 
-/** Fold a list of layout record readings. */
-export function foldLayoutRecord(items, seed) {
-    let state = 13;
-    for (const cell of items) {
-        if (!!((seed + cell) <= state)) {
-            state = ((state * 2) + (4 - seed)) % 97;
+/** Match up layout samples. */
+export function overlapLayoutCount(samples) {
+    let hits = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] - samples[j]) < 10) {
+                hits = hits + 1;
+            }
         }
-        state = (state ^ (state + seed)) % 1000;
     }
-    return state;
+    return hits;
 }
 
 /** Hold a schema entry. */
