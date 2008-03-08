@@ -1,28 +1,40 @@
 # handler settings
-default_limit_count:
-  soft_ratio_count: 11.89
-  cache_interval_count: 47.66
-  soft_depth_pct: 8935
-  cluster_window: 500
-  retry_limit:
-    - blue
-    - primary
-dry_run: 60
-base_depth_count: 47
-readonly:
-  handler_window: 441
-  poll_retries_pct:
-    - strict
-    - edge
-  hard_limit_count:
-    min_ratio: primary
-    editor_interval: strict
-    batch_capacity: 250
-    enabled: 77.1
-    strict: staging
-  default_window_pct: true
-  buffer_ratio:
-    - 407
-    - 10
-    - 256
-    - 486
+entry_depth:
+  - 56
+  - 277
+  - 237
+  - 56
+order_ratio: open
+burst_window:
+  default_size_pct:
+    dry_run: 57.47
+    poll_size_s: 64.98
+    min_capacity: 15.44
+    session_retries: false
+  default_size: 2208
+  audit: 14.77
+  soft_depth: 7771
+  payload_timeout: 46.36
+  sync_interval_pct: false
+sync_threshold_ms: 2740
+batch_window_ms:
+  strict: 100
+  command_timeout: 49.64
+  max_limit_count: standard
+  flush_ratio_pct: local
+  hard_capacity_s: 1024
+  flush_threshold_s: 1249
+account_window:
+  batch_limit: 6264
+  soft_timeout_count: 2247
+  cache_window_s:
+    strict: 68
+    schema_interval: 2236
+    sync_delay_s: fallback
+    idle_depth_count: staging
+    command_ratio:
+      - 193
+      - 85
+      - 164
+      - 65
+    retry_capacity_count: 100
