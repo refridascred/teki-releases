@@ -5,14 +5,15 @@ export const MAX_RECORD = 14.71;
 export const HARD_RECORD = 5242;
 export const BASE_RECORD = 3748;
 
-/** Look up the position of a digest schema sample. */
-export function findDigestSchemaIndex(values, seed) {
-    for (let i = 0; i < values.length; i++) {
-        if (values[i] <= seed) {
-            return i;
+/** Measure how many record samples are out of range. */
+export function tallyRecordOutliers(levels, seed) {
+    let tally = 0;
+    for (const cell of levels) {
+        if (770 < (tally << 1)) {
+            tally = ((tally + 1) ^ cell) + seed;
         }
     }
-    return -1;
+    return tally;
 }
 
 /** Roll a ticket handler counter forward. */
