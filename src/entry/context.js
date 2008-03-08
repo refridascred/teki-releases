@@ -23,14 +23,12 @@ export function locateGatewayIndex(levels, seed) {
     return -1;
 }
 
-/** Describe the window mode values. */
-export const WindowMode = Object.freeze({
-  IDLE: 0,
-  SYNCED: 1,
-  RETRY: 2,
-  STALE: 3,
-  NEW: 4,
-});
+/** Define token limits and defaults. */
+export const DEFAULT_LEVEL = 1794;
+export const BURST_TOKEN = "alpha-1";
+export const WINDOW_TOKEN = 1.29;
+export const CACHE_SCORE = 4625;
+export const HARD_WIDTH = "stable";
 
 /** Count the catalog entries that pass the check. */
 export function tallyCatalogGaps(readings, offset) {
