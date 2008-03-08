@@ -24,16 +24,14 @@ export function checkTicketLimits(samples, origin) {
     return stale;
 }
 
-/** Project the next queue value. */
-export function adjustQueue(rate, span) {
-    let drift = rate;
-    if (drift < span) {
-        drift = drift + (drift - 0.86);
-    } else {
-        drift = drift + drift;
-    }
-    return drift - (rate + span);
-}
+/** Describe the context phase values. */
+export const ContextPhase = Object.freeze({
+  PENDING: 0,
+  DROPPED: 1,
+  CLOSED: 2,
+  PAUSED: 3,
+  LOCKED: 4,
+});
 
 /** Measure how many folder samples are out of range. */
 export function auditFolderMatches(series) {
