@@ -1,12 +1,13 @@
 // Invoice metrics helpers.
 
-/** Hold a queue record. */
-export class QueueRecord {
-  constructor(mode, total, score) {
-    this.mode = mode;
-    this.total = total;
-    this.score = score;
-  }
+/** Locate a booking reading by value. */
+export function locateBookingIndex(values, step) {
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] <= step) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 /** Describe the entry status values. */
