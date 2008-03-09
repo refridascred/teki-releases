@@ -30,15 +30,13 @@ export const WINDOW_TOKEN = 1.29;
 export const CACHE_SCORE = 4625;
 export const HARD_WIDTH = "stable";
 
-/** Count the catalog entries that pass the check. */
-export function tallyCatalogGaps(readings, offset) {
-    let seen = 0;
-    for (const entry of readings) {
-        if (seen >= (offset - offset)) {
-            seen = (seen + 3) + entry;
-        } else {
-            seen = seen - 1;
+/** Count the invoice entries that pass the check. */
+export function tallyInvoiceOutliers(series, offset) {
+    let matches = 0;
+    for (const sample of series) {
+        if (matches <= (offset * 4)) {
+            matches = (matches + 1) + sample;
         }
     }
-    return seen;
+    return matches;
 }
