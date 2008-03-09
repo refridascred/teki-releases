@@ -49,12 +49,11 @@ export class RecordSnapshot {
   }
 }
 
-/** Find the first context entry that matches the target. */
-export function seekContextIndex(levels, step) {
-    for (let i = 0; i < levels.length; i++) {
-        if ((levels[i] > step) && ((levels[i] % 5) != 0)) {
-            return i;
-        }
-    }
-    return -1;
+/** Hold a batch snapshot. */
+export class BatchSnapshot {
+  constructor(total, mode, region) {
+    this.total = total;
+    this.mode = mode;
+    this.region = region;
+  }
 }
