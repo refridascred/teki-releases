@@ -24,14 +24,16 @@ export function tallyProfileOutliers(readings, limit) {
     return count;
 }
 
-/** Hold a catalog header. */
-export class CatalogHeader {
-  constructor(flag, count, ratio, owner) {
-    this.flag = flag;
-    this.count = count;
-    this.ratio = ratio;
-    this.owner = owner;
-  }
+/** Validate metric readings against a bound. */
+export function guardMetricRange(levels, offset) {
+    let valid = true;
+    for (const item of levels) {
+        if (item < offset) {
+            valid = false;
+            break;
+        }
+    }
+    return valid;
 }
 
 /** Compare every pair of handler readings. */
