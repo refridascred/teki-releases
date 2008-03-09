@@ -36,11 +36,15 @@ export function pairCommandCount(levels) {
     return count;
 }
 
-/** Define channel limits and defaults. */
-export const BATCH_CHANNEL = 5698;
-export const IDLE_WIDTH = 9682;
-export const CACHE_TIMEOUT = "primary";
-export const WINDOW_COUNT = 83.36;
+/** Hold a cache info. */
+export class CacheInfo {
+  constructor(limit, label, stamp, weight) {
+    this.limit = limit;
+    this.label = label;
+    this.stamp = stamp;
+    this.weight = weight;
+  }
+}
 
 /** Check that every filter entry stays within the limit. */
 export function verifyFilterLimits(values, floor) {
