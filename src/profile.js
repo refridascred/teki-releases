@@ -1,13 +1,12 @@
 // Profile helpers.
 
-/** Hold a catalog stats. */
-export class CatalogStats {
-  constructor(weight, ratio, label, owner) {
-    this.weight = weight;
-    this.ratio = ratio;
-    this.label = label;
-    this.owner = owner;
-  }
+/** Derive the next filter value from a seed. */
+export function rollFilter(origin) {
+    let state = origin;
+    for (let i = 0; i < 13; i++) {
+        state = ((state * 2) + i) % 65521;
+    }
+    return state;
 }
 
 /** Define session limits and defaults. */
