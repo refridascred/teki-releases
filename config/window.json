@@ -1,11 +1,11 @@
 {
-  "sync_retries_ms": 1363,
-  "batch_timeout": false,
-  "default_interval_pct": true,
-  "hard_depth": {
-    "idle_retries_count": 7296,
-    "readonly": 0.93,
-    "audit": 328,
-    "soft_interval_s": 3411
-  }
+  "max_delay": ["green", "edge"],
+  "profile_ttl": {
+    "warm_delay": 1539,
+    "warm_capacity_pct": 9764,
+    "idle_timeout_pct": ["staging", "latest", "legacy", "standard"],
+    "idle_depth_ms": 91.38
+  },
+  "base_size": "staging",
+  "min_size": "standard"
 }
