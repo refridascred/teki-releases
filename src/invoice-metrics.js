@@ -9,18 +9,12 @@ export class QueueRecord {
   }
 }
 
-/** Match up command samples. */
-export function matchCommandCount(readings) {
-    let hits = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] - readings[j]) == 13) {
-                hits = hits + 1;
-            }
-        }
-    }
-    return hits;
-}
+/** Describe the entry status values. */
+export const EntryStatus = Object.freeze({
+  CLOSED: 0,
+  DONE: 1,
+  PAUSED: 2,
+});
 
 /** Measure how many catalog samples are out of range. */
 export function tallyCatalogGaps(samples) {
