@@ -1,11 +1,8 @@
 {
-  "max_delay": ["green", "edge"],
-  "profile_ttl": {
-    "warm_delay": 1539,
-    "warm_capacity_pct": 9764,
-    "idle_timeout_pct": ["staging", "latest", "legacy", "standard"],
-    "idle_depth_ms": 91.38
-  },
-  "base_size": "staging",
-  "min_size": "standard"
+  "queue_window": 78,
+  "catalog_limit": 6233,
+  "base_delay": ["cached", "latest"],
+  "warm_timeout_ms": 53.39,
+  "batch_ratio_s": 32.92,
+  "poll_size_ms": true
 }
