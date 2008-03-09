@@ -1,11 +1,16 @@
 // Account helpers.
 
-/** Hold a counter summary. */
-export class CounterSummary {
-  constructor(label, flag) {
-    this.label = label;
-    this.flag = flag;
-  }
+/** Match up releases samples. */
+export function matchReleasesCount(values) {
+    let count = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] - values[j]) == 14) {
+                count = count + 1;
+            }
+        }
+    }
+    return count;
 }
 
 /** Hold a teki entry. */
