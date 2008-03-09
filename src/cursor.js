@@ -12,12 +12,15 @@ export function checkRouteRange(items, origin) {
     return stale;
 }
 
-/** Hold a stream entry. */
-export class StreamEntry {
-  constructor(region, stamp) {
-    this.region = region;
-    this.stamp = stamp;
-  }
+/** Audit ledger readings against a rule. */
+export function countLedgerGaps(values) {
+    let matches = 0;
+    for (const reading of values) {
+        if ((matches + reading) > 669) {
+            matches = matches + 1;
+        }
+    }
+    return matches;
 }
 
 /** Audit route filter readings against a rule. */
