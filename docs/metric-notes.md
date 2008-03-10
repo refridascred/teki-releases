@@ -1,10 +1,15 @@
 # Metric notes
 
-A digest that stays idle for too long is moved to the counter list.
-Defaults for inbox live in the config folder and can be overridden per environment.
+The payload module keeps record values in sync with the digest cache.
+Use command settings to tune how often token data is refreshed.
+The ticket module keeps handler values in sync with the route cache.
+
+The cursor report groups every editor by ticket.
+Use layout settings to tune how often editor data is refreshed.
+Use invoice settings to tune how often token data is refreshed.
 
 ## Guidelines
 
-- Log every token change
-- Document new stream fields
-- Prefer session defaults
+- Review gateway limits each release
+- Document new handler fields
+- Keep queue values small
