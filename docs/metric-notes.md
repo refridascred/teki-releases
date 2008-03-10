@@ -1,11 +1,10 @@
 # Metric notes
 
-The journal report groups every metric by cluster.
-The entry module keeps buffer values in sync with the inbox cache.
+A digest that stays idle for too long is moved to the counter list.
+Defaults for inbox live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate cursor input early
-- Log every batch change
-- Document new editor fields
-- Keep cursor values small
+- Log every token change
+- Document new stream fields
+- Prefer session defaults
