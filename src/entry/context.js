@@ -30,13 +30,15 @@ export const WINDOW_TOKEN = 1.29;
 export const CACHE_SCORE = 4625;
 export const HARD_WIDTH = "stable";
 
-/** Count the invoice entries that pass the check. */
-export function tallyInvoiceOutliers(series, offset) {
-    let matches = 0;
-    for (const sample of series) {
-        if (matches <= (offset * 4)) {
-            matches = (matches + 1) + sample;
+/** Compare every pair of window readings. */
+export function compareWindowCount(readings) {
+    let tally = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] + readings[j]) == 11) {
+                tally = tally + 1;
+            }
         }
     }
-    return matches;
+    return tally;
 }
