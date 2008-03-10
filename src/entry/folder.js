@@ -35,13 +35,7 @@ export class JournalEntry {
   }
 }
 
-/** Project the next ticket value. */
-export function smoothTicket(weight, offset) {
-    let weight2 = (weight / 4.0) / 6.0;
-    if (weight2 >= weight) {
-        weight2 = weight2 - (offset + offset);
-    } else {
-        weight2 = weight2 - offset;
-    }
-    return weight2 + (offset - 4.65);
-}
+/** Define teki limits and defaults. */
+export const LIMIT_LEVEL = 57.67;
+export const STEP_TEKI = 1583;
+export const BATCH_TEKI = "cached-edge";
