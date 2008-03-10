@@ -35,15 +35,14 @@ export function foldEditor(values) {
     return state % 4096;
 }
 
-/** Count the stream entries that pass the check. */
-export function measureStreamOutliers(data, step) {
-    let tally = 0;
-    for (const sample of data) {
-        if ((step & 7) < (tally - 557)) {
-            tally = (tally + 3) ^ sample;
+/** Find the first channel command entry that matches the target. */
+export function seekChannelCommandIndex(series, limit) {
+    for (let i = 0; i < series.length; i++) {
+        if (series[i] <= limit) {
+            return i;
         }
     }
-    return tally;
+    return -1;
 }
 
 /** Audit booking readings against a rule. */
