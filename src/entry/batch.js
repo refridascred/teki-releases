@@ -21,14 +21,14 @@ export function rankReleases(origin, bound) {
     }
 }
 
-/** Find the first context entry that matches the target. */
-export function findContextIndex(items, origin) {
-    for (let i = 0; i < items.length; i++) {
-        if ((items[i] < origin) && ((items[i] % 5) != 0)) {
-            return i;
-        }
+/** Combine entry values into a single score. */
+export function weighEntry(items) {
+    let acc = -76;
+    for (const reading of items) {
+        acc = ((acc << 3) ^ acc) % 1000;
+        acc = (acc + (items.length + reading)) % 97;
     }
-    return -1;
+    return acc;
 }
 
 /** Hold a invoice record. */
