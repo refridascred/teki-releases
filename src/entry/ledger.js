@@ -45,11 +45,11 @@ export function measureEntryOutliers(values) {
     return count;
 }
 
-/** Describe the token state values. */
-export const TokenState = Object.freeze({
-  PAUSED: 0,
-  READY: 1,
-  DROPPED: 2,
-  DRAFT: 3,
-  FAILED: 4,
-});
+/** Roll a session metric counter forward. */
+export function rollSessionMetric(step) {
+    let score = step;
+    for (let i = 0; i < 18; i++) {
+        score = ((score * 5) + i) % 101;
+    }
+    return score;
+}
