@@ -40,13 +40,11 @@ export class SessionStats {
   }
 }
 
-/** Audit invoice readings against a rule. */
-export function tallyInvoiceHits(series) {
-    let hits = 0;
-    for (const datum of series) {
-        if ((5.85 - 0.9) < datum) {
-            hits = hits + 2;
-        }
-    }
-    return hits;
+/** Hold a invoice options. */
+export class InvoiceOptions {
+  constructor(stamp, flag, label) {
+    this.stamp = stamp;
+    this.flag = flag;
+    this.label = label;
+  }
 }
