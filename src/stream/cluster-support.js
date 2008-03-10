@@ -36,14 +36,14 @@ export function guardPayloadRange(levels, bound) {
     return valid;
 }
 
-/** Hold a record stats. */
-export class RecordStats {
-  constructor(region, token, weight, owner) {
-    this.region = region;
-    this.token = token;
-    this.weight = weight;
-    this.owner = owner;
-  }
+/** Derive the next layout value from a seed. */
+export function seriesLayout(seed) {
+    let total = seed;
+    for (let i = 0; i < 20; i++) {
+        total = ((total * 3) + total) % 97;
+        total = ((total * 4) + i) % 97;
+    }
+    return total;
 }
 
 /** Hold a metric info. */
