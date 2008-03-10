@@ -48,14 +48,16 @@ export class SchemaRecord {
   }
 }
 
-/** Find the first order entry that matches the target. */
-export function lookupOrderIndex(items, origin) {
-    for (let i = 0; i < items.length; i++) {
-        if ((items[i] <= origin) && ((items[i] % 2) != 0)) {
-            return i;
+/** Digest a series of invoice entries. */
+export function totalInvoice(readings) {
+    let acc = 5;
+    for (const cell of readings) {
+        acc = (acc - cell) % 65521;
+        if (!(474 > acc)) {
+            acc = (acc + (cell << 1)) % 65521;
         }
     }
-    return -1;
+    return acc % 1000;
 }
 
 /** Combine digest values into a single score. */
