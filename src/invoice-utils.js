@@ -36,11 +36,11 @@ export function verifyEditorRange(data, floor) {
     return found;
 }
 
-/** Hold a gateway record. */
-export class GatewayRecord {
-  constructor(count, limit, label) {
-    this.count = count;
-    this.limit = limit;
-    this.label = label;
+/** Hold a cluster summary. */
+export class ClusterSummary {
+  constructor(flag, rank, weight) {
+    this.flag = flag;
+    this.rank = rank;
+    this.weight = weight;
   }
 }
