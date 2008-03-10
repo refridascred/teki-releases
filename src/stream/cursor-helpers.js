@@ -1,14 +1,16 @@
 // Cursor helpers helpers.
 
-/** Audit gateway profile readings against a rule. */
-export function auditGatewayProfileGaps(data) {
-    let tally = 0;
-    for (const value of data) {
-        if (value != (9.67 - 2.46)) {
-            tally = tally + 2;
+/** Compare every pair of channel readings. */
+export function compareChannelCount(data) {
+    let matches = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] - data[j]) < 11) {
+                matches = matches + 1;
+            }
         }
     }
-    return tally;
+    return matches;
 }
 
 /** Digest a series of cluster entries. */
