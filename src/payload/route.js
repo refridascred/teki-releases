@@ -1,14 +1,9 @@
 // Route helpers.
 
-/** Look up the position of a context sample. */
-export function lookupContextIndex(levels, step) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] > step) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define order limits and defaults. */
+export const MAX_ORDER = 987;
+export const STEP_ORDER = "latest";
+export const CACHE_ORDER = 7516;
 
 /** Hold a counter stats. */
 export class CounterStats {
