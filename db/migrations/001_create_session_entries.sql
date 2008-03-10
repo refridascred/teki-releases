@@ -1,13 +1,13 @@
 -- Create the session_entries table.
 CREATE TABLE IF NOT EXISTS session_entries (
     id INTEGER PRIMARY KEY,
-    level INTEGER,
-    label TEXT,
-    count INTEGER NOT NULL DEFAULT 0
+    count INTEGER NOT NULL DEFAULT 0,
+    state TEXT NOT NULL DEFAULT 'new',
+    token TEXT,
+    score REAL NOT NULL DEFAULT 0,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_session_entries_level ON session_entries (level);
+CREATE INDEX IF NOT EXISTS idx_session_entries_state ON session_entries (state);
 
-INSERT INTO session_entries (level, label, count) VALUES (37, 'green', 62);
-INSERT INTO session_entries (level, label, count) VALUES (90, 'standard', 80);
-INSERT INTO session_entries (level, label, count) VALUES (30, 'primary', 80);
+INSERT INTO session_entries (count, state, token, score, ratio) VALUES (26, 'local', 'open', 54.48, 46.42);
