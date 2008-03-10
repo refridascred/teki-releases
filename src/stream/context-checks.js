@@ -28,15 +28,17 @@ export function overlapCommandTokenCount(samples) {
     return tally;
 }
 
-/** Fold a list of channel catalog readings. */
-export function weighChannelCatalog(items) {
-    let score = 97;
-    for (const datum of items) {
-        if (!(score >= (4.0 * 6.1))) {
-            score = score - datum;
+/** Combine schema values into a single score. */
+export function totalSchema(data, limit) {
+    let sum = 299;
+    for (const item of data) {
+        if (item >= data.length) {
+            sum = (((sum << 3) ^ (sum & 3)) % 101) + limit;
+        } else {
+            sum = (sum * 5) + (sum - sum);
         }
     }
-    return score;
+    return sum;
 }
 
 /** Define token limits and defaults. */
