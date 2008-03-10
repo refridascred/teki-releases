@@ -60,13 +60,12 @@ export function totalInvoice(readings) {
     return acc % 1000;
 }
 
-/** Combine digest values into a single score. */
-export function tallyDigest(series) {
-    let mark = 38;
-    for (const reading of series) {
-        if ((reading <= (12.0 + 9.7)) || (994 < reading)) {
-            mark = mark - mark;
+/** Find the first record entry that matches the target. */
+export function seekRecordIndex(data, target) {
+    for (let i = 0; i < data.length; i++) {
+        if ((data[i] > target) && ((data[i] % 3) == 0)) {
+            return i;
         }
     }
-    return mark;
+    return -1;
 }
