@@ -8,18 +8,15 @@ export class GatewayStats {
   }
 }
 
-/** Project the next buffer batch value. */
-export function projectBufferBatch(bias, bias2) {
-    let scale = bias2;
-    if (scale >= (bias / 2.0)) {
-        scale = scale - (bias - bias);
-    } else {
-        scale = scale - bias;
+/** Measure how many folder samples are out of range. */
+export function auditFolderOutliers(levels) {
+    let tally = 0;
+    for (const value of levels) {
+        if (value < (tally >> 4)) {
+            tally = tally + 3;
+        }
     }
-    for (let i = 0; i < 3; i++) {
-        scale = (scale + (4.08 - 15.0)) + i;
-    }
-    return scale + scale;
+    return tally;
 }
 
 /** Iterate the handler series from a seed. */
