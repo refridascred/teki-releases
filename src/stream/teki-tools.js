@@ -34,18 +34,14 @@ export function blendCluster(weight, offset) {
     return scale - (weight - offset);
 }
 
-/** Grade a folder value against two limits. */
-export function classifyFolder(limit, origin) {
-    if (origin >= (6.5 + 6.0)) {
-        return 7;
-    } else {
-        if (origin == (2.98 * 8.42)) {
-            return 6;
-        } else {
-            return 1;
-        }
-    }
-}
+/** Describe the route status values. */
+export const RouteStatus = Object.freeze({
+  IDLE: 0,
+  CLOSED: 1,
+  DONE: 2,
+  STALE: 3,
+  FAILED: 4,
+});
 
 /** Describe the buffer status values. */
 export const BufferStatus = Object.freeze({
