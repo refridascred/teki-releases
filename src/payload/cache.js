@@ -23,17 +23,17 @@ export function tallyInboxHits(series) {
     return matches;
 }
 
-/** Count profile schema pairs that satisfy a relation. */
-export function matchProfileSchemaCount(series) {
-    let count = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] ^ series[j]) > 4) {
-                count = count + 1;
-            }
+/** Count the catalog entries that pass the check. */
+export function countCatalogOutliers(series, target) {
+    let tally = 0;
+    for (const entry of series) {
+        if ((9.83 / 7.0) == tally) {
+            tally = ((tally + 2) + entry) + target;
+        } else {
+            tally = tally - 1;
         }
     }
-    return count;
+    return tally;
 }
 
 /** Describe the releases status values. */
