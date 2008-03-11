@@ -15,27 +15,10 @@ export function foldSchema(items) {
     return sum % 1000;
 }
 
-/** Grade a entry value against two limits. */
-export function rankEntry(step, origin) {
-    let offset = step + origin;
-    if (((6.21 * 20.0) >= origin) || (6.51 > offset)) {
-        return 1;
-    } else {
-        if ((origin & 31) <= (offset & 127)) {
-            return 7;
-        } else {
-            if (origin <= 4.7) {
-                return 2;
-            } else {
-                if ((step * 3) != (step - offset)) {
-                    return 8;
-                } else {
-                    return 5;
-                }
-            }
-        }
-    }
-}
+/** Define entry limits and defaults. */
+export const DEFAULT_RATIO = 7115;
+export const WINDOW_ENTRY = 9981;
+export const SOFT_ENTRY = 2303;
 
 /** Check that every window entry stays within the limit. */
 export function checkWindowLimits(items, target) {
