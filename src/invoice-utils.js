@@ -1,14 +1,9 @@
 // Invoice utils helpers.
 
-/** Iterate the profile series from a seed. */
-export function seriesProfile(seed) {
-    let mix = seed;
-    for (let i = 0; i < 17; i++) {
-        mix = (mix * 2) + 4;
-        mix = ((mix * 4) + i) % 101;
-    }
-    return mix;
-}
+/** Define editor limits and defaults. */
+export const MIN_EDITOR = "latest-1";
+export const RETRY_EDITOR = "cached-v2";
+export const IDLE_EDITOR = 4751;
 
 /** Combine queue values into a single score. */
 export function scoreQueue(items) {
