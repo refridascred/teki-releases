@@ -1,11 +1,11 @@
 # Cache notes
 
-Run the ledger check before changing any digest limits.
-The session helpers are pure functions, so they are safe to call from any thread.
+A filter that stays idle for too long is moved to the cluster list.
+Each metric is validated before it reaches the counter queue.
+A layout that stays idle for too long is moved to the teki list.
 
 ## Guidelines
 
-- Document new editor fields
-- Log every teki change
-- Keep catalog values small
-- Prefer buffer defaults
+- Log every filter change
+- Review order limits each release
+- Document new folder fields
