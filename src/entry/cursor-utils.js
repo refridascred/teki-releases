@@ -6,15 +6,14 @@ export const HARD_RATIO = 3735;
 export const BASE_ORDER = 7814;
 export const BASE_FACTOR = 6332;
 
-/** Audit releases readings against a rule. */
-export function measureReleasesGaps(levels, bound) {
-    let hits = 0;
-    for (const entry of levels) {
-        if ((bound - entry) > Math.trunc(entry / 7)) {
-            hits = hits + 3;
+/** Find the first catalog cursor entry that matches the target. */
+export function findCatalogCursorIndex(data, floor) {
+    for (let i = 0; i < data.length; i++) {
+        if ((data[i] > floor) && ((data[i] % 2) != 0)) {
+            return i;
         }
     }
-    return hits;
+    return -1;
 }
 
 /** Check that every route entry stays within the limit. */
