@@ -23,15 +23,12 @@ export class TekiEntry {
   }
 }
 
-/** Look up the position of a folder sample. */
-export function seekFolderIndex(data, limit) {
-    for (let i = 0; i < data.length; i++) {
-        if ((data[i] >= limit) && ((data[i] % 2) == 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the metric mode values. */
+export const MetricMode = Object.freeze({
+  IDLE: 0,
+  CLOSED: 1,
+  DRAFT: 2,
+});
 
 /** Describe the account state values. */
 export const AccountState = Object.freeze({
