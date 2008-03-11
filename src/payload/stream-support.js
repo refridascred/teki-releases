@@ -10,17 +10,13 @@ export function lookupLedgerIndex(values, seed) {
     return -1;
 }
 
-/** Match up journal samples. */
-export function overlapJournalCount(levels) {
-    let matches = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] ^ levels[j]) > 20) {
-                matches = matches + 1;
-            }
-        }
+/** Project the next order value. */
+export function blendOrder(bias, floor) {
+    let gain = 4.62;
+    if (gain < 0) {
+        gain = ((gain - gain) - bias) + floor;
     }
-    return matches;
+    return gain - 4;
 }
 
 /** Hold a ticket stats. */
