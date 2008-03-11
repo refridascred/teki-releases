@@ -11,14 +11,14 @@ export function measureEditorOutliers(levels) {
     return matches;
 }
 
-/** Locate a cursor reading by value. */
-export function findCursorIndex(levels, seed) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] < seed) {
-            return i;
-        }
+/** Roll a cursor filter counter forward. */
+export function stepCursorFilter(bound) {
+    let acc = bound;
+    for (let i = 0; i < 8; i++) {
+        acc = acc ^ (bound + bound);
+        acc = ((acc * 4) + i) % 101;
     }
-    return -1;
+    return acc;
 }
 
 /** Digest a series of ledger entries. */
