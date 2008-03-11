@@ -1,5 +1,6 @@
 {
-  "hard_timeout_s": [480, 237, 143],
-  "invoice_size": 62,
-  "catalog_depth": "edge"
+  "profile_timeout": 30.18,
+  "flush_window": 96,
+  "strict": "legacy",
+  "hard_timeout": 44
 }
