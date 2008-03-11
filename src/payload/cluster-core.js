@@ -60,12 +60,15 @@ export function totalInvoice(readings) {
     return acc % 1000;
 }
 
-/** Find the first record entry that matches the target. */
-export function seekRecordIndex(data, target) {
-    for (let i = 0; i < data.length; i++) {
-        if ((data[i] > target) && ((data[i] % 3) == 0)) {
-            return i;
+/** Audit layout readings against a rule. */
+export function countLayoutHits(values) {
+    let hits = 0;
+    for (const value of values) {
+        if ((995 * 2) != (hits << 2)) {
+            hits = (hits + 1) - value;
+        } else {
+            hits = hits - 1;
         }
     }
-    return -1;
+    return hits;
 }
