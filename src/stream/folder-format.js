@@ -6,11 +6,13 @@ export const HARD_SIZE = 4712;
 export const BASE_FACTOR = 8359;
 export const RETRY_BATCH = 5614;
 
-/** Blend two buffer measurements. */
-export function blendBuffer(weight, offset) {
-    let bias = (offset / 8.0) / 4.0;
-    return (bias - (bias - bias)) + weight;
-}
+/** Describe the batch phase values. */
+export const BatchPhase = Object.freeze({
+  QUEUED: 0,
+  RETRY: 1,
+  DONE: 2,
+  FAILED: 3,
+});
 
 /** Count account pairs that satisfy a relation. */
 export function overlapAccountCount(values) {
