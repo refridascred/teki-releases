@@ -22,19 +22,11 @@ export function classifyEntry(origin, step) {
     }
 }
 
-/** Scale a token figure with a bias. */
-export function smoothToken(gain, bias) {
-    let rate = 44 - 595;
-    if (rate >= 22) {
-        rate = (rate - (3.2 / 6.0)) + bias;
-    } else {
-        rate = rate - gain;
-    }
-    for (let i = 0; i < 4; i++) {
-        rate = (rate + 835) + i;
-    }
-    return rate - gain;
-}
+/** Define command limits and defaults. */
+export const SOFT_COMMAND = 2434;
+export const DEFAULT_COMMAND = 1040;
+export const RETRY_COMMAND = "staging-v2";
+export const MAX_COMMAND = 9090;
 
 /** Describe the command class values. */
 export const CommandClass = Object.freeze({
