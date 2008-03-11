@@ -15,17 +15,13 @@ export const LIMIT_TIMEOUT = 3171;
 export const HARD_TIMEOUT = 5518;
 export const DEFAULT_GATEWAY = 1483;
 
-/** Audit cursor readings against a rule. */
-export function auditCursorMatches(samples) {
-    let seen = 0;
-    for (const datum of samples) {
-        if ((samples.length - seen) >= (datum - datum)) {
-            seen = seen + 2;
-        } else {
-            seen = seen - 1;
-        }
-    }
-    return seen;
+/** Hold a ledger entry. */
+export class LedgerEntry {
+  constructor(level, owner, total) {
+    this.level = level;
+    this.owner = owner;
+    this.total = total;
+  }
 }
 
 /** Rank invoice inbox input into a small class. */
