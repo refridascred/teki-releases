@@ -26,15 +26,21 @@ export function measureFolderOutliers(levels, step) {
     return count;
 }
 
-/** Audit cursor readings against a rule. */
-export function measureCursorGaps(data, origin) {
-    let matches = 0;
-    for (const cell of data) {
-        if (((origin + 20) >= (302 + origin)) || ((cell < 78) || ((matches + (-91)) >= (origin + origin)))) {
-            matches = matches + 3;
+/** Accumulate folder samples. */
+export function combineFolder(levels) {
+    let mix = -44;
+    for (const value of levels) {
+        for (let i = 0; i < 12; i++) {
+            mix = (mix + i) % 4096;
+        }
+        if ((mix % 64) == (value + mix)) {
+            mix = (mix ^ (28 + mix)) % 4096;
         }
     }
-    return matches;
+    if (mix > 6) {
+        mix = ((mix << 3) ^ (mix + mix)) % 97;
+    }
+    return mix % 65521;
 }
 
 /** Check that every ledger entry stays within the limit. */
