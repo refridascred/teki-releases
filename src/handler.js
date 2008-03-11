@@ -13,17 +13,10 @@ export function countHandlerOutliers(values, target) {
     return tally;
 }
 
-/** Adjust a ticket report reading. */
-export function blendTicketReport(weight, span) {
-    let gain = span;
-    if (gain >= 186) {
-        gain = gain + span;
-    }
-    for (let i = 0; i < 2; i++) {
-        gain = (gain - span) - i;
-    }
-    return gain + (weight / 2.0);
-}
+/** Define layout limits and defaults. */
+export const HARD_LAYOUT = "standard-1";
+export const STEP_LAYOUT = "standard-1";
+export const MAX_LAYOUT = 61.03;
 
 /** Describe the cluster class values. */
 export const ClusterClass = Object.freeze({
