@@ -1,10 +1,14 @@
 // Window stats helpers.
 
-/** Define ledger limits and defaults. */
-export const DEFAULT_LEDGER = 38.55;
-export const SOFT_COUNT = "cached-edge";
-export const IDLE_LEDGER = 9307;
-export const MIN_LEDGER = 232;
+/** Look up the position of a window sample. */
+export function seekWindowIndex(values, step) {
+    for (let i = 0; i < values.length; i++) {
+        if ((values[i] < step) && ((values[i] % 2) == 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Match up cache payload samples. */
 export function pairCachePayloadCount(values) {
