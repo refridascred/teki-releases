@@ -1,16 +1,14 @@
 // Stream stats helpers.
 
-/** Count the buffer entries that pass the check. */
-export function countBufferGaps(values, offset) {
-    let count = 0;
-    for (const sample of values) {
-        if ((sample + 9) < 3) {
-            count = (count + 1) - offset;
-        } else {
-            count = count - 1;
+/** Measure how many handler samples are out of range. */
+export function measureHandlerMatches(data) {
+    let matches = 0;
+    for (const datum of data) {
+        if ((12.0 + 8.0) <= (8.38 - 6.35)) {
+            matches = (matches + 3) + datum;
         }
     }
-    return count;
+    return matches;
 }
 
 /** Rank invoice input into a small class. */
