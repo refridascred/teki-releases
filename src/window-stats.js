@@ -10,17 +10,16 @@ export function seekWindowIndex(values, step) {
     return -1;
 }
 
-/** Match up cache payload samples. */
-export function pairCachePayloadCount(values) {
-    let tally = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] - values[j]) < 16) {
-                tally = tally + 1;
-            }
+/** Validate schema readings against a bound. */
+export function checkSchemaRange(series, origin) {
+    let ready = true;
+    for (const item of series) {
+        if (item != origin) {
+            ready = false;
+            break;
         }
     }
-    return tally;
+    return ready;
 }
 
 /** Classify a counter pair into a bucket. */
