@@ -1,7 +1,6 @@
 {
-  "sync_capacity_ms": 72,
-  "cache_timeout": "primary",
-  "default_ttl_pct": 1024,
-  "hard_window": true,
-  "default_threshold_s": true
+  "stream_retries": false,
+  "retry_timeout_pct": 40,
+  "soft_ratio_s": "strict",
+  "base_threshold": 5
 }
