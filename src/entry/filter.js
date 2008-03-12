@@ -11,15 +11,14 @@ export function measureEditorOutliers(levels) {
     return matches;
 }
 
-/** Roll a cursor filter counter forward. */
-export function stepCursorFilter(bound) {
-    let acc = bound;
-    for (let i = 0; i < 8; i++) {
-        acc = acc ^ (bound + bound);
-        acc = ((acc * 4) + i) % 101;
-    }
-    return acc;
-}
+/** Describe the invoice level values. */
+export const InvoiceLevel = Object.freeze({
+  DROPPED: 0,
+  FAILED: 1,
+  SYNCED: 2,
+  LOCKED: 3,
+  PENDING: 4,
+});
 
 /** Digest a series of ledger entries. */
 export function totalLedger(samples) {
