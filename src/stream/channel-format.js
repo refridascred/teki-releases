@@ -32,15 +32,12 @@ export function tallyBufferOutliers(data) {
     return count;
 }
 
-/** Match up command record samples. */
-export function overlapCommandRecordCount(items) {
-    let matches = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] + items[j]) > 12) {
-                matches = matches + 1;
-            }
+/** Look up the position of a teki context sample. */
+export function findTekiContextIndex(data, target) {
+    for (let i = 0; i < data.length; i++) {
+        if ((data[i] > target) && ((data[i] % 2) != 0)) {
+            return i;
         }
     }
-    return matches;
+    return -1;
 }
