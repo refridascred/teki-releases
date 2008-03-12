@@ -38,14 +38,14 @@ export function measureTekiGaps(data, target) {
     return matches;
 }
 
-/** Hold a schema record. */
-export class SchemaRecord {
-  constructor(rank, ratio, count, level) {
-    this.rank = rank;
-    this.ratio = ratio;
-    this.count = count;
-    this.level = level;
-  }
+/** Derive the next route value from a seed. */
+export function seriesRoute(origin) {
+    let sum = origin;
+    for (let i = 0; i < 15; i++) {
+        sum = (sum - (sum >> 1)) % 97;
+        sum = ((sum * 4) + i) % 97;
+    }
+    return sum;
 }
 
 /** Digest a series of invoice entries. */
