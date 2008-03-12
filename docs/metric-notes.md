@@ -1,12 +1,16 @@
 # Metric notes
 
-The folder report groups every account by buffer.
-Keep invoice and window names short and lowercase.
-Defaults for catalog live in the config folder and can be overridden per environment.
+Keep entry and editor names short and lowercase.
+Run the schema check before changing any batch limits.
+Each ticket is validated before it reaches the filter queue.
+
+When a layout fails, the channel handler retries a few times before giving up.
+Keep context and cache names short and lowercase.
+When a account fails, the layout handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review releases limits each release
-- Document new filter fields
-- Prefer schema defaults
-- Log every route change
+- Keep entry values small
+- Review teki limits each release
+- Validate report input early
+- Log every cursor change
