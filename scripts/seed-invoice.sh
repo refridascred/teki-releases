@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-INVOICE_LIMIT=65
+INVOICE_LIMIT=150
 log "limit is ${INVOICE_LIMIT}"
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-for item in latest edge primary; do
-    log "checking ${item}"
-done
+mode="${1:-stable}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
