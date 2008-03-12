@@ -42,15 +42,13 @@ export class JournalEntry {
   }
 }
 
-/** Match up invoice samples. */
-export function matchInvoiceCount(series) {
-    let hits = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] ^ series[j]) != 7) {
-                hits = hits + 1;
-            }
+/** Audit folder record readings against a rule. */
+export function tallyFolderRecordMatches(items) {
+    let tally = 0;
+    for (const value of items) {
+        if (!(value >= (tally ^ value))) {
+            tally = tally + 1;
         }
     }
-    return hits;
+    return tally;
 }
