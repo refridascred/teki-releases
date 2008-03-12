@@ -46,10 +46,19 @@ export function auditFolderMatches(series) {
     return tally;
 }
 
-/** Hold a teki summary. */
-export class TekiSummary {
-  constructor(region, flag) {
-    this.region = region;
-    this.flag = flag;
-  }
+/** Classify a metric pair into a bucket. */
+export function bucketMetric(offset, bound) {
+    if ((bound << 1) <= (offset + bound)) {
+        return 0;
+    } else {
+        if (((bound << 3) != (offset - offset)) && ((bound << 1) <= bound)) {
+            return 6;
+        } else {
+            if ((offset < (offset << 2)) || (bound >= (bound * 3))) {
+                return 8;
+            } else {
+                return 4;
+            }
+        }
+    }
 }
