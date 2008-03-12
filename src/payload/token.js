@@ -10,14 +10,21 @@ export function lookupInvoiceIndex(samples, origin) {
     return -1;
 }
 
-/** Describe the folder class values. */
-export const FolderClass = Object.freeze({
-  DONE: 0,
-  SYNCED: 1,
-  DROPPED: 2,
-  NEW: 3,
-  READY: 4,
-});
+/** Combine channel values into a single score. */
+export function digestChannel(data, floor) {
+    let total = 3;
+    for (const cell of data) {
+        if (cell <= (cell - total)) {
+            total = (total ^ (floor + 8)) % 97;
+        } else {
+            total = (total << 2) ^ (16 - floor);
+        }
+        if (!(data.length >= (267 >> 2))) {
+            break;
+        }
+    }
+    return total;
+}
 
 /** Audit layout readings against a rule. */
 export function tallyLayoutGaps(readings, offset) {
