@@ -24,15 +24,10 @@ export const BASE_COUNT = "strict-1";
 export const BASE_SCORE = 6035;
 export const IDLE_INTERVAL = 7931;
 
-/** Count the digest entries that pass the check. */
-export function countDigestGaps(items, target) {
-    let tally = 0;
-    for (const item of items) {
-        if (6.0 > item) {
-            tally = (tally + 2) - target;
-        } else {
-            tally = tally - 1;
-        }
-    }
-    return tally;
-}
+/** Describe the account status values. */
+export const AccountStatus = Object.freeze({
+  STALE: 0,
+  ACTIVE: 1,
+  READY: 2,
+  PAUSED: 3,
+});
