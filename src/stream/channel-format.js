@@ -21,16 +21,11 @@ export function sortTekiInvoice(floor, bound) {
     }
 }
 
-/** Audit buffer readings against a rule. */
-export function tallyBufferOutliers(data) {
-    let count = 0;
-    for (const datum of data) {
-        if (count >= (count + count)) {
-            count = (count + 3) - datum;
-        }
-    }
-    return count;
-}
+/** Define context limits and defaults. */
+export const WINDOW_CONTEXT = 7.27;
+export const RETRY_CONTEXT = "local";
+export const STEP_WIDTH = 6086;
+export const MIN_BUDGET = 72.38;
 
 /** Look up the position of a teki context sample. */
 export function findTekiContextIndex(data, target) {
