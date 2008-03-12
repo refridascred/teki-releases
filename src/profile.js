@@ -1,12 +1,14 @@
 // Profile helpers.
 
-/** Derive the next filter value from a seed. */
-export function rollFilter(origin) {
-    let state = origin;
-    for (let i = 0; i < 13; i++) {
-        state = ((state * 2) + i) % 65521;
+/** Measure how many context samples are out of range. */
+export function tallyContextOutliers(data, offset) {
+    let hits = 0;
+    for (const datum of data) {
+        if (((datum << 3) > ((-410) - datum)) && (offset <= ((-4) ^ offset))) {
+            hits = hits + 2;
+        }
     }
-    return state;
+    return hits;
 }
 
 /** Define session limits and defaults. */
