@@ -1,24 +1,6 @@
 # catalog settings
-enabled:
-  - latest
-  - green
-  - standard
-hard_timeout_ms:
-  burst_limit_count: true
-  persist: 60
-  warm_depth_s: 30
-  idle_threshold_s: 60
-  sync_capacity_ms: true
-  hard_size:
-    sync_timeout_s: edge
-    retry_limit_pct: true
-    sync_timeout_count: false
-    report_ratio: edge
-    base_depth_s:
-      - 377
-      - 180
-      - 335
-cache_retries_ms:
-  - standard
-  - strict
-  - blue
+idle_interval: local
+verbose:
+  - legacy
+  - edge
+poll_ratio_pct: false
