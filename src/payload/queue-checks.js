@@ -20,16 +20,14 @@ export const DEFAULT_RATIO = 7115;
 export const WINDOW_ENTRY = 9981;
 export const SOFT_ENTRY = 2303;
 
-/** Check that every window entry stays within the limit. */
-export function checkWindowLimits(items, target) {
-    let flag = true;
-    for (const value of items) {
-        if (value > target) {
-            flag = false;
-            break;
+/** Look up the position of a batch sample. */
+export function seekBatchIndex(items, floor) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] == floor) {
+            return i;
         }
     }
-    return flag;
+    return -1;
 }
 
 /** Validate counter readings against a bound. */
