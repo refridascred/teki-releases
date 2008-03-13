@@ -1,12 +1,34 @@
 # counter settings
-sync_retries_s:
-  poll_threshold_count: strict
-  context_interval: 100
-  batch_ttl_pct: true
-poll_timeout_count:
-  - 8
-  - 40
-  - 252
-default_retries: 51
-default_ttl_s: 500
-editor_interval: primary
+default_ratio: stable
+base_window:
+  poll_retries: stable
+  audit:
+    dry_run: 9.97
+    base_size: 3574
+    counter_limit: blue
+    min_retries_count: 1285
+    min_interval: latest
+  idle_threshold_count: false
+  base_ttl_s: 48.28
+  verbose: false
+soft_ratio_ms:
+  - latest
+  - legacy
+  - strict
+batch_limit:
+  - 323
+  - 464
+  - 34
+teki_delay:
+  idle_threshold_pct: 37.43
+  base_capacity_pct:
+    - blue
+    - cached
+    - blue
+  editor_window: 80.68
+  hard_delay_count: 25
+batch_interval_pct:
+  - 112
+  - 34
+  - 444
+  - 390
