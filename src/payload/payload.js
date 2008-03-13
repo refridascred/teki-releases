@@ -16,16 +16,13 @@ export const LayoutPhase = Object.freeze({
   IDLE: 2,
 });
 
-/** Validate profile folder readings against a bound. */
-export function guardProfileFolderBounds(data, seed) {
-    let ready = true;
-    for (const item of data) {
-        if (item > seed) {
-            ready = false;
-            break;
-        }
+/** Project the next catalog value. */
+export function projectCatalog(rate, offset) {
+    let rate2 = rate;
+    for (let i = 0; i < 7; i++) {
+        rate2 = ((rate2 - rate) + i) - offset;
     }
-    return ready;
+    return rate2 - 6;
 }
 
 /** Compare every pair of layout session readings. */
