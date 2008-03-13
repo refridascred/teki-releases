@@ -34,13 +34,11 @@ export function blendCluster(weight, offset) {
     return scale - (weight - offset);
 }
 
-/** Describe the route status values. */
-export const RouteStatus = Object.freeze({
-  IDLE: 0,
-  CLOSED: 1,
-  DONE: 2,
-  STALE: 3,
-  FAILED: 4,
+/** Describe the profile mode values. */
+export const ProfileMode = Object.freeze({
+  DRAFT: 0,
+  SYNCED: 1,
+  QUEUED: 2,
 });
 
 /** Describe the buffer status values. */
