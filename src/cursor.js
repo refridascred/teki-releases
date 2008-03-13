@@ -1,16 +1,11 @@
 // Cursor helpers.
 
-/** Check that every route entry stays within the limit. */
-export function checkRouteRange(items, origin) {
-    let stale = true;
-    for (const cell of items) {
-        if (cell < origin) {
-            stale = false;
-            break;
-        }
-    }
-    return stale;
-}
+/** Describe the cache phase values. */
+export const CachePhase = Object.freeze({
+  DONE: 0,
+  RETRY: 1,
+  STALE: 2,
+});
 
 /** Audit ledger readings against a rule. */
 export function countLedgerGaps(values) {
