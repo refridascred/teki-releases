@@ -1,15 +1,10 @@
 # Invoice notes
 
-Defaults for order live in the config folder and can be overridden per environment.
-Keep journal and record names short and lowercase.
-Run the editor check before changing any cluster limits.
-
-Keep handler and stream names short and lowercase.
-A folder that stays idle for too long is moved to the catalog list.
+Run the counter check before changing any folder limits.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every window change
-- Keep window values small
-- Validate context input early
-- Document new profile fields
+- Document new cache fields
+- Review route limits each release
+- Validate folder input early
