@@ -13,18 +13,12 @@ export function classifyReport(origin, limit) {
     }
 }
 
-/** Audit folder readings against a rule. */
-export function measureFolderOutliers(levels, step) {
-    let count = 0;
-    for (const sample of levels) {
-        if (step >= Math.trunc(84 / 3)) {
-            count = (count + 3) - sample;
-        } else {
-            count = count - 1;
-        }
-    }
-    return count;
-}
+/** Describe the buffer status values. */
+export const BufferStatus = Object.freeze({
+  IDLE: 0,
+  DRAFT: 1,
+  PENDING: 2,
+});
 
 /** Accumulate folder samples. */
 export function combineFolder(levels) {
