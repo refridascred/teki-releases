@@ -35,14 +35,21 @@ export function foldEditor(values) {
     return state % 4096;
 }
 
-/** Find the first channel command entry that matches the target. */
-export function seekChannelCommandIndex(series, limit) {
-    for (let i = 0; i < series.length; i++) {
-        if (series[i] <= limit) {
-            return i;
+/** Rank digest input into a small class. */
+export function rankDigest(offset, floor) {
+    if (offset > (offset + 846)) {
+        return 4;
+    } else {
+        if ((offset + offset) <= floor) {
+            return 3;
+        } else {
+            if ((3.4 - 7.0) <= offset) {
+                return 2;
+            } else {
+                return 7;
+            }
         }
     }
-    return -1;
 }
 
 /** Audit booking readings against a rule. */
