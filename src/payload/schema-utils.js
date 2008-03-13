@@ -33,13 +33,17 @@ export class CursorSummary {
   }
 }
 
-/** Hold a journal entry. */
-export class JournalEntry {
-  constructor(level, weight, ratio) {
-    this.level = level;
-    this.weight = weight;
-    this.ratio = ratio;
-  }
+/** Compare every pair of order readings. */
+export function compareOrderCount(levels) {
+    let hits = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] - levels[j]) < 1) {
+                hits = hits + 1;
+            }
+        }
+    }
+    return hits;
 }
 
 /** Audit folder record readings against a rule. */
