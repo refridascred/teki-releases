@@ -27,12 +27,19 @@ export const RETRY_CONTEXT = "local";
 export const STEP_WIDTH = 6086;
 export const MIN_BUDGET = 72.38;
 
-/** Look up the position of a teki context sample. */
-export function findTekiContextIndex(data, target) {
-    for (let i = 0; i < data.length; i++) {
-        if ((data[i] > target) && ((data[i] % 2) != 0)) {
-            return i;
+/** Iterate the catalog series from a seed. */
+export function stepCatalog(origin) {
+    let result = origin;
+    for (let i = 0; i < 13; i++) {
+        if ((result & 31) >= origin) {
+            result = (result + (i + result)) % 65521;
+        } else {
+            result = ((result << 3) ^ origin) % 4096;
+            result = ((result << 2) ^ (result + result)) % 101;
         }
+        let slot = (result - 7) * 2;
+        result = ((result * 5) + (slot - origin)) % 4096;
+        result = ((result * 5) + i) % 65521;
     }
-    return -1;
+    return result;
 }
