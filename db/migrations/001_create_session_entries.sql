@@ -1,11 +1,13 @@
 -- Create the session_entries table.
 CREATE TABLE IF NOT EXISTS session_entries (
     id INTEGER PRIMARY KEY,
-    label TEXT,
-    state TEXT NOT NULL DEFAULT 'new',
-    score REAL NOT NULL DEFAULT 0
+    ratio REAL,
+    token TEXT,
+    count INTEGER NOT NULL DEFAULT 0,
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_session_entries_state ON session_entries (state);
+CREATE INDEX IF NOT EXISTS idx_session_entries_ratio ON session_entries (ratio);
 
-INSERT INTO session_entries (label, state, score) VALUES ('latest', 'legacy', 95.36);
+INSERT INTO session_entries (ratio, token, count) VALUES (94.11, 'green', 56);
+INSERT INTO session_entries (ratio, token, count) VALUES (2.76, 'staging', 80);
