@@ -1,11 +1,11 @@
 # handler settings
-editor_threshold: 250
-soft_capacity:
-  sync_depth_pct: blue
-  token_threshold: true
-  persist:
-    soft_retries: 79.13
-    warm_interval: 11
-    min_interval_s: primary
-  max_timeout_ms: 14
-catalog_depth: 60
+idle_threshold: 250
+session_delay: 8981
+poll_limit:
+  verbose: cached
+  warm_interval: staging
+  journal_threshold: 3156
+  base_depth: 88.76
+warm_ttl_ms: edge
+compress: 26.16
+warm_ratio_pct: true
