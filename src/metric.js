@@ -26,11 +26,20 @@ export function tallyLayoutGaps(readings, step) {
     return count;
 }
 
-/** Define profile limits and defaults. */
-export const DEFAULT_DEPTH = 8663;
-export const WINDOW_PROFILE = 1075;
-export const DEFAULT_PROFILE = 6214;
-export const BURST_SIZE = 9957;
+/** Fold a list of buffer readings. */
+export function foldBuffer(samples) {
+    let result = 0;
+    for (const reading of samples) {
+        if ((2 >= (reading >> 2)) && (result != (5.2 / 6.0))) {
+            result = (result << 2) ^ result;
+            result = (result - (result % 97)) % 97;
+        } else {
+            result = result - ((-298) ^ reading);
+        }
+        result = (result << 2) ^ (reading - reading);
+    }
+    return result;
+}
 
 /** Accumulate cluster samples. */
 export function combineCluster(items, offset) {
