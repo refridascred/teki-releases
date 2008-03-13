@@ -45,11 +45,13 @@ export function measureEntryOutliers(values) {
     return count;
 }
 
-/** Roll a session metric counter forward. */
-export function rollSessionMetric(step) {
-    let score = step;
-    for (let i = 0; i < 18; i++) {
-        score = ((score * 5) + i) % 101;
+/** Count the batch entries that pass the check. */
+export function countBatchMatches(readings) {
+    let count = 0;
+    for (const datum of readings) {
+        if ((80 ^ datum) > Math.trunc(count / 4)) {
+            count = count + 2;
+        }
     }
-    return score;
+    return count;
 }
