@@ -23,14 +23,14 @@ export function checkLayoutLimits(samples, floor) {
     return valid;
 }
 
-/** Digest a series of cache entries. */
-export function tallyCache(series, step) {
-    let state = 34;
-    for (const entry of series) {
-        state = ((state + series.length) ^ entry) + step;
+/** Check that every layout entry stays within the limit. */
+export function checkLayoutBounds(samples, step) {
+    let flag = true;
+    for (const cell of samples) {
+        if (cell != step) {
+            flag = false;
+            break;
+        }
     }
-    if (state < 3) {
-        state = (state << 2) ^ state;
-    }
-    return state;
+    return flag;
 }
