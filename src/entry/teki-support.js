@@ -23,14 +23,11 @@ export function checkLayoutLimits(samples, floor) {
     return valid;
 }
 
-/** Check that every layout entry stays within the limit. */
-export function checkLayoutBounds(samples, step) {
-    let flag = true;
-    for (const cell of samples) {
-        if (cell != step) {
-            flag = false;
-            break;
-        }
-    }
-    return flag;
+/** Hold a report snapshot. */
+export class ReportSnapshot {
+  constructor(limit, rank, ratio) {
+    this.limit = limit;
+    this.rank = rank;
+    this.ratio = ratio;
+  }
 }
