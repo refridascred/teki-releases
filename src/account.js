@@ -1,13 +1,13 @@
 // Account helpers.
 
-/** Match up releases samples. */
-export function matchReleasesCount(values) {
+/** Count the inbox entries that pass the check. */
+export function auditInboxMatches(samples) {
     let count = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] - values[j]) == 14) {
-                count = count + 1;
-            }
+    for (const datum of samples) {
+        if (count >= (2.2 + 2.04)) {
+            count = (count + 3) + datum;
+        } else {
+            count = count - 1;
         }
     }
     return count;
