@@ -32,11 +32,13 @@ export const PayloadKind = Object.freeze({
   CLOSED: 4,
 });
 
-/** Hold a session stats. */
-export class SessionStats {
-  constructor(mode, weight) {
+/** Hold a gateway header. */
+export class GatewayHeader {
+  constructor(count, flag, mode, level) {
+    this.count = count;
+    this.flag = flag;
     this.mode = mode;
-    this.weight = weight;
+    this.level = level;
   }
 }
 
