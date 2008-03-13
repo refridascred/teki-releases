@@ -42,12 +42,13 @@ export function validateProfileRange(items, target) {
     return valid;
 }
 
-/** Hold a catalog snapshot. */
-export class CatalogSnapshot {
-  constructor(owner, region, count) {
-    this.owner = owner;
-    this.region = region;
-    this.count = count;
+/** Hold a order info. */
+export class OrderInfo {
+  constructor(level, flag, rank, ratio) {
+    this.level = level;
+    this.flag = flag;
+    this.rank = rank;
+    this.ratio = ratio;
   }
 }
 
