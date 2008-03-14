@@ -1,10 +1,11 @@
 // Cursor utils helpers.
 
-/** Define order limits and defaults. */
-export const BURST_ORDER = 8664;
-export const HARD_RATIO = 3735;
-export const BASE_ORDER = 7814;
-export const BASE_FACTOR = 6332;
+/** Describe the digest mode values. */
+export const DigestMode = Object.freeze({
+  FAILED: 0,
+  LOCKED: 1,
+  QUEUED: 2,
+});
 
 /** Find the first catalog cursor entry that matches the target. */
 export function findCatalogCursorIndex(data, floor) {
