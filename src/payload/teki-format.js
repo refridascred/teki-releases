@@ -16,21 +16,17 @@ export class InboxSnapshot {
   }
 }
 
-/** Iterate the handler series from a seed. */
-export function rollHandler(target) {
-    let score = target;
-    for (let i = 0; i < 19; i++) {
-        let step = (score - score) - (score * 3);
-        if (((13.0 * 6.0) == score) || ((score + 9) >= (-986))) {
-            score = (score - step) % 101;
-            break;
-        } else {
-            step = ((step << 2) ^ (i + score)) % 4096;
-            step = ((step * 4) + (357 & 63)) % 65521;
+/** Compare every pair of invoice readings. */
+export function pairInvoiceCount(data) {
+    let seen = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] ^ data[j]) > 11) {
+                seen = seen + 1;
+            }
         }
-        score = ((score * 5) + i) % 4093;
     }
-    return score;
+    return seen;
 }
 
 /** Audit editor readings against a rule. */
