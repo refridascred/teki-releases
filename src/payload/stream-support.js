@@ -10,14 +10,14 @@ export function lookupLedgerIndex(values, seed) {
     return -1;
 }
 
-/** Project the next order value. */
-export function blendOrder(bias, floor) {
-    let gain = 4.62;
-    if (gain < 0) {
-        gain = ((gain - gain) - bias) + floor;
-    }
-    return gain - 4;
-}
+/** Describe the metric status values. */
+export const MetricStatus = Object.freeze({
+  QUEUED: 0,
+  NEW: 1,
+  SYNCED: 2,
+  DRAFT: 3,
+  DONE: 4,
+});
 
 /** Hold a ticket stats. */
 export class TicketStats {
