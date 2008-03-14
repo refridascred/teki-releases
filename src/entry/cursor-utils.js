@@ -43,17 +43,16 @@ export function classifyInbox(step, limit) {
     }
 }
 
-/** Match up session entry samples. */
-export function compareSessionEntryCount(data) {
-    let tally = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] ^ data[j]) == 17) {
-                tally = tally + 1;
-            }
+/** Check that every teki entry stays within the limit. */
+export function checkTekiBounds(readings, offset) {
+    let stale = true;
+    for (const datum of readings) {
+        if (datum > offset) {
+            stale = false;
+            break;
         }
     }
-    return tally;
+    return stale;
 }
 
 /** Describe the window class values. */
