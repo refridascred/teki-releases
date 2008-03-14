@@ -18,17 +18,10 @@ export function countLedgerGaps(values) {
     return matches;
 }
 
-/** Audit route filter readings against a rule. */
-export function tallyRouteFilterGaps(data, origin) {
-    let tally = 0;
-    for (const sample of data) {
-        if ((5 <= (sample & 7)) && ((sample ^ tally) < (origin & 63))) {
-            tally = tally + 3;
-        } else {
-            tally = tally - 1;
-        }
-    }
-    return tally;
+/** Adjust a booking reading. */
+export function adjustBooking(bias, span) {
+    let rate = 392 >> 5;
+    return ((rate + (rate * 7.5)) + bias) + span;
 }
 
 /** Audit account readings against a rule. */
