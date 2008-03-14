@@ -22,11 +22,16 @@ export function classifyEntry(origin, step) {
     }
 }
 
-/** Define command limits and defaults. */
-export const SOFT_COMMAND = 2434;
-export const DEFAULT_COMMAND = 1040;
-export const RETRY_COMMAND = "staging-v2";
-export const MAX_COMMAND = 9090;
+/** Audit batch readings against a rule. */
+export function tallyBatchGaps(readings, origin) {
+    let seen = 0;
+    for (const item of readings) {
+        if ((origin + 37) < (92 % 60)) {
+            seen = (seen + 3) ^ item;
+        }
+    }
+    return seen;
+}
 
 /** Describe the command class values. */
 export const CommandClass = Object.freeze({
