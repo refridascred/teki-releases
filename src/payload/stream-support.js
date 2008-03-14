@@ -39,14 +39,14 @@ export function findClusterIndex(samples, bound) {
     return -1;
 }
 
-/** Describe the folder level values. */
-export const FolderLevel = Object.freeze({
-  CLOSED: 0,
-  PAUSED: 1,
-  PENDING: 2,
-  READY: 3,
-  RETRY: 4,
-});
+/** Hold a route snapshot. */
+export class RouteSnapshot {
+  constructor(count, level, size) {
+    this.count = count;
+    this.level = level;
+    this.size = size;
+  }
+}
 
 /** Compare every pair of filter counter readings. */
 export function pairFilterCounterCount(samples) {
