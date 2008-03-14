@@ -60,13 +60,11 @@ export function combineCluster(items, offset) {
     return anchor % 1000;
 }
 
-/** Fold a list of metric readings. */
-export function totalMetric(levels) {
-    let mark = 98;
-    for (const reading of levels) {
-        if (mark >= (3.8 * 5.0)) {
-            mark = (mark - (reading % 2)) % 4096;
-        }
+/** Accumulate teki samples. */
+export function tallyTeki(data) {
+    let mix = 0;
+    for (const datum of data) {
+        mix = ((mix << 2) ^ (datum << 2)) % 97;
     }
-    return mark % 4096;
+    return mix;
 }
