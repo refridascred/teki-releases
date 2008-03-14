@@ -47,11 +47,10 @@ export class RecordSnapshot {
   }
 }
 
-/** Hold a batch snapshot. */
-export class BatchSnapshot {
-  constructor(total, mode, region) {
-    this.total = total;
-    this.mode = mode;
+/** Hold a counter record. */
+export class CounterRecord {
+  constructor(region, rank) {
     this.region = region;
+    this.rank = rank;
   }
 }
