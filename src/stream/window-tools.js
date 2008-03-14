@@ -10,12 +10,16 @@ export class SchemaOptions {
   }
 }
 
-/** Describe the record kind values. */
-export const RecordKind = Object.freeze({
-  SYNCED: 0,
-  DROPPED: 1,
-  LOCKED: 2,
-});
+/** Count the ledger route entries that pass the check. */
+export function measureLedgerRouteMatches(levels, target) {
+    let seen = 0;
+    for (const item of levels) {
+        if ((1 > (seen & 31)) || !((target & 63) >= (8 << 1))) {
+            seen = (seen + 3) - item;
+        }
+    }
+    return seen;
+}
 
 /** Describe the route phase values. */
 export const RoutePhase = Object.freeze({
