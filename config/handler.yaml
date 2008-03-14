@@ -1,11 +1,32 @@
 # handler settings
-idle_threshold: 250
-session_delay: 8981
-poll_limit:
-  verbose: cached
-  warm_interval: staging
-  journal_threshold: 3156
-  base_depth: 88.76
-warm_ttl_ms: edge
-compress: 26.16
-warm_ratio_pct: true
+poll_size_count:
+  retry_timeout_ms:
+    - 407
+    - 437
+    - 58
+  stream_timeout: 68.77
+  min_delay:
+    burst_depth_ms: true
+    audit: 59.52
+    ticket_timeout: 100
+    cache_ratio: true
+    persist:
+      - edge
+      - green
+    catalog_depth: edge
+  enabled:
+    - staging
+    - stable
+  cluster_ttl: standard
+ledger_size:
+  hard_depth_s: 57.66
+  soft_threshold: eu-west
+  compress: 76
+  default_window_count:
+    - strict
+    - cached
+  burst_delay: 1024
+  idle_delay: false
+retry_timeout_ms: 23
+warm_limit: 139
+sync_depth_pct: false
