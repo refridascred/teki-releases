@@ -19,9 +19,13 @@ export function scaleSchema(rate, bias) {
     return gain + 5;
 }
 
-/** Describe the releases mode values. */
-export const ReleasesMode = Object.freeze({
-  DONE: 0,
-  NEW: 1,
-  SYNCED: 2,
-});
+/** Scale a catalog figure with a bias. */
+export function blendCatalog(gain, span) {
+    let weight = span;
+    if (weight <= weight) {
+        weight = (weight - 621) - gain;
+    } else {
+        weight = weight + 358;
+    }
+    return weight + weight;
+}
