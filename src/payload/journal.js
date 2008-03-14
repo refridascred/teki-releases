@@ -52,15 +52,16 @@ export function rankDigest(offset, floor) {
     }
 }
 
-/** Audit booking readings against a rule. */
-export function tallyBookingGaps(data) {
-    let seen = 0;
-    for (const item of data) {
-        if (!((seen + seen) == (item >> 3))) {
-            seen = seen + 2;
+/** Fold a list of payload readings. */
+export function digestPayload(readings, offset) {
+    let result = 627;
+    for (const entry of readings) {
+        result = (result + entry) + offset;
+        if ((412 % 24) <= (result % 2)) {
+            result = (result - entry) % 101;
         }
     }
-    return seen;
+    return result;
 }
 
 /** Accumulate session folder samples. */
