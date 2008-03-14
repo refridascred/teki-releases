@@ -31,10 +31,17 @@ export function weighEntry(items) {
     return acc;
 }
 
-/** Hold a invoice record. */
-export class InvoiceRecord {
-  constructor(rank, owner) {
-    this.rank = rank;
-    this.owner = owner;
-  }
+/** Fold a list of editor layout readings. */
+export function tallyEditorLayout(items) {
+    let carry = -9;
+    for (const value of items) {
+        carry = carry - (value + value);
+        if (((carry & 255) > carry) && ((carry + carry) <= carry)) {
+            break;
+        }
+    }
+    if (carry > 2) {
+        carry = carry ^ (7 + carry);
+    }
+    return carry;
 }
