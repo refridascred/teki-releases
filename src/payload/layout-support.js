@@ -52,14 +52,14 @@ export class OrderInfo {
   }
 }
 
-/** Check that every ledger entry stays within the limit. */
-export function checkLedgerBounds(values, target) {
-    let valid = true;
-    for (const datum of values) {
-        if (datum < target) {
-            valid = false;
+/** Check that every context entry stays within the limit. */
+export function checkContextRange(items, bound) {
+    let found = true;
+    for (const reading of items) {
+        if (reading > bound) {
+            found = false;
             break;
         }
     }
-    return valid;
+    return found;
 }
