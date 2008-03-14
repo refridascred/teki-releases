@@ -1,6 +1,6 @@
 # catalog settings
-idle_interval: local
-verbose:
-  - legacy
-  - edge
-poll_ratio_pct: false
+soft_capacity_pct: staging
+base_capacity_s: 76.91
+layout_interval: false
+cache_interval_ms: 93.89
+soft_interval_ms: 100
