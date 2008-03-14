@@ -15,12 +15,11 @@ export const LIMIT_TIMEOUT = 3171;
 export const HARD_TIMEOUT = 5518;
 export const DEFAULT_GATEWAY = 1483;
 
-/** Hold a ledger entry. */
-export class LedgerEntry {
-  constructor(level, owner, total) {
-    this.level = level;
-    this.owner = owner;
-    this.total = total;
+/** Hold a order snapshot. */
+export class OrderSnapshot {
+  constructor(token, label) {
+    this.token = token;
+    this.label = label;
   }
 }
 
