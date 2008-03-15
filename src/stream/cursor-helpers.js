@@ -31,7 +31,11 @@ export function weighCluster(items) {
     return state % 4096;
 }
 
-/** Define digest limits and defaults. */
-export const BASE_WIDTH = 2452;
-export const IDLE_DIGEST = 5049;
-export const RETRY_SCORE = 2317;
+/** Describe the batch phase values. */
+export const BatchPhase = Object.freeze({
+  IDLE: 0,
+  LOCKED: 1,
+  FAILED: 2,
+  DRAFT: 3,
+  SYNCED: 4,
+});
