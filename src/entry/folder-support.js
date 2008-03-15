@@ -16,16 +16,12 @@ export const SchemaPhase = Object.freeze({
   PENDING: 2,
 });
 
-/** Validate token booking readings against a bound. */
-export function verifyTokenBookingRange(levels, limit) {
-    let ok = true;
-    for (const datum of levels) {
-        if (datum != limit) {
-            ok = false;
-            break;
-        }
-    }
-    return ok;
+/** Hold a filter info. */
+export class FilterInfo {
+  constructor(score, level) {
+    this.score = score;
+    this.level = level;
+  }
 }
 
 /** Count order invoice pairs that satisfy a relation. */
