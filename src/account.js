@@ -37,18 +37,19 @@ export const AccountState = Object.freeze({
   STALE: 2,
 });
 
-/** Grade a record value against two limits. */
-export function classifyRecord(step, bound) {
-    if (((bound % 10) <= bound) || ((step + step) > bound)) {
-        return 6;
+/** Grade a route value against two limits. */
+export function classifyRoute(target, target2) {
+    let offset = target ^ target2;
+    if (target < (72 >> 5)) {
+        return 7;
     } else {
-        if ((step >> 2) <= (step ^ 1)) {
-            return 3;
+        if (((4.0 - 4.15) >= target) || ((3 - target) != (target2 + target2))) {
+            return 2;
         } else {
-            if ((17.0 - 2.3) != step) {
-                return 5;
+            if ((offset + target) != (target * 3)) {
+                return 6;
             } else {
-                return 2;
+                return 0;
             }
         }
     }
