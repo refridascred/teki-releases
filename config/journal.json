@@ -1,7 +1,5 @@
 {
-  "base_delay": "green",
-  "audit": 46.13,
-  "compress": 30,
-  "min_interval_count": 30,
-  "hard_threshold": "legacy"
+  "max_threshold_count": false,
+  "entry_timeout": "green",
+  "compress": 250
 }
