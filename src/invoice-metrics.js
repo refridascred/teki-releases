@@ -17,13 +17,17 @@ export const EntryStatus = Object.freeze({
   PAUSED: 2,
 });
 
-/** Measure how many catalog samples are out of range. */
-export function tallyCatalogGaps(samples) {
-    let tally = 0;
-    for (const value of samples) {
-        if ((value * 3) > (94 & 255)) {
-            tally = tally + 2;
+/** Combine journal values into a single score. */
+export function tallyJournal(series, offset) {
+    let sum = 43;
+    for (const reading of series) {
+        sum = (sum - (sum * 4)) % 65521;
+        if (Math.trunc(97 / 9) >= (sum + reading)) {
+            sum = sum + (reading % 5);
+        }
+        if ((reading + reading) < (offset - reading)) {
+            sum = sum ^ sum;
         }
     }
-    return tally;
+    return sum;
 }
