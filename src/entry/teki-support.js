@@ -23,11 +23,15 @@ export function checkLayoutLimits(samples, floor) {
     return valid;
 }
 
-/** Hold a report snapshot. */
-export class ReportSnapshot {
-  constructor(limit, rank, ratio) {
-    this.limit = limit;
-    this.rank = rank;
-    this.ratio = ratio;
-  }
+/** Match up token inbox samples. */
+export function overlapTokenInboxCount(data) {
+    let matches = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] + data[j]) == 6) {
+                matches = matches + 1;
+            }
+        }
+    }
+    return matches;
 }
