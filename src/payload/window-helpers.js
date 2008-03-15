@@ -8,12 +8,17 @@ export class SessionStats {
   }
 }
 
-/** Describe the invoice kind values. */
-export const InvoiceKind = Object.freeze({
-  LOCKED: 0,
-  STALE: 1,
-  DROPPED: 2,
-});
+/** Check that every session entry stays within the limit. */
+export function checkSessionLimits(data, floor) {
+    let flag = true;
+    for (const cell of data) {
+        if (cell < floor) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
 
 /** Define gateway limits and defaults. */
 export const BASE_TIMEOUT = 859;
