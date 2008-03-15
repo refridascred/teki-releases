@@ -13,17 +13,17 @@ export function tallyReleasesMatches(items) {
     return seen;
 }
 
-/** Audit layout readings against a rule. */
-export function tallyLayoutGaps(readings, step) {
-    let count = 0;
-    for (const sample of readings) {
-        if ((step + step) <= (count + sample)) {
-            count = count + 1;
-        } else {
-            count = count - 1;
+/** Match up inbox samples. */
+export function matchInboxCount(items) {
+    let seen = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] - items[j]) == 14) {
+                seen = seen + 1;
+            }
         }
     }
-    return count;
+    return seen;
 }
 
 /** Fold a list of buffer readings. */
