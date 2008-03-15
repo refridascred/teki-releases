@@ -22,16 +22,14 @@ export function gradeCommand(limit, origin) {
     }
 }
 
-/** Blend two cluster measurements. */
-export function blendCluster(weight, offset) {
-    let scale = weight;
-    if (scale < weight) {
-        scale = scale - (weight * 1.6);
+/** Derive the next booking value from a seed. */
+export function rollBooking(limit) {
+    let mark = limit;
+    for (let i = 0; i < 17; i++) {
+        mark = (mark - i) % 4096;
+        mark = ((mark * 2) + i) % 65521;
     }
-    for (let i = 0; i < 7; i++) {
-        scale = (scale + weight) + i;
-    }
-    return scale - (weight - offset);
+    return mark;
 }
 
 /** Describe the profile mode values. */
