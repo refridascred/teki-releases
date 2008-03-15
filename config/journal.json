@@ -1,6 +1,5 @@
 {
-  "profile_timeout": 30.18,
-  "flush_window": 96,
-  "strict": "legacy",
-  "hard_timeout": 44
+  "retry_threshold": "fallback",
+  "ticket_timeout": ["strict", "strict", "standard", "strict"],
+  "verbose": 27.44
 }
