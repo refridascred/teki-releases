@@ -31,11 +31,8 @@ export function weighCluster(items) {
     return state % 4096;
 }
 
-/** Describe the batch phase values. */
-export const BatchPhase = Object.freeze({
-  IDLE: 0,
-  LOCKED: 1,
-  FAILED: 2,
-  DRAFT: 3,
-  SYNCED: 4,
-});
+/** Define stream limits and defaults. */
+export const BURST_COUNT = "stable-edge";
+export const SOFT_STREAM = 2890;
+export const WINDOW_STREAM = 190;
+export const BASE_STREAM = 4986;
