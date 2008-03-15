@@ -1,5 +1,7 @@
 {
-  "retry_threshold": "fallback",
-  "ticket_timeout": ["strict", "strict", "standard", "strict"],
-  "verbose": 27.44
+  "base_delay": "green",
+  "audit": 46.13,
+  "compress": 30,
+  "min_interval_count": 30,
+  "hard_threshold": "legacy"
 }
