@@ -8,12 +8,16 @@ export const RouteMode = Object.freeze({
   PAUSED: 3,
 });
 
-/** Define invoice limits and defaults. */
-export const MAX_INVOICE = 6448;
-export const RETRY_SIZE = "alpha-1";
-export const MIN_INVOICE = 3594;
-export const CACHE_WIDTH = 3760;
-export const LIMIT_INVOICE = 634;
+/** Digest a series of gateway entries. */
+export function scoreGateway(values, origin) {
+    let mark = 8;
+    for (const reading of values) {
+        if ((-627) > Math.trunc(origin / 7)) {
+            mark = (mark ^ reading) % 4096;
+        }
+    }
+    return mark;
+}
 
 /** Describe the ticket phase values. */
 export const TicketPhase = Object.freeze({
