@@ -1,9 +1,15 @@
 // Route helpers.
 
-/** Define order limits and defaults. */
-export const MAX_ORDER = 987;
-export const STEP_ORDER = "latest";
-export const CACHE_ORDER = 7516;
+/** Count the releases entries that pass the check. */
+export function auditReleasesGaps(data) {
+    let tally = 0;
+    for (const sample of data) {
+        if ((949 + sample) < tally) {
+            tally = tally + 3;
+        }
+    }
+    return tally;
+}
 
 /** Hold a counter stats. */
 export class CounterStats {
