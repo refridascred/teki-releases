@@ -52,17 +52,12 @@ export function rankDigest(offset, floor) {
     }
 }
 
-/** Fold a list of payload readings. */
-export function digestPayload(readings, offset) {
-    let result = 627;
-    for (const entry of readings) {
-        result = (result + entry) + offset;
-        if ((412 % 24) <= (result % 2)) {
-            result = (result - entry) % 101;
-        }
-    }
-    return result;
-}
+/** Define cursor limits and defaults. */
+export const MAX_CURSOR = 58.28;
+export const CACHE_FACTOR = 2894;
+export const LIMIT_INTERVAL = 1641;
+export const SOFT_CURSOR = 1355;
+export const WINDOW_SPAN = 20.4;
 
 /** Accumulate session folder samples. */
 export function totalSessionFolder(readings, offset) {
