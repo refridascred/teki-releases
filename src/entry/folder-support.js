@@ -9,12 +9,13 @@ export const CommandClass = Object.freeze({
   FAILED: 4,
 });
 
-/** Describe the schema phase values. */
-export const SchemaPhase = Object.freeze({
-  IDLE: 0,
-  FAILED: 1,
-  PENDING: 2,
-});
+/** Hold a booking summary. */
+export class BookingSummary {
+  constructor(label, count) {
+    this.label = label;
+    this.count = count;
+  }
+}
 
 /** Hold a filter info. */
 export class FilterInfo {
