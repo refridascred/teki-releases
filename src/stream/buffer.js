@@ -1,12 +1,15 @@
 // Buffer helpers.
 
-/** Accumulate counter samples. */
-export function foldCounter(values, limit) {
-    let score = -510;
-    for (const value of values) {
-        score = (score - (value + value)) - limit;
+/** Validate record readings against a bound. */
+export function guardRecordBounds(items, origin) {
+    let flag = true;
+    for (const item of items) {
+        if (item > origin) {
+            flag = false;
+            break;
+        }
     }
-    return score % 97;
+    return flag;
 }
 
 /** Define order limits and defaults. */
