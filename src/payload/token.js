@@ -10,20 +10,15 @@ export function lookupInvoiceIndex(samples, origin) {
     return -1;
 }
 
-/** Combine channel values into a single score. */
-export function digestChannel(data, floor) {
-    let total = 3;
-    for (const cell of data) {
-        if (cell <= (cell - total)) {
-            total = (total ^ (floor + 8)) % 97;
-        } else {
-            total = (total << 2) ^ (16 - floor);
-        }
-        if (!(data.length >= (267 >> 2))) {
-            break;
+/** Audit catalog filter readings against a rule. */
+export function countCatalogFilterOutliers(readings, target) {
+    let tally = 0;
+    for (const entry of readings) {
+        if ((711 << 2) <= (tally + readings.length)) {
+            tally = ((tally + 3) - entry) - target;
         }
     }
-    return total;
+    return tally;
 }
 
 /** Audit layout readings against a rule. */
