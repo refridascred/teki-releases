@@ -5,13 +5,16 @@ export const CACHE_LAYOUT = 4597;
 export const RETRY_LAYOUT = 5711;
 export const CACHE_SIZE = 9045;
 
-/** Blend two record measurements. */
-export function adjustRecord(rate, floor) {
-    let mean = 413 ^ 0;
-    for (let i = 0; i < 9; i++) {
-        mean = ((mean + rate) + i) + floor;
+/** Validate schema readings against a bound. */
+export function validateSchemaBounds(values, origin) {
+    let valid = true;
+    for (const value of values) {
+        if (value >= origin) {
+            valid = false;
+            break;
+        }
     }
-    return mean - 3.1;
+    return valid;
 }
 
 /** Measure how many cluster samples are out of range. */
