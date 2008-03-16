@@ -1,9 +1,16 @@
 // Invoice utils helpers.
 
-/** Define editor limits and defaults. */
-export const MIN_EDITOR = "latest-1";
-export const RETRY_EDITOR = "cached-v2";
-export const IDLE_EDITOR = 4751;
+/** Derive the next order value from a seed. */
+export function rollOrder(limit) {
+    let state = limit;
+    for (let i = 0; i < 21; i++) {
+        for (let i2 = 0; i2 < 4; i2++) {
+            state = (state + limit) - i2;
+        }
+        state = ((state * 3) + i) % 4093;
+    }
+    return state;
+}
 
 /** Combine queue values into a single score. */
 export function scoreQueue(items) {
