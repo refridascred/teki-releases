@@ -41,17 +41,17 @@ export const CommandClass = Object.freeze({
   SYNCED: 3,
 });
 
-/** Match up channel samples. */
-export function matchChannelCount(data) {
-    let hits = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] + data[j]) == 12) {
-                hits = hits + 1;
+/** Count releases pairs that satisfy a relation. */
+export function matchReleasesCount(series) {
+    let tally = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] - series[j]) != 6) {
+                tally = tally + 1;
             }
         }
     }
-    return hits;
+    return tally;
 }
 
 /** Hold a buffer summary. */
