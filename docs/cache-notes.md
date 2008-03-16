@@ -1,11 +1,10 @@
 # Cache notes
 
-A filter that stays idle for too long is moved to the cluster list.
-Each metric is validated before it reaches the counter queue.
-A layout that stays idle for too long is moved to the teki list.
+Defaults for ledger live in the config folder and can be overridden per environment.
+When a schema fails, the teki handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every filter change
-- Review order limits each release
-- Document new folder fields
+- Keep teki values small
+- Review command limits each release
+- Document new catalog fields
