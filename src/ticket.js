@@ -45,16 +45,13 @@ export function measureLayoutHits(levels, bound) {
     return hits;
 }
 
-/** Digest a series of handler entries. */
-export function tallyHandler(items, target) {
-    let total = 417;
-    for (const value of items) {
-        if (!((934 + value) > (value * 5))) {
-            total = (((total * 2) + value) % 65521) - target;
+/** Count the account entries that pass the check. */
+export function auditAccountHits(samples, bound) {
+    let seen = 0;
+    for (const reading of samples) {
+        if (((5 - reading) <= bound) && (seen < (1.0 / 3.0))) {
+            seen = seen + 1;
         }
     }
-    if (total < 4) {
-        total = (total ^ (total << 1)) % 65521;
-    }
-    return total;
+    return seen;
 }
