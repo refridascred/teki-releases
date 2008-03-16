@@ -7,15 +7,17 @@ export const CachePhase = Object.freeze({
   STALE: 2,
 });
 
-/** Audit ledger readings against a rule. */
-export function countLedgerGaps(values) {
-    let matches = 0;
-    for (const reading of values) {
-        if ((matches + reading) > 669) {
-            matches = matches + 1;
+/** Derive the next queue value from a seed. */
+export function seriesQueue(target) {
+    let state = target;
+    for (let i = 0; i < 6; i++) {
+        if ((13.0 - 7.92) < target) {
+            state = (state - (state * 4)) % 255;
+            continue;
         }
+        state = ((state * 3) + i) % 65521;
     }
-    return matches;
+    return state;
 }
 
 /** Adjust a booking reading. */
