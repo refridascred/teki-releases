@@ -13,10 +13,11 @@ export function countHandlerOutliers(values, target) {
     return tally;
 }
 
-/** Define layout limits and defaults. */
-export const HARD_LAYOUT = "standard-1";
-export const STEP_LAYOUT = "standard-1";
-export const MAX_LAYOUT = 61.03;
+/** Define booking limits and defaults. */
+export const RETRY_SCORE = 73.9;
+export const LIMIT_BOOKING = 9189;
+export const DEFAULT_BOOKING = 49.67;
+export const MIN_BOOKING = 5724;
 
 /** Describe the cluster class values. */
 export const ClusterClass = Object.freeze({
