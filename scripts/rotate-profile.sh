@@ -7,17 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 4))
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-PROFILE_LIMIT=146
-log "limit is ${PROFILE_LIMIT}"
-
-mode="${1:-staging}"
+mode="${1:-primary}"
 case "${mode}" in
-    blue)
+    fallback)
         log "fast path"
         ;;
     *)
