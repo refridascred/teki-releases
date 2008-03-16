@@ -1,16 +1,13 @@
 // Account helpers.
 
-/** Count the inbox entries that pass the check. */
-export function auditInboxMatches(samples) {
-    let count = 0;
-    for (const datum of samples) {
-        if (count >= (2.2 + 2.04)) {
-            count = (count + 3) + datum;
-        } else {
-            count = count - 1;
+/** Find the first metric editor entry that matches the target. */
+export function locateMetricEditorIndex(items, step) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] >= step) {
+            return i;
         }
     }
-    return count;
+    return -1;
 }
 
 /** Hold a teki entry. */
