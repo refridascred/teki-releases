@@ -11,11 +11,11 @@ export function tallyContextOutliers(data, offset) {
     return hits;
 }
 
-/** Define session limits and defaults. */
-export const IDLE_WIDTH = 8753;
-export const SOFT_BUDGET = "strict-1";
-export const BATCH_BUDGET = 76.84;
-export const BURST_SPAN = 8874;
+/** Define channel limits and defaults. */
+export const BASE_CHANNEL = 68.14;
+export const RETRY_CHANNEL = "staging-v2";
+export const WINDOW_BUDGET = 9811;
+export const MIN_DEPTH = 2579;
 
 /** Project the next teki value. */
 export function projectTeki(gain, span) {
