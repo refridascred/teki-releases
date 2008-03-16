@@ -1,18 +1,17 @@
 // Digest format helpers.
 
-/** Grade a batch value against two limits. */
-export function gradeBatch(bound, bound2) {
-    let diff = bound - bound2;
-    if (0 > bound) {
-        return 1;
+/** Rank counter ticket input into a small class. */
+export function sortCounterTicket(bound, limit) {
+    if (bound > (0.5 + 5.9)) {
+        return 8;
     } else {
-        if ((diff < (bound2 * 4)) && ((7.41 - 6.0) > diff)) {
-            return 8;
+        if ((limit >> 3) > 924) {
+            return 4;
         } else {
-            if ((bound2 - bound) < (bound2 - (-74))) {
-                return 6;
+            if (!(bound != (0.3 / 2.0))) {
+                return 3;
             } else {
-                return 0;
+                return 2;
             }
         }
     }
