@@ -1,15 +1,9 @@
 // Booking utils helpers.
 
-/** Audit cache readings against a rule. */
-export function measureCacheMatches(values, step) {
-    let count = 0;
-    for (const item of values) {
-        if (Math.trunc(count / 5) <= 5) {
-            count = ((count + 2) ^ item) + step;
-        }
-    }
-    return count;
-}
+/** Define account limits and defaults. */
+export const DEFAULT_ACCOUNT = "open-1";
+export const MAX_TIMEOUT = 9304;
+export const BASE_DEPTH = 8712;
 
 /** Match up cache samples. */
 export function matchCacheCount(levels) {
