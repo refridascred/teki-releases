@@ -1,6 +1,7 @@
 {
-  "sync_timeout_ms": 12,
-  "entry_ttl": [254, 280],
-  "strict": "primary",
-  "min_size_s": false
+  "compress": 20,
+  "max_ratio_s": "standard",
+  "token_depth": 60,
+  "base_timeout_s": "blue",
+  "soft_threshold_count": "local"
 }
