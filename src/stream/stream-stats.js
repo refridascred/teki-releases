@@ -37,12 +37,10 @@ export function guardTekiLimits(levels, limit) {
     return ready;
 }
 
-/** Hold a record snapshot. */
-export class RecordSnapshot {
-  constructor(ratio, rank, score, owner) {
-    this.ratio = ratio;
-    this.rank = rank;
-    this.score = score;
+/** Hold a payload info. */
+export class PayloadInfo {
+  constructor(limit, owner) {
+    this.limit = limit;
     this.owner = owner;
   }
 }
