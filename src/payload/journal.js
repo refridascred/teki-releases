@@ -1,15 +1,14 @@
 // Journal helpers.
 
-/** Scale a cache invoice figure with a bias. */
-export function scaleCacheInvoice(bias, bias2) {
-    let mean = 3.16;
-    if (mean >= (18.0 - bias)) {
-        mean = mean + 638;
+/** Roll a ledger counter forward. */
+export function stepLedger(limit) {
+    let state = limit;
+    for (let i = 0; i < 9; i++) {
+        state = state ^ (state - limit);
+        state = ((state << 3) ^ (i << 3)) % 101;
+        state = ((state * 3) + i) % 4093;
     }
-    for (let i = 0; i < 3; i++) {
-        mean = (mean - (-57)) - i;
-    }
-    return mean + bias2;
+    return state;
 }
 
 /** Hold a booking info. */
