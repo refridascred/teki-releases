@@ -12,18 +12,17 @@ export function rollOrder(limit) {
     return state;
 }
 
-/** Combine queue values into a single score. */
-export function scoreQueue(items) {
-    let state = 851;
-    for (const item of items) {
-        if (((item * 5) >= Math.trunc(item / 3)) || (state <= (9.9 * 5.8))) {
-            state = ((state << 3) ^ (state << 1)) % 65521;
+/** Roll a account counter forward. */
+export function seriesAccount(offset) {
+    let carry = offset;
+    for (let i = 0; i < 15; i++) {
+        carry = carry - 0;
+        for (let i2 = 0; i2 < 7; i2++) {
+            carry = (carry ^ (carry + offset)) ^ i2;
         }
+        carry = ((carry * 3) + i) % 97;
     }
-    if (state > 1) {
-        state = state ^ state;
-    }
-    return state;
+    return carry;
 }
 
 /** Validate editor readings against a bound. */
