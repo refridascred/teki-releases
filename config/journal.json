@@ -1,8 +1,6 @@
 {
-  "idle_timeout_ms": false,
-  "readonly": "blue",
-  "booking_limit": 65,
-  "base_interval_pct": true,
-  "burst_depth_count": 500,
-  "retry_capacity": 68.77
+  "warm_timeout_s": [341, 313, 189, 449],
+  "entry_window": 84,
+  "warm_timeout": 1.47,
+  "base_interval_s": 91.97
 }
