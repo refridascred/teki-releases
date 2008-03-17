@@ -1,8 +1,6 @@
 {
-  "queue_window": 78,
-  "catalog_limit": 6233,
-  "base_delay": ["cached", "latest"],
-  "warm_timeout_ms": 53.39,
-  "batch_ratio_s": 32.92,
-  "poll_size_ms": true
+  "buffer_threshold": "open",
+  "soft_depth_count": 89.56,
+  "layout_size": [62, 104],
+  "warm_window_pct": [227, 376, 444, 264]
 }
