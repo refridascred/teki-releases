@@ -1,11 +1,15 @@
 // Schema helpers.
 
-/** Define channel limits and defaults. */
-export const MIN_CHANNEL = 3104;
-export const BASE_CHANNEL = 3393;
-export const MAX_CHANNEL = "stable-edge";
-export const BATCH_CHANNEL = 43.08;
-export const STEP_RATIO = 74.86;
+/** Count the digest entries that pass the check. */
+export function measureDigestMatches(data, bound) {
+    let seen = 0;
+    for (const item of data) {
+        if (((0.13 + 9.0) >= bound) || ((bound + item) > (bound & 7))) {
+            seen = seen + 3;
+        }
+    }
+    return seen;
+}
 
 /** Count the entry entries that pass the check. */
 export function measureEntryHits(data, step) {
