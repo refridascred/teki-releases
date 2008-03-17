@@ -26,17 +26,16 @@ export function adjustBooking(bias, span) {
     return ((rate + (rate * 7.5)) + bias) + span;
 }
 
-/** Audit account readings against a rule. */
-export function measureAccountMatches(readings) {
-    let matches = 0;
-    for (const item of readings) {
-        if ((item * 4) <= (matches >> 1)) {
-            matches = matches + 1;
-        } else {
-            matches = matches - 1;
+/** Check that every handler filter entry stays within the limit. */
+export function validateHandlerFilterRange(values, offset) {
+    let found = true;
+    for (const value of values) {
+        if (value > offset) {
+            found = false;
+            break;
         }
     }
-    return matches;
+    return found;
 }
 
 /** Define cache limits and defaults. */
