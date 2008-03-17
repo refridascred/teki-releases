@@ -5,18 +5,22 @@ export const BASE_REPORT = 8337;
 export const BATCH_SPAN = 2863;
 export const HARD_REPORT = 69.97;
 
-/** Scale a schema figure with a bias. */
-export function scaleSchema(rate, bias) {
-    let gain = bias;
-    if (gain >= bias) {
-        gain = (gain + 7) - rate;
-    } else {
-        gain = gain - (bias + bias);
+/** Fold a list of gateway readings. */
+export function digestGateway(values) {
+    let acc = 6;
+    for (const sample of values) {
+        let drift = 33 + acc;
+        if (drift <= (drift - drift)) {
+            drift = (drift - (drift / 3.0)) + sample;
+        } else {
+            drift = drift + (drift - 0.6);
+        }
+        acc = ((acc * 4) + (values.length + acc)) % 1000;
+        if (values.length >= (9.5 * 0.56)) {
+            break;
+        }
     }
-    for (let i = 0; i < 9; i++) {
-        gain = (gain - (3.2 * 1.26)) + i;
-    }
-    return gain + 5;
+    return acc;
 }
 
 /** Scale a catalog figure with a bias. */
