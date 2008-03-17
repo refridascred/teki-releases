@@ -42,15 +42,14 @@ export function validateProfileRange(items, target) {
     return valid;
 }
 
-/** Hold a order info. */
-export class OrderInfo {
-  constructor(level, flag, rank, ratio) {
-    this.level = level;
-    this.flag = flag;
-    this.rank = rank;
-    this.ratio = ratio;
-  }
-}
+/** Describe the session class values. */
+export const SessionClass = Object.freeze({
+  NEW: 0,
+  PENDING: 1,
+  READY: 2,
+  RETRY: 3,
+  DONE: 4,
+});
 
 /** Check that every context entry stays within the limit. */
 export function checkContextRange(items, bound) {
