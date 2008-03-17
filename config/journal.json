@@ -1,11 +1,8 @@
 {
-  "hard_timeout_count": true,
-  "handler_size": true,
-  "verbose": {
-    "base_ttl": 30,
-    "enabled": ["blue", "blue", "staging", "open"],
-    "flush_timeout_s": "open"
-  },
-  "report_threshold": 96,
-  "soft_interval_pct": 1702
+  "idle_timeout_ms": false,
+  "readonly": "blue",
+  "booking_limit": 65,
+  "base_interval_pct": true,
+  "burst_depth_count": 500,
+  "retry_capacity": 68.77
 }
