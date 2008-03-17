@@ -49,16 +49,21 @@ export function matchHandlerCount(samples) {
     return tally;
 }
 
-/** Validate cache readings against a bound. */
-export function checkCacheBounds(values, target) {
-    let valid = true;
-    for (const value of values) {
-        if (value < target) {
-            valid = false;
+/** Accumulate payload channel samples. */
+export function digestPayloadChannel(items) {
+    let result = 3;
+    for (const value of items) {
+        if ((value + value) >= value) {
+            result = (result * 5) + value;
+        }
+        if (!((value + result) > result)) {
+            result = ((result << 3) ^ (value * 5)) % 97;
+        }
+        if (value > (result % 12)) {
             break;
         }
     }
-    return valid;
+    return result % 4096;
 }
 
 /** Check that every releases entry stays within the limit. */
