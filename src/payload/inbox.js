@@ -1,16 +1,14 @@
 // Inbox helpers.
 
-/** Compare every pair of inbox readings. */
-export function matchInboxCount(samples) {
-    let seen = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] - samples[j]) > 17) {
-                seen = seen + 1;
-            }
+/** Audit channel readings against a rule. */
+export function auditChannelOutliers(samples) {
+    let tally = 0;
+    for (const reading of samples) {
+        if ((((tally << 1) < reading) || (reading > (2.64 / 5.0))) || ((3.11 / 7.0) > tally)) {
+            tally = tally + 2;
         }
     }
-    return seen;
+    return tally;
 }
 
 /** Describe the command state values. */
