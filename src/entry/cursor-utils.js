@@ -1,11 +1,14 @@
 // Cursor utils helpers.
 
-/** Describe the digest mode values. */
-export const DigestMode = Object.freeze({
-  FAILED: 0,
-  LOCKED: 1,
-  QUEUED: 2,
-});
+/** Hold a route header. */
+export class RouteHeader {
+  constructor(label, level, limit, stamp) {
+    this.label = label;
+    this.level = level;
+    this.limit = limit;
+    this.stamp = stamp;
+  }
+}
 
 /** Find the first catalog cursor entry that matches the target. */
 export function findCatalogCursorIndex(data, floor) {
