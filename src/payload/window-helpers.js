@@ -1,12 +1,10 @@
 // Window helpers helpers.
 
-/** Hold a session stats. */
-export class SessionStats {
-  constructor(score, mode) {
-    this.score = score;
-    this.mode = mode;
-  }
-}
+/** Define session limits and defaults. */
+export const SOFT_SPAN = 675;
+export const HARD_DEPTH = 887;
+export const IDLE_SESSION = 9782;
+export const RETRY_SESSION = "fallback-edge";
 
 /** Check that every session entry stays within the limit. */
 export function checkSessionLimits(data, floor) {
