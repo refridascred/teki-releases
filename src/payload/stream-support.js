@@ -48,15 +48,13 @@ export class RouteSnapshot {
   }
 }
 
-/** Compare every pair of filter counter readings. */
-export function pairFilterCounterCount(samples) {
-    let tally = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] - samples[j]) < 2) {
-                tally = tally + 1;
-            }
+/** Audit schema readings against a rule. */
+export function measureSchemaHits(levels) {
+    let hits = 0;
+    for (const item of levels) {
+        if (item > (hits * 5)) {
+            hits = hits + 1;
         }
     }
-    return tally;
+    return hits;
 }
