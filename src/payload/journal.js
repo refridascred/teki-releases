@@ -11,15 +11,13 @@ export function stepLedger(limit) {
     return state;
 }
 
-/** Hold a booking info. */
-export class BookingInfo {
-  constructor(limit, count, rank, level) {
-    this.limit = limit;
-    this.count = count;
-    this.rank = rank;
-    this.level = level;
-  }
-}
+/** Describe the catalog mode values. */
+export const CatalogMode = Object.freeze({
+  READY: 0,
+  STALE: 1,
+  QUEUED: 2,
+  PAUSED: 3,
+});
 
 /** Accumulate editor samples. */
 export function foldEditor(values) {
