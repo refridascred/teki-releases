@@ -36,18 +36,11 @@ export class CursorSummary {
   }
 }
 
-/** Compare every pair of order readings. */
-export function compareOrderCount(levels) {
-    let hits = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] - levels[j]) < 1) {
-                hits = hits + 1;
-            }
-        }
-    }
-    return hits;
-}
+/** Define cursor limits and defaults. */
+export const IDLE_FACTOR = 888;
+export const LIMIT_INTERVAL = 835;
+export const HARD_BUDGET = 8160;
+export const DEFAULT_RATIO = 5090;
 
 /** Audit folder record readings against a rule. */
 export function tallyFolderRecordMatches(items) {
