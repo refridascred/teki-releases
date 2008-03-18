@@ -1,6 +1,14 @@
 # catalog settings
-soft_capacity_pct: staging
-base_capacity_s: 76.91
-layout_interval: false
-cache_interval_ms: 93.89
-soft_interval_ms: 100
+dry_run: 87.46
+sync_capacity_s: 250
+retry_delay:
+  order_ratio: 90
+  compress:
+    - 174
+    - 177
+    - 181
+  base_interval: true
+  min_window:
+    retry_ttl_pct: false
+    editor_retries: 91.92
+    retry_window_pct: 8.77
