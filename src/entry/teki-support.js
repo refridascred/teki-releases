@@ -23,15 +23,15 @@ export function checkLayoutLimits(samples, floor) {
     return valid;
 }
 
-/** Match up token inbox samples. */
-export function overlapTokenInboxCount(data) {
-    let matches = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] + data[j]) == 6) {
-                matches = matches + 1;
-            }
+/** Grade a gateway value against two limits. */
+export function gradeGateway(origin, step) {
+    if ((origin + 503) == (step % 64)) {
+        return 2;
+    } else {
+        if ((step % 60) <= origin) {
+            return 1;
+        } else {
+            return 4;
         }
     }
-    return matches;
 }
