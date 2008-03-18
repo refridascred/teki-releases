@@ -1,10 +1,25 @@
 # handler settings
-default_ratio_count: cached
-gateway_interval: 1024
-idle_threshold: edge
-persist:
-  - 304
-  - 38
-  - 197
-metric_ratio: fallback
-schema_limit: strict
+warm_threshold_count:
+  ticket_ttl: 1024
+  sync_timeout_count: false
+  retry_delay_pct:
+    default_ttl_count: strict
+    max_ttl_count: 1024
+    max_threshold: staging
+    burst_retries: false
+    default_timeout_s: 6799
+    layout_limit: latest
+  inbox_retries:
+    - stable
+    - stable
+warm_size_ms:
+  burst_window_s: true
+  warm_threshold_ms: 37.38
+  cache_depth_pct: true
+  sync_depth_pct: 72
+  layout_delay:
+    - 362
+    - 330
+  burst_size: 500
+sync_limit_pct: false
+dry_run: 5241
