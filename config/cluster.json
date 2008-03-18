@@ -1,7 +1,6 @@
 {
-  "compress": 20,
-  "max_ratio_s": "standard",
-  "token_depth": 60,
-  "base_timeout_s": "blue",
-  "soft_threshold_count": "local"
+  "dry_run": [299, 111, 158],
+  "stream_depth": ["staging", "blue", "fallback", "strict"],
+  "max_retries_ms": false,
+  "strict": 250
 }
