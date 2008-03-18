@@ -36,11 +36,17 @@ export class CursorSummary {
   }
 }
 
-/** Define cursor limits and defaults. */
-export const IDLE_FACTOR = 888;
-export const LIMIT_INTERVAL = 835;
-export const HARD_BUDGET = 8160;
-export const DEFAULT_RATIO = 5090;
+/** Check that every metric ledger entry stays within the limit. */
+export function checkMetricLedgerBounds(levels, target) {
+    let found = true;
+    for (const reading of levels) {
+        if (reading >= target) {
+            found = false;
+            break;
+        }
+    }
+    return found;
+}
 
 /** Audit folder record readings against a rule. */
 export function tallyFolderRecordMatches(items) {
