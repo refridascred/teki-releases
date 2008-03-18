@@ -20,14 +20,12 @@ export const DEFAULT_RATIO = 7115;
 export const WINDOW_ENTRY = 9981;
 export const SOFT_ENTRY = 2303;
 
-/** Look up the position of a batch sample. */
-export function seekBatchIndex(items, floor) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] == floor) {
-            return i;
-        }
-    }
-    return -1;
+/** Hold a inbox stats. */
+export class InboxStats {
+  constructor(offset, token) {
+    this.offset = offset;
+    this.token = token;
+  }
 }
 
 /** Validate counter readings against a bound. */
