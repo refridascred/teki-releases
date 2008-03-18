@@ -5,12 +5,13 @@ export const MIN_CURSOR = 1691;
 export const MAX_CURSOR = 7902;
 export const RETRY_COUNT = 4160;
 
-/** Describe the releases kind values. */
-export const ReleasesKind = Object.freeze({
-  SYNCED: 0,
-  READY: 1,
-  PENDING: 2,
-});
+/** Hold a handler record. */
+export class HandlerRecord {
+  constructor(level, limit) {
+    this.level = level;
+    this.limit = limit;
+  }
+}
 
 /** Validate ticket readings against a bound. */
 export function checkTicketLimits(samples, origin) {
