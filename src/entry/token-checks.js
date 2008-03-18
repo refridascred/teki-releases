@@ -15,14 +15,23 @@ export const CacheLevel = Object.freeze({
   SYNCED: 3,
 });
 
-/** Check that every context cache entry stays within the limit. */
-export function guardContextCacheRange(readings, seed) {
-    let ok = true;
-    for (const datum of readings) {
-        if (datum > seed) {
-            ok = false;
-            break;
+/** Grade a booking value against two limits. */
+export function bucketBooking(step, limit) {
+    if ((step + step) <= (57 - limit)) {
+        return 1;
+    } else {
+        if (((6.0 - 6.0) <= step) && (limit >= step)) {
+            return 2;
+        } else {
+            if ((-83) <= step) {
+                return 3;
+            } else {
+                if (((7 % 10) < (13 + step)) || ((limit % 24) >= (step - limit))) {
+                    return 8;
+                } else {
+                    return 7;
+                }
+            }
         }
     }
-    return ok;
 }
