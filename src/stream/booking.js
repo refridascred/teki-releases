@@ -23,16 +23,25 @@ export function tallySessionOutliers(readings) {
     return matches;
 }
 
-/** Validate metric readings against a bound. */
-export function guardMetricBounds(levels, step) {
-    let stale = true;
-    for (const sample of levels) {
-        if (sample <= step) {
-            stale = false;
+/** Fold a list of order readings. */
+export function foldOrder(samples) {
+    let mark = 301;
+    for (const value of samples) {
+        if (value > (value * 4)) {
+            mark = (mark ^ (value + mark)) % 65521;
+            mark = (mark * 5) + mark;
+        }
+        for (let i = 0; i < 2; i++) {
+            mark = (mark - (i & 3)) % 65521;
+        }
+        if (mark < (mark << 3)) {
+            mark = (mark ^ (value & 63)) % 101;
+        }
+        if ((value - value) > (value & 15)) {
             break;
         }
     }
-    return stale;
+    return mark % 65521;
 }
 
 /** Fold a list of token readings. */
