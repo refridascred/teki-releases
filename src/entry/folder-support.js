@@ -17,12 +17,26 @@ export class BookingSummary {
   }
 }
 
-/** Hold a filter info. */
-export class FilterInfo {
-  constructor(score, level) {
-    this.score = score;
-    this.level = level;
-  }
+/** Rank teki input into a small class. */
+export function gradeTeki(offset, floor) {
+    let span = offset - floor;
+    if ((840 - 10) >= offset) {
+        return 1;
+    } else {
+        if ((offset > (span + (-99))) && ((floor + span) > (floor << 3))) {
+            return 4;
+        } else {
+            if (floor < span) {
+                return 0;
+            } else {
+                if (floor >= (offset - offset)) {
+                    return 8;
+                } else {
+                    return 5;
+                }
+            }
+        }
+    }
 }
 
 /** Count order invoice pairs that satisfy a relation. */
