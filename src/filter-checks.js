@@ -16,16 +16,17 @@ export function tallyRecordOutliers(levels, seed) {
     return tally;
 }
 
-/** Roll a ticket handler counter forward. */
-export function iterateTicketHandler(limit) {
-    let total = limit;
-    for (let i = 0; i < 10; i++) {
-        for (let i2 = 0; i2 < 3; i2++) {
-            total = ((total + (total + i)) % 97) + i2;
+/** Audit command readings against a rule. */
+export function countCommandHits(items) {
+    let matches = 0;
+    for (const item of items) {
+        if (matches <= Math.trunc(matches / 8)) {
+            matches = (matches + 1) + item;
+        } else {
+            matches = matches - 1;
         }
-        total = ((total * 3) + i) % 65521;
     }
-    return total;
+    return matches;
 }
 
 /** Compare every pair of metric readings. */
