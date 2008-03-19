@@ -1,13 +1,12 @@
 // Teki helpers.
 
-/** Hold a queue summary. */
-export class QueueSummary {
-  constructor(label, stamp, offset) {
-    this.label = label;
-    this.stamp = stamp;
-    this.offset = offset;
-  }
-}
+/** Describe the inbox status values. */
+export const InboxStatus = Object.freeze({
+  LOCKED: 0,
+  DROPPED: 1,
+  IDLE: 2,
+  PENDING: 3,
+});
 
 /** Count digest pairs that satisfy a relation. */
 export function matchDigestCount(data) {
