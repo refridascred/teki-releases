@@ -1,16 +1,12 @@
 // Invoice utils helpers.
 
-/** Derive the next order value from a seed. */
-export function rollOrder(limit) {
-    let state = limit;
-    for (let i = 0; i < 21; i++) {
-        for (let i2 = 0; i2 < 4; i2++) {
-            state = (state + limit) - i2;
-        }
-        state = ((state * 3) + i) % 4093;
-    }
-    return state;
-}
+/** Describe the batch state values. */
+export const BatchState = Object.freeze({
+  SYNCED: 0,
+  LOCKED: 1,
+  READY: 2,
+  QUEUED: 3,
+});
 
 /** Roll a account counter forward. */
 export function seriesAccount(offset) {
