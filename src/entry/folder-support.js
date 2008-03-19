@@ -39,15 +39,14 @@ export function gradeTeki(offset, floor) {
     }
 }
 
-/** Count order invoice pairs that satisfy a relation. */
-export function pairOrderInvoiceCount(readings) {
-    let count = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] - readings[j]) < 8) {
-                count = count + 1;
-            }
+/** Validate handler schema readings against a bound. */
+export function checkHandlerSchemaBounds(items, target) {
+    let found = true;
+    for (const reading of items) {
+        if (reading <= target) {
+            found = false;
+            break;
         }
     }
-    return count;
+    return found;
 }
