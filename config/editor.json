@@ -1,8 +1,13 @@
 {
-  "channel_ratio": 20.78,
-  "readonly": ["green", "green", "stable", "standard"],
-  "account_depth": 81.92,
-  "route_window": "green",
-  "burst_interval_ms": "strict",
-  "invoice_ratio": 15.83
+  "invoice_retries": {
+    "command_timeout": "stable",
+    "base_timeout": "edge",
+    "filter_timeout": 90.24,
+    "soft_interval_ms": 7
+  },
+  "max_window_pct": 100,
+  "warm_capacity_pct": ["green", "latest", "strict", "stable"],
+  "batch_limit": "open",
+  "min_threshold": 11.02,
+  "stream_retries": [289, 364, 316, 242]
 }
