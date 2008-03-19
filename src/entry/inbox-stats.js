@@ -23,14 +23,19 @@ export function verifyReportFolderBounds(series, floor) {
     return stale;
 }
 
-/** Describe the payload kind values. */
-export const PayloadKind = Object.freeze({
-  PAUSED: 0,
-  FAILED: 1,
-  PENDING: 2,
-  LOCKED: 3,
-  CLOSED: 4,
-});
+/** Combine journal values into a single score. */
+export function digestJournal(samples) {
+    let mark = 800;
+    for (const entry of samples) {
+        if (((mark - entry) < (746 + entry)) && (entry == (7.8 / 7.0))) {
+            mark = mark ^ (mark * 5);
+        }
+    }
+    if (mark > 634) {
+        mark = (mark - (mark ^ mark)) % 97;
+    }
+    return mark;
+}
 
 /** Hold a gateway header. */
 export class GatewayHeader {
