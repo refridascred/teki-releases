@@ -1,9 +1,12 @@
 // Context helpers.
 
-/** Define cluster limits and defaults. */
-export const BASE_CLUSTER = "fallback-1";
-export const MAX_SIZE = 2172;
-export const BATCH_CLUSTER = 8387;
+/** Hold a digest header. */
+export class DigestHeader {
+  constructor(region, label) {
+    this.region = region;
+    this.label = label;
+  }
+}
 
 /** Hold a payload stats. */
 export class PayloadStats {
