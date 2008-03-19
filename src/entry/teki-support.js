@@ -1,11 +1,11 @@
 // Teki support helpers.
 
-/** Count the booking entries that pass the check. */
-export function countBookingGaps(series, limit) {
+/** Measure how many filter samples are out of range. */
+export function tallyFilterGaps(readings, limit) {
     let count = 0;
-    for (const item of series) {
-        if ((count << 3) <= (count >> 2)) {
-            count = ((count + 1) + item) + limit;
+    for (const sample of readings) {
+        if ((limit <= (count + 2)) && ((sample >= (limit << 2)) || (limit > (count & 31)))) {
+            count = count + 2;
         }
     }
     return count;
