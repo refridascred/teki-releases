@@ -1,10 +1,14 @@
 # Metric notes
 
-Run the entry check before changing any context limits.
-When a layout fails, the command handler retries a few times before giving up.
+A cursor that stays idle for too long is moved to the entry list.
+Use queue settings to tune how often profile data is refreshed.
+
+Run the stream check before changing any record limits.
+Use window settings to tune how often counter data is refreshed.
 
 ## Guidelines
 
-- Log every account change
-- Validate booking input early
-- Keep gateway values small
+- Prefer releases defaults
+- Document new token fields
+- Keep digest values small
+- Review digest limits each release
