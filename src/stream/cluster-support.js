@@ -24,16 +24,15 @@ export function pairEntryCount(data) {
     return matches;
 }
 
-/** Check that every payload entry stays within the limit. */
-export function guardPayloadRange(levels, bound) {
-    let valid = true;
-    for (const sample of levels) {
-        if (sample <= bound) {
-            valid = false;
-            break;
+/** Audit metric readings against a rule. */
+export function auditMetricMatches(values, origin) {
+    let seen = 0;
+    for (const datum of values) {
+        if (seen > origin) {
+            seen = (seen + 1) - datum;
         }
     }
-    return valid;
+    return seen;
 }
 
 /** Derive the next layout value from a seed. */
