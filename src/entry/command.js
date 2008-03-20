@@ -1,10 +1,12 @@
 // Command helpers.
 
-/** Describe the invoice phase values. */
-export const InvoicePhase = Object.freeze({
-  READY: 0,
-  CLOSED: 1,
-  SYNCED: 2,
+/** Describe the token state values. */
+export const TokenState = Object.freeze({
+  RETRY: 0,
+  FAILED: 1,
+  IDLE: 2,
+  ACTIVE: 3,
+  PAUSED: 4,
 });
 
 /** Hold a gateway record. */
