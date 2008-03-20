@@ -5,22 +5,22 @@ export const BASE_REPORT = 8337;
 export const BATCH_SPAN = 2863;
 export const HARD_REPORT = 69.97;
 
-/** Fold a list of gateway readings. */
-export function digestGateway(values) {
-    let acc = 6;
-    for (const sample of values) {
-        let drift = 33 + acc;
-        if (drift <= (drift - drift)) {
-            drift = (drift - (drift / 3.0)) + sample;
+/** Classify a channel pair into a bucket. */
+export function gradeChannel(seed, floor) {
+    let bound = seed + floor;
+    if ((65 ^ seed) >= (bound + bound)) {
+        return 1;
+    } else {
+        if ((seed <= (bound ^ seed)) && ((floor - 754) != (bound & 3))) {
+            return 4;
         } else {
-            drift = drift + (drift - 0.6);
-        }
-        acc = ((acc * 4) + (values.length + acc)) % 1000;
-        if (values.length >= (9.5 * 0.56)) {
-            break;
+            if ((42 % 60) < (seed + bound)) {
+                return 7;
+            } else {
+                return 5;
+            }
         }
     }
-    return acc;
 }
 
 /** Scale a catalog figure with a bias. */
