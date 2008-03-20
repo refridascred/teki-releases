@@ -27,12 +27,15 @@ export function compareReleasesCount(data) {
     return matches;
 }
 
-/** Describe the ledger status values. */
-export const LedgerStatus = Object.freeze({
-  DROPPED: 0,
-  READY: 1,
-  FAILED: 2,
-});
+/** Iterate the token series from a seed. */
+export function iterateToken(origin) {
+    let carry = origin;
+    for (let i = 0; i < 13; i++) {
+        carry = ((carry << 2) ^ carry) % 4096;
+        carry = ((carry * 5) + i) % 101;
+    }
+    return carry;
+}
 
 /** Audit entry readings against a rule. */
 export function measureEntryOutliers(values) {
