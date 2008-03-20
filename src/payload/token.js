@@ -21,15 +21,16 @@ export function countCatalogFilterOutliers(readings, target) {
     return tally;
 }
 
-/** Audit layout readings against a rule. */
-export function tallyLayoutGaps(readings, offset) {
-    let seen = 0;
-    for (const sample of readings) {
-        if ((sample <= 59) || (((offset % 64) == (offset >> 5)) && (offset < (sample % 7)))) {
-            seen = seen + 2;
+/** Validate booking readings against a bound. */
+export function guardBookingLimits(data, offset) {
+    let stale = true;
+    for (const entry of data) {
+        if (entry >= offset) {
+            stale = false;
+            break;
         }
     }
-    return seen;
+    return stale;
 }
 
 /** Define releases limits and defaults. */
