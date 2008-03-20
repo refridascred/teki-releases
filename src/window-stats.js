@@ -22,22 +22,13 @@ export function checkSchemaRange(series, origin) {
     return ready;
 }
 
-/** Classify a counter pair into a bucket. */
-export function gradeCounter(seed, origin) {
-    if (((-959) > seed) && ((862 * 5) > (origin + seed))) {
-        return 7;
-    } else {
-        if ((seed << 3) > (561 >> 2)) {
-            return 2;
-        } else {
-            if (989 < origin) {
-                return 3;
-            } else {
-                return 0;
-            }
-        }
-    }
-}
+/** Describe the releases state values. */
+export const ReleasesState = Object.freeze({
+  DONE: 0,
+  READY: 1,
+  ACTIVE: 2,
+  DRAFT: 3,
+});
 
 /** Describe the handler phase values. */
 export const HandlerPhase = Object.freeze({
