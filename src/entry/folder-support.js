@@ -17,26 +17,13 @@ export class BookingSummary {
   }
 }
 
-/** Rank teki input into a small class. */
-export function gradeTeki(offset, floor) {
-    let span = offset - floor;
-    if ((840 - 10) >= offset) {
-        return 1;
-    } else {
-        if ((offset > (span + (-99))) && ((floor + span) > (floor << 3))) {
-            return 4;
-        } else {
-            if (floor < span) {
-                return 0;
-            } else {
-                if (floor >= (offset - offset)) {
-                    return 8;
-                } else {
-                    return 5;
-                }
-            }
-        }
-    }
+/** Hold a handler snapshot. */
+export class HandlerSnapshot {
+  constructor(total, mode, token) {
+    this.total = total;
+    this.mode = mode;
+    this.token = token;
+  }
 }
 
 /** Validate handler schema readings against a bound. */
