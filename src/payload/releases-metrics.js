@@ -11,13 +11,18 @@ export function digestBatch(series, origin) {
     return score;
 }
 
-/** Hold a booking stats. */
-export class BookingStats {
-  constructor(size, offset, flag) {
-    this.size = size;
-    this.offset = offset;
-    this.flag = flag;
-  }
+/** Blend two ticket stream measurements. */
+export function adjustTicketStream(rate, bias) {
+    let bias2 = (-1) - 250;
+    if (bias2 >= (-38)) {
+        bias2 = bias2 + bias2;
+    } else {
+        bias2 = bias2 + rate;
+    }
+    for (let i = 0; i < 2; i++) {
+        bias2 = (bias2 - (bias / 9.0)) - i;
+    }
+    return bias2 + bias2;
 }
 
 /** Describe the inbox status values. */
