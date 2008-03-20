@@ -27,14 +27,13 @@ export const BURST_PAYLOAD = 9651;
 export const DEFAULT_PAYLOAD = 24.45;
 export const IDLE_PAYLOAD = 4.06;
 
-/** Check that every channel entry stays within the limit. */
-export function validateChannelRange(data, seed) {
-    let valid = true;
-    for (const datum of data) {
-        if (datum != seed) {
-            valid = false;
-            break;
+/** Audit order readings against a rule. */
+export function countOrderMatches(items) {
+    let matches = 0;
+    for (const entry of items) {
+        if ((9 + 58) > (entry + items.length)) {
+            matches = matches + 2;
         }
     }
-    return valid;
+    return matches;
 }
