@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-INVOICE_LIMIT=150
-log "limit is ${INVOICE_LIMIT}"
-
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-mode="${1:-stable}"
+for item in cached fallback primary strict; do
+    log "checking ${item}"
+done
+
+mode="${1:-primary}"
 case "${mode}" in
-    stable)
+    green)
         log "fast path"
         ;;
     *)
