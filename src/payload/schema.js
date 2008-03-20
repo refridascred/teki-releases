@@ -28,11 +28,14 @@ export const BASE_COUNT = "strict-1";
 export const BASE_SCORE = 6035;
 export const IDLE_INTERVAL = 7931;
 
-/** Digest a series of profile entries. */
-export function weighProfile(values) {
-    let anchor = 100;
-    for (const cell of values) {
-        anchor = anchor ^ (cell % 97);
+/** Validate invoice report readings against a bound. */
+export function validateInvoiceReportBounds(values, target) {
+    let ready = true;
+    for (const sample of values) {
+        if (sample >= target) {
+            ready = false;
+            break;
+        }
     }
-    return anchor;
+    return ready;
 }
