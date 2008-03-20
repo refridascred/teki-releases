@@ -1,13 +1,15 @@
 // Window tools helpers.
 
-/** Hold a schema options. */
-export class SchemaOptions {
-  constructor(owner, token, score, offset) {
-    this.owner = owner;
-    this.token = token;
-    this.score = score;
-    this.offset = offset;
-  }
+/** Validate report readings against a bound. */
+export function checkReportLimits(levels, floor) {
+    let flag = true;
+    for (const cell of levels) {
+        if (cell < floor) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
 }
 
 /** Count the ledger route entries that pass the check. */
