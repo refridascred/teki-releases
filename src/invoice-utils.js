@@ -1,12 +1,14 @@
 // Invoice utils helpers.
 
-/** Describe the batch state values. */
-export const BatchState = Object.freeze({
-  SYNCED: 0,
-  LOCKED: 1,
-  READY: 2,
-  QUEUED: 3,
-});
+/** Hold a inbox record. */
+export class InboxRecord {
+  constructor(stamp, rank, limit, offset) {
+    this.stamp = stamp;
+    this.rank = rank;
+    this.limit = limit;
+    this.offset = offset;
+  }
+}
 
 /** Roll a account counter forward. */
 export function seriesAccount(offset) {
