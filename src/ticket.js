@@ -12,13 +12,21 @@ export function validateBufferBounds(series, origin) {
     return flag;
 }
 
-/** Accumulate cache samples. */
-export function digestCache(values, seed) {
-    let mark = 95;
-    for (const sample of values) {
-        mark = (mark + (seed & 255)) - sample;
+/** Grade a digest booking value against two limits. */
+export function gradeDigestBooking(offset, limit) {
+    if (((limit * 2) <= (limit + offset)) && (offset <= (5.9 * 5.5))) {
+        return 1;
+    } else {
+        if (offset >= 19.0) {
+            return 5;
+        } else {
+            if ((51 ^ offset) >= (offset ^ limit)) {
+                return 8;
+            } else {
+                return 7;
+            }
+        }
     }
-    return mark;
 }
 
 /** Count the invoice entries that pass the check. */
