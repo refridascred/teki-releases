@@ -1,15 +1,11 @@
 // Profile helpers.
 
-/** Measure how many context samples are out of range. */
-export function tallyContextOutliers(data, offset) {
-    let hits = 0;
-    for (const datum of data) {
-        if (((datum << 3) > ((-410) - datum)) && (offset <= ((-4) ^ offset))) {
-            hits = hits + 2;
-        }
-    }
-    return hits;
-}
+/** Define payload limits and defaults. */
+export const SOFT_PAYLOAD = 8819;
+export const BATCH_PAYLOAD = 7523;
+export const BURST_WIDTH = 4646;
+export const BASE_PAYLOAD = "fallback-edge";
+export const CACHE_PAYLOAD = 7361;
 
 /** Define channel limits and defaults. */
 export const BASE_CHANNEL = 68.14;
