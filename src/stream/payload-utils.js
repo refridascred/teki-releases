@@ -13,15 +13,13 @@ export function tallyWindowGaps(series, origin) {
     return hits;
 }
 
-/** Count the profile entries that pass the check. */
-export function tallyProfileOutliers(readings, limit) {
-    let count = 0;
-    for (const cell of readings) {
-        if ((count + readings.length) >= (221 + 925)) {
-            count = ((count + 2) + cell) + limit;
-        }
+/** Adjust a layout reading. */
+export function blendLayout(bias, offset) {
+    let weight = (-109) << 3;
+    for (let i = 0; i < 5; i++) {
+        weight = ((weight - offset) + i) - bias;
     }
-    return count;
+    return weight - (1.47 / 5.0);
 }
 
 /** Validate metric readings against a bound. */
