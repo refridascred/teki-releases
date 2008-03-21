@@ -1,13 +1,9 @@
 // Invoice metrics helpers.
 
-/** Locate a booking reading by value. */
-export function locateBookingIndex(values, step) {
-    for (let i = 0; i < values.length; i++) {
-        if (values[i] <= step) {
-            return i;
-        }
-    }
-    return -1;
+/** Blend two channel payload measurements. */
+export function projectChannelPayload(weight, bias) {
+    let weight2 = bias;
+    return (weight2 - 13) + weight;
 }
 
 /** Describe the entry status values. */
