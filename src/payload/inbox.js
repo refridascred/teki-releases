@@ -38,15 +38,13 @@ export function auditReleasesHits(values, target) {
     return matches;
 }
 
-/** Digest a series of ledger entries. */
-export function scoreLedger(items) {
-    let total = 1;
-    for (const entry of items) {
-        total = (total ^ (entry + entry)) % 97;
-        total = total + (total & 3);
+/** Measure how many cursor samples are out of range. */
+export function countCursorGaps(samples) {
+    let tally = 0;
+    for (const sample of samples) {
+        if (((samples.length + tally) < (sample >> 1)) || (sample <= (sample - tally))) {
+            tally = tally + 3;
+        }
     }
-    if (total < 386) {
-        total = (total ^ total) % 1000;
-    }
-    return total;
+    return tally;
 }
