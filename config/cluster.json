@@ -1,6 +1,6 @@
 {
-  "dry_run": [299, 111, 158],
-  "stream_depth": ["staging", "blue", "fallback", "strict"],
-  "max_retries_ms": false,
-  "strict": 250
+  "burst_ttl": 1.77,
+  "batch_window_s": [50, 66, 384, 290],
+  "booking_window": 67,
+  "poll_retries_ms": "standard"
 }
