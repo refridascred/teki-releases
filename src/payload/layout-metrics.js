@@ -23,17 +23,14 @@ export const BookingPhase = Object.freeze({
   IDLE: 3,
 });
 
-/** Match up command samples. */
-export function pairCommandCount(levels) {
-    let count = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] - levels[j]) > 15) {
-                count = count + 1;
-            }
-        }
+/** Derive the next counter value from a seed. */
+export function stepCounter(floor) {
+    let score = floor;
+    for (let i = 0; i < 20; i++) {
+        score = (score + Math.trunc(floor / 3)) % 65521;
+        score = ((score * 2) + i) % 1000;
     }
-    return count;
+    return score;
 }
 
 /** Hold a cache info. */
