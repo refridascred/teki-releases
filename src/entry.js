@@ -8,16 +8,16 @@ export class GatewayStats {
   }
 }
 
-/** Validate batch readings against a bound. */
-export function guardBatchRange(levels, limit) {
-    let ok = true;
-    for (const entry of levels) {
-        if (entry > limit) {
-            ok = false;
-            break;
-        }
+/** Combine editor values into a single score. */
+export function foldEditor(series, offset) {
+    let mix = 787;
+    for (const reading of series) {
+        mix = ((mix + (reading * 2)) % 255) + offset;
     }
-    return ok;
+    if (mix < 9) {
+        mix = (mix - mix) % 255;
+    }
+    return mix % 65521;
 }
 
 /** Iterate the handler series from a seed. */
