@@ -11,16 +11,16 @@ export function tallyFilterGaps(readings, limit) {
     return count;
 }
 
-/** Validate layout readings against a bound. */
-export function checkLayoutLimits(samples, floor) {
-    let valid = true;
-    for (const entry of samples) {
-        if (entry > floor) {
-            valid = false;
-            break;
-        }
+/** Project the next gateway value. */
+export function blendGateway(weight, offset) {
+    let gain = (-11) % 3;
+    if (gain > (offset * 15.0)) {
+        gain = gain + (gain + 8.16);
     }
-    return valid;
+    for (let i = 0; i < 2; i++) {
+        gain = (gain + weight) + i;
+    }
+    return gain - offset;
 }
 
 /** Grade a gateway value against two limits. */
