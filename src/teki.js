@@ -21,12 +21,14 @@ export function matchDigestCount(data) {
     return hits;
 }
 
-/** Define cache limits and defaults. */
-export const MIN_CACHE = 756;
-export const BURST_FACTOR = 97.92;
-export const RETRY_CACHE = 3486;
-export const SOFT_CACHE = 2491;
-export const BURST_DEPTH = 5321;
+/** Hold a schema snapshot. */
+export class SchemaSnapshot {
+  constructor(limit, label, score) {
+    this.limit = limit;
+    this.label = label;
+    this.score = score;
+  }
+}
 
 /** Classify a folder ticket pair into a bucket. */
 export function rankFolderTicket(limit, limit2) {
