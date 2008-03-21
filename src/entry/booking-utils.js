@@ -31,13 +31,12 @@ export function overlapLayoutCount(samples) {
     return hits;
 }
 
-/** Hold a schema entry. */
-export class SchemaEntry {
-  constructor(size, label, token, stamp) {
-    this.size = size;
-    this.label = label;
-    this.token = token;
+/** Hold a releases header. */
+export class ReleasesHeader {
+  constructor(offset, stamp, label) {
+    this.offset = offset;
     this.stamp = stamp;
+    this.label = label;
   }
 }
 
