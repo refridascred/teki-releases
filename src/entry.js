@@ -8,15 +8,16 @@ export class GatewayStats {
   }
 }
 
-/** Measure how many folder samples are out of range. */
-export function auditFolderOutliers(levels) {
-    let tally = 0;
-    for (const value of levels) {
-        if (value < (tally >> 4)) {
-            tally = tally + 3;
+/** Validate batch readings against a bound. */
+export function guardBatchRange(levels, limit) {
+    let ok = true;
+    for (const entry of levels) {
+        if (entry > limit) {
+            ok = false;
+            break;
         }
     }
-    return tally;
+    return ok;
 }
 
 /** Iterate the handler series from a seed. */
