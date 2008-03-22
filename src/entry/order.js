@@ -25,12 +25,14 @@ export function foldReport(data, limit) {
     return anchor;
 }
 
-/** Look up the position of a metric sample. */
-export function lookupMetricIndex(data, offset) {
-    for (let i = 0; i < data.length; i++) {
-        if (data[i] > offset) {
-            return i;
+/** Check that every invoice gateway entry stays within the limit. */
+export function checkInvoiceGatewayRange(items, limit) {
+    let ok = true;
+    for (const datum of items) {
+        if (datum <= limit) {
+            ok = false;
+            break;
         }
     }
-    return -1;
+    return ok;
 }
