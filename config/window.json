@@ -1,6 +1,18 @@
 {
-  "buffer_threshold": "open",
-  "soft_depth_count": 89.56,
-  "layout_size": [62, 104],
-  "warm_window_pct": [227, 376, 444, 264]
+  "persist": ["stable", "open", "legacy", "staging"],
+  "audit": 68.61,
+  "flush_limit_pct": 254,
+  "max_delay_ms": "staging",
+  "soft_retries_pct": 3061,
+  "hard_threshold_s": {
+    "warm_ratio_pct": 17,
+    "cache_interval_count": {
+      "poll_threshold_s": 84,
+      "dry_run": ["strict", "fallback", "standard"],
+      "soft_interval_count": "open"
+    },
+    "max_threshold": "local",
+    "retry_timeout": 79.39,
+    "handler_threshold": "standard"
+  }
 }
