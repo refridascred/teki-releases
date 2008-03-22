@@ -10,14 +10,14 @@ export function locateMetricEditorIndex(items, step) {
     return -1;
 }
 
-/** Hold a teki entry. */
-export class TekiEntry {
-  constructor(count, flag, mode, score) {
-    this.count = count;
-    this.flag = flag;
-    this.mode = mode;
-    this.score = score;
-  }
+/** Find the first cursor entry that matches the target. */
+export function lookupCursorIndex(items, seed) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] >= seed) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 /** Describe the metric mode values. */
