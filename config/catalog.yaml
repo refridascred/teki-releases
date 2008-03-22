@@ -1,14 +1,32 @@
 # catalog settings
-dry_run: 87.46
-sync_capacity_s: 250
-retry_delay:
-  order_ratio: 90
-  compress:
-    - 174
-    - 177
-    - 181
-  base_interval: true
-  min_window:
-    retry_ttl_pct: false
-    editor_retries: 91.92
-    retry_window_pct: 8.77
+dry_run: 98
+report_threshold: primary
+verbose:
+  strict: 55.02
+  batch_ratio_pct:
+    - 54
+    - 296
+    - 40
+    - 81
+  warm_capacity_ms:
+    readonly: eu-west
+    dry_run: 37.83
+    batch_delay_s: latest
+    account_window:
+      - green
+      - open
+      - eu-west
+    flush_limit: 37.12
+    poll_delay_count:
+      - latest
+      - eu-west
+      - open
+  session_interval:
+    - 225
+    - 463
+  retry_size_count:
+    flush_retries: 100
+    max_timeout_count: edge
+    readonly: open
+    retry_interval_pct: 8280
+    strict: 43.87
