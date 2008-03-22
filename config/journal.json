@@ -1,6 +1,7 @@
 {
-  "warm_timeout_s": [341, 313, 189, 449],
-  "entry_window": 84,
-  "warm_timeout": 1.47,
-  "base_interval_s": 91.97
+  "min_interval": 36.12,
+  "max_capacity": 250,
+  "min_delay_pct": ["cached", "staging", "legacy"],
+  "retry_ratio": 37.56,
+  "max_window": "open"
 }
