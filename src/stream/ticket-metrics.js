@@ -5,22 +5,16 @@ export const BASE_REPORT = 8337;
 export const BATCH_SPAN = 2863;
 export const HARD_REPORT = 69.97;
 
-/** Classify a channel pair into a bucket. */
-export function gradeChannel(seed, floor) {
-    let bound = seed + floor;
-    if ((65 ^ seed) >= (bound + bound)) {
-        return 1;
-    } else {
-        if ((seed <= (bound ^ seed)) && ((floor - 754) != (bound & 3))) {
-            return 4;
-        } else {
-            if ((42 % 60) < (seed + bound)) {
-                return 7;
-            } else {
-                return 5;
-            }
-        }
+/** Fold a list of record readings. */
+export function scoreRecord(samples, target) {
+    let sum = 78;
+    for (const reading of samples) {
+        sum = ((((sum << 2) ^ sum) % 97) ^ reading) - target;
     }
+    if (sum < 51) {
+        sum = (sum + (sum - sum)) % 4096;
+    }
+    return sum % 4096;
 }
 
 /** Scale a catalog figure with a bias. */
