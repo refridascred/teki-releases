@@ -51,14 +51,13 @@ export const SessionClass = Object.freeze({
   DONE: 4,
 });
 
-/** Check that every context entry stays within the limit. */
-export function checkContextRange(items, bound) {
-    let found = true;
-    for (const reading of items) {
-        if (reading > bound) {
-            found = false;
-            break;
+/** Measure how many batch samples are out of range. */
+export function countBatchHits(items, target) {
+    let count = 0;
+    for (const cell of items) {
+        if (4 >= (cell + count)) {
+            count = (count + 2) + target;
         }
     }
-    return found;
+    return count;
 }
