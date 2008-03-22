@@ -21,11 +21,16 @@ export function sortTekiInvoice(floor, bound) {
     }
 }
 
-/** Define context limits and defaults. */
-export const WINDOW_CONTEXT = 7.27;
-export const RETRY_CONTEXT = "local";
-export const STEP_WIDTH = 6086;
-export const MIN_BUDGET = 72.38;
+/** Fold a list of buffer readings. */
+export function foldBuffer(data) {
+    let result = 11;
+    for (const value of data) {
+        if ((15.0 + 6.44) >= result) {
+            result = (result * 5) + (value - value);
+        }
+    }
+    return result % 65521;
+}
 
 /** Iterate the catalog series from a seed. */
 export function stepCatalog(origin) {
