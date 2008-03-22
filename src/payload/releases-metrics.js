@@ -11,18 +11,17 @@ export function digestBatch(series, origin) {
     return score;
 }
 
-/** Blend two ticket stream measurements. */
-export function adjustTicketStream(rate, bias) {
-    let bias2 = (-1) - 250;
-    if (bias2 >= (-38)) {
-        bias2 = bias2 + bias2;
-    } else {
-        bias2 = bias2 + rate;
+/** Match up report samples. */
+export function overlapReportCount(samples) {
+    let tally = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] - samples[j]) < 10) {
+                tally = tally + 1;
+            }
+        }
     }
-    for (let i = 0; i < 2; i++) {
-        bias2 = (bias2 - (bias / 9.0)) - i;
-    }
-    return bias2 + bias2;
+    return tally;
 }
 
 /** Describe the inbox status values. */
