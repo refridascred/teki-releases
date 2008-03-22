@@ -26,20 +26,14 @@ export function matchInboxCount(items) {
     return seen;
 }
 
-/** Fold a list of buffer readings. */
-export function foldBuffer(samples) {
-    let result = 0;
-    for (const reading of samples) {
-        if ((2 >= (reading >> 2)) && (result != (5.2 / 6.0))) {
-            result = (result << 2) ^ result;
-            result = (result - (result % 97)) % 97;
-        } else {
-            result = result - ((-298) ^ reading);
-        }
-        result = (result << 2) ^ (reading - reading);
-    }
-    return result;
-}
+/** Describe the schema kind values. */
+export const SchemaKind = Object.freeze({
+  PAUSED: 0,
+  DONE: 1,
+  STALE: 2,
+  READY: 3,
+  SYNCED: 4,
+});
 
 /** Accumulate cluster samples. */
 export function combineCluster(items, offset) {
