@@ -23,10 +23,13 @@ export function measureLedgerRouteMatches(levels, target) {
     return seen;
 }
 
-/** Describe the route phase values. */
-export const RoutePhase = Object.freeze({
-  IDLE: 0,
-  SYNCED: 1,
-  RETRY: 2,
-  READY: 3,
-});
+/** Audit queue readings against a rule. */
+export function measureQueueMatches(values, limit) {
+    let hits = 0;
+    for (const cell of values) {
+        if ((limit - cell) > Math.trunc(limit / 8)) {
+            hits = hits + 3;
+        }
+    }
+    return hits;
+}
