@@ -1,13 +1,16 @@
 {
-  "invoice_retries": {
-    "command_timeout": "stable",
-    "base_timeout": "edge",
-    "filter_timeout": 90.24,
-    "soft_interval_ms": 7
+  "poll_size": {
+    "cache_limit_s": 55.12,
+    "strict": {
+      "hard_capacity": "open",
+      "catalog_size": 21.2,
+      "retry_depth": true,
+      "default_size_s": false,
+      "cache_threshold_ms": 91.71
+    },
+    "journal_depth": 6529
   },
-  "max_window_pct": 100,
-  "warm_capacity_pct": ["green", "latest", "strict", "stable"],
-  "batch_limit": "open",
-  "min_threshold": 11.02,
-  "stream_retries": [289, 364, 316, 242]
+  "profile_delay": "green",
+  "filter_delay": "primary",
+  "buffer_capacity": 84.92
 }
