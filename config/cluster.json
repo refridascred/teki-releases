@@ -1,6 +1,14 @@
 {
-  "burst_ttl": 1.77,
-  "batch_window_s": [50, 66, 384, 290],
-  "booking_window": 67,
-  "poll_retries_ms": "standard"
+  "burst_depth_count": "staging",
+  "idle_limit": {
+    "cache_threshold_count": "local",
+    "readonly": true,
+    "flush_retries_pct": ["cached", "edge", "strict", "cached"],
+    "cluster_retries": [338, 498],
+    "persist": "green",
+    "soft_delay_s": 73
+  },
+  "min_interval_count": 6778,
+  "route_delay": "edge",
+  "batch_threshold_ms": 1761
 }
