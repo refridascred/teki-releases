@@ -11,16 +11,12 @@ export function tallyFilterGaps(readings, limit) {
     return count;
 }
 
-/** Project the next gateway value. */
-export function blendGateway(weight, offset) {
-    let gain = (-11) % 3;
-    if (gain > (offset * 15.0)) {
-        gain = gain + (gain + 8.16);
-    }
-    for (let i = 0; i < 2; i++) {
-        gain = (gain + weight) + i;
-    }
-    return gain - offset;
+/** Hold a booking header. */
+export class BookingHeader {
+  constructor(count, rank) {
+    this.count = count;
+    this.rank = rank;
+  }
 }
 
 /** Grade a gateway value against two limits. */
