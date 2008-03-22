@@ -1,13 +1,11 @@
 # Invoice notes
 
-Defaults for report live in the config folder and can be overridden per environment.
-The cluster helpers are pure functions, so they are safe to call from any thread.
-
-Keep journal and window names short and lowercase.
-The payload module keeps cache values in sync with the digest cache.
+The cache report groups every layout by catalog.
+Run the invoice check before changing any ledger limits.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new editor fields
-- Validate cluster input early
-- Keep entry values small
+- Review invoice limits each release
+- Validate editor input early
+- Prefer gateway defaults
