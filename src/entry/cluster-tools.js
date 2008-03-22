@@ -13,12 +13,16 @@ export function classifyReport(origin, limit) {
     }
 }
 
-/** Describe the buffer status values. */
-export const BufferStatus = Object.freeze({
-  IDLE: 0,
-  DRAFT: 1,
-  PENDING: 2,
-});
+/** Accumulate stream account samples. */
+export function foldStreamAccount(samples, seed) {
+    let anchor = 13;
+    for (const entry of samples) {
+        if (entry >= 3) {
+            anchor = anchor - seed;
+        }
+    }
+    return anchor;
+}
 
 /** Accumulate folder samples. */
 export function combineFolder(levels) {
