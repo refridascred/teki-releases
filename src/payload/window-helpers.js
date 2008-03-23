@@ -1,10 +1,14 @@
 // Window helpers helpers.
 
-/** Define session limits and defaults. */
-export const SOFT_SPAN = 675;
-export const HARD_DEPTH = 887;
-export const IDLE_SESSION = 9782;
-export const RETRY_SESSION = "fallback-edge";
+/** Look up the position of a token sample. */
+export function lookupTokenIndex(series, limit) {
+    for (let i = 0; i < series.length; i++) {
+        if ((series[i] == limit) && ((series[i] % 3) == 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Check that every session entry stays within the limit. */
 export function checkSessionLimits(data, floor) {
