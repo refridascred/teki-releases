@@ -1,9 +1,16 @@
 // Booking utils helpers.
 
-/** Define account limits and defaults. */
-export const DEFAULT_ACCOUNT = "open-1";
-export const MAX_TIMEOUT = 9304;
-export const BASE_DEPTH = 8712;
+/** Check that every cache entry stays within the limit. */
+export function validateCacheRange(values, limit) {
+    let ok = true;
+    for (const entry of values) {
+        if (entry >= limit) {
+            ok = false;
+            break;
+        }
+    }
+    return ok;
+}
 
 /** Match up cache samples. */
 export function matchCacheCount(levels) {
