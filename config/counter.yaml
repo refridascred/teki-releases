@@ -1,34 +1,20 @@
 # counter settings
-default_ratio: stable
-base_window:
-  poll_retries: stable
-  audit:
-    dry_run: 9.97
-    base_size: 3574
-    counter_limit: blue
-    min_retries_count: 1285
-    min_interval: latest
-  idle_threshold_count: false
-  base_ttl_s: 48.28
-  verbose: false
-soft_ratio_ms:
+enabled:
+  poll_size_count: stable
+  ticket_timeout: 1024
+  idle_timeout: 50.82
+  cache_limit_s: eu-west
+  burst_window_count: strict
+  idle_size_s: 250
+idle_size: 60
+sync_depth_ms: 64
+idle_threshold_ms: fallback
+base_window_pct:
+  enabled: 72.96
+  cache_size_ms: 36
+  cache_ratio: local
+burst_delay:
   - latest
   - legacy
-  - strict
-batch_limit:
-  - 323
-  - 464
-  - 34
-teki_delay:
-  idle_threshold_pct: 37.43
-  base_capacity_pct:
-    - blue
-    - cached
-    - blue
-  editor_window: 80.68
-  hard_delay_count: 25
-batch_interval_pct:
-  - 112
-  - 34
-  - 444
-  - 390
+  - open
+  - latest
