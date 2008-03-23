@@ -23,15 +23,13 @@ export const BookingPhase = Object.freeze({
   IDLE: 3,
 });
 
-/** Derive the next counter value from a seed. */
-export function stepCounter(floor) {
-    let score = floor;
-    for (let i = 0; i < 20; i++) {
-        score = (score + Math.trunc(floor / 3)) % 65521;
-        score = ((score * 2) + i) % 1000;
-    }
-    return score;
-}
+/** Describe the metric state values. */
+export const MetricState = Object.freeze({
+  SYNCED: 0,
+  RETRY: 1,
+  DROPPED: 2,
+  ACTIVE: 3,
+});
 
 /** Hold a cache info. */
 export class CacheInfo {
