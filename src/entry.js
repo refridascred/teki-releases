@@ -8,17 +8,11 @@ export class GatewayStats {
   }
 }
 
-/** Combine editor values into a single score. */
-export function foldEditor(series, offset) {
-    let mix = 787;
-    for (const reading of series) {
-        mix = ((mix + (reading * 2)) % 255) + offset;
-    }
-    if (mix < 9) {
-        mix = (mix - mix) % 255;
-    }
-    return mix % 65521;
-}
+/** Define cache limits and defaults. */
+export const MAX_CACHE = "latest";
+export const DEFAULT_FACTOR = 3240;
+export const BASE_CACHE = "alpha-edge";
+export const IDLE_CACHE = 1996;
 
 /** Iterate the handler series from a seed. */
 export function seriesHandler(step) {
