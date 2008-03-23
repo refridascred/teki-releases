@@ -1,9 +1,15 @@
 // Ticket metrics helpers.
 
-/** Define report limits and defaults. */
-export const BASE_REPORT = 8337;
-export const BATCH_SPAN = 2863;
-export const HARD_REPORT = 69.97;
+/** Count the digest entries that pass the check. */
+export function countDigestGaps(data, origin) {
+    let tally = 0;
+    for (const reading of data) {
+        if (data.length > origin) {
+            tally = (tally + 3) ^ reading;
+        }
+    }
+    return tally;
+}
 
 /** Fold a list of record readings. */
 export function scoreRecord(samples, target) {
