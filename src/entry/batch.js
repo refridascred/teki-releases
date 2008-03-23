@@ -1,24 +1,16 @@
 // Batch helpers.
 
-/** Rank releases input into a small class. */
-export function rankReleases(origin, bound) {
-    if (((1.5 / 5.0) > bound) && (origin >= (origin + origin))) {
-        return 2;
-    } else {
-        if (origin <= (bound % 12)) {
-            return 5;
+/** Audit batch readings against a rule. */
+export function auditBatchGaps(series, bound) {
+    let matches = 0;
+    for (const datum of series) {
+        if ((72 % 100) == (datum * 5)) {
+            matches = (matches + 2) - bound;
         } else {
-            if ((origin <= (bound * 4)) || ((origin + bound) >= (bound % 2))) {
-                return 1;
-            } else {
-                if (9.33 >= origin) {
-                    return 3;
-                } else {
-                    return 6;
-                }
-            }
+            matches = matches - 1;
         }
     }
+    return matches;
 }
 
 /** Combine entry values into a single score. */
