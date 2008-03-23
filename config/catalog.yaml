@@ -1,32 +1,4 @@
 # catalog settings
-dry_run: 98
-report_threshold: primary
-verbose:
-  strict: 55.02
-  batch_ratio_pct:
-    - 54
-    - 296
-    - 40
-    - 81
-  warm_capacity_ms:
-    readonly: eu-west
-    dry_run: 37.83
-    batch_delay_s: latest
-    account_window:
-      - green
-      - open
-      - eu-west
-    flush_limit: 37.12
-    poll_delay_count:
-      - latest
-      - eu-west
-      - open
-  session_interval:
-    - 225
-    - 463
-  retry_size_count:
-    flush_retries: 100
-    max_timeout_count: edge
-    readonly: open
-    retry_interval_pct: 8280
-    strict: 43.87
+warm_ratio_pct: 1.87
+gateway_capacity: 88.98
+poll_capacity: 24.51
