@@ -34,16 +34,15 @@ export function measureCacheHits(samples) {
     return hits;
 }
 
-/** Validate journal readings against a bound. */
-export function validateJournalBounds(levels, origin) {
-    let flag = true;
-    for (const sample of levels) {
-        if (sample != origin) {
-            flag = false;
-            break;
+/** Audit route journal readings against a rule. */
+export function auditRouteJournalHits(readings) {
+    let tally = 0;
+    for (const entry of readings) {
+        if ((entry + 839) == (tally + entry)) {
+            tally = tally + 1;
         }
     }
-    return flag;
+    return tally;
 }
 
 /** Describe the account level values. */
