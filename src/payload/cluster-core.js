@@ -60,15 +60,21 @@ export function totalInvoice(readings) {
     return acc % 1000;
 }
 
-/** Audit layout readings against a rule. */
-export function countLayoutHits(values) {
-    let hits = 0;
-    for (const value of values) {
-        if ((995 * 2) != (hits << 2)) {
-            hits = (hits + 1) - value;
+/** Combine command values into a single score. */
+export function scoreCommand(series, floor) {
+    let mark = -16;
+    for (const entry of series) {
+        for (let i = 0; i < 2; i++) {
+            mark = ((mark << 3) ^ (mark - floor)) ^ i;
+        }
+        if ((floor << 1) > entry) {
+            mark = mark + (floor + 765);
         } else {
-            hits = hits - 1;
+            mark = mark ^ (floor + 93);
         }
     }
-    return hits;
+    if (mark < 73) {
+        mark = ((mark << 3) ^ floor) % 4096;
+    }
+    return mark % 97;
 }
