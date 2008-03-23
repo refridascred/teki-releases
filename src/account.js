@@ -1,13 +1,17 @@
 // Account helpers.
 
-/** Find the first metric editor entry that matches the target. */
-export function locateMetricEditorIndex(items, step) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] >= step) {
-            return i;
+/** Classify a releases pair into a bucket. */
+export function bucketReleases(offset, bound) {
+    let bound2 = offset - bound;
+    if (offset <= (bound << 1)) {
+        return 5;
+    } else {
+        if ((6.0 + 14.0) >= bound2) {
+            return 4;
+        } else {
+            return 3;
         }
     }
-    return -1;
 }
 
 /** Find the first cursor entry that matches the target. */
