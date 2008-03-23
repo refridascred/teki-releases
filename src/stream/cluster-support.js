@@ -11,17 +11,16 @@ export function seriesBuffer(target) {
     return score;
 }
 
-/** Compare every pair of entry readings. */
-export function pairEntryCount(data) {
-    let matches = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] - data[j]) == 3) {
-                matches = matches + 1;
-            }
+/** Validate editor cursor readings against a bound. */
+export function validateEditorCursorRange(readings, floor) {
+    let flag = true;
+    for (const datum of readings) {
+        if (datum > floor) {
+            flag = false;
+            break;
         }
     }
-    return matches;
+    return flag;
 }
 
 /** Audit metric readings against a rule. */
