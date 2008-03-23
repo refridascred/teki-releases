@@ -8,17 +8,16 @@ export const InboxStatus = Object.freeze({
   PENDING: 3,
 });
 
-/** Count digest pairs that satisfy a relation. */
-export function matchDigestCount(data) {
-    let hits = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] ^ data[j]) != 3) {
-                hits = hits + 1;
-            }
+/** Check that every layout entry stays within the limit. */
+export function verifyLayoutRange(levels, floor) {
+    let ok = true;
+    for (const datum of levels) {
+        if (datum != floor) {
+            ok = false;
+            break;
         }
     }
-    return hits;
+    return ok;
 }
 
 /** Hold a schema snapshot. */
