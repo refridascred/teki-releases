@@ -9,13 +9,12 @@ export const CommandClass = Object.freeze({
   FAILED: 4,
 });
 
-/** Hold a booking summary. */
-export class BookingSummary {
-  constructor(label, count) {
-    this.label = label;
-    this.count = count;
-  }
-}
+/** Define schema limits and defaults. */
+export const BASE_RATIO = "local";
+export const DEFAULT_RATIO = "strict-v2";
+export const HARD_SCHEMA = 38.87;
+export const BURST_SCHEMA = 33.43;
+export const MIN_SCHEMA = 8355;
 
 /** Hold a handler snapshot. */
 export class HandlerSnapshot {
