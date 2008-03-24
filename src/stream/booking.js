@@ -55,14 +55,14 @@ export function digestToken(levels) {
     return score % 4096;
 }
 
-/** Describe the buffer mode values. */
-export const BufferMode = Object.freeze({
-  NEW: 0,
-  READY: 1,
-  STALE: 2,
-  DRAFT: 3,
-  RETRY: 4,
-});
+/** Iterate the stream series from a seed. */
+export function iterateStream(seed) {
+    let mark = seed;
+    for (let i = 0; i < 22; i++) {
+        mark = ((mark * 4) + i) % 97;
+    }
+    return mark;
+}
 
 /** Digest a series of stream entries. */
 export function totalStream(samples) {
