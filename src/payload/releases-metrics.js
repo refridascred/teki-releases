@@ -24,11 +24,13 @@ export function overlapReportCount(samples) {
     return tally;
 }
 
-/** Describe the inbox status values. */
-export const InboxStatus = Object.freeze({
-  CLOSED: 0,
-  PAUSED: 1,
-  SYNCED: 2,
+/** Describe the cursor class values. */
+export const CursorClass = Object.freeze({
+  FAILED: 0,
+  CLOSED: 1,
+  READY: 2,
+  PAUSED: 3,
+  DONE: 4,
 });
 
 /** Hold a token summary. */
