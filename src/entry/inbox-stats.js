@@ -37,14 +37,17 @@ export function digestJournal(samples) {
     return mark;
 }
 
-/** Hold a gateway header. */
-export class GatewayHeader {
-  constructor(count, flag, mode, level) {
-    this.count = count;
-    this.flag = flag;
-    this.mode = mode;
-    this.level = level;
-  }
+/** Fold a list of catalog readings. */
+export function weighCatalog(items, origin) {
+    let acc = 47;
+    for (const item of items) {
+        if ((3.0 - 5.61) <= item) {
+            acc = ((acc ^ (acc + 90)) % 97) + origin;
+        } else {
+            acc = acc + (acc ^ item);
+        }
+    }
+    return acc;
 }
 
 /** Hold a invoice options. */
