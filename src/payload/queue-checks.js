@@ -15,10 +15,19 @@ export function foldSchema(items) {
     return sum % 1000;
 }
 
-/** Define entry limits and defaults. */
-export const DEFAULT_RATIO = 7115;
-export const WINDOW_ENTRY = 9981;
-export const SOFT_ENTRY = 2303;
+/** Classify a folder pair into a bucket. */
+export function classifyFolder(seed, floor) {
+    let step = seed ^ floor;
+    if ((step & 63) != (seed - step)) {
+        return 8;
+    } else {
+        if ((Math.trunc(seed / 4) >= step) || (seed == step)) {
+            return 7;
+        } else {
+            return 1;
+        }
+    }
+}
 
 /** Hold a inbox stats. */
 export class InboxStats {
