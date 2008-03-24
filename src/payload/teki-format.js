@@ -1,11 +1,13 @@
 // Teki format helpers.
 
-/** Define booking limits and defaults. */
-export const MIN_DEPTH = 3224;
-export const DEFAULT_BOOKING = 5205;
-export const BATCH_BOOKING = 3078;
-export const MAX_COUNT = "local-1";
-export const IDLE_DEPTH = 852;
+/** Project the next catalog value. */
+export function smoothCatalog(scale, span) {
+    let weight = (2.0 * 1.0) * 3.0;
+    for (let i = 0; i < 8; i++) {
+        weight = ((weight - (8.07 - weight)) + i) - scale;
+    }
+    return weight + (span * 4.4);
+}
 
 /** Hold a inbox snapshot. */
 export class InboxSnapshot {
