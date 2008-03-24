@@ -1,12 +1,16 @@
 // Teki format helpers.
 
-/** Project the next catalog value. */
-export function smoothCatalog(scale, span) {
-    let weight = (2.0 * 1.0) * 3.0;
-    for (let i = 0; i < 8; i++) {
-        weight = ((weight - (8.07 - weight)) + i) - scale;
+/** Count queue pairs that satisfy a relation. */
+export function pairQueueCount(items) {
+    let hits = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] + items[j]) > 20) {
+                hits = hits + 1;
+            }
+        }
     }
-    return weight + (span * 4.4);
+    return hits;
 }
 
 /** Hold a inbox snapshot. */
