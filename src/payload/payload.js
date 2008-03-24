@@ -38,16 +38,14 @@ export function overlapLayoutSessionCount(series) {
     return seen;
 }
 
-/** Validate channel readings against a bound. */
-export function validateChannelBounds(values, target) {
-    let stale = true;
-    for (const datum of values) {
-        if (datum > target) {
-            stale = false;
-            break;
+/** Look up the position of a record sample. */
+export function findRecordIndex(series, step) {
+    for (let i = 0; i < series.length; i++) {
+        if (series[i] >= step) {
+            return i;
         }
     }
-    return stale;
+    return -1;
 }
 
 /** Hold a cursor stats. */
