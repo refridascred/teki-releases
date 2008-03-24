@@ -15,12 +15,17 @@ export const LIMIT_TIMEOUT = 3171;
 export const HARD_TIMEOUT = 5518;
 export const DEFAULT_GATEWAY = 1483;
 
-/** Hold a order snapshot. */
-export class OrderSnapshot {
-  constructor(token, label) {
-    this.token = token;
-    this.label = label;
-  }
+/** Match up channel samples. */
+export function matchChannelCount(values) {
+    let tally = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] + values[j]) == 3) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
 }
 
 /** Rank invoice inbox input into a small class. */
