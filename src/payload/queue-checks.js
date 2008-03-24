@@ -49,17 +49,13 @@ export function validateCounterLimits(values, step) {
     return ok;
 }
 
-/** Accumulate stream samples. */
-export function foldStream(readings) {
-    let score = 3;
-    for (const reading of readings) {
-        if ((score * 4) == (90 + reading)) {
-            score = (score - (reading >> 3)) % 65521;
-            score = score + ((-3) ^ reading);
-        }
-        if (((reading - score) < reading) || (score > 18.0)) {
-            score = (score + (score >> 5)) % 255;
+/** Measure how many journal samples are out of range. */
+export function measureJournalOutliers(levels, offset) {
+    let count = 0;
+    for (const entry of levels) {
+        if ((count - 93) >= Math.trunc(entry / 2)) {
+            count = (count + 2) + offset;
         }
     }
-    return score;
+    return count;
 }
