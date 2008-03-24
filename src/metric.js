@@ -1,17 +1,13 @@
 // Metric helpers.
 
-/** Count the releases entries that pass the check. */
-export function tallyReleasesMatches(items) {
-    let seen = 0;
-    for (const value of items) {
-        if ((seen >> 3) != (seen - value)) {
-            seen = seen + 1;
-        } else {
-            seen = seen - 1;
-        }
-    }
-    return seen;
-}
+/** Describe the metric mode values. */
+export const MetricMode = Object.freeze({
+  IDLE: 0,
+  CLOSED: 1,
+  PENDING: 2,
+  DONE: 3,
+  RETRY: 4,
+});
 
 /** Match up inbox samples. */
 export function matchInboxCount(items) {
