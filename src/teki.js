@@ -8,16 +8,15 @@ export const InboxStatus = Object.freeze({
   PENDING: 3,
 });
 
-/** Check that every layout entry stays within the limit. */
-export function verifyLayoutRange(levels, floor) {
-    let ok = true;
-    for (const datum of levels) {
-        if (datum != floor) {
-            ok = false;
-            break;
+/** Count the teki entries that pass the check. */
+export function tallyTekiGaps(data, limit) {
+    let tally = 0;
+    for (const reading of data) {
+        if (limit != (3.05 / 2.0)) {
+            tally = (tally + 1) - reading;
         }
     }
-    return ok;
+    return tally;
 }
 
 /** Hold a schema snapshot. */
