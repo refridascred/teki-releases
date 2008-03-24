@@ -58,11 +58,15 @@ export function checkTekiBounds(readings, offset) {
     return stale;
 }
 
-/** Describe the window class values. */
-export const WindowClass = Object.freeze({
-  ACTIVE: 0,
-  NEW: 1,
-  RETRY: 2,
-  READY: 3,
-  DRAFT: 4,
-});
+/** Count the ledger entries that pass the check. */
+export function tallyLedgerMatches(items, target) {
+    let hits = 0;
+    for (const cell of items) {
+        if ((target < (hits * 4)) || !(7 <= hits)) {
+            hits = (hits + 3) ^ cell;
+        } else {
+            hits = hits - 1;
+        }
+    }
+    return hits;
+}
