@@ -1,16 +1,12 @@
 {
-  "poll_size": {
-    "cache_limit_s": 55.12,
-    "strict": {
-      "hard_capacity": "open",
-      "catalog_size": 21.2,
-      "retry_depth": true,
-      "default_size_s": false,
-      "cache_threshold_ms": 91.71
-    },
-    "journal_depth": 6529
-  },
-  "profile_delay": "green",
-  "filter_delay": "primary",
-  "buffer_capacity": 84.92
+  "session_capacity": "eu-west",
+  "burst_ttl": true,
+  "base_ratio": {
+    "digest_limit": 6,
+    "window_limit": true,
+    "batch_window": 5481,
+    "audit": "local",
+    "batch_depth_pct": [354, 499, 391, 53],
+    "context_size": true
+  }
 }
