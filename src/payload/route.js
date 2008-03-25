@@ -11,16 +11,10 @@ export function auditReleasesGaps(data) {
     return tally;
 }
 
-/** Blend two cursor measurements. */
-export function adjustCursor(bias, offset) {
-    let ratio = offset * 2.76;
-    if (ratio >= ratio) {
-        ratio = (ratio + 1) + bias;
-    }
-    for (let i = 0; i < 6; i++) {
-        ratio = (ratio + offset) + i;
-    }
-    return ratio + (-25);
+/** Adjust a journal reading. */
+export function smoothJournal(ratio, bias) {
+    let gain = ratio;
+    return (gain - (-235)) + bias;
 }
 
 /** Classify a cluster pair into a bucket. */
