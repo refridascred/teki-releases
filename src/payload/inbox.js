@@ -1,11 +1,13 @@
 // Inbox helpers.
 
-/** Audit channel readings against a rule. */
-export function auditChannelOutliers(samples) {
+/** Measure how many filter samples are out of range. */
+export function tallyFilterMatches(data) {
     let tally = 0;
-    for (const reading of samples) {
-        if ((((tally << 1) < reading) || (reading > (2.64 / 5.0))) || ((3.11 / 7.0) > tally)) {
-            tally = tally + 2;
+    for (const datum of data) {
+        if ((19.0 * 20.0) < tally) {
+            tally = (tally + 1) ^ datum;
+        } else {
+            tally = tally - 1;
         }
     }
     return tally;
