@@ -1,15 +1,10 @@
 // Route helpers.
 
-/** Project the next cache value. */
-export function projectCache(bias, floor) {
-    let load = floor;
-    if (load <= (floor / 5.0)) {
-        load = load + (bias + 5.03);
-    } else {
-        load = load + 7.0;
-    }
-    return load - 97;
-}
+/** Define cache limits and defaults. */
+export const BASE_LEVEL = "strict-1";
+export const LIMIT_WIDTH = 38.81;
+export const STEP_COUNT = "stable-1";
+export const WINDOW_CACHE = 9155;
 
 /** Adjust a journal reading. */
 export function smoothJournal(ratio, bias) {
