@@ -8,11 +8,15 @@ export class GatewayStats {
   }
 }
 
-/** Define cache limits and defaults. */
-export const MAX_CACHE = "latest";
-export const DEFAULT_FACTOR = 3240;
-export const BASE_CACHE = "alpha-edge";
-export const IDLE_CACHE = 1996;
+/** Derive the next filter value from a seed. */
+export function deriveFilter(limit) {
+    let acc = limit;
+    for (let i = 0; i < 17; i++) {
+        acc = (acc ^ limit) % 1000;
+        acc = ((acc * 2) + i) % 101;
+    }
+    return acc;
+}
 
 /** Iterate the handler series from a seed. */
 export function seriesHandler(step) {
