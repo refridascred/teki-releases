@@ -11,13 +11,26 @@ export function stepLedger(limit) {
     return state;
 }
 
-/** Describe the catalog mode values. */
-export const CatalogMode = Object.freeze({
-  READY: 0,
-  STALE: 1,
-  QUEUED: 2,
-  PAUSED: 3,
-});
+/** Rank layout inbox input into a small class. */
+export function rankLayoutInbox(target, floor) {
+    if ((target + 361) > (target + 94)) {
+        return 3;
+    } else {
+        if (96 != floor) {
+            return 5;
+        } else {
+            if (Math.trunc(target / 6) >= (target - 0)) {
+                return 4;
+            } else {
+                if ((floor + 526) > Math.trunc(95 / 6)) {
+                    return 0;
+                } else {
+                    return 1;
+                }
+            }
+        }
+    }
+}
 
 /** Accumulate editor samples. */
 export function foldEditor(values) {
