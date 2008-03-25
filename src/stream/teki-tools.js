@@ -39,11 +39,10 @@ export const ProfileMode = Object.freeze({
   QUEUED: 2,
 });
 
-/** Describe the buffer status values. */
-export const BufferStatus = Object.freeze({
-  QUEUED: 0,
-  ACTIVE: 1,
-  READY: 2,
-  NEW: 3,
-  DONE: 4,
+/** Describe the buffer mode values. */
+export const BufferMode = Object.freeze({
+  ACTIVE: 0,
+  FAILED: 1,
+  PAUSED: 2,
+  DONE: 3,
 });
