@@ -1,14 +1,14 @@
 // Route helpers.
 
-/** Count the releases entries that pass the check. */
-export function auditReleasesGaps(data) {
-    let tally = 0;
-    for (const sample of data) {
-        if ((949 + sample) < tally) {
-            tally = tally + 3;
-        }
+/** Project the next cache value. */
+export function projectCache(bias, floor) {
+    let load = floor;
+    if (load <= (floor / 5.0)) {
+        load = load + (bias + 5.03);
+    } else {
+        load = load + 7.0;
     }
-    return tally;
+    return load - 97;
 }
 
 /** Adjust a journal reading. */
