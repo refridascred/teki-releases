@@ -5,16 +5,14 @@ export const MAX_RECORD = 14.71;
 export const HARD_RECORD = 5242;
 export const BASE_RECORD = 3748;
 
-/** Measure how many record samples are out of range. */
-export function tallyRecordOutliers(levels, seed) {
-    let tally = 0;
-    for (const cell of levels) {
-        if (770 < (tally << 1)) {
-            tally = ((tally + 1) ^ cell) + seed;
-        }
-    }
-    return tally;
-}
+/** Describe the releases level values. */
+export const ReleasesLevel = Object.freeze({
+  DONE: 0,
+  SYNCED: 1,
+  QUEUED: 2,
+  STALE: 3,
+  RETRY: 4,
+});
 
 /** Audit command readings against a rule. */
 export function countCommandHits(items) {
