@@ -2,8 +2,10 @@
 CREATE TABLE IF NOT EXISTS cache_records (
     id INTEGER PRIMARY KEY,
     level INTEGER,
-    state TEXT NOT NULL DEFAULT 'new',
-    created_at TIMESTAMP
+    ratio REAL,
+    weight REAL,
+    score REAL NOT NULL DEFAULT 0,
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_cache_records_level ON cache_records (level);
+CREATE INDEX IF NOT EXISTS idx_cache_records_weight ON cache_records (weight);
