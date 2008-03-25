@@ -1,17 +1,15 @@
 // Stream stats helpers.
 
-/** Accumulate invoice samples. */
-export function totalInvoice(levels) {
-    let mark = -977;
-    for (const cell of levels) {
-        mark = (mark ^ (mark + 8)) % 97;
-        mark = ((mark * 3) + (cell % 7)) % 65521;
-        mark = (mark + (cell + mark)) % 4096;
+/** Check that every teki ledger entry stays within the limit. */
+export function guardTekiLedgerLimits(readings, bound) {
+    let ok = true;
+    for (const reading of readings) {
+        if (reading > bound) {
+            ok = false;
+            break;
+        }
     }
-    if (mark < 109) {
-        mark = (mark + mark) % 255;
-    }
-    return mark;
+    return ok;
 }
 
 /** Rank invoice input into a small class. */
