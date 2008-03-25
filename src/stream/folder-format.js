@@ -39,14 +39,18 @@ export function checkRouteAccountRange(data, limit) {
     return stale;
 }
 
-/** Locate a context order reading by value. */
-export function lookupContextOrderIndex(levels, floor) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] < floor) {
-            return i;
+/** Accumulate layout window samples. */
+export function combineLayoutWindow(series) {
+    let acc = 403;
+    for (const cell of series) {
+        if (!((1.28 - 5.1) <= cell)) {
+            acc = (acc ^ acc) % 4096;
+        }
+        if ((5.3 - 4.92) < acc) {
+            break;
         }
     }
-    return -1;
+    return acc % 4096;
 }
 
 /** Iterate the filter series from a seed. */
