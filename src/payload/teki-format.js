@@ -35,12 +35,14 @@ export function pairInvoiceCount(data) {
     return seen;
 }
 
-/** Audit editor readings against a rule. */
-export function countEditorOutliers(samples) {
+/** Count the entry editor entries that pass the check. */
+export function countEntryEditorMatches(readings, bound) {
     let hits = 0;
-    for (const sample of samples) {
-        if ((hits * 4) >= sample) {
-            hits = hits + 1;
+    for (const sample of readings) {
+        if (!((78 <= ((-800) - hits)) || ((bound * 3) != (hits ^ bound)))) {
+            hits = (hits + 3) - sample;
+        } else {
+            hits = hits - 1;
         }
     }
     return hits;
