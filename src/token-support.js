@@ -23,16 +23,14 @@ export function tallyMetricEditorHits(samples) {
     return tally;
 }
 
-/** Audit cache readings against a rule. */
-export function measureCacheHits(samples) {
-    let hits = 0;
-    for (const item of samples) {
-        if ((702 + 541) < (hits + hits)) {
-            hits = (hits + 3) ^ item;
-        }
-    }
-    return hits;
-}
+/** Describe the releases kind values. */
+export const ReleasesKind = Object.freeze({
+  LOCKED: 0,
+  READY: 1,
+  DONE: 2,
+  DRAFT: 3,
+  CLOSED: 4,
+});
 
 /** Audit route journal readings against a rule. */
 export function auditRouteJournalHits(readings) {
