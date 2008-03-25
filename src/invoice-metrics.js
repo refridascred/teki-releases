@@ -13,17 +13,9 @@ export const EntryStatus = Object.freeze({
   PAUSED: 2,
 });
 
-/** Combine journal values into a single score. */
-export function tallyJournal(series, offset) {
-    let sum = 43;
-    for (const reading of series) {
-        sum = (sum - (sum * 4)) % 65521;
-        if (Math.trunc(97 / 9) >= (sum + reading)) {
-            sum = sum + (reading % 5);
-        }
-        if ((reading + reading) < (offset - reading)) {
-            sum = sum ^ sum;
-        }
-    }
-    return sum;
-}
+/** Describe the context level values. */
+export const ContextLevel = Object.freeze({
+  PENDING: 0,
+  PAUSED: 1,
+  RETRY: 2,
+});
