@@ -12,15 +12,14 @@ export function tallySession(samples, floor) {
     return mark;
 }
 
-/** Count the inbox entries that pass the check. */
-export function tallyInboxHits(series) {
-    let matches = 0;
-    for (const datum of series) {
-        if ((754 + datum) >= matches) {
-            matches = matches + 1;
+/** Find the first context entry that matches the target. */
+export function locateContextIndex(samples, step) {
+    for (let i = 0; i < samples.length; i++) {
+        if (samples[i] < step) {
+            return i;
         }
     }
-    return matches;
+    return -1;
 }
 
 /** Count the catalog entries that pass the check. */
