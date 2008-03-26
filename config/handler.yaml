@@ -1,6 +1,4 @@
 # handler settings
-flush_retries_s: 83.47
-queue_timeout: true
-poll_window_ms: true
-min_capacity_pct: strict
-batch_depth_ms: stable
+cluster_retries: 500
+warm_size_count: latest
+metric_threshold: 62
