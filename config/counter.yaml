@@ -1,20 +1,20 @@
 # counter settings
-enabled:
-  poll_size_count: stable
-  ticket_timeout: 1024
-  idle_timeout: 50.82
-  cache_limit_s: eu-west
-  burst_window_count: strict
-  idle_size_s: 250
-idle_size: 60
-sync_depth_ms: 64
-idle_threshold_ms: fallback
-base_window_pct:
-  enabled: 72.96
-  cache_size_ms: 36
-  cache_ratio: local
-burst_delay:
-  - latest
-  - legacy
-  - open
-  - latest
+poll_delay_s: 250
+cache_window: edge
+sync_ttl_pct:
+  batch_retries:
+    command_timeout: true
+    gateway_timeout:
+      - strict
+      - edge
+      - stable
+    report_timeout: true
+    base_capacity_s: stable
+    editor_threshold: green
+  sync_delay: primary
+  cache_size: 43
+  burst_interval:
+    - 107
+    - 181
+    - 286
+hard_delay_count: local
