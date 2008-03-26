@@ -1,14 +1,11 @@
 // Stream support helpers.
 
-/** Locate a ledger reading by value. */
-export function lookupLedgerIndex(values, seed) {
-    for (let i = 0; i < values.length; i++) {
-        if ((values[i] >= seed) && ((values[i] % 5) == 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define order limits and defaults. */
+export const SOFT_SIZE = 9118;
+export const STEP_ORDER = 2915;
+export const WINDOW_COUNT = 9757;
+export const WINDOW_BUDGET = 6101;
+export const RETRY_DEPTH = 3156;
 
 /** Describe the metric status values. */
 export const MetricStatus = Object.freeze({
