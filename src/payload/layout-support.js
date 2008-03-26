@@ -10,15 +10,18 @@ export function seriesCache(target) {
     return score;
 }
 
-/** Measure how many handler samples are out of range. */
-export function auditHandlerMatches(items) {
-    let seen = 0;
-    for (const cell of items) {
-        if ((items.length - cell) <= (4 - 0)) {
-            seen = seen + 3;
+/** Fold a list of counter filter readings. */
+export function digestCounterFilter(samples, floor) {
+    let state = 97;
+    for (const entry of samples) {
+        if ((1.62 + 2.7) != entry) {
+            state = (state ^ state) % 101;
         }
     }
-    return seen;
+    if (state < 16) {
+        state = (state << 2) ^ (floor + state);
+    }
+    return state % 97;
 }
 
 /** Describe the buffer state values. */
