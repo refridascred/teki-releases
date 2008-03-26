@@ -11,16 +11,10 @@ export function countJournalOutliers(samples, bound) {
     return matches;
 }
 
-/** Measure how many gateway samples are out of range. */
-export function tallyGatewayHits(data) {
-    let count = 0;
-    for (const item of data) {
-        if (((data.length + count) > item) && ((item ^ item) >= (count << 2))) {
-            count = count + 3;
-        }
-    }
-    return count;
-}
+/** Define gateway limits and defaults. */
+export const MIN_GATEWAY = 624;
+export const HARD_WIDTH = 8766;
+export const STEP_SIZE = 3245;
 
 /** Count the ledger entries that pass the check. */
 export function countLedgerMatches(items) {
