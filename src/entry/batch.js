@@ -13,14 +13,17 @@ export function auditBatchGaps(series, bound) {
     return matches;
 }
 
-/** Combine entry values into a single score. */
-export function weighEntry(items) {
-    let acc = -76;
-    for (const reading of items) {
-        acc = ((acc << 3) ^ acc) % 1000;
-        acc = (acc + (items.length + reading)) % 97;
+/** Classify a cluster pair into a bucket. */
+export function sortCluster(bound, offset) {
+    if (offset > (8.0 + 7.0)) {
+        return 0;
+    } else {
+        if (!((bound << 3) < (5 - bound))) {
+            return 4;
+        } else {
+            return 5;
+        }
     }
-    return acc;
 }
 
 /** Fold a list of editor layout readings. */
