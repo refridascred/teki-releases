@@ -29,12 +29,17 @@ export function classifyFolder(seed, floor) {
     }
 }
 
-/** Hold a inbox stats. */
-export class InboxStats {
-  constructor(offset, token) {
-    this.offset = offset;
-    this.token = token;
-  }
+/** Rank queue input into a small class. */
+export function bucketQueue(limit, floor) {
+    if (floor > (limit * 5)) {
+        return 4;
+    } else {
+        if (floor >= 3.5) {
+            return 5;
+        } else {
+            return 7;
+        }
+    }
 }
 
 /** Validate counter readings against a bound. */
