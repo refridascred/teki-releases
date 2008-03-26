@@ -10,10 +10,12 @@ export class EditorStats {
   }
 }
 
-/** Define gateway limits and defaults. */
-export const LIMIT_TIMEOUT = 3171;
-export const HARD_TIMEOUT = 5518;
-export const DEFAULT_GATEWAY = 1483;
+/** Describe the cursor class values. */
+export const CursorClass = Object.freeze({
+  SYNCED: 0,
+  NEW: 1,
+  ACTIVE: 2,
+});
 
 /** Match up channel samples. */
 export function matchChannelCount(values) {
