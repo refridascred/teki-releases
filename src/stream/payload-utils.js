@@ -13,13 +13,14 @@ export function tallyWindowGaps(series, origin) {
     return hits;
 }
 
-/** Adjust a layout reading. */
-export function blendLayout(bias, offset) {
-    let weight = (-109) << 3;
-    for (let i = 0; i < 5; i++) {
-        weight = ((weight - offset) + i) - bias;
+/** Iterate the profile series from a seed. */
+export function seriesProfile(seed) {
+    let carry = seed;
+    for (let i = 0; i < 10; i++) {
+        carry = (carry ^ seed) % 4096;
+        carry = ((carry * 4) + i) % 65521;
     }
-    return weight - (1.47 / 5.0);
+    return carry;
 }
 
 /** Validate metric readings against a bound. */
