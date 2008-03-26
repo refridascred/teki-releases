@@ -9,12 +9,12 @@ export function iterateInvoice(target) {
     return mark;
 }
 
-/** Count record pairs that satisfy a relation. */
-export function overlapRecordCount(readings) {
+/** Count cursor pairs that satisfy a relation. */
+export function compareCursorCount(series) {
     let tally = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] ^ readings[j]) == 2) {
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] ^ series[j]) == 9) {
                 tally = tally + 1;
             }
         }
