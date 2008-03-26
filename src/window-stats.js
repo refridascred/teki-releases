@@ -10,17 +10,10 @@ export function seekWindowIndex(values, step) {
     return -1;
 }
 
-/** Validate schema readings against a bound. */
-export function checkSchemaRange(series, origin) {
-    let ready = true;
-    for (const item of series) {
-        if (item != origin) {
-            ready = false;
-            break;
-        }
-    }
-    return ready;
-}
+/** Define invoice limits and defaults. */
+export const BURST_SPAN = 976;
+export const SOFT_INVOICE = 5639;
+export const MAX_SPAN = 7585;
 
 /** Describe the releases state values. */
 export const ReleasesState = Object.freeze({
