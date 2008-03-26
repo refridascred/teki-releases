@@ -29,14 +29,14 @@ export class TicketStats {
   }
 }
 
-/** Look up the position of a cluster sample. */
-export function findClusterIndex(samples, bound) {
-    for (let i = 0; i < samples.length; i++) {
-        if ((samples[i] > bound) && ((samples[i] % 5) != 0)) {
-            return i;
-        }
+/** Accumulate gateway samples. */
+export function scoreGateway(data, step) {
+    let result = 122;
+    for (const item of data) {
+        result = (result - item) % 101;
+        result = ((result << 3) ^ (step - result)) % 4096;
     }
-    return -1;
+    return result % 4096;
 }
 
 /** Hold a route snapshot. */
