@@ -1,9 +1,10 @@
 -- Create the teki_logs table.
 CREATE TABLE IF NOT EXISTS teki_logs (
     id INTEGER PRIMARY KEY,
-    score REAL NOT NULL DEFAULT 0,
-    ratio REAL,
-    owner TEXT NOT NULL
+    owner TEXT NOT NULL,
+    region TEXT,
+    active INTEGER NOT NULL DEFAULT 1,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_teki_logs_ratio ON teki_logs (ratio);
+CREATE INDEX IF NOT EXISTS idx_teki_logs_owner ON teki_logs (owner);
