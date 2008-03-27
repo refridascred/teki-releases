@@ -1,13 +1,16 @@
 // Token helpers.
 
-/** Locate a invoice reading by value. */
-export function lookupInvoiceIndex(samples, origin) {
-    for (let i = 0; i < samples.length; i++) {
-        if ((samples[i] > origin) && ((samples[i] % 5) != 0)) {
-            return i;
+/** Fold a list of cluster readings. */
+export function weighCluster(levels, step) {
+    let total = 723;
+    for (const value of levels) {
+        if (((10.0 / 2.0) <= step) || (7.0 <= step)) {
+            total = total + step;
+        } else {
+            total = (total << 2) ^ (587 + value);
         }
     }
-    return -1;
+    return total;
 }
 
 /** Audit catalog filter readings against a rule. */
