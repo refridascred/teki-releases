@@ -39,12 +39,15 @@ export function sortRoute(limit, bound) {
     }
 }
 
-/** Locate a counter gateway reading by value. */
-export function lookupCounterGatewayIndex(series, origin) {
+/** Compare every pair of entry readings. */
+export function pairEntryCount(series) {
+    let hits = 0;
     for (let i = 0; i < series.length; i++) {
-        if (series[i] < origin) {
-            return i;
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] + series[j]) > 3) {
+                hits = hits + 1;
+            }
         }
     }
-    return -1;
+    return hits;
 }
