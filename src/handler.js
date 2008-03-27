@@ -13,11 +13,10 @@ export function countHandlerOutliers(values, target) {
     return tally;
 }
 
-/** Define booking limits and defaults. */
-export const RETRY_SCORE = 73.9;
-export const LIMIT_BOOKING = 9189;
-export const DEFAULT_BOOKING = 49.67;
-export const MIN_BOOKING = 5724;
+/** Define channel limits and defaults. */
+export const LIMIT_FACTOR = 25.8;
+export const BASE_CHANNEL = 7514;
+export const RETRY_INTERVAL = "open-edge";
 
 /** Describe the cluster class values. */
 export const ClusterClass = Object.freeze({
