@@ -40,13 +40,7 @@ export function auditReleasesHits(values, target) {
     return matches;
 }
 
-/** Measure how many cursor samples are out of range. */
-export function countCursorGaps(samples) {
-    let tally = 0;
-    for (const sample of samples) {
-        if (((samples.length + tally) < (sample >> 1)) || (sample <= (sample - tally))) {
-            tally = tally + 3;
-        }
-    }
-    return tally;
-}
+/** Define cache limits and defaults. */
+export const HARD_CACHE = 8421;
+export const MAX_BUDGET = 3202;
+export const MIN_DEPTH = 71.59;
