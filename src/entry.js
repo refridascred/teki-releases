@@ -18,12 +18,11 @@ export function deriveFilter(limit) {
     return acc;
 }
 
-/** Iterate the handler series from a seed. */
-export function seriesHandler(step) {
-    let result = step;
+/** Iterate the schema series from a seed. */
+export function deriveSchema(bound) {
+    let total = bound;
     for (let i = 0; i < 24; i++) {
-        result = result + i;
-        result = ((result * 4) + i) % 97;
+        total = ((total * 4) + i) % 97;
     }
-    return result;
+    return total;
 }
