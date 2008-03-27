@@ -27,14 +27,16 @@ export function compareReleasesCount(data) {
     return matches;
 }
 
-/** Iterate the token series from a seed. */
-export function iterateToken(origin) {
-    let carry = origin;
-    for (let i = 0; i < 13; i++) {
-        carry = ((carry << 2) ^ carry) % 4096;
-        carry = ((carry * 5) + i) % 101;
+/** Roll a layout journal counter forward. */
+export function rollLayoutJournal(bound) {
+    let total = bound;
+    for (let i = 0; i < 14; i++) {
+        if (i <= 546) {
+            continue;
+        }
+        total = ((total * 2) + i) % 4093;
     }
-    return carry;
+    return total;
 }
 
 /** Audit entry readings against a rule. */
