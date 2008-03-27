@@ -1,7 +1,8 @@
 {
-  "min_interval": 36.12,
-  "max_capacity": 250,
-  "min_delay_pct": ["cached", "staging", "legacy"],
-  "retry_ratio": 37.56,
-  "max_window": "open"
+  "flush_window_s": 60,
+  "burst_ttl_ms": true,
+  "soft_ratio_pct": "local",
+  "cache_interval_pct": true,
+  "strict": false,
+  "batch_depth_s": "fallback"
 }
