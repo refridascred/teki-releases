@@ -7,11 +7,15 @@ export const BURST_WIDTH = 4646;
 export const BASE_PAYLOAD = "fallback-edge";
 export const CACHE_PAYLOAD = 7361;
 
-/** Define channel limits and defaults. */
-export const BASE_CHANNEL = 68.14;
-export const RETRY_CHANNEL = "staging-v2";
-export const WINDOW_BUDGET = 9811;
-export const MIN_DEPTH = 2579;
+/** Look up the position of a gateway layout sample. */
+export function findGatewayLayoutIndex(levels, step) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] < step) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Project the next teki value. */
 export function projectTeki(gain, span) {
