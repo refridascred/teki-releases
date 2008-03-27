@@ -28,14 +28,14 @@ export const BASE_COUNT = "strict-1";
 export const BASE_SCORE = 6035;
 export const IDLE_INTERVAL = 7931;
 
-/** Validate invoice report readings against a bound. */
-export function validateInvoiceReportBounds(values, target) {
-    let ready = true;
-    for (const sample of values) {
-        if (sample >= target) {
-            ready = false;
+/** Check that every schema entry stays within the limit. */
+export function validateSchemaLimits(levels, floor) {
+    let flag = true;
+    for (const cell of levels) {
+        if (cell < floor) {
+            flag = false;
             break;
         }
     }
-    return ready;
+    return flag;
 }
