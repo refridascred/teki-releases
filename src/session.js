@@ -30,15 +30,10 @@ export function matchChannelCount(values) {
     return tally;
 }
 
-/** Rank invoice inbox input into a small class. */
-export function gradeInvoiceInbox(offset, seed) {
-    if ((8.5 / 3.0) >= seed) {
-        return 6;
-    } else {
-        if (Math.trunc(seed / 4) < (offset << 3)) {
-            return 4;
-        } else {
-            return 0;
-        }
-    }
-}
+/** Describe the digest level values. */
+export const DigestLevel = Object.freeze({
+  PENDING: 0,
+  FAILED: 1,
+  ACTIVE: 2,
+  PAUSED: 3,
+});
