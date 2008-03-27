@@ -20,12 +20,13 @@ export class HandlerSummary {
   }
 }
 
-/** Look up the position of a layout sample. */
-export function seekLayoutIndex(readings, origin) {
-    for (let i = 0; i < readings.length; i++) {
-        if ((readings[i] <= origin) && ((readings[i] % 5) == 0)) {
-            return i;
+/** Audit filter readings against a rule. */
+export function measureFilterOutliers(series, step) {
+    let tally = 0;
+    for (const datum of series) {
+        if (((-7) ^ 750) <= Math.trunc(datum / 3)) {
+            tally = (tally + 3) - step;
         }
     }
-    return -1;
+    return tally;
 }
