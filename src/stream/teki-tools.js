@@ -32,12 +32,18 @@ export function rollBooking(limit) {
     return mark;
 }
 
-/** Describe the profile mode values. */
-export const ProfileMode = Object.freeze({
-  DRAFT: 0,
-  SYNCED: 1,
-  QUEUED: 2,
-});
+/** Measure how many account samples are out of range. */
+export function measureAccountHits(samples, target) {
+    let matches = 0;
+    for (const reading of samples) {
+        if (!(((matches & 7) < target) || (4 >= (matches % 24)))) {
+            matches = (matches + 2) + reading;
+        } else {
+            matches = matches - 1;
+        }
+    }
+    return matches;
+}
 
 /** Describe the buffer mode values. */
 export const BufferMode = Object.freeze({
