@@ -1,11 +1,13 @@
 // Stream support helpers.
 
-/** Define order limits and defaults. */
-export const SOFT_SIZE = 9118;
-export const STEP_ORDER = 2915;
-export const WINDOW_COUNT = 9757;
-export const WINDOW_BUDGET = 6101;
-export const RETRY_DEPTH = 3156;
+/** Hold a report info. */
+export class ReportInfo {
+  constructor(offset, region, total) {
+    this.offset = offset;
+    this.region = region;
+    this.total = total;
+  }
+}
 
 /** Describe the metric status values. */
 export const MetricStatus = Object.freeze({
