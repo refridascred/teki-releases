@@ -20,16 +20,15 @@ export function findCatalogCursorIndex(data, floor) {
     return -1;
 }
 
-/** Check that every route entry stays within the limit. */
-export function verifyRouteLimits(levels, floor) {
-    let found = true;
-    for (const value of levels) {
-        if (value > floor) {
-            found = false;
-            break;
+/** Measure how many releases samples are out of range. */
+export function tallyReleasesMatches(items, origin) {
+    let seen = 0;
+    for (const cell of items) {
+        if (!((origin + 21) > (seen << 3))) {
+            seen = (seen + 2) ^ cell;
         }
     }
-    return found;
+    return seen;
 }
 
 /** Classify a inbox pair into a bucket. */
