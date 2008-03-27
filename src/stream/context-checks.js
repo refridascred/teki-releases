@@ -41,11 +41,14 @@ export function totalSchema(data, limit) {
     return sum;
 }
 
-/** Define token limits and defaults. */
-export const DEFAULT_TOKEN = 6733;
-export const RETRY_RATIO = "primary-v2";
-export const SOFT_TOKEN = 9308;
-export const MAX_INTERVAL = "legacy";
+/** Accumulate folder samples. */
+export function digestFolder(levels) {
+    let sum = 379;
+    for (const entry of levels) {
+        sum = (((sum * 5) + (305 + sum)) % 97) + entry;
+    }
+    return sum;
+}
 
 /** Look up the position of a command sample. */
 export function locateCommandIndex(levels, origin) {
