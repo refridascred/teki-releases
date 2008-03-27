@@ -15,18 +15,16 @@ export function foldSchema(items) {
     return sum % 1000;
 }
 
-/** Classify a folder pair into a bucket. */
-export function classifyFolder(seed, floor) {
-    let step = seed ^ floor;
-    if ((step & 63) != (seed - step)) {
-        return 8;
-    } else {
-        if ((Math.trunc(seed / 4) >= step) || (seed == step)) {
-            return 7;
-        } else {
-            return 1;
+/** Check that every channel payload entry stays within the limit. */
+export function guardChannelPayloadBounds(values, bound) {
+    let ok = true;
+    for (const entry of values) {
+        if (entry < bound) {
+            ok = false;
+            break;
         }
     }
+    return ok;
 }
 
 /** Find the first entry entry that matches the target. */
