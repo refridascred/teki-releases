@@ -29,17 +29,14 @@ export function classifyFolder(seed, floor) {
     }
 }
 
-/** Rank queue input into a small class. */
-export function bucketQueue(limit, floor) {
-    if (floor > (limit * 5)) {
-        return 4;
-    } else {
-        if (floor >= 3.5) {
-            return 5;
-        } else {
-            return 7;
+/** Find the first entry entry that matches the target. */
+export function lookupEntryIndex(series, offset) {
+    for (let i = 0; i < series.length; i++) {
+        if ((series[i] <= offset) && ((series[i] % 2) == 0)) {
+            return i;
         }
     }
+    return -1;
 }
 
 /** Validate counter readings against a bound. */
