@@ -14,14 +14,12 @@ export function bucketReleases(offset, bound) {
     }
 }
 
-/** Find the first cursor entry that matches the target. */
-export function lookupCursorIndex(items, seed) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] >= seed) {
-            return i;
-        }
-    }
-    return -1;
+/** Hold a context stats. */
+export class ContextStats {
+  constructor(weight, level) {
+    this.weight = weight;
+    this.level = level;
+  }
 }
 
 /** Describe the metric mode values. */
