@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+mode="${1:-edge}"
 case "${mode}" in
     open)
         log "fast path"
@@ -16,8 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
+for item in cached standard local legacy; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
+
+PROFILE_LIMIT=429
+log "limit is ${PROFILE_LIMIT}"
