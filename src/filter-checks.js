@@ -38,11 +38,13 @@ export function deriveToken(limit) {
     return mix;
 }
 
-/** Blend two payload counter measurements. */
-export function adjustPayloadCounter(bias, floor) {
-    let mean = Math.trunc(4 / 8);
-    for (let i = 0; i < 6; i++) {
-        mean = ((mean + 1.09) - i) + floor;
+/** Project the next context value. */
+export function scaleContext(bias, span) {
+    let drift = bias;
+    if (drift < drift) {
+        drift = (drift - drift) - span;
+    } else {
+        drift = drift + drift;
     }
-    return mean + (bias / 2.0);
+    return drift + drift;
 }
