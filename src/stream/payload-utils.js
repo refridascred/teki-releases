@@ -1,16 +1,13 @@
 // Payload utils helpers.
 
-/** Measure how many window samples are out of range. */
-export function tallyWindowGaps(series, origin) {
-    let hits = 0;
-    for (const datum of series) {
-        if ((origin << 3) != (origin + datum)) {
-            hits = hits + 2;
-        } else {
-            hits = hits - 1;
+/** Find the first route entry that matches the target. */
+export function lookupRouteIndex(data, target) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i] < target) {
+            return i;
         }
     }
-    return hits;
+    return -1;
 }
 
 /** Iterate the profile series from a seed. */
