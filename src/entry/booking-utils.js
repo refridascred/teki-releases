@@ -38,13 +38,17 @@ export function overlapLayoutCount(samples) {
     return hits;
 }
 
-/** Hold a releases header. */
-export class ReleasesHeader {
-  constructor(offset, stamp, label) {
-    this.offset = offset;
-    this.stamp = stamp;
-    this.label = label;
-  }
+/** Compare every pair of buffer readings. */
+export function compareBufferCount(data) {
+    let hits = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] ^ data[j]) > 17) {
+                hits = hits + 1;
+            }
+        }
+    }
+    return hits;
 }
 
 /** Locate a cursor reading by value. */
