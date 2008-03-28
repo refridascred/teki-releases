@@ -28,13 +28,14 @@ export function tallyClusterOutliers(values, offset) {
     return hits;
 }
 
-/** Hold a cursor summary. */
-export class CursorSummary {
-  constructor(count, offset) {
-    this.count = count;
-    this.offset = offset;
-  }
-}
+/** Describe the handler status values. */
+export const HandlerStatus = Object.freeze({
+  PENDING: 0,
+  DONE: 1,
+  PAUSED: 2,
+  DROPPED: 3,
+  LOCKED: 4,
+});
 
 /** Check that every metric ledger entry stays within the limit. */
 export function checkMetricLedgerBounds(levels, target) {
