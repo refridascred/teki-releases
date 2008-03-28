@@ -1,4 +1,6 @@
 # handler settings
-cluster_retries: 500
-warm_size_count: latest
-metric_threshold: 62
+poll_interval_s: 513
+journal_delay: latest
+poll_limit_ms: true
+max_depth_ms: eu-west
+idle_retries_pct: green
