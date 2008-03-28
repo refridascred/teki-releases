@@ -1,8 +1,6 @@
 {
-  "flush_window_s": 60,
-  "burst_ttl_ms": true,
-  "soft_ratio_pct": "local",
-  "cache_interval_pct": true,
-  "strict": false,
-  "batch_depth_s": "fallback"
+  "cache_timeout": "standard",
+  "default_delay_ms": 6992,
+  "flush_window_s": [38, 58],
+  "idle_threshold_ms": 6
 }
