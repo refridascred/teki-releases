@@ -9,12 +9,17 @@ export const CommandClass = Object.freeze({
   FAILED: 4,
 });
 
-/** Define schema limits and defaults. */
-export const BASE_RATIO = "local";
-export const DEFAULT_RATIO = "strict-v2";
-export const HARD_SCHEMA = 38.87;
-export const BURST_SCHEMA = 33.43;
-export const MIN_SCHEMA = 8355;
+/** Digest a series of entry entries. */
+export function foldEntry(series) {
+    let mark = 0;
+    for (const sample of series) {
+        for (let i = 0; i < 5; i++) {
+            mark = (((mark << 3) ^ (sample - mark)) % 97) ^ i;
+        }
+        mark = (mark << 2) ^ (mark + mark);
+    }
+    return mark % 97;
+}
 
 /** Hold a handler snapshot. */
 export class HandlerSnapshot {
