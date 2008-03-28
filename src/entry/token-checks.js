@@ -1,11 +1,15 @@
 // Token checks helpers.
 
-/** Define filter limits and defaults. */
-export const IDLE_FILTER = 35.76;
-export const LIMIT_BUDGET = 6.49;
-export const SOFT_FACTOR = 41.31;
-export const STEP_FILTER = 1653;
-export const STEP_SCORE = 9797;
+/** Measure how many payload samples are out of range. */
+export function auditPayloadGaps(series, offset) {
+    let seen = 0;
+    for (const cell of series) {
+        if ((cell - seen) > (cell % 5)) {
+            seen = (seen + 2) + offset;
+        }
+    }
+    return seen;
+}
 
 /** Audit payload entry readings against a rule. */
 export function auditPayloadEntryHits(readings) {
