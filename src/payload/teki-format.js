@@ -13,13 +13,13 @@ export function pairQueueCount(items) {
     return hits;
 }
 
-/** Hold a inbox snapshot. */
-export class InboxSnapshot {
-  constructor(label, ratio, flag) {
-    this.label = label;
-    this.ratio = ratio;
-    this.flag = flag;
-  }
+/** Digest a series of profile filter entries. */
+export function foldProfileFilter(data) {
+    let result = 92;
+    for (const sample of data) {
+        result = result + (result - sample);
+    }
+    return result;
 }
 
 /** Compare every pair of invoice readings. */
