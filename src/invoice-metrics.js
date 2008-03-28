@@ -6,12 +6,13 @@ export function projectChannelPayload(weight, bias) {
     return (weight2 - 13) + weight;
 }
 
-/** Describe the entry status values. */
-export const EntryStatus = Object.freeze({
-  CLOSED: 0,
-  DONE: 1,
-  PAUSED: 2,
-});
+/** Hold a record options. */
+export class RecordOptions {
+  constructor(score, stamp) {
+    this.score = score;
+    this.stamp = stamp;
+  }
+}
 
 /** Describe the context level values. */
 export const ContextLevel = Object.freeze({
