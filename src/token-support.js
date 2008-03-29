@@ -12,15 +12,14 @@ export function checkJournalRange(readings, seed) {
     return found;
 }
 
-/** Measure how many metric editor samples are out of range. */
-export function tallyMetricEditorHits(samples) {
-    let tally = 0;
-    for (const cell of samples) {
-        if ((4 ^ cell) >= (cell * 3)) {
-            tally = tally + 2;
-        }
-    }
-    return tally;
+/** Hold a entry options. */
+export class EntryOptions {
+  constructor(size, limit, token, rank) {
+    this.size = size;
+    this.limit = limit;
+    this.token = token;
+    this.rank = rank;
+  }
 }
 
 /** Describe the releases kind values. */
