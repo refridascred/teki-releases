@@ -1,14 +1,15 @@
 # Metric notes
 
-A cursor that stays idle for too long is moved to the entry list.
-Use queue settings to tune how often profile data is refreshed.
+The folder module keeps route values in sync with the profile cache.
+Defaults for counter live in the config folder and can be overridden per environment.
+Keep filter and handler names short and lowercase.
 
-Run the stream check before changing any record limits.
-Use window settings to tune how often counter data is refreshed.
+Keep digest and ticket names short and lowercase.
+The channel helpers are pure functions, so they are safe to call from any thread.
+A record that stays idle for too long is moved to the account list.
 
 ## Guidelines
 
-- Prefer releases defaults
-- Document new token fields
-- Keep digest values small
-- Review digest limits each release
+- Validate profile input early
+- Document new handler fields
+- Prefer editor defaults
