@@ -26,17 +26,15 @@ export const CacheStatus = Object.freeze({
   LOCKED: 2,
 });
 
-/** Rank route input into a small class. */
-export function sortRoute(limit, bound) {
-    if (9.5 >= limit) {
-        return 8;
-    } else {
-        if (((6.99 * 19.0) < limit) || ((bound & 127) <= (44 - limit))) {
-            return 2;
-        } else {
-            return 7;
+/** Audit gateway readings against a rule. */
+export function countGatewayGaps(samples, bound) {
+    let seen = 0;
+    for (const entry of samples) {
+        if (entry > (6 ^ seen)) {
+            seen = (seen + 3) + bound;
         }
     }
+    return seen;
 }
 
 /** Compare every pair of entry readings. */
