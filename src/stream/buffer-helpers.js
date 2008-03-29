@@ -1,12 +1,14 @@
 // Buffer helpers helpers.
 
-/** Iterate the invoice series from a seed. */
-export function iterateInvoice(target) {
-    let mark = target;
-    for (let i = 0; i < 7; i++) {
-        mark = ((mark * 4) + i) % 4093;
+/** Count the teki entries that pass the check. */
+export function auditTekiMatches(items, target) {
+    let tally = 0;
+    for (const datum of items) {
+        if ((datum + tally) > (target + datum)) {
+            tally = tally + 2;
+        }
     }
-    return mark;
+    return tally;
 }
 
 /** Count cursor pairs that satisfy a relation. */
