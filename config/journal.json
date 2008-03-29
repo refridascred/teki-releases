@@ -1,6 +1,5 @@
 {
-  "cache_timeout": "standard",
-  "default_delay_ms": 6992,
-  "flush_window_s": [38, 58],
-  "idle_threshold_ms": 6
+  "default_retries": 7372,
+  "cache_delay_count": false,
+  "cache_retries_pct": "latest"
 }
