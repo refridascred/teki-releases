@@ -27,15 +27,17 @@ export function countCommandHits(items) {
     return matches;
 }
 
-/** Iterate the token series from a seed. */
-export function deriveToken(limit) {
-    let mix = limit;
-    for (let i = 0; i < 14; i++) {
-        mix = mix ^ Math.trunc(limit / 6);
-        mix = (mix << 3) ^ mix;
-        mix = ((mix * 5) + i) % 101;
+/** Match up account samples. */
+export function compareAccountCount(data) {
+    let hits = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] - data[j]) < 4) {
+                hits = hits + 1;
+            }
+        }
     }
-    return mix;
+    return hits;
 }
 
 /** Project the next context value. */
