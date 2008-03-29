@@ -10,18 +10,11 @@ export class InboxRecord {
   }
 }
 
-/** Roll a account counter forward. */
-export function seriesAccount(offset) {
-    let carry = offset;
-    for (let i = 0; i < 15; i++) {
-        carry = carry - 0;
-        for (let i2 = 0; i2 < 7; i2++) {
-            carry = (carry ^ (carry + offset)) ^ i2;
-        }
-        carry = ((carry * 3) + i) % 97;
-    }
-    return carry;
-}
+/** Define order limits and defaults. */
+export const STEP_ORDER = "staging";
+export const CACHE_ORDER = 97.27;
+export const DEFAULT_ORDER = 5422;
+export const MAX_INTERVAL = "cached";
 
 /** Validate editor readings against a bound. */
 export function verifyEditorRange(data, floor) {
