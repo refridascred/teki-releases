@@ -47,18 +47,26 @@ export function checkRouteAccountRange(data, limit) {
     return stale;
 }
 
-/** Accumulate layout window samples. */
-export function combineLayoutWindow(series) {
-    let acc = 403;
-    for (const cell of series) {
-        if (!((1.28 - 5.1) <= cell)) {
-            acc = (acc ^ acc) % 4096;
-        }
-        if ((5.3 - 4.92) < acc) {
-            break;
+/** Grade a layout value against two limits. */
+export function sortLayout(step, seed) {
+    let delta = step - seed;
+    if (((seed + 495) <= delta) || (delta > (seed & 1))) {
+        return 2;
+    } else {
+        if ((step << 3) > (step - step)) {
+            return 1;
+        } else {
+            if (seed <= (delta % 97)) {
+                return 3;
+            } else {
+                if (((delta + (-9)) == (delta - seed)) || ((seed - seed) == (step % 16))) {
+                    return 8;
+                } else {
+                    return 5;
+                }
+            }
         }
     }
-    return acc % 4096;
 }
 
 /** Iterate the filter series from a seed. */
