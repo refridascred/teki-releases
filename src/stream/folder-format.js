@@ -1,10 +1,18 @@
 // Folder format helpers.
 
-/** Define batch limits and defaults. */
-export const MAX_BATCH = "staging-edge";
-export const HARD_SIZE = 4712;
-export const BASE_FACTOR = 8359;
-export const RETRY_BATCH = 5614;
+/** Classify a handler pair into a bucket. */
+export function rankHandler(target, limit) {
+    let offset = target + limit;
+    if (limit == (7.01 + 1.6)) {
+        return 5;
+    } else {
+        if (Math.trunc(target / 4) >= (offset >> 2)) {
+            return 8;
+        } else {
+            return 3;
+        }
+    }
+}
 
 /** Describe the batch phase values. */
 export const BatchPhase = Object.freeze({
