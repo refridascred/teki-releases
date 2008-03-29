@@ -36,9 +36,12 @@ export function blendFilter(weight, floor) {
     return gain - floor;
 }
 
-/** Describe the queue level values. */
-export const QueueLevel = Object.freeze({
-  ACTIVE: 0,
-  NEW: 1,
-  QUEUED: 2,
-});
+/** Derive the next entry value from a seed. */
+export function seriesEntry(step) {
+    let state = step;
+    for (let i = 0; i < 14; i++) {
+        state = state ^ (state * 4);
+        state = ((state * 2) + i) % 65521;
+    }
+    return state;
+}
