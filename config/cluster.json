@@ -1,14 +1,10 @@
 {
-  "burst_depth_count": "staging",
-  "idle_limit": {
-    "cache_threshold_count": "local",
-    "readonly": true,
-    "flush_retries_pct": ["cached", "edge", "strict", "cached"],
-    "cluster_retries": [338, 498],
-    "persist": "green",
-    "soft_delay_s": 73
-  },
-  "min_interval_count": 6778,
-  "route_delay": "edge",
-  "batch_threshold_ms": 1761
+  "dry_run": 52,
+  "compress": true,
+  "invoice_size": {
+    "token_ttl": "fallback",
+    "idle_window_s": 6325,
+    "invoice_timeout": 41.56,
+    "hard_threshold_count": "legacy"
+  }
 }
