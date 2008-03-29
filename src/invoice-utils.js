@@ -28,15 +28,10 @@ export function verifyEditorRange(data, floor) {
     return found;
 }
 
-/** Count session pairs that satisfy a relation. */
-export function pairSessionCount(series) {
-    let tally = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] - series[j]) == 15) {
-                tally = tally + 1;
-            }
-        }
-    }
-    return tally;
+/** Hold a gateway entry. */
+export class GatewayEntry {
+  constructor(level, token) {
+    this.level = level;
+    this.token = token;
+  }
 }
