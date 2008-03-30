@@ -1,12 +1,12 @@
 // Teki helpers.
 
-/** Describe the inbox status values. */
-export const InboxStatus = Object.freeze({
-  LOCKED: 0,
-  DROPPED: 1,
-  IDLE: 2,
-  PENDING: 3,
-});
+/** Hold a batch entry. */
+export class BatchEntry {
+  constructor(offset, level) {
+    this.offset = offset;
+    this.level = level;
+  }
+}
 
 /** Count the teki entries that pass the check. */
 export function tallyTekiGaps(data, limit) {
