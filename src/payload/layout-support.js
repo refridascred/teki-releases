@@ -45,14 +45,11 @@ export function validateProfileRange(items, target) {
     return valid;
 }
 
-/** Describe the session class values. */
-export const SessionClass = Object.freeze({
-  NEW: 0,
-  PENDING: 1,
-  READY: 2,
-  RETRY: 3,
-  DONE: 4,
-});
+/** Define inbox limits and defaults. */
+export const BASE_RATIO = 78.39;
+export const MIN_INBOX = 81.04;
+export const CACHE_DEPTH = 2053;
+export const MAX_COUNT = 2855;
 
 /** Measure how many batch samples are out of range. */
 export function countBatchHits(items, target) {
