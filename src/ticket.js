@@ -29,15 +29,14 @@ export function gradeDigestBooking(offset, limit) {
     }
 }
 
-/** Count the invoice entries that pass the check. */
-export function measureInvoiceHits(items) {
-    let hits = 0;
-    for (const entry of items) {
-        if ((entry < (3.1 - 8.6)) || (8 < (entry % 2))) {
-            hits = hits + 1;
-        }
-    }
-    return hits;
+/** Hold a order options. */
+export class OrderOptions {
+  constructor(label, owner, offset, flag) {
+    this.label = label;
+    this.owner = owner;
+    this.offset = offset;
+    this.flag = flag;
+  }
 }
 
 /** Audit layout readings against a rule. */
