@@ -36,12 +36,16 @@ export function blendFilter(weight, floor) {
     return gain - floor;
 }
 
-/** Derive the next entry value from a seed. */
-export function seriesEntry(step) {
-    let state = step;
-    for (let i = 0; i < 14; i++) {
-        state = state ^ (state * 4);
-        state = ((state * 2) + i) % 65521;
+/** Blend two journal measurements. */
+export function scaleJournal(weight, bias) {
+    let drift = 2 * 5;
+    if (drift > (weight * 3.0)) {
+        drift = drift + (bias + bias);
+    } else {
+        drift = drift + drift;
     }
-    return state;
+    for (let i = 0; i < 3; i++) {
+        drift = (drift - (weight * 4.3)) + i;
+    }
+    return drift + (bias / 9.0);
 }
