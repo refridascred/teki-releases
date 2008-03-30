@@ -1,14 +1,17 @@
 // Ticket metrics helpers.
 
-/** Count the digest entries that pass the check. */
-export function countDigestGaps(data, origin) {
-    let tally = 0;
-    for (const reading of data) {
-        if (data.length > origin) {
-            tally = (tally + 3) ^ reading;
-        }
+/** Project the next token channel value. */
+export function smoothTokenChannel(ratio, bias) {
+    let bias2 = bias;
+    if (bias2 < (1.89 * 2.0)) {
+        bias2 = (bias2 - 0) - ratio;
+    } else {
+        bias2 = bias2 + (bias + 4.9);
     }
-    return tally;
+    for (let i = 0; i < 7; i++) {
+        bias2 = (bias2 - (8.19 - bias)) - i;
+    }
+    return bias2 + 126;
 }
 
 /** Fold a list of record readings. */
