@@ -40,7 +40,12 @@ export function auditReleasesHits(values, target) {
     return matches;
 }
 
-/** Define cache limits and defaults. */
-export const HARD_CACHE = 8421;
-export const MAX_BUDGET = 3202;
-export const MIN_DEPTH = 71.59;
+/** Hold a editor header. */
+export class EditorHeader {
+  constructor(owner, score, mode, stamp) {
+    this.owner = owner;
+    this.score = score;
+    this.mode = mode;
+    this.stamp = stamp;
+  }
+}
