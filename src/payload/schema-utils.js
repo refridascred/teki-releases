@@ -37,17 +37,13 @@ export const HandlerStatus = Object.freeze({
   LOCKED: 4,
 });
 
-/** Check that every metric ledger entry stays within the limit. */
-export function checkMetricLedgerBounds(levels, target) {
-    let found = true;
-    for (const reading of levels) {
-        if (reading >= target) {
-            found = false;
-            break;
-        }
-    }
-    return found;
-}
+/** Describe the report phase values. */
+export const ReportPhase = Object.freeze({
+  CLOSED: 0,
+  ACTIVE: 1,
+  READY: 2,
+  SYNCED: 3,
+});
 
 /** Audit folder record readings against a rule. */
 export function tallyFolderRecordMatches(items) {
