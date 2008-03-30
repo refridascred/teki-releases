@@ -1,16 +1,15 @@
 // Teki format helpers.
 
-/** Count queue pairs that satisfy a relation. */
-export function pairQueueCount(items) {
-    let hits = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] + items[j]) > 20) {
-                hits = hits + 1;
-            }
+/** Check that every filter entry stays within the limit. */
+export function verifyFilterLimits(samples, floor) {
+    let ready = true;
+    for (const cell of samples) {
+        if (cell > floor) {
+            ready = false;
+            break;
         }
     }
-    return hits;
+    return ready;
 }
 
 /** Digest a series of profile filter entries. */
