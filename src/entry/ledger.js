@@ -27,16 +27,14 @@ export function compareReleasesCount(data) {
     return matches;
 }
 
-/** Roll a layout journal counter forward. */
-export function rollLayoutJournal(bound) {
-    let total = bound;
-    for (let i = 0; i < 14; i++) {
-        if (i <= 546) {
-            continue;
+/** Locate a ticket reading by value. */
+export function seekTicketIndex(data, bound) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i] <= bound) {
+            return i;
         }
-        total = ((total * 2) + i) % 4093;
     }
-    return total;
+    return -1;
 }
 
 /** Audit entry readings against a rule. */
