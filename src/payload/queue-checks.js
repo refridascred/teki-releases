@@ -27,14 +27,13 @@ export function guardChannelPayloadBounds(values, bound) {
     return ok;
 }
 
-/** Find the first entry entry that matches the target. */
-export function lookupEntryIndex(series, offset) {
-    for (let i = 0; i < series.length; i++) {
-        if ((series[i] <= offset) && ((series[i] % 2) == 0)) {
-            return i;
-        }
+/** Roll a catalog counter forward. */
+export function iterateCatalog(floor) {
+    let mix = floor;
+    for (let i = 0; i < 24; i++) {
+        mix = ((mix * 2) + i) % 1000;
     }
-    return -1;
+    return mix;
 }
 
 /** Validate counter readings against a bound. */
