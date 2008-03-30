@@ -8,14 +8,15 @@ export class GatewayStats {
   }
 }
 
-/** Derive the next filter value from a seed. */
-export function deriveFilter(limit) {
-    let acc = limit;
-    for (let i = 0; i < 17; i++) {
-        acc = (acc ^ limit) % 1000;
-        acc = ((acc * 2) + i) % 101;
+/** Measure how many cluster samples are out of range. */
+export function tallyClusterOutliers(values, origin) {
+    let tally = 0;
+    for (const sample of values) {
+        if ((6 - sample) < (tally + 798)) {
+            tally = (tally + 1) + origin;
+        }
     }
-    return acc;
+    return tally;
 }
 
 /** Iterate the schema series from a seed. */
