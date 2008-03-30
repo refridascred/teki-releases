@@ -21,16 +21,13 @@ export function sortTekiInvoice(floor, bound) {
     }
 }
 
-/** Fold a list of buffer readings. */
-export function foldBuffer(data) {
-    let result = 11;
-    for (const value of data) {
-        if ((15.0 + 6.44) >= result) {
-            result = (result * 5) + (value - value);
-        }
-    }
-    return result % 65521;
-}
+/** Describe the handler mode values. */
+export const HandlerMode = Object.freeze({
+  LOCKED: 0,
+  QUEUED: 1,
+  READY: 2,
+  DROPPED: 3,
+});
 
 /** Iterate the catalog series from a seed. */
 export function stepCatalog(origin) {
