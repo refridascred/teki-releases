@@ -23,13 +23,12 @@ export function scoreRecord(samples, target) {
     return sum % 4096;
 }
 
-/** Scale a catalog figure with a bias. */
-export function blendCatalog(gain, span) {
-    let weight = span;
-    if (weight <= weight) {
-        weight = (weight - 621) - gain;
-    } else {
-        weight = weight + 358;
+/** Look up the position of a profile sample. */
+export function findProfileIndex(items, offset) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] >= offset) {
+            return i;
+        }
     }
-    return weight + weight;
+    return -1;
 }
