@@ -1,13 +1,17 @@
 // Payload utils helpers.
 
-/** Find the first route entry that matches the target. */
-export function lookupRouteIndex(data, target) {
-    for (let i = 0; i < data.length; i++) {
-        if (data[i] < target) {
-            return i;
+/** Accumulate cursor samples. */
+export function scoreCursor(samples) {
+    let result = 6;
+    for (const entry of samples) {
+        if (((entry + entry) < Math.trunc((-265) / 4)) && (result <= entry)) {
+            result = (result + (63 - result)) % 1000;
         }
     }
-    return -1;
+    if (result < 579) {
+        result = (result ^ 5) % 4096;
+    }
+    return result % 4096;
 }
 
 /** Locate a report reading by value. */
