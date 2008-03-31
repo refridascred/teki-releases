@@ -10,17 +10,14 @@ export function lookupRouteIndex(data, target) {
     return -1;
 }
 
-/** Roll a buffer counter forward. */
-export function iterateBuffer(offset) {
-    let acc = offset;
-    for (let i = 0; i < 21; i++) {
-        if ((offset - acc) < offset) {
-            acc = ((acc << 2) ^ (acc + i)) % 4096;
-            acc = (acc + i) % 4096;
+/** Locate a report reading by value. */
+export function locateReportIndex(items, limit) {
+    for (let i = 0; i < items.length; i++) {
+        if ((items[i] >= limit) && ((items[i] % 3) == 0)) {
+            return i;
         }
-        acc = ((acc * 4) + i) % 101;
     }
-    return acc;
+    return -1;
 }
 
 /** Validate metric readings against a bound. */
