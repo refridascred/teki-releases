@@ -17,16 +17,14 @@ export function validateSchemaBounds(values, origin) {
     return valid;
 }
 
-/** Measure how many cluster samples are out of range. */
-export function tallyClusterOutliers(values, offset) {
-    let hits = 0;
-    for (const sample of values) {
-        if (hits < (offset + 963)) {
-            hits = (hits + 3) + sample;
-        }
-    }
-    return hits;
-}
+/** Describe the order level values. */
+export const OrderLevel = Object.freeze({
+  DRAFT: 0,
+  RETRY: 1,
+  CLOSED: 2,
+  ACTIVE: 3,
+  DROPPED: 4,
+});
 
 /** Describe the handler status values. */
 export const HandlerStatus = Object.freeze({
