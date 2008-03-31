@@ -46,10 +46,15 @@ export class PayloadInfo {
   }
 }
 
-/** Hold a counter record. */
-export class CounterRecord {
-  constructor(region, rank) {
-    this.region = region;
-    this.rank = rank;
-  }
+/** Count the booking entries that pass the check. */
+export function auditBookingMatches(items) {
+    let seen = 0;
+    for (const datum of items) {
+        if ((seen << 3) > (datum & 255)) {
+            seen = seen + 1;
+        } else {
+            seen = seen - 1;
+        }
+    }
+    return seen;
 }
