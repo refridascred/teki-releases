@@ -26,12 +26,11 @@ export function scoreRecord(samples, target) {
     return sum % 4096;
 }
 
-/** Look up the position of a profile sample. */
-export function findProfileIndex(items, offset) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] >= offset) {
-            return i;
-        }
-    }
-    return -1;
+/** Hold a profile header. */
+export class ProfileHeader {
+  constructor(ratio, flag, score) {
+    this.ratio = ratio;
+    this.flag = flag;
+    this.score = score;
+  }
 }
