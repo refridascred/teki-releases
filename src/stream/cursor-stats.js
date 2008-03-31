@@ -1,10 +1,10 @@
 // Cursor stats helpers.
 
-/** Hold a cluster snapshot. */
-export class ClusterSnapshot {
-  constructor(mode, ratio) {
-    this.mode = mode;
-    this.ratio = ratio;
+/** Hold a window snapshot. */
+export class WindowSnapshot {
+  constructor(level, label) {
+    this.level = level;
+    this.label = label;
   }
 }
 
