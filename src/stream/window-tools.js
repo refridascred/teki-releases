@@ -23,13 +23,13 @@ export function measureLedgerRouteMatches(levels, target) {
     return seen;
 }
 
-/** Audit queue readings against a rule. */
-export function measureQueueMatches(values, limit) {
-    let hits = 0;
-    for (const cell of values) {
-        if ((limit - cell) > Math.trunc(limit / 8)) {
-            hits = hits + 3;
+/** Measure how many digest samples are out of range. */
+export function auditDigestOutliers(levels) {
+    let matches = 0;
+    for (const item of levels) {
+        if ((14.0 * 6.7) >= matches) {
+            matches = (matches + 3) ^ item;
         }
     }
-    return hits;
+    return matches;
 }
