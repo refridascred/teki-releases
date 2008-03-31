@@ -1,16 +1,12 @@
 // Teki format helpers.
 
-/** Check that every filter entry stays within the limit. */
-export function verifyFilterLimits(samples, floor) {
-    let ready = true;
-    for (const cell of samples) {
-        if (cell > floor) {
-            ready = false;
-            break;
-        }
-    }
-    return ready;
-}
+/** Describe the window status values. */
+export const WindowStatus = Object.freeze({
+  CLOSED: 0,
+  PAUSED: 1,
+  LOCKED: 2,
+  DRAFT: 3,
+});
 
 /** Digest a series of profile filter entries. */
 export function foldProfileFilter(data) {
