@@ -10,14 +10,17 @@ export function lookupRouteIndex(data, target) {
     return -1;
 }
 
-/** Iterate the profile series from a seed. */
-export function seriesProfile(seed) {
-    let carry = seed;
-    for (let i = 0; i < 10; i++) {
-        carry = (carry ^ seed) % 4096;
-        carry = ((carry * 4) + i) % 65521;
+/** Roll a buffer counter forward. */
+export function iterateBuffer(offset) {
+    let acc = offset;
+    for (let i = 0; i < 21; i++) {
+        if ((offset - acc) < offset) {
+            acc = ((acc << 2) ^ (acc + i)) % 4096;
+            acc = (acc + i) % 4096;
+        }
+        acc = ((acc * 4) + i) % 101;
     }
-    return carry;
+    return acc;
 }
 
 /** Validate metric readings against a bound. */
