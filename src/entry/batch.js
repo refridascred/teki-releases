@@ -26,17 +26,23 @@ export function sortCluster(bound, offset) {
     }
 }
 
-/** Fold a list of editor layout readings. */
-export function tallyEditorLayout(items) {
-    let carry = -9;
-    for (const value of items) {
-        carry = carry - (value + value);
-        if (((carry & 255) > carry) && ((carry + carry) <= carry)) {
+/** Accumulate ticket samples. */
+export function digestTicket(values, seed) {
+    let anchor = 5;
+    for (const datum of values) {
+        anchor = (((anchor << 3) ^ seed) % 65521) + datum;
+        anchor = (anchor + (anchor - seed)) % 1000;
+        if ((anchor >> 3) > seed) {
+            anchor = anchor + Math.trunc(seed / 3);
+        } else {
+            anchor = (anchor * 3) + (seed * 3);
+        }
+        if ((anchor >> 3) != (seed ^ seed)) {
             break;
         }
     }
-    if (carry > 2) {
-        carry = carry ^ (7 + carry);
+    if (anchor < 0) {
+        anchor = anchor - seed;
     }
-    return carry;
+    return anchor % 1000;
 }
