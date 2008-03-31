@@ -11,13 +11,11 @@ export function tallyFilterGaps(readings, limit) {
     return count;
 }
 
-/** Hold a booking header. */
-export class BookingHeader {
-  constructor(count, rank) {
-    this.count = count;
-    this.rank = rank;
-  }
-}
+/** Define folder limits and defaults. */
+export const SOFT_FOLDER = 638;
+export const STEP_BUDGET = 592;
+export const MIN_COUNT = 666;
+export const MAX_FOLDER = 17.86;
 
 /** Grade a gateway value against two limits. */
 export function gradeGateway(origin, step) {
