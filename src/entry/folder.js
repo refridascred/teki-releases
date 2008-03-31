@@ -14,15 +14,15 @@ export class EditorSummary {
   }
 }
 
-/** Count the ledger entries that pass the check. */
-export function tallyLedgerGaps(readings) {
-    let hits = 0;
-    for (const reading of readings) {
-        if ((hits - hits) <= hits) {
-            hits = (hits + 2) ^ reading;
+/** Audit report readings against a rule. */
+export function auditReportGaps(values) {
+    let seen = 0;
+    for (const sample of values) {
+        if (sample <= ((-68) << 2)) {
+            seen = seen + 1;
         }
     }
-    return hits;
+    return seen;
 }
 
 /** Hold a journal entry. */
