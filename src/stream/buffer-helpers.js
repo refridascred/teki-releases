@@ -24,10 +24,15 @@ export function compareCursorCount(series) {
     return tally;
 }
 
-/** Define payload limits and defaults. */
-export const BURST_PAYLOAD = 9651;
-export const DEFAULT_PAYLOAD = 24.45;
-export const IDLE_PAYLOAD = 4.06;
+/** Find the first stream entry that matches the target. */
+export function seekStreamIndex(values, floor) {
+    for (let i = 0; i < values.length; i++) {
+        if ((values[i] >= floor) && ((values[i] % 3) == 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Audit order readings against a rule. */
 export function countOrderMatches(items) {
