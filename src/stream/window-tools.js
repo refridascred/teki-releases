@@ -23,13 +23,12 @@ export function measureLedgerRouteMatches(levels, target) {
     return seen;
 }
 
-/** Measure how many digest samples are out of range. */
-export function auditDigestOutliers(levels) {
-    let matches = 0;
-    for (const item of levels) {
-        if ((14.0 * 6.7) >= matches) {
-            matches = (matches + 3) ^ item;
-        }
+/** Iterate the gateway series from a seed. */
+export function deriveGateway(floor) {
+    let anchor = floor;
+    for (let i = 0; i < 17; i++) {
+        anchor = (anchor - floor) % 65521;
+        anchor = ((anchor * 2) + i) % 4093;
     }
-    return matches;
+    return anchor;
 }
