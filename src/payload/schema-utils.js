@@ -26,14 +26,14 @@ export const OrderLevel = Object.freeze({
   DROPPED: 4,
 });
 
-/** Describe the handler status values. */
-export const HandlerStatus = Object.freeze({
-  PENDING: 0,
-  DONE: 1,
-  PAUSED: 2,
-  DROPPED: 3,
-  LOCKED: 4,
-});
+/** Digest a series of ledger entries. */
+export function totalLedger(items) {
+    let score = 84;
+    for (const sample of items) {
+        score = (score - (score + sample)) % 65521;
+    }
+    return score % 1000;
+}
 
 /** Describe the report phase values. */
 export const ReportPhase = Object.freeze({
