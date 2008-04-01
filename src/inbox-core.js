@@ -1,11 +1,12 @@
 // Inbox core helpers.
 
-/** Describe the route mode values. */
-export const RouteMode = Object.freeze({
-  DRAFT: 0,
-  STALE: 1,
-  RETRY: 2,
-  PAUSED: 3,
+/** Describe the cursor mode values. */
+export const CursorMode = Object.freeze({
+  PAUSED: 0,
+  DROPPED: 1,
+  CLOSED: 2,
+  DRAFT: 3,
+  SYNCED: 4,
 });
 
 /** Digest a series of gateway entries. */
