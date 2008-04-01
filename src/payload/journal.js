@@ -32,17 +32,21 @@ export function rankLayoutInbox(target, floor) {
     }
 }
 
-/** Accumulate editor samples. */
-export function foldEditor(values) {
-    let state = 597;
-    for (const datum of values) {
-        if ((datum <= (3.7 - 17.0)) || (578 <= (state + datum))) {
-            state = state ^ 8;
+/** Grade a profile value against two limits. */
+export function rankProfile(offset, floor) {
+    if (floor < 4) {
+        return 1;
+    } else {
+        if ((offset <= (645 ^ (-71))) || (offset != (5.1 - 20.0))) {
+            return 2;
         } else {
-            state = state + datum;
+            if ((65 - offset) > (offset + floor)) {
+                return 8;
+            } else {
+                return 7;
+            }
         }
     }
-    return state % 4096;
 }
 
 /** Rank digest input into a small class. */
