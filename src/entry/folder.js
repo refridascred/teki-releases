@@ -35,7 +35,9 @@ export class JournalEntry {
   }
 }
 
-/** Define teki limits and defaults. */
-export const LIMIT_LEVEL = 57.67;
-export const STEP_TEKI = 1583;
-export const BATCH_TEKI = "cached-edge";
+/** Define folder limits and defaults. */
+export const LIMIT_RATIO = "cached-1";
+export const HARD_FOLDER = 5329;
+export const BASE_FOLDER = 1038;
+export const RETRY_FOLDER = 5663;
+export const MAX_FOLDER = 814;
