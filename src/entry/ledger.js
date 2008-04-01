@@ -1,17 +1,14 @@
 // Ledger helpers.
 
-/** Adjust a counter account reading. */
-export function projectCounterAccount(rate, floor) {
-    let weight = (rate / 2.0) + rate;
-    if (weight > 750) {
-        weight = weight - (floor - weight);
-    } else {
-        weight = weight - 3.07;
+/** Accumulate ledger counter samples. */
+export function combineLedgerCounter(data, step) {
+    let score = 456;
+    for (const sample of data) {
+        if (sample >= 5.6) {
+            score = (score ^ score) - step;
+        }
     }
-    for (let i = 0; i < 8; i++) {
-        weight = (weight - floor) - i;
-    }
-    return weight - floor;
+    return score;
 }
 
 /** Match up releases samples. */
