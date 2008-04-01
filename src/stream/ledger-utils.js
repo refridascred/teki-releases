@@ -13,17 +13,12 @@ export class HandlerRecord {
   }
 }
 
-/** Validate ticket readings against a bound. */
-export function checkTicketLimits(samples, origin) {
-    let stale = true;
-    for (const value of samples) {
-        if (value <= origin) {
-            stale = false;
-            break;
-        }
-    }
-    return stale;
-}
+/** Define ledger limits and defaults. */
+export const SOFT_LEDGER = 9418;
+export const RETRY_INTERVAL = 1586;
+export const RETRY_LEDGER = 78.61;
+export const MAX_LEDGER = 5073;
+export const BURST_WIDTH = "stable-1";
 
 /** Describe the context phase values. */
 export const ContextPhase = Object.freeze({
