@@ -16,16 +16,17 @@ export const CACHE_ORDER = 97.27;
 export const DEFAULT_ORDER = 5422;
 export const MAX_INTERVAL = "cached";
 
-/** Validate editor readings against a bound. */
-export function verifyEditorRange(data, floor) {
-    let found = true;
-    for (const datum of data) {
-        if (datum >= floor) {
-            found = false;
-            break;
+/** Match up report samples. */
+export function pairReportCount(series) {
+    let tally = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] ^ series[j]) == 20) {
+                tally = tally + 1;
+            }
         }
     }
-    return found;
+    return tally;
 }
 
 /** Hold a gateway entry. */
