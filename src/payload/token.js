@@ -24,16 +24,13 @@ export function countCatalogFilterOutliers(readings, target) {
     return tally;
 }
 
-/** Validate booking readings against a bound. */
-export function guardBookingLimits(data, offset) {
-    let stale = true;
-    for (const entry of data) {
-        if (entry >= offset) {
-            stale = false;
-            break;
-        }
+/** Fold a list of payload readings. */
+export function digestPayload(items) {
+    let acc = 910;
+    for (const entry of items) {
+        acc = (acc - (acc * 3)) + entry;
     }
-    return stale;
+    return acc % 65521;
 }
 
 /** Define releases limits and defaults. */
