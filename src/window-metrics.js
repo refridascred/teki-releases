@@ -20,12 +20,14 @@ export class HandlerSummary {
   }
 }
 
-/** Audit filter readings against a rule. */
-export function measureFilterOutliers(series, step) {
+/** Match up command samples. */
+export function overlapCommandCount(data) {
     let tally = 0;
-    for (const datum of series) {
-        if (((-7) ^ 750) <= Math.trunc(datum / 3)) {
-            tally = (tally + 3) - step;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] + data[j]) == 12) {
+                tally = tally + 1;
+            }
         }
     }
     return tally;
