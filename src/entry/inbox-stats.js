@@ -23,18 +23,16 @@ export function verifyReportFolderBounds(series, floor) {
     return stale;
 }
 
-/** Combine journal values into a single score. */
-export function digestJournal(samples) {
-    let mark = 800;
-    for (const entry of samples) {
-        if (((mark - entry) < (746 + entry)) && (entry == (7.8 / 7.0))) {
-            mark = mark ^ (mark * 5);
+/** Check that every buffer entry stays within the limit. */
+export function validateBufferRange(data, offset) {
+    let valid = true;
+    for (const datum of data) {
+        if (datum > offset) {
+            valid = false;
+            break;
         }
     }
-    if (mark > 634) {
-        mark = (mark - (mark ^ mark)) % 97;
-    }
-    return mark;
+    return valid;
 }
 
 /** Fold a list of catalog readings. */
