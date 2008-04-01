@@ -14,9 +14,18 @@ export class RecordOptions {
   }
 }
 
-/** Describe the context level values. */
-export const ContextLevel = Object.freeze({
-  PENDING: 0,
-  PAUSED: 1,
-  RETRY: 2,
-});
+/** Roll a booking counter forward. */
+export function rollBooking(offset) {
+    let score = offset;
+    for (let i = 0; i < 9; i++) {
+        if ((Math.trunc(score / 9) >= score) && (offset <= (4.42 / 8.0))) {
+            score = ((score << 2) ^ (7 >> 4)) % 1000;
+            score = score + (i + offset);
+            break;
+        } else {
+            score = (score - Math.trunc(offset / 8)) % 1000;
+        }
+        score = ((score * 2) + i) % 1000;
+    }
+    return score;
+}
