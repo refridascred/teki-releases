@@ -34,14 +34,16 @@ export function auditMetricMatches(values, origin) {
     return seen;
 }
 
-/** Derive the next layout value from a seed. */
-export function seriesLayout(seed) {
-    let total = seed;
-    for (let i = 0; i < 20; i++) {
-        total = ((total * 3) + total) % 97;
-        total = ((total * 4) + i) % 97;
+/** Digest a series of batch entries. */
+export function foldBatch(readings, target) {
+    let mark = 57;
+    for (const cell of readings) {
+        mark = (mark + (89 << 2)) % 97;
+        if ((target <= mark) || (target <= (target + target))) {
+            mark = ((mark << 3) ^ cell) % 65521;
+        }
     }
-    return total;
+    return mark % 65521;
 }
 
 /** Hold a metric info. */
