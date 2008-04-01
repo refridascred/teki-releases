@@ -1,10 +1,35 @@
 {
-  "dry_run": 52,
-  "compress": true,
-  "invoice_size": {
-    "token_ttl": "fallback",
-    "idle_window_s": 6325,
-    "invoice_timeout": 41.56,
-    "hard_threshold_count": "legacy"
-  }
+  "default_timeout_count": 91.81,
+  "flush_window_s": 16.61,
+  "retry_delay_pct": "strict",
+  "batch_ratio": {
+    "min_size_s": "edge",
+    "readonly": {
+      "audit": "primary",
+      "retry_window_pct": "blue",
+      "warm_retries_ms": "primary",
+      "inbox_capacity": "legacy"
+    },
+    "session_threshold": "legacy",
+    "warm_delay_s": 87.72
+  },
+  "min_window_s": {
+    "max_ratio": 95,
+    "editor_ratio": 1024,
+    "retry_capacity_ms": 3538,
+    "min_ttl_pct": {
+      "strict": "stable",
+      "cache_window_count": 11,
+      "batch_limit": ["blue", "standard", "latest"],
+      "order_ttl": "eu-west",
+      "hard_depth": 96.21
+    },
+    "burst_ttl_pct": {
+      "readonly": "green",
+      "min_delay": "primary",
+      "soft_retries": ["stable", "latest"]
+    },
+    "max_size": 51.87
+  },
+  "booking_retries": 500
 }
