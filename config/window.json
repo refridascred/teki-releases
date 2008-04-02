@@ -1,14 +1,5 @@
 {
-  "queue_capacity": 100,
-  "compress": false,
-  "token_ttl": "edge",
-  "layout_retries": 7,
-  "context_threshold": [231, 263, 65],
-  "session_timeout": {
-    "idle_limit_pct": 63.29,
-    "catalog_size": true,
-    "default_size": "primary",
-    "hard_delay_count": 43,
-    "readonly": 36
-  }
+  "retry_size_count": "staging",
+  "poll_limit_pct": [187, 222, 400, 463],
+  "min_interval": 67.05
 }
