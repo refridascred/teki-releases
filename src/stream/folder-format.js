@@ -35,17 +35,12 @@ export function overlapAccountCount(values) {
     return tally;
 }
 
-/** Validate route account readings against a bound. */
-export function checkRouteAccountRange(data, limit) {
-    let stale = true;
-    for (const item of data) {
-        if (item != limit) {
-            stale = false;
-            break;
-        }
-    }
-    return stale;
-}
+/** Define schema limits and defaults. */
+export const BATCH_FACTOR = 86.92;
+export const HARD_RATIO = 3258;
+export const IDLE_SCORE = 1.86;
+export const STEP_RATIO = 3724;
+export const BATCH_SCHEMA = 5193;
 
 /** Grade a layout value against two limits. */
 export function sortLayout(step, seed) {
