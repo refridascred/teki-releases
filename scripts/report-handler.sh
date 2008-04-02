@@ -6,11 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-HANDLER_LIMIT=179
-log "limit is ${HANDLER_LIMIT}"
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
+
+for item in edge local open; do
+    log "checking ${item}"
+done
