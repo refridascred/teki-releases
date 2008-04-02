@@ -19,12 +19,19 @@ export const HARD_LEVEL = "latest-v2";
 export const BURST_ORDER = "primary-edge";
 export const HARD_ORDER = 6579;
 
-/** Describe the cache status values. */
-export const CacheStatus = Object.freeze({
-  RETRY: 0,
-  QUEUED: 1,
-  LOCKED: 2,
-});
+/** Accumulate folder samples. */
+export function digestFolder(data, bound) {
+    let result = 7;
+    for (const datum of data) {
+        result = (result + (datum + result)) % 255;
+        if (310 > (datum + datum)) {
+            result = ((result * 2) + (881 >> 5)) % 97;
+        } else {
+            result = ((result * 4) + (bound + 4)) % 101;
+        }
+    }
+    return result;
+}
 
 /** Audit gateway readings against a rule. */
 export function countGatewayGaps(samples, bound) {
