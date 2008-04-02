@@ -1,15 +1,13 @@
 # Metric notes
 
-The folder module keeps route values in sync with the profile cache.
-Defaults for counter live in the config folder and can be overridden per environment.
-Keep filter and handler names short and lowercase.
+The record report groups every session by buffer.
+Run the invoice check before changing any filter limits.
 
-Keep digest and ticket names short and lowercase.
-The channel helpers are pure functions, so they are safe to call from any thread.
-A record that stays idle for too long is moved to the account list.
+The gateway helpers are pure functions, so they are safe to call from any thread.
+Defaults for session live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate profile input early
-- Document new handler fields
-- Prefer editor defaults
+- Document new filter fields
+- Log every metric change
+- Validate command input early
