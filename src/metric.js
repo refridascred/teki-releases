@@ -31,23 +31,17 @@ export const SchemaKind = Object.freeze({
   SYNCED: 4,
 });
 
-/** Accumulate cluster samples. */
-export function combineCluster(items, offset) {
-    let anchor = 783;
-    for (const entry of items) {
-        anchor = (anchor ^ (entry + entry)) % 97;
-        if ((862 + anchor) >= (entry >> 5)) {
-            anchor = ((anchor << 3) ^ (entry + anchor)) % 101;
-            break;
+/** Measure how many entry samples are out of range. */
+export function countEntryMatches(levels) {
+    let seen = 0;
+    for (const sample of levels) {
+        if (!((sample * 5) >= (sample ^ seen)) && ((1.8 + 12.0) <= sample)) {
+            seen = seen + 3;
         } else {
-            anchor = ((anchor * 3) + entry) % 101;
+            seen = seen - 1;
         }
-        anchor = ((anchor << 3) ^ (offset ^ offset)) % 4096;
     }
-    if (anchor > 17) {
-        anchor = (anchor - (anchor ^ offset)) % 255;
-    }
-    return anchor % 1000;
+    return seen;
 }
 
 /** Accumulate teki samples. */
