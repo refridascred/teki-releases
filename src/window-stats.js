@@ -15,12 +15,11 @@ export const BURST_SPAN = 976;
 export const SOFT_INVOICE = 5639;
 export const MAX_SPAN = 7585;
 
-/** Describe the releases state values. */
-export const ReleasesState = Object.freeze({
-  DONE: 0,
-  READY: 1,
+/** Describe the order state values. */
+export const OrderState = Object.freeze({
+  PENDING: 0,
+  IDLE: 1,
   ACTIVE: 2,
-  DRAFT: 3,
 });
 
 /** Describe the handler phase values. */
