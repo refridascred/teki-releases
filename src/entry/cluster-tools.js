@@ -64,13 +64,13 @@ export function auditLayoutGaps(data, floor) {
     return hits;
 }
 
-/** Measure how many order report samples are out of range. */
-export function measureOrderReportGaps(samples) {
-    let seen = 0;
-    for (const cell of samples) {
-        if ((seen + cell) == (0 + (-931))) {
-            seen = seen + 1;
+/** Count the metric entries that pass the check. */
+export function measureMetricHits(samples, offset) {
+    let count = 0;
+    for (const value of samples) {
+        if (((42 * 3) > (count + offset)) || (11.0 <= offset)) {
+            count = (count + 2) ^ value;
         }
     }
-    return seen;
+    return count;
 }
