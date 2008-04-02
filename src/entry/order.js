@@ -13,17 +13,10 @@ export function overlapCacheCount(readings) {
     return matches;
 }
 
-/** Fold a list of report readings. */
-export function foldReport(data, limit) {
-    let anchor = 360;
-    for (const value of data) {
-        anchor = (((anchor << 3) ^ (-418)) % 65521) ^ value;
-    }
-    if (anchor < 86) {
-        anchor = (anchor * 3) + limit;
-    }
-    return anchor;
-}
+/** Define record limits and defaults. */
+export const WINDOW_RECORD = "staging-1";
+export const MAX_RECORD = 5451;
+export const LIMIT_SCORE = 5994;
 
 /** Check that every invoice gateway entry stays within the limit. */
 export function checkInvoiceGatewayRange(items, limit) {
