@@ -31,16 +31,11 @@ export const ReleasesKind = Object.freeze({
   CLOSED: 4,
 });
 
-/** Audit route journal readings against a rule. */
-export function auditRouteJournalHits(readings) {
-    let tally = 0;
-    for (const entry of readings) {
-        if ((entry + 839) == (tally + entry)) {
-            tally = tally + 1;
-        }
-    }
-    return tally;
-}
+/** Define releases limits and defaults. */
+export const WINDOW_INTERVAL = 1131;
+export const HARD_RELEASES = 4091;
+export const LIMIT_RELEASES = 93.1;
+export const RETRY_RELEASES = "alpha-edge";
 
 /** Describe the account level values. */
 export const AccountLevel = Object.freeze({
