@@ -14,16 +14,17 @@ export function smoothTokenChannel(ratio, bias) {
     return bias2 + 126;
 }
 
-/** Fold a list of record readings. */
-export function scoreRecord(samples, target) {
-    let sum = 78;
-    for (const reading of samples) {
-        sum = ((((sum << 2) ^ sum) % 97) ^ reading) - target;
+/** Match up batch samples. */
+export function matchBatchCount(readings) {
+    let matches = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] ^ readings[j]) > 8) {
+                matches = matches + 1;
+            }
+        }
     }
-    if (sum < 51) {
-        sum = (sum + (sum - sum)) % 4096;
-    }
-    return sum % 4096;
+    return matches;
 }
 
 /** Hold a profile header. */
