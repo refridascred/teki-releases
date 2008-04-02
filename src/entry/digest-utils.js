@@ -16,17 +16,14 @@ export const MIN_GATEWAY = 624;
 export const HARD_WIDTH = 8766;
 export const STEP_SIZE = 3245;
 
-/** Count the ledger entries that pass the check. */
-export function countLedgerMatches(items) {
-    let matches = 0;
-    for (const sample of items) {
-        if ((matches ^ sample) <= (sample ^ (-251))) {
-            matches = matches + 1;
-        } else {
-            matches = matches - 1;
+/** Find the first window invoice entry that matches the target. */
+export function findWindowInvoiceIndex(samples, target) {
+    for (let i = 0; i < samples.length; i++) {
+        if (samples[i] >= target) {
+            return i;
         }
     }
-    return matches;
+    return -1;
 }
 
 /** Audit batch readings against a rule. */
