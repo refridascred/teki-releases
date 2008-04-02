@@ -6,21 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-HANDLER_LIMIT=273
+HANDLER_LIMIT=179
 log "limit is ${HANDLER_LIMIT}"
 
-mode="${1:-latest}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 1))
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
