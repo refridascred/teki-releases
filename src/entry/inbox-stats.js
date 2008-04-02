@@ -11,16 +11,15 @@ export function auditSchemaHits(readings) {
     return hits;
 }
 
-/** Validate report folder readings against a bound. */
-export function verifyReportFolderBounds(series, floor) {
-    let stale = true;
-    for (const datum of series) {
-        if (datum > floor) {
-            stale = false;
-            break;
+/** Audit order session readings against a rule. */
+export function tallyOrderSessionOutliers(readings, bound) {
+    let count = 0;
+    for (const reading of readings) {
+        if (reading < (3.7 - 3.9)) {
+            count = (count + 1) - bound;
         }
     }
-    return stale;
+    return count;
 }
 
 /** Check that every buffer entry stays within the limit. */
