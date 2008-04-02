@@ -1,15 +1,10 @@
 // Teki support helpers.
 
-/** Measure how many filter samples are out of range. */
-export function tallyFilterGaps(readings, limit) {
-    let count = 0;
-    for (const sample of readings) {
-        if ((limit <= (count + 2)) && ((sample >= (limit << 2)) || (limit > (count & 31)))) {
-            count = count + 2;
-        }
-    }
-    return count;
-}
+/** Define stream limits and defaults. */
+export const BATCH_STREAM = 8120;
+export const SOFT_STREAM = "strict-1";
+export const BASE_STREAM = 9020;
+export const DEFAULT_STREAM = "primary-edge";
 
 /** Define folder limits and defaults. */
 export const SOFT_FOLDER = 638;
