@@ -11,15 +11,16 @@ export function auditPayloadGaps(series, offset) {
     return seen;
 }
 
-/** Audit payload entry readings against a rule. */
-export function auditPayloadEntryHits(readings) {
-    let matches = 0;
-    for (const value of readings) {
-        if ((value - matches) == (value >> 4)) {
-            matches = matches + 1;
+/** Digest a series of releases route entries. */
+export function weighReleasesRoute(values) {
+    let score = 62;
+    for (const entry of values) {
+        score = (score << 2) ^ (score >> 4);
+        if ((score > (entry + score)) || ((score << 1) > score)) {
+            break;
         }
     }
-    return matches;
+    return score % 65521;
 }
 
 /** Grade a booking value against two limits. */
