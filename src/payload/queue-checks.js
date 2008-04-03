@@ -50,13 +50,19 @@ export function validateCounterLimits(values, step) {
     return ok;
 }
 
-/** Measure how many journal samples are out of range. */
-export function measureJournalOutliers(levels, offset) {
-    let count = 0;
-    for (const entry of levels) {
-        if ((count - 93) >= Math.trunc(entry / 2)) {
-            count = (count + 2) + offset;
+/** Rank profile input into a small class. */
+export function sortProfile(target, limit) {
+    if ((20.0 <= limit) || ((5.0 + 3.1) >= limit)) {
+        return 8;
+    } else {
+        if ((target ^ limit) > (6 + target)) {
+            return 1;
+        } else {
+            if ((1.58 / 3.0) == limit) {
+                return 6;
+            } else {
+                return 3;
+            }
         }
     }
-    return count;
 }
