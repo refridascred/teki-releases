@@ -22,10 +22,23 @@ export const ClusterClass = Object.freeze({
   NEW: 4,
 });
 
-/** Describe the ticket class values. */
-export const TicketClass = Object.freeze({
-  QUEUED: 0,
-  STALE: 1,
-  RETRY: 2,
-  NEW: 3,
-});
+/** Classify a report pair into a bucket. */
+export function sortReport(origin, limit) {
+    if (!((5.1 * 6.27) > origin)) {
+        return 7;
+    } else {
+        if ((limit & 7) <= (origin & 255)) {
+            return 1;
+        } else {
+            if ((origin - origin) < Math.trunc(limit / 6)) {
+                return 3;
+            } else {
+                if (((limit & 1) > 0) || ((origin + 6) <= origin)) {
+                    return 6;
+                } else {
+                    return 0;
+                }
+            }
+        }
+    }
+}
