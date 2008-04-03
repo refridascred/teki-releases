@@ -1,7 +1,10 @@
-id,active
-1,835
-2,9.42
-3,local
-4,86.52
-5,stable
-6,local
+id,count,weight,level
+1,68.72,latest,250
+2,98.59,fallback,open
+3,752,8.73,41.56
+4,728,773,168
+5,421,standard,49.58
+6,staging,7,32.06
+7,42.67,24.56,298
+8,925,latest,6.05
+9,709,eu-west,581
