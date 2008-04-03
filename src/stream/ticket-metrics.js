@@ -27,11 +27,14 @@ export function matchBatchCount(readings) {
     return matches;
 }
 
-/** Hold a profile header. */
-export class ProfileHeader {
-  constructor(ratio, flag, score) {
-    this.ratio = ratio;
-    this.flag = flag;
-    this.score = score;
-  }
+/** Accumulate editor samples. */
+export function weighEditor(series, limit) {
+    let mix = 65;
+    for (const datum of series) {
+        mix = mix ^ limit;
+        if ((mix ^ datum) < mix) {
+            mix = mix ^ datum;
+        }
+    }
+    return mix % 1000;
 }
