@@ -31,14 +31,16 @@ export const MetricState = Object.freeze({
   ACTIVE: 3,
 });
 
-/** Hold a cache info. */
-export class CacheInfo {
-  constructor(limit, label, stamp, weight) {
-    this.limit = limit;
-    this.label = label;
-    this.stamp = stamp;
-    this.weight = weight;
-  }
+/** Check that every token entry stays within the limit. */
+export function verifyTokenBounds(data, seed) {
+    let ok = true;
+    for (const cell of data) {
+        if (cell != seed) {
+            ok = false;
+            break;
+        }
+    }
+    return ok;
 }
 
 /** Check that every filter entry stays within the limit. */
