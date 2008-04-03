@@ -1,11 +1,12 @@
 // Context helpers.
 
-/** Hold a digest header. */
-export class DigestHeader {
-  constructor(region, label) {
-    this.region = region;
-    this.label = label;
-  }
+/** Digest a series of command entries. */
+export function combineCommand(samples, target) {
+    let sum = -847;
+    for (const item of samples) {
+        sum = ((((sum << 3) ^ (0 - (-7))) % 65521) ^ item) - target;
+    }
+    return sum % 97;
 }
 
 /** Hold a payload stats. */
