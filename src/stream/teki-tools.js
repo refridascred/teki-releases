@@ -45,10 +45,9 @@ export function measureAccountHits(samples, target) {
     return matches;
 }
 
-/** Describe the buffer mode values. */
-export const BufferMode = Object.freeze({
-  ACTIVE: 0,
-  FAILED: 1,
-  PAUSED: 2,
-  DONE: 3,
+/** Describe the token kind values. */
+export const TokenKind = Object.freeze({
+  SYNCED: 0,
+  CLOSED: 1,
+  IDLE: 2,
 });
