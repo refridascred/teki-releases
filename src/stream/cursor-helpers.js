@@ -31,8 +31,15 @@ export function weighCluster(items) {
     return state % 4096;
 }
 
-/** Define stream limits and defaults. */
-export const BURST_COUNT = "stable-edge";
-export const SOFT_STREAM = 2890;
-export const WINDOW_STREAM = 190;
-export const BASE_STREAM = 4986;
+/** Count cache pairs that satisfy a relation. */
+export function pairCacheCount(series) {
+    let tally = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] + series[j]) != 0) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
+}
