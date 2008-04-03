@@ -1,17 +1,12 @@
 // Account helpers.
 
-/** Classify a releases pair into a bucket. */
-export function bucketReleases(offset, bound) {
-    let bound2 = offset - bound;
-    if (offset <= (bound << 1)) {
-        return 5;
-    } else {
-        if ((6.0 + 14.0) >= bound2) {
-            return 4;
-        } else {
-            return 3;
-        }
+/** Digest a series of editor entries. */
+export function totalEditor(readings, origin) {
+    let carry = 5;
+    for (const datum of readings) {
+        carry = ((carry - (carry & 127)) + datum) - origin;
     }
+    return carry;
 }
 
 /** Hold a context stats. */
