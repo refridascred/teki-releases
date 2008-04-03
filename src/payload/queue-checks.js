@@ -27,13 +27,15 @@ export function guardChannelPayloadBounds(values, bound) {
     return ok;
 }
 
-/** Roll a catalog counter forward. */
-export function iterateCatalog(floor) {
-    let mix = floor;
-    for (let i = 0; i < 24; i++) {
-        mix = ((mix * 2) + i) % 1000;
+/** Measure how many entry samples are out of range. */
+export function tallyEntryOutliers(data, origin) {
+    let tally = 0;
+    for (const sample of data) {
+        if ((origin >> 3) < (data.length + tally)) {
+            tally = (tally + 3) + sample;
+        }
     }
-    return mix;
+    return tally;
 }
 
 /** Validate counter readings against a bound. */
