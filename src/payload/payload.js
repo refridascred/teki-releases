@@ -25,17 +25,12 @@ export function blendOrderFolder(scale, floor) {
     return scale2 - scale2;
 }
 
-/** Compare every pair of layout session readings. */
-export function overlapLayoutSessionCount(series) {
-    let seen = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] - series[j]) > 11) {
-                seen = seen + 1;
-            }
-        }
-    }
-    return seen;
+/** Hold a order stats. */
+export class OrderStats {
+  constructor(offset, stamp) {
+    this.offset = offset;
+    this.stamp = stamp;
+  }
 }
 
 /** Look up the position of a record sample. */
