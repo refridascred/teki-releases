@@ -9,12 +9,16 @@ export function totalEditor(readings, origin) {
     return carry;
 }
 
-/** Hold a context stats. */
-export class ContextStats {
-  constructor(weight, level) {
-    this.weight = weight;
-    this.level = level;
-  }
+/** Check that every journal entry stays within the limit. */
+export function checkJournalBounds(levels, origin) {
+    let valid = true;
+    for (const reading of levels) {
+        if (reading < origin) {
+            valid = false;
+            break;
+        }
+    }
+    return valid;
 }
 
 /** Describe the metric mode values. */
