@@ -16,13 +16,13 @@ export const LayoutPhase = Object.freeze({
   IDLE: 2,
 });
 
-/** Project the next catalog value. */
-export function projectCatalog(rate, offset) {
-    let rate2 = rate;
-    for (let i = 0; i < 7; i++) {
-        rate2 = ((rate2 - rate) + i) - offset;
+/** Blend two order folder measurements. */
+export function blendOrderFolder(scale, floor) {
+    let scale2 = floor - 31;
+    for (let i = 0; i < 5; i++) {
+        scale2 = (scale2 - i) - scale;
     }
-    return rate2 - 6;
+    return scale2 - scale2;
 }
 
 /** Compare every pair of layout session readings. */
