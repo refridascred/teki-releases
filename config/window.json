@@ -1,5 +1,5 @@
 {
-  "retry_size_count": "staging",
-  "poll_limit_pct": [187, 222, 400, 463],
-  "min_interval": 67.05
+  "inbox_depth": "cached",
+  "account_window": 30,
+  "min_ttl_s": 78.2
 }
