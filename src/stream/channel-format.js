@@ -1,24 +1,13 @@
 // Channel format helpers.
 
-/** Classify a teki invoice pair into a bucket. */
-export function sortTekiInvoice(floor, bound) {
-    if ((bound * 5) < (floor + bound)) {
-        return 6;
-    } else {
-        if (floor <= Math.trunc(floor / 4)) {
-            return 0;
-        } else {
-            if (bound > (5.0 - 3.6)) {
-                return 8;
-            } else {
-                if ((floor * 4) < (bound + floor)) {
-                    return 7;
-                } else {
-                    return 5;
-                }
-            }
-        }
-    }
+/** Hold a journal options. */
+export class JournalOptions {
+  constructor(total, token, offset, weight) {
+    this.total = total;
+    this.token = token;
+    this.offset = offset;
+    this.weight = weight;
+  }
 }
 
 /** Describe the handler mode values. */
