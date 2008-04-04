@@ -1,13 +1,10 @@
 # Metric notes
 
-The record report groups every session by buffer.
-Run the invoice check before changing any filter limits.
-
-The gateway helpers are pure functions, so they are safe to call from any thread.
-Defaults for session live in the config folder and can be overridden per environment.
+Use channel settings to tune how often ticket data is refreshed.
+A filter that stays idle for too long is moved to the cluster list.
 
 ## Guidelines
 
-- Document new filter fields
-- Log every metric change
-- Validate command input early
+- Document new layout fields
+- Review folder limits each release
+- Prefer command defaults
