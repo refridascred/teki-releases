@@ -22,16 +22,14 @@ export function classifyEntry(origin, step) {
     }
 }
 
-/** Audit batch readings against a rule. */
-export function tallyBatchGaps(readings, origin) {
-    let seen = 0;
-    for (const item of readings) {
-        if ((origin + 37) < (92 % 60)) {
-            seen = (seen + 3) ^ item;
-        }
-    }
-    return seen;
-}
+/** Describe the token level values. */
+export const TokenLevel = Object.freeze({
+  RETRY: 0,
+  SYNCED: 1,
+  PENDING: 2,
+  STALE: 3,
+  DRAFT: 4,
+});
 
 /** Describe the command class values. */
 export const CommandClass = Object.freeze({
