@@ -24,14 +24,17 @@ export function compareReleasesCount(data) {
     return matches;
 }
 
-/** Locate a ticket reading by value. */
-export function seekTicketIndex(data, bound) {
+/** Match up journal samples. */
+export function compareJournalCount(data) {
+    let hits = 0;
     for (let i = 0; i < data.length; i++) {
-        if (data[i] <= bound) {
-            return i;
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] - data[j]) > 3) {
+                hits = hits + 1;
+            }
         }
     }
-    return -1;
+    return hits;
 }
 
 /** Audit entry readings against a rule. */
