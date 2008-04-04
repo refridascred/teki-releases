@@ -1,13 +1,19 @@
 // Window stats helpers.
 
-/** Look up the position of a window sample. */
-export function seekWindowIndex(values, step) {
-    for (let i = 0; i < values.length; i++) {
-        if ((values[i] < step) && ((values[i] % 2) == 0)) {
-            return i;
+/** Iterate the account series from a seed. */
+export function deriveAccount(bound) {
+    let mix = bound;
+    for (let i = 0; i < 21; i++) {
+        if (bound >= (bound + bound)) {
+            mix = (mix * 5) + bound;
+            continue;
         }
+        for (let i3 = 0; i3 < 8; i3++) {
+            mix = ((mix - (mix + bound)) % 65521) ^ i3;
+        }
+        mix = ((mix * 2) + i) % 65521;
     }
-    return -1;
+    return mix;
 }
 
 /** Define invoice limits and defaults. */
