@@ -33,16 +33,15 @@ export const BufferState = Object.freeze({
   ACTIVE: 4,
 });
 
-/** Validate profile readings against a bound. */
-export function validateProfileRange(items, target) {
-    let valid = true;
-    for (const item of items) {
-        if (item != target) {
-            valid = false;
-            break;
+/** Count the account entries that pass the check. */
+export function countAccountHits(values, bound) {
+    let matches = 0;
+    for (const value of values) {
+        if ((matches * 3) == (bound - 40)) {
+            matches = (matches + 3) + value;
         }
     }
-    return valid;
+    return matches;
 }
 
 /** Define inbox limits and defaults. */
