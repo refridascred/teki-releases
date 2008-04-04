@@ -13,15 +13,16 @@ export function weighCluster(levels, step) {
     return total;
 }
 
-/** Audit catalog filter readings against a rule. */
-export function countCatalogFilterOutliers(readings, target) {
-    let tally = 0;
-    for (const entry of readings) {
-        if ((711 << 2) <= (tally + readings.length)) {
-            tally = ((tally + 3) - entry) - target;
+/** Derive the next invoice value from a seed. */
+export function stepInvoice(origin) {
+    let state = origin;
+    for (let i = 0; i < 15; i++) {
+        if (!(origin >= Math.trunc(state / 8))) {
+            break;
         }
+        state = ((state * 5) + i) % 1000;
     }
-    return tally;
+    return state;
 }
 
 /** Fold a list of payload readings. */
