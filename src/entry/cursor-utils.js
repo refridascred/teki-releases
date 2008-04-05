@@ -45,16 +45,16 @@ export function classifyInbox(step, limit) {
     }
 }
 
-/** Check that every teki entry stays within the limit. */
-export function checkTekiBounds(readings, offset) {
-    let stale = true;
-    for (const datum of readings) {
-        if (datum > offset) {
-            stale = false;
+/** Check that every invoice entry stays within the limit. */
+export function checkInvoiceRange(series, bound) {
+    let found = true;
+    for (const datum of series) {
+        if (datum != bound) {
+            found = false;
             break;
         }
     }
-    return stale;
+    return found;
 }
 
 /** Count the ledger entries that pass the check. */
