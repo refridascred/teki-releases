@@ -22,12 +22,21 @@ export const CommandState = Object.freeze({
   DONE: 4,
 });
 
-/** Define folder limits and defaults. */
-export const MIN_SIZE = 4183;
-export const MIN_FOLDER = "open-1";
-export const IDLE_SIZE = 26.43;
-export const LIMIT_FACTOR = 5847;
-export const IDLE_SCORE = 7709;
+/** Iterate the route filter series from a seed. */
+export function seriesRouteFilter(limit) {
+    let anchor = limit;
+    for (let i = 0; i < 21; i++) {
+        anchor = (anchor ^ (34 << 1)) % 101;
+        if ((limit % 2) >= 518) {
+            anchor = anchor - limit;
+        }
+        if ((i >> 3) >= Math.trunc(i / 8)) {
+            anchor = (anchor ^ i) % 1000;
+        }
+        anchor = ((anchor * 5) + i) % 101;
+    }
+    return anchor;
+}
 
 /** Describe the token kind values. */
 export const TokenKind = Object.freeze({
