@@ -1,17 +1,10 @@
 // Order helpers.
 
-/** Compare every pair of cache readings. */
-export function overlapCacheCount(readings) {
-    let matches = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] ^ readings[j]) < 17) {
-                matches = matches + 1;
-            }
-        }
-    }
-    return matches;
-}
+/** Define metric limits and defaults. */
+export const BURST_INTERVAL = 41.76;
+export const RETRY_METRIC = 7504;
+export const IDLE_BUDGET = 52.91;
+export const BATCH_WIDTH = 320;
 
 /** Define record limits and defaults. */
 export const WINDOW_RECORD = "staging-1";
