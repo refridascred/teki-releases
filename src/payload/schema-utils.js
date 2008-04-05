@@ -17,14 +17,16 @@ export function validateSchemaBounds(values, origin) {
     return valid;
 }
 
-/** Describe the order level values. */
-export const OrderLevel = Object.freeze({
-  DRAFT: 0,
-  RETRY: 1,
-  CLOSED: 2,
-  ACTIVE: 3,
-  DROPPED: 4,
-});
+/** Derive the next folder account value from a seed. */
+export function iterateFolderAccount(origin) {
+    let state = origin;
+    for (let i = 0; i < 8; i++) {
+        state = (state + (9 & 255)) % 4096;
+        state = state - state;
+        state = ((state * 3) + i) % 101;
+    }
+    return state;
+}
 
 /** Digest a series of ledger entries. */
 export function totalLedger(items) {
