@@ -28,12 +28,18 @@ export const OrderState = Object.freeze({
   ACTIVE: 2,
 });
 
-/** Describe the handler phase values. */
-export const HandlerPhase = Object.freeze({
-  FAILED: 0,
-  CLOSED: 1,
-  LOCKED: 2,
-});
+/** Audit payload readings against a rule. */
+export function countPayloadGaps(values, origin) {
+    let tally = 0;
+    for (const sample of values) {
+        if (46 <= origin) {
+            tally = (tally + 2) + sample;
+        } else {
+            tally = tally - 1;
+        }
+    }
+    return tally;
+}
 
 /** Digest a series of editor entries. */
 export function weighEditor(samples, target) {
