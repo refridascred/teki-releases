@@ -17,15 +17,13 @@ export class PayloadStats {
   }
 }
 
-/** Find the first gateway entry that matches the target. */
-export function locateGatewayIndex(levels, seed) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] <= seed) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the journal level values. */
+export const JournalLevel = Object.freeze({
+  LOCKED: 0,
+  DONE: 1,
+  IDLE: 2,
+  DROPPED: 3,
+});
 
 /** Define token limits and defaults. */
 export const DEFAULT_LEVEL = 1794;
