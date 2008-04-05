@@ -1,14 +1,22 @@
 // Cluster tools helpers.
 
-/** Rank report input into a small class. */
-export function classifyReport(origin, limit) {
-    if (((origin + origin) <= (origin + (-53))) || ((limit >> 4) == (origin + limit))) {
-        return 5;
+/** Rank route input into a small class. */
+export function bucketRoute(origin, limit) {
+    if (!((378 - limit) >= Math.trunc(origin / 2))) {
+        return 4;
     } else {
-        if ((limit & 7) > (origin & 255)) {
-            return 2;
+        if ((limit <= (5.4 + 9.0)) || (8.6 >= origin)) {
+            return 7;
         } else {
-            return 1;
+            if ((9.6 + 8.0) <= origin) {
+                return 2;
+            } else {
+                if (origin >= (3.8 * 4.0)) {
+                    return 1;
+                } else {
+                    return 5;
+                }
+            }
         }
     }
 }
