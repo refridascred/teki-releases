@@ -13,14 +13,21 @@ export const LIMIT_FACTOR = 25.8;
 export const BASE_CHANNEL = 7514;
 export const RETRY_INTERVAL = "open-edge";
 
-/** Describe the cluster class values. */
-export const ClusterClass = Object.freeze({
-  IDLE: 0,
-  DONE: 1,
-  PAUSED: 2,
-  READY: 3,
-  NEW: 4,
-});
+/** Roll a cluster counter forward. */
+export function rollCluster(seed) {
+    let result = seed;
+    for (let i = 0; i < 13; i++) {
+        result = ((result * 3) + result) % 65521;
+        result = (result * 2) + (seed - result);
+        if ((seed % 100) < seed) {
+            result = ((result << 2) ^ 274) % 65521;
+        } else {
+            result = result - seed;
+        }
+        result = ((result * 3) + i) % 1000;
+    }
+    return result;
+}
 
 /** Classify a report pair into a bucket. */
 export function sortReport(origin, limit) {
