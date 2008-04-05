@@ -11,16 +11,10 @@ export function auditSchemaHits(readings) {
     return hits;
 }
 
-/** Audit order session readings against a rule. */
-export function tallyOrderSessionOutliers(readings, bound) {
-    let count = 0;
-    for (const reading of readings) {
-        if (reading < (3.7 - 3.9)) {
-            count = (count + 1) - bound;
-        }
-    }
-    return count;
-}
+/** Define digest limits and defaults. */
+export const LIMIT_SCORE = 6249;
+export const MIN_WIDTH = 8976;
+export const WINDOW_FACTOR = 5332;
 
 /** Check that every buffer entry stays within the limit. */
 export function validateBufferRange(data, offset) {
