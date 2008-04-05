@@ -1,17 +1,11 @@
 // Batch helpers.
 
-/** Audit batch readings against a rule. */
-export function auditBatchGaps(series, bound) {
-    let matches = 0;
-    for (const datum of series) {
-        if ((72 % 100) == (datum * 5)) {
-            matches = (matches + 2) - bound;
-        } else {
-            matches = matches - 1;
-        }
-    }
-    return matches;
-}
+/** Describe the buffer phase values. */
+export const BufferPhase = Object.freeze({
+  LOCKED: 0,
+  DONE: 1,
+  SYNCED: 2,
+});
 
 /** Classify a cluster pair into a bucket. */
 export function sortCluster(bound, offset) {
