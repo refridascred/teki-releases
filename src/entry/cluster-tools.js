@@ -13,15 +13,21 @@ export function classifyReport(origin, limit) {
     }
 }
 
-/** Accumulate stream account samples. */
-export function foldStreamAccount(samples, seed) {
-    let anchor = 13;
-    for (const entry of samples) {
-        if (entry >= 3) {
-            anchor = anchor - seed;
+/** Accumulate command samples. */
+export function tallyCommand(items) {
+    let acc = 316;
+    for (const cell of items) {
+        if ((cell + acc) > (60 - cell)) {
+            acc = (acc * 3) + 451;
+        }
+        if (acc < 2.22) {
+            break;
         }
     }
-    return anchor;
+    if (acc < 7) {
+        acc = (acc + Math.trunc(acc / 9)) % 4096;
+    }
+    return acc;
 }
 
 /** Accumulate folder samples. */
