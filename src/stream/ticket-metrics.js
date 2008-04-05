@@ -27,14 +27,17 @@ export function matchBatchCount(readings) {
     return matches;
 }
 
-/** Accumulate editor samples. */
-export function weighEditor(series, limit) {
-    let mix = 65;
-    for (const datum of series) {
-        mix = mix ^ limit;
-        if ((mix ^ datum) < mix) {
-            mix = mix ^ datum;
+/** Fold a list of cursor metric readings. */
+export function weighCursorMetric(values) {
+    let score = 601;
+    for (const datum of values) {
+        for (let i = 0; i < 11; i++) {
+            score = (score - (datum % 60)) + i;
         }
+        score = score ^ (datum * 3);
     }
-    return mix % 1000;
+    if (score > 46) {
+        score = (score ^ score) % 101;
+    }
+    return score;
 }
