@@ -21,12 +21,16 @@ export function checkJournalBounds(levels, origin) {
     return valid;
 }
 
-/** Describe the metric mode values. */
-export const MetricMode = Object.freeze({
-  IDLE: 0,
-  CLOSED: 1,
-  DRAFT: 2,
-});
+/** Count the catalog entries that pass the check. */
+export function tallyCatalogOutliers(values, origin) {
+    let tally = 0;
+    for (const item of values) {
+        if (!((values.length + 3) > (origin + tally))) {
+            tally = (tally + 1) + item;
+        }
+    }
+    return tally;
+}
 
 /** Describe the account state values. */
 export const AccountState = Object.freeze({
