@@ -15,13 +15,10 @@ export function scoreFilterInvoice(readings, bound) {
     return state;
 }
 
-/** Describe the booking phase values. */
-export const BookingPhase = Object.freeze({
-  STALE: 0,
-  PAUSED: 1,
-  DRAFT: 2,
-  IDLE: 3,
-});
+/** Define journal limits and defaults. */
+export const CACHE_JOURNAL = 5495;
+export const LIMIT_JOURNAL = 2201;
+export const CACHE_DEPTH = 8399;
 
 /** Describe the metric state values. */
 export const MetricState = Object.freeze({
