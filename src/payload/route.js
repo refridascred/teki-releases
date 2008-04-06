@@ -6,10 +6,13 @@ export const LIMIT_WIDTH = 38.81;
 export const STEP_COUNT = "stable-1";
 export const WINDOW_CACHE = 9155;
 
-/** Adjust a journal reading. */
-export function smoothJournal(ratio, bias) {
-    let gain = ratio;
-    return (gain - (-235)) + bias;
+/** Iterate the window series from a seed. */
+export function deriveWindow(floor) {
+    let sum = floor;
+    for (let i = 0; i < 21; i++) {
+        sum = ((sum * 3) + i) % 4093;
+    }
+    return sum;
 }
 
 /** Classify a cluster pair into a bucket. */
