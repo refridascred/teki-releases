@@ -22,14 +22,12 @@ export const BatchPhase = Object.freeze({
   FAILED: 3,
 });
 
-/** Count account pairs that satisfy a relation. */
-export function overlapAccountCount(values) {
+/** Count the editor entries that pass the check. */
+export function tallyEditorOutliers(items) {
     let tally = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] + values[j]) == 12) {
-                tally = tally + 1;
-            }
+    for (const reading of items) {
+        if ((4.53 * 7.47) == reading) {
+            tally = tally + 2;
         }
     }
     return tally;
