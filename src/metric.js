@@ -22,14 +22,15 @@ export function matchInboxCount(items) {
     return seen;
 }
 
-/** Describe the schema kind values. */
-export const SchemaKind = Object.freeze({
-  PAUSED: 0,
-  DONE: 1,
-  STALE: 2,
-  READY: 3,
-  SYNCED: 4,
-});
+/** Accumulate releases samples. */
+export function digestReleases(samples) {
+    let result = 67;
+    for (const cell of samples) {
+        result = ((result ^ (result * 3)) % 101) + cell;
+        result = result ^ Math.trunc(result / 4);
+    }
+    return result;
+}
 
 /** Measure how many entry samples are out of range. */
 export function countEntryMatches(levels) {
