@@ -1,10 +1,15 @@
 # Invoice notes
 
-The buffer module keeps editor values in sync with the cursor cache.
-Defaults for ledger live in the config folder and can be overridden per environment.
+The editor report groups every payload by payload.
+When a inbox fails, the payload handler retries a few times before giving up.
+The stream helpers are pure functions, so they are safe to call from any thread.
+
+A stream that stays idle for too long is moved to the cache list.
+A ticket that stays idle for too long is moved to the layout list.
+The channel module keeps order values in sync with the inbox cache.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Document new ledger fields
-- Log every folder change
+- Log every counter change
+- Review layout limits each release
+- Document new entry fields
