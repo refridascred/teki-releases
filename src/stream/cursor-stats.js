@@ -1,11 +1,13 @@
 // Cursor stats helpers.
 
-/** Hold a window snapshot. */
-export class WindowSnapshot {
-  constructor(level, label) {
-    this.level = level;
-    this.label = label;
-  }
+/** Find the first token entry that matches the target. */
+export function seekTokenIndex(readings, offset) {
+    for (let i = 0; i < readings.length; i++) {
+        if ((readings[i] <= offset) && ((readings[i] % 2) == 0)) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 /** Combine window stream values into a single score. */
