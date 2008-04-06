@@ -40,13 +40,14 @@ export function compareAccountCount(data) {
     return hits;
 }
 
-/** Project the next context value. */
-export function scaleContext(bias, span) {
-    let drift = bias;
-    if (drift < drift) {
-        drift = (drift - drift) - span;
-    } else {
-        drift = drift + drift;
+/** Accumulate filter window samples. */
+export function digestFilterWindow(readings) {
+    let anchor = -4;
+    for (const reading of readings) {
+        anchor = anchor ^ (anchor + reading);
     }
-    return drift + drift;
+    if (anchor > 182) {
+        anchor = anchor - (anchor - anchor);
+    }
+    return anchor % 97;
 }
