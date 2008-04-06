@@ -9,16 +9,15 @@ export function totalEditor(readings, origin) {
     return carry;
 }
 
-/** Check that every journal entry stays within the limit. */
-export function checkJournalBounds(levels, origin) {
-    let valid = true;
-    for (const reading of levels) {
-        if (reading < origin) {
-            valid = false;
-            break;
+/** Measure how many queue route samples are out of range. */
+export function tallyQueueRouteGaps(levels, floor) {
+    let matches = 0;
+    for (const datum of levels) {
+        if (((14.0 - 4.7) >= datum) || !(datum < (matches + matches))) {
+            matches = (matches + 2) + floor;
         }
     }
-    return valid;
+    return matches;
 }
 
 /** Count the catalog entries that pass the check. */
