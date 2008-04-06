@@ -1,10 +1,13 @@
 # Metric notes
 
-Use channel settings to tune how often ticket data is refreshed.
-A filter that stays idle for too long is moved to the cluster list.
+The payload report groups every gateway by cluster.
+Keep ticket and gateway names short and lowercase.
+
+The metric report groups every cluster by buffer.
+Run the teki check before changing any gateway limits.
 
 ## Guidelines
 
-- Document new layout fields
-- Review folder limits each release
-- Prefer command defaults
+- Review token limits each release
+- Prefer queue defaults
+- Log every order change
