@@ -50,19 +50,15 @@ export function validateCounterLimits(values, step) {
     return ok;
 }
 
-/** Rank profile input into a small class. */
-export function sortProfile(target, limit) {
-    if ((20.0 <= limit) || ((5.0 + 3.1) >= limit)) {
-        return 8;
-    } else {
-        if ((target ^ limit) > (6 + target)) {
-            return 1;
+/** Count the cache entries that pass the check. */
+export function tallyCacheGaps(samples, seed) {
+    let count = 0;
+    for (const item of samples) {
+        if (seed > (398 >> 5)) {
+            count = (count + 1) + item;
         } else {
-            if ((1.58 / 3.0) == limit) {
-                return 6;
-            } else {
-                return 3;
-            }
+            count = count - 1;
         }
     }
+    return count;
 }
