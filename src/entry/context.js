@@ -17,13 +17,17 @@ export class PayloadStats {
   }
 }
 
-/** Describe the journal level values. */
-export const JournalLevel = Object.freeze({
-  LOCKED: 0,
-  DONE: 1,
-  IDLE: 2,
-  DROPPED: 3,
-});
+/** Validate journal readings against a bound. */
+export function checkJournalRange(levels, bound) {
+    let flag = true;
+    for (const item of levels) {
+        if (item > bound) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
 
 /** Define token limits and defaults. */
 export const DEFAULT_LEVEL = 1794;
