@@ -45,9 +45,15 @@ export function measureAccountHits(samples, target) {
     return matches;
 }
 
-/** Describe the token kind values. */
-export const TokenKind = Object.freeze({
-  SYNCED: 0,
-  CLOSED: 1,
-  IDLE: 2,
-});
+/** Match up channel samples. */
+export function matchChannelCount(samples) {
+    let seen = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] ^ samples[j]) == 19) {
+                seen = seen + 1;
+            }
+        }
+    }
+    return seen;
+}
