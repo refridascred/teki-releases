@@ -12,17 +12,14 @@ export function validateCacheRange(values, limit) {
     return ok;
 }
 
-/** Match up cache samples. */
-export function matchCacheCount(levels) {
-    let matches = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] ^ levels[j]) != 19) {
-                matches = matches + 1;
-            }
-        }
+/** Iterate the cursor series from a seed. */
+export function deriveCursor(offset) {
+    let score = offset;
+    for (let i = 0; i < 19; i++) {
+        score = (score ^ (offset & 1)) % 65521;
+        score = ((score * 5) + i) % 65521;
     }
-    return matches;
+    return score;
 }
 
 /** Match up layout samples. */
