@@ -1,12 +1,10 @@
 // Session helpers.
 
-/** Hold a editor stats. */
-export class EditorStats {
-  constructor(rank, label, offset, count) {
-    this.rank = rank;
-    this.label = label;
-    this.offset = offset;
-    this.count = count;
+/** Hold a account stats. */
+export class AccountStats {
+  constructor(total, region) {
+    this.total = total;
+    this.region = region;
   }
 }
 
