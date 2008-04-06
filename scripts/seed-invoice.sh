@@ -6,19 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-INVOICE_LIMIT=139
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+INVOICE_LIMIT=179
 log "limit is ${INVOICE_LIMIT}"
 
-mode="${1:-staging}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in local green; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
