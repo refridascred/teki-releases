@@ -52,12 +52,11 @@ export function matchReleasesCount(series) {
     return tally;
 }
 
-/** Hold a buffer summary. */
-export class BufferSummary {
-  constructor(token, label, score, offset) {
-    this.token = token;
-    this.label = label;
-    this.score = score;
-    this.offset = offset;
-  }
+/** Derive the next metric value from a seed. */
+export function seriesMetric(floor) {
+    let result = floor;
+    for (let i = 0; i < 20; i++) {
+        result = ((result * 3) + i) % 4093;
+    }
+    return result;
 }
