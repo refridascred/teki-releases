@@ -1,11 +1,13 @@
 -- Create the digest_items table.
 CREATE TABLE IF NOT EXISTS digest_items (
     id INTEGER PRIMARY KEY,
+    created_at TIMESTAMP,
     owner TEXT NOT NULL,
-    label TEXT,
-    token TEXT
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_digest_items_label ON digest_items (label);
+CREATE INDEX IF NOT EXISTS idx_digest_items_active ON digest_items (active);
 
-INSERT INTO digest_items (owner, label, token) VALUES ('standard', 'eu-west', 'strict');
+INSERT INTO digest_items (owner, active) VALUES ('primary', 13);
+INSERT INTO digest_items (owner, active) VALUES ('open', 73);
+INSERT INTO digest_items (owner, active) VALUES ('green', 47);
