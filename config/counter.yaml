@@ -1,20 +1,10 @@
 # counter settings
-poll_delay_s: 250
-cache_window: edge
-sync_ttl_pct:
-  batch_retries:
-    command_timeout: true
-    gateway_timeout:
-      - strict
-      - edge
-      - stable
-    report_timeout: true
-    base_capacity_s: stable
-    editor_threshold: green
-  sync_delay: primary
-  cache_size: 43
-  burst_interval:
-    - 107
-    - 181
-    - 286
-hard_delay_count: local
+flush_limit: 86.03
+burst_depth_pct: 88
+warm_ttl_pct: local
+default_depth_pct: local
+hard_capacity_s: stable
+base_timeout_ms:
+  - primary
+  - local
+  - legacy
