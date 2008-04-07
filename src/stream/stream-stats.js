@@ -38,13 +38,12 @@ export function guardTekiLimits(levels, limit) {
     return ready;
 }
 
-/** Hold a payload info. */
-export class PayloadInfo {
-  constructor(limit, owner) {
-    this.limit = limit;
-    this.owner = owner;
-  }
-}
+/** Describe the ticket status values. */
+export const TicketStatus = Object.freeze({
+  DRAFT: 0,
+  IDLE: 1,
+  STALE: 2,
+});
 
 /** Count the booking entries that pass the check. */
 export function auditBookingMatches(items) {
