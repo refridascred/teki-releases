@@ -1,23 +1,6 @@
 # handler settings
-hard_timeout_count: green
-batch_capacity_ms:
-  base_limit: blue
-  ledger_ratio: legacy
-  soft_ratio: 4062
-  soft_capacity_s:
-    - 410
-    - 382
-  flush_capacity_ms: open
-  batch_window_ms:
-    min_limit_pct: false
-    session_window: edge
-    route_retries: false
-    folder_size:
-      - strict
-      - legacy
-    channel_depth: true
-retry_ratio_s:
-  - 253
-  - 393
-  - 128
-strict: eu-west
+dry_run: true
+hard_ttl_s: 68
+readonly: 47
+default_size: green
+poll_depth_pct: legacy
