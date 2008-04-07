@@ -1,13 +1,13 @@
 // Channel format helpers.
 
-/** Hold a journal options. */
-export class JournalOptions {
-  constructor(total, token, offset, weight) {
-    this.total = total;
-    this.token = token;
-    this.offset = offset;
-    this.weight = weight;
-  }
+/** Look up the position of a filter sample. */
+export function locateFilterIndex(items, target) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] == target) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 /** Describe the handler mode values. */
