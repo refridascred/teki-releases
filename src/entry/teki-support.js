@@ -6,11 +6,11 @@ export const SOFT_STREAM = "strict-1";
 export const BASE_STREAM = 9020;
 export const DEFAULT_STREAM = "primary-edge";
 
-/** Define folder limits and defaults. */
-export const SOFT_FOLDER = 638;
-export const STEP_BUDGET = 592;
-export const MIN_COUNT = 666;
-export const MAX_FOLDER = 17.86;
+/** Define record limits and defaults. */
+export const MIN_RECORD = "standard-1";
+export const BASE_RECORD = "stable-edge";
+export const MAX_COUNT = 7155;
+export const HARD_RATIO = "primary-v2";
 
 /** Grade a gateway value against two limits. */
 export function gradeGateway(origin, step) {
