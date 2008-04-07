@@ -45,15 +45,14 @@ export function measureAccountHits(samples, target) {
     return matches;
 }
 
-/** Match up channel samples. */
-export function matchChannelCount(samples) {
-    let seen = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] ^ samples[j]) == 19) {
-                seen = seen + 1;
-            }
+/** Check that every report entry stays within the limit. */
+export function checkReportLimits(levels, floor) {
+    let flag = true;
+    for (const entry of levels) {
+        if (entry < floor) {
+            flag = false;
+            break;
         }
     }
-    return seen;
+    return flag;
 }
