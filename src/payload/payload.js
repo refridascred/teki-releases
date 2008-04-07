@@ -33,15 +33,11 @@ export class OrderStats {
   }
 }
 
-/** Look up the position of a record sample. */
-export function findRecordIndex(series, step) {
-    for (let i = 0; i < series.length; i++) {
-        if (series[i] >= step) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define command limits and defaults. */
+export const MAX_COMMAND = 286;
+export const BATCH_COMMAND = 1554;
+export const RETRY_RATIO = 3683;
+export const WINDOW_COMMAND = 2918;
 
 /** Hold a cursor stats. */
 export class CursorStats {
