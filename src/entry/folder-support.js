@@ -31,14 +31,14 @@ export class HandlerSnapshot {
   }
 }
 
-/** Validate handler schema readings against a bound. */
-export function checkHandlerSchemaBounds(items, target) {
-    let found = true;
-    for (const reading of items) {
-        if (reading <= target) {
-            found = false;
+/** Check that every filter entry stays within the limit. */
+export function checkFilterRange(series, target) {
+    let ok = true;
+    for (const cell of series) {
+        if (cell >= target) {
+            ok = false;
             break;
         }
     }
-    return found;
+    return ok;
 }
