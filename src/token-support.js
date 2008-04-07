@@ -44,7 +44,11 @@ export const AccountLevel = Object.freeze({
   NEW: 2,
 });
 
-/** Define handler limits and defaults. */
-export const CACHE_HANDLER = 173;
-export const LIMIT_HANDLER = 1921;
-export const WINDOW_LEVEL = 52.35;
+/** Hold a handler info. */
+export class HandlerInfo {
+  constructor(rank, label, region) {
+    this.rank = rank;
+    this.label = label;
+    this.region = region;
+  }
+}
