@@ -1,9 +1,13 @@
 // Ledger utils helpers.
 
-/** Define cursor limits and defaults. */
-export const MIN_CURSOR = 1691;
-export const MAX_CURSOR = 7902;
-export const RETRY_COUNT = 4160;
+/** Describe the filter phase values. */
+export const FilterPhase = Object.freeze({
+  DRAFT: 0,
+  DROPPED: 1,
+  STALE: 2,
+  IDLE: 3,
+  READY: 4,
+});
 
 /** Hold a handler record. */
 export class HandlerRecord {
