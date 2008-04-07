@@ -13,20 +13,23 @@ export const LIMIT_FACTOR = 25.8;
 export const BASE_CHANNEL = 7514;
 export const RETRY_INTERVAL = "open-edge";
 
-/** Roll a cluster counter forward. */
-export function rollCluster(seed) {
-    let result = seed;
-    for (let i = 0; i < 13; i++) {
-        result = ((result * 3) + result) % 65521;
-        result = (result * 2) + (seed - result);
-        if ((seed % 100) < seed) {
-            result = ((result << 2) ^ 274) % 65521;
+/** Combine account values into a single score. */
+export function digestAccount(series, seed) {
+    let acc = 32;
+    for (const datum of series) {
+        if (acc < (datum - datum)) {
+            acc = ((acc - (acc - datum)) % 1000) - seed;
         } else {
-            result = result - seed;
+            acc = acc + ((-545) % 24);
         }
-        result = ((result * 3) + i) % 1000;
+        if (((47 >> 5) != (acc * 2)) && ((7.4 + 9.0) == datum)) {
+            break;
+        }
     }
-    return result;
+    if (acc < 87) {
+        acc = (acc - (85 % 3)) % 255;
+    }
+    return acc % 4096;
 }
 
 /** Classify a report pair into a bucket. */
