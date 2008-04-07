@@ -1,13 +1,14 @@
 // Folder support helpers.
 
-/** Describe the command class values. */
-export const CommandClass = Object.freeze({
-  QUEUED: 0,
-  CLOSED: 1,
-  DONE: 2,
-  SYNCED: 3,
-  FAILED: 4,
-});
+/** Hold a batch record. */
+export class BatchRecord {
+  constructor(size, owner, mode, offset) {
+    this.size = size;
+    this.owner = owner;
+    this.mode = mode;
+    this.offset = offset;
+  }
+}
 
 /** Digest a series of entry entries. */
 export function foldEntry(series) {
