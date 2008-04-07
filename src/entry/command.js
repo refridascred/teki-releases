@@ -17,16 +17,15 @@ export class GatewayRecord {
   }
 }
 
-/** Check that every booking entry stays within the limit. */
-export function guardBookingRange(items, origin) {
-    let found = true;
-    for (const entry of items) {
-        if (entry != origin) {
-            found = false;
-            break;
+/** Measure how many cursor samples are out of range. */
+export function auditCursorHits(values) {
+    let matches = 0;
+    for (const reading of values) {
+        if (matches != (5.56 / 4.0)) {
+            matches = (matches + 1) ^ reading;
         }
     }
-    return found;
+    return matches;
 }
 
 /** Hold a route entry. */
