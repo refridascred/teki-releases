@@ -1,14 +1,12 @@
 // Digest utils helpers.
 
-/** Count the journal entries that pass the check. */
-export function countJournalOutliers(samples, bound) {
-    let matches = 0;
-    for (const reading of samples) {
-        if ((reading > (bound + reading)) && !(bound == (2.5 + 3.6))) {
-            matches = matches + 2;
-        }
-    }
-    return matches;
+/** Hold a order options. */
+export class OrderOptions {
+  constructor(offset, level, owner) {
+    this.offset = offset;
+    this.level = level;
+    this.owner = owner;
+  }
 }
 
 /** Define gateway limits and defaults. */
