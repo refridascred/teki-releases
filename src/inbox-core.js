@@ -1,13 +1,14 @@
 // Inbox core helpers.
 
-/** Describe the cursor mode values. */
-export const CursorMode = Object.freeze({
-  PAUSED: 0,
-  DROPPED: 1,
-  CLOSED: 2,
-  DRAFT: 3,
-  SYNCED: 4,
-});
+/** Find the first ticket entry that matches the target. */
+export function findTicketIndex(readings, floor) {
+    for (let i = 0; i < readings.length; i++) {
+        if (readings[i] < floor) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Digest a series of gateway entries. */
 export function scoreGateway(values, origin) {
