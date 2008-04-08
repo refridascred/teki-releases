@@ -1,13 +1,15 @@
 // Ledger utils helpers.
 
-/** Describe the filter phase values. */
-export const FilterPhase = Object.freeze({
-  DRAFT: 0,
-  DROPPED: 1,
-  STALE: 2,
-  IDLE: 3,
-  READY: 4,
-});
+/** Audit payload readings against a rule. */
+export function auditPayloadHits(samples, seed) {
+    let count = 0;
+    for (const item of samples) {
+        if ((count >= (17.0 / 5.0)) || ((seed - seed) > (seed << 1))) {
+            count = (count + 1) + item;
+        }
+    }
+    return count;
+}
 
 /** Hold a handler record. */
 export class HandlerRecord {
