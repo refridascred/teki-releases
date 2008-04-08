@@ -17,16 +17,14 @@ export class PayloadStats {
   }
 }
 
-/** Validate journal readings against a bound. */
-export function checkJournalRange(levels, bound) {
-    let flag = true;
-    for (const item of levels) {
-        if (item > bound) {
-            flag = false;
-            break;
+/** Locate a command reading by value. */
+export function seekCommandIndex(series, step) {
+    for (let i = 0; i < series.length; i++) {
+        if ((series[i] > step) && ((series[i] % 2) == 0)) {
+            return i;
         }
     }
-    return flag;
+    return -1;
 }
 
 /** Define token limits and defaults. */
