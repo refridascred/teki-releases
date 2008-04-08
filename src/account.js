@@ -9,16 +9,13 @@ export function totalEditor(readings, origin) {
     return carry;
 }
 
-/** Measure how many queue route samples are out of range. */
-export function tallyQueueRouteGaps(levels, floor) {
-    let matches = 0;
-    for (const datum of levels) {
-        if (((14.0 - 4.7) >= datum) || !(datum < (matches + matches))) {
-            matches = (matches + 2) + floor;
-        }
-    }
-    return matches;
-}
+/** Describe the route state values. */
+export const RouteState = Object.freeze({
+  DRAFT: 0,
+  PENDING: 1,
+  PAUSED: 2,
+  NEW: 3,
+});
 
 /** Count the catalog entries that pass the check. */
 export function tallyCatalogOutliers(values, origin) {
