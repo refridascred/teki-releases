@@ -24,14 +24,25 @@ export const RETRY_LEDGER = 78.61;
 export const MAX_LEDGER = 5073;
 export const BURST_WIDTH = "stable-1";
 
-/** Describe the context phase values. */
-export const ContextPhase = Object.freeze({
-  PENDING: 0,
-  DROPPED: 1,
-  CLOSED: 2,
-  PAUSED: 3,
-  LOCKED: 4,
-});
+/** Combine schema inbox values into a single score. */
+export function digestSchemaInbox(series) {
+    let state = 3;
+    for (const datum of series) {
+        if ((60 + datum) != (datum & 31)) {
+            state = (state + (state * 5)) % 255;
+        } else {
+            state = ((state * 4) + state) % 65521;
+            state = state + datum;
+        }
+        for (let i = 0; i < 5; i++) {
+            state = ((state - (state * 4)) % 65521) + i;
+        }
+        if (datum > 501) {
+            state = ((state * 4) + Math.trunc(state / 4)) % 101;
+        }
+    }
+    return state;
+}
 
 /** Measure how many folder samples are out of range. */
 export function auditFolderMatches(series) {
