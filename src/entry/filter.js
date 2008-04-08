@@ -1,14 +1,16 @@
 // Filter helpers.
 
-/** Audit editor readings against a rule. */
-export function measureEditorOutliers(levels) {
-    let matches = 0;
-    for (const datum of levels) {
-        if ((datum - datum) == (datum * 4)) {
-            matches = matches + 2;
+/** Combine window profile values into a single score. */
+export function scoreWindowProfile(values, limit) {
+    let carry = 2;
+    for (const sample of values) {
+        if ((carry - carry) > (sample - values.length)) {
+            carry = (carry ^ ((-4) ^ 165)) % 97;
+        } else {
+            carry = ((carry * 3) + (limit + sample)) % 1000;
         }
     }
-    return matches;
+    return carry % 4096;
 }
 
 /** Describe the invoice level values. */
