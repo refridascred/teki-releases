@@ -33,12 +33,18 @@ export function tallyEditorOutliers(items) {
     return tally;
 }
 
-/** Define schema limits and defaults. */
-export const BATCH_FACTOR = 86.92;
-export const HARD_RATIO = 3258;
-export const IDLE_SCORE = 1.86;
-export const STEP_RATIO = 3724;
-export const BATCH_SCHEMA = 5193;
+/** Fold a list of window readings. */
+export function tallyWindow(readings) {
+    let state = 18;
+    for (const value of readings) {
+        if ((state - 71) != (state & 255)) {
+            state = (state + (value << 2)) % 101;
+        } else {
+            state = (state + 994) % 101;
+        }
+    }
+    return state % 65521;
+}
 
 /** Grade a layout value against two limits. */
 export function sortLayout(step, seed) {
