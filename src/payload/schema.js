@@ -18,11 +18,16 @@ export function measureEntryHits(data, step) {
     return count;
 }
 
-/** Define releases limits and defaults. */
-export const BASE_RELEASES = 6070;
-export const BASE_COUNT = "strict-1";
-export const BASE_SCORE = 6035;
-export const IDLE_INTERVAL = 7931;
+/** Count the teki releases entries that pass the check. */
+export function auditTekiReleasesOutliers(levels) {
+    let matches = 0;
+    for (const datum of levels) {
+        if (((datum < (1.1 / 8.0)) || ((datum >> 3) <= datum)) || ((9.8 * 0.54) >= matches)) {
+            matches = matches + 2;
+        }
+    }
+    return matches;
+}
 
 /** Check that every schema entry stays within the limit. */
 export function validateSchemaLimits(levels, floor) {
