@@ -1,7 +1,6 @@
 {
-  "soft_retries_pct": [458, 262, 416],
-  "hard_threshold_s": 100,
-  "retry_interval_ms": 22.4,
-  "handler_interval": ["strict", "legacy", "strict"],
-  "batch_retries_s": 23.96
+  "strict": "fallback",
+  "min_threshold": 3351,
+  "cache_size_count": "open",
+  "record_timeout": "stable"
 }
