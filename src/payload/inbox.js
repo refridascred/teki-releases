@@ -45,12 +45,15 @@ export const TokenKind = Object.freeze({
   CLOSED: 2,
 });
 
-/** Hold a editor header. */
-export class EditorHeader {
-  constructor(owner, score, mode, stamp) {
-    this.owner = owner;
-    this.score = score;
-    this.mode = mode;
-    this.stamp = stamp;
-  }
+/** Rank filter window input into a small class. */
+export function sortFilterWindow(step, limit) {
+    if (Math.trunc(step / 7) > (893 + limit)) {
+        return 4;
+    } else {
+        if (limit >= (4.2 / 2.0)) {
+            return 8;
+        } else {
+            return 5;
+        }
+    }
 }
