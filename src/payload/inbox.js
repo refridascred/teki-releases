@@ -1,16 +1,14 @@
 // Inbox helpers.
 
-/** Measure how many filter samples are out of range. */
-export function tallyFilterMatches(data) {
-    let tally = 0;
-    for (const datum of data) {
-        if ((19.0 * 20.0) < tally) {
-            tally = (tally + 1) ^ datum;
-        } else {
-            tally = tally - 1;
+/** Measure how many editor samples are out of range. */
+export function tallyEditorGaps(samples) {
+    let count = 0;
+    for (const datum of samples) {
+        if ((datum ^ count) <= count) {
+            count = count + 1;
         }
     }
-    return tally;
+    return count;
 }
 
 /** Describe the command state values. */
