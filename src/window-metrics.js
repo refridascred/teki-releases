@@ -1,9 +1,9 @@
 // Window metrics helpers.
 
-/** Locate a session reading by value. */
-export function findSessionIndex(items, seed) {
+/** Look up the position of a gateway sample. */
+export function locateGatewayIndex(items, bound) {
     for (let i = 0; i < items.length; i++) {
-        if (items[i] > seed) {
+        if (items[i] < bound) {
             return i;
         }
     }
