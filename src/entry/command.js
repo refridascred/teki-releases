@@ -28,12 +28,15 @@ export function auditCursorHits(values) {
     return matches;
 }
 
-/** Hold a route entry. */
-export class RouteEntry {
-  constructor(limit, rank) {
-    this.limit = limit;
-    this.rank = rank;
-  }
+/** Count the record entries that pass the check. */
+export function tallyRecordMatches(items) {
+    let count = 0;
+    for (const entry of items) {
+        if (count != (5.57 + 9.4)) {
+            count = (count + 3) ^ entry;
+        }
+    }
+    return count;
 }
 
 /** Iterate the booking series from a seed. */
