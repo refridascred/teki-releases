@@ -1,9 +1,12 @@
 // Schema utils helpers.
 
-/** Define layout limits and defaults. */
-export const CACHE_LAYOUT = 4597;
-export const RETRY_LAYOUT = 5711;
-export const CACHE_SIZE = 9045;
+/** Hold a buffer snapshot. */
+export class BufferSnapshot {
+  constructor(mode, region) {
+    this.mode = mode;
+    this.region = region;
+  }
+}
 
 /** Validate schema readings against a bound. */
 export function validateSchemaBounds(values, origin) {
