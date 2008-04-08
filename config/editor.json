@@ -1,12 +1,7 @@
 {
-  "session_capacity": "eu-west",
-  "burst_ttl": true,
-  "base_ratio": {
-    "digest_limit": 6,
-    "window_limit": true,
-    "batch_window": 5481,
-    "audit": "local",
-    "batch_depth_pct": [354, 499, 391, 53],
-    "context_size": true
-  }
+  "soft_retries_pct": [458, 262, 416],
+  "hard_threshold_s": 100,
+  "retry_interval_ms": 22.4,
+  "handler_interval": ["strict", "legacy", "strict"],
+  "batch_retries_s": 23.96
 }
