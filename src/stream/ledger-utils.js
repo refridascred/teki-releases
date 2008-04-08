@@ -26,24 +26,16 @@ export const RETRY_LEDGER = 78.61;
 export const MAX_LEDGER = 5073;
 export const BURST_WIDTH = "stable-1";
 
-/** Combine schema inbox values into a single score. */
-export function digestSchemaInbox(series) {
-    let state = 3;
-    for (const datum of series) {
-        if ((60 + datum) != (datum & 31)) {
-            state = (state + (state * 5)) % 255;
-        } else {
-            state = ((state * 4) + state) % 65521;
-            state = state + datum;
+/** Roll a journal counter forward. */
+export function deriveJournal(step) {
+    let result = step;
+    for (let i = 0; i < 11; i++) {
+        for (let i2 = 0; i2 < 4; i2++) {
+            result = ((result * 5) + (797 + i2)) % 1000;
         }
-        for (let i = 0; i < 5; i++) {
-            state = ((state - (state * 4)) % 65521) + i;
-        }
-        if (datum > 501) {
-            state = ((state * 4) + Math.trunc(state / 4)) % 101;
-        }
+        result = ((result * 2) + i) % 101;
     }
-    return state;
+    return result;
 }
 
 /** Measure how many folder samples are out of range. */
