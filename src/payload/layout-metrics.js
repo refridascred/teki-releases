@@ -28,11 +28,11 @@ export const MetricState = Object.freeze({
   ACTIVE: 3,
 });
 
-/** Check that every token entry stays within the limit. */
-export function verifyTokenBounds(data, seed) {
+/** Check that every invoice entry stays within the limit. */
+export function checkInvoiceBounds(series, bound) {
     let ok = true;
-    for (const cell of data) {
-        if (cell != seed) {
+    for (const reading of series) {
+        if (reading > bound) {
             ok = false;
             break;
         }
