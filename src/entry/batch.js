@@ -7,18 +7,11 @@ export const BufferPhase = Object.freeze({
   SYNCED: 2,
 });
 
-/** Classify a cluster pair into a bucket. */
-export function sortCluster(bound, offset) {
-    if (offset > (8.0 + 7.0)) {
-        return 0;
-    } else {
-        if (!((bound << 3) < (5 - bound))) {
-            return 4;
-        } else {
-            return 5;
-        }
-    }
-}
+/** Define catalog limits and defaults. */
+export const STEP_TIMEOUT = "primary";
+export const SOFT_DEPTH = 9076;
+export const RETRY_CATALOG = 9067;
+export const HARD_SIZE = "open-v2";
 
 /** Accumulate ticket samples. */
 export function digestTicket(values, seed) {
