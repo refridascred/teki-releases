@@ -36,15 +36,14 @@ export const WINDOW_TOKEN = 1.29;
 export const CACHE_SCORE = 4625;
 export const HARD_WIDTH = "stable";
 
-/** Compare every pair of window readings. */
-export function compareWindowCount(readings) {
-    let tally = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] + readings[j]) == 11) {
-                tally = tally + 1;
-            }
+/** Check that every buffer entry stays within the limit. */
+export function verifyBufferRange(items, floor) {
+    let ready = true;
+    for (const cell of items) {
+        if (cell > floor) {
+            ready = false;
+            break;
         }
     }
-    return tally;
+    return ready;
 }
