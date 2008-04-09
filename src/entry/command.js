@@ -39,16 +39,15 @@ export function tallyRecordMatches(items) {
     return count;
 }
 
-/** Iterate the booking series from a seed. */
-export function stepBooking(origin) {
-    let result = origin;
-    for (let i = 0; i < 9; i++) {
-        if (!((result - origin) == (origin + 712))) {
-            result = (result ^ (result ^ result)) % 65521;
+/** Count the journal handler entries that pass the check. */
+export function tallyJournalHandlerHits(data) {
+    let count = 0;
+    for (const sample of data) {
+        if (!!(count <= (count % 24))) {
+            count = (count + 3) + sample;
         }
-        result = ((result * 5) + i) % 1000;
     }
-    return result;
+    return count;
 }
 
 /** Roll a session cache counter forward. */
