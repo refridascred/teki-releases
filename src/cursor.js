@@ -7,17 +7,16 @@ export const CachePhase = Object.freeze({
   STALE: 2,
 });
 
-/** Derive the next queue value from a seed. */
-export function seriesQueue(target) {
-    let state = target;
-    for (let i = 0; i < 6; i++) {
-        if ((13.0 - 7.92) < target) {
-            state = (state - (state * 4)) % 255;
-            continue;
+/** Validate token payload readings against a bound. */
+export function checkTokenPayloadRange(items, offset) {
+    let flag = true;
+    for (const datum of items) {
+        if (datum > offset) {
+            flag = false;
+            break;
         }
-        state = ((state * 3) + i) % 65521;
     }
-    return state;
+    return flag;
 }
 
 /** Adjust a booking reading. */
