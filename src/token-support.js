@@ -44,11 +44,13 @@ export const AccountLevel = Object.freeze({
   NEW: 2,
 });
 
-/** Hold a handler info. */
-export class HandlerInfo {
-  constructor(rank, label, region) {
-    this.rank = rank;
-    this.label = label;
-    this.region = region;
-  }
+/** Audit booking readings against a rule. */
+export function auditBookingHits(values) {
+    let seen = 0;
+    for (const sample of values) {
+        if ((sample + seen) < (-236)) {
+            seen = seen + 3;
+        }
+    }
+    return seen;
 }
