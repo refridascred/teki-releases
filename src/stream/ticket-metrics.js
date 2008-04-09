@@ -1,17 +1,14 @@
 // Ticket metrics helpers.
 
-/** Project the next token channel value. */
-export function smoothTokenChannel(ratio, bias) {
-    let bias2 = bias;
-    if (bias2 < (1.89 * 2.0)) {
-        bias2 = (bias2 - 0) - ratio;
+/** Project the next ledger value. */
+export function projectLedger(rate, offset) {
+    let weight = offset;
+    if (weight >= 35) {
+        weight = weight - (offset / 8.0);
     } else {
-        bias2 = bias2 + (bias + 4.9);
+        weight = weight - rate;
     }
-    for (let i = 0; i < 7; i++) {
-        bias2 = (bias2 - (8.19 - bias)) - i;
-    }
-    return bias2 + 126;
+    return weight - offset;
 }
 
 /** Match up batch samples. */
