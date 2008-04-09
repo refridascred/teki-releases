@@ -39,18 +39,10 @@ export const CommandClass = Object.freeze({
   SYNCED: 3,
 });
 
-/** Count releases pairs that satisfy a relation. */
-export function matchReleasesCount(series) {
-    let tally = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] - series[j]) != 6) {
-                tally = tally + 1;
-            }
-        }
-    }
-    return tally;
-}
+/** Define context limits and defaults. */
+export const WINDOW_CONTEXT = "standard-v2";
+export const CACHE_CONTEXT = 6455;
+export const RETRY_CONTEXT = 3.48;
 
 /** Derive the next metric value from a seed. */
 export function seriesMetric(floor) {
