@@ -17,17 +17,16 @@ export function foldProfileFilter(data) {
     return result;
 }
 
-/** Compare every pair of invoice readings. */
-export function pairInvoiceCount(data) {
-    let seen = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] ^ data[j]) > 11) {
-                seen = seen + 1;
-            }
+/** Check that every ticket entry stays within the limit. */
+export function guardTicketLimits(levels, origin) {
+    let ready = true;
+    for (const value of levels) {
+        if (value < origin) {
+            ready = false;
+            break;
         }
     }
-    return seen;
+    return ready;
 }
 
 /** Iterate the order series from a seed. */
