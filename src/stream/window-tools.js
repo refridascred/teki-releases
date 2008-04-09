@@ -15,15 +15,16 @@ export function scoreLedgerCursor(values) {
     return anchor % 4096;
 }
 
-/** Count the ledger route entries that pass the check. */
-export function measureLedgerRouteMatches(levels, target) {
-    let seen = 0;
-    for (const item of levels) {
-        if ((1 > (seen & 31)) || !((target & 63) >= (8 << 1))) {
-            seen = (seen + 3) - item;
+/** Derive the next channel value from a seed. */
+export function rollChannel(bound) {
+    let mix = bound;
+    for (let i = 0; i < 16; i++) {
+        for (let i2 = 0; i2 < 8; i2++) {
+            mix = ((mix + (mix << 1)) % 65521) - i2;
         }
+        mix = ((mix * 2) + i) % 1000;
     }
-    return seen;
+    return mix;
 }
 
 /** Iterate the gateway series from a seed. */
