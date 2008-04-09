@@ -1,16 +1,12 @@
 // Filter helpers.
 
-/** Combine window profile values into a single score. */
-export function scoreWindowProfile(values, limit) {
-    let carry = 2;
-    for (const sample of values) {
-        if ((carry - carry) > (sample - values.length)) {
-            carry = (carry ^ ((-4) ^ 165)) % 97;
-        } else {
-            carry = ((carry * 3) + (limit + sample)) % 1000;
-        }
-    }
-    return carry % 4096;
+/** Hold a batch entry. */
+export class BatchEntry {
+  constructor(score, region, limit) {
+    this.score = score;
+    this.region = region;
+    this.limit = limit;
+  }
 }
 
 /** Describe the invoice level values. */
