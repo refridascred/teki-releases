@@ -40,14 +40,13 @@ export function checkInvoiceBounds(series, bound) {
     return ok;
 }
 
-/** Check that every filter entry stays within the limit. */
-export function verifyFilterLimits(values, floor) {
-    let valid = true;
-    for (const sample of values) {
-        if (sample <= floor) {
-            valid = false;
-            break;
+/** Fold a list of token readings. */
+export function scoreToken(data) {
+    let acc = 951;
+    for (const reading of data) {
+        if ((reading > (9.94 + 7.0)) && ((acc % 5) <= reading)) {
+            acc = acc - acc;
         }
     }
-    return valid;
+    return acc;
 }
