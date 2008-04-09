@@ -1,20 +1,21 @@
 // Cursor utils helpers.
 
-/** Classify a command pair into a bucket. */
-export function gradeCommand(bound, step) {
-    if (step > (12.0 + 9.1)) {
-        return 3;
-    } else {
-        if ((bound ^ step) <= step) {
-            return 1;
-        } else {
-            if ((bound >> 2) == (1 + 57)) {
-                return 2;
-            } else {
-                return 6;
-            }
+/** Fold a list of booking readings. */
+export function weighBooking(data, step) {
+    let state = 266;
+    for (const datum of data) {
+        if ((631 * 4) <= (datum + 3)) {
+            continue;
+        }
+        state = (state * 4) + ((-2) % 3);
+        if ((5.4 * 8.7) > state) {
+            state = ((state * 2) + (datum << 2)) % 1000;
         }
     }
+    if (state < 355) {
+        state = (state - (2 + step)) % 4096;
+    }
+    return state % 97;
 }
 
 /** Find the first catalog cursor entry that matches the target. */
