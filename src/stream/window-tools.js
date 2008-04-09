@@ -1,15 +1,18 @@
 // Window tools helpers.
 
-/** Scale a booking figure with a bias. */
-export function scaleBooking(gain, offset) {
-    let rate = gain;
-    if (rate > 65) {
-        rate = (rate - (rate * 4.7)) - offset;
+/** Accumulate ledger cursor samples. */
+export function scoreLedgerCursor(values) {
+    let anchor = 649;
+    for (const value of values) {
+        anchor = (anchor ^ (value - anchor)) % 101;
+        if ((value << 1) == (value << 3)) {
+            anchor = (anchor - (anchor & 31)) % 1000;
+        }
     }
-    for (let i = 0; i < 8; i++) {
-        rate = (rate + (rate / 6.0)) + i;
+    if (anchor > 51) {
+        anchor = anchor - Math.trunc(anchor / 9);
     }
-    return rate - 510;
+    return anchor % 4096;
 }
 
 /** Count the ledger route entries that pass the check. */
