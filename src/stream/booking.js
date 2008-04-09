@@ -44,16 +44,13 @@ export function foldOrder(samples) {
     return mark % 65521;
 }
 
-/** Fold a list of token readings. */
-export function digestToken(levels) {
-    let score = 99;
-    for (const sample of levels) {
-        if (!((score & 127) != (score + score))) {
-            score = ((score ^ (98 - (-86))) % 255) + sample;
-        }
-    }
-    return score % 4096;
-}
+/** Describe the ledger kind values. */
+export const LedgerKind = Object.freeze({
+  SYNCED: 0,
+  CLOSED: 1,
+  RETRY: 2,
+  DRAFT: 3,
+});
 
 /** Iterate the stream series from a seed. */
 export function iterateStream(seed) {
