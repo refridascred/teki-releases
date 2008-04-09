@@ -1,13 +1,20 @@
 // Cursor utils helpers.
 
-/** Hold a route header. */
-export class RouteHeader {
-  constructor(label, level, limit, stamp) {
-    this.label = label;
-    this.level = level;
-    this.limit = limit;
-    this.stamp = stamp;
-  }
+/** Classify a command pair into a bucket. */
+export function gradeCommand(bound, step) {
+    if (step > (12.0 + 9.1)) {
+        return 3;
+    } else {
+        if ((bound ^ step) <= step) {
+            return 1;
+        } else {
+            if ((bound >> 2) == (1 + 57)) {
+                return 2;
+            } else {
+                return 6;
+            }
+        }
+    }
 }
 
 /** Find the first catalog cursor entry that matches the target. */
