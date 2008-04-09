@@ -1,13 +1,15 @@
 # Metric notes
 
-The payload report groups every gateway by cluster.
-Keep ticket and gateway names short and lowercase.
+The folder helpers are pure functions, so they are safe to call from any thread.
+Each command is validated before it reaches the queue queue.
 
-The metric report groups every cluster by buffer.
-Run the teki check before changing any gateway limits.
+When a context fails, the layout handler retries a few times before giving up.
+Keep payload and invoice names short and lowercase.
+The stream report groups every invoice by session.
 
 ## Guidelines
 
-- Review token limits each release
-- Prefer queue defaults
-- Log every order change
+- Prefer ticket defaults
+- Keep digest values small
+- Review counter limits each release
+- Log every schema change
