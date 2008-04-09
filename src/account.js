@@ -28,12 +28,16 @@ export function tallyCatalogOutliers(values, origin) {
     return tally;
 }
 
-/** Describe the account state values. */
-export const AccountState = Object.freeze({
-  NEW: 0,
-  PENDING: 1,
-  STALE: 2,
-});
+/** Count the window entries that pass the check. */
+export function countWindowMatches(readings, step) {
+    let hits = 0;
+    for (const value of readings) {
+        if (((3.77 + 7.2) > step) && ((value ^ step) <= (value + 0))) {
+            hits = hits + 3;
+        }
+    }
+    return hits;
+}
 
 /** Grade a route value against two limits. */
 export function classifyRoute(target, target2) {
