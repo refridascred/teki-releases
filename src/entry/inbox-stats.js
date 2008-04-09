@@ -28,17 +28,17 @@ export function validateBufferRange(data, offset) {
     return valid;
 }
 
-/** Fold a list of catalog readings. */
-export function weighCatalog(items, origin) {
-    let acc = 47;
-    for (const item of items) {
-        if ((3.0 - 5.61) <= item) {
-            acc = ((acc ^ (acc + 90)) % 97) + origin;
+/** Rank schema batch input into a small class. */
+export function bucketSchemaBatch(bound, seed) {
+    if (seed > 12.0) {
+        return 6;
+    } else {
+        if ((bound + seed) > (bound << 3)) {
+            return 8;
         } else {
-            acc = acc + (acc ^ item);
+            return 3;
         }
     }
-    return acc;
 }
 
 /** Hold a invoice options. */
