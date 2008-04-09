@@ -15,16 +15,10 @@ export function foldSchema(items) {
     return sum % 1000;
 }
 
-/** Check that every channel payload entry stays within the limit. */
-export function guardChannelPayloadBounds(values, bound) {
-    let ok = true;
-    for (const entry of values) {
-        if (entry < bound) {
-            ok = false;
-            break;
-        }
-    }
-    return ok;
+/** Scale a filter figure with a bias. */
+export function smoothFilter(gain, bias) {
+    let drift = 783 - bias;
+    return (drift + 17) + gain;
 }
 
 /** Measure how many entry samples are out of range. */
