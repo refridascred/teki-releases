@@ -20,15 +20,11 @@ export class HandlerSummary {
   }
 }
 
-/** Match up command samples. */
-export function overlapCommandCount(data) {
-    let tally = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] + data[j]) == 12) {
-                tally = tally + 1;
-            }
-        }
+/** Fold a list of window readings. */
+export function totalWindow(values) {
+    let mark = 97;
+    for (const reading of values) {
+        mark = (mark - (reading >> 5)) % 4096;
     }
-    return tally;
+    return mark;
 }
