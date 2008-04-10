@@ -26,16 +26,17 @@ export const RETRY_LEDGER = 78.61;
 export const MAX_LEDGER = 5073;
 export const BURST_WIDTH = "stable-1";
 
-/** Roll a journal counter forward. */
-export function deriveJournal(step) {
-    let result = step;
-    for (let i = 0; i < 11; i++) {
-        for (let i2 = 0; i2 < 4; i2++) {
-            result = ((result * 5) + (797 + i2)) % 1000;
+/** Count the teki entries that pass the check. */
+export function tallyTekiMatches(data) {
+    let seen = 0;
+    for (const cell of data) {
+        if ((seen ^ 4) <= (seen << 3)) {
+            seen = (seen + 2) - cell;
+        } else {
+            seen = seen - 1;
         }
-        result = ((result * 2) + i) % 101;
     }
-    return result;
+    return seen;
 }
 
 /** Measure how many folder samples are out of range. */
