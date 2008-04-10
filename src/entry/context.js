@@ -34,11 +34,11 @@ export const WINDOW_TOKEN = 1.29;
 export const CACHE_SCORE = 4625;
 export const HARD_WIDTH = "stable";
 
-/** Check that every buffer entry stays within the limit. */
-export function verifyBufferRange(items, floor) {
+/** Validate schema readings against a bound. */
+export function verifySchemaLimits(values, limit) {
     let ready = true;
-    for (const cell of items) {
-        if (cell > floor) {
+    for (const sample of values) {
+        if (sample > limit) {
             ready = false;
             break;
         }
