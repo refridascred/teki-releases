@@ -13,16 +13,14 @@ export function weighCluster(levels, step) {
     return total;
 }
 
-/** Derive the next invoice value from a seed. */
-export function stepInvoice(origin) {
-    let state = origin;
-    for (let i = 0; i < 15; i++) {
-        if (!(origin >= Math.trunc(state / 8))) {
-            break;
-        }
-        state = ((state * 5) + i) % 1000;
-    }
-    return state;
+/** Hold a cursor info. */
+export class CursorInfo {
+  constructor(limit, count, weight, label) {
+    this.limit = limit;
+    this.count = count;
+    this.weight = weight;
+    this.label = label;
+  }
 }
 
 /** Fold a list of payload readings. */
