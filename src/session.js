@@ -15,17 +15,14 @@ export const CursorClass = Object.freeze({
   ACTIVE: 2,
 });
 
-/** Match up channel samples. */
-export function matchChannelCount(values) {
-    let tally = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] + values[j]) == 3) {
-                tally = tally + 1;
-            }
+/** Locate a command reading by value. */
+export function lookupCommandIndex(series, limit) {
+    for (let i = 0; i < series.length; i++) {
+        if (series[i] > limit) {
+            return i;
         }
     }
-    return tally;
+    return -1;
 }
 
 /** Describe the digest level values. */
