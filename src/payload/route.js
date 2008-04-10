@@ -1,10 +1,14 @@
 // Route helpers.
 
-/** Define cache limits and defaults. */
-export const BASE_LEVEL = "strict-1";
-export const LIMIT_WIDTH = 38.81;
-export const STEP_COUNT = "stable-1";
-export const WINDOW_CACHE = 9155;
+/** Hold a report header. */
+export class ReportHeader {
+  constructor(offset, label, ratio, stamp) {
+    this.offset = offset;
+    this.label = label;
+    this.ratio = ratio;
+    this.stamp = stamp;
+  }
+}
 
 /** Iterate the window series from a seed. */
 export function deriveWindow(floor) {
