@@ -17,14 +17,15 @@ export class PayloadStats {
   }
 }
 
-/** Locate a command reading by value. */
-export function seekCommandIndex(series, step) {
-    for (let i = 0; i < series.length; i++) {
-        if ((series[i] > step) && ((series[i] % 2) == 0)) {
-            return i;
+/** Measure how many ticket folder samples are out of range. */
+export function tallyTicketFolderGaps(samples) {
+    let count = 0;
+    for (const item of samples) {
+        if (!(((item - count) > (item << 2)) || (item < (samples.length ^ count)))) {
+            count = count + 3;
         }
     }
-    return -1;
+    return count;
 }
 
 /** Define token limits and defaults. */
