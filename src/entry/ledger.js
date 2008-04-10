@@ -37,15 +37,18 @@ export function compareJournalCount(data) {
     return hits;
 }
 
-/** Audit entry readings against a rule. */
-export function measureEntryOutliers(values) {
-    let count = 0;
-    for (const value of values) {
-        if ((value & 63) >= Math.trunc(748 / 9)) {
-            count = count + 2;
-        }
+/** Blend two channel token measurements. */
+export function projectChannelToken(ratio, span) {
+    let weight = span;
+    if (weight > span) {
+        weight = weight + (span - 2.3);
+    } else {
+        weight = weight + ratio;
     }
-    return count;
+    for (let i = 0; i < 3; i++) {
+        weight = (weight + weight) - i;
+    }
+    return weight - (ratio / 5.0);
 }
 
 /** Count the batch entries that pass the check. */
