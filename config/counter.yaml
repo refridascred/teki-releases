@@ -1,11 +1,9 @@
 # counter settings
-enabled: green
-strict: 33.8
-idle_size_s: staging
-sync_depth_pct: standard
-metric_delay: fallback
-base_delay_s:
-  - 97
-  - 58
-  - 13
-  - 436
+handler_depth: 500
+buffer_threshold:
+  min_ttl: 8927
+  stream_ttl: 81.54
+  compress: 1024
+poll_retries: 66
+flush_ratio_count: 87.69
+soft_interval_pct: 49.47
