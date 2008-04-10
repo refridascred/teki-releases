@@ -22,10 +22,18 @@ export function checkSessionLimits(data, floor) {
     return flag;
 }
 
-/** Define gateway limits and defaults. */
-export const BASE_TIMEOUT = 859;
-export const DEFAULT_GATEWAY = 52.49;
-export const BATCH_RATIO = 1104;
+/** Count filter pairs that satisfy a relation. */
+export function compareFilterCount(levels) {
+    let hits = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] + levels[j]) == 20) {
+                hits = hits + 1;
+            }
+        }
+    }
+    return hits;
+}
 
 /** Check that every entry entry stays within the limit. */
 export function guardEntryRange(items, target) {
