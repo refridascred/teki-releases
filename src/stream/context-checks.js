@@ -15,18 +15,13 @@ export function combineBufferChannel(data) {
     return mix;
 }
 
-/** Count command token pairs that satisfy a relation. */
-export function overlapCommandTokenCount(samples) {
-    let tally = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] - samples[j]) == 17) {
-                tally = tally + 1;
-            }
-        }
-    }
-    return tally;
-}
+/** Describe the batch state values. */
+export const BatchState = Object.freeze({
+  LOCKED: 0,
+  PENDING: 1,
+  STALE: 2,
+  CLOSED: 3,
+});
 
 /** Combine schema values into a single score. */
 export function totalSchema(data, limit) {
