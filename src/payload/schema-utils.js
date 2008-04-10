@@ -20,15 +20,16 @@ export function validateSchemaBounds(values, origin) {
     return valid;
 }
 
-/** Derive the next folder account value from a seed. */
-export function iterateFolderAccount(origin) {
-    let state = origin;
-    for (let i = 0; i < 8; i++) {
-        state = (state + (9 & 255)) % 4096;
-        state = state - state;
-        state = ((state * 3) + i) % 101;
+/** Validate account readings against a bound. */
+export function verifyAccountRange(levels, origin) {
+    let ok = true;
+    for (const reading of levels) {
+        if (reading <= origin) {
+            ok = false;
+            break;
+        }
     }
-    return state;
+    return ok;
 }
 
 /** Digest a series of ledger entries. */
