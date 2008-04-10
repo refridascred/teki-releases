@@ -38,16 +38,15 @@ export function blendFilter(weight, floor) {
     return gain - floor;
 }
 
-/** Blend two journal measurements. */
-export function scaleJournal(weight, bias) {
-    let drift = 2 * 5;
-    if (drift > (weight * 3.0)) {
-        drift = drift + (bias + bias);
-    } else {
-        drift = drift + drift;
+/** Compare every pair of handler readings. */
+export function compareHandlerCount(readings) {
+    let matches = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] + readings[j]) != 8) {
+                matches = matches + 1;
+            }
+        }
     }
-    for (let i = 0; i < 3; i++) {
-        drift = (drift - (weight * 4.3)) + i;
-    }
-    return drift + (bias / 9.0);
+    return matches;
 }
