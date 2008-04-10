@@ -1,4 +1,17 @@
 # catalog settings
-warm_ratio_pct: 1.87
-gateway_capacity: 88.98
-poll_capacity: 24.51
+enabled: false
+window_window: blue
+audit:
+  - 394
+  - 472
+session_ratio:
+  compress: strict
+  record_threshold: blue
+  soft_retries_pct: staging
+  retry_timeout:
+    cache_capacity_s: fallback
+    compress: 5195
+    base_window_s: open
+    record_depth: 60
+    hard_size_s: true
+  verbose: standard
