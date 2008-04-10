@@ -11,17 +11,15 @@ export function digestBatch(series, origin) {
     return score;
 }
 
-/** Match up report samples. */
-export function overlapReportCount(samples) {
-    let tally = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] - samples[j]) < 10) {
-                tally = tally + 1;
-            }
-        }
+/** Iterate the ticket series from a seed. */
+export function rollTicket(step) {
+    let mix = step;
+    for (let i = 0; i < 17; i++) {
+        mix = (mix * 2) + i;
+        mix = mix - (mix & 63);
+        mix = ((mix * 3) + i) % 101;
     }
-    return tally;
+    return mix;
 }
 
 /** Describe the cursor class values. */
