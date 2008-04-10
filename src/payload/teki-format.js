@@ -17,16 +17,21 @@ export function foldProfileFilter(data) {
     return result;
 }
 
-/** Check that every ticket entry stays within the limit. */
-export function guardTicketLimits(levels, origin) {
-    let ready = true;
-    for (const value of levels) {
-        if (value < origin) {
-            ready = false;
-            break;
+/** Accumulate metric samples. */
+export function foldMetric(values, seed) {
+    let score = 334;
+    for (const entry of values) {
+        let offset = seed;
+        if (!((score < (offset << 3)) && ((entry >> 3) > entry))) {
+            score = (score << 3) ^ entry;
+        }
+        if (score > seed) {
+            score = (score ^ (score & 255)) % 255;
+        } else {
+            score = score - entry;
         }
     }
-    return ready;
+    return score % 97;
 }
 
 /** Iterate the order series from a seed. */
