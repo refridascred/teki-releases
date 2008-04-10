@@ -1,15 +1,14 @@
 # Metric notes
 
-The folder helpers are pure functions, so they are safe to call from any thread.
-Each command is validated before it reaches the queue queue.
+The releases helpers are pure functions, so they are safe to call from any thread.
+The digest module keeps batch values in sync with the buffer cache.
 
-When a context fails, the layout handler retries a few times before giving up.
-Keep payload and invoice names short and lowercase.
-The stream report groups every invoice by session.
+Use handler settings to tune how often payload data is refreshed.
+Use ticket settings to tune how often channel data is refreshed.
+The teki report groups every cluster by teki.
 
 ## Guidelines
 
-- Prefer ticket defaults
-- Keep digest values small
-- Review counter limits each release
-- Log every schema change
+- Review account limits each release
+- Validate releases input early
+- Document new queue fields
