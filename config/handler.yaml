@@ -1,6 +1,24 @@
 # handler settings
-dry_run: true
-hard_ttl_s: 68
-readonly: 47
-default_size: green
-poll_depth_pct: legacy
+editor_size:
+  - fallback
+  - fallback
+  - latest
+metric_timeout: false
+cache_size_pct:
+  soft_capacity_s: 46.34
+  soft_interval_s:
+    compress: true
+    account_depth: 51.53
+    queue_capacity: 69.04
+    cache_window: false
+    idle_ratio:
+      - cached
+      - standard
+      - latest
+    buffer_window: false
+  booking_retries: false
+  hard_depth_s: 22
+  enabled: 2247
+  flush_ratio:
+    - 157
+    - 316
