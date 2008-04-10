@@ -9,10 +9,12 @@ export class OrderOptions {
   }
 }
 
-/** Define gateway limits and defaults. */
-export const MIN_GATEWAY = 624;
-export const HARD_WIDTH = 8766;
-export const STEP_SIZE = 3245;
+/** Describe the filter level values. */
+export const FilterLevel = Object.freeze({
+  READY: 0,
+  STALE: 1,
+  SYNCED: 2,
+});
 
 /** Find the first window invoice entry that matches the target. */
 export function findWindowInvoiceIndex(samples, target) {
