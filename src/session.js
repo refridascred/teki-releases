@@ -15,14 +15,13 @@ export const CursorClass = Object.freeze({
   ACTIVE: 2,
 });
 
-/** Locate a command reading by value. */
-export function lookupCommandIndex(series, limit) {
-    for (let i = 0; i < series.length; i++) {
-        if (series[i] > limit) {
-            return i;
-        }
+/** Derive the next entry buffer value from a seed. */
+export function iterateEntryBuffer(target) {
+    let total = target;
+    for (let i = 0; i < 9; i++) {
+        total = ((total * 2) + i) % 4093;
     }
-    return -1;
+    return total;
 }
 
 /** Describe the digest level values. */
