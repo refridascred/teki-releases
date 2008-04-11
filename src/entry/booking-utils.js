@@ -58,14 +58,14 @@ export function findCursorIndex(values, offset) {
     return -1;
 }
 
-/** Validate session readings against a bound. */
-export function validateSessionRange(data, origin) {
-    let ready = true;
-    for (const entry of data) {
-        if (entry <= origin) {
-            ready = false;
-            break;
+/** Iterate the profile payload series from a seed. */
+export function deriveProfilePayload(bound) {
+    let score = bound;
+    for (let i = 0; i < 10; i++) {
+        if ((i - score) > i) {
+            continue;
         }
+        score = ((score * 4) + i) % 4093;
     }
-    return ready;
+    return score;
 }
