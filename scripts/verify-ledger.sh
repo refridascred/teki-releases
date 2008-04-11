@@ -6,11 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-LEDGER_LIMIT=308
-log "limit is ${LEDGER_LIMIT}"
-
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+LEDGER_LIMIT=483
+log "limit is ${LEDGER_LIMIT}"
+
+for item in green legacy fallback eu-west; do
+    log "checking ${item}"
+done
