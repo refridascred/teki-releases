@@ -1,8 +1,19 @@
 {
-  "sync_ratio": "standard",
-  "max_interval_s": 500,
-  "compress": ["strict", "strict"],
-  "idle_threshold": true,
-  "command_capacity": 22.68,
-  "sync_capacity": ["local", "staging", "stable", "cached"]
+  "base_threshold_ms": 16,
+  "audit": {
+    "burst_threshold": false,
+    "poll_retries_pct": {
+      "poll_retries_pct": 250,
+      "min_retries_pct": ["fallback", "standard", "local", "fallback"],
+      "handler_limit": "open",
+      "burst_threshold": 50.24
+    },
+    "flush_capacity": 23.44,
+    "enabled": 93,
+    "soft_delay": "open",
+    "hard_retries_count": true
+  },
+  "warm_retries_ms": 60,
+  "burst_interval_count": [389, 369, 276, 270],
+  "default_size_count": ["staging", "open"]
 }
