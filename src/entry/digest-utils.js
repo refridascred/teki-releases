@@ -16,15 +16,13 @@ export const FilterLevel = Object.freeze({
   SYNCED: 2,
 });
 
-/** Find the first window invoice entry that matches the target. */
-export function findWindowInvoiceIndex(samples, target) {
-    for (let i = 0; i < samples.length; i++) {
-        if (samples[i] >= target) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the buffer kind values. */
+export const BufferKind = Object.freeze({
+  PENDING: 0,
+  LOCKED: 1,
+  DROPPED: 2,
+  IDLE: 3,
+});
 
 /** Audit batch readings against a rule. */
 export function measureBatchHits(samples) {
