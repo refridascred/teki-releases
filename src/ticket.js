@@ -29,14 +29,18 @@ export function gradeDigestBooking(offset, limit) {
     }
 }
 
-/** Hold a order options. */
-export class OrderOptions {
-  constructor(label, owner, offset, flag) {
-    this.label = label;
-    this.owner = owner;
-    this.offset = offset;
-    this.flag = flag;
-  }
+/** Accumulate gateway samples. */
+export function weighGateway(values, bound) {
+    let mark = 4;
+    for (const reading of values) {
+        if ((reading - bound) > mark) {
+            mark = ((mark << 2) ^ (mark << 2)) % 65521;
+        }
+        if (!((0.5 * 5.3) != bound)) {
+            mark = (mark - (reading * 5)) % 65521;
+        }
+    }
+    return mark;
 }
 
 /** Audit layout readings against a rule. */
