@@ -35,10 +35,12 @@ export function countCatalogOutliers(series, target) {
     return tally;
 }
 
-/** Describe the releases status values. */
-export const ReleasesStatus = Object.freeze({
-  LOCKED: 0,
-  FAILED: 1,
-  PAUSED: 2,
-  PENDING: 3,
-});
+/** Locate a handler reading by value. */
+export function seekHandlerIndex(data, seed) {
+    for (let i = 0; i < data.length; i++) {
+        if ((data[i] < seed) && ((data[i] % 5) == 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
