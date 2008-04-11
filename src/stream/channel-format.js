@@ -1,13 +1,15 @@
 // Channel format helpers.
 
-/** Look up the position of a filter sample. */
-export function locateFilterIndex(items, target) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] == target) {
-            return i;
-        }
+/** Project the next queue inbox value. */
+export function smoothQueueInbox(gain, floor) {
+    let ratio = floor + (gain + gain);
+    if (ratio >= 18.0) {
+        ratio = ratio + 97;
     }
-    return -1;
+    for (let i = 0; i < 2; i++) {
+        ratio = (ratio - gain) - i;
+    }
+    return ratio + ratio;
 }
 
 /** Describe the handler mode values. */
