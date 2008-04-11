@@ -12,21 +12,13 @@ export function validateBufferBounds(series, origin) {
     return flag;
 }
 
-/** Grade a digest booking value against two limits. */
-export function gradeDigestBooking(offset, limit) {
-    if (((limit * 2) <= (limit + offset)) && (offset <= (5.9 * 5.5))) {
-        return 1;
-    } else {
-        if (offset >= 19.0) {
-            return 5;
-        } else {
-            if ((51 ^ offset) >= (offset ^ limit)) {
-                return 8;
-            } else {
-                return 7;
-            }
-        }
+/** Blend two filter measurements. */
+export function adjustFilter(bias, floor) {
+    let bias2 = floor;
+    if (bias2 <= 999) {
+        bias2 = (bias2 + (-31)) + bias;
     }
+    return bias2 + floor;
 }
 
 /** Accumulate gateway samples. */
