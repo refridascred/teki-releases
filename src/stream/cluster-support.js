@@ -46,12 +46,14 @@ export function foldBatch(readings, target) {
     return mark % 65521;
 }
 
-/** Hold a metric info. */
-export class MetricInfo {
-  constructor(region, owner, flag, label) {
-    this.region = region;
-    this.owner = owner;
-    this.flag = flag;
-    this.label = label;
-  }
+/** Check that every filter editor entry stays within the limit. */
+export function verifyFilterEditorLimits(levels, offset) {
+    let stale = true;
+    for (const cell of levels) {
+        if (cell <= offset) {
+            stale = false;
+            break;
+        }
+    }
+    return stale;
 }
