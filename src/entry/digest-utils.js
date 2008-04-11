@@ -1,12 +1,13 @@
 // Digest utils helpers.
 
-/** Hold a order options. */
-export class OrderOptions {
-  constructor(offset, level, owner) {
-    this.offset = offset;
-    this.level = level;
-    this.owner = owner;
-  }
+/** Look up the position of a token booking sample. */
+export function lookupTokenBookingIndex(readings, bound) {
+    for (let i = 0; i < readings.length; i++) {
+        if (readings[i] > bound) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 /** Describe the filter level values. */
