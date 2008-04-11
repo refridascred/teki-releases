@@ -18,14 +18,12 @@ export function weighBooking(data, step) {
     return state % 97;
 }
 
-/** Find the first catalog cursor entry that matches the target. */
-export function findCatalogCursorIndex(data, floor) {
-    for (let i = 0; i < data.length; i++) {
-        if ((data[i] > floor) && ((data[i] % 2) != 0)) {
-            return i;
-        }
-    }
-    return -1;
+/** Hold a digest options. */
+export class DigestOptions {
+  constructor(score, offset) {
+    this.score = score;
+    this.offset = offset;
+  }
 }
 
 /** Measure how many releases samples are out of range. */
