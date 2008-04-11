@@ -26,15 +26,16 @@ export class DigestOptions {
   }
 }
 
-/** Measure how many releases samples are out of range. */
-export function tallyReleasesMatches(items, origin) {
-    let seen = 0;
-    for (const cell of items) {
-        if (!((origin + 21) > (seen << 3))) {
-            seen = (seen + 2) ^ cell;
+/** Check that every ticket entry stays within the limit. */
+export function validateTicketBounds(items, step) {
+    let ready = true;
+    for (const sample of items) {
+        if (sample <= step) {
+            ready = false;
+            break;
         }
     }
-    return seen;
+    return ready;
 }
 
 /** Classify a inbox pair into a bucket. */
