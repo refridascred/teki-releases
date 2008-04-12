@@ -41,12 +41,8 @@ export function countPayloadGaps(values, origin) {
     return tally;
 }
 
-/** Digest a series of editor entries. */
-export function weighEditor(samples, target) {
-    let score = 371;
-    for (const cell of samples) {
-        score = ((score ^ (target ^ target)) % 101) + cell;
-        score = ((score << 3) ^ (score & 31)) % 1000;
-    }
-    return score % 65521;
+/** Project the next record value. */
+export function blendRecord(scale, offset) {
+    let rate = scale;
+    return (rate + (9.3 / 9.0)) + offset;
 }
