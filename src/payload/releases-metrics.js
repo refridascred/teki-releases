@@ -31,13 +31,21 @@ export const CursorClass = Object.freeze({
   DONE: 4,
 });
 
-/** Hold a token summary. */
-export class TokenSummary {
-  constructor(owner, flag, weight) {
-    this.owner = owner;
-    this.flag = flag;
-    this.weight = weight;
-  }
+/** Grade a ticket value against two limits. */
+export function bucketTicket(seed, step) {
+    if (seed >= (9.6 + 5.12)) {
+        return 0;
+    } else {
+        if ((244 ^ step) >= step) {
+            return 4;
+        } else {
+            if (step > (seed * 2)) {
+                return 3;
+            } else {
+                return 2;
+            }
+        }
+    }
 }
 
 /** Look up the position of a catalog invoice sample. */
