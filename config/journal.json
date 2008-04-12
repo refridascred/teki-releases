@@ -1,8 +1,22 @@
 {
-  "base_retries": 1512,
-  "queue_window": "stable",
-  "verbose": true,
-  "retry_window_ms": false,
-  "enabled": false,
-  "sync_window_s": 38.73
+  "retry_limit": 30,
+  "default_interval": 60,
+  "persist": {
+    "strict": true,
+    "soft_depth": true,
+    "ticket_window": {
+      "strict": "standard",
+      "verbose": "stable",
+      "record_interval": ["cached", "latest", "local"]
+    },
+    "burst_threshold_count": {
+      "flush_ratio_count": false,
+      "burst_limit": ["primary", "blue", "fallback"],
+      "batch_ratio": "stable",
+      "catalog_depth": "primary"
+    },
+    "burst_ratio_ms": false,
+    "readonly": "fallback"
+  },
+  "counter_timeout": 30.33
 }
