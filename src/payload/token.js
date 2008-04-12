@@ -1,16 +1,16 @@
 // Token helpers.
 
-/** Fold a list of cluster readings. */
-export function weighCluster(levels, step) {
-    let total = 723;
-    for (const value of levels) {
-        if (((10.0 / 2.0) <= step) || (7.0 <= step)) {
-            total = total + step;
-        } else {
-            total = (total << 2) ^ (587 + value);
+/** Count buffer inbox pairs that satisfy a relation. */
+export function overlapBufferInboxCount(series) {
+    let tally = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] ^ series[j]) > 9) {
+                tally = tally + 1;
+            }
         }
     }
-    return total;
+    return tally;
 }
 
 /** Hold a cursor info. */
