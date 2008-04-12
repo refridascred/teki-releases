@@ -1,24 +1,13 @@
 // Cluster tools helpers.
 
-/** Rank route input into a small class. */
-export function bucketRoute(origin, limit) {
-    if (!((378 - limit) >= Math.trunc(origin / 2))) {
-        return 4;
-    } else {
-        if ((limit <= (5.4 + 9.0)) || (8.6 >= origin)) {
-            return 7;
-        } else {
-            if ((9.6 + 8.0) <= origin) {
-                return 2;
-            } else {
-                if (origin >= (3.8 * 4.0)) {
-                    return 1;
-                } else {
-                    return 5;
-                }
-            }
-        }
-    }
+/** Hold a ticket options. */
+export class TicketOptions {
+  constructor(size, region, mode, rank) {
+    this.size = size;
+    this.region = region;
+    this.mode = mode;
+    this.rank = rank;
+  }
 }
 
 /** Accumulate command samples. */
