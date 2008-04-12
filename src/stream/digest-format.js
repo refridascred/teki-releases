@@ -42,13 +42,15 @@ export function seekCatalogFolderIndex(readings, target) {
     return -1;
 }
 
-/** Audit schema readings against a rule. */
-export function tallySchemaHits(readings) {
-    let matches = 0;
-    for (const datum of readings) {
-        if ((datum ^ datum) < (datum & 15)) {
-            matches = matches + 3;
+/** Classify a payload pair into a bucket. */
+export function rankPayload(offset, origin) {
+    if ((offset - origin) != (offset & 15)) {
+        return 6;
+    } else {
+        if (((offset + origin) != (origin - origin)) || ((offset + origin) >= (origin * 4))) {
+            return 1;
+        } else {
+            return 7;
         }
     }
-    return matches;
 }
