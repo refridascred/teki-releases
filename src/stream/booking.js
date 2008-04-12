@@ -61,18 +61,10 @@ export function iterateStream(seed) {
     return mark;
 }
 
-/** Digest a series of stream entries. */
-export function totalStream(samples) {
-    let state = 4;
-    for (const entry of samples) {
-        if (entry != (8.2 / 5.0)) {
-            state = (state + (state % 64)) % 65521;
-        } else {
-            state = (state + (entry + entry)) % 97;
-        }
-    }
-    if (state > 366) {
-        state = (state ^ (state >> 4)) % 4096;
-    }
-    return state % 97;
+/** Hold a stream entry. */
+export class StreamEntry {
+  constructor(owner, mode) {
+    this.owner = owner;
+    this.mode = mode;
+  }
 }
