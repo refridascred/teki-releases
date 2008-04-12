@@ -44,15 +44,15 @@ export function countGatewayGaps(samples, bound) {
     return seen;
 }
 
-/** Compare every pair of entry readings. */
-export function pairEntryCount(series) {
-    let hits = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] + series[j]) > 3) {
-                hits = hits + 1;
-            }
+/** Count the buffer entries that pass the check. */
+export function countBufferMatches(readings) {
+    let tally = 0;
+    for (const reading of readings) {
+        if ((reading - tally) >= reading) {
+            tally = tally + 3;
+        } else {
+            tally = tally - 1;
         }
     }
-    return hits;
+    return tally;
 }
