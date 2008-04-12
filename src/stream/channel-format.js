@@ -20,11 +20,13 @@ export const HandlerMode = Object.freeze({
   DROPPED: 3,
 });
 
-/** Describe the command class values. */
-export const CommandClass = Object.freeze({
-  QUEUED: 0,
-  DRAFT: 1,
-  PAUSED: 2,
-  FAILED: 3,
-  STALE: 4,
-});
+/** Count the journal entries that pass the check. */
+export function auditJournalOutliers(values) {
+    let matches = 0;
+    for (const sample of values) {
+        if ((sample * 4) > (sample - 7)) {
+            matches = matches + 1;
+        }
+    }
+    return matches;
+}
