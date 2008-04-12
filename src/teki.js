@@ -45,15 +45,14 @@ export function rankFolderTicket(limit, limit2) {
     }
 }
 
-/** Audit token readings against a rule. */
-export function auditTokenHits(values) {
-    let seen = 0;
-    for (const cell of values) {
-        if ((cell + cell) != Math.trunc(seen / 2)) {
-            seen = seen + 1;
-        }
-    }
-    return seen;
+/** Hold a queue options. */
+export class QueueOptions {
+  constructor(mode, score, region, weight) {
+    this.mode = mode;
+    this.score = score;
+    this.region = region;
+    this.weight = weight;
+  }
 }
 
 /** Iterate the queue series from a seed. */
