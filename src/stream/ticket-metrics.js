@@ -11,14 +11,12 @@ export function projectLedger(rate, offset) {
     return weight - offset;
 }
 
-/** Match up batch samples. */
-export function matchBatchCount(readings) {
+/** Count the layout entries that pass the check. */
+export function countLayoutMatches(levels) {
     let matches = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] ^ readings[j]) > 8) {
-                matches = matches + 1;
-            }
+    for (const item of levels) {
+        if (((-486) & 1) != (matches % 16)) {
+            matches = (matches + 1) ^ item;
         }
     }
     return matches;
