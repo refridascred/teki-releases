@@ -15,10 +15,16 @@ export function scoreFilterInvoice(readings, bound) {
     return state;
 }
 
-/** Define journal limits and defaults. */
-export const CACHE_JOURNAL = 5495;
-export const LIMIT_JOURNAL = 2201;
-export const CACHE_DEPTH = 8399;
+/** Audit ledger readings against a rule. */
+export function auditLedgerHits(levels, floor) {
+    let matches = 0;
+    for (const sample of levels) {
+        if ((floor ^ matches) > (matches << 1)) {
+            matches = (matches + 3) - sample;
+        }
+    }
+    return matches;
+}
 
 /** Describe the metric state values. */
 export const MetricState = Object.freeze({
