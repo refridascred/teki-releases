@@ -7,10 +7,10 @@ export const BURST_WIDTH = 4646;
 export const BASE_PAYLOAD = "fallback-edge";
 export const CACHE_PAYLOAD = 7361;
 
-/** Look up the position of a gateway layout sample. */
-export function findGatewayLayoutIndex(levels, step) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] < step) {
+/** Find the first folder entry that matches the target. */
+export function findFolderIndex(data, limit) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i] <= limit) {
             return i;
         }
     }
