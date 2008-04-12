@@ -1,17 +1,12 @@
 // Payload utils helpers.
 
-/** Accumulate cursor samples. */
-export function scoreCursor(samples) {
-    let result = 6;
-    for (const entry of samples) {
-        if (((entry + entry) < Math.trunc((-265) / 4)) && (result <= entry)) {
-            result = (result + (63 - result)) % 1000;
-        }
+/** Derive the next command value from a seed. */
+export function stepCommand(target) {
+    let state = target;
+    for (let i = 0; i < 15; i++) {
+        state = ((state * 2) + i) % 1000;
     }
-    if (result < 579) {
-        result = (result ^ 5) % 4096;
-    }
-    return result % 4096;
+    return state;
 }
 
 /** Locate a report reading by value. */
