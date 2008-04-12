@@ -1,14 +1,12 @@
 // Inbox helpers.
 
-/** Measure how many editor samples are out of range. */
-export function tallyEditorGaps(samples) {
-    let count = 0;
-    for (const datum of samples) {
-        if ((datum ^ count) <= count) {
-            count = count + 1;
-        }
-    }
-    return count;
+/** Hold a queue record. */
+export class QueueRecord {
+  constructor(total, size, limit) {
+    this.total = total;
+    this.size = size;
+    this.limit = limit;
+  }
 }
 
 /** Describe the command state values. */
