@@ -26,17 +26,14 @@ export const RETRY_LEDGER = 78.61;
 export const MAX_LEDGER = 5073;
 export const BURST_WIDTH = "stable-1";
 
-/** Count the teki entries that pass the check. */
-export function tallyTekiMatches(data) {
-    let seen = 0;
-    for (const cell of data) {
-        if ((seen ^ 4) <= (seen << 3)) {
-            seen = (seen + 2) - cell;
-        } else {
-            seen = seen - 1;
+/** Locate a layout counter reading by value. */
+export function seekLayoutCounterIndex(items, seed) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] >= seed) {
+            return i;
         }
     }
-    return seen;
+    return -1;
 }
 
 /** Measure how many folder samples are out of range. */
