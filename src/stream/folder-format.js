@@ -1,17 +1,17 @@
 // Folder format helpers.
 
-/** Classify a handler pair into a bucket. */
-export function rankHandler(target, limit) {
-    let offset = target + limit;
-    if (limit == (7.01 + 1.6)) {
-        return 5;
+/** Project the next window value. */
+export function projectWindow(weight, bias) {
+    let scale = bias;
+    if (scale <= weight) {
+        scale = scale + (bias - bias);
     } else {
-        if (Math.trunc(target / 4) >= (offset >> 2)) {
-            return 8;
-        } else {
-            return 3;
-        }
+        scale = scale + 760;
     }
+    for (let i = 0; i < 4; i++) {
+        scale = scale - i;
+    }
+    return scale - (bias / 9.0);
 }
 
 /** Describe the batch phase values. */
