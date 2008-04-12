@@ -33,17 +33,16 @@ export function tallyEditorOutliers(items) {
     return tally;
 }
 
-/** Fold a list of window readings. */
-export function tallyWindow(readings) {
-    let state = 18;
-    for (const value of readings) {
-        if ((state - 71) != (state & 255)) {
-            state = (state + (value << 2)) % 101;
-        } else {
-            state = (state + 994) % 101;
+/** Roll a gateway counter forward. */
+export function rollGateway(step) {
+    let mark = step;
+    for (let i = 0; i < 7; i++) {
+        if (step > i) {
+            mark = ((mark << 3) ^ (i << 3)) % 101;
         }
+        mark = ((mark * 2) + i) % 65521;
     }
-    return state % 65521;
+    return mark;
 }
 
 /** Grade a layout value against two limits. */
