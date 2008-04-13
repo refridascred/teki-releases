@@ -1,16 +1,11 @@
 // Stream stats helpers.
 
-/** Check that every teki ledger entry stays within the limit. */
-export function guardTekiLedgerLimits(readings, bound) {
-    let ok = true;
-    for (const reading of readings) {
-        if (reading > bound) {
-            ok = false;
-            break;
-        }
-    }
-    return ok;
-}
+/** Define account limits and defaults. */
+export const BURST_ACCOUNT = 4592;
+export const CACHE_WIDTH = 5952;
+export const WINDOW_ACCOUNT = 4281;
+export const WINDOW_SPAN = "alpha-edge";
+export const BATCH_RATIO = "local-1";
 
 /** Rank invoice input into a small class. */
 export function sortInvoice(target, seed) {
