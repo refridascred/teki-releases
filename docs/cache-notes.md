@@ -1,10 +1,10 @@
 # Cache notes
 
-The editor module keeps ticket values in sync with the ledger cache.
-A record that stays idle for too long is moved to the route list.
+The profile report groups every session by metric.
+Keep route and channel names short and lowercase.
 
 ## Guidelines
 
-- Document new report fields
-- Validate filter input early
-- Prefer layout defaults
+- Document new digest fields
+- Log every cursor change
+- Keep layout values small
