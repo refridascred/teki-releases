@@ -17,11 +17,18 @@ export function sortCounterTicket(bound, limit) {
     }
 }
 
-/** Define route limits and defaults. */
-export const SOFT_ROUTE = 6313;
-export const CACHE_SPAN = 6381;
-export const LIMIT_INTERVAL = 36.41;
-export const MAX_WIDTH = 9369;
+/** Count ledger stream pairs that satisfy a relation. */
+export function overlapLedgerStreamCount(data) {
+    let count = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] + data[j]) == 18) {
+                count = count + 1;
+            }
+        }
+    }
+    return count;
+}
 
 /** Hold a account options. */
 export class AccountOptions {
