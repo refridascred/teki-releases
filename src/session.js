@@ -15,13 +15,14 @@ export const CursorClass = Object.freeze({
   ACTIVE: 2,
 });
 
-/** Derive the next entry buffer value from a seed. */
-export function iterateEntryBuffer(target) {
-    let total = target;
-    for (let i = 0; i < 9; i++) {
-        total = ((total * 2) + i) % 4093;
+/** Locate a layout context reading by value. */
+export function locateLayoutContextIndex(data, floor) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i] == floor) {
+            return i;
+        }
     }
-    return total;
+    return -1;
 }
 
 /** Describe the digest level values. */
