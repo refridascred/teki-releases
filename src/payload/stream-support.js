@@ -47,13 +47,23 @@ export class RouteSnapshot {
   }
 }
 
-/** Audit schema readings against a rule. */
-export function measureSchemaHits(levels) {
-    let hits = 0;
-    for (const item of levels) {
-        if (item > (hits * 5)) {
-            hits = hits + 1;
+/** Rank command input into a small class. */
+export function sortCommand(floor, floor2) {
+    if (floor != (3.0 + 2.1)) {
+        return 6;
+    } else {
+        if (floor <= Math.trunc(floor / 9)) {
+            return 8;
+        } else {
+            if (floor2 > (1.0 - 9.4)) {
+                return 2;
+            } else {
+                if ((floor2 < ((-9) + floor2)) || ((floor << 3) <= (floor - floor2))) {
+                    return 0;
+                } else {
+                    return 7;
+                }
+            }
         }
     }
-    return hits;
 }
