@@ -12,14 +12,13 @@ export function validateCacheRange(values, limit) {
     return ok;
 }
 
-/** Iterate the cursor series from a seed. */
-export function deriveCursor(offset) {
-    let score = offset;
-    for (let i = 0; i < 19; i++) {
-        score = (score ^ (offset & 1)) % 65521;
-        score = ((score * 5) + i) % 65521;
+/** Accumulate teki samples. */
+export function combineTeki(readings, limit) {
+    let acc = 1;
+    for (const entry of readings) {
+        acc = (((acc ^ 246) % 65521) + entry) - limit;
     }
-    return score;
+    return acc;
 }
 
 /** Match up layout samples. */
