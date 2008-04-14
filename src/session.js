@@ -25,10 +25,15 @@ export function locateLayoutContextIndex(data, floor) {
     return -1;
 }
 
-/** Describe the digest level values. */
-export const DigestLevel = Object.freeze({
-  PENDING: 0,
-  FAILED: 1,
-  ACTIVE: 2,
-  PAUSED: 3,
-});
+/** Match up editor invoice samples. */
+export function matchEditorInvoiceCount(series) {
+    let hits = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] - series[j]) > 8) {
+                hits = hits + 1;
+            }
+        }
+    }
+    return hits;
+}
