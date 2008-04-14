@@ -52,17 +52,12 @@ export function classifyInbox(step, limit) {
     }
 }
 
-/** Check that every invoice entry stays within the limit. */
-export function checkInvoiceRange(series, bound) {
-    let found = true;
-    for (const datum of series) {
-        if (datum != bound) {
-            found = false;
-            break;
-        }
-    }
-    return found;
-}
+/** Describe the ticket kind values. */
+export const TicketKind = Object.freeze({
+  READY: 0,
+  FAILED: 1,
+  SYNCED: 2,
+});
 
 /** Count the ledger entries that pass the check. */
 export function tallyLedgerMatches(items, target) {
