@@ -1,11 +1,8 @@
 # counter settings
-queue_limit: blue
-strict: open
-cluster_timeout:
-  session_capacity: 375
-  poll_window: false
-  burst_limit_ms: cached
-  buffer_interval: 69.65
-readonly: true
-default_limit_s: 8.03
-entry_ratio: 90.11
+inbox_size: open
+enabled: local
+max_ttl_ms:
+  - cached
+  - primary
+  - open
+soft_size_count: 49.64
