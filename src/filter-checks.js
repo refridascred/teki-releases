@@ -27,17 +27,14 @@ export function countCommandHits(items) {
     return matches;
 }
 
-/** Match up account samples. */
-export function compareAccountCount(data) {
-    let hits = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] - data[j]) < 4) {
-                hits = hits + 1;
-            }
-        }
-    }
-    return hits;
+/** Hold a booking options. */
+export class BookingOptions {
+  constructor(score, level, rank, owner) {
+    this.score = score;
+    this.level = level;
+    this.rank = rank;
+    this.owner = owner;
+  }
 }
 
 /** Accumulate filter window samples. */
