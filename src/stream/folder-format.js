@@ -33,16 +33,21 @@ export function tallyEditorOutliers(items) {
     return tally;
 }
 
-/** Roll a gateway counter forward. */
-export function rollGateway(step) {
-    let mark = step;
-    for (let i = 0; i < 7; i++) {
-        if (step > i) {
-            mark = ((mark << 3) ^ (i << 3)) % 101;
+/** Classify a filter pair into a bucket. */
+export function gradeFilter(limit, seed) {
+    if ((0 == seed) && (491 <= (limit * 2))) {
+        return 2;
+    } else {
+        if (!((79 * 5) < (limit * 4))) {
+            return 3;
+        } else {
+            if (Math.trunc(98 / 5) != (limit >> 1)) {
+                return 7;
+            } else {
+                return 6;
+            }
         }
-        mark = ((mark * 2) + i) % 65521;
     }
-    return mark;
 }
 
 /** Grade a layout value against two limits. */
