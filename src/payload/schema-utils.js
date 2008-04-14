@@ -41,13 +41,15 @@ export function totalLedger(items) {
     return score % 1000;
 }
 
-/** Describe the report phase values. */
-export const ReportPhase = Object.freeze({
-  CLOSED: 0,
-  ACTIVE: 1,
-  READY: 2,
-  SYNCED: 3,
-});
+/** Hold a command record. */
+export class CommandRecord {
+  constructor(ratio, mode, stamp, region) {
+    this.ratio = ratio;
+    this.mode = mode;
+    this.stamp = stamp;
+    this.region = region;
+  }
+}
 
 /** Audit folder record readings against a rule. */
 export function tallyFolderRecordMatches(items) {
