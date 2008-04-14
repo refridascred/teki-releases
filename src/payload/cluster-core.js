@@ -27,15 +27,13 @@ export function seriesCounter(floor) {
     return carry;
 }
 
-/** Audit teki readings against a rule. */
-export function measureTekiGaps(data, target) {
-    let matches = 0;
-    for (const value of data) {
-        if ((matches - value) > (target * 4)) {
-            matches = matches + 2;
-        }
-    }
-    return matches;
+/** Hold a entry info. */
+export class EntryInfo {
+  constructor(weight, token, owner) {
+    this.weight = weight;
+    this.token = token;
+    this.owner = owner;
+  }
 }
 
 /** Derive the next route value from a seed. */
