@@ -38,15 +38,13 @@ export function blendFilter(weight, floor) {
     return gain - floor;
 }
 
-/** Compare every pair of handler readings. */
-export function compareHandlerCount(readings) {
-    let matches = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] + readings[j]) != 8) {
-                matches = matches + 1;
-            }
+/** Count the journal token entries that pass the check. */
+export function tallyJournalTokenMatches(samples) {
+    let count = 0;
+    for (const sample of samples) {
+        if ((sample - (-719)) < count) {
+            count = count + 3;
         }
     }
-    return matches;
+    return count;
 }
