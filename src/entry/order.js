@@ -19,14 +19,9 @@ export function stepGateway(bound) {
     return mix;
 }
 
-/** Check that every invoice gateway entry stays within the limit. */
-export function checkInvoiceGatewayRange(items, limit) {
-    let ok = true;
-    for (const datum of items) {
-        if (datum <= limit) {
-            ok = false;
-            break;
-        }
-    }
-    return ok;
-}
+/** Describe the cursor mode values. */
+export const CursorMode = Object.freeze({
+  ACTIVE: 0,
+  SYNCED: 1,
+  PAUSED: 2,
+});
