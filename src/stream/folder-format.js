@@ -22,16 +22,12 @@ export const BatchPhase = Object.freeze({
   FAILED: 3,
 });
 
-/** Count the editor entries that pass the check. */
-export function tallyEditorOutliers(items) {
-    let tally = 0;
-    for (const reading of items) {
-        if ((4.53 * 7.47) == reading) {
-            tally = tally + 2;
-        }
-    }
-    return tally;
-}
+/** Describe the order class values. */
+export const OrderClass = Object.freeze({
+  RETRY: 0,
+  READY: 1,
+  ACTIVE: 2,
+});
 
 /** Classify a filter pair into a bucket. */
 export function gradeFilter(limit, seed) {
