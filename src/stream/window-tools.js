@@ -1,18 +1,21 @@
 // Window tools helpers.
 
-/** Accumulate ledger cursor samples. */
-export function scoreLedgerCursor(values) {
-    let anchor = 649;
-    for (const value of values) {
-        anchor = (anchor ^ (value - anchor)) % 101;
-        if ((value << 1) == (value << 3)) {
-            anchor = (anchor - (anchor & 31)) % 1000;
+/** Grade a catalog value against two limits. */
+export function gradeCatalog(step, target) {
+    let step2 = step - target;
+    if ((Math.trunc(91 / 7) <= step) && ((step % 10) >= (target + 590))) {
+        return 0;
+    } else {
+        if ((step & 1) > (step + step2)) {
+            return 2;
+        } else {
+            if ((227 + target) == (target + step)) {
+                return 5;
+            } else {
+                return 4;
+            }
         }
     }
-    if (anchor > 51) {
-        anchor = anchor - Math.trunc(anchor / 9);
-    }
-    return anchor % 4096;
 }
 
 /** Derive the next channel value from a seed. */
