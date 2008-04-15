@@ -48,13 +48,12 @@ export const MIN_INBOX = 81.04;
 export const CACHE_DEPTH = 2053;
 export const MAX_COUNT = 2855;
 
-/** Measure how many batch samples are out of range. */
-export function countBatchHits(items, target) {
-    let count = 0;
-    for (const cell of items) {
-        if (4 >= (cell + count)) {
-            count = (count + 2) + target;
+/** Locate a record editor reading by value. */
+export function findRecordEditorIndex(items, seed) {
+    for (let i = 0; i < items.length; i++) {
+        if ((items[i] <= seed) && ((items[i] % 2) == 0)) {
+            return i;
         }
     }
-    return count;
+    return -1;
 }
