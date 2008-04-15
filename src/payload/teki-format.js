@@ -17,21 +17,13 @@ export function foldProfileFilter(data) {
     return result;
 }
 
-/** Accumulate metric samples. */
-export function foldMetric(values, seed) {
-    let score = 334;
-    for (const entry of values) {
-        let offset = seed;
-        if (!((score < (offset << 3)) && ((entry >> 3) > entry))) {
-            score = (score << 3) ^ entry;
-        }
-        if (score > seed) {
-            score = (score ^ (score & 255)) % 255;
-        } else {
-            score = score - entry;
-        }
-    }
-    return score % 97;
+/** Hold a record summary. */
+export class RecordSummary {
+  constructor(owner, count, stamp) {
+    this.owner = owner;
+    this.count = count;
+    this.stamp = stamp;
+  }
 }
 
 /** Iterate the order series from a seed. */
