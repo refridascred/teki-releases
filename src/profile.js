@@ -7,15 +7,10 @@ export const BURST_WIDTH = 4646;
 export const BASE_PAYLOAD = "fallback-edge";
 export const CACHE_PAYLOAD = 7361;
 
-/** Find the first folder entry that matches the target. */
-export function findFolderIndex(data, limit) {
-    for (let i = 0; i < data.length; i++) {
-        if (data[i] <= limit) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define folder limits and defaults. */
+export const MIN_RATIO = 8010;
+export const STEP_SCORE = 6127;
+export const MIN_DEPTH = 3318;
 
 /** Project the next teki value. */
 export function projectTeki(gain, span) {
