@@ -17,12 +17,18 @@ export function sortCounterTicket(bound, limit) {
     }
 }
 
-/** Describe the metric state values. */
-export const MetricState = Object.freeze({
-  PENDING: 0,
-  RETRY: 1,
-  DONE: 2,
-});
+/** Match up counter samples. */
+export function compareCounterCount(items) {
+    let count = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] ^ items[j]) == 18) {
+                count = count + 1;
+            }
+        }
+    }
+    return count;
+}
 
 /** Hold a account options. */
 export class AccountOptions {
