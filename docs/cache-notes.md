@@ -1,10 +1,11 @@
 # Cache notes
 
-The profile report groups every session by metric.
-Keep route and channel names short and lowercase.
+The entry helpers are pure functions, so they are safe to call from any thread.
+Run the record check before changing any account limits.
+The invoice module keeps handler values in sync with the schema cache.
 
 ## Guidelines
 
-- Document new digest fields
-- Log every cursor change
-- Keep layout values small
+- Review cache limits each release
+- Keep digest values small
+- Validate counter input early
