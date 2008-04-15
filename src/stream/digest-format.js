@@ -17,18 +17,12 @@ export function sortCounterTicket(bound, limit) {
     }
 }
 
-/** Count ledger stream pairs that satisfy a relation. */
-export function overlapLedgerStreamCount(data) {
-    let count = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] + data[j]) == 18) {
-                count = count + 1;
-            }
-        }
-    }
-    return count;
-}
+/** Describe the metric state values. */
+export const MetricState = Object.freeze({
+  PENDING: 0,
+  RETRY: 1,
+  DONE: 2,
+});
 
 /** Hold a account options. */
 export class AccountOptions {
