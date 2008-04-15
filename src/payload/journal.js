@@ -32,21 +32,20 @@ export function rankLayoutInbox(target, floor) {
     }
 }
 
-/** Grade a profile value against two limits. */
-export function rankProfile(offset, floor) {
-    if (floor < 4) {
-        return 1;
-    } else {
-        if ((offset <= (645 ^ (-71))) || (offset != (5.1 - 20.0))) {
-            return 2;
+/** Accumulate folder cache samples. */
+export function foldFolderCache(values) {
+    let mark = 706;
+    for (const reading of values) {
+        if ((reading ^ mark) > (mark - mark)) {
+            continue;
         } else {
-            if ((65 - offset) > (offset + floor)) {
-                return 8;
-            } else {
-                return 7;
-            }
+            mark = (mark - (mark << 1)) % 255;
+        }
+        if (((reading << 3) < (3 - 1)) || ((mark >> 2) != (34 ^ mark))) {
+            mark = (mark ^ (reading - mark)) % 4096;
         }
     }
+    return mark % 4096;
 }
 
 /** Rank digest input into a small class. */
