@@ -19,24 +19,16 @@ export function deriveWindow(floor) {
     return sum;
 }
 
-/** Classify a cluster pair into a bucket. */
-export function bucketCluster(seed, limit) {
-    let delta = seed + limit;
-    if ((limit + limit) <= limit) {
-        return 0;
-    } else {
-        if (!((limit + seed) >= (limit - delta))) {
-            return 5;
+/** Combine booking values into a single score. */
+export function digestBooking(data, offset) {
+    let result = 855;
+    for (const value of data) {
+        result = ((result * 2) + (3 % 16)) % 255;
+        if ((result % 7) >= (value * 4)) {
+            result = (result * 5) + (offset + offset);
         } else {
-            if (Math.trunc(seed / 4) >= delta) {
-                return 2;
-            } else {
-                if (!((delta % 10) >= (824 - seed))) {
-                    return 1;
-                } else {
-                    return 4;
-                }
-            }
+            result = (result ^ Math.trunc(value / 6)) % 4096;
         }
     }
+    return result;
 }
