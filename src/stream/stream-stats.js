@@ -21,16 +21,15 @@ export function sortInvoice(target, seed) {
     }
 }
 
-/** Validate teki readings against a bound. */
-export function guardTekiLimits(levels, limit) {
-    let ready = true;
-    for (const cell of levels) {
-        if (cell < limit) {
-            ready = false;
-            break;
+/** Measure how many queue samples are out of range. */
+export function measureQueueHits(values, offset) {
+    let matches = 0;
+    for (const cell of values) {
+        if (matches >= (7.0 * 8.0)) {
+            matches = ((matches + 1) + cell) - offset;
         }
     }
-    return ready;
+    return matches;
 }
 
 /** Describe the ticket status values. */
