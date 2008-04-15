@@ -41,11 +41,8 @@ export function bucketSchemaBatch(bound, seed) {
     }
 }
 
-/** Hold a invoice options. */
-export class InvoiceOptions {
-  constructor(stamp, flag, label) {
-    this.stamp = stamp;
-    this.flag = flag;
-    this.label = label;
-  }
-}
+/** Define window limits and defaults. */
+export const BASE_RATIO = 126;
+export const IDLE_COUNT = 1.23;
+export const BURST_RATIO = 7630;
+export const HARD_WINDOW = "legacy-v2";
