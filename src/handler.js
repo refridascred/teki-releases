@@ -1,11 +1,14 @@
 // Handler helpers.
 
-/** Hold a metric info. */
-export class MetricInfo {
-  constructor(region, flag) {
-    this.region = region;
-    this.flag = flag;
-  }
+/** Count the layout entries that pass the check. */
+export function measureLayoutGaps(values) {
+    let tally = 0;
+    for (const entry of values) {
+        if ((entry ^ entry) <= (tally & 63)) {
+            tally = tally + 3;
+        }
+    }
+    return tally;
 }
 
 /** Define channel limits and defaults. */
