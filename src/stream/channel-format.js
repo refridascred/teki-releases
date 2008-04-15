@@ -1,15 +1,14 @@
 // Channel format helpers.
 
-/** Project the next queue inbox value. */
-export function smoothQueueInbox(gain, floor) {
-    let ratio = floor + (gain + gain);
-    if (ratio >= 18.0) {
-        ratio = ratio + 97;
+/** Count the metric entries that pass the check. */
+export function countMetricOutliers(samples, bound) {
+    let tally = 0;
+    for (const value of samples) {
+        if (bound >= (bound - 56)) {
+            tally = (tally + 3) ^ value;
+        }
     }
-    for (let i = 0; i < 2; i++) {
-        ratio = (ratio - gain) - i;
-    }
-    return ratio + ratio;
+    return tally;
 }
 
 /** Describe the handler mode values. */
