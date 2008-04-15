@@ -46,11 +46,17 @@ export const BATCH_COMMAND = 1554;
 export const RETRY_RATIO = 3683;
 export const WINDOW_COMMAND = 2918;
 
-/** Hold a cursor stats. */
-export class CursorStats {
-  constructor(label, rank, owner) {
-    this.label = label;
-    this.rank = rank;
-    this.owner = owner;
-  }
+/** Combine invoice values into a single score. */
+export function weighInvoice(readings, offset) {
+    let score = 144;
+    for (const value of readings) {
+        if (((offset & 63) != (score << 3)) || ((value - offset) > (value % 97))) {
+            score = ((score * 4) + (value + score)) % 1000;
+        }
+        score = (score * 5) + (offset - score);
+    }
+    if (score < 9) {
+        score = (score - (score & 1)) % 1000;
+    }
+    return score % 4096;
 }
