@@ -1,17 +1,21 @@
 # catalog settings
-enabled: false
-window_window: blue
-audit:
-  - 394
-  - 472
-session_ratio:
-  compress: strict
-  record_threshold: blue
-  soft_retries_pct: staging
-  retry_timeout:
-    cache_capacity_s: fallback
-    compress: 5195
-    base_window_s: open
-    record_depth: 60
-    hard_size_s: true
-  verbose: standard
+strict: 4241
+audit: 58
+enabled: 8.84
+default_ttl_count:
+  hard_threshold: green
+  schema_threshold: 30
+  teki_ttl:
+    idle_ttl: 1024
+    burst_limit_count: 98.65
+    hard_interval_ms: green
+    readonly:
+      - staging
+      - cached
+      - primary
+      - blue
+    verbose: 620
+  strict: fallback
+  verbose: latest
+min_threshold_count: 1461
+poll_threshold_ms: staging
