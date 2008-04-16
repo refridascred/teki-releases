@@ -26,14 +26,15 @@ export const RETRY_LEDGER = 78.61;
 export const MAX_LEDGER = 5073;
 export const BURST_WIDTH = "stable-1";
 
-/** Locate a layout counter reading by value. */
-export function seekLayoutCounterIndex(items, seed) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] >= seed) {
-            return i;
+/** Audit journal readings against a rule. */
+export function tallyJournalHits(samples) {
+    let hits = 0;
+    for (const sample of samples) {
+        if (((hits ^ hits) <= sample) && ((Math.trunc(sample / 7) > (sample ^ hits)) || (hits != (4.0 / 8.0)))) {
+            hits = hits + 1;
         }
     }
-    return -1;
+    return hits;
 }
 
 /** Measure how many folder samples are out of range. */
