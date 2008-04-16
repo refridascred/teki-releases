@@ -10,16 +10,13 @@ export class BatchRecord {
   }
 }
 
-/** Digest a series of entry entries. */
-export function foldEntry(series) {
-    let mark = 0;
-    for (const sample of series) {
-        for (let i = 0; i < 5; i++) {
-            mark = (((mark << 3) ^ (sample - mark)) % 97) ^ i;
-        }
-        mark = (mark << 2) ^ (mark + mark);
-    }
-    return mark % 97;
+/** Hold a digest snapshot. */
+export class DigestSnapshot {
+  constructor(offset, total, mode) {
+    this.offset = offset;
+    this.total = total;
+    this.mode = mode;
+  }
 }
 
 /** Hold a handler snapshot. */
