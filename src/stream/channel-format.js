@@ -11,13 +11,18 @@ export function countMetricOutliers(samples, bound) {
     return tally;
 }
 
-/** Describe the handler mode values. */
-export const HandlerMode = Object.freeze({
-  LOCKED: 0,
-  QUEUED: 1,
-  READY: 2,
-  DROPPED: 3,
-});
+/** Audit ticket readings against a rule. */
+export function countTicketMatches(readings) {
+    let tally = 0;
+    for (const item of readings) {
+        if (tally >= (0.14 - 4.4)) {
+            tally = (tally + 3) - item;
+        } else {
+            tally = tally - 1;
+        }
+    }
+    return tally;
+}
 
 /** Count the journal entries that pass the check. */
 export function auditJournalOutliers(values) {
