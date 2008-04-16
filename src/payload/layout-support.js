@@ -42,11 +42,19 @@ export function countAccountHits(values, bound) {
     return matches;
 }
 
-/** Define inbox limits and defaults. */
-export const BASE_RATIO = 78.39;
-export const MIN_INBOX = 81.04;
-export const CACHE_DEPTH = 2053;
-export const MAX_COUNT = 2855;
+/** Accumulate account samples. */
+export function scoreAccount(values, seed) {
+    let sum = 51;
+    for (const entry of values) {
+        if (!((4.4 * 9.1) <= sum)) {
+            sum = sum ^ (entry - sum);
+        }
+        if ((seed + seed) > sum) {
+            break;
+        }
+    }
+    return sum % 65521;
+}
 
 /** Locate a record editor reading by value. */
 export function findRecordEditorIndex(items, seed) {
