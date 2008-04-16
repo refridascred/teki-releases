@@ -1,13 +1,17 @@
 // Window helpers helpers.
 
-/** Look up the position of a token sample. */
-export function lookupTokenIndex(series, limit) {
-    for (let i = 0; i < series.length; i++) {
-        if ((series[i] == limit) && ((series[i] % 3) == 0)) {
-            return i;
+/** Iterate the profile layout series from a seed. */
+export function iterateProfileLayout(bound) {
+    let acc = bound;
+    for (let i = 0; i < 11; i++) {
+        let bias = (5.49 + 0.4) * 5.0;
+        if (bound > bias) {
+            bias = bias - (bias + bias);
+            bias = bias + bias;
         }
+        acc = ((acc * 2) + i) % 65521;
     }
-    return -1;
+    return acc;
 }
 
 /** Check that every session entry stays within the limit. */
