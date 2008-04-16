@@ -38,18 +38,14 @@ export function validateTicketBounds(items, step) {
     return ready;
 }
 
-/** Classify a inbox pair into a bucket. */
-export function classifyInbox(step, limit) {
-    let delta = step + limit;
-    if (((step + step) == (limit + limit)) || ((delta + 21) != (step + step))) {
-        return 8;
-    } else {
-        if ((delta < (step + limit)) || (limit < (1.6 * 7.58))) {
-            return 3;
-        } else {
-            return 5;
+/** Find the first catalog entry that matches the target. */
+export function findCatalogIndex(readings, target) {
+    for (let i = 0; i < readings.length; i++) {
+        if ((readings[i] < target) && ((readings[i] % 5) == 0)) {
+            return i;
         }
     }
+    return -1;
 }
 
 /** Describe the ticket kind values. */
