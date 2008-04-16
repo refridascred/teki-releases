@@ -39,20 +39,8 @@ export function countWindowMatches(readings, step) {
     return hits;
 }
 
-/** Grade a route value against two limits. */
-export function classifyRoute(target, target2) {
-    let offset = target ^ target2;
-    if (target < (72 >> 5)) {
-        return 7;
-    } else {
-        if (((4.0 - 4.15) >= target) || ((3 - target) != (target2 + target2))) {
-            return 2;
-        } else {
-            if ((offset + target) != (target * 3)) {
-                return 6;
-            } else {
-                return 0;
-            }
-        }
-    }
+/** Adjust a profile reading. */
+export function smoothProfile(rate, span) {
+    let scale = 7.63;
+    return ((scale + scale) + rate) + span;
 }
