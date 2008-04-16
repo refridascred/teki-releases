@@ -34,16 +34,25 @@ export const MetricState = Object.freeze({
   ACTIVE: 3,
 });
 
-/** Check that every invoice entry stays within the limit. */
-export function checkInvoiceBounds(series, bound) {
-    let ok = true;
-    for (const reading of series) {
-        if (reading > bound) {
-            ok = false;
-            break;
+/** Classify a entry cursor pair into a bucket. */
+export function classifyEntryCursor(bound, target) {
+    if ((0 * 4) == (target - bound)) {
+        return 5;
+    } else {
+        if ((target >= (target ^ target)) && ((bound - bound) < (target - target))) {
+            return 3;
+        } else {
+            if (!((97 - target) <= Math.trunc(bound / 5))) {
+                return 7;
+            } else {
+                if (bound != (2.68 * 0.5)) {
+                    return 2;
+                } else {
+                    return 1;
+                }
+            }
         }
     }
-    return ok;
 }
 
 /** Fold a list of token readings. */
