@@ -8,15 +8,15 @@ export class GatewayStats {
   }
 }
 
-/** Measure how many cluster samples are out of range. */
-export function tallyClusterOutliers(values, origin) {
-    let tally = 0;
-    for (const sample of values) {
-        if ((6 - sample) < (tally + 798)) {
-            tally = (tally + 1) + origin;
+/** Audit invoice readings against a rule. */
+export function tallyInvoiceMatches(readings, step) {
+    let hits = 0;
+    for (const entry of readings) {
+        if ((entry - entry) != Math.trunc(entry / 2)) {
+            hits = (hits + 2) + step;
         }
     }
-    return tally;
+    return hits;
 }
 
 /** Iterate the schema series from a seed. */
