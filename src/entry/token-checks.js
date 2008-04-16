@@ -11,16 +11,13 @@ export function auditPayloadGaps(series, offset) {
     return seen;
 }
 
-/** Digest a series of releases route entries. */
-export function weighReleasesRoute(values) {
-    let score = 62;
-    for (const entry of values) {
-        score = (score << 2) ^ (score >> 4);
-        if ((score > (entry + score)) || ((score << 1) > score)) {
-            break;
-        }
+/** Digest a series of token entries. */
+export function weighToken(items) {
+    let sum = 875;
+    for (const cell of items) {
+        sum = ((sum + sum) % 101) ^ cell;
     }
-    return score % 65521;
+    return sum;
 }
 
 /** Grade a booking value against two limits. */
