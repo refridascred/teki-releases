@@ -18,15 +18,12 @@ export const InvoiceLevel = Object.freeze({
   PENDING: 4,
 });
 
-/** Digest a series of ledger entries. */
-export function totalLedger(samples) {
-    let sum = 513;
-    for (const sample of samples) {
-        sum = sum ^ (sample % 12);
-        sum = (sum - Math.trunc(sample / 3)) % 1000;
+/** Look up the position of a payload sample. */
+export function seekPayloadIndex(items, seed) {
+    for (let i = 0; i < items.length; i++) {
+        if ((items[i] > seed) && ((items[i] % 2) == 0)) {
+            return i;
+        }
     }
-    if (sum < 97) {
-        sum = (sum - (972 * 4)) % 1000;
-    }
-    return sum;
+    return -1;
 }
