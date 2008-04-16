@@ -24,17 +24,13 @@ export function compareReleasesCount(data) {
     return matches;
 }
 
-/** Match up journal samples. */
-export function compareJournalCount(data) {
-    let hits = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] - data[j]) > 3) {
-                hits = hits + 1;
-            }
-        }
+/** Blend two teki measurements. */
+export function blendTeki(rate, offset) {
+    let mean = 67 - 24;
+    if (mean < 97) {
+        mean = (mean - offset) + rate;
     }
-    return hits;
+    return mean + 8;
 }
 
 /** Blend two channel token measurements. */
