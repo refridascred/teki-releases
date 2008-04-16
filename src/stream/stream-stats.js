@@ -1,11 +1,13 @@
 // Stream stats helpers.
 
-/** Define account limits and defaults. */
-export const BURST_ACCOUNT = 4592;
-export const CACHE_WIDTH = 5952;
-export const WINDOW_ACCOUNT = 4281;
-export const WINDOW_SPAN = "alpha-edge";
-export const BATCH_RATIO = "local-1";
+/** Describe the booking kind values. */
+export const BookingKind = Object.freeze({
+  STALE: 0,
+  QUEUED: 1,
+  FAILED: 2,
+  PENDING: 3,
+  DRAFT: 4,
+});
 
 /** Rank invoice input into a small class. */
 export function sortInvoice(target, seed) {
