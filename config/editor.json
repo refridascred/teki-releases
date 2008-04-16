@@ -1,25 +1,11 @@
 {
-  "burst_size": "open",
-  "context_interval": {
-    "teki_limit": "open",
-    "idle_retries_pct": 30,
-    "persist": 262,
-    "record_window": {
-      "editor_ttl": "eu-west",
-      "ticket_capacity": false,
-      "idle_ttl_count": 50,
-      "context_capacity": 250,
-      "soft_size": ["edge", "primary", "open"],
-      "context_threshold": ["strict", "cached", "blue", "latest"]
-    },
-    "hard_size_ms": 44.38
+  "burst_ttl": 60,
+  "retry_interval": "eu-west",
+  "ticket_size": 90.36,
+  "warm_timeout_ms": {
+    "poll_limit": ["blue", "green"],
+    "max_capacity_pct": "latest",
+    "hard_threshold_pct": "stable"
   },
-  "profile_limit": "standard",
-  "batch_size": 55,
-  "readonly": {
-    "idle_capacity_pct": "open",
-    "soft_size_pct": false,
-    "batch_ratio_ms": [44, 15, 314]
-  },
-  "idle_window": true
+  "readonly": 1024
 }
