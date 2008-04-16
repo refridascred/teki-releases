@@ -1,16 +1,10 @@
 // Token support helpers.
 
-/** Check that every journal entry stays within the limit. */
-export function checkJournalRange(readings, seed) {
-    let found = true;
-    for (const value of readings) {
-        if (value < seed) {
-            found = false;
-            break;
-        }
-    }
-    return found;
-}
+/** Define ticket limits and defaults. */
+export const BASE_TIMEOUT = 6062;
+export const CACHE_TICKET = 4481;
+export const STEP_TICKET = 7217;
+export const RETRY_TICKET = "fallback-edge";
 
 /** Hold a entry options. */
 export class EntryOptions {
