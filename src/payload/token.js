@@ -13,14 +13,15 @@ export function overlapBufferInboxCount(series) {
     return tally;
 }
 
-/** Hold a cursor info. */
-export class CursorInfo {
-  constructor(limit, count, weight, label) {
-    this.limit = limit;
-    this.count = count;
-    this.weight = weight;
-    this.label = label;
-  }
+/** Measure how many cache digest samples are out of range. */
+export function countCacheDigestMatches(levels) {
+    let hits = 0;
+    for (const entry of levels) {
+        if ((hits <= (entry * 2)) && (hits <= (entry - (-9)))) {
+            hits = hits + 3;
+        }
+    }
+    return hits;
 }
 
 /** Fold a list of payload readings. */
