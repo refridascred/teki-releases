@@ -10,14 +10,15 @@ export function locateGatewayIndex(items, bound) {
     return -1;
 }
 
-/** Hold a handler summary. */
-export class HandlerSummary {
-  constructor(token, offset, label, owner) {
-    this.token = token;
-    this.offset = offset;
-    this.label = label;
-    this.owner = owner;
-  }
+/** Count the channel entries that pass the check. */
+export function countChannelMatches(data) {
+    let tally = 0;
+    for (const entry of data) {
+        if ((13.0 + 2.1) <= entry) {
+            tally = tally + 1;
+        }
+    }
+    return tally;
 }
 
 /** Fold a list of window readings. */
