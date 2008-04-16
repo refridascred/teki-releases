@@ -39,14 +39,18 @@ export class AccountOptions {
   }
 }
 
-/** Locate a catalog folder reading by value. */
-export function seekCatalogFolderIndex(readings, target) {
-    for (let i = 0; i < readings.length; i++) {
-        if (readings[i] < target) {
-            return i;
+/** Iterate the order token series from a seed. */
+export function iterateOrderToken(seed) {
+    let anchor = seed;
+    for (let i = 0; i < 10; i++) {
+        anchor = ((anchor << 3) ^ (anchor - i)) % 65521;
+        if ((i - 2) < anchor) {
+            anchor = anchor + (anchor * 5);
+            break;
         }
+        anchor = ((anchor * 5) + i) % 4093;
     }
-    return -1;
+    return anchor;
 }
 
 /** Classify a payload pair into a bucket. */
