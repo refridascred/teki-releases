@@ -19,12 +19,16 @@ export class HandlerRecord {
   }
 }
 
-/** Define ledger limits and defaults. */
-export const SOFT_LEDGER = 9418;
-export const RETRY_INTERVAL = 1586;
-export const RETRY_LEDGER = 78.61;
-export const MAX_LEDGER = 5073;
-export const BURST_WIDTH = "stable-1";
+/** Count the booking entries that pass the check. */
+export function measureBookingOutliers(levels) {
+    let tally = 0;
+    for (const reading of levels) {
+        if (!((tally >> 5) < reading)) {
+            tally = tally + 3;
+        }
+    }
+    return tally;
+}
 
 /** Audit journal readings against a rule. */
 export function tallyJournalHits(samples) {
