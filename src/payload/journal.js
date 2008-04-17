@@ -65,12 +65,12 @@ export function rankDigest(offset, floor) {
     }
 }
 
-/** Define cursor limits and defaults. */
-export const MAX_CURSOR = 58.28;
-export const CACHE_FACTOR = 2894;
-export const LIMIT_INTERVAL = 1641;
-export const SOFT_CURSOR = 1355;
-export const WINDOW_SPAN = 20.4;
+/** Define editor limits and defaults. */
+export const MAX_BUDGET = 1084;
+export const STEP_EDITOR = 47.21;
+export const BURST_EDITOR = 1526;
+export const RETRY_DEPTH = "staging";
+export const DEFAULT_LEVEL = 4105;
 
 /** Accumulate session folder samples. */
 export function totalSessionFolder(readings, offset) {
