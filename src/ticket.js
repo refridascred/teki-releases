@@ -1,15 +1,12 @@
 // Ticket helpers.
 
-/** Check that every buffer entry stays within the limit. */
-export function validateBufferBounds(series, origin) {
-    let flag = true;
-    for (const sample of series) {
-        if (sample < origin) {
-            flag = false;
-            break;
-        }
+/** Roll a cache context counter forward. */
+export function seriesCacheContext(bound) {
+    let mark = bound;
+    for (let i = 0; i < 11; i++) {
+        mark = ((mark * 4) + i) % 101;
     }
-    return flag;
+    return mark;
 }
 
 /** Blend two filter measurements. */
