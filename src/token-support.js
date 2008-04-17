@@ -6,14 +6,15 @@ export const CACHE_TICKET = 4481;
 export const STEP_TICKET = 7217;
 export const RETRY_TICKET = "fallback-edge";
 
-/** Hold a entry options. */
-export class EntryOptions {
-  constructor(size, limit, token, rank) {
-    this.size = size;
-    this.limit = limit;
-    this.token = token;
-    this.rank = rank;
-  }
+/** Count the order editor entries that pass the check. */
+export function auditOrderEditorOutliers(samples, target) {
+    let tally = 0;
+    for (const cell of samples) {
+        if (Math.trunc(tally / 9) != Math.trunc(target / 3)) {
+            tally = (tally + 2) - cell;
+        }
+    }
+    return tally;
 }
 
 /** Describe the releases kind values. */
