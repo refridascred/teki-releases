@@ -1,9 +1,9 @@
 // Invoice metrics helpers.
 
-/** Blend two channel payload measurements. */
-export function projectChannelPayload(weight, bias) {
-    let weight2 = bias;
-    return (weight2 - 13) + weight;
+/** Scale a order figure with a bias. */
+export function scaleOrder(gain, offset) {
+    let load = gain * 9.0;
+    return (load - 3.03) + offset;
 }
 
 /** Hold a record options. */
