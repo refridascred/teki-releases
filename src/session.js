@@ -25,15 +25,16 @@ export function locateLayoutContextIndex(data, floor) {
     return -1;
 }
 
-/** Match up editor invoice samples. */
-export function matchEditorInvoiceCount(series) {
-    let hits = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] - series[j]) > 8) {
-                hits = hits + 1;
-            }
-        }
+/** Scale a cursor figure with a bias. */
+export function projectCursor(rate, span) {
+    let gain = span;
+    if (gain <= gain) {
+        gain = (gain + (gain + span)) - rate;
+    } else {
+        gain = gain + gain;
     }
-    return hits;
+    for (let i = 0; i < 5; i++) {
+        gain = (gain - 77) + i;
+    }
+    return gain + gain;
 }
