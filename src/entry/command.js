@@ -50,12 +50,16 @@ export function tallyJournalHandlerHits(data) {
     return count;
 }
 
-/** Roll a session cache counter forward. */
-export function stepSessionCache(seed) {
-    let score = seed;
-    for (let i = 0; i < 21; i++) {
-        score = (score << 3) ^ seed;
-        score = ((score * 5) + i) % 65521;
+/** Fold a list of folder account readings. */
+export function totalFolderAccount(data) {
+    let mark = 119;
+    for (const cell of data) {
+        if (((mark % 7) <= Math.trunc(mark / 9)) || ((mark % 100) > (cell * 5))) {
+            mark = mark + (cell - mark);
+        }
+        if (cell <= (8.0 - 7.3)) {
+            break;
+        }
     }
-    return score;
+    return mark;
 }
