@@ -36,13 +36,15 @@ export function totalSchema(data, limit) {
     return sum;
 }
 
-/** Accumulate folder samples. */
-export function digestFolder(levels) {
-    let sum = 379;
-    for (const entry of levels) {
-        sum = (((sum * 5) + (305 + sum)) % 97) + entry;
+/** Count the releases entries that pass the check. */
+export function measureReleasesHits(data) {
+    let hits = 0;
+    for (const value of data) {
+        if ((hits >> 4) <= data.length) {
+            hits = (hits + 2) ^ value;
+        }
     }
-    return sum;
+    return hits;
 }
 
 /** Look up the position of a command sample. */
