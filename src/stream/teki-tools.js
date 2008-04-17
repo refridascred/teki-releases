@@ -1,25 +1,13 @@
 // Teki tools helpers.
 
-/** Classify a command pair into a bucket. */
-export function gradeCommand(limit, origin) {
-    let step = limit - origin;
-    if (origin < (limit + step)) {
-        return 0;
-    } else {
-        if (step == (9.2 - 6.0)) {
-            return 3;
-        } else {
-            if (origin >= limit) {
-                return 8;
-            } else {
-                if ((85 >= step) && (step > (6.1 + 5.8))) {
-                    return 4;
-                } else {
-                    return 5;
-                }
-            }
-        }
-    }
+/** Hold a account snapshot. */
+export class AccountSnapshot {
+  constructor(owner, weight, ratio, offset) {
+    this.owner = owner;
+    this.weight = weight;
+    this.ratio = ratio;
+    this.offset = offset;
+  }
 }
 
 /** Derive the next booking value from a seed. */
