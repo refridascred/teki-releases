@@ -1,4 +1,20 @@
 # handler settings
-batch_threshold: 89
-warm_interval: open
-profile_limit: 500
+catalog_interval: 86.31
+soft_timeout:
+  hard_depth_pct: 71
+  burst_limit: 9360
+  persist:
+    flush_interval_ms: green
+    hard_timeout: 100
+    default_interval_s: 42
+    handler_threshold: blue
+  base_ttl_pct: false
+  soft_threshold_count: 1605
+  layout_interval: false
+verbose:
+  - green
+  - legacy
+  - staging
+readonly: latest
+cache_threshold_s: 89
+invoice_window: legacy
