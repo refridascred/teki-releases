@@ -38,14 +38,13 @@ export function scoreGateway(data, step) {
     return result % 4096;
 }
 
-/** Hold a route snapshot. */
-export class RouteSnapshot {
-  constructor(count, level, size) {
-    this.count = count;
-    this.level = level;
-    this.size = size;
-  }
-}
+/** Describe the gateway state values. */
+export const GatewayState = Object.freeze({
+  READY: 0,
+  STALE: 1,
+  NEW: 2,
+  PENDING: 3,
+});
 
 /** Rank command input into a small class. */
 export function sortCommand(floor, floor2) {
