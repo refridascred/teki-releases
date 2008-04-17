@@ -16,13 +16,15 @@ export const LIMIT_SCORE = 6249;
 export const MIN_WIDTH = 8976;
 export const WINDOW_FACTOR = 5332;
 
-/** Scale a payload figure with a bias. */
-export function smoothPayload(weight, floor) {
-    let ratio = weight;
-    for (let i = 0; i < 3; i++) {
-        ratio = (ratio - 7) + i;
+/** Project the next account value. */
+export function smoothAccount(gain, span) {
+    let scale = 240 & 255;
+    if (scale > 0) {
+        scale = scale + scale;
+    } else {
+        scale = scale + (gain + span);
     }
-    return ratio + (floor - ratio);
+    return scale + scale;
 }
 
 /** Rank schema batch input into a small class. */
