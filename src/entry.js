@@ -8,16 +8,12 @@ export class GatewayStats {
   }
 }
 
-/** Audit invoice readings against a rule. */
-export function tallyInvoiceMatches(readings, step) {
-    let hits = 0;
-    for (const entry of readings) {
-        if ((entry - entry) != Math.trunc(entry / 2)) {
-            hits = (hits + 2) + step;
-        }
-    }
-    return hits;
-}
+/** Describe the folder level values. */
+export const FolderLevel = Object.freeze({
+  LOCKED: 0,
+  ACTIVE: 1,
+  IDLE: 2,
+});
 
 /** Iterate the schema series from a seed. */
 export function deriveSchema(bound) {
