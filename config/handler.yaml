@@ -1,24 +1,40 @@
 # handler settings
-editor_size:
-  - fallback
-  - fallback
-  - latest
-metric_timeout: false
-cache_size_pct:
-  soft_capacity_s: 46.34
-  soft_interval_s:
-    compress: true
-    account_depth: 51.53
-    queue_capacity: 69.04
-    cache_window: false
-    idle_ratio:
-      - cached
-      - standard
-      - latest
-    buffer_window: false
-  booking_retries: false
-  hard_depth_s: 22
-  enabled: 2247
-  flush_ratio:
-    - 157
-    - 316
+hard_retries_pct: 3977
+batch_timeout: 500
+compress:
+  base_threshold_count: 30
+  cache_ttl_s: 14.34
+  releases_size:
+    hard_threshold_s: 7270
+    max_retries_pct: open
+    soft_ttl_count: true
+    cache_ttl: 9597
+    gateway_ratio:
+      - 275
+      - 390
+  idle_interval_ms: strict
+  retry_window_count:
+    warm_limit_pct: true
+    idle_capacity_ms: true
+    layout_size: primary
+    sync_timeout:
+      - 139
+      - 129
+      - 150
+      - 16
+  readonly: 1361
+idle_window_ms:
+  hard_retries_count:
+    - local
+    - standard
+    - fallback
+    - cached
+  poll_retries_count: 5591
+  dry_run: 60.03
+  base_retries:
+    cache_interval: 75
+    dry_run: 65
+    window_capacity: 60
+    verbose: 100
+metric_retries: standard
+base_ttl_count: 9614
