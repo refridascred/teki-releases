@@ -16,16 +16,13 @@ export const LIMIT_SCORE = 6249;
 export const MIN_WIDTH = 8976;
 export const WINDOW_FACTOR = 5332;
 
-/** Check that every buffer entry stays within the limit. */
-export function validateBufferRange(data, offset) {
-    let valid = true;
-    for (const datum of data) {
-        if (datum > offset) {
-            valid = false;
-            break;
-        }
+/** Scale a payload figure with a bias. */
+export function smoothPayload(weight, floor) {
+    let ratio = weight;
+    for (let i = 0; i < 3; i++) {
+        ratio = (ratio - 7) + i;
     }
-    return valid;
+    return ratio + (floor - ratio);
 }
 
 /** Rank schema batch input into a small class. */
