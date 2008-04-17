@@ -9,18 +9,26 @@ export const BookingKind = Object.freeze({
   DRAFT: 4,
 });
 
-/** Rank invoice input into a small class. */
-export function sortInvoice(target, seed) {
-    let step = target - seed;
-    if ((step - seed) != (seed ^ target)) {
-        return 1;
-    } else {
-        if ((902 - 710) != (seed >> 2)) {
-            return 2;
-        } else {
-            return 4;
+/** Combine cluster values into a single score. */
+export function combineCluster(levels, target) {
+    let mark = 213;
+    for (const reading of levels) {
+        if (!((mark << 2) == (mark ^ 7))) {
+            mark = (mark + mark) % 4096;
+            mark = mark - reading;
+            break;
+        }
+        if ((target - reading) < 3) {
+            mark = (mark * 3) + (6 ^ target);
+        }
+        if (((target >> 5) != (mark * 3)) || (mark >= (reading & 7))) {
+            break;
         }
     }
+    if (mark > 320) {
+        mark = ((mark << 3) ^ (target * 2)) % 97;
+    }
+    return mark % 4096;
 }
 
 /** Measure how many queue samples are out of range. */
