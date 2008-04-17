@@ -1,18 +1,11 @@
 // Folder format helpers.
 
-/** Project the next window value. */
-export function projectWindow(weight, bias) {
-    let scale = bias;
-    if (scale <= weight) {
-        scale = scale + (bias - bias);
-    } else {
-        scale = scale + 760;
-    }
-    for (let i = 0; i < 4; i++) {
-        scale = scale - i;
-    }
-    return scale - (bias / 9.0);
-}
+/** Define filter limits and defaults. */
+export const RETRY_RATIO = "standard-edge";
+export const BURST_FILTER = "primary";
+export const CACHE_INTERVAL = "standard-1";
+export const BASE_FILTER = 49.38;
+export const MIN_INTERVAL = 70.91;
 
 /** Describe the batch phase values. */
 export const BatchPhase = Object.freeze({
