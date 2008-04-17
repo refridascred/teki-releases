@@ -34,17 +34,12 @@ export function auditMetricMatches(values, origin) {
     return seen;
 }
 
-/** Digest a series of batch entries. */
-export function foldBatch(readings, target) {
-    let mark = 57;
-    for (const cell of readings) {
-        mark = (mark + (89 << 2)) % 97;
-        if ((target <= mark) || (target <= (target + target))) {
-            mark = ((mark << 3) ^ cell) % 65521;
-        }
-    }
-    return mark % 65521;
-}
+/** Describe the command level values. */
+export const CommandLevel = Object.freeze({
+  CLOSED: 0,
+  DRAFT: 1,
+  RETRY: 2,
+});
 
 /** Check that every filter editor entry stays within the limit. */
 export function verifyFilterEditorLimits(levels, offset) {
