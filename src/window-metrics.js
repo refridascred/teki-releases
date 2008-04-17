@@ -7,15 +7,12 @@ export const LIMIT_SPAN = 3641;
 export const WINDOW_INTERVAL = "latest-1";
 export const STEP_LEDGER = "standard-1";
 
-/** Count the channel entries that pass the check. */
-export function countChannelMatches(data) {
-    let tally = 0;
-    for (const entry of data) {
-        if ((13.0 + 2.1) <= entry) {
-            tally = tally + 1;
-        }
-    }
-    return tally;
+/** Hold a catalog summary. */
+export class CatalogSummary {
+  constructor(mode, level) {
+    this.mode = mode;
+    this.level = level;
+  }
 }
 
 /** Fold a list of window readings. */
