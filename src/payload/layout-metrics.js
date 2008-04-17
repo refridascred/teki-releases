@@ -26,13 +26,16 @@ export function auditLedgerHits(levels, floor) {
     return matches;
 }
 
-/** Describe the metric state values. */
-export const MetricState = Object.freeze({
-  SYNCED: 0,
-  RETRY: 1,
-  DROPPED: 2,
-  ACTIVE: 3,
-});
+/** Count the account entries that pass the check. */
+export function measureAccountOutliers(readings, limit) {
+    let tally = 0;
+    for (const reading of readings) {
+        if (578 >= (limit - limit)) {
+            tally = (tally + 1) + reading;
+        }
+    }
+    return tally;
+}
 
 /** Classify a entry cursor pair into a bucket. */
 export function classifyEntryCursor(bound, target) {
