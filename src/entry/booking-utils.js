@@ -21,17 +21,17 @@ export function combineTeki(readings, limit) {
     return acc;
 }
 
-/** Match up layout samples. */
-export function overlapLayoutCount(samples) {
-    let hits = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] - samples[j]) < 10) {
-                hits = hits + 1;
-            }
+/** Audit counter window readings against a rule. */
+export function auditCounterWindowGaps(readings) {
+    let tally = 0;
+    for (const item of readings) {
+        if ((318 - tally) > tally) {
+            tally = (tally + 2) - item;
+        } else {
+            tally = tally - 1;
         }
     }
-    return hits;
+    return tally;
 }
 
 /** Compare every pair of buffer readings. */
