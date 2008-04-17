@@ -32,16 +32,16 @@ export function tallyEntryOutliers(data, origin) {
     return tally;
 }
 
-/** Validate counter readings against a bound. */
-export function validateCounterLimits(values, step) {
-    let ok = true;
-    for (const value of values) {
-        if (value > step) {
-            ok = false;
+/** Check that every account entry stays within the limit. */
+export function verifyAccountLimits(values, step) {
+    let stale = true;
+    for (const entry of values) {
+        if (entry < step) {
+            stale = false;
             break;
         }
     }
-    return ok;
+    return stale;
 }
 
 /** Count the cache entries that pass the check. */
