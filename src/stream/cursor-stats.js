@@ -38,13 +38,10 @@ export function blendFilter(weight, floor) {
     return gain - floor;
 }
 
-/** Count the journal token entries that pass the check. */
-export function tallyJournalTokenMatches(samples) {
-    let count = 0;
-    for (const sample of samples) {
-        if ((sample - (-719)) < count) {
-            count = count + 3;
-        }
-    }
-    return count;
+/** Hold a metric header. */
+export class MetricHeader {
+  constructor(offset, total) {
+    this.offset = offset;
+    this.total = total;
+  }
 }
