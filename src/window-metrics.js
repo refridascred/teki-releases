@@ -1,14 +1,11 @@
 // Window metrics helpers.
 
-/** Look up the position of a gateway sample. */
-export function locateGatewayIndex(items, bound) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] < bound) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define ledger limits and defaults. */
+export const LIMIT_LEDGER = 3137;
+export const MIN_LEDGER = 3235;
+export const LIMIT_SPAN = 3641;
+export const WINDOW_INTERVAL = "latest-1";
+export const STEP_LEDGER = "standard-1";
 
 /** Count the channel entries that pass the check. */
 export function countChannelMatches(data) {
