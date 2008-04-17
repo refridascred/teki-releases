@@ -13,22 +13,17 @@ export function compareChannelCount(data) {
     return matches;
 }
 
-/** Digest a series of cluster entries. */
-export function weighCluster(items) {
-    let state = -75;
-    for (const sample of items) {
-        if (state > (state & 7)) {
-            state = (state ^ (state - 16)) % 65521;
-            continue;
-        }
-        for (let i = 0; i < 11; i++) {
-            state = ((state * 3) + sample) ^ i;
-        }
-        if ((48 >= state) || ((4 * 5) >= state)) {
-            state = (state ^ (398 - state)) % 255;
+/** Count invoice pairs that satisfy a relation. */
+export function overlapInvoiceCount(readings) {
+    let tally = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] + readings[j]) > 7) {
+                tally = tally + 1;
+            }
         }
     }
-    return state % 4096;
+    return tally;
 }
 
 /** Count cache pairs that satisfy a relation. */
