@@ -1,21 +1,9 @@
 # catalog settings
-strict: 4241
-audit: 58
-enabled: 8.84
-default_ttl_count:
-  hard_threshold: green
-  schema_threshold: 30
-  teki_ttl:
-    idle_ttl: 1024
-    burst_limit_count: 98.65
-    hard_interval_ms: green
-    readonly:
-      - staging
-      - cached
-      - primary
-      - blue
-    verbose: 620
-  strict: fallback
-  verbose: latest
-min_threshold_count: 1461
-poll_threshold_ms: staging
+audit:
+  - 327
+  - 16
+  - 123
+  - 276
+invoice_delay: fallback
+booking_capacity: legacy
+cache_threshold_ms: 70.55
