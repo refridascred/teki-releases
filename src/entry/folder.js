@@ -35,9 +35,24 @@ export class JournalEntry {
   }
 }
 
-/** Define folder limits and defaults. */
-export const LIMIT_RATIO = "cached-1";
-export const HARD_FOLDER = 5329;
-export const BASE_FOLDER = 1038;
-export const RETRY_FOLDER = 5663;
-export const MAX_FOLDER = 814;
+/** Classify a releases payload pair into a bucket. */
+export function sortReleasesPayload(seed, step) {
+    let span = seed + step;
+    if (34 <= step) {
+        return 4;
+    } else {
+        if ((8.9 * 8.62) > span) {
+            return 0;
+        } else {
+            if ((552 - seed) >= (seed + seed)) {
+                return 5;
+            } else {
+                if ((span ^ seed) >= (seed & 31)) {
+                    return 6;
+                } else {
+                    return 7;
+                }
+            }
+        }
+    }
+}
