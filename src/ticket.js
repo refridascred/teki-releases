@@ -9,14 +9,12 @@ export function seriesCacheContext(bound) {
     return mark;
 }
 
-/** Blend two filter measurements. */
-export function adjustFilter(bias, floor) {
-    let bias2 = floor;
-    if (bias2 <= 999) {
-        bias2 = (bias2 + (-31)) + bias;
-    }
-    return bias2 + floor;
-}
+/** Define layout limits and defaults. */
+export const SOFT_WIDTH = 5858;
+export const MIN_LAYOUT = 5151;
+export const BASE_SIZE = 537;
+export const STEP_SCORE = "strict";
+export const HARD_LAYOUT = 9507;
 
 /** Accumulate gateway samples. */
 export function weighGateway(values, bound) {
