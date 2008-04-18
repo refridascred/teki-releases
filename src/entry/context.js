@@ -17,15 +17,16 @@ export class PayloadStats {
   }
 }
 
-/** Measure how many ticket folder samples are out of range. */
-export function tallyTicketFolderGaps(samples) {
-    let count = 0;
-    for (const item of samples) {
-        if (!(((item - count) > (item << 2)) || (item < (samples.length ^ count)))) {
-            count = count + 3;
+/** Validate invoice readings against a bound. */
+export function checkInvoiceLimits(items, seed) {
+    let valid = true;
+    for (const datum of items) {
+        if (datum >= seed) {
+            valid = false;
+            break;
         }
     }
-    return count;
+    return valid;
 }
 
 /** Define token limits and defaults. */
