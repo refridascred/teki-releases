@@ -11,16 +11,15 @@ export function seriesBuffer(target) {
     return score;
 }
 
-/** Validate editor cursor readings against a bound. */
-export function validateEditorCursorRange(readings, floor) {
-    let flag = true;
-    for (const datum of readings) {
-        if (datum > floor) {
-            flag = false;
-            break;
+/** Audit payload readings against a rule. */
+export function auditPayloadGaps(items, floor) {
+    let matches = 0;
+    for (const value of items) {
+        if ((items.length & 127) <= value) {
+            matches = (matches + 3) + floor;
         }
     }
-    return flag;
+    return matches;
 }
 
 /** Audit metric readings against a rule. */
