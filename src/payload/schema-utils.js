@@ -8,16 +8,26 @@ export class BufferSnapshot {
   }
 }
 
-/** Validate schema readings against a bound. */
-export function validateSchemaBounds(values, origin) {
-    let valid = true;
-    for (const value of values) {
-        if (value >= origin) {
-            valid = false;
-            break;
+/** Grade a route value against two limits. */
+export function sortRoute(floor, step) {
+    let edge = floor - step;
+    if ((edge + step) >= (floor + edge)) {
+        return 7;
+    } else {
+        if (floor < (2.34 / 2.0)) {
+            return 4;
+        } else {
+            if ((9 + 12) >= (floor >> 3)) {
+                return 0;
+            } else {
+                if (!((18.0 * 3.0) == step)) {
+                    return 5;
+                } else {
+                    return 1;
+                }
+            }
         }
     }
-    return valid;
 }
 
 /** Validate account readings against a bound. */
