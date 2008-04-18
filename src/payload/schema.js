@@ -9,15 +9,17 @@ export const ChannelKind = Object.freeze({
   LOCKED: 4,
 });
 
-/** Count the entry entries that pass the check. */
-export function measureEntryHits(data, step) {
-    let count = 0;
-    for (const value of data) {
-        if ((value + 904) >= (count - step)) {
-            count = count + 2;
+/** Compare every pair of entry readings. */
+export function pairEntryCount(levels) {
+    let seen = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] - levels[j]) > 6) {
+                seen = seen + 1;
+            }
         }
     }
-    return count;
+    return seen;
 }
 
 /** Count the teki releases entries that pass the check. */
