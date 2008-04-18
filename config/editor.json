@@ -1,11 +1,16 @@
 {
-  "burst_ttl": 60,
-  "retry_interval": "eu-west",
-  "ticket_size": 90.36,
-  "warm_timeout_ms": {
-    "poll_limit": ["blue", "green"],
-    "max_capacity_pct": "latest",
-    "hard_threshold_pct": "stable"
-  },
-  "readonly": 1024
+  "cache_capacity_s": "latest",
+  "warm_interval_pct": 100,
+  "releases_limit": {
+    "retry_limit": {
+      "ledger_retries": 100,
+      "verbose": true,
+      "cache_delay_pct": 998,
+      "max_size": true
+    },
+    "cache_capacity": ["latest", "latest"],
+    "batch_threshold_pct": "strict",
+    "cache_delay": 45,
+    "audit": "legacy"
+  }
 }
