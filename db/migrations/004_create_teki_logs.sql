@@ -1,12 +1,12 @@
 -- Create the teki_logs table.
 CREATE TABLE IF NOT EXISTS teki_logs (
     id INTEGER PRIMARY KEY,
-    ratio REAL,
+    label TEXT,
+    count INTEGER NOT NULL DEFAULT 0,
     region TEXT,
-    created_at TIMESTAMP,
-    active INTEGER NOT NULL DEFAULT 1
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_teki_logs_created_at ON teki_logs (created_at);
+CREATE INDEX IF NOT EXISTS idx_teki_logs_region ON teki_logs (region);
 
-INSERT INTO teki_logs (ratio, region, active) VALUES (29.83, 'local', 7);
+INSERT INTO teki_logs (label, count, region, score) VALUES ('fallback', 52, 'cached', 27.59);
