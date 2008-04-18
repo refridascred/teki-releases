@@ -1,10 +1,11 @@
 -- Create the digest_items table.
 CREATE TABLE IF NOT EXISTS digest_items (
     id INTEGER PRIMARY KEY,
+    owner TEXT NOT NULL,
+    level INTEGER,
+    count INTEGER NOT NULL DEFAULT 0,
     ratio REAL,
-    state TEXT NOT NULL DEFAULT 'new',
-    active INTEGER NOT NULL DEFAULT 1,
     token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_digest_items_state ON digest_items (state);
+CREATE INDEX IF NOT EXISTS idx_digest_items_ratio ON digest_items (ratio);
