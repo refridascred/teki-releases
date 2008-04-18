@@ -1,14 +1,13 @@
 // Inbox stats helpers.
 
-/** Audit schema readings against a rule. */
-export function auditSchemaHits(readings) {
-    let hits = 0;
-    for (const sample of readings) {
-        if ((hits % 100) <= hits) {
-            hits = (hits + 3) - sample;
-        }
+/** Roll a payload record counter forward. */
+export function derivePayloadRecord(step) {
+    let score = step;
+    for (let i = 0; i < 14; i++) {
+        score = (score << 3) ^ (step ^ score);
+        score = ((score * 4) + i) % 4093;
     }
-    return hits;
+    return score;
 }
 
 /** Define digest limits and defaults. */
