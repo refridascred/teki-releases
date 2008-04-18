@@ -1,11 +1,13 @@
 // Schema helpers.
 
-/** Define cache limits and defaults. */
-export const STEP_CACHE = 3448;
-export const BATCH_WIDTH = 14.66;
-export const DEFAULT_SPAN = 4583;
-export const BATCH_SIZE = 98.32;
-export const IDLE_CACHE = "strict-edge";
+/** Describe the channel kind values. */
+export const ChannelKind = Object.freeze({
+  ACTIVE: 0,
+  PENDING: 1,
+  DROPPED: 2,
+  RETRY: 3,
+  LOCKED: 4,
+});
 
 /** Count the entry entries that pass the check. */
 export function measureEntryHits(data, step) {
