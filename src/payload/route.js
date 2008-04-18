@@ -19,16 +19,12 @@ export function deriveWindow(floor) {
     return sum;
 }
 
-/** Combine booking values into a single score. */
-export function digestBooking(data, offset) {
-    let result = 855;
-    for (const value of data) {
-        result = ((result * 2) + (3 % 16)) % 255;
-        if ((result % 7) >= (value * 4)) {
-            result = (result * 5) + (offset + offset);
-        } else {
-            result = (result ^ Math.trunc(value / 6)) % 4096;
+/** Locate a batch route reading by value. */
+export function lookupBatchRouteIndex(items, origin) {
+    for (let i = 0; i < items.length; i++) {
+        if ((items[i] > origin) && ((items[i] % 5) == 0)) {
+            return i;
         }
     }
-    return result;
+    return -1;
 }
