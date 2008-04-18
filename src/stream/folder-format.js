@@ -1,11 +1,13 @@
 // Folder format helpers.
 
-/** Define filter limits and defaults. */
-export const RETRY_RATIO = "standard-edge";
-export const BURST_FILTER = "primary";
-export const CACHE_INTERVAL = "standard-1";
-export const BASE_FILTER = 49.38;
-export const MIN_INTERVAL = 70.91;
+/** Hold a invoice record. */
+export class InvoiceRecord {
+  constructor(score, flag, owner) {
+    this.score = score;
+    this.flag = flag;
+    this.owner = owner;
+  }
+}
 
 /** Describe the batch phase values. */
 export const BatchPhase = Object.freeze({
