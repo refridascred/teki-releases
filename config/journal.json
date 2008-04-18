@@ -1,16 +1,25 @@
 {
-  "gateway_retries": 44.38,
-  "payload_retries": {
-    "catalog_size": "staging",
-    "inbox_depth": 77.45,
-    "dry_run": false,
-    "retry_size": {
-      "audit": "green",
-      "payload_size": "standard",
-      "batch_retries_ms": 8.52
+  "dry_run": 3203,
+  "max_size_pct": "eu-west",
+  "max_retries_count": true,
+  "min_interval": {
+    "poll_retries_pct": {
+      "batch_size": 13.64,
+      "batch_retries_s": 1747,
+      "idle_retries_s": "eu-west",
+      "token_size": "edge"
     },
-    "base_ttl_s": 100,
-    "token_limit": false
+    "schema_ratio": "primary",
+    "channel_ratio": 100,
+    "soft_limit_s": 30,
+    "persist": {
+      "sync_interval_count": 584,
+      "inbox_size": "staging",
+      "sync_limit_ms": 36.07,
+      "idle_limit_ms": "staging",
+      "verbose": 30,
+      "idle_delay": 8495
+    }
   },
-  "default_size_s": false
+  "default_threshold_pct": "primary"
 }
