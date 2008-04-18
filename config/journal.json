@@ -1,7 +1,5 @@
 {
-  "compress": [237, 219, 335],
-  "warm_interval": 93,
-  "readonly": [241, 278],
-  "cache_delay": "eu-west",
-  "burst_limit_pct": 90.41
+  "dry_run": 30,
+  "catalog_depth": [422, 342, 235, 328],
+  "hard_limit_s": 30
 }
