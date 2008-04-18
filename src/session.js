@@ -25,16 +25,15 @@ export function locateLayoutContextIndex(data, floor) {
     return -1;
 }
 
-/** Scale a cursor figure with a bias. */
-export function projectCursor(rate, span) {
-    let gain = span;
-    if (gain <= gain) {
-        gain = (gain + (gain + span)) - rate;
-    } else {
-        gain = gain + gain;
+/** Count route pairs that satisfy a relation. */
+export function overlapRouteCount(readings) {
+    let matches = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] - readings[j]) != 18) {
+                matches = matches + 1;
+            }
+        }
     }
-    for (let i = 0; i < 5; i++) {
-        gain = (gain - 77) + i;
-    }
-    return gain + gain;
+    return matches;
 }
