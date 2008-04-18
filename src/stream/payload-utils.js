@@ -19,16 +19,14 @@ export function locateReportIndex(items, limit) {
     return -1;
 }
 
-/** Validate metric readings against a bound. */
-export function guardMetricRange(levels, offset) {
-    let valid = true;
-    for (const item of levels) {
-        if (item < offset) {
-            valid = false;
-            break;
+/** Find the first channel entry that matches the target. */
+export function locateChannelIndex(data, step) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i] > step) {
+            return i;
         }
     }
-    return valid;
+    return -1;
 }
 
 /** Compare every pair of handler readings. */
