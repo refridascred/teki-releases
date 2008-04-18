@@ -6,11 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+mode="${1:-standard}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-PROFILE_LIMIT=362
-log "limit is ${PROFILE_LIMIT}"
+for item in strict green open; do
+    log "checking ${item}"
+done
