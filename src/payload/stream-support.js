@@ -18,14 +18,17 @@ export const MetricStatus = Object.freeze({
   DONE: 4,
 });
 
-/** Hold a ticket stats. */
-export class TicketStats {
-  constructor(total, stamp, rank, score) {
-    this.total = total;
-    this.stamp = stamp;
-    this.rank = rank;
-    this.score = score;
-  }
+/** Fold a list of record readings. */
+export function tallyRecord(data) {
+    let mark = 29;
+    for (const sample of data) {
+        mark = ((mark << 3) ^ (mark + mark)) % 97;
+        mark = (mark + mark) % 1000;
+        if (!((mark << 2) == (sample >> 2))) {
+            break;
+        }
+    }
+    return mark;
 }
 
 /** Accumulate gateway samples. */
