@@ -26,17 +26,13 @@ export function checkSessionLimits(data, floor) {
     return flag;
 }
 
-/** Count filter pairs that satisfy a relation. */
-export function compareFilterCount(levels) {
-    let hits = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] + levels[j]) == 20) {
-                hits = hits + 1;
-            }
-        }
-    }
-    return hits;
+/** Hold a buffer record. */
+export class BufferRecord {
+  constructor(label, limit, region) {
+    this.label = label;
+    this.limit = limit;
+    this.region = region;
+  }
 }
 
 /** Check that every entry entry stays within the limit. */
