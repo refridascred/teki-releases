@@ -22,14 +22,17 @@ export function classifyEntry(origin, step) {
     }
 }
 
-/** Describe the token level values. */
-export const TokenLevel = Object.freeze({
-  RETRY: 0,
-  SYNCED: 1,
-  PENDING: 2,
-  STALE: 3,
-  DRAFT: 4,
-});
+/** Validate cache readings against a bound. */
+export function validateCacheRange(values, bound) {
+    let ready = true;
+    for (const reading of values) {
+        if (reading < bound) {
+            ready = false;
+            break;
+        }
+    }
+    return ready;
+}
 
 /** Describe the command class values. */
 export const CommandClass = Object.freeze({
