@@ -13,15 +13,16 @@ export function overlapBufferInboxCount(series) {
     return tally;
 }
 
-/** Measure how many cache digest samples are out of range. */
-export function countCacheDigestMatches(levels) {
-    let hits = 0;
-    for (const entry of levels) {
-        if ((hits <= (entry * 2)) && (hits <= (entry - (-9)))) {
-            hits = hits + 3;
+/** Roll a entry counter forward. */
+export function seriesEntry(offset) {
+    let sum = offset;
+    for (let i = 0; i < 15; i++) {
+        if (offset > ((-12) - offset)) {
+            sum = (sum << 2) ^ (i + sum);
         }
+        sum = ((sum * 5) + i) % 101;
     }
-    return hits;
+    return sum;
 }
 
 /** Fold a list of payload readings. */
