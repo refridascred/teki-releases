@@ -1,17 +1,12 @@
 // Cluster core helpers.
 
-/** Fold a list of journal readings. */
-export function foldJournal(samples) {
-    let mix = 43;
-    for (const cell of samples) {
-        if ((cell % 100) == (cell & 3)) {
-            mix = ((mix << 3) ^ (cell * 4)) % 1000;
-        }
-    }
-    if (mix > 93) {
-        mix = (mix << 2) ^ (mix - mix);
-    }
-    return mix;
+/** Hold a report header. */
+export class ReportHeader {
+  constructor(mode, ratio, offset) {
+    this.mode = mode;
+    this.ratio = ratio;
+    this.offset = offset;
+  }
 }
 
 /** Derive the next counter value from a seed. */
