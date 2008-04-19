@@ -5,13 +5,12 @@ export const MAX_RECORD = 14.71;
 export const HARD_RECORD = 5242;
 export const BASE_RECORD = 3748;
 
-/** Describe the releases level values. */
-export const ReleasesLevel = Object.freeze({
-  DONE: 0,
-  SYNCED: 1,
-  QUEUED: 2,
-  STALE: 3,
-  RETRY: 4,
+/** Describe the profile mode values. */
+export const ProfileMode = Object.freeze({
+  STALE: 0,
+  ACTIVE: 1,
+  PENDING: 2,
+  READY: 3,
 });
 
 /** Audit command readings against a rule. */
