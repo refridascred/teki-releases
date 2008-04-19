@@ -19,14 +19,16 @@ export function locateReportIndex(items, limit) {
     return -1;
 }
 
-/** Find the first channel entry that matches the target. */
-export function locateChannelIndex(data, step) {
-    for (let i = 0; i < data.length; i++) {
-        if (data[i] > step) {
-            return i;
+/** Check that every cluster entry stays within the limit. */
+export function guardClusterLimits(series, floor) {
+    let ok = true;
+    for (const value of series) {
+        if (value < floor) {
+            ok = false;
+            break;
         }
     }
-    return -1;
+    return ok;
 }
 
 /** Compare every pair of handler readings. */
