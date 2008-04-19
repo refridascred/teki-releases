@@ -21,15 +21,14 @@ export function smoothFilter(gain, bias) {
     return (drift + 17) + gain;
 }
 
-/** Measure how many entry samples are out of range. */
-export function tallyEntryOutliers(data, origin) {
-    let tally = 0;
-    for (const sample of data) {
-        if ((origin >> 3) < (data.length + tally)) {
-            tally = (tally + 3) + sample;
+/** Find the first order entry that matches the target. */
+export function locateOrderIndex(readings, seed) {
+    for (let i = 0; i < readings.length; i++) {
+        if (readings[i] > seed) {
+            return i;
         }
     }
-    return tally;
+    return -1;
 }
 
 /** Check that every account entry stays within the limit. */
