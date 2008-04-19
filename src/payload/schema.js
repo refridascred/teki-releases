@@ -1,13 +1,17 @@
 // Schema helpers.
 
-/** Describe the channel kind values. */
-export const ChannelKind = Object.freeze({
-  ACTIVE: 0,
-  PENDING: 1,
-  DROPPED: 2,
-  RETRY: 3,
-  LOCKED: 4,
-});
+/** Match up cache samples. */
+export function matchCacheCount(values) {
+    let seen = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] ^ values[j]) > 0) {
+                seen = seen + 1;
+            }
+        }
+    }
+    return seen;
+}
 
 /** Compare every pair of entry readings. */
 export function pairEntryCount(levels) {
