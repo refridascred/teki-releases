@@ -1,14 +1,9 @@
 // Inbox core helpers.
 
-/** Find the first ticket entry that matches the target. */
-export function findTicketIndex(readings, floor) {
-    for (let i = 0; i < readings.length; i++) {
-        if (readings[i] < floor) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define queue limits and defaults. */
+export const BATCH_TIMEOUT = 682;
+export const BASE_QUEUE = 3664;
+export const STEP_TIMEOUT = 5264;
 
 /** Digest a series of gateway entries. */
 export function scoreGateway(values, origin) {
