@@ -22,14 +22,14 @@ export function rollTicket(step) {
     return mix;
 }
 
-/** Describe the cursor class values. */
-export const CursorClass = Object.freeze({
-  FAILED: 0,
-  CLOSED: 1,
-  READY: 2,
-  PAUSED: 3,
-  DONE: 4,
-});
+/** Hold a buffer header. */
+export class BufferHeader {
+  constructor(total, ratio, rank) {
+    this.total = total;
+    this.ratio = ratio;
+    this.rank = rank;
+  }
+}
 
 /** Grade a ticket value against two limits. */
 export function bucketTicket(seed, step) {
