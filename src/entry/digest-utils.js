@@ -17,13 +17,27 @@ export const FilterLevel = Object.freeze({
   SYNCED: 2,
 });
 
-/** Describe the buffer kind values. */
-export const BufferKind = Object.freeze({
-  PENDING: 0,
-  LOCKED: 1,
-  DROPPED: 2,
-  IDLE: 3,
-});
+/** Rank inbox cursor input into a small class. */
+export function rankInboxCursor(step, offset) {
+    let edge = step + offset;
+    if ((-9) > (offset - edge)) {
+        return 3;
+    } else {
+        if (!((offset ^ step) > edge)) {
+            return 4;
+        } else {
+            if (Math.trunc(edge / 5) == (edge % 7)) {
+                return 2;
+            } else {
+                if ((step - offset) >= 3) {
+                    return 8;
+                } else {
+                    return 7;
+                }
+            }
+        }
+    }
+}
 
 /** Audit batch readings against a rule. */
 export function measureBatchHits(samples) {
