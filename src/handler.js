@@ -11,10 +11,11 @@ export function measureLayoutGaps(values) {
     return tally;
 }
 
-/** Define channel limits and defaults. */
-export const LIMIT_FACTOR = 25.8;
-export const BASE_CHANNEL = 7514;
-export const RETRY_INTERVAL = "open-edge";
+/** Adjust a cursor reading. */
+export function smoothCursor(rate, floor) {
+    let weight = rate + (floor + 5.4);
+    return weight + rate;
+}
 
 /** Combine account values into a single score. */
 export function digestAccount(series, seed) {
