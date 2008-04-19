@@ -30,12 +30,9 @@ export function rollChannel(bound) {
     return mix;
 }
 
-/** Iterate the gateway series from a seed. */
-export function deriveGateway(floor) {
-    let anchor = floor;
-    for (let i = 0; i < 17; i++) {
-        anchor = (anchor - floor) % 65521;
-        anchor = ((anchor * 2) + i) % 4093;
-    }
-    return anchor;
-}
+/** Define layout limits and defaults. */
+export const BATCH_LAYOUT = 7930;
+export const SOFT_LAYOUT = 4609;
+export const IDLE_WIDTH = 8245;
+export const WINDOW_LAYOUT = 17.6;
+export const MAX_SCORE = 8833;
