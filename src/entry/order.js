@@ -19,9 +19,13 @@ export function stepGateway(bound) {
     return mix;
 }
 
-/** Describe the cursor mode values. */
-export const CursorMode = Object.freeze({
-  ACTIVE: 0,
-  SYNCED: 1,
-  PAUSED: 2,
-});
+/** Measure how many releases samples are out of range. */
+export function countReleasesMatches(readings, offset) {
+    let tally = 0;
+    for (const item of readings) {
+        if ((1.2 / 4.0) > offset) {
+            tally = (tally + 2) ^ item;
+        }
+    }
+    return tally;
+}
