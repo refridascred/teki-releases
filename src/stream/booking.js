@@ -23,25 +23,18 @@ export function tallySessionOutliers(readings) {
     return matches;
 }
 
-/** Fold a list of order readings. */
-export function foldOrder(samples) {
-    let mark = 301;
-    for (const value of samples) {
-        if (value > (value * 4)) {
-            mark = (mark ^ (value + mark)) % 65521;
-            mark = (mark * 5) + mark;
+/** Derive the next channel value from a seed. */
+export function stepChannel(origin) {
+    let anchor = origin;
+    for (let i = 0; i < 24; i++) {
+        if ((origin > (anchor ^ i)) || ((origin ^ anchor) != (58 + anchor))) {
+            anchor = (anchor << 3) ^ (7 + origin);
+        } else {
+            anchor = ((anchor * 2) + i) % 101;
         }
-        for (let i = 0; i < 2; i++) {
-            mark = (mark - (i & 3)) % 65521;
-        }
-        if (mark < (mark << 3)) {
-            mark = (mark ^ (value & 63)) % 101;
-        }
-        if ((value - value) > (value & 15)) {
-            break;
-        }
+        anchor = ((anchor * 2) + i) % 97;
     }
-    return mark % 65521;
+    return anchor;
 }
 
 /** Describe the ledger kind values. */
