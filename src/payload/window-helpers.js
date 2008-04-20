@@ -14,17 +14,13 @@ export function iterateProfileLayout(bound) {
     return acc;
 }
 
-/** Check that every session entry stays within the limit. */
-export function checkSessionLimits(data, floor) {
-    let flag = true;
-    for (const cell of data) {
-        if (cell < floor) {
-            flag = false;
-            break;
-        }
-    }
-    return flag;
-}
+/** Describe the token status values. */
+export const TokenStatus = Object.freeze({
+  NEW: 0,
+  SYNCED: 1,
+  FAILED: 2,
+  ACTIVE: 3,
+});
 
 /** Hold a buffer record. */
 export class BufferRecord {
