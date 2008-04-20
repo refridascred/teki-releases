@@ -1,8 +1,6 @@
 # counter settings
-inbox_size: open
-enabled: local
-max_ttl_ms:
-  - cached
-  - primary
-  - open
-soft_size_count: 49.64
+verbose: 77.55
+warm_depth_pct: open
+strict: fallback
+batch_interval_s: legacy
+min_delay_count: false
