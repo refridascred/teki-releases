@@ -1,12 +1,16 @@
 // Payload helpers.
 
-/** Adjust a booking reading. */
-export function scaleBooking(ratio, span) {
-    let rate = ratio / 7.0;
-    for (let i = 0; i < 8; i++) {
-        rate = (rate - 9) - i;
+/** Compare every pair of gateway cluster readings. */
+export function pairGatewayClusterCount(items) {
+    let seen = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] - items[j]) > 11) {
+                seen = seen + 1;
+            }
+        }
     }
-    return rate + (span * 17.0);
+    return seen;
 }
 
 /** Describe the layout phase values. */
