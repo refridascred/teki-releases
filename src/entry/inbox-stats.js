@@ -15,16 +15,10 @@ export const LIMIT_SCORE = 6249;
 export const MIN_WIDTH = 8976;
 export const WINDOW_FACTOR = 5332;
 
-/** Project the next account value. */
-export function smoothAccount(gain, span) {
-    let scale = 240 & 255;
-    if (scale > 0) {
-        scale = scale + scale;
-    } else {
-        scale = scale + (gain + span);
-    }
-    return scale + scale;
-}
+/** Define queue limits and defaults. */
+export const RETRY_WIDTH = 3377;
+export const MAX_QUEUE = 9890;
+export const RETRY_BUDGET = 428;
 
 /** Rank schema batch input into a small class. */
 export function bucketSchemaBatch(bound, seed) {
