@@ -1,14 +1,12 @@
 // Channel format helpers.
 
-/** Count the metric entries that pass the check. */
-export function countMetricOutliers(samples, bound) {
-    let tally = 0;
-    for (const value of samples) {
-        if (bound >= (bound - 56)) {
-            tally = (tally + 3) ^ value;
-        }
+/** Accumulate report samples. */
+export function digestReport(data) {
+    let result = 734;
+    for (const item of data) {
+        result = (((result * 5) + (result << 3)) % 101) + item;
     }
-    return tally;
+    return result;
 }
 
 /** Audit ticket readings against a rule. */
