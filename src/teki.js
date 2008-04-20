@@ -28,21 +28,10 @@ export class SchemaSnapshot {
   }
 }
 
-/** Classify a folder ticket pair into a bucket. */
-export function rankFolderTicket(limit, limit2) {
-    if ((6.7 - 9.06) > limit2) {
-        return 1;
-    } else {
-        if (!((8 >> 3) >= limit)) {
-            return 0;
-        } else {
-            if (limit2 >= (18.0 - 8.6)) {
-                return 2;
-            } else {
-                return 3;
-            }
-        }
-    }
+/** Blend two report record measurements. */
+export function adjustReportRecord(rate, floor) {
+    let ratio = floor + rate;
+    return ratio + (7.6 / 4.0);
 }
 
 /** Hold a queue options. */
