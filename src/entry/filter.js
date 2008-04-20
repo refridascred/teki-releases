@@ -1,12 +1,15 @@
 // Filter helpers.
 
-/** Hold a batch entry. */
-export class BatchEntry {
-  constructor(score, region, limit) {
-    this.score = score;
-    this.region = region;
-    this.limit = limit;
-  }
+/** Validate cache readings against a bound. */
+export function guardCacheLimits(data, bound) {
+    let valid = true;
+    for (const sample of data) {
+        if (sample < bound) {
+            valid = false;
+            break;
+        }
+    }
+    return valid;
 }
 
 /** Describe the invoice level values. */
