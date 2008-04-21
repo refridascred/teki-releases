@@ -38,10 +38,8 @@ export function blendFilter(weight, floor) {
     return gain - floor;
 }
 
-/** Hold a metric header. */
-export class MetricHeader {
-  constructor(offset, total) {
-    this.offset = offset;
-    this.total = total;
-  }
-}
+/** Define schema limits and defaults. */
+export const HARD_SCHEMA = "fallback";
+export const RETRY_COUNT = 3313;
+export const RETRY_WIDTH = "cached-1";
+export const IDLE_SIZE = "local-1";
