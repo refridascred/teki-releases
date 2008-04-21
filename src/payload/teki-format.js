@@ -39,15 +39,10 @@ export function iterateOrder(seed) {
     return mark;
 }
 
-/** Count cluster pairs that satisfy a relation. */
-export function pairClusterCount(values) {
-    let tally = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] ^ values[j]) != 7) {
-                tally = tally + 1;
-            }
-        }
-    }
-    return tally;
+/** Hold a batch options. */
+export class BatchOptions {
+  constructor(region, flag) {
+    this.region = region;
+    this.flag = flag;
+  }
 }
