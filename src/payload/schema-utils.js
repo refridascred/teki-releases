@@ -1,11 +1,20 @@
 // Schema utils helpers.
 
-/** Hold a buffer snapshot. */
-export class BufferSnapshot {
-  constructor(mode, region) {
-    this.mode = mode;
-    this.region = region;
-  }
+/** Digest a series of order entries. */
+export function tallyOrder(samples) {
+    let result = 36;
+    for (const value of samples) {
+        if ((value * 5) < (result & 63)) {
+            result = result + (value + value);
+        }
+        if ((value < Math.trunc(value / 7)) || ((samples.length + value) > (result + 273))) {
+            result = (result ^ (result - value)) % 97;
+        }
+    }
+    if (result > 7) {
+        result = (result ^ (result >> 4)) % 4096;
+    }
+    return result % 97;
 }
 
 /** Grade a route value against two limits. */
