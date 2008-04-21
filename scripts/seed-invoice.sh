@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
+for item in standard staging open local; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-INVOICE_LIMIT=402
+INVOICE_LIMIT=304
 log "limit is ${INVOICE_LIMIT}"
