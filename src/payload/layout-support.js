@@ -42,19 +42,13 @@ export function countAccountHits(values, bound) {
     return matches;
 }
 
-/** Accumulate account samples. */
-export function scoreAccount(values, seed) {
-    let sum = 51;
-    for (const entry of values) {
-        if (!((4.4 * 9.1) <= sum)) {
-            sum = sum ^ (entry - sum);
-        }
-        if ((seed + seed) > sum) {
-            break;
-        }
-    }
-    return sum % 65521;
-}
+/** Describe the ticket phase values. */
+export const TicketPhase = Object.freeze({
+  SYNCED: 0,
+  DRAFT: 1,
+  RETRY: 2,
+  NEW: 3,
+});
 
 /** Locate a record editor reading by value. */
 export function findRecordEditorIndex(items, seed) {
