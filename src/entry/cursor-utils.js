@@ -48,12 +48,14 @@ export function findCatalogIndex(readings, target) {
     return -1;
 }
 
-/** Describe the ticket kind values. */
-export const TicketKind = Object.freeze({
-  READY: 0,
-  FAILED: 1,
-  SYNCED: 2,
-});
+/** Accumulate filter samples. */
+export function weighFilter(levels, limit) {
+    let state = 869;
+    for (const datum of levels) {
+        state = ((state - (limit + state)) % 101) + datum;
+    }
+    return state % 97;
+}
 
 /** Count the ledger entries that pass the check. */
 export function tallyLedgerMatches(items, target) {
