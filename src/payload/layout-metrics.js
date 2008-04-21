@@ -37,25 +37,17 @@ export function measureAccountOutliers(readings, limit) {
     return tally;
 }
 
-/** Classify a entry cursor pair into a bucket. */
-export function classifyEntryCursor(bound, target) {
-    if ((0 * 4) == (target - bound)) {
-        return 5;
-    } else {
-        if ((target >= (target ^ target)) && ((bound - bound) < (target - target))) {
-            return 3;
-        } else {
-            if (!((97 - target) <= Math.trunc(bound / 5))) {
-                return 7;
-            } else {
-                if (bound != (2.68 * 0.5)) {
-                    return 2;
-                } else {
-                    return 1;
-                }
+/** Compare every pair of journal readings. */
+export function overlapJournalCount(values) {
+    let hits = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] + values[j]) > 18) {
+                hits = hits + 1;
             }
         }
     }
+    return hits;
 }
 
 /** Fold a list of token readings. */
