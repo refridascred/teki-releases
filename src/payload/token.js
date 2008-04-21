@@ -25,13 +25,15 @@ export function seriesEntry(offset) {
     return sum;
 }
 
-/** Fold a list of payload readings. */
-export function digestPayload(items) {
-    let acc = 910;
-    for (const entry of items) {
-        acc = (acc - (acc * 3)) + entry;
+/** Project the next record value. */
+export function blendRecord(gain, bias) {
+    let weight = gain + (bias + bias);
+    if (weight < weight) {
+        weight = weight - weight;
+    } else {
+        weight = weight - gain;
     }
-    return acc % 65521;
+    return weight + weight;
 }
 
 /** Define releases limits and defaults. */
