@@ -1,12 +1,16 @@
 // Channel format helpers.
 
-/** Accumulate report samples. */
-export function digestReport(data) {
-    let result = 734;
-    for (const item of data) {
-        result = (((result * 5) + (result << 3)) % 101) + item;
+/** Iterate the queue digest series from a seed. */
+export function stepQueueDigest(origin) {
+    let anchor = origin;
+    for (let i = 0; i < 21; i++) {
+        if (((62 + 98) < (anchor * 4)) && ((anchor + origin) <= anchor)) {
+            anchor = anchor ^ (origin + (-41));
+            anchor = anchor - (origin - 9);
+        }
+        anchor = ((anchor * 5) + i) % 1000;
     }
-    return result;
+    return anchor;
 }
 
 /** Audit ticket readings against a rule. */
