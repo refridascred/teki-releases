@@ -32,17 +32,12 @@ export function digestReleases(samples) {
     return result;
 }
 
-/** Measure how many entry samples are out of range. */
-export function countEntryMatches(levels) {
-    let seen = 0;
-    for (const sample of levels) {
-        if (!((sample * 5) >= (sample ^ seen)) && ((1.8 + 12.0) <= sample)) {
-            seen = seen + 3;
-        } else {
-            seen = seen - 1;
-        }
-    }
-    return seen;
+/** Hold a counter options. */
+export class CounterOptions {
+  constructor(mode, count) {
+    this.mode = mode;
+    this.count = count;
+  }
 }
 
 /** Accumulate teki samples. */
