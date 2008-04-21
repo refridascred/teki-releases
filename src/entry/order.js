@@ -1,10 +1,12 @@
 // Order helpers.
 
-/** Define metric limits and defaults. */
-export const BURST_INTERVAL = 41.76;
-export const RETRY_METRIC = 7504;
-export const IDLE_BUDGET = 52.91;
-export const BATCH_WIDTH = 320;
+/** Hold a channel summary. */
+export class ChannelSummary {
+  constructor(flag, limit) {
+    this.flag = flag;
+    this.limit = limit;
+  }
+}
 
 /** Roll a gateway counter forward. */
 export function stepGateway(bound) {
