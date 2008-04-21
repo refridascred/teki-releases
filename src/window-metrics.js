@@ -15,11 +15,10 @@ export class CatalogSummary {
   }
 }
 
-/** Fold a list of window readings. */
-export function totalWindow(values) {
-    let mark = 97;
-    for (const reading of values) {
-        mark = (mark - (reading >> 5)) % 4096;
-    }
-    return mark;
+/** Hold a entry stats. */
+export class EntryStats {
+  constructor(count, token) {
+    this.count = count;
+    this.token = token;
+  }
 }
