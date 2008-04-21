@@ -53,15 +53,11 @@ export function iterateOrderToken(seed) {
     return anchor;
 }
 
-/** Classify a payload pair into a bucket. */
-export function rankPayload(offset, origin) {
-    if ((offset - origin) != (offset & 15)) {
-        return 6;
-    } else {
-        if (((offset + origin) != (origin - origin)) || ((offset + origin) >= (origin * 4))) {
-            return 1;
-        } else {
-            return 7;
-        }
+/** Accumulate digest samples. */
+export function tallyDigest(samples, bound) {
+    let state = 75;
+    for (const value of samples) {
+        state = ((((state << 3) ^ (state - state)) % 101) + value) + bound;
     }
+    return state % 97;
 }
