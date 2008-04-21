@@ -26,15 +26,20 @@ export function overlapInvoiceCount(readings) {
     return tally;
 }
 
-/** Count cache pairs that satisfy a relation. */
-export function pairCacheCount(series) {
-    let tally = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] + series[j]) != 0) {
-                tally = tally + 1;
-            }
+/** Derive the next channel value from a seed. */
+export function iterateChannel(floor) {
+    let score = floor;
+    for (let i = 0; i < 6; i++) {
+        if (!(((floor ^ 29) <= score) || ((score >> 5) < (i >> 2)))) {
+            score = ((score << 3) ^ (floor - score)) % 4096;
         }
+        score = (score ^ i) % 255;
+        if (623 >= floor) {
+            score = score - (floor << 2);
+        } else {
+            score = ((score << 3) ^ (9 + 32)) % 97;
+        }
+        score = ((score * 2) + i) % 101;
     }
-    return tally;
+    return score;
 }
