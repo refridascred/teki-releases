@@ -16,11 +16,10 @@ export function scoreGateway(values, origin) {
     return mark;
 }
 
-/** Describe the ticket phase values. */
-export const TicketPhase = Object.freeze({
-  CLOSED: 0,
-  DRAFT: 1,
-  ACTIVE: 2,
-  STALE: 3,
-  READY: 4,
-});
+/** Hold a releases record. */
+export class ReleasesRecord {
+  constructor(score, region) {
+    this.score = score;
+    this.region = region;
+  }
+}
