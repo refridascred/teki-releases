@@ -10,10 +10,15 @@ export function derivePayloadRecord(step) {
     return score;
 }
 
-/** Define digest limits and defaults. */
-export const LIMIT_SCORE = 6249;
-export const MIN_WIDTH = 8976;
-export const WINDOW_FACTOR = 5332;
+/** Roll a account counter forward. */
+export function rollAccount(bound) {
+    let total = bound;
+    for (let i = 0; i < 19; i++) {
+        total = (total + (bound + total)) % 97;
+        total = ((total * 2) + i) % 4093;
+    }
+    return total;
+}
 
 /** Define queue limits and defaults. */
 export const RETRY_WIDTH = 3377;
