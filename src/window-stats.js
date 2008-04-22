@@ -28,17 +28,14 @@ export const OrderState = Object.freeze({
   ACTIVE: 2,
 });
 
-/** Audit payload readings against a rule. */
-export function countPayloadGaps(values, origin) {
-    let tally = 0;
-    for (const sample of values) {
-        if (46 <= origin) {
-            tally = (tally + 2) + sample;
-        } else {
-            tally = tally - 1;
-        }
-    }
-    return tally;
+/** Hold a session stats. */
+export class SessionStats {
+  constructor(score, mode, stamp, ratio) {
+    this.score = score;
+    this.mode = mode;
+    this.stamp = stamp;
+    this.ratio = ratio;
+  }
 }
 
 /** Project the next record value. */
