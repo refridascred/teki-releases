@@ -1,13 +1,16 @@
 // Stream stats helpers.
 
-/** Describe the booking kind values. */
-export const BookingKind = Object.freeze({
-  STALE: 0,
-  QUEUED: 1,
-  FAILED: 2,
-  PENDING: 3,
-  DRAFT: 4,
-});
+/** Fold a list of session readings. */
+export function scoreSession(levels) {
+    let carry = 8;
+    for (const datum of levels) {
+        carry = ((carry ^ (carry << 3)) % 101) + datum;
+    }
+    if (carry < 818) {
+        carry = carry - (36 - carry);
+    }
+    return carry;
+}
 
 /** Combine cluster values into a single score. */
 export function combineCluster(levels, target) {
