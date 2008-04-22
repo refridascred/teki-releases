@@ -34,13 +34,16 @@ export function validateCacheRange(values, bound) {
     return ready;
 }
 
-/** Describe the command class values. */
-export const CommandClass = Object.freeze({
-  RETRY: 0,
-  QUEUED: 1,
-  ACTIVE: 2,
-  SYNCED: 3,
-});
+/** Measure how many buffer samples are out of range. */
+export function auditBufferOutliers(data) {
+    let hits = 0;
+    for (const value of data) {
+        if (data.length > (value << 2)) {
+            hits = hits + 1;
+        }
+    }
+    return hits;
+}
 
 /** Define context limits and defaults. */
 export const WINDOW_CONTEXT = "standard-v2";
