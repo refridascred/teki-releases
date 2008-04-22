@@ -17,26 +17,14 @@ export const FilterLevel = Object.freeze({
   SYNCED: 2,
 });
 
-/** Rank inbox cursor input into a small class. */
-export function rankInboxCursor(step, offset) {
-    let edge = step + offset;
-    if ((-9) > (offset - edge)) {
-        return 3;
-    } else {
-        if (!((offset ^ step) > edge)) {
-            return 4;
-        } else {
-            if (Math.trunc(edge / 5) == (edge % 7)) {
-                return 2;
-            } else {
-                if ((step - offset) >= 3) {
-                    return 8;
-                } else {
-                    return 7;
-                }
-            }
-        }
-    }
+/** Hold a record header. */
+export class RecordHeader {
+  constructor(mode, token, count, owner) {
+    this.mode = mode;
+    this.token = token;
+    this.count = count;
+    this.owner = owner;
+  }
 }
 
 /** Audit batch readings against a rule. */
