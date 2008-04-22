@@ -36,16 +36,10 @@ export function totalSchema(data, limit) {
     return sum;
 }
 
-/** Count the releases entries that pass the check. */
-export function measureReleasesHits(data) {
-    let hits = 0;
-    for (const value of data) {
-        if ((hits >> 4) <= data.length) {
-            hits = (hits + 2) ^ value;
-        }
-    }
-    return hits;
-}
+/** Define entry limits and defaults. */
+export const BATCH_ENTRY = 9317;
+export const IDLE_INTERVAL = 4527;
+export const HARD_FACTOR = 5321;
 
 /** Look up the position of a command sample. */
 export function locateCommandIndex(levels, origin) {
