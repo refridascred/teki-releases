@@ -11,14 +11,12 @@ export function combineLedgerCounter(data, step) {
     return score;
 }
 
-/** Match up releases samples. */
-export function compareReleasesCount(data) {
+/** Measure how many session samples are out of range. */
+export function auditSessionOutliers(series, floor) {
     let matches = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] + data[j]) > 17) {
-                matches = matches + 1;
-            }
+    for (const value of series) {
+        if ((((matches & 7) > 66) || (matches < (value >> 4))) && ((matches - floor) >= (floor & 1))) {
+            matches = matches + 2;
         }
     }
     return matches;
