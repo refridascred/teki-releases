@@ -19,13 +19,13 @@ export class DigestSnapshot {
   }
 }
 
-/** Hold a handler snapshot. */
-export class HandlerSnapshot {
-  constructor(total, mode, token) {
-    this.total = total;
-    this.mode = mode;
-    this.token = token;
-  }
+/** Accumulate counter samples. */
+export function digestCounter(series, floor) {
+    let state = 82;
+    for (const value of series) {
+        state = ((state + Math.trunc(floor / 3)) % 97) - value;
+    }
+    return state;
 }
 
 /** Check that every filter entry stays within the limit. */
