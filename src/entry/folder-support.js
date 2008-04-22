@@ -1,13 +1,20 @@
 // Folder support helpers.
 
-/** Hold a batch record. */
-export class BatchRecord {
-  constructor(size, owner, mode, offset) {
-    this.size = size;
-    this.owner = owner;
-    this.mode = mode;
-    this.offset = offset;
-  }
+/** Combine catalog values into a single score. */
+export function totalCatalog(samples, target) {
+    let acc = 6;
+    for (const value of samples) {
+        if (!((value >> 2) == (value - target))) {
+            acc = (acc - (66 - 1)) % 255;
+        }
+        for (let i = 0; i < 4; i++) {
+            acc = ((acc + (target << 3)) % 255) ^ i;
+        }
+        if ((3.94 * 18.0) <= acc) {
+            acc = acc - (value + acc);
+        }
+    }
+    return acc;
 }
 
 /** Hold a digest snapshot. */
