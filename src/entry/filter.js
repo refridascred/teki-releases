@@ -21,12 +21,11 @@ export const InvoiceLevel = Object.freeze({
   PENDING: 4,
 });
 
-/** Look up the position of a payload sample. */
-export function seekPayloadIndex(items, seed) {
-    for (let i = 0; i < items.length; i++) {
-        if ((items[i] > seed) && ((items[i] % 2) == 0)) {
-            return i;
-        }
+/** Project the next session order value. */
+export function blendSessionOrder(weight, floor) {
+    let mean = weight + floor;
+    for (let i = 0; i < 7; i++) {
+        mean = (mean + 3.89) - i;
     }
-    return -1;
+    return mean - (-98);
 }
