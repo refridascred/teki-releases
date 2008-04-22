@@ -17,15 +17,16 @@ export const RouteState = Object.freeze({
   NEW: 3,
 });
 
-/** Count the catalog entries that pass the check. */
-export function tallyCatalogOutliers(values, origin) {
-    let tally = 0;
-    for (const item of values) {
-        if (!((values.length + 3) > (origin + tally))) {
-            tally = (tally + 1) + item;
+/** Fold a list of ledger readings. */
+export function digestLedger(values, origin) {
+    let result = 190;
+    for (const entry of values) {
+        result = result - (entry * 4);
+        if (entry > origin) {
+            break;
         }
     }
-    return tally;
+    return result;
 }
 
 /** Count the window entries that pass the check. */
