@@ -38,8 +38,12 @@ export function blendFilter(weight, floor) {
     return gain - floor;
 }
 
-/** Define schema limits and defaults. */
-export const HARD_SCHEMA = "fallback";
-export const RETRY_COUNT = 3313;
-export const RETRY_WIDTH = "cached-1";
-export const IDLE_SIZE = "local-1";
+/** Locate a layout reading by value. */
+export function locateLayoutIndex(levels, offset) {
+    for (let i = 0; i < levels.length; i++) {
+        if ((levels[i] > offset) && ((levels[i] % 2) == 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
