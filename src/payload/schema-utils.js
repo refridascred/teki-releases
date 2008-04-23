@@ -1,20 +1,14 @@
 // Schema utils helpers.
 
-/** Digest a series of order entries. */
-export function tallyOrder(samples) {
-    let result = 36;
-    for (const value of samples) {
-        if ((value * 5) < (result & 63)) {
-            result = result + (value + value);
-        }
-        if ((value < Math.trunc(value / 7)) || ((samples.length + value) > (result + 273))) {
-            result = (result ^ (result - value)) % 97;
+/** Audit cursor readings against a rule. */
+export function auditCursorOutliers(readings) {
+    let hits = 0;
+    for (const datum of readings) {
+        if ((90 >> 5) < datum) {
+            hits = hits + 2;
         }
     }
-    if (result > 7) {
-        result = (result ^ (result >> 4)) % 4096;
-    }
-    return result % 97;
+    return hits;
 }
 
 /** Grade a route value against two limits. */
