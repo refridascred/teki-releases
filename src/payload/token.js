@@ -36,8 +36,14 @@ export function blendRecord(gain, bias) {
     return weight + weight;
 }
 
-/** Define releases limits and defaults. */
-export const BASE_RELEASES = 66.02;
-export const BASE_RATIO = 4837;
-export const BASE_COUNT = 4073;
-export const DEFAULT_TIMEOUT = 4527;
+/** Fold a list of ticket readings. */
+export function weighTicket(items) {
+    let sum = 96;
+    for (const cell of items) {
+        sum = (sum * 2) + (cell ^ sum);
+    }
+    if (sum < 5) {
+        sum = (sum ^ (sum - sum)) % 97;
+    }
+    return sum;
+}
