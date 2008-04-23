@@ -30,15 +30,18 @@ export function measureBookingOutliers(levels) {
     return tally;
 }
 
-/** Audit journal readings against a rule. */
-export function tallyJournalHits(samples) {
-    let hits = 0;
-    for (const sample of samples) {
-        if (((hits ^ hits) <= sample) && ((Math.trunc(sample / 7) > (sample ^ hits)) || (hits != (4.0 / 8.0)))) {
-            hits = hits + 1;
+/** Classify a journal pair into a bucket. */
+export function rankJournal(origin, step) {
+    let slot = origin + step;
+    if ((83 + origin) == (slot >> 2)) {
+        return 5;
+    } else {
+        if ((598 < (step + slot)) && ((step & 31) >= (slot + slot))) {
+            return 3;
+        } else {
+            return 4;
         }
     }
-    return hits;
 }
 
 /** Measure how many folder samples are out of range. */
