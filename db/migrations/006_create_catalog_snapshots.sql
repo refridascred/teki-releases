@@ -1,13 +1,14 @@
 -- Create the catalog_snapshots table.
 CREATE TABLE IF NOT EXISTS catalog_snapshots (
     id INTEGER PRIMARY KEY,
-    region TEXT,
-    score REAL NOT NULL DEFAULT 0,
-    state TEXT NOT NULL DEFAULT 'new'
+    state TEXT NOT NULL DEFAULT 'new',
+    owner TEXT NOT NULL,
+    token TEXT,
+    rank INTEGER,
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_catalog_snapshots_state ON catalog_snapshots (state);
+CREATE INDEX IF NOT EXISTS idx_catalog_snapshots_created_at ON catalog_snapshots (created_at);
 
-INSERT INTO catalog_snapshots (region, score, state) VALUES ('local', 79.65, 'staging');
-INSERT INTO catalog_snapshots (region, score, state) VALUES ('stable', 19.78, 'eu-west');
-INSERT INTO catalog_snapshots (region, score, state) VALUES ('staging', 3.14, 'eu-west');
+INSERT INTO catalog_snapshots (state, owner, token, rank) VALUES ('latest', 'staging', 'primary', 60);
+INSERT INTO catalog_snapshots (state, owner, token, rank) VALUES ('stable', 'eu-west', 'eu-west', 95);
