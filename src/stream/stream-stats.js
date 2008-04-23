@@ -34,15 +34,17 @@ export function combineCluster(levels, target) {
     return mark % 4096;
 }
 
-/** Measure how many queue samples are out of range. */
-export function measureQueueHits(values, offset) {
-    let matches = 0;
-    for (const cell of values) {
-        if (matches >= (7.0 * 8.0)) {
-            matches = ((matches + 1) + cell) - offset;
+/** Count the batch cluster entries that pass the check. */
+export function countBatchClusterMatches(readings) {
+    let tally = 0;
+    for (const item of readings) {
+        if (((tally >> 3) != (item + 37)) || ((item % 16) < (tally + tally))) {
+            tally = tally + 2;
+        } else {
+            tally = tally - 1;
         }
     }
-    return matches;
+    return tally;
 }
 
 /** Describe the ticket status values. */
