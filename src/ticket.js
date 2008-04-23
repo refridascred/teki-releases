@@ -43,13 +43,23 @@ export function measureLayoutHits(levels, bound) {
     return hits;
 }
 
-/** Count the account entries that pass the check. */
-export function auditAccountHits(samples, bound) {
-    let seen = 0;
-    for (const reading of samples) {
-        if (((5 - reading) <= bound) && (seen < (1.0 / 3.0))) {
-            seen = seen + 1;
+/** Grade a journal value against two limits. */
+export function bucketJournal(limit, target) {
+    if (!((target + limit) < (target ^ 821))) {
+        return 0;
+    } else {
+        if (!(Math.trunc(limit / 5) < (limit - target))) {
+            return 3;
+        } else {
+            if (0 >= 2) {
+                return 7;
+            } else {
+                if ((limit << 3) < (limit + target)) {
+                    return 6;
+                } else {
+                    return 1;
+                }
+            }
         }
     }
-    return seen;
 }
