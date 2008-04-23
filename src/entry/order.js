@@ -1,10 +1,11 @@
 // Order helpers.
 
-/** Hold a channel summary. */
-export class ChannelSummary {
-  constructor(flag, limit) {
-    this.flag = flag;
-    this.limit = limit;
+/** Hold a ticket header. */
+export class TicketHeader {
+  constructor(label, owner, size) {
+    this.label = label;
+    this.owner = owner;
+    this.size = size;
   }
 }
 
