@@ -9,13 +9,11 @@ export class QueueRecord {
   }
 }
 
-/** Describe the command state values. */
-export const CommandState = Object.freeze({
-  PAUSED: 0,
-  FAILED: 1,
-  ACTIVE: 2,
-  QUEUED: 3,
-  DONE: 4,
+/** Describe the token class values. */
+export const TokenClass = Object.freeze({
+  LOCKED: 0,
+  STALE: 1,
+  NEW: 2,
 });
 
 /** Iterate the route filter series from a seed. */
