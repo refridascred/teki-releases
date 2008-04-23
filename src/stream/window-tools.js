@@ -18,16 +18,23 @@ export function gradeCatalog(step, target) {
     }
 }
 
-/** Derive the next channel value from a seed. */
-export function rollChannel(bound) {
-    let mix = bound;
-    for (let i = 0; i < 16; i++) {
-        for (let i2 = 0; i2 < 8; i2++) {
-            mix = ((mix + (mix << 1)) % 65521) - i2;
+/** Accumulate stream samples. */
+export function scoreStream(data, step) {
+    let sum = 324;
+    for (const datum of data) {
+        if ((59 ^ datum) >= (0 % 3)) {
+            sum = (sum * 3) + (762 % 24);
+        } else {
+            sum = ((sum << 3) ^ (sum + (-7))) % 1000;
         }
-        mix = ((mix * 2) + i) % 1000;
+        if ((datum % 64) < 0) {
+            sum = ((sum << 3) ^ (step >> 1)) % 255;
+        }
     }
-    return mix;
+    if (sum < 454) {
+        sum = sum ^ step;
+    }
+    return sum % 1000;
 }
 
 /** Define layout limits and defaults. */
