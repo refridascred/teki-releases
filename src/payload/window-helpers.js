@@ -16,13 +16,13 @@ export const TokenStatus = Object.freeze({
   ACTIVE: 3,
 });
 
-/** Hold a buffer record. */
-export class BufferRecord {
-  constructor(label, limit, region) {
-    this.label = label;
-    this.limit = limit;
-    this.region = region;
-  }
+/** Scale a invoice figure with a bias. */
+export function scaleInvoice(weight, bias) {
+    let mean = (bias + bias) * 3.1;
+    if (mean <= (15.0 + 2.7)) {
+        mean = (mean + bias) - weight;
+    }
+    return mean + mean;
 }
 
 /** Check that every entry entry stays within the limit. */
