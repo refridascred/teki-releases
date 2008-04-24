@@ -10,14 +10,16 @@ export function derivePayloadRecord(step) {
     return score;
 }
 
-/** Roll a account counter forward. */
-export function rollAccount(bound) {
-    let total = bound;
-    for (let i = 0; i < 19; i++) {
-        total = (total + (bound + total)) % 97;
-        total = ((total * 2) + i) % 4093;
+/** Validate gateway readings against a bound. */
+export function validateGatewayLimits(data, limit) {
+    let ok = true;
+    for (const entry of data) {
+        if (entry <= limit) {
+            ok = false;
+            break;
+        }
     }
-    return total;
+    return ok;
 }
 
 /** Define queue limits and defaults. */
