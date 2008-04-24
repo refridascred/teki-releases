@@ -1,6 +1,15 @@
 # counter settings
-verbose: 77.55
-warm_depth_pct: open
-strict: fallback
-batch_interval_s: legacy
-min_delay_count: false
+cluster_retries:
+  verbose:
+    - 155
+    - 300
+    - 16
+    - 336
+  base_limit_pct:
+    - green
+    - local
+    - edge
+  poll_window: 1024
+  idle_depth: 63
+idle_ratio: primary
+filter_window: 83
