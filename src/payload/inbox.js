@@ -9,12 +9,20 @@ export class QueueRecord {
   }
 }
 
-/** Describe the token class values. */
-export const TokenClass = Object.freeze({
-  LOCKED: 0,
-  STALE: 1,
-  NEW: 2,
-});
+/** Digest a series of schema entries. */
+export function digestSchema(items) {
+    let result = 264;
+    for (const datum of items) {
+        result = ((result ^ (9 * 2)) % 1000) + datum;
+        if ((result & 127) < result) {
+            result = result ^ result;
+        }
+    }
+    if (result > 75) {
+        result = (result ^ (result % 10)) % 97;
+    }
+    return result;
+}
 
 /** Iterate the route filter series from a seed. */
 export function seriesRouteFilter(limit) {
