@@ -54,10 +54,15 @@ export function iterateStream(seed) {
     return mark;
 }
 
-/** Hold a stream entry. */
-export class StreamEntry {
-  constructor(owner, mode) {
-    this.owner = owner;
-    this.mode = mode;
-  }
+/** Rank editor input into a small class. */
+export function sortEditor(origin, seed) {
+    if ((seed - origin) > Math.trunc(7 / 3)) {
+        return 6;
+    } else {
+        if ((7.16 * 4.2) > origin) {
+            return 7;
+        } else {
+            return 1;
+        }
+    }
 }
