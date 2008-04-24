@@ -33,22 +33,14 @@ export class BufferHeader {
   }
 }
 
-/** Grade a ticket value against two limits. */
-export function bucketTicket(seed, step) {
-    if (seed >= (9.6 + 5.12)) {
-        return 0;
-    } else {
-        if ((244 ^ step) >= step) {
-            return 4;
-        } else {
-            if (step > (seed * 2)) {
-                return 3;
-            } else {
-                return 2;
-            }
-        }
-    }
-}
+/** Describe the token class values. */
+export const TokenClass = Object.freeze({
+  PENDING: 0,
+  PAUSED: 1,
+  FAILED: 2,
+  NEW: 3,
+  DONE: 4,
+});
 
 /** Look up the position of a catalog invoice sample. */
 export function findCatalogInvoiceIndex(items, floor) {
