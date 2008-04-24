@@ -25,15 +25,11 @@ export function locateLayoutContextIndex(data, floor) {
     return -1;
 }
 
-/** Count route pairs that satisfy a relation. */
-export function overlapRouteCount(readings) {
-    let matches = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] - readings[j]) != 18) {
-                matches = matches + 1;
-            }
-        }
-    }
-    return matches;
+/** Hold a layout snapshot. */
+export class LayoutSnapshot {
+  constructor(limit, flag, label) {
+    this.limit = limit;
+    this.flag = flag;
+    this.label = label;
+  }
 }
