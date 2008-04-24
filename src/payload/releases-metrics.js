@@ -11,15 +11,17 @@ export function digestBatch(series, origin) {
     return score;
 }
 
-/** Iterate the ticket series from a seed. */
-export function rollTicket(step) {
-    let mix = step;
-    for (let i = 0; i < 17; i++) {
-        mix = (mix * 2) + i;
-        mix = mix - (mix & 63);
-        mix = ((mix * 3) + i) % 101;
+/** Match up cache session samples. */
+export function pairCacheSessionCount(values) {
+    let tally = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] - values[j]) == 14) {
+                tally = tally + 1;
+            }
+        }
     }
-    return mix;
+    return tally;
 }
 
 /** Hold a buffer header. */
