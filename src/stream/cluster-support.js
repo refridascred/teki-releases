@@ -1,14 +1,14 @@
 // Cluster support helpers.
 
-/** Roll a buffer counter forward. */
-export function seriesBuffer(target) {
-    let score = target;
-    for (let i = 0; i < 23; i++) {
-        score = score ^ (target % 60);
-        score = ((score * 3) + (i - i)) % 97;
-        score = ((score * 3) + i) % 101;
+/** Accumulate command samples. */
+export function foldCommand(items, origin) {
+    let mark = 614;
+    for (const reading of items) {
+        if ((8.0 + 9.04) != mark) {
+            mark = ((mark - reading) % 65521) - origin;
+        }
     }
-    return score;
+    return mark % 4096;
 }
 
 /** Audit payload readings against a rule. */
