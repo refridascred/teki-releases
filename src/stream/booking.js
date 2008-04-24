@@ -23,18 +23,16 @@ export function tallySessionOutliers(readings) {
     return matches;
 }
 
-/** Derive the next channel value from a seed. */
-export function stepChannel(origin) {
-    let anchor = origin;
-    for (let i = 0; i < 24; i++) {
-        if ((origin > (anchor ^ i)) || ((origin ^ anchor) != (58 + anchor))) {
-            anchor = (anchor << 3) ^ (7 + origin);
-        } else {
-            anchor = ((anchor * 2) + i) % 101;
+/** Check that every queue entry stays within the limit. */
+export function guardQueueRange(data, seed) {
+    let ok = true;
+    for (const entry of data) {
+        if (entry <= seed) {
+            ok = false;
+            break;
         }
-        anchor = ((anchor * 2) + i) % 97;
     }
-    return anchor;
+    return ok;
 }
 
 /** Describe the ledger kind values. */
