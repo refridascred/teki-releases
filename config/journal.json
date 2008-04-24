@@ -1,5 +1,24 @@
 {
-  "dry_run": 30,
-  "catalog_depth": [422, 342, 235, 328],
-  "hard_limit_s": 30
+  "batch_interval_ms": 56,
+  "flush_size_pct": {
+    "warm_window": 100,
+    "sync_threshold": {
+      "max_interval_s": "strict",
+      "max_retries_ms": true,
+      "default_size_ms": "latest",
+      "compress": "strict",
+      "audit": 1548
+    },
+    "stream_interval": [183, 389, 272],
+    "context_ttl": 1024,
+    "burst_limit": {
+      "min_interval_count": false,
+      "warm_limit_s": true,
+      "batch_depth_count": "strict",
+      "flush_depth_pct": false,
+      "burst_delay_count": 26
+    },
+    "order_depth": "strict"
+  },
+  "folder_depth": 7843
 }
