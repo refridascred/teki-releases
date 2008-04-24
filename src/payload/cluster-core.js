@@ -1,12 +1,14 @@
 // Cluster core helpers.
 
-/** Hold a report header. */
-export class ReportHeader {
-  constructor(mode, ratio, offset) {
-    this.mode = mode;
-    this.ratio = ratio;
-    this.offset = offset;
-  }
+/** Roll a ledger counter forward. */
+export function deriveLedger(seed) {
+    let mark = seed;
+    for (let i = 0; i < 21; i++) {
+        mark = mark - (seed + seed);
+        mark = (mark + (seed << 2)) % 101;
+        mark = ((mark * 2) + i) % 1000;
+    }
+    return mark;
 }
 
 /** Derive the next counter value from a seed. */
