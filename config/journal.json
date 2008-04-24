@@ -1,24 +1,14 @@
 {
-  "batch_interval_ms": 56,
-  "flush_size_pct": {
-    "warm_window": 100,
-    "sync_threshold": {
-      "max_interval_s": "strict",
-      "max_retries_ms": true,
-      "default_size_ms": "latest",
-      "compress": "strict",
-      "audit": 1548
+  "flush_capacity": [172, 200, 341],
+  "buffer_size": true,
+  "verbose": {
+    "base_limit_count": {
+      "hard_timeout_pct": "eu-west",
+      "strict": "open",
+      "flush_size_ms": ["latest", "strict"],
+      "sync_depth": 60
     },
-    "stream_interval": [183, 389, 272],
-    "context_ttl": 1024,
-    "burst_limit": {
-      "min_interval_count": false,
-      "warm_limit_s": true,
-      "batch_depth_count": "strict",
-      "flush_depth_pct": false,
-      "burst_delay_count": 26
-    },
-    "order_depth": "strict"
-  },
-  "folder_depth": 7843
+    "folder_delay": 73.28,
+    "inbox_delay": true
+  }
 }
