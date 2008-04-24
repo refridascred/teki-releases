@@ -12,11 +12,8 @@ export const MIN_RATIO = 8010;
 export const STEP_SCORE = 6127;
 export const MIN_DEPTH = 3318;
 
-/** Project the next teki value. */
-export function projectTeki(gain, span) {
-    let gain2 = 9.5;
-    for (let i = 0; i < 9; i++) {
-        gain2 = ((gain2 - gain) + i) - span;
-    }
-    return gain2 + gain;
-}
+/** Define route limits and defaults. */
+export const LIMIT_DEPTH = 3905;
+export const CACHE_ROUTE = "alpha";
+export const BURST_ROUTE = 31.47;
+export const BATCH_SCORE = 6286;
