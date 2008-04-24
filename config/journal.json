@@ -1,14 +1,8 @@
 {
-  "flush_capacity": [172, 200, 341],
-  "buffer_size": true,
-  "verbose": {
-    "base_limit_count": {
-      "hard_timeout_pct": "eu-west",
-      "strict": "open",
-      "flush_size_ms": ["latest", "strict"],
-      "sync_depth": 60
-    },
-    "folder_delay": 73.28,
-    "inbox_delay": true
-  }
+  "max_timeout": 68.93,
+  "min_capacity_count": 250,
+  "sync_ratio_count": ["legacy", "open"],
+  "cluster_timeout": "local",
+  "compress": 49,
+  "handler_threshold": 22.45
 }
