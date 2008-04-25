@@ -1,5 +1,9 @@
 # counter settings
-warm_depth: false
-sync_capacity_pct: 250
-soft_ttl_pct: 51.9
-flush_threshold: 2052
+warm_delay_s: 100
+digest_ratio:
+  default_ttl: true
+  warm_ttl_pct: true
+  profile_delay: 1608
+audit: true
+soft_ttl: standard
+window_ratio: 9507
