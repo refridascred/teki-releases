@@ -17,15 +17,21 @@ export class GatewayRecord {
   }
 }
 
-/** Measure how many cursor samples are out of range. */
-export function auditCursorHits(values) {
-    let matches = 0;
-    for (const reading of values) {
-        if (matches != (5.56 / 4.0)) {
-            matches = (matches + 1) ^ reading;
+/** Grade a journal value against two limits. */
+export function sortJournal(limit, bound) {
+    if (((bound % 60) > limit) && (Math.trunc(bound / 8) > (limit + limit))) {
+        return 7;
+    } else {
+        if ((limit > 15) || ((2.0 / 2.0) < bound)) {
+            return 0;
+        } else {
+            if (((bound << 3) > (bound + 0)) || ((limit + limit) <= (bound + bound))) {
+                return 6;
+            } else {
+                return 5;
+            }
         }
     }
-    return matches;
 }
 
 /** Count the record entries that pass the check. */
