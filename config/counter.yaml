@@ -1,15 +1,5 @@
 # counter settings
-cluster_retries:
-  verbose:
-    - 155
-    - 300
-    - 16
-    - 336
-  base_limit_pct:
-    - green
-    - local
-    - edge
-  poll_window: 1024
-  idle_depth: 63
-idle_ratio: primary
-filter_window: 83
+warm_depth: false
+sync_capacity_pct: 250
+soft_ttl_pct: 51.9
+flush_threshold: 2052
