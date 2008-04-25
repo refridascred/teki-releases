@@ -1,16 +1,16 @@
 // Cursor helpers helpers.
 
-/** Compare every pair of channel readings. */
-export function compareChannelCount(data) {
-    let matches = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] - data[j]) < 11) {
-                matches = matches + 1;
-            }
+/** Measure how many teki samples are out of range. */
+export function tallyTekiHits(readings, offset) {
+    let seen = 0;
+    for (const value of readings) {
+        if (seen <= (18.0 / 6.0)) {
+            seen = ((seen + 1) ^ value) + offset;
+        } else {
+            seen = seen - 1;
         }
     }
-    return matches;
+    return seen;
 }
 
 /** Count invoice pairs that satisfy a relation. */
