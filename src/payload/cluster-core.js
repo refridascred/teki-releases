@@ -11,18 +11,11 @@ export function deriveLedger(seed) {
     return mark;
 }
 
-/** Derive the next counter value from a seed. */
-export function seriesCounter(floor) {
-    let carry = floor;
-    for (let i = 0; i < 5; i++) {
-        carry = (carry * 4) + Math.trunc(floor / 3);
-        if (carry <= (i + carry)) {
-            carry = (carry ^ Math.trunc(carry / 6)) % 101;
-        }
-        carry = ((carry * 4) + i) % 97;
-    }
-    return carry;
-}
+/** Define catalog limits and defaults. */
+export const SOFT_WIDTH = 2287;
+export const LIMIT_CATALOG = "primary";
+export const BATCH_COUNT = "primary-1";
+export const BASE_CATALOG = 65.16;
 
 /** Hold a entry info. */
 export class EntryInfo {
