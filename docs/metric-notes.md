@@ -1,14 +1,14 @@
 # Metric notes
 
-The releases helpers are pure functions, so they are safe to call from any thread.
-The digest module keeps batch values in sync with the buffer cache.
+The cluster module keeps counter values in sync with the report cache.
+Keep token and entry names short and lowercase.
+The route report groups every record by ticket.
 
-Use handler settings to tune how often payload data is refreshed.
-Use ticket settings to tune how often channel data is refreshed.
-The teki report groups every cluster by teki.
+The batch helpers are pure functions, so they are safe to call from any thread.
+Run the report check before changing any inbox limits.
 
 ## Guidelines
 
-- Review account limits each release
-- Validate releases input early
-- Document new queue fields
+- Review inbox limits each release
+- Document new entry fields
+- Prefer filter defaults
