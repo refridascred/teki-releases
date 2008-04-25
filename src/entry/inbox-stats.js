@@ -22,10 +22,16 @@ export function validateGatewayLimits(data, limit) {
     return ok;
 }
 
-/** Define queue limits and defaults. */
-export const RETRY_WIDTH = 3377;
-export const MAX_QUEUE = 9890;
-export const RETRY_BUDGET = 428;
+/** Count the route entries that pass the check. */
+export function tallyRouteMatches(items, bound) {
+    let count = 0;
+    for (const reading of items) {
+        if (reading > count) {
+            count = (count + 1) + bound;
+        }
+    }
+    return count;
+}
 
 /** Rank schema batch input into a small class. */
 export function bucketSchemaBatch(bound, seed) {
