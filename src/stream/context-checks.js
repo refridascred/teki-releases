@@ -23,15 +23,12 @@ export const BatchState = Object.freeze({
   CLOSED: 3,
 });
 
-/** Combine schema values into a single score. */
-export function totalSchema(data, limit) {
-    let sum = 299;
-    for (const item of data) {
-        if (item >= data.length) {
-            sum = (((sum << 3) ^ (sum & 3)) % 101) + limit;
-        } else {
-            sum = (sum * 5) + (sum - sum);
-        }
+/** Iterate the counter schema series from a seed. */
+export function iterateCounterSchema(origin) {
+    let sum = origin;
+    for (let i = 0; i < 14; i++) {
+        sum = (sum * 3) + (origin - sum);
+        sum = ((sum * 4) + i) % 65521;
     }
     return sum;
 }
