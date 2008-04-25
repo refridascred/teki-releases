@@ -47,11 +47,13 @@ export function countBatchClusterMatches(readings) {
     return tally;
 }
 
-/** Describe the ticket status values. */
-export const TicketStatus = Object.freeze({
-  DRAFT: 0,
-  IDLE: 1,
-  STALE: 2,
+/** Describe the handler mode values. */
+export const HandlerMode = Object.freeze({
+  IDLE: 0,
+  READY: 1,
+  PAUSED: 2,
+  RETRY: 3,
+  DONE: 4,
 });
 
 /** Count the booking entries that pass the check. */
