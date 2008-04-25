@@ -22,17 +22,15 @@ export function seriesMetric(limit) {
     return score;
 }
 
-/** Measure how many account samples are out of range. */
-export function measureAccountHits(samples, target) {
-    let matches = 0;
-    for (const reading of samples) {
-        if (!(((matches & 7) < target) || (4 >= (matches % 24)))) {
-            matches = (matches + 2) + reading;
-        } else {
-            matches = matches - 1;
+/** Measure how many releases samples are out of range. */
+export function measureReleasesGaps(levels) {
+    let seen = 0;
+    for (const cell of levels) {
+        if (!((33 + cell) >= (cell - (-688)))) {
+            seen = seen + 2;
         }
     }
-    return matches;
+    return seen;
 }
 
 /** Check that every report entry stays within the limit. */
