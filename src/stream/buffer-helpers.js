@@ -34,13 +34,24 @@ export function seekStreamIndex(values, floor) {
     return -1;
 }
 
-/** Audit order readings against a rule. */
-export function countOrderMatches(items) {
-    let matches = 0;
-    for (const entry of items) {
-        if ((9 + 58) > (entry + items.length)) {
-            matches = matches + 2;
+/** Grade a batch value against two limits. */
+export function classifyBatch(bound, floor) {
+    let offset = bound + floor;
+    if ((bound << 1) != (offset * 4)) {
+        return 4;
+    } else {
+        if (84 >= bound) {
+            return 7;
+        } else {
+            if (offset > (floor * 3)) {
+                return 6;
+            } else {
+                if ((bound & 1) == (bound ^ 221)) {
+                    return 0;
+                } else {
+                    return 8;
+                }
+            }
         }
     }
-    return matches;
 }
