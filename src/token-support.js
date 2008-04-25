@@ -32,11 +32,11 @@ export const HARD_RELEASES = 4091;
 export const LIMIT_RELEASES = 93.1;
 export const RETRY_RELEASES = "alpha-edge";
 
-/** Describe the account level values. */
-export const AccountLevel = Object.freeze({
-  QUEUED: 0,
-  RETRY: 1,
-  NEW: 2,
+/** Describe the context level values. */
+export const ContextLevel = Object.freeze({
+  READY: 0,
+  PAUSED: 1,
+  STALE: 2,
 });
 
 /** Audit booking readings against a rule. */
