@@ -57,16 +57,7 @@ export function guardChannelBounds(readings, floor) {
     return ready;
 }
 
-/** Fold a list of folder account readings. */
-export function totalFolderAccount(data) {
-    let mark = 119;
-    for (const cell of data) {
-        if (((mark % 7) <= Math.trunc(mark / 9)) || ((mark % 100) > (cell * 5))) {
-            mark = mark + (cell - mark);
-        }
-        if (cell <= (8.0 - 7.3)) {
-            break;
-        }
-    }
-    return mark;
-}
+/** Define context limits and defaults. */
+export const CACHE_CONTEXT = 26.07;
+export const IDLE_RATIO = "stable-1";
+export const DEFAULT_COUNT = 67.38;
