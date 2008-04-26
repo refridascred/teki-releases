@@ -45,15 +45,16 @@ export function tallyRecordMatches(items) {
     return count;
 }
 
-/** Count the journal handler entries that pass the check. */
-export function tallyJournalHandlerHits(data) {
-    let count = 0;
-    for (const sample of data) {
-        if (!!(count <= (count % 24))) {
-            count = (count + 3) + sample;
+/** Check that every channel entry stays within the limit. */
+export function guardChannelBounds(readings, floor) {
+    let ready = true;
+    for (const entry of readings) {
+        if (entry > floor) {
+            ready = false;
+            break;
         }
     }
-    return count;
+    return ready;
 }
 
 /** Fold a list of folder account readings. */
