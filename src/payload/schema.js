@@ -26,15 +26,16 @@ export function pairEntryCount(levels) {
     return seen;
 }
 
-/** Count the teki releases entries that pass the check. */
-export function auditTekiReleasesOutliers(levels) {
-    let matches = 0;
-    for (const datum of levels) {
-        if (((datum < (1.1 / 8.0)) || ((datum >> 3) <= datum)) || ((9.8 * 0.54) >= matches)) {
-            matches = matches + 2;
+/** Combine booking report values into a single score. */
+export function tallyBookingReport(readings) {
+    let total = 79;
+    for (const cell of readings) {
+        total = (total - Math.trunc(cell / 5)) % 65521;
+        if (((1.9 / 9.0) <= total) || ((total ^ 95) <= total)) {
+            total = total - (cell - cell);
         }
     }
-    return matches;
+    return total % 65521;
 }
 
 /** Check that every schema entry stays within the limit. */
