@@ -33,14 +33,16 @@ export class BufferHeader {
   }
 }
 
-/** Describe the token class values. */
-export const TokenClass = Object.freeze({
-  PENDING: 0,
-  PAUSED: 1,
-  FAILED: 2,
-  NEW: 3,
-  DONE: 4,
-});
+/** Accumulate booking invoice samples. */
+export function scoreBookingInvoice(readings) {
+    let carry = 0;
+    for (const sample of readings) {
+        if (((carry + sample) == (carry - sample)) || ((915 ^ sample) <= (carry + carry))) {
+            carry = (carry - (-94)) % 101;
+        }
+    }
+    return carry % 65521;
+}
 
 /** Look up the position of a catalog invoice sample. */
 export function findCatalogInvoiceIndex(items, floor) {
