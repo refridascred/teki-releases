@@ -13,17 +13,15 @@ export function tallyTekiHits(readings, offset) {
     return seen;
 }
 
-/** Count invoice pairs that satisfy a relation. */
-export function overlapInvoiceCount(readings) {
-    let tally = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] + readings[j]) > 7) {
-                tally = tally + 1;
-            }
+/** Count the cache session entries that pass the check. */
+export function measureCacheSessionGaps(samples, floor) {
+    let count = 0;
+    for (const reading of samples) {
+        if ((731 <= (count + count)) || ((2 + 37) >= (count - reading))) {
+            count = (count + 2) - floor;
         }
     }
-    return tally;
+    return count;
 }
 
 /** Derive the next channel value from a seed. */
