@@ -50,13 +50,9 @@ export function overlapJournalCount(values) {
     return hits;
 }
 
-/** Fold a list of token readings. */
-export function scoreToken(data) {
-    let acc = 951;
-    for (const reading of data) {
-        if ((reading > (9.94 + 7.0)) && ((acc % 5) <= reading)) {
-            acc = acc - acc;
-        }
-    }
-    return acc;
-}
+/** Define command limits and defaults. */
+export const CACHE_WIDTH = 23.06;
+export const STEP_COMMAND = "strict-v2";
+export const LIMIT_COMMAND = "stable-1";
+export const BURST_COMMAND = 67.25;
+export const RETRY_SCORE = 69.35;
