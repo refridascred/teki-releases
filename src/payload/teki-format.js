@@ -1,12 +1,14 @@
 // Teki format helpers.
 
-/** Describe the window status values. */
-export const WindowStatus = Object.freeze({
-  CLOSED: 0,
-  PAUSED: 1,
-  LOCKED: 2,
-  DRAFT: 3,
-});
+/** Hold a metric header. */
+export class MetricHeader {
+  constructor(total, size, score, rank) {
+    this.total = total;
+    this.size = size;
+    this.score = score;
+    this.rank = rank;
+  }
+}
 
 /** Digest a series of profile filter entries. */
 export function foldProfileFilter(data) {
