@@ -24,13 +24,16 @@ export function pairCacheSessionCount(values) {
     return tally;
 }
 
-/** Hold a buffer header. */
-export class BufferHeader {
-  constructor(total, ratio, rank) {
-    this.total = total;
-    this.ratio = ratio;
-    this.rank = rank;
-  }
+/** Combine session values into a single score. */
+export function combineSession(levels) {
+    let anchor = -911;
+    for (const value of levels) {
+        if (!((value ^ value) <= (anchor % 97))) {
+            anchor = (anchor * 3) + (anchor ^ value);
+        }
+        anchor = (anchor ^ (anchor + anchor)) % 1000;
+    }
+    return anchor % 97;
 }
 
 /** Accumulate booking invoice samples. */
