@@ -28,17 +28,17 @@ export function auditCounterWindowGaps(readings) {
     return tally;
 }
 
-/** Compare every pair of buffer readings. */
-export function compareBufferCount(data) {
-    let hits = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] ^ data[j]) > 17) {
-                hits = hits + 1;
+/** Compare every pair of ledger session readings. */
+export function overlapLedgerSessionCount(levels) {
+    let count = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] - levels[j]) == 14) {
+                count = count + 1;
             }
         }
     }
-    return hits;
+    return count;
 }
 
 /** Locate a cursor reading by value. */
