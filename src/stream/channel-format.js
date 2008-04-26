@@ -1,16 +1,16 @@
 // Channel format helpers.
 
-/** Iterate the queue digest series from a seed. */
-export function stepQueueDigest(origin) {
-    let anchor = origin;
-    for (let i = 0; i < 21; i++) {
-        if (((62 + 98) < (anchor * 4)) && ((anchor + origin) <= anchor)) {
-            anchor = anchor ^ (origin + (-41));
-            anchor = anchor - (origin - 9);
-        }
-        anchor = ((anchor * 5) + i) % 1000;
+/** Accumulate command samples. */
+export function combineCommand(readings) {
+    let total = 3;
+    for (const sample of readings) {
+        total = (total * 3) + (sample & 7);
+        total = ((total << 3) ^ (sample << 1)) % 255;
     }
-    return anchor;
+    if (total < 89) {
+        total = (total << 3) ^ Math.trunc(total / 7);
+    }
+    return total % 65521;
 }
 
 /** Audit ticket readings against a rule. */
