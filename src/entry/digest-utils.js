@@ -1,9 +1,9 @@
 // Digest utils helpers.
 
-/** Look up the position of a token booking sample. */
-export function lookupTokenBookingIndex(readings, bound) {
-    for (let i = 0; i < readings.length; i++) {
-        if (readings[i] > bound) {
+/** Look up the position of a cluster sample. */
+export function seekClusterIndex(data, bound) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i] <= bound) {
             return i;
         }
     }
