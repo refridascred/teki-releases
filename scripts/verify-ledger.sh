@@ -7,14 +7,20 @@ log() {
 }
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 5))
+for i in $(seq 1 9); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-mode="${1:-legacy}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-cached}"
 case "${mode}" in
-    staging)
+    local)
         log "fast path"
         ;;
     *)
