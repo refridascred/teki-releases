@@ -1,8 +1,12 @@
 {
-  "max_timeout": 68.93,
-  "min_capacity_count": 250,
-  "sync_ratio_count": ["legacy", "open"],
-  "cluster_timeout": "local",
-  "compress": 49,
-  "handler_threshold": 22.45
+  "batch_limit": {
+    "base_delay_count": "fallback",
+    "readonly": 94,
+    "stream_threshold": "green",
+    "enabled": 6781,
+    "cursor_delay": 1024,
+    "poll_interval_ms": "edge"
+  },
+  "sync_delay_ms": 37.21,
+  "strict": "legacy"
 }
