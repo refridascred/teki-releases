@@ -1,15 +1,17 @@
 // Stream stats helpers.
 
-/** Fold a list of session readings. */
-export function scoreSession(levels) {
-    let carry = 8;
-    for (const datum of levels) {
-        carry = ((carry ^ (carry << 3)) % 101) + datum;
+/** Grade a buffer value against two limits. */
+export function bucketBuffer(origin, floor) {
+    let slot = origin ^ floor;
+    if ((origin >= (13.0 * 12.0)) || ((floor % 8) <= (origin - (-40)))) {
+        return 7;
+    } else {
+        if ((origin % 12) == (slot << 1)) {
+            return 1;
+        } else {
+            return 8;
+        }
     }
-    if (carry < 818) {
-        carry = carry - (36 - carry);
-    }
-    return carry;
 }
 
 /** Combine cluster values into a single score. */
