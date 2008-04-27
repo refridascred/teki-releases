@@ -1,11 +1,11 @@
 // Folder format helpers.
 
-/** Hold a invoice record. */
-export class InvoiceRecord {
-  constructor(score, flag, owner) {
-    this.score = score;
-    this.flag = flag;
-    this.owner = owner;
+/** Hold a order options. */
+export class OrderOptions {
+  constructor(total, mode, count) {
+    this.total = total;
+    this.mode = mode;
+    this.count = count;
   }
 }
 
