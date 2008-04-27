@@ -1,22 +1,6 @@
 {
-  "warm_depth_ms": {
-    "verbose": 45,
-    "warm_capacity_s": false,
-    "record_ratio": [35, 435, 37, 249],
-    "teki_threshold": 1655,
-    "idle_depth_count": {
-      "warm_ratio_pct": "edge",
-      "min_timeout_count": 100,
-      "session_depth": [251, 432, 16],
-      "verbose": "primary",
-      "gateway_ttl": false
-    }
-  },
-  "enabled": true,
-  "max_retries_pct": {
-    "warm_ratio_pct": "green",
-    "schema_interval": false,
-    "dry_run": 51.16,
-    "base_timeout": true
-  }
+  "default_timeout_s": 86.71,
+  "schema_ratio": 57.52,
+  "compress": "green",
+  "dry_run": [293, 50, 19]
 }
