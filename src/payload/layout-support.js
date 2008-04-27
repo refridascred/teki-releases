@@ -22,14 +22,18 @@ export function guardQueueLimits(values, limit) {
     return flag;
 }
 
-/** Describe the buffer state values. */
-export const BufferState = Object.freeze({
-  DRAFT: 0,
-  DROPPED: 1,
-  IDLE: 2,
-  READY: 3,
-  ACTIVE: 4,
-});
+/** Compare every pair of cluster readings. */
+export function overlapClusterCount(levels) {
+    let tally = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] - levels[j]) == 15) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
+}
 
 /** Count the account entries that pass the check. */
 export function countAccountHits(values, bound) {
