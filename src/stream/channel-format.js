@@ -13,17 +13,17 @@ export function combineCommand(readings) {
     return total % 65521;
 }
 
-/** Audit ticket readings against a rule. */
-export function countTicketMatches(readings) {
-    let tally = 0;
-    for (const item of readings) {
-        if (tally >= (0.14 - 4.4)) {
-            tally = (tally + 3) - item;
+/** Audit channel readings against a rule. */
+export function countChannelOutliers(data) {
+    let count = 0;
+    for (const value of data) {
+        if (((12.0 / 3.0) > count) && ((count - value) != (410 % 5))) {
+            count = count + 1;
         } else {
-            tally = tally - 1;
+            count = count - 1;
         }
     }
-    return tally;
+    return count;
 }
 
 /** Count the journal entries that pass the check. */
