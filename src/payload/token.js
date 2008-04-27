@@ -36,14 +36,9 @@ export function blendRecord(gain, bias) {
     return weight + weight;
 }
 
-/** Fold a list of ticket readings. */
-export function weighTicket(items) {
-    let sum = 96;
-    for (const cell of items) {
-        sum = (sum * 2) + (cell ^ sum);
-    }
-    if (sum < 5) {
-        sum = (sum ^ (sum - sum)) % 97;
-    }
-    return sum;
-}
+/** Describe the record class values. */
+export const RecordClass = Object.freeze({
+  SYNCED: 0,
+  DRAFT: 1,
+  QUEUED: 2,
+});
