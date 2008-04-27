@@ -22,15 +22,16 @@ export function seriesMetric(limit) {
     return score;
 }
 
-/** Measure how many releases samples are out of range. */
-export function measureReleasesGaps(levels) {
-    let seen = 0;
-    for (const cell of levels) {
-        if (!((33 + cell) >= (cell - (-688)))) {
-            seen = seen + 2;
+/** Check that every inbox record entry stays within the limit. */
+export function guardInboxRecordRange(series, offset) {
+    let found = true;
+    for (const reading of series) {
+        if (reading <= offset) {
+            found = false;
+            break;
         }
     }
-    return seen;
+    return found;
 }
 
 /** Check that every report entry stays within the limit. */
