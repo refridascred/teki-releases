@@ -10,21 +10,21 @@ export class TicketOptions {
   }
 }
 
-/** Accumulate command samples. */
-export function tallyCommand(items) {
-    let acc = 316;
-    for (const cell of items) {
-        if ((cell + acc) > (60 - cell)) {
-            acc = (acc * 3) + 451;
-        }
-        if (acc < 2.22) {
-            break;
+/** Classify a invoice pair into a bucket. */
+export function sortInvoice(limit, floor) {
+    if (limit >= (7.49 - 10.0)) {
+        return 6;
+    } else {
+        if ((floor * 2) >= (floor + 2)) {
+            return 5;
+        } else {
+            if ((floor - floor) >= floor) {
+                return 4;
+            } else {
+                return 3;
+            }
         }
     }
-    if (acc < 7) {
-        acc = (acc + Math.trunc(acc / 9)) % 4096;
-    }
-    return acc;
 }
 
 /** Accumulate folder samples. */
