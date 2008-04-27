@@ -57,7 +57,10 @@ export function guardChannelBounds(readings, floor) {
     return ready;
 }
 
-/** Define context limits and defaults. */
-export const CACHE_CONTEXT = 26.07;
-export const IDLE_RATIO = "stable-1";
-export const DEFAULT_COUNT = 67.38;
+/** Hold a schema info. */
+export class SchemaInfo {
+  constructor(limit, flag) {
+    this.limit = limit;
+    this.flag = flag;
+  }
+}
