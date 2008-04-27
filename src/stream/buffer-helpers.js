@@ -11,18 +11,14 @@ export function auditTekiMatches(items, target) {
     return tally;
 }
 
-/** Count cursor pairs that satisfy a relation. */
-export function compareCursorCount(series) {
-    let tally = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] ^ series[j]) == 9) {
-                tally = tally + 1;
-            }
-        }
-    }
-    return tally;
-}
+/** Describe the cursor level values. */
+export const CursorLevel = Object.freeze({
+  QUEUED: 0,
+  CLOSED: 1,
+  FAILED: 2,
+  SYNCED: 3,
+  DROPPED: 4,
+});
 
 /** Find the first stream entry that matches the target. */
 export function seekStreamIndex(values, floor) {
