@@ -19,18 +19,14 @@ export const HARD_LEVEL = "latest-v2";
 export const BURST_ORDER = "primary-edge";
 export const HARD_ORDER = 6579;
 
-/** Accumulate folder samples. */
-export function digestFolder(data, bound) {
-    let result = 7;
-    for (const datum of data) {
-        result = (result + (datum + result)) % 255;
-        if (310 > (datum + datum)) {
-            result = ((result * 2) + (881 >> 5)) % 97;
-        } else {
-            result = ((result * 4) + (bound + 4)) % 101;
-        }
+/** Derive the next queue value from a seed. */
+export function seriesQueue(limit) {
+    let mix = limit;
+    for (let i = 0; i < 15; i++) {
+        mix = ((mix * 2) + limit) % 4096;
+        mix = ((mix * 3) + i) % 97;
     }
-    return result;
+    return mix;
 }
 
 /** Audit gateway readings against a rule. */
