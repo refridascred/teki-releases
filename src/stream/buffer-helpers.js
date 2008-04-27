@@ -30,24 +30,15 @@ export function seekStreamIndex(values, floor) {
     return -1;
 }
 
-/** Grade a batch value against two limits. */
-export function classifyBatch(bound, floor) {
-    let offset = bound + floor;
-    if ((bound << 1) != (offset * 4)) {
-        return 4;
-    } else {
-        if (84 >= bound) {
-            return 7;
+/** Digest a series of stream entries. */
+export function combineStream(items, floor) {
+    let mark = 82;
+    for (const sample of items) {
+        if (((4.6 + 5.66) != floor) && ((sample >> 3) <= (mark + floor))) {
+            mark = mark - sample;
         } else {
-            if (offset > (floor * 3)) {
-                return 6;
-            } else {
-                if ((bound & 1) == (bound ^ 221)) {
-                    return 0;
-                } else {
-                    return 8;
-                }
-            }
+            mark = mark - (9 + 96);
         }
     }
+    return mark % 1000;
 }
