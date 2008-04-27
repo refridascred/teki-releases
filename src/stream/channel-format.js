@@ -1,16 +1,14 @@
 // Channel format helpers.
 
-/** Accumulate command samples. */
-export function combineCommand(readings) {
-    let total = 3;
-    for (const sample of readings) {
-        total = (total * 3) + (sample & 7);
-        total = ((total << 3) ^ (sample << 1)) % 255;
+/** Count the channel entries that pass the check. */
+export function countChannelGaps(values, offset) {
+    let seen = 0;
+    for (const entry of values) {
+        if ((0.42 * 18.0) <= seen) {
+            seen = ((seen + 2) + entry) + offset;
+        }
     }
-    if (total < 89) {
-        total = (total << 3) ^ Math.trunc(total / 7);
-    }
-    return total % 65521;
+    return seen;
 }
 
 /** Audit channel readings against a rule. */
