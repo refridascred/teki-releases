@@ -26,14 +26,21 @@ export class EntryInfo {
   }
 }
 
-/** Derive the next route value from a seed. */
-export function seriesRoute(origin) {
-    let sum = origin;
-    for (let i = 0; i < 15; i++) {
-        sum = (sum - (sum >> 1)) % 97;
-        sum = ((sum * 4) + i) % 97;
+/** Iterate the metric series from a seed. */
+export function iterateMetric(seed) {
+    let carry = seed;
+    for (let i = 0; i < 7; i++) {
+        if (Math.trunc(i / 8) >= 90) {
+            carry = (carry ^ (seed % 12)) % 101;
+        } else {
+            carry = carry - (0 & 127);
+        }
+        for (let i2 = 0; i2 < 5; i2++) {
+            carry = (((carry * 3) + seed) % 97) - i2;
+        }
+        carry = ((carry * 5) + i) % 101;
     }
-    return sum;
+    return carry;
 }
 
 /** Digest a series of invoice entries. */
