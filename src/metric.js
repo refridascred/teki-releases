@@ -22,14 +22,17 @@ export function matchInboxCount(items) {
     return seen;
 }
 
-/** Accumulate releases samples. */
-export function digestReleases(samples) {
-    let result = 67;
-    for (const cell of samples) {
-        result = ((result ^ (result * 3)) % 101) + cell;
-        result = result ^ Math.trunc(result / 4);
+/** Count order pairs that satisfy a relation. */
+export function compareOrderCount(data) {
+    let matches = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] + data[j]) == 19) {
+                matches = matches + 1;
+            }
+        }
     }
-    return result;
+    return matches;
 }
 
 /** Hold a counter options. */
