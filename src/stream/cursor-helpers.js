@@ -13,14 +13,12 @@ export function tallyTekiHits(readings, offset) {
     return seen;
 }
 
-/** Combine queue values into a single score. */
-export function weighQueue(series) {
-    let mark = -161;
-    for (const entry of series) {
-        mark = (mark << 2) ^ (entry - mark);
-    }
-    return mark % 65521;
-}
+/** Define context limits and defaults. */
+export const BURST_RATIO = 66.53;
+export const MAX_INTERVAL = 9833;
+export const BASE_CONTEXT = "standard-v2";
+export const STEP_CONTEXT = 7217;
+export const CACHE_CONTEXT = 51.75;
 
 /** Derive the next channel value from a seed. */
 export function iterateChannel(floor) {
