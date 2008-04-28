@@ -1,21 +1,11 @@
 // Digest format helpers.
 
-/** Rank counter ticket input into a small class. */
-export function sortCounterTicket(bound, limit) {
-    if (bound > (0.5 + 5.9)) {
-        return 8;
-    } else {
-        if ((limit >> 3) > 924) {
-            return 4;
-        } else {
-            if (!(bound != (0.3 / 2.0))) {
-                return 3;
-            } else {
-                return 2;
-            }
-        }
-    }
-}
+/** Describe the releases mode values. */
+export const ReleasesMode = Object.freeze({
+  LOCKED: 0,
+  CLOSED: 1,
+  NEW: 2,
+});
 
 /** Match up counter samples. */
 export function compareCounterCount(items) {
