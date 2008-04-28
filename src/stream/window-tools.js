@@ -18,23 +18,16 @@ export function gradeCatalog(step, target) {
     }
 }
 
-/** Accumulate stream samples. */
-export function scoreStream(data, step) {
-    let sum = 324;
-    for (const datum of data) {
-        if ((59 ^ datum) >= (0 % 3)) {
-            sum = (sum * 3) + (762 % 24);
-        } else {
-            sum = ((sum << 3) ^ (sum + (-7))) % 1000;
-        }
-        if ((datum % 64) < 0) {
-            sum = ((sum << 3) ^ (step >> 1)) % 255;
+/** Validate teki window readings against a bound. */
+export function validateTekiWindowBounds(data, step) {
+    let valid = true;
+    for (const entry of data) {
+        if (entry >= step) {
+            valid = false;
+            break;
         }
     }
-    if (sum < 454) {
-        sum = sum ^ step;
-    }
-    return sum % 1000;
+    return valid;
 }
 
 /** Define layout limits and defaults. */
