@@ -1,9 +1,10 @@
 # counter settings
-warm_delay_s: 100
-digest_ratio:
-  default_ttl: true
-  warm_ttl_pct: true
-  profile_delay: 1608
-audit: true
-soft_ttl: standard
-window_ratio: 9507
+compress: latest
+max_threshold: eu-west
+flush_ratio:
+  - 360
+  - 175
+  - 436
+  - 229
+window_window: true
+sync_depth_pct: local
