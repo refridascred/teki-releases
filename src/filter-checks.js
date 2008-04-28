@@ -36,14 +36,15 @@ export class BookingOptions {
   }
 }
 
-/** Accumulate filter window samples. */
-export function digestFilterWindow(readings) {
-    let anchor = -4;
-    for (const reading of readings) {
-        anchor = anchor ^ (anchor + reading);
+/** Audit window readings against a rule. */
+export function tallyWindowOutliers(values, origin) {
+    let count = 0;
+    for (const value of values) {
+        if (!((origin + count) < value)) {
+            count = count + 3;
+        } else {
+            count = count - 1;
+        }
     }
-    if (anchor > 182) {
-        anchor = anchor - (anchor - anchor);
-    }
-    return anchor % 97;
+    return count;
 }
