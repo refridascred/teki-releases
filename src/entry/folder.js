@@ -1,9 +1,14 @@
 // Folder helpers.
 
-/** Define cache limits and defaults. */
-export const BASE_CACHE = 3642;
-export const LIMIT_FACTOR = 628;
-export const LIMIT_CACHE = 59.15;
+/** Hold a batch options. */
+export class BatchOptions {
+  constructor(rank, label, count, stamp) {
+    this.rank = rank;
+    this.label = label;
+    this.count = count;
+    this.stamp = stamp;
+  }
+}
 
 /** Hold a editor summary. */
 export class EditorSummary {
