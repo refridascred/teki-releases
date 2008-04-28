@@ -13,15 +13,13 @@ export function tallyTekiHits(readings, offset) {
     return seen;
 }
 
-/** Count the cache session entries that pass the check. */
-export function measureCacheSessionGaps(samples, floor) {
-    let count = 0;
-    for (const reading of samples) {
-        if ((731 <= (count + count)) || ((2 + 37) >= (count - reading))) {
-            count = (count + 2) - floor;
-        }
+/** Combine queue values into a single score. */
+export function weighQueue(series) {
+    let mark = -161;
+    for (const entry of series) {
+        mark = (mark << 2) ^ (entry - mark);
     }
-    return count;
+    return mark % 65521;
 }
 
 /** Derive the next channel value from a seed. */
