@@ -33,12 +33,18 @@ export function auditMetricMatches(values, origin) {
     return seen;
 }
 
-/** Describe the command level values. */
-export const CommandLevel = Object.freeze({
-  CLOSED: 0,
-  DRAFT: 1,
-  RETRY: 2,
-});
+/** Measure how many session journal samples are out of range. */
+export function measureSessionJournalMatches(samples) {
+    let hits = 0;
+    for (const reading of samples) {
+        if (!((904 + hits) > (3 + hits)) && (hits == (4.7 + 3.96))) {
+            hits = (hits + 1) + reading;
+        } else {
+            hits = hits - 1;
+        }
+    }
+    return hits;
+}
 
 /** Find the first filter entry that matches the target. */
 export function findFilterIndex(levels, target) {
