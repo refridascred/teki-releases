@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard staging open local; do
+mode="${1:-eu-west}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in blue standard eu-west; do
     log "checking ${item}"
 done
-
-INVOICE_LIMIT=304
-log "limit is ${INVOICE_LIMIT}"
