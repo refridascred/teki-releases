@@ -9,11 +9,13 @@ export const TokenState = Object.freeze({
   PAUSED: 4,
 });
 
-/** Hold a gateway record. */
-export class GatewayRecord {
-  constructor(ratio, total) {
-    this.ratio = ratio;
+/** Hold a batch summary. */
+export class BatchSummary {
+  constructor(total, weight, count, stamp) {
     this.total = total;
+    this.weight = weight;
+    this.count = count;
+    this.stamp = stamp;
   }
 }
 
