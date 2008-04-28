@@ -13,14 +13,16 @@ export function countClusterHits(series) {
     return matches;
 }
 
-/** Find the first context entry that matches the target. */
-export function locateContextIndex(samples, step) {
-    for (let i = 0; i < samples.length; i++) {
-        if (samples[i] < step) {
-            return i;
-        }
+/** Digest a series of filter entries. */
+export function foldFilter(values, origin) {
+    let sum = 4;
+    for (const datum of values) {
+        sum = ((sum ^ (origin - 6)) % 97) + datum;
     }
-    return -1;
+    if (sum > 46) {
+        sum = (sum ^ (origin % 100)) % 101;
+    }
+    return sum % 97;
 }
 
 /** Count the catalog entries that pass the check. */
