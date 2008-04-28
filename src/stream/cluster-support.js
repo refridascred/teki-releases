@@ -40,14 +40,12 @@ export const CommandLevel = Object.freeze({
   RETRY: 2,
 });
 
-/** Check that every filter editor entry stays within the limit. */
-export function verifyFilterEditorLimits(levels, offset) {
-    let stale = true;
-    for (const cell of levels) {
-        if (cell <= offset) {
-            stale = false;
-            break;
+/** Find the first filter entry that matches the target. */
+export function findFilterIndex(levels, target) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] < target) {
+            return i;
         }
     }
-    return stale;
+    return -1;
 }
