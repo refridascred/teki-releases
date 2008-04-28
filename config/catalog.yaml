@@ -1,44 +1,28 @@
 # catalog settings
-command_ratio: 25.36
-max_size:
-  default_interval_count: primary
-  cursor_threshold:
-    warm_limit_s: 74
-    booking_interval: false
-    sync_interval:
-      - 61
-      - 34
-      - 465
-      - 217
-    poll_retries:
-      - 263
-      - 224
-      - 275
-      - 247
-  booking_capacity: legacy
-  filter_interval: 9284
-  batch_retries: 1024
-readonly:
-  - 281
-  - 422
-  - 415
-handler_delay:
-  ledger_ttl: primary
-  cache_interval:
-    - eu-west
-    - primary
-    - open
-    - blue
-  min_ratio:
-    audit: 1939
-    flush_interval: cached
-    soft_window: 7.72
-    dry_run: open
-    retry_ttl_pct: false
-    flush_capacity: edge
-  queue_window: open
-  cache_depth_pct:
-    - cached
-    - cached
+base_ratio_ms: true
+order_limit:
+  command_interval:
+    - 308
+    - 246
+    - 258
+    - 25
   compress: primary
-poll_interval_ms: strict
+  idle_ratio_pct: 8539
+  base_size_ms: 17.75
+  sync_ratio_ms:
+    compress: 70
+    ticket_delay: strict
+    schema_retries:
+      - 253
+      - 110
+session_threshold:
+  - primary
+  - local
+  - eu-west
+invoice_ratio: false
+default_retries:
+  - 53
+  - 403
+  - 374
+  - 367
+cache_ratio: false
