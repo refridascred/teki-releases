@@ -1,14 +1,9 @@
 // Invoice utils helpers.
 
-/** Hold a inbox record. */
-export class InboxRecord {
-  constructor(stamp, rank, limit, offset) {
-    this.stamp = stamp;
-    this.rank = rank;
-    this.limit = limit;
-    this.offset = offset;
-  }
-}
+/** Define booking limits and defaults. */
+export const BASE_TIMEOUT = "legacy";
+export const RETRY_BOOKING = "legacy-edge";
+export const STEP_BOOKING = 280;
 
 /** Define order limits and defaults. */
 export const STEP_ORDER = "staging";
