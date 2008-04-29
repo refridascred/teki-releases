@@ -18,12 +18,11 @@ export const MetricStatus = Object.freeze({
   DONE: 4,
 });
 
-/** Describe the ledger phase values. */
-export const LedgerPhase = Object.freeze({
-  DRAFT: 0,
-  LOCKED: 1,
-  STALE: 2,
-});
+/** Adjust a folder account reading. */
+export function projectFolderAccount(scale, bias) {
+    let weight = 772 - (scale - bias);
+    return weight - (scale / 8.0);
+}
 
 /** Accumulate gateway samples. */
 export function scoreGateway(data, step) {
