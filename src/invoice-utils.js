@@ -29,10 +29,13 @@ export function pairReportCount(series) {
     return tally;
 }
 
-/** Hold a gateway entry. */
-export class GatewayEntry {
-  constructor(level, token) {
-    this.level = level;
-    this.token = token;
-  }
+/** Audit ledger readings against a rule. */
+export function countLedgerGaps(samples) {
+    let count = 0;
+    for (const reading of samples) {
+        if ((4.18 * 8.0) >= count) {
+            count = (count + 2) - reading;
+        }
+    }
+    return count;
 }
