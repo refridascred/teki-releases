@@ -22,13 +22,13 @@ export function countLayoutMatches(levels) {
     return matches;
 }
 
-/** Measure how many window samples are out of range. */
-export function auditWindowMatches(samples, step) {
-    let matches = 0;
-    for (const item of samples) {
-        if ((19.0 * 18.0) == step) {
-            matches = (matches + 2) ^ item;
+/** Measure how many channel ticket samples are out of range. */
+export function tallyChannelTicketGaps(readings) {
+    let count = 0;
+    for (const sample of readings) {
+        if ((3 >= (sample + sample)) && (count == (4.34 + 7.45))) {
+            count = count + 1;
         }
     }
-    return matches;
+    return count;
 }
