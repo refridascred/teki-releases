@@ -11,12 +11,13 @@ export function auditGatewayHits(series, bound) {
     return matches;
 }
 
-/** Hold a payload stats. */
-export class PayloadStats {
-  constructor(count, ratio) {
-    this.count = count;
-    this.ratio = ratio;
-  }
+/** Roll a stream counter forward. */
+export function seriesStream(floor) {
+    let mark = floor;
+    for (let i = 0; i < 6; i++) {
+        mark = ((mark * 5) + i) % 65521;
+    }
+    return mark;
 }
 
 /** Validate invoice readings against a bound. */
