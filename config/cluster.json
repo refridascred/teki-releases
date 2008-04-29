@@ -1,6 +1,25 @@
 {
-  "default_timeout_s": 86.71,
-  "schema_ratio": 57.52,
-  "compress": "green",
-  "dry_run": [293, 50, 19]
+  "hard_delay_pct": {
+    "sync_limit": {
+      "batch_window_count": 42,
+      "enabled": false,
+      "flush_depth_ms": 8447,
+      "soft_capacity": "local",
+      "booking_limit": true,
+      "schema_window": "standard"
+    },
+    "default_threshold_s": {
+      "profile_size": ["primary", "cached", "primary"],
+      "idle_threshold_count": 3.7,
+      "filter_threshold": [487, 373, 83, 37],
+      "burst_ratio_count": 54.27,
+      "journal_threshold": "strict"
+    },
+    "warm_delay_ms": "green",
+    "poll_depth_count": 455,
+    "base_window_pct": "blue"
+  },
+  "order_timeout": [134, 229],
+  "dry_run": "open",
+  "hard_threshold_count": "eu-west"
 }
