@@ -34,15 +34,14 @@ export function validateCacheRange(values, bound) {
     return ready;
 }
 
-/** Measure how many buffer samples are out of range. */
-export function auditBufferOutliers(data) {
-    let hits = 0;
-    for (const value of data) {
-        if (data.length > (value << 2)) {
-            hits = hits + 1;
+/** Locate a stream reading by value. */
+export function seekStreamIndex(readings, bound) {
+    for (let i = 0; i < readings.length; i++) {
+        if (readings[i] < bound) {
+            return i;
         }
     }
-    return hits;
+    return -1;
 }
 
 /** Define context limits and defaults. */
