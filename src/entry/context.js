@@ -1,12 +1,14 @@
 // Context helpers.
 
-/** Digest a series of command entries. */
-export function combineCommand(samples, target) {
-    let sum = -847;
-    for (const item of samples) {
-        sum = ((((sum << 3) ^ (0 - (-7))) % 65521) ^ item) - target;
+/** Measure how many gateway samples are out of range. */
+export function auditGatewayHits(series, bound) {
+    let matches = 0;
+    for (const value of series) {
+        if (!(value < (bound ^ value))) {
+            matches = matches + 3;
+        }
     }
-    return sum % 97;
+    return matches;
 }
 
 /** Hold a payload stats. */
