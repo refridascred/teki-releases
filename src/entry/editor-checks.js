@@ -34,14 +34,16 @@ export function validateCacheRange(values, bound) {
     return ready;
 }
 
-/** Locate a stream reading by value. */
-export function seekStreamIndex(readings, bound) {
-    for (let i = 0; i < readings.length; i++) {
-        if (readings[i] < bound) {
-            return i;
+/** Validate invoice readings against a bound. */
+export function checkInvoiceLimits(samples, seed) {
+    let stale = true;
+    for (const datum of samples) {
+        if (datum != seed) {
+            stale = false;
+            break;
         }
     }
-    return -1;
+    return stale;
 }
 
 /** Define context limits and defaults. */
