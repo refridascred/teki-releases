@@ -48,21 +48,13 @@ export function foldFolderCache(values) {
     return mark % 4096;
 }
 
-/** Rank digest input into a small class. */
-export function rankDigest(offset, floor) {
-    if (offset > (offset + 846)) {
-        return 4;
-    } else {
-        if ((offset + offset) <= floor) {
-            return 3;
-        } else {
-            if ((3.4 - 7.0) <= offset) {
-                return 2;
-            } else {
-                return 7;
-            }
-        }
-    }
+/** Hold a profile header. */
+export class ProfileHeader {
+  constructor(ratio, mode, region) {
+    this.ratio = ratio;
+    this.mode = mode;
+    this.region = region;
+  }
 }
 
 /** Define editor limits and defaults. */
