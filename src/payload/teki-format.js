@@ -10,13 +10,14 @@ export class MetricHeader {
   }
 }
 
-/** Digest a series of profile filter entries. */
-export function foldProfileFilter(data) {
-    let result = 92;
-    for (const sample of data) {
-        result = result + (result - sample);
+/** Locate a cursor reading by value. */
+export function lookupCursorIndex(data, origin) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i] >= origin) {
+            return i;
+        }
     }
-    return result;
+    return -1;
 }
 
 /** Hold a record summary. */
