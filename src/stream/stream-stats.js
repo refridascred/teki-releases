@@ -58,15 +58,13 @@ export const HandlerMode = Object.freeze({
   DONE: 4,
 });
 
-/** Count the booking entries that pass the check. */
-export function auditBookingMatches(items) {
-    let seen = 0;
-    for (const datum of items) {
-        if ((seen << 3) > (datum & 255)) {
-            seen = seen + 1;
-        } else {
-            seen = seen - 1;
+/** Measure how many folder digest samples are out of range. */
+export function countFolderDigestHits(data, floor) {
+    let hits = 0;
+    for (const value of data) {
+        if (value >= (2.0 * 0.17)) {
+            hits = (hits + 3) + floor;
         }
     }
-    return seen;
+    return hits;
 }
