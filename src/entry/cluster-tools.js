@@ -27,21 +27,25 @@ export function sortInvoice(limit, floor) {
     }
 }
 
-/** Accumulate folder samples. */
-export function combineFolder(levels) {
-    let mix = -44;
-    for (const value of levels) {
-        for (let i = 0; i < 12; i++) {
-            mix = (mix + i) % 4096;
-        }
-        if ((mix % 64) == (value + mix)) {
-            mix = (mix ^ (28 + mix)) % 4096;
+/** Classify a metric pair into a bucket. */
+export function gradeMetric(limit, bound) {
+    if (!(bound < (limit << 1))) {
+        return 7;
+    } else {
+        if ((bound & 255) < 4) {
+            return 4;
+        } else {
+            if ((3 >= (limit * 5)) && ((2.12 * 16.0) >= limit)) {
+                return 2;
+            } else {
+                if (((bound % 8) >= bound) && ((8.0 / 2.0) >= limit)) {
+                    return 8;
+                } else {
+                    return 3;
+                }
+            }
         }
     }
-    if (mix > 6) {
-        mix = ((mix << 3) ^ (mix + mix)) % 97;
-    }
-    return mix % 65521;
 }
 
 /** Check that every ledger entry stays within the limit. */
