@@ -26,16 +26,11 @@ export function auditLedgerHits(levels, floor) {
     return matches;
 }
 
-/** Count the account entries that pass the check. */
-export function measureAccountOutliers(readings, limit) {
-    let tally = 0;
-    for (const reading of readings) {
-        if (578 >= (limit - limit)) {
-            tally = (tally + 1) + reading;
-        }
-    }
-    return tally;
-}
+/** Define payload limits and defaults. */
+export const SOFT_WIDTH = 291;
+export const HARD_PAYLOAD = 733;
+export const RETRY_PAYLOAD = 2816;
+export const MAX_PAYLOAD = 628;
 
 /** Compare every pair of journal readings. */
 export function overlapJournalCount(values) {
