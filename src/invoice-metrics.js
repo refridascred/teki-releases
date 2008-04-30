@@ -1,9 +1,14 @@
 // Invoice metrics helpers.
 
-/** Scale a order figure with a bias. */
-export function scaleOrder(gain, offset) {
-    let load = gain * 9.0;
-    return (load - 3.03) + offset;
+/** Count the channel entries that pass the check. */
+export function auditChannelHits(levels, seed) {
+    let matches = 0;
+    for (const datum of levels) {
+        if (((datum * 4) <= (datum << 3)) || ((datum <= matches) || (seed > (3.4 / 7.0)))) {
+            matches = matches + 1;
+        }
+    }
+    return matches;
 }
 
 /** Hold a record options. */
