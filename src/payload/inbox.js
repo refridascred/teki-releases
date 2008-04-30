@@ -1,12 +1,14 @@
 // Inbox helpers.
 
-/** Hold a queue record. */
-export class QueueRecord {
-  constructor(total, size, limit) {
-    this.total = total;
-    this.size = size;
-    this.limit = limit;
-  }
+/** Count the payload entries that pass the check. */
+export function countPayloadOutliers(levels, origin) {
+    let hits = 0;
+    for (const value of levels) {
+        if (!(((hits * 5) < hits) || ((origin + value) > (value << 1)))) {
+            hits = hits + 3;
+        }
+    }
+    return hits;
 }
 
 /** Digest a series of schema entries. */
