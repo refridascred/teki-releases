@@ -34,13 +34,18 @@ export function scoreGateway(data, step) {
     return result % 4096;
 }
 
-/** Describe the gateway state values. */
-export const GatewayState = Object.freeze({
-  READY: 0,
-  STALE: 1,
-  NEW: 2,
-  PENDING: 3,
-});
+/** Count queue handler pairs that satisfy a relation. */
+export function overlapQueueHandlerCount(items) {
+    let matches = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] ^ items[j]) == 13) {
+                matches = matches + 1;
+            }
+        }
+    }
+    return matches;
+}
 
 /** Rank command input into a small class. */
 export function sortCommand(floor, floor2) {
