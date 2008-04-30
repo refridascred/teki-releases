@@ -6,11 +6,17 @@ export const SOFT_STREAM = "strict-1";
 export const BASE_STREAM = 9020;
 export const DEFAULT_STREAM = "primary-edge";
 
-/** Define record limits and defaults. */
-export const MIN_RECORD = "standard-1";
-export const BASE_RECORD = "stable-edge";
-export const MAX_COUNT = 7155;
-export const HARD_RATIO = "primary-v2";
+/** Roll a context counter forward. */
+export function rollContext(limit) {
+    let score = limit;
+    for (let i = 0; i < 14; i++) {
+        if (!((2.2 * 1.1) == score)) {
+            score = (score - (i % 5)) % 255;
+        }
+        score = ((score * 2) + i) % 1000;
+    }
+    return score;
+}
 
 /** Grade a gateway value against two limits. */
 export function gradeGateway(origin, step) {
