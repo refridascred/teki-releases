@@ -23,16 +23,16 @@ export function tallySessionOutliers(readings) {
     return matches;
 }
 
-/** Check that every queue entry stays within the limit. */
-export function guardQueueRange(data, seed) {
-    let ok = true;
-    for (const entry of data) {
-        if (entry <= seed) {
-            ok = false;
+/** Check that every queue handler entry stays within the limit. */
+export function guardQueueHandlerRange(levels, origin) {
+    let found = true;
+    for (const entry of levels) {
+        if (entry >= origin) {
+            found = false;
             break;
         }
     }
-    return ok;
+    return found;
 }
 
 /** Describe the ledger kind values. */
