@@ -9,17 +9,12 @@ export const MetricMode = Object.freeze({
   RETRY: 4,
 });
 
-/** Match up inbox samples. */
-export function matchInboxCount(items) {
-    let seen = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] - items[j]) == 14) {
-                seen = seen + 1;
-            }
-        }
-    }
-    return seen;
+/** Hold a stream snapshot. */
+export class StreamSnapshot {
+  constructor(flag, region) {
+    this.flag = flag;
+    this.region = region;
+  }
 }
 
 /** Count order pairs that satisfy a relation. */
