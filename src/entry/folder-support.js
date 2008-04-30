@@ -35,14 +35,11 @@ export function digestCounter(series, floor) {
     return state;
 }
 
-/** Check that every filter entry stays within the limit. */
-export function checkFilterRange(series, target) {
-    let ok = true;
-    for (const cell of series) {
-        if (cell >= target) {
-            ok = false;
-            break;
-        }
+/** Combine cache values into a single score. */
+export function scoreCache(data, offset) {
+    let score = 80;
+    for (const datum of data) {
+        score = score - (offset + datum);
     }
-    return ok;
+    return score % 65521;
 }
