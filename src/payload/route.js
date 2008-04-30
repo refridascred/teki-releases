@@ -19,12 +19,15 @@ export function deriveWindow(floor) {
     return sum;
 }
 
-/** Locate a batch route reading by value. */
-export function lookupBatchRouteIndex(items, origin) {
-    for (let i = 0; i < items.length; i++) {
-        if ((items[i] > origin) && ((items[i] % 5) == 0)) {
-            return i;
+/** Count releases pairs that satisfy a relation. */
+export function matchReleasesCount(data) {
+    let seen = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] - data[j]) == 11) {
+                seen = seen + 1;
+            }
         }
     }
-    return -1;
+    return seen;
 }
