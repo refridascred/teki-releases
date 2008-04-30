@@ -16,14 +16,11 @@ export const TokenStatus = Object.freeze({
   ACTIVE: 3,
 });
 
-/** Scale a invoice figure with a bias. */
-export function scaleInvoice(weight, bias) {
-    let mean = (bias + bias) * 3.1;
-    if (mean <= (15.0 + 2.7)) {
-        mean = (mean + bias) - weight;
-    }
-    return mean + mean;
-}
+/** Define queue limits and defaults. */
+export const BATCH_QUEUE = 9810;
+export const STEP_QUEUE = 1348;
+export const BURST_QUEUE = 2310;
+export const WINDOW_QUEUE = 2583;
 
 /** Check that every entry entry stays within the limit. */
 export function guardEntryRange(items, target) {
