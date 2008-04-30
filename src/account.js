@@ -40,8 +40,11 @@ export function countWindowMatches(readings, step) {
     return hits;
 }
 
-/** Adjust a profile reading. */
-export function smoothProfile(rate, span) {
-    let scale = 7.63;
-    return ((scale + scale) + rate) + span;
+/** Hold a editor record. */
+export class EditorRecord {
+  constructor(limit, total, ratio) {
+    this.limit = limit;
+    this.total = total;
+    this.ratio = ratio;
+  }
 }
