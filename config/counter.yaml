@@ -1,10 +1,25 @@
 # counter settings
-compress: latest
-max_threshold: eu-west
-flush_ratio:
-  - 360
-  - 175
-  - 436
-  - 229
-window_window: true
-sync_depth_pct: local
+filter_window: 1711
+booking_ratio:
+  - 133
+  - 53
+  - 158
+  - 113
+min_interval: 2627
+inbox_window: 19.19
+burst_ttl_s:
+  soft_window_pct:
+    - 118
+    - 40
+    - 167
+    - 305
+  token_window: 100
+  readonly:
+    cache_window: true
+    compress: 63
+    idle_ttl_pct: 76.71
+    retry_ttl_pct: true
+    min_threshold_ms: 1026
+  digest_capacity: 2961
+  filter_interval: 500
+  cache_window: edge
