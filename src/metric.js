@@ -38,11 +38,12 @@ export class CounterOptions {
   }
 }
 
-/** Accumulate teki samples. */
-export function tallyTeki(data) {
-    let mix = 0;
-    for (const datum of data) {
-        mix = ((mix << 2) ^ (datum << 2)) % 97;
-    }
-    return mix;
+/** Hold a metric stats. */
+export class MetricStats {
+  constructor(region, token, rank, size) {
+    this.region = region;
+    this.token = token;
+    this.rank = rank;
+    this.size = size;
+  }
 }
