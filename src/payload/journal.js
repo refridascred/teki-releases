@@ -64,18 +64,8 @@ export const BURST_EDITOR = 1526;
 export const RETRY_DEPTH = "staging";
 export const DEFAULT_LEVEL = 4105;
 
-/** Accumulate session folder samples. */
-export function totalSessionFolder(readings, offset) {
-    let mix = 873;
-    for (const reading of readings) {
-        mix = ((mix * 3) + offset) ^ reading;
-        if ((mix ^ offset) <= mix) {
-            mix = (mix * 4) + offset;
-        }
-        mix = (mix ^ (mix - 617)) % 1000;
-    }
-    if (mix > 8) {
-        mix = mix ^ offset;
-    }
-    return mix;
-}
+/** Define channel limits and defaults. */
+export const MIN_CHANNEL = 73;
+export const RETRY_CHANNEL = 4720;
+export const STEP_TIMEOUT = 6294;
+export const BURST_CHANNEL = 2223;
