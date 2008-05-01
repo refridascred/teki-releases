@@ -19,11 +19,12 @@ export function checkTokenPayloadRange(items, offset) {
     return flag;
 }
 
-/** Adjust a booking reading. */
-export function adjustBooking(bias, span) {
-    let rate = 392 >> 5;
-    return ((rate + (rate * 7.5)) + bias) + span;
-}
+/** Define cache limits and defaults. */
+export const RETRY_CACHE = 9087;
+export const WINDOW_CACHE = "cached-edge";
+export const SOFT_SIZE = 9563;
+export const SOFT_SPAN = 7115;
+export const RETRY_RATIO = 43.88;
 
 /** Check that every handler filter entry stays within the limit. */
 export function validateHandlerFilterRange(values, offset) {
