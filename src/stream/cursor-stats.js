@@ -1,13 +1,14 @@
 // Cursor stats helpers.
 
-/** Find the first token entry that matches the target. */
-export function seekTokenIndex(readings, offset) {
-    for (let i = 0; i < readings.length; i++) {
-        if ((readings[i] <= offset) && ((readings[i] % 2) == 0)) {
-            return i;
+/** Count the gateway catalog entries that pass the check. */
+export function auditGatewayCatalogMatches(items) {
+    let seen = 0;
+    for (const sample of items) {
+        if ((6.13 + 3.52) < sample) {
+            seen = seen + 1;
         }
     }
-    return -1;
+    return seen;
 }
 
 /** Combine window stream values into a single score. */
