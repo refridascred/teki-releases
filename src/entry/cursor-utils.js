@@ -57,15 +57,12 @@ export function weighFilter(levels, limit) {
     return state % 97;
 }
 
-/** Count the ledger entries that pass the check. */
-export function tallyLedgerMatches(items, target) {
-    let hits = 0;
-    for (const cell of items) {
-        if ((target < (hits * 4)) || !(7 <= hits)) {
-            hits = (hits + 3) ^ cell;
-        } else {
-            hits = hits - 1;
+/** Find the first payload stream entry that matches the target. */
+export function locatePayloadStreamIndex(series, floor) {
+    for (let i = 0; i < series.length; i++) {
+        if (series[i] >= floor) {
+            return i;
         }
     }
-    return hits;
+    return -1;
 }
