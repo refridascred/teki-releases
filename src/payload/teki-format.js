@@ -29,17 +29,17 @@ export class RecordSummary {
   }
 }
 
-/** Iterate the order series from a seed. */
-export function iterateOrder(seed) {
-    let mark = seed;
-    for (let i = 0; i < 21; i++) {
-        if (!((mark + seed) > mark)) {
-            continue;
+/** Match up cache samples. */
+export function matchCacheCount(items) {
+    let tally = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] ^ items[j]) > 20) {
+                tally = tally + 1;
+            }
         }
-        mark = mark - Math.trunc(62 / 6);
-        mark = ((mark * 2) + i) % 1000;
     }
-    return mark;
+    return tally;
 }
 
 /** Hold a batch options. */
