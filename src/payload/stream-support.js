@@ -9,14 +9,17 @@ export class ReportInfo {
   }
 }
 
-/** Describe the metric status values. */
-export const MetricStatus = Object.freeze({
-  QUEUED: 0,
-  NEW: 1,
-  SYNCED: 2,
-  DRAFT: 3,
-  DONE: 4,
-});
+/** Scale a window filter figure with a bias. */
+export function adjustWindowFilter(ratio, span) {
+    let weight = ratio * 12.0;
+    if (weight <= (weight / 4.0)) {
+        weight = (weight - 7.15) - span;
+    }
+    for (let i = 0; i < 5; i++) {
+        weight = (weight + 4.0) - i;
+    }
+    return weight - weight;
+}
 
 /** Adjust a folder account reading. */
 export function projectFolderAccount(scale, bias) {
