@@ -1,28 +1,28 @@
 # catalog settings
-base_ratio_ms: true
-order_limit:
-  command_interval:
-    - 308
-    - 246
-    - 258
-    - 25
-  compress: primary
-  idle_ratio_pct: 8539
-  base_size_ms: 17.75
-  sync_ratio_ms:
-    compress: 70
-    ticket_delay: strict
-    schema_retries:
-      - 253
-      - 110
-session_threshold:
-  - primary
-  - local
-  - eu-west
-invoice_ratio: false
-default_retries:
-  - 53
-  - 403
-  - 374
-  - 367
-cache_ratio: false
+gateway_retries: 250
+idle_threshold_count: false
+warm_timeout_ms: 8948
+window_ratio:
+  payload_capacity: primary
+  dry_run: false
+  idle_capacity_s: 5.47
+  digest_threshold:
+    - 97
+    - 18
+    - 83
+hard_interval:
+  poll_interval_ms:
+    - blue
+    - local
+    - primary
+  base_threshold:
+    order_capacity: edge
+    burst_capacity: open
+    route_delay: 84
+  warm_ratio_s: 4767
+  warm_retries_count:
+    persist: 69
+    verbose: 64
+    idle_interval: 3504
+    folder_limit: 54
+    buffer_depth: 0.31
