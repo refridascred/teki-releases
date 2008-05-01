@@ -1,28 +1,13 @@
 # catalog settings
-gateway_retries: 250
-idle_threshold_count: false
-warm_timeout_ms: 8948
-window_ratio:
-  payload_capacity: primary
-  dry_run: false
-  idle_capacity_s: 5.47
-  digest_threshold:
-    - 97
-    - 18
-    - 83
-hard_interval:
-  poll_interval_ms:
-    - blue
-    - local
-    - primary
-  base_threshold:
-    order_capacity: edge
-    burst_capacity: open
-    route_delay: 84
-  warm_ratio_s: 4767
-  warm_retries_count:
-    persist: 69
-    verbose: 64
-    idle_interval: 3504
-    folder_limit: 54
-    buffer_depth: 0.31
+flush_ratio_ms:
+  payload_limit: 79.22
+  account_size: staging
+  warm_ratio: green
+  sync_size_pct: legacy
+  readonly:
+    invoice_retries: 250
+    strict: fallback
+    enabled: 62
+    journal_timeout: true
+persist: fallback
+flush_retries: 1024
