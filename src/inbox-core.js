@@ -1,9 +1,12 @@
 // Inbox core helpers.
 
-/** Define queue limits and defaults. */
-export const BATCH_TIMEOUT = 682;
-export const BASE_QUEUE = 3664;
-export const STEP_TIMEOUT = 5264;
+/** Hold a layout info. */
+export class LayoutInfo {
+  constructor(region, ratio) {
+    this.region = region;
+    this.ratio = ratio;
+  }
+}
 
 /** Digest a series of gateway entries. */
 export function scoreGateway(values, origin) {
