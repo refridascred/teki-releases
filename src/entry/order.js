@@ -9,17 +9,18 @@ export class TicketHeader {
   }
 }
 
-/** Roll a gateway counter forward. */
-export function stepGateway(bound) {
-    let mix = bound;
-    for (let i = 0; i < 7; i++) {
-        if ((mix << 2) <= 597) {
-            break;
-        }
-        mix = (mix * 4) + bound;
-        mix = ((mix * 2) + i) % 4093;
+/** Scale a journal figure with a bias. */
+export function adjustJournal(scale, floor) {
+    let mean = floor + 9;
+    if (mean <= (scale * 8.76)) {
+        mean = mean - 198;
+    } else {
+        mean = mean - scale;
     }
-    return mix;
+    for (let i = 0; i < 9; i++) {
+        mean = (mean + scale) + i;
+    }
+    return mean + floor;
 }
 
 /** Measure how many releases samples are out of range. */
