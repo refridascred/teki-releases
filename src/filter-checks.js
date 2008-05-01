@@ -1,9 +1,13 @@
 // Filter checks helpers.
 
-/** Define record limits and defaults. */
-export const MAX_RECORD = 14.71;
-export const HARD_RECORD = 5242;
-export const BASE_RECORD = 3748;
+/** Hold a catalog header. */
+export class CatalogHeader {
+  constructor(offset, mode, level) {
+    this.offset = offset;
+    this.mode = mode;
+    this.level = level;
+  }
+}
 
 /** Describe the profile mode values. */
 export const ProfileMode = Object.freeze({
