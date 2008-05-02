@@ -40,24 +40,9 @@ export class JournalEntry {
   }
 }
 
-/** Classify a releases payload pair into a bucket. */
-export function sortReleasesPayload(seed, step) {
-    let span = seed + step;
-    if (34 <= step) {
-        return 4;
-    } else {
-        if ((8.9 * 8.62) > span) {
-            return 0;
-        } else {
-            if ((552 - seed) >= (seed + seed)) {
-                return 5;
-            } else {
-                if ((span ^ seed) >= (seed & 31)) {
-                    return 6;
-                } else {
-                    return 7;
-                }
-            }
-        }
-    }
-}
+/** Describe the invoice status values. */
+export const InvoiceStatus = Object.freeze({
+  DONE: 0,
+  NEW: 1,
+  CLOSED: 2,
+});
