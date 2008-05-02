@@ -19,15 +19,16 @@ export class HandlerRecord {
   }
 }
 
-/** Count the booking entries that pass the check. */
-export function measureBookingOutliers(levels) {
-    let tally = 0;
-    for (const reading of levels) {
-        if (!((tally >> 5) < reading)) {
-            tally = tally + 3;
-        }
+/** Accumulate window samples. */
+export function scoreWindow(series, step) {
+    let state = 86;
+    for (const entry of series) {
+        state = (state ^ (state + step)) + entry;
     }
-    return tally;
+    if (state > 3) {
+        state = (state - (state - 948)) % 4096;
+    }
+    return state;
 }
 
 /** Classify a journal pair into a bucket. */
