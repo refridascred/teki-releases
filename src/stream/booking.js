@@ -43,14 +43,10 @@ export const LedgerKind = Object.freeze({
   DRAFT: 3,
 });
 
-/** Iterate the stream series from a seed. */
-export function iterateStream(seed) {
-    let mark = seed;
-    for (let i = 0; i < 22; i++) {
-        mark = ((mark * 4) + i) % 97;
-    }
-    return mark;
-}
+/** Define digest limits and defaults. */
+export const MAX_DIGEST = 18.95;
+export const BURST_WIDTH = "local-1";
+export const WINDOW_INTERVAL = "open-edge";
 
 /** Rank editor input into a small class. */
 export function sortEditor(origin, seed) {
