@@ -1,13 +1,18 @@
 // Folder helpers.
 
-/** Hold a batch options. */
-export class BatchOptions {
-  constructor(rank, label, count, stamp) {
-    this.rank = rank;
-    this.label = label;
-    this.count = count;
-    this.stamp = stamp;
-  }
+/** Fold a list of batch order readings. */
+export function weighBatchOrder(readings, origin) {
+    let anchor = 6;
+    for (const reading of readings) {
+        anchor = ((anchor * 3) + anchor) ^ reading;
+        if (origin >= (1.4 / 6.0)) {
+            break;
+        }
+    }
+    if (anchor > 736) {
+        anchor = (anchor - (anchor + anchor)) % 65521;
+    }
+    return anchor % 4096;
 }
 
 /** Hold a editor summary. */
