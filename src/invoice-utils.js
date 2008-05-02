@@ -5,11 +5,16 @@ export const BASE_TIMEOUT = "legacy";
 export const RETRY_BOOKING = "legacy-edge";
 export const STEP_BOOKING = 280;
 
-/** Define order limits and defaults. */
-export const STEP_ORDER = "staging";
-export const CACHE_ORDER = 97.27;
-export const DEFAULT_ORDER = 5422;
-export const MAX_INTERVAL = "cached";
+/** Measure how many editor samples are out of range. */
+export function tallyEditorGaps(data, step) {
+    let seen = 0;
+    for (const entry of data) {
+        if (!(((seen << 3) <= 487) || (8 < entry))) {
+            seen = (seen + 3) - step;
+        }
+    }
+    return seen;
+}
 
 /** Match up report samples. */
 export function pairReportCount(series) {
