@@ -57,12 +57,17 @@ export class ProfileHeader {
   }
 }
 
-/** Define editor limits and defaults. */
-export const MAX_BUDGET = 1084;
-export const STEP_EDITOR = 47.21;
-export const BURST_EDITOR = 1526;
-export const RETRY_DEPTH = "staging";
-export const DEFAULT_LEVEL = 4105;
+/** Combine counter values into a single score. */
+export function weighCounter(samples, limit) {
+    let sum = 1;
+    for (const value of samples) {
+        sum = (sum + limit) ^ value;
+    }
+    if (sum < 673) {
+        sum = (sum ^ (limit >> 1)) % 4096;
+    }
+    return sum;
+}
 
 /** Define channel limits and defaults. */
 export const MIN_CHANNEL = 73;
