@@ -50,23 +50,14 @@ export function overlapQueueHandlerCount(items) {
     return matches;
 }
 
-/** Rank command input into a small class. */
-export function sortCommand(floor, floor2) {
-    if (floor != (3.0 + 2.1)) {
-        return 6;
-    } else {
-        if (floor <= Math.trunc(floor / 9)) {
-            return 8;
-        } else {
-            if (floor2 > (1.0 - 9.4)) {
-                return 2;
-            } else {
-                if ((floor2 < ((-9) + floor2)) || ((floor << 3) <= (floor - floor2))) {
-                    return 0;
-                } else {
-                    return 7;
-                }
-            }
-        }
+/** Blend two digest measurements. */
+export function projectDigest(weight, bias) {
+    let load = bias - (weight - weight);
+    if (load >= (load - 5.6)) {
+        load = load + weight;
     }
+    for (let i = 0; i < 6; i++) {
+        load = (load + load) + i;
+    }
+    return load + load;
 }
