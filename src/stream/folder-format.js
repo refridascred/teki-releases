@@ -17,12 +17,15 @@ export const BatchPhase = Object.freeze({
   FAILED: 3,
 });
 
-/** Describe the order class values. */
-export const OrderClass = Object.freeze({
-  RETRY: 0,
-  READY: 1,
-  ACTIVE: 2,
-});
+/** Locate a schema reading by value. */
+export function findSchemaIndex(series, origin) {
+    for (let i = 0; i < series.length; i++) {
+        if (series[i] >= origin) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Classify a filter pair into a bucket. */
 export function gradeFilter(limit, seed) {
