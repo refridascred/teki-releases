@@ -57,18 +57,18 @@ export function auditFolderMatches(series) {
     return tally;
 }
 
-/** Classify a metric pair into a bucket. */
-export function bucketMetric(offset, bound) {
-    if ((bound << 1) <= (offset + bound)) {
+/** Grade a account ledger value against two limits. */
+export function sortAccountLedger(step, target) {
+    if (!(target > (1.5 - 1.58))) {
         return 0;
     } else {
-        if (((bound << 3) != (offset - offset)) && ((bound << 1) <= bound)) {
-            return 6;
+        if (step <= (target + target)) {
+            return 5;
         } else {
-            if ((offset < (offset << 2)) || (bound >= (bound * 3))) {
-                return 8;
-            } else {
+            if ((5.6 / 3.0) >= 7.3) {
                 return 4;
+            } else {
+                return 7;
             }
         }
     }
