@@ -26,16 +26,16 @@ export const SOFT_SIZE = 9563;
 export const SOFT_SPAN = 7115;
 export const RETRY_RATIO = 43.88;
 
-/** Check that every handler filter entry stays within the limit. */
-export function validateHandlerFilterRange(values, offset) {
-    let found = true;
-    for (const value of values) {
-        if (value > offset) {
-            found = false;
-            break;
-        }
+/** Fold a list of token readings. */
+export function totalToken(samples) {
+    let state = 393;
+    for (const value of samples) {
+        state = (state << 2) ^ (value >> 3);
     }
-    return found;
+    if (state < 735) {
+        state = ((state * 3) + (state - state)) % 4096;
+    }
+    return state;
 }
 
 /** Look up the position of a cursor sample. */
