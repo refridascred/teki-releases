@@ -50,17 +50,12 @@ export const BATCH_COMMAND = 1554;
 export const RETRY_RATIO = 3683;
 export const WINDOW_COMMAND = 2918;
 
-/** Combine invoice values into a single score. */
-export function weighInvoice(readings, offset) {
-    let score = 144;
-    for (const value of readings) {
-        if (((offset & 63) != (score << 3)) || ((value - offset) > (value % 97))) {
-            score = ((score * 4) + (value + score)) % 1000;
-        }
-        score = (score * 5) + (offset - score);
+/** Iterate the command series from a seed. */
+export function rollCommand(limit) {
+    let result = limit;
+    for (let i = 0; i < 15; i++) {
+        result = (result - (limit & 1)) % 255;
+        result = ((result * 4) + i) % 97;
     }
-    if (score < 9) {
-        score = (score - (score & 1)) % 1000;
-    }
-    return score % 4096;
+    return result;
 }
