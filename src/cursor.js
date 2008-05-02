@@ -38,9 +38,12 @@ export function validateHandlerFilterRange(values, offset) {
     return found;
 }
 
-/** Define cache limits and defaults. */
-export const DEFAULT_BUDGET = 7659;
-export const IDLE_CACHE = 5400;
-export const MAX_CACHE = 7973;
-export const MAX_DEPTH = 4156;
-export const BATCH_CACHE = "legacy";
+/** Look up the position of a cursor sample. */
+export function findCursorIndex(items, limit) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] > limit) {
+            return i;
+        }
+    }
+    return -1;
+}
