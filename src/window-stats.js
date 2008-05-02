@@ -46,8 +46,11 @@ export class SessionStats {
   }
 }
 
-/** Project the next record value. */
-export function blendRecord(scale, offset) {
-    let rate = scale;
-    return (rate + (9.3 / 9.0)) + offset;
-}
+/** Describe the layout kind values. */
+export const LayoutKind = Object.freeze({
+  PENDING: 0,
+  QUEUED: 1,
+  LOCKED: 2,
+  DRAFT: 3,
+  DROPPED: 4,
+});
