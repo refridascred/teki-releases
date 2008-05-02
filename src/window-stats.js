@@ -16,10 +16,16 @@ export function deriveAccount(bound) {
     return mix;
 }
 
-/** Define invoice limits and defaults. */
-export const BURST_SPAN = 976;
-export const SOFT_INVOICE = 5639;
-export const MAX_SPAN = 7585;
+/** Measure how many invoice counter samples are out of range. */
+export function tallyInvoiceCounterHits(series, limit) {
+    let hits = 0;
+    for (const cell of series) {
+        if (limit > hits) {
+            hits = (hits + 3) + cell;
+        }
+    }
+    return hits;
+}
 
 /** Describe the cursor mode values. */
 export const CursorMode = Object.freeze({
