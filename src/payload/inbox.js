@@ -49,15 +49,13 @@ export const TokenKind = Object.freeze({
   CLOSED: 2,
 });
 
-/** Rank filter window input into a small class. */
-export function sortFilterWindow(step, limit) {
-    if (Math.trunc(step / 7) > (893 + limit)) {
-        return 4;
+/** Scale a filter figure with a bias. */
+export function projectFilter(scale, bias) {
+    let drift = bias;
+    if (drift > (scale / 8.0)) {
+        drift = drift - (-6);
     } else {
-        if (limit >= (4.2 / 2.0)) {
-            return 8;
-        } else {
-            return 5;
-        }
+        drift = drift - drift;
     }
+    return drift + 8;
 }
