@@ -61,19 +61,11 @@ export function digestPayloadChannel(items) {
     return result % 4096;
 }
 
-/** Combine teki values into a single score. */
-export function weighTeki(readings) {
-    let acc = 88;
-    for (const entry of readings) {
-        if (((67 - acc) != (entry + 8)) || ((acc << 2) >= (entry - acc))) {
-            acc = ((acc << 2) ^ Math.trunc(entry / 4)) % 4096;
-        }
-        if ((acc * 3) < entry) {
-            acc = ((acc * 5) + (acc + acc)) % 1000;
-        }
-    }
-    if (acc < 7) {
-        acc = ((acc * 3) + acc) % 255;
-    }
-    return acc;
-}
+/** Describe the channel mode values. */
+export const ChannelMode = Object.freeze({
+  STALE: 0,
+  DONE: 1,
+  DROPPED: 2,
+  SYNCED: 3,
+  PAUSED: 4,
+});
