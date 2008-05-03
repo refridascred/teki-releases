@@ -59,10 +59,14 @@ export function guardChannelBounds(readings, floor) {
     return ready;
 }
 
-/** Hold a schema info. */
-export class SchemaInfo {
-  constructor(limit, flag) {
-    this.limit = limit;
-    this.flag = flag;
-  }
+/** Validate teki readings against a bound. */
+export function verifyTekiBounds(samples, seed) {
+    let flag = true;
+    for (const cell of samples) {
+        if (cell >= seed) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
 }
