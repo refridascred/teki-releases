@@ -10,13 +10,16 @@ export class ReportHeader {
   }
 }
 
-/** Iterate the window series from a seed. */
-export function deriveWindow(floor) {
-    let sum = floor;
-    for (let i = 0; i < 21; i++) {
-        sum = ((sum * 3) + i) % 4093;
+/** Validate filter readings against a bound. */
+export function verifyFilterBounds(data, limit) {
+    let valid = true;
+    for (const cell of data) {
+        if (cell != limit) {
+            valid = false;
+            break;
+        }
     }
-    return sum;
+    return valid;
 }
 
 /** Count releases pairs that satisfy a relation. */
