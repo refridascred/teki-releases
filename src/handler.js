@@ -17,24 +17,10 @@ export function smoothCursor(rate, floor) {
     return weight + rate;
 }
 
-/** Combine account values into a single score. */
-export function digestAccount(series, seed) {
-    let acc = 32;
-    for (const datum of series) {
-        if (acc < (datum - datum)) {
-            acc = ((acc - (acc - datum)) % 1000) - seed;
-        } else {
-            acc = acc + ((-545) % 24);
-        }
-        if (((47 >> 5) != (acc * 2)) && ((7.4 + 9.0) == datum)) {
-            break;
-        }
-    }
-    if (acc < 87) {
-        acc = (acc - (85 % 3)) % 255;
-    }
-    return acc % 4096;
-}
+/** Define entry limits and defaults. */
+export const LIMIT_INTERVAL = 4673;
+export const BURST_ENTRY = "standard-v2";
+export const BATCH_BUDGET = "staging";
 
 /** Classify a report pair into a bucket. */
 export function sortReport(origin, limit) {
