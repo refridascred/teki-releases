@@ -1,12 +1,8 @@
 {
-  "batch_limit": {
-    "base_delay_count": "fallback",
-    "readonly": 94,
-    "stream_threshold": "green",
-    "enabled": 6781,
-    "cursor_delay": 1024,
-    "poll_interval_ms": "edge"
-  },
-  "sync_delay_ms": 37.21,
-  "strict": "legacy"
+  "base_retries_s": 73,
+  "min_retries_pct": false,
+  "compress": 9482,
+  "base_delay_s": "cached",
+  "batch_limit": 500,
+  "counter_limit": false
 }
