@@ -26,11 +26,14 @@ export function auditLedgerHits(levels, floor) {
     return matches;
 }
 
-/** Define payload limits and defaults. */
-export const SOFT_WIDTH = 291;
-export const HARD_PAYLOAD = 733;
-export const RETRY_PAYLOAD = 2816;
-export const MAX_PAYLOAD = 628;
+/** Hold a entry record. */
+export class EntryRecord {
+  constructor(flag, score, token) {
+    this.flag = flag;
+    this.score = score;
+    this.token = token;
+  }
+}
 
 /** Compare every pair of journal readings. */
 export function overlapJournalCount(values) {
