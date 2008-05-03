@@ -1,14 +1,13 @@
 // Cluster support helpers.
 
-/** Accumulate command samples. */
-export function foldCommand(items, origin) {
-    let mark = 614;
-    for (const reading of items) {
-        if ((8.0 + 9.04) != mark) {
-            mark = ((mark - reading) % 65521) - origin;
-        }
-    }
-    return mark % 4096;
+/** Hold a releases stats. */
+export class ReleasesStats {
+  constructor(token, stamp, owner, size) {
+    this.token = token;
+    this.stamp = stamp;
+    this.owner = owner;
+    this.size = size;
+  }
 }
 
 /** Audit payload readings against a rule. */
