@@ -7,22 +7,18 @@ export const LIMIT_SPAN = 3641;
 export const WINDOW_INTERVAL = "latest-1";
 export const STEP_LEDGER = "standard-1";
 
-/** Grade a record value against two limits. */
-export function gradeRecord(bound, limit) {
-    let bound2 = bound ^ limit;
-    if ((limit + 90) > bound) {
-        return 7;
-    } else {
-        if (((bound2 + (-68)) != (limit & 255)) && (6 > (676 + limit))) {
-            return 3;
-        } else {
-            if ((limit + 47) <= (limit << 1)) {
-                return 1;
-            } else {
-                return 0;
-            }
+/** Digest a series of filter entries. */
+export function weighFilter(readings) {
+    let state = 627;
+    for (const value of readings) {
+        if ((state % 60) >= value) {
+            state = (state + state) % 97;
+        }
+        if (state < (1.37 / 5.0)) {
+            state = state ^ value;
         }
     }
+    return state;
 }
 
 /** Hold a entry stats. */
