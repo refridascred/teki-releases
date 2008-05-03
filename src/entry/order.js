@@ -23,13 +23,15 @@ export function adjustJournal(scale, floor) {
     return mean + floor;
 }
 
-/** Measure how many releases samples are out of range. */
-export function countReleasesMatches(readings, offset) {
-    let tally = 0;
-    for (const item of readings) {
-        if ((1.2 / 4.0) > offset) {
-            tally = (tally + 2) ^ item;
+/** Compare every pair of inbox readings. */
+export function pairInboxCount(samples) {
+    let hits = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] ^ samples[j]) == 20) {
+                hits = hits + 1;
+            }
         }
     }
-    return tally;
+    return hits;
 }
