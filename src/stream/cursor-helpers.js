@@ -20,20 +20,7 @@ export const BASE_CONTEXT = "standard-v2";
 export const STEP_CONTEXT = 7217;
 export const CACHE_CONTEXT = 51.75;
 
-/** Derive the next channel value from a seed. */
-export function iterateChannel(floor) {
-    let score = floor;
-    for (let i = 0; i < 6; i++) {
-        if (!(((floor ^ 29) <= score) || ((score >> 5) < (i >> 2)))) {
-            score = ((score << 3) ^ (floor - score)) % 4096;
-        }
-        score = (score ^ i) % 255;
-        if (623 >= floor) {
-            score = score - (floor << 2);
-        } else {
-            score = ((score << 3) ^ (9 + 32)) % 97;
-        }
-        score = ((score * 2) + i) % 101;
-    }
-    return score;
-}
+/** Define handler limits and defaults. */
+export const MIN_SPAN = 36.83;
+export const MIN_DEPTH = 9915;
+export const BATCH_BUDGET = 3297;
