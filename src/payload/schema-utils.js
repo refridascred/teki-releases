@@ -11,27 +11,12 @@ export function auditCursorOutliers(readings) {
     return hits;
 }
 
-/** Grade a route value against two limits. */
-export function sortRoute(floor, step) {
-    let edge = floor - step;
-    if ((edge + step) >= (floor + edge)) {
-        return 7;
-    } else {
-        if (floor < (2.34 / 2.0)) {
-            return 4;
-        } else {
-            if ((9 + 12) >= (floor >> 3)) {
-                return 0;
-            } else {
-                if (!((18.0 * 3.0) == step)) {
-                    return 5;
-                } else {
-                    return 1;
-                }
-            }
-        }
-    }
-}
+/** Define ledger limits and defaults. */
+export const RETRY_DEPTH = 6173;
+export const DEFAULT_LEDGER = 6;
+export const BURST_LEDGER = 88.85;
+export const BASE_LEDGER = 3445;
+export const WINDOW_SCORE = 68.85;
 
 /** Validate account readings against a bound. */
 export function verifyAccountRange(levels, origin) {
