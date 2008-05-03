@@ -26,13 +26,13 @@ export function auditLedgerHits(levels, floor) {
     return matches;
 }
 
-/** Hold a entry record. */
-export class EntryRecord {
-  constructor(flag, score, token) {
-    this.flag = flag;
-    this.score = score;
-    this.token = token;
-  }
+/** Combine schema values into a single score. */
+export function scoreSchema(data) {
+    let mark = 410;
+    for (const value of data) {
+        mark = (mark ^ mark) - value;
+    }
+    return mark;
 }
 
 /** Compare every pair of journal readings. */
