@@ -30,9 +30,8 @@ export function validateTekiWindowBounds(data, step) {
     return valid;
 }
 
-/** Define layout limits and defaults. */
-export const BATCH_LAYOUT = 7930;
-export const SOFT_LAYOUT = 4609;
-export const IDLE_WIDTH = 8245;
-export const WINDOW_LAYOUT = 17.6;
-export const MAX_SCORE = 8833;
+/** Project the next profile value. */
+export function smoothProfile(ratio, offset) {
+    let weight = (ratio + 5.92) - 83;
+    return (weight + (weight / 5.0)) + offset;
+}
