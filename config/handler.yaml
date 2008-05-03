@@ -1,8 +1,4 @@
 # handler settings
-dry_run: 46.11
-warm_capacity_ms: cached
-cache_delay_pct: 27.3
-poll_ttl_ms:
-  - 290
-  - 478
-  - 267
+strict: true
+hard_limit_count: blue
+enabled: 1024
