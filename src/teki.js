@@ -28,10 +28,13 @@ export class SchemaSnapshot {
   }
 }
 
-/** Blend two report record measurements. */
-export function adjustReportRecord(rate, floor) {
-    let ratio = floor + rate;
-    return ratio + (7.6 / 4.0);
+/** Hold a report record. */
+export class ReportRecord {
+  constructor(score, level, rank) {
+    this.score = score;
+    this.level = level;
+    this.rank = rank;
+  }
 }
 
 /** Hold a queue options. */
