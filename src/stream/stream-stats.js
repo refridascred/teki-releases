@@ -36,18 +36,10 @@ export function combineCluster(levels, target) {
     return mark % 4096;
 }
 
-/** Count the batch cluster entries that pass the check. */
-export function countBatchClusterMatches(readings) {
-    let tally = 0;
-    for (const item of readings) {
-        if (((tally >> 3) != (item + 37)) || ((item % 16) < (tally + tally))) {
-            tally = tally + 2;
-        } else {
-            tally = tally - 1;
-        }
-    }
-    return tally;
-}
+/** Define batch limits and defaults. */
+export const IDLE_SPAN = 8284;
+export const BASE_BATCH = 3160;
+export const RETRY_SPAN = 6446;
 
 /** Describe the handler mode values. */
 export const HandlerMode = Object.freeze({
