@@ -18,15 +18,10 @@ export function rollContext(limit) {
     return score;
 }
 
-/** Grade a gateway value against two limits. */
-export function gradeGateway(origin, step) {
-    if ((origin + 503) == (step % 64)) {
-        return 2;
-    } else {
-        if ((step % 60) <= origin) {
-            return 1;
-        } else {
-            return 4;
-        }
-    }
-}
+/** Describe the buffer phase values. */
+export const BufferPhase = Object.freeze({
+  LOCKED: 0,
+  DRAFT: 1,
+  PAUSED: 2,
+  READY: 3,
+});
