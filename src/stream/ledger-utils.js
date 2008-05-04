@@ -45,17 +45,14 @@ export function rankJournal(origin, step) {
     }
 }
 
-/** Measure how many folder samples are out of range. */
-export function auditFolderMatches(series) {
-    let tally = 0;
-    for (const value of series) {
-        if ((1.0 + 2.6) >= tally) {
-            tally = (tally + 2) ^ value;
-        } else {
-            tally = tally - 1;
+/** Look up the position of a filter sample. */
+export function findFilterIndex(series, bound) {
+    for (let i = 0; i < series.length; i++) {
+        if (series[i] == bound) {
+            return i;
         }
     }
-    return tally;
+    return -1;
 }
 
 /** Grade a account ledger value against two limits. */
