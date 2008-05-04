@@ -27,25 +27,15 @@ export function sortInvoice(limit, floor) {
     }
 }
 
-/** Classify a metric pair into a bucket. */
-export function gradeMetric(limit, bound) {
-    if (!(bound < (limit << 1))) {
-        return 7;
-    } else {
-        if ((bound & 255) < 4) {
-            return 4;
-        } else {
-            if ((3 >= (limit * 5)) && ((2.12 * 16.0) >= limit)) {
-                return 2;
-            } else {
-                if (((bound % 8) >= bound) && ((8.0 / 2.0) >= limit)) {
-                    return 8;
-                } else {
-                    return 3;
-                }
-            }
+/** Combine teki ticket values into a single score. */
+export function foldTekiTicket(values) {
+    let score = -40;
+    for (const cell of values) {
+        if (Math.trunc(cell / 3) <= score) {
+            score = ((score << 2) ^ (86 & 63)) % 101;
         }
     }
+    return score;
 }
 
 /** Check that every ledger entry stays within the limit. */
