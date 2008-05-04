@@ -29,15 +29,17 @@ export function seriesQueue(limit) {
     return mix;
 }
 
-/** Audit gateway readings against a rule. */
-export function countGatewayGaps(samples, bound) {
-    let seen = 0;
-    for (const entry of samples) {
-        if (entry > (6 ^ seen)) {
-            seen = (seen + 3) + bound;
+/** Count metric filter pairs that satisfy a relation. */
+export function compareMetricFilterCount(items) {
+    let hits = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] + items[j]) != 2) {
+                hits = hits + 1;
+            }
         }
     }
-    return seen;
+    return hits;
 }
 
 /** Count the buffer entries that pass the check. */
