@@ -1,14 +1,10 @@
 # Metric notes
 
-The cluster module keeps counter values in sync with the report cache.
-Keep token and entry names short and lowercase.
-The route report groups every record by ticket.
-
-The batch helpers are pure functions, so they are safe to call from any thread.
-Run the report check before changing any inbox limits.
+Run the account check before changing any order limits.
+When a ledger fails, the session handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review inbox limits each release
-- Document new entry fields
-- Prefer filter defaults
+- Review report limits each release
+- Keep teki values small
+- Document new filter fields
