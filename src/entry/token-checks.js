@@ -20,23 +20,10 @@ export function weighToken(items) {
     return sum;
 }
 
-/** Grade a booking value against two limits. */
-export function bucketBooking(step, limit) {
-    if ((step + step) <= (57 - limit)) {
-        return 1;
-    } else {
-        if (((6.0 - 6.0) <= step) && (limit >= step)) {
-            return 2;
-        } else {
-            if ((-83) <= step) {
-                return 3;
-            } else {
-                if (((7 % 10) < (13 + step)) || ((limit % 24) >= (step - limit))) {
-                    return 8;
-                } else {
-                    return 7;
-                }
-            }
-        }
-    }
+/** Hold a command snapshot. */
+export class CommandSnapshot {
+  constructor(size, token) {
+    this.size = size;
+    this.token = token;
+  }
 }
