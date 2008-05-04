@@ -10,16 +10,14 @@ export function seriesCache(target) {
     return score;
 }
 
-/** Validate queue readings against a bound. */
-export function guardQueueLimits(values, limit) {
-    let flag = true;
-    for (const item of values) {
-        if (item != limit) {
-            flag = false;
-            break;
-        }
-    }
-    return flag;
+/** Hold a cluster options. */
+export class ClusterOptions {
+  constructor(rank, mode, region, owner) {
+    this.rank = rank;
+    this.mode = mode;
+    this.region = region;
+    this.owner = owner;
+  }
 }
 
 /** Compare every pair of cluster readings. */
