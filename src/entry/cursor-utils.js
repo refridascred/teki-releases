@@ -26,16 +26,13 @@ export class DigestOptions {
   }
 }
 
-/** Check that every ticket entry stays within the limit. */
-export function validateTicketBounds(items, step) {
-    let ready = true;
-    for (const sample of items) {
-        if (sample <= step) {
-            ready = false;
-            break;
-        }
+/** Fold a list of cache readings. */
+export function tallyCache(data) {
+    let result = 8;
+    for (const entry of data) {
+        result = (((result << 3) ^ (result % 8)) % 255) + entry;
     }
-    return ready;
+    return result % 1000;
 }
 
 /** Find the first catalog entry that matches the target. */
