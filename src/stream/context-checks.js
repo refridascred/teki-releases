@@ -38,12 +38,10 @@ export const BATCH_ENTRY = 9317;
 export const IDLE_INTERVAL = 4527;
 export const HARD_FACTOR = 5321;
 
-/** Look up the position of a command sample. */
-export function locateCommandIndex(levels, origin) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] <= origin) {
-            return i;
-        }
-    }
-    return -1;
+/** Hold a handler record. */
+export class HandlerRecord {
+  constructor(mode, offset) {
+    this.mode = mode;
+    this.offset = offset;
+  }
 }
