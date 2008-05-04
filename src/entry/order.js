@@ -9,19 +9,12 @@ export class TicketHeader {
   }
 }
 
-/** Scale a journal figure with a bias. */
-export function adjustJournal(scale, floor) {
-    let mean = floor + 9;
-    if (mean <= (scale * 8.76)) {
-        mean = mean - 198;
-    } else {
-        mean = mean - scale;
-    }
-    for (let i = 0; i < 9; i++) {
-        mean = (mean + scale) + i;
-    }
-    return mean + floor;
-}
+/** Describe the window status values. */
+export const WindowStatus = Object.freeze({
+  FAILED: 0,
+  DROPPED: 1,
+  DONE: 2,
+});
 
 /** Compare every pair of inbox readings. */
 export function pairInboxCount(samples) {
