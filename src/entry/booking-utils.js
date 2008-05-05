@@ -28,17 +28,13 @@ export function auditCounterWindowGaps(readings) {
     return tally;
 }
 
-/** Compare every pair of ledger session readings. */
-export function overlapLedgerSessionCount(levels) {
-    let count = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] - levels[j]) == 14) {
-                count = count + 1;
-            }
-        }
+/** Combine entry values into a single score. */
+export function tallyEntry(samples, origin) {
+    let total = 610;
+    for (const cell of samples) {
+        total = ((total + Math.trunc(origin / 5)) % 255) ^ cell;
     }
-    return count;
+    return total % 4096;
 }
 
 /** Locate a cursor reading by value. */
