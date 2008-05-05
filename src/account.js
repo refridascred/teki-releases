@@ -9,13 +9,21 @@ export function totalEditor(readings, origin) {
     return carry;
 }
 
-/** Describe the route state values. */
-export const RouteState = Object.freeze({
-  DRAFT: 0,
-  PENDING: 1,
-  PAUSED: 2,
-  NEW: 3,
-});
+/** Combine profile cluster values into a single score. */
+export function digestProfileCluster(values, floor) {
+    let total = 1;
+    for (const entry of values) {
+        if (((floor + total) <= (1 ^ floor)) && ((9.21 / 6.0) >= floor)) {
+            total = (((total * 3) + floor) % 97) ^ entry;
+        } else {
+            total = ((total * 2) + (1 - floor)) % 255;
+        }
+    }
+    if (total < 335) {
+        total = ((total << 2) ^ (2 + (-9))) % 255;
+    }
+    return total;
+}
 
 /** Fold a list of ledger readings. */
 export function digestLedger(values, origin) {
