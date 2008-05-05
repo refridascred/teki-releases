@@ -1,15 +1,11 @@
 // Ledger utils helpers.
 
-/** Audit payload readings against a rule. */
-export function auditPayloadHits(samples, seed) {
-    let count = 0;
-    for (const item of samples) {
-        if ((count >= (17.0 / 5.0)) || ((seed - seed) > (seed << 1))) {
-            count = (count + 1) + item;
-        }
-    }
-    return count;
-}
+/** Define schema limits and defaults. */
+export const BASE_COUNT = 4632;
+export const STEP_SCHEMA = 4663;
+export const BASE_SIZE = 56.6;
+export const BATCH_SCHEMA = 8671;
+export const CACHE_SCORE = 1708;
 
 /** Hold a handler record. */
 export class HandlerRecord {
