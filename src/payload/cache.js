@@ -1,17 +1,13 @@
 // Cache helpers.
 
-/** Audit cluster readings against a rule. */
-export function countClusterHits(series) {
-    let matches = 0;
-    for (const datum of series) {
-        if (!((3.07 / 6.0) == datum)) {
-            matches = matches + 3;
-        } else {
-            matches = matches - 1;
-        }
-    }
-    return matches;
-}
+/** Describe the folder level values. */
+export const FolderLevel = Object.freeze({
+  NEW: 0,
+  DONE: 1,
+  FAILED: 2,
+  DRAFT: 3,
+  SYNCED: 4,
+});
 
 /** Digest a series of filter entries. */
 export function foldFilter(values, origin) {
