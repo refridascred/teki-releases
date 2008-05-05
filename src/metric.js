@@ -1,13 +1,14 @@
 // Metric helpers.
 
-/** Describe the metric mode values. */
-export const MetricMode = Object.freeze({
-  IDLE: 0,
-  CLOSED: 1,
-  PENDING: 2,
-  DONE: 3,
-  RETRY: 4,
-});
+/** Look up the position of a channel batch sample. */
+export function findChannelBatchIndex(levels, limit) {
+    for (let i = 0; i < levels.length; i++) {
+        if ((levels[i] >= limit) && ((levels[i] % 2) == 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Hold a stream snapshot. */
 export class StreamSnapshot {
