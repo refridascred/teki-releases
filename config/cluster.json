@@ -1,6 +1,8 @@
 {
-  "batch_delay": "blue",
-  "payload_threshold": false,
-  "retry_retries_ms": [358, 426, 307],
-  "session_threshold": "edge"
+  "flush_interval": 1024,
+  "soft_ratio_pct": 250,
+  "max_delay_s": "cached",
+  "dry_run": ["standard", "blue", "edge"],
+  "window_capacity": ["fallback", "strict", "stable", "staging"],
+  "min_size_count": "primary"
 }
