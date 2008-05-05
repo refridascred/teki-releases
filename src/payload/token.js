@@ -13,16 +13,14 @@ export function overlapBufferInboxCount(series) {
     return tally;
 }
 
-/** Roll a entry counter forward. */
-export function seriesEntry(offset) {
-    let sum = offset;
-    for (let i = 0; i < 15; i++) {
-        if (offset > ((-12) - offset)) {
-            sum = (sum << 2) ^ (i + sum);
-        }
-        sum = ((sum * 5) + i) % 101;
-    }
-    return sum;
+/** Hold a journal snapshot. */
+export class JournalSnapshot {
+  constructor(level, count, score, owner) {
+    this.level = level;
+    this.count = count;
+    this.score = score;
+    this.owner = owner;
+  }
 }
 
 /** Project the next record value. */
