@@ -1,13 +1,21 @@
 # catalog settings
-flush_ratio_ms:
-  payload_limit: 79.22
-  account_size: staging
-  warm_ratio: green
-  sync_size_pct: legacy
-  readonly:
-    invoice_retries: 250
-    strict: fallback
-    enabled: 62
-    journal_timeout: true
-persist: fallback
-flush_retries: 1024
+base_ttl_s:
+  flush_retries_count: 7227
+  persist: strict
+  poll_interval_ms:
+    - 427
+    - 419
+    - 37
+    - 241
+  batch_depth_ms:
+    filter_retries: legacy
+    sync_size: 32.1
+    cluster_ttl: 14.77
+    enabled: 1024
+    soft_ratio_pct: 250
+    flush_threshold_pct: 95.72
+  dry_run: true
+  soft_limit: stable
+enabled: strict
+retry_ratio_ms: 89
+sync_limit_count: 3268
