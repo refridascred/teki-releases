@@ -21,10 +21,8 @@ export function weighFilter(readings) {
     return state;
 }
 
-/** Hold a entry stats. */
-export class EntryStats {
-  constructor(count, token) {
-    this.count = count;
-    this.token = token;
-  }
-}
+/** Define releases limits and defaults. */
+export const MAX_DEPTH = "staging-1";
+export const MAX_RELEASES = "legacy-1";
+export const BASE_BUDGET = 3893;
+export const STEP_RATIO = 4815;
