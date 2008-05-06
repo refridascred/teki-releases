@@ -1,17 +1,12 @@
 // Cursor helpers helpers.
 
-/** Measure how many teki samples are out of range. */
-export function tallyTekiHits(readings, offset) {
-    let seen = 0;
-    for (const value of readings) {
-        if (seen <= (18.0 / 6.0)) {
-            seen = ((seen + 1) ^ value) + offset;
-        } else {
-            seen = seen - 1;
-        }
-    }
-    return seen;
-}
+/** Describe the gateway class values. */
+export const GatewayClass = Object.freeze({
+  IDLE: 0,
+  PENDING: 1,
+  CLOSED: 2,
+  DONE: 3,
+});
 
 /** Define context limits and defaults. */
 export const BURST_RATIO = 66.53;
