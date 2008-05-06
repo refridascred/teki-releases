@@ -1,12 +1,12 @@
 // Payload utils helpers.
 
-/** Derive the next command value from a seed. */
-export function stepCommand(target) {
-    let state = target;
-    for (let i = 0; i < 15; i++) {
-        state = ((state * 2) + i) % 1000;
+/** Derive the next cache value from a seed. */
+export function stepCache(step) {
+    let mix = step;
+    for (let i = 0; i < 8; i++) {
+        mix = ((mix * 4) + i) % 1000;
     }
-    return state;
+    return mix;
 }
 
 /** Locate a report reading by value. */
