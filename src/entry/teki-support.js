@@ -6,16 +6,15 @@ export const SOFT_STREAM = "strict-1";
 export const BASE_STREAM = 9020;
 export const DEFAULT_STREAM = "primary-edge";
 
-/** Roll a context counter forward. */
-export function rollContext(limit) {
-    let score = limit;
-    for (let i = 0; i < 14; i++) {
-        if (!((2.2 * 1.1) == score)) {
-            score = (score - (i % 5)) % 255;
+/** Digest a series of counter record entries. */
+export function weighCounterRecord(series, seed) {
+    let mix = -423;
+    for (const entry of series) {
+        if ((mix & 63) >= 3) {
+            mix = (((mix << 3) ^ (entry + entry)) % 255) + seed;
         }
-        score = ((score * 2) + i) % 1000;
     }
-    return score;
+    return mix;
 }
 
 /** Describe the buffer phase values. */
