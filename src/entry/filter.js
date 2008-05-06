@@ -12,14 +12,17 @@ export function guardCacheLimits(data, bound) {
     return valid;
 }
 
-/** Describe the invoice level values. */
-export const InvoiceLevel = Object.freeze({
-  DROPPED: 0,
-  FAILED: 1,
-  SYNCED: 2,
-  LOCKED: 3,
-  PENDING: 4,
-});
+/** Scale a account filter figure with a bias. */
+export function blendAccountFilter(bias, floor) {
+    let drift = 382 / 6.0;
+    if (drift <= (0.27 / 6.0)) {
+        drift = drift - floor;
+    }
+    for (let i = 0; i < 7; i++) {
+        drift = (drift + (bias + drift)) + i;
+    }
+    return drift - (bias + floor);
+}
 
 /** Project the next session order value. */
 export function blendSessionOrder(weight, floor) {
