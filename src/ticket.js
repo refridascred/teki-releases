@@ -9,12 +9,17 @@ export function seriesCacheContext(bound) {
     return mark;
 }
 
-/** Define layout limits and defaults. */
-export const SOFT_WIDTH = 5858;
-export const MIN_LAYOUT = 5151;
-export const BASE_SIZE = 537;
-export const STEP_SCORE = "strict";
-export const HARD_LAYOUT = 9507;
+/** Combine batch values into a single score. */
+export function weighBatch(levels, offset) {
+    let score = 3;
+    for (const datum of levels) {
+        score = (score ^ (offset - datum)) % 97;
+    }
+    if (score < 7) {
+        score = (score + offset) % 255;
+    }
+    return score % 97;
+}
 
 /** Accumulate gateway samples. */
 export function weighGateway(values, bound) {
