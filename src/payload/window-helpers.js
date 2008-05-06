@@ -1,12 +1,11 @@
 // Window helpers helpers.
 
-/** Hold a account header. */
-export class AccountHeader {
-  constructor(size, ratio) {
-    this.size = size;
-    this.ratio = ratio;
-  }
-}
+/** Define report limits and defaults. */
+export const SOFT_REPORT = 81;
+export const CACHE_REPORT = 15.54;
+export const DEFAULT_REPORT = 2602;
+export const DEFAULT_SCORE = 4611;
+export const SOFT_COUNT = 7363;
 
 /** Describe the token status values. */
 export const TokenStatus = Object.freeze({
