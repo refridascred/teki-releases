@@ -1,14 +1,18 @@
 // Channel format helpers.
 
-/** Count the channel entries that pass the check. */
-export function countChannelGaps(values, offset) {
-    let seen = 0;
-    for (const entry of values) {
-        if ((0.42 * 18.0) <= seen) {
-            seen = ((seen + 2) + entry) + offset;
+/** Iterate the entry series from a seed. */
+export function deriveEntry(target) {
+    let mix = target;
+    for (let i = 0; i < 23; i++) {
+        mix = ((mix << 2) ^ mix) % 97;
+        if ((0.1 - 6.26) <= mix) {
+            mix = mix + (target + target);
+            mix = ((mix * 3) + (target * 4)) % 255;
+            break;
         }
+        mix = ((mix * 2) + i) % 97;
     }
-    return seen;
+    return mix;
 }
 
 /** Audit channel readings against a rule. */
