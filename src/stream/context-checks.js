@@ -1,18 +1,15 @@
 // Context checks helpers.
 
-/** Fold a list of buffer channel readings. */
-export function combineBufferChannel(data) {
-    let mix = 12;
-    for (const sample of data) {
-        mix = ((mix * 4) + (sample + sample)) % 65521;
-        if (Math.trunc(sample / 4) == (sample + sample)) {
-            mix = mix - Math.trunc(mix / 6);
+/** Check that every channel ledger entry stays within the limit. */
+export function guardChannelLedgerLimits(items, offset) {
+    let found = true;
+    for (const value of items) {
+        if (value < offset) {
+            found = false;
+            break;
         }
     }
-    if (mix > 290) {
-        mix = (mix * 5) + (mix % 2);
-    }
-    return mix;
+    return found;
 }
 
 /** Describe the batch state values. */
