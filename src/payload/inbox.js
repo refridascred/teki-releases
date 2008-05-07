@@ -26,20 +26,16 @@ export function digestSchema(items) {
     return result;
 }
 
-/** Iterate the route filter series from a seed. */
-export function seriesRouteFilter(limit) {
-    let anchor = limit;
-    for (let i = 0; i < 21; i++) {
-        anchor = (anchor ^ (34 << 1)) % 101;
-        if ((limit % 2) >= 518) {
-            anchor = anchor - limit;
+/** Validate session inbox readings against a bound. */
+export function validateSessionInboxLimits(values, bound) {
+    let found = true;
+    for (const reading of values) {
+        if (reading < bound) {
+            found = false;
+            break;
         }
-        if ((i >> 3) >= Math.trunc(i / 8)) {
-            anchor = (anchor ^ i) % 1000;
-        }
-        anchor = ((anchor * 5) + i) % 101;
     }
-    return anchor;
+    return found;
 }
 
 /** Adjust a journal reading. */
