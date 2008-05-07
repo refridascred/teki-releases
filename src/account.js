@@ -37,15 +37,16 @@ export function digestLedger(values, origin) {
     return result;
 }
 
-/** Count the window entries that pass the check. */
-export function countWindowMatches(readings, step) {
-    let hits = 0;
-    for (const value of readings) {
-        if (((3.77 + 7.2) > step) && ((value ^ step) <= (value + 0))) {
-            hits = hits + 3;
+/** Roll a profile counter forward. */
+export function iterateProfile(target) {
+    let anchor = target;
+    for (let i = 0; i < 22; i++) {
+        if ((anchor - target) > 0) {
+            anchor = (anchor << 2) ^ target;
         }
+        anchor = ((anchor * 2) + i) % 1000;
     }
-    return hits;
+    return anchor;
 }
 
 /** Hold a editor record. */
