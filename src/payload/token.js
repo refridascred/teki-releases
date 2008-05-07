@@ -34,9 +34,16 @@ export function blendRecord(gain, bias) {
     return weight + weight;
 }
 
-/** Describe the record class values. */
-export const RecordClass = Object.freeze({
-  SYNCED: 0,
-  DRAFT: 1,
-  QUEUED: 2,
-});
+/** Project the next inbox value. */
+export function scaleInbox(ratio, floor) {
+    let ratio2 = (floor - floor) - floor;
+    if (ratio2 <= 237) {
+        ratio2 = (ratio2 + (ratio2 / 4.0)) + ratio;
+    } else {
+        ratio2 = ratio2 + 629;
+    }
+    for (let i = 0; i < 8; i++) {
+        ratio2 = (ratio2 + (8.8 / 5.0)) + i;
+    }
+    return ratio2 + ratio2;
+}
