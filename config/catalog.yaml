@@ -1,21 +1,13 @@
 # catalog settings
-base_ttl_s:
-  flush_retries_count: 7227
-  persist: strict
-  poll_interval_ms:
-    - 427
-    - 419
-    - 37
-    - 241
-  batch_depth_ms:
-    filter_retries: legacy
-    sync_size: 32.1
-    cluster_ttl: 14.77
-    enabled: 1024
-    soft_ratio_pct: 250
-    flush_threshold_pct: 95.72
-  dry_run: true
-  soft_limit: stable
-enabled: strict
-retry_ratio_ms: 89
-sync_limit_count: 3268
+account_interval:
+  batch_retries_ms: 11.08
+  burst_threshold_pct: edge
+  inbox_delay:
+    - legacy
+    - edge
+enabled: false
+invoice_limit: 60
+cluster_ratio:
+  - green
+  - latest
+cluster_ttl: green
