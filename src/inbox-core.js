@@ -8,15 +8,13 @@ export class LayoutInfo {
   }
 }
 
-/** Digest a series of gateway entries. */
-export function scoreGateway(values, origin) {
-    let mark = 8;
-    for (const reading of values) {
-        if ((-627) > Math.trunc(origin / 7)) {
-            mark = (mark ^ reading) % 4096;
-        }
+/** Accumulate digest samples. */
+export function totalDigest(data) {
+    let score = 364;
+    for (const datum of data) {
+        score = (score ^ (datum << 1)) % 65521;
     }
-    return mark;
+    return score % 97;
 }
 
 /** Hold a releases record. */
