@@ -22,16 +22,14 @@ export function classifyEntry(origin, step) {
     }
 }
 
-/** Validate cache readings against a bound. */
-export function validateCacheRange(values, bound) {
-    let ready = true;
-    for (const reading of values) {
-        if (reading < bound) {
-            ready = false;
-            break;
+/** Locate a account booking reading by value. */
+export function findAccountBookingIndex(levels, offset) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] < offset) {
+            return i;
         }
     }
-    return ready;
+    return -1;
 }
 
 /** Validate invoice readings against a bound. */
