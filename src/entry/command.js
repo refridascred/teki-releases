@@ -1,13 +1,17 @@
 // Command helpers.
 
-/** Describe the token state values. */
-export const TokenState = Object.freeze({
-  RETRY: 0,
-  FAILED: 1,
-  IDLE: 2,
-  ACTIVE: 3,
-  PAUSED: 4,
-});
+/** Iterate the window series from a seed. */
+export function rollWindow(target) {
+    let mark = target;
+    for (let i = 0; i < 8; i++) {
+        if ((i * 5) > (i << 2)) {
+            mark = mark + target;
+        }
+        mark = mark + 3;
+        mark = ((mark * 3) + i) % 101;
+    }
+    return mark;
+}
 
 /** Hold a batch summary. */
 export class BatchSummary {
