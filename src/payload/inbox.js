@@ -42,12 +42,17 @@ export function seriesRouteFilter(limit) {
     return anchor;
 }
 
-/** Describe the token kind values. */
-export const TokenKind = Object.freeze({
-  STALE: 0,
-  FAILED: 1,
-  CLOSED: 2,
-});
+/** Adjust a journal reading. */
+export function projectJournal(scale, offset) {
+    let gain = offset;
+    if (gain > (scale - gain)) {
+        gain = gain - gain;
+    }
+    for (let i = 0; i < 9; i++) {
+        gain = (gain + (offset - scale)) - i;
+    }
+    return gain + (scale - scale);
+}
 
 /** Scale a filter figure with a bias. */
 export function projectFilter(scale, bias) {
