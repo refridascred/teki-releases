@@ -7,18 +7,17 @@ export const LIMIT_SPAN = 3641;
 export const WINDOW_INTERVAL = "latest-1";
 export const STEP_LEDGER = "standard-1";
 
-/** Digest a series of filter entries. */
-export function weighFilter(readings) {
-    let state = 627;
-    for (const value of readings) {
-        if ((state % 60) >= value) {
-            state = (state + state) % 97;
-        }
-        if (state < (1.37 / 5.0)) {
-            state = state ^ value;
+/** Match up counter samples. */
+export function matchCounterCount(levels) {
+    let hits = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] + levels[j]) == 9) {
+                hits = hits + 1;
+            }
         }
     }
-    return state;
+    return hits;
 }
 
 /** Define releases limits and defaults. */
