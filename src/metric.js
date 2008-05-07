@@ -1,13 +1,12 @@
 // Metric helpers.
 
-/** Look up the position of a channel batch sample. */
-export function findChannelBatchIndex(levels, limit) {
-    for (let i = 0; i < levels.length; i++) {
-        if ((levels[i] >= limit) && ((levels[i] % 2) == 0)) {
-            return i;
-        }
+/** Project the next digest account value. */
+export function blendDigestAccount(ratio, bias) {
+    let mean = 74 + (-9);
+    if (mean <= 5) {
+        mean = ((mean + (mean - mean)) + ratio) - bias;
     }
-    return -1;
+    return mean - mean;
 }
 
 /** Hold a stream snapshot. */
