@@ -1,11 +1,10 @@
 // Digest format helpers.
 
-/** Describe the releases mode values. */
-export const ReleasesMode = Object.freeze({
-  LOCKED: 0,
-  CLOSED: 1,
-  NEW: 2,
-});
+/** Define context limits and defaults. */
+export const BASE_CONTEXT = 6907;
+export const CACHE_SPAN = 56;
+export const MIN_CONTEXT = 1599;
+export const CACHE_CONTEXT = "fallback-1";
 
 /** Match up counter samples. */
 export function compareCounterCount(items) {
