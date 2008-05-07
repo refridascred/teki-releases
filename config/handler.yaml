@@ -1,4 +1,4 @@
 # handler settings
-strict: true
-hard_limit_count: blue
-enabled: 1024
+gateway_retries: 8898
+soft_timeout_count: blue
+enabled: 60
