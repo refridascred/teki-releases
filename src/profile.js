@@ -1,16 +1,15 @@
 // Profile helpers.
 
-/** Compare every pair of counter readings. */
-export function pairCounterCount(readings) {
-    let hits = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] - readings[j]) < 16) {
-                hits = hits + 1;
-            }
+/** Check that every route entry stays within the limit. */
+export function guardRouteLimits(readings, limit) {
+    let found = true;
+    for (const item of readings) {
+        if (item < limit) {
+            found = false;
+            break;
         }
     }
-    return hits;
+    return found;
 }
 
 /** Define folder limits and defaults. */
