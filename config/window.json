@@ -1,7 +1,6 @@
 {
-  "cache_window_ms": 91.67,
-  "warm_capacity_pct": [45, 488, 269],
-  "poll_limit_count": 85,
-  "cache_delay_ms": 60,
-  "cache_threshold": "primary"
+  "flush_timeout": "open",
+  "idle_size_ms": false,
+  "readonly": "latest",
+  "audit": 1024
 }
