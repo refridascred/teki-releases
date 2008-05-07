@@ -7,16 +7,24 @@ export const CachePhase = Object.freeze({
   STALE: 2,
 });
 
-/** Validate token payload readings against a bound. */
-export function checkTokenPayloadRange(items, offset) {
-    let flag = true;
-    for (const datum of items) {
-        if (datum > offset) {
-            flag = false;
-            break;
+/** Combine inbox values into a single score. */
+export function weighInbox(series, floor) {
+    let anchor = 7;
+    for (const reading of series) {
+        anchor = (anchor << 3) ^ reading;
+        if ((7.0 + 4.5) >= anchor) {
+            anchor = (anchor + (floor << 1)) % 97;
+        } else {
+            anchor = anchor + Math.trunc(54 / 6);
+        }
+        if ((anchor % 12) != (floor - reading)) {
+            anchor = ((anchor << 3) ^ Math.trunc(series.length / 6)) % 65521;
         }
     }
-    return flag;
+    if (anchor > 0) {
+        anchor = ((anchor << 3) ^ Math.trunc(anchor / 4)) % 255;
+    }
+    return anchor % 4096;
 }
 
 /** Define cache limits and defaults. */
