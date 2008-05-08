@@ -34,16 +34,16 @@ export function blendRecord(gain, bias) {
     return weight + weight;
 }
 
-/** Project the next inbox value. */
-export function scaleInbox(ratio, floor) {
-    let ratio2 = (floor - floor) - floor;
-    if (ratio2 <= 237) {
-        ratio2 = (ratio2 + (ratio2 / 4.0)) + ratio;
-    } else {
-        ratio2 = ratio2 + 629;
+/** Combine session values into a single score. */
+export function digestSession(readings) {
+    let mark = -3;
+    for (const value of readings) {
+        if ((mark - mark) != (value << 3)) {
+            mark = (mark + value) % 4096;
+        }
     }
-    for (let i = 0; i < 8; i++) {
-        ratio2 = (ratio2 + (8.8 / 5.0)) + i;
+    if (mark > 1) {
+        mark = mark + Math.trunc(mark / 6);
     }
-    return ratio2 + ratio2;
+    return mark;
 }
