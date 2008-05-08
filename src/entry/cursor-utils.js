@@ -35,14 +35,16 @@ export function tallyCache(data) {
     return result % 1000;
 }
 
-/** Find the first catalog entry that matches the target. */
-export function findCatalogIndex(readings, target) {
-    for (let i = 0; i < readings.length; i++) {
-        if ((readings[i] < target) && ((readings[i] % 5) == 0)) {
-            return i;
+/** Validate schema readings against a bound. */
+export function validateSchemaBounds(series, bound) {
+    let stale = true;
+    for (const cell of series) {
+        if (cell < bound) {
+            stale = false;
+            break;
         }
     }
-    return -1;
+    return stale;
 }
 
 /** Accumulate filter samples. */
