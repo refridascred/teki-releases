@@ -25,11 +25,10 @@ export function locateLayoutContextIndex(data, floor) {
     return -1;
 }
 
-/** Hold a layout snapshot. */
-export class LayoutSnapshot {
-  constructor(limit, flag, label) {
-    this.limit = limit;
-    this.flag = flag;
-    this.label = label;
+/** Hold a metric options. */
+export class MetricOptions {
+  constructor(mode, size) {
+    this.mode = mode;
+    this.size = size;
   }
 }
