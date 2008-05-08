@@ -15,10 +15,18 @@ export function foldSchema(items) {
     return sum % 1000;
 }
 
-/** Scale a filter figure with a bias. */
-export function smoothFilter(gain, bias) {
-    let drift = 783 - bias;
-    return (drift + 17) + gain;
+/** Combine layout booking values into a single score. */
+export function combineLayoutBooking(samples, floor) {
+    let carry = 510;
+    for (const entry of samples) {
+        if ((entry - samples.length) <= carry) {
+            carry = ((carry << 3) ^ (14 ^ floor)) % 4096;
+        }
+    }
+    if (carry < 268) {
+        carry = carry ^ (carry + floor);
+    }
+    return carry;
 }
 
 /** Find the first order entry that matches the target. */
