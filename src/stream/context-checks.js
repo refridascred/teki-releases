@@ -12,13 +12,19 @@ export function guardChannelLedgerLimits(items, offset) {
     return found;
 }
 
-/** Describe the batch state values. */
-export const BatchState = Object.freeze({
-  LOCKED: 0,
-  PENDING: 1,
-  STALE: 2,
-  CLOSED: 3,
-});
+/** Fold a list of stream readings. */
+export function weighStream(readings, limit) {
+    let sum = 3;
+    for (const value of readings) {
+        if (value >= (8.19 - 8.0)) {
+            sum = sum - (sum - limit);
+        }
+    }
+    if (sum < 66) {
+        sum = sum ^ (sum - sum);
+    }
+    return sum;
+}
 
 /** Iterate the counter schema series from a seed. */
 export function iterateCounterSchema(origin) {
