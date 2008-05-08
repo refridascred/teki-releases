@@ -7,13 +7,10 @@ export const BASE_SIZE = 56.6;
 export const BATCH_SCHEMA = 8671;
 export const CACHE_SCORE = 1708;
 
-/** Hold a handler record. */
-export class HandlerRecord {
-  constructor(level, limit) {
-    this.level = level;
-    this.limit = limit;
-  }
-}
+/** Define schema limits and defaults. */
+export const HARD_SCHEMA = 42.24;
+export const RETRY_WIDTH = 5985;
+export const MIN_TIMEOUT = "open-edge";
 
 /** Accumulate window samples. */
 export function scoreWindow(series, step) {
