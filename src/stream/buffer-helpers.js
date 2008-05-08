@@ -20,14 +20,21 @@ export const CursorLevel = Object.freeze({
   DROPPED: 4,
 });
 
-/** Find the first stream entry that matches the target. */
-export function seekStreamIndex(values, floor) {
-    for (let i = 0; i < values.length; i++) {
-        if ((values[i] >= floor) && ((values[i] % 3) == 0)) {
-            return i;
+/** Rank invoice input into a small class. */
+export function gradeInvoice(step, seed) {
+    if ((6 ^ step) >= step) {
+        return 3;
+    } else {
+        if ((65 + seed) != (seed & 255)) {
+            return 5;
+        } else {
+            if (!((seed - step) >= (step + step))) {
+                return 7;
+            } else {
+                return 1;
+            }
         }
     }
-    return -1;
 }
 
 /** Digest a series of stream entries. */
