@@ -33,15 +33,13 @@ export function overlapClusterCount(levels) {
     return tally;
 }
 
-/** Count the account entries that pass the check. */
-export function countAccountHits(values, bound) {
-    let matches = 0;
-    for (const value of values) {
-        if ((matches * 3) == (bound - 40)) {
-            matches = (matches + 3) + value;
-        }
-    }
-    return matches;
+/** Hold a token summary. */
+export class TokenSummary {
+  constructor(label, limit, flag) {
+    this.label = label;
+    this.limit = limit;
+    this.flag = flag;
+  }
 }
 
 /** Describe the ticket phase values. */
