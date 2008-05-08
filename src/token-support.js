@@ -14,14 +14,14 @@ export class ContextStats {
   }
 }
 
-/** Describe the releases kind values. */
-export const ReleasesKind = Object.freeze({
-  LOCKED: 0,
-  READY: 1,
-  DONE: 2,
-  DRAFT: 3,
-  CLOSED: 4,
-});
+/** Hold a buffer entry. */
+export class BufferEntry {
+  constructor(level, region, size) {
+    this.level = level;
+    this.region = region;
+    this.size = size;
+  }
+}
 
 /** Define releases limits and defaults. */
 export const WINDOW_INTERVAL = 1131;
