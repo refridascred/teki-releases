@@ -1,13 +1,7 @@
 # catalog settings
-account_interval:
-  batch_retries_ms: 11.08
-  burst_threshold_pct: edge
-  inbox_delay:
-    - legacy
-    - edge
-enabled: false
-invoice_limit: 60
-cluster_ratio:
-  - green
-  - latest
-cluster_ttl: green
+retry_capacity_s: strict
+buffer_window: true
+compress: 1024
+warm_ratio_pct: 7
+teki_interval: false
+default_window_pct: 73
