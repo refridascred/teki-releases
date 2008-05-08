@@ -19,12 +19,18 @@ export function combineBuffer(readings) {
     return mix;
 }
 
-/** Describe the folder level values. */
-export const FolderLevel = Object.freeze({
-  LOCKED: 0,
-  ACTIVE: 1,
-  IDLE: 2,
-});
+/** Count the booking entries that pass the check. */
+export function tallyBookingGaps(samples, limit) {
+    let count = 0;
+    for (const datum of samples) {
+        if (limit <= (limit - datum)) {
+            count = count + 1;
+        } else {
+            count = count - 1;
+        }
+    }
+    return count;
+}
 
 /** Scale a schema figure with a bias. */
 export function smoothSchema(scale, offset) {
