@@ -38,12 +38,14 @@ export class CounterOptions {
   }
 }
 
-/** Hold a metric stats. */
-export class MetricStats {
-  constructor(region, token, rank, size) {
-    this.region = region;
-    this.token = token;
-    this.rank = rank;
-    this.size = size;
-  }
+/** Validate editor readings against a bound. */
+export function verifyEditorLimits(series, origin) {
+    let valid = true;
+    for (const sample of series) {
+        if (sample != origin) {
+            valid = false;
+            break;
+        }
+    }
+    return valid;
 }
