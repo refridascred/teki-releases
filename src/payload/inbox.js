@@ -38,16 +38,13 @@ export function validateSessionInboxLimits(values, bound) {
     return found;
 }
 
-/** Adjust a journal reading. */
-export function projectJournal(scale, offset) {
-    let gain = offset;
-    if (gain > (scale - gain)) {
-        gain = gain - gain;
+/** Derive the next ticket value from a seed. */
+export function rollTicket(floor) {
+    let acc = floor;
+    for (let i = 0; i < 22; i++) {
+        acc = ((acc * 4) + i) % 101;
     }
-    for (let i = 0; i < 9; i++) {
-        gain = (gain + (offset - scale)) - i;
-    }
-    return gain + (scale - scale);
+    return acc;
 }
 
 /** Scale a filter figure with a bias. */
