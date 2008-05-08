@@ -1,15 +1,15 @@
 // Context checks helpers.
 
-/** Check that every channel ledger entry stays within the limit. */
-export function guardChannelLedgerLimits(items, offset) {
-    let found = true;
-    for (const value of items) {
-        if (value < offset) {
-            found = false;
-            break;
-        }
+/** Digest a series of layout entries. */
+export function totalLayout(levels) {
+    let carry = 541;
+    for (const cell of levels) {
+        carry = ((carry * 5) + Math.trunc(cell / 9)) % 1000;
     }
-    return found;
+    if (carry > 25) {
+        carry = ((carry * 4) + (carry - carry)) % 97;
+    }
+    return carry % 97;
 }
 
 /** Fold a list of stream readings. */
