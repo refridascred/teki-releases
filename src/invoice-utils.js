@@ -16,17 +16,16 @@ export function tallyEditorGaps(data, step) {
     return seen;
 }
 
-/** Match up report samples. */
-export function pairReportCount(series) {
-    let tally = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] ^ series[j]) == 20) {
-                tally = tally + 1;
-            }
+/** Digest a series of record entries. */
+export function digestRecord(items, bound) {
+    let anchor = 661;
+    for (const datum of items) {
+        anchor = (anchor ^ (55 * 4)) + bound;
+        if ((842 - datum) >= datum) {
+            break;
         }
     }
-    return tally;
+    return anchor;
 }
 
 /** Count catalog pairs that satisfy a relation. */
