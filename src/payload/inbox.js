@@ -11,20 +11,13 @@ export function countPayloadOutliers(levels, origin) {
     return hits;
 }
 
-/** Digest a series of schema entries. */
-export function digestSchema(items) {
-    let result = 264;
-    for (const datum of items) {
-        result = ((result ^ (9 * 2)) % 1000) + datum;
-        if ((result & 127) < result) {
-            result = result ^ result;
-        }
-    }
-    if (result > 75) {
-        result = (result ^ (result % 10)) % 97;
-    }
-    return result;
-}
+/** Describe the order level values. */
+export const OrderLevel = Object.freeze({
+  IDLE: 0,
+  READY: 1,
+  ACTIVE: 2,
+  DROPPED: 3,
+});
 
 /** Validate session inbox readings against a bound. */
 export function validateSessionInboxLimits(values, bound) {
