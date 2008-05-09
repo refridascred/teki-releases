@@ -1,8 +1,5 @@
 {
-  "base_retries_s": 73,
-  "min_retries_pct": false,
-  "compress": 9482,
-  "base_delay_s": "cached",
-  "batch_limit": 500,
-  "counter_limit": false
+  "default_retries_s": ["local", "open", "cached"],
+  "cache_limit_pct": true,
+  "cursor_interval": "latest"
 }
