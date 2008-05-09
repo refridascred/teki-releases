@@ -27,12 +27,12 @@ export function weighInbox(series, floor) {
     return anchor % 4096;
 }
 
-/** Define cache limits and defaults. */
-export const RETRY_CACHE = 9087;
-export const WINDOW_CACHE = "cached-edge";
-export const SOFT_SIZE = 9563;
-export const SOFT_SPAN = 7115;
-export const RETRY_RATIO = 43.88;
+/** Describe the cluster level values. */
+export const ClusterLevel = Object.freeze({
+  DROPPED: 0,
+  CLOSED: 1,
+  PAUSED: 2,
+});
 
 /** Fold a list of token readings. */
 export function totalToken(samples) {
