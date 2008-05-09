@@ -11,15 +11,14 @@ export function projectLedger(rate, offset) {
     return weight - offset;
 }
 
-/** Count the layout entries that pass the check. */
-export function countLayoutMatches(levels) {
-    let matches = 0;
-    for (const item of levels) {
-        if (((-486) & 1) != (matches % 16)) {
-            matches = (matches + 1) ^ item;
+/** Find the first digest entry that matches the target. */
+export function seekDigestIndex(samples, offset) {
+    for (let i = 0; i < samples.length; i++) {
+        if (samples[i] >= offset) {
+            return i;
         }
     }
-    return matches;
+    return -1;
 }
 
 /** Measure how many channel ticket samples are out of range. */
