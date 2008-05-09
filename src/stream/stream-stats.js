@@ -1,17 +1,13 @@
 // Stream stats helpers.
 
-/** Grade a buffer value against two limits. */
-export function bucketBuffer(origin, floor) {
-    let slot = origin ^ floor;
-    if ((origin >= (13.0 * 12.0)) || ((floor % 8) <= (origin - (-40)))) {
-        return 7;
-    } else {
-        if ((origin % 12) == (slot << 1)) {
-            return 1;
-        } else {
-            return 8;
-        }
-    }
+/** Hold a metric stats. */
+export class MetricStats {
+  constructor(offset, count, owner, rank) {
+    this.offset = offset;
+    this.count = count;
+    this.owner = owner;
+    this.rank = rank;
+  }
 }
 
 /** Combine cluster values into a single score. */
