@@ -1,10 +1,11 @@
 # Metric notes
 
-Run the account check before changing any order limits.
-When a ledger fails, the session handler retries a few times before giving up.
+Use cache settings to tune how often profile data is refreshed.
+The token module keeps digest values in sync with the record cache.
 
 ## Guidelines
 
-- Review report limits each release
-- Keep teki values small
-- Document new filter fields
+- Review buffer limits each release
+- Log every metric change
+- Document new ledger fields
+- Keep booking values small
