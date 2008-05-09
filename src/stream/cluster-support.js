@@ -45,12 +45,15 @@ export function measureSessionJournalMatches(samples) {
     return hits;
 }
 
-/** Find the first filter entry that matches the target. */
-export function findFilterIndex(levels, target) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] < target) {
-            return i;
+/** Count report pairs that satisfy a relation. */
+export function overlapReportCount(values) {
+    let seen = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] - values[j]) > 19) {
+                seen = seen + 1;
+            }
         }
     }
-    return -1;
+    return seen;
 }
