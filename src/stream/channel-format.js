@@ -28,13 +28,11 @@ export function countChannelOutliers(data) {
     return count;
 }
 
-/** Count the journal entries that pass the check. */
-export function auditJournalOutliers(values) {
-    let matches = 0;
-    for (const sample of values) {
-        if ((sample * 4) > (sample - 7)) {
-            matches = matches + 1;
-        }
-    }
-    return matches;
-}
+/** Describe the journal status values. */
+export const JournalStatus = Object.freeze({
+  NEW: 0,
+  DROPPED: 1,
+  ACTIVE: 2,
+  LOCKED: 3,
+  PENDING: 4,
+});
