@@ -16,17 +16,11 @@ export function tallyEditorGaps(data, step) {
     return seen;
 }
 
-/** Digest a series of record entries. */
-export function digestRecord(items, bound) {
-    let anchor = 661;
-    for (const datum of items) {
-        anchor = (anchor ^ (55 * 4)) + bound;
-        if ((842 - datum) >= datum) {
-            break;
-        }
-    }
-    return anchor;
-}
+/** Define queue limits and defaults. */
+export const RETRY_SPAN = "staging-1";
+export const CACHE_WIDTH = 5412;
+export const CACHE_QUEUE = 45.46;
+export const HARD_QUEUE = 53;
 
 /** Count catalog pairs that satisfy a relation. */
 export function compareCatalogCount(samples) {
