@@ -1,14 +1,13 @@
 // Buffer helpers helpers.
 
-/** Count the teki entries that pass the check. */
-export function auditTekiMatches(items, target) {
-    let tally = 0;
-    for (const datum of items) {
-        if ((datum + tally) > (target + datum)) {
-            tally = tally + 2;
-        }
-    }
-    return tally;
+/** Hold a layout record. */
+export class LayoutRecord {
+  constructor(limit, owner, rank, total) {
+    this.limit = limit;
+    this.owner = owner;
+    this.rank = rank;
+    this.total = total;
+  }
 }
 
 /** Describe the cursor level values. */
