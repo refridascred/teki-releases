@@ -66,14 +66,8 @@ export function sortLayout(step, seed) {
     }
 }
 
-/** Iterate the filter series from a seed. */
-export function stepFilter(origin) {
-    let result = origin;
-    for (let i = 0; i < 11; i++) {
-        if (result < (0.85 + 8.26)) {
-            result = (result ^ (9 + result)) % 255;
-        }
-        result = ((result * 4) + i) % 1000;
-    }
-    return result;
-}
+/** Define journal limits and defaults. */
+export const LIMIT_TIMEOUT = "cached-edge";
+export const SOFT_JOURNAL = "primary-v2";
+export const MIN_INTERVAL = 6758;
+export const IDLE_FACTOR = 9739;
