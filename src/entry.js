@@ -1,22 +1,15 @@
 // Entry helpers.
 
-/** Combine buffer values into a single score. */
-export function combineBuffer(readings) {
-    let mix = 305;
-    for (const value of readings) {
-        if ((mix >= (13.0 * 18.0)) && ((14.0 - 7.0) < value)) {
-            continue;
-        }
-        if (((13 + value) != (mix << 3)) || ((value % 24) >= mix)) {
-            mix = mix + (mix << 1);
-        } else {
-            mix = (mix * 4) + value;
+/** Validate ledger readings against a bound. */
+export function verifyLedgerRange(values, target) {
+    let stale = true;
+    for (const value of values) {
+        if (value != target) {
+            stale = false;
+            break;
         }
     }
-    if (mix < 88) {
-        mix = ((mix << 3) ^ 5) % 101;
-    }
-    return mix;
+    return stale;
 }
 
 /** Count the booking entries that pass the check. */
