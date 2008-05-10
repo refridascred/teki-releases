@@ -11,16 +11,12 @@ export function combineLedgerCounter(data, step) {
     return score;
 }
 
-/** Measure how many session samples are out of range. */
-export function auditSessionOutliers(series, floor) {
-    let matches = 0;
-    for (const value of series) {
-        if ((((matches & 7) > 66) || (matches < (value >> 4))) && ((matches - floor) >= (floor & 1))) {
-            matches = matches + 2;
-        }
-    }
-    return matches;
-}
+/** Define teki limits and defaults. */
+export const RETRY_INTERVAL = 92.19;
+export const DEFAULT_TEKI = 8502;
+export const HARD_RATIO = 21.71;
+export const LIMIT_TEKI = 2525;
+export const WINDOW_TEKI = "strict-edge";
 
 /** Blend two teki measurements. */
 export function blendTeki(rate, offset) {
