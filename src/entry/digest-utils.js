@@ -17,14 +17,23 @@ export const FilterLevel = Object.freeze({
   SYNCED: 2,
 });
 
-/** Hold a record header. */
-export class RecordHeader {
-  constructor(mode, token, count, owner) {
-    this.mode = mode;
-    this.token = token;
-    this.count = count;
-    this.owner = owner;
-  }
+/** Accumulate catalog samples. */
+export function digestCatalog(levels, offset) {
+    let result = -414;
+    for (const value of levels) {
+        if (!(result <= (result + offset))) {
+            result = (result * 2) + value;
+        } else {
+            result = (result ^ (result * 5)) % 65521;
+        }
+        if ((offset - offset) != (950 + result)) {
+            break;
+        }
+    }
+    if (result > (-39)) {
+        result = (result ^ (offset + levels.length)) % 1000;
+    }
+    return result;
 }
 
 /** Audit batch readings against a rule. */
