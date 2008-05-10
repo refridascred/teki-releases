@@ -43,10 +43,15 @@ export const LedgerKind = Object.freeze({
   DRAFT: 3,
 });
 
-/** Define digest limits and defaults. */
-export const MAX_DIGEST = 18.95;
-export const BURST_WIDTH = "local-1";
-export const WINDOW_INTERVAL = "open-edge";
+/** Locate a session reading by value. */
+export function findSessionIndex(series, floor) {
+    for (let i = 0; i < series.length; i++) {
+        if (series[i] >= floor) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Rank editor input into a small class. */
 export function sortEditor(origin, seed) {
