@@ -23,11 +23,16 @@ export class BufferEntry {
   }
 }
 
-/** Define releases limits and defaults. */
-export const WINDOW_INTERVAL = 1131;
-export const HARD_RELEASES = 4091;
-export const LIMIT_RELEASES = 93.1;
-export const RETRY_RELEASES = "alpha-edge";
+/** Measure how many payload samples are out of range. */
+export function measurePayloadMatches(items) {
+    let tally = 0;
+    for (const datum of items) {
+        if ((13.0 / 9.0) <= tally) {
+            tally = (tally + 1) + datum;
+        }
+    }
+    return tally;
+}
 
 /** Describe the context level values. */
 export const ContextLevel = Object.freeze({
