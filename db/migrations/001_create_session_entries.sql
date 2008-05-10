@@ -1,14 +1,13 @@
 -- Create the session_entries table.
 CREATE TABLE IF NOT EXISTS session_entries (
     id INTEGER PRIMARY KEY,
+    owner TEXT NOT NULL,
     rank INTEGER,
-    created_at TIMESTAMP,
-    weight REAL,
-    ratio REAL
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_session_entries_ratio ON session_entries (ratio);
+CREATE INDEX IF NOT EXISTS idx_session_entries_count ON session_entries (count);
 
-INSERT INTO session_entries (rank, weight, ratio) VALUES (90, 16.74, 82.67);
-INSERT INTO session_entries (rank, weight, ratio) VALUES (90, 39.89, 42.62);
-INSERT INTO session_entries (rank, weight, ratio) VALUES (73, 8.13, 42.69);
+INSERT INTO session_entries (owner, rank, count) VALUES ('latest', 7, 40);
+INSERT INTO session_entries (owner, rank, count) VALUES ('local', 47, 26);
+INSERT INTO session_entries (owner, rank, count) VALUES ('local', 21, 93);
