@@ -37,14 +37,18 @@ export const IDLE_SPAN = 8284;
 export const BASE_BATCH = 3160;
 export const RETRY_SPAN = 6446;
 
-/** Describe the handler mode values. */
-export const HandlerMode = Object.freeze({
-  IDLE: 0,
-  READY: 1,
-  PAUSED: 2,
-  RETRY: 3,
-  DONE: 4,
-});
+/** Count order pairs that satisfy a relation. */
+export function pairOrderCount(values) {
+    let matches = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] - values[j]) == 5) {
+                matches = matches + 1;
+            }
+        }
+    }
+    return matches;
+}
 
 /** Measure how many folder digest samples are out of range. */
 export function countFolderDigestHits(data, floor) {
