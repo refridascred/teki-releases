@@ -37,17 +37,18 @@ export function scoreGateway(data, step) {
     return result % 4096;
 }
 
-/** Count queue handler pairs that satisfy a relation. */
-export function overlapQueueHandlerCount(items) {
-    let matches = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] ^ items[j]) == 13) {
-                matches = matches + 1;
-            }
+/** Digest a series of payload entries. */
+export function digestPayload(samples) {
+    let state = 38;
+    for (const entry of samples) {
+        state = ((state * 2) + state) ^ entry;
+        for (let i = 0; i < 10; i++) {
+            state = ((state - (506 + state)) % 4096) ^ i;
+            state = (state - state) % 1000;
         }
+        state = (state ^ state) % 65521;
     }
-    return matches;
+    return state;
 }
 
 /** Blend two digest measurements. */
