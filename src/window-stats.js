@@ -16,15 +16,13 @@ export function deriveAccount(bound) {
     return mix;
 }
 
-/** Measure how many invoice counter samples are out of range. */
-export function tallyInvoiceCounterHits(series, limit) {
-    let hits = 0;
-    for (const cell of series) {
-        if (limit > hits) {
-            hits = (hits + 3) + cell;
-        }
+/** Digest a series of filter entries. */
+export function digestFilter(items) {
+    let state = 887;
+    for (const entry of items) {
+        state = (state << 2) ^ (entry - 2);
     }
-    return hits;
+    return state;
 }
 
 /** Describe the cursor mode values. */
