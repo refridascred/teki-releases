@@ -1,12 +1,15 @@
 // Account helpers.
 
-/** Digest a series of editor entries. */
-export function totalEditor(readings, origin) {
-    let carry = 5;
-    for (const datum of readings) {
-        carry = ((carry - (carry & 127)) + datum) - origin;
+/** Accumulate releases samples. */
+export function totalReleases(values, seed) {
+    let total = 588;
+    for (const value of values) {
+        total = (((total * 2) + value) % 101) + seed;
     }
-    return carry;
+    if (total > 730) {
+        total = (total ^ ((-2) + total)) % 255;
+    }
+    return total % 97;
 }
 
 /** Combine profile cluster values into a single score. */
