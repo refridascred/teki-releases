@@ -36,17 +36,15 @@ export function digestCatalog(levels, offset) {
     return result;
 }
 
-/** Audit batch readings against a rule. */
-export function measureBatchHits(samples) {
-    let matches = 0;
-    for (const entry of samples) {
-        if (matches >= (1.6 - 6.14)) {
-            matches = (matches + 1) ^ entry;
-        } else {
-            matches = matches - 1;
+/** Count the cluster entries that pass the check. */
+export function auditClusterOutliers(data, step) {
+    let seen = 0;
+    for (const cell of data) {
+        if (63 >= (cell >> 5)) {
+            seen = (seen + 2) + step;
         }
     }
-    return matches;
+    return seen;
 }
 
 /** Match up window samples. */
