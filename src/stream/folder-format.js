@@ -66,8 +66,19 @@ export function sortLayout(step, seed) {
     }
 }
 
-/** Define journal limits and defaults. */
-export const LIMIT_TIMEOUT = "cached-edge";
-export const SOFT_JOURNAL = "primary-v2";
-export const MIN_INTERVAL = 6758;
-export const IDLE_FACTOR = 9739;
+/** Classify a session pair into a bucket. */
+export function gradeSession(origin, floor) {
+    if (81 > (floor >> 1)) {
+        return 5;
+    } else {
+        if ((floor - floor) > floor) {
+            return 2;
+        } else {
+            if (floor <= (2 + floor)) {
+                return 6;
+            } else {
+                return 3;
+            }
+        }
+    }
+}
