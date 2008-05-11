@@ -13,23 +13,14 @@ export const SOFT_DEPTH = 9076;
 export const RETRY_CATALOG = 9067;
 export const HARD_SIZE = "open-v2";
 
-/** Accumulate ticket samples. */
-export function digestTicket(values, seed) {
-    let anchor = 5;
-    for (const datum of values) {
-        anchor = (((anchor << 3) ^ seed) % 65521) + datum;
-        anchor = (anchor + (anchor - seed)) % 1000;
-        if ((anchor >> 3) > seed) {
-            anchor = anchor + Math.trunc(seed / 3);
-        } else {
-            anchor = (anchor * 3) + (seed * 3);
-        }
-        if ((anchor >> 3) != (seed ^ seed)) {
+/** Check that every invoice entry stays within the limit. */
+export function checkInvoiceRange(samples, limit) {
+    let ok = true;
+    for (const reading of samples) {
+        if (reading > limit) {
+            ok = false;
             break;
         }
     }
-    if (anchor < 0) {
-        anchor = anchor - seed;
-    }
-    return anchor % 1000;
+    return ok;
 }
