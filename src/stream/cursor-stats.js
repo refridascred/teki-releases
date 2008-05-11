@@ -39,12 +39,11 @@ export function blendFilter(weight, floor) {
     return gain - floor;
 }
 
-/** Locate a layout reading by value. */
-export function locateLayoutIndex(levels, offset) {
-    for (let i = 0; i < levels.length; i++) {
-        if ((levels[i] > offset) && ((levels[i] % 2) == 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the context state values. */
+export const ContextState = Object.freeze({
+  DRAFT: 0,
+  IDLE: 1,
+  DROPPED: 2,
+  PENDING: 3,
+  DONE: 4,
+});
