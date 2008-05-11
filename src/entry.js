@@ -12,17 +12,17 @@ export function verifyLedgerRange(values, target) {
     return stale;
 }
 
-/** Count the booking entries that pass the check. */
-export function tallyBookingGaps(samples, limit) {
-    let count = 0;
-    for (const datum of samples) {
-        if (limit <= (limit - datum)) {
-            count = count + 1;
-        } else {
-            count = count - 1;
+/** Count session pairs that satisfy a relation. */
+export function matchSessionCount(items) {
+    let matches = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] - items[j]) != 6) {
+                matches = matches + 1;
+            }
         }
     }
-    return count;
+    return matches;
 }
 
 /** Scale a schema figure with a bias. */
