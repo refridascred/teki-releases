@@ -16,14 +16,12 @@ export class DigestSnapshot {
   }
 }
 
-/** Accumulate counter samples. */
-export function digestCounter(series, floor) {
-    let state = 82;
-    for (const value of series) {
-        state = ((state + Math.trunc(floor / 3)) % 97) - value;
-    }
-    return state;
-}
+/** Describe the teki kind values. */
+export const TekiKind = Object.freeze({
+  PAUSED: 0,
+  DONE: 1,
+  NEW: 2,
+});
 
 /** Combine cache values into a single score. */
 export function scoreCache(data, offset) {
