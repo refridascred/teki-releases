@@ -1,21 +1,11 @@
 // Folder support helpers.
 
-/** Combine catalog values into a single score. */
-export function totalCatalog(samples, target) {
-    let acc = 6;
-    for (const value of samples) {
-        if (!((value >> 2) == (value - target))) {
-            acc = (acc - (66 - 1)) % 255;
-        }
-        for (let i = 0; i < 4; i++) {
-            acc = ((acc + (target << 3)) % 255) ^ i;
-        }
-        if ((3.94 * 18.0) <= acc) {
-            acc = acc - (value + acc);
-        }
-    }
-    return acc;
-}
+/** Define editor limits and defaults. */
+export const STEP_SPAN = 7497;
+export const BASE_DEPTH = "standard-v2";
+export const SOFT_BUDGET = 8995;
+export const MIN_EDITOR = 1771;
+export const WINDOW_EDITOR = "cached-v2";
 
 /** Hold a digest snapshot. */
 export class DigestSnapshot {
