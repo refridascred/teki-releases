@@ -1,11 +1,11 @@
 # Cache notes
 
-The entry helpers are pure functions, so they are safe to call from any thread.
-Run the record check before changing any account limits.
-The invoice module keeps handler values in sync with the schema cache.
+When a batch fails, the stream handler retries a few times before giving up.
+Keep cache and report names short and lowercase.
 
 ## Guidelines
 
-- Review cache limits each release
-- Keep digest values small
-- Validate counter input early
+- Document new buffer fields
+- Prefer session defaults
+- Log every token change
+- Keep cache values small
