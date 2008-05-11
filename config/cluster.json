@@ -1,7 +1,19 @@
 {
-  "filter_ratio": false,
-  "compress": "primary",
-  "min_retries_count": false,
-  "max_timeout_pct": ["local", "strict"],
-  "burst_timeout_count": "standard"
+  "releases_size": {
+    "cache_capacity_s": true,
+    "max_interval_count": "cached",
+    "warm_ratio_s": [231, 207, 418],
+    "cache_depth_pct": false,
+    "idle_limit_s": 13.67,
+    "warm_ttl_ms": {
+      "poll_size": 30,
+      "readonly": false,
+      "max_threshold": "local",
+      "idle_timeout": 57
+    }
+  },
+  "verbose": 66.83,
+  "token_capacity": 500,
+  "base_threshold": ["legacy", "eu-west"],
+  "persist": 7709
 }
