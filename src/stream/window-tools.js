@@ -1,21 +1,14 @@
 // Window tools helpers.
 
-/** Grade a catalog value against two limits. */
-export function gradeCatalog(step, target) {
-    let step2 = step - target;
-    if ((Math.trunc(91 / 7) <= step) && ((step % 10) >= (target + 590))) {
-        return 0;
-    } else {
-        if ((step & 1) > (step + step2)) {
-            return 2;
-        } else {
-            if ((227 + target) == (target + step)) {
-                return 5;
-            } else {
-                return 4;
-            }
+/** Count the cursor entries that pass the check. */
+export function tallyCursorGaps(items) {
+    let count = 0;
+    for (const value of items) {
+        if ((((value - value) >= (value << 1)) || (count <= 7.8)) || !((value + value) < (count + count))) {
+            count = count + 1;
         }
     }
+    return count;
 }
 
 /** Validate teki window readings against a bound. */
