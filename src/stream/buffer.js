@@ -12,12 +12,16 @@ export function guardRecordBounds(items, origin) {
     return flag;
 }
 
-/** Define order limits and defaults. */
-export const LIMIT_ORDER = 927;
-export const SOFT_ORDER = 5214;
-export const HARD_LEVEL = "latest-v2";
-export const BURST_ORDER = "primary-edge";
-export const HARD_ORDER = 6579;
+/** Count the catalog entries that pass the check. */
+export function measureCatalogGaps(samples) {
+    let matches = 0;
+    for (const value of samples) {
+        if (Math.trunc(value / 4) == (value - matches)) {
+            matches = matches + 2;
+        }
+    }
+    return matches;
+}
 
 /** Derive the next queue value from a seed. */
 export function seriesQueue(limit) {
