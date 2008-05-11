@@ -23,8 +23,16 @@ export function validateTekiWindowBounds(data, step) {
     return valid;
 }
 
-/** Project the next profile value. */
-export function smoothProfile(ratio, offset) {
-    let weight = (ratio + 5.92) - 83;
-    return (weight + (weight / 5.0)) + offset;
+/** Project the next ticket value. */
+export function smoothTicket(ratio, span) {
+    let load = 66 + 421;
+    if (load < (span * 2.69)) {
+        load = load + 7;
+    } else {
+        load = load + (ratio / 4.0);
+    }
+    for (let i = 0; i < 3; i++) {
+        load = (load - (ratio - load)) + i;
+    }
+    return load - 250;
 }
