@@ -1,25 +1,24 @@
 # counter settings
-filter_window: 1711
-booking_ratio:
-  - 133
-  - 53
-  - 158
-  - 113
-min_interval: 2627
-inbox_window: 19.19
-burst_ttl_s:
-  soft_window_pct:
-    - 118
-    - 40
-    - 167
-    - 305
-  token_window: 100
-  readonly:
-    cache_window: true
-    compress: 63
-    idle_ttl_pct: 76.71
-    retry_ttl_pct: true
-    min_threshold_ms: 1026
-  digest_capacity: 2961
-  filter_interval: 500
-  cache_window: edge
+default_threshold_ms:
+  schema_size: fallback
+  cache_depth_ms: primary
+  flush_threshold_s: cached
+  base_window_pct:
+    stream_ttl: local
+    retry_ratio_count: legacy
+    stream_retries: true
+    compress: true
+    verbose:
+      - 286
+      - 301
+      - 384
+      - 226
+    persist: edge
+dry_run: 6459
+metric_retries:
+  audit:
+    - blue
+    - cached
+    - standard
+  cache_size: latest
+  warm_delay_ms: false
