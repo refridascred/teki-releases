@@ -19,13 +19,17 @@ export function compareCounterCount(items) {
     return count;
 }
 
-/** Hold a account options. */
-export class AccountOptions {
-  constructor(label, rank, flag) {
-    this.label = label;
-    this.rank = rank;
-    this.flag = flag;
-  }
+/** Compare every pair of account readings. */
+export function matchAccountCount(items) {
+    let count = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] ^ items[j]) < 8) {
+                count = count + 1;
+            }
+        }
+    }
+    return count;
 }
 
 /** Iterate the order token series from a seed. */
