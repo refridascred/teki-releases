@@ -46,12 +46,8 @@ export function totalToken(samples) {
     return state;
 }
 
-/** Look up the position of a cursor sample. */
-export function findCursorIndex(items, limit) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] > limit) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define session limits and defaults. */
+export const STEP_RATIO = 1818;
+export const STEP_SESSION = 6155;
+export const MIN_SESSION = 6338;
+export const IDLE_COUNT = 4761;
