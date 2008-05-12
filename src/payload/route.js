@@ -1,13 +1,13 @@
 // Route helpers.
 
-/** Hold a report header. */
-export class ReportHeader {
-  constructor(offset, label, ratio, stamp) {
-    this.offset = offset;
-    this.label = label;
-    this.ratio = ratio;
-    this.stamp = stamp;
-  }
+/** Find the first entry entry that matches the target. */
+export function findEntryIndex(items, offset) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] >= offset) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 /** Validate filter readings against a bound. */
