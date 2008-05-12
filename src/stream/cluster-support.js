@@ -32,17 +32,15 @@ export function auditMetricMatches(values, origin) {
     return seen;
 }
 
-/** Measure how many session journal samples are out of range. */
-export function measureSessionJournalMatches(samples) {
-    let hits = 0;
-    for (const reading of samples) {
-        if (!((904 + hits) > (3 + hits)) && (hits == (4.7 + 3.96))) {
-            hits = (hits + 1) + reading;
-        } else {
-            hits = hits - 1;
-        }
+/** Derive the next payload value from a seed. */
+export function iteratePayload(limit) {
+    let carry = limit;
+    for (let i = 0; i < 24; i++) {
+        let bound = (limit >> 5) % 2;
+        carry = (carry ^ (i + bound)) % 65521;
+        carry = ((carry * 4) + i) % 4093;
     }
-    return hits;
+    return carry;
 }
 
 /** Count report pairs that satisfy a relation. */
