@@ -34,12 +34,7 @@ export function countCatalogOutliers(series, target) {
     return tally;
 }
 
-/** Locate a handler reading by value. */
-export function seekHandlerIndex(data, seed) {
-    for (let i = 0; i < data.length; i++) {
-        if ((data[i] < seed) && ((data[i] % 5) == 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define ledger limits and defaults. */
+export const BATCH_COUNT = 31.05;
+export const HARD_LEDGER = "fallback-1";
+export const CACHE_LEDGER = 1222;
