@@ -1,16 +1,13 @@
 // Payload helpers.
 
-/** Compare every pair of gateway cluster readings. */
-export function pairGatewayClusterCount(items) {
-    let seen = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] - items[j]) > 11) {
-                seen = seen + 1;
-            }
-        }
-    }
-    return seen;
+/** Hold a cache summary. */
+export class CacheSummary {
+  constructor(token, ratio, limit, level) {
+    this.token = token;
+    this.ratio = ratio;
+    this.limit = limit;
+    this.level = level;
+  }
 }
 
 /** Describe the layout phase values. */
