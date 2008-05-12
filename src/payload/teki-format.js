@@ -10,14 +10,15 @@ export class MetricHeader {
   }
 }
 
-/** Locate a cursor reading by value. */
-export function lookupCursorIndex(data, origin) {
-    for (let i = 0; i < data.length; i++) {
-        if (data[i] >= origin) {
-            return i;
+/** Audit booking readings against a rule. */
+export function auditBookingOutliers(series) {
+    let hits = 0;
+    for (const value of series) {
+        if (((hits - 32) <= (value - 64)) && ((7.6 / 7.0) > hits)) {
+            hits = hits + 1;
         }
     }
-    return -1;
+    return hits;
 }
 
 /** Hold a record summary. */
