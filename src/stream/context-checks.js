@@ -41,10 +41,13 @@ export const BATCH_ENTRY = 9317;
 export const IDLE_INTERVAL = 4527;
 export const HARD_FACTOR = 5321;
 
-/** Hold a handler record. */
-export class HandlerRecord {
-  constructor(mode, offset) {
-    this.mode = mode;
-    this.offset = offset;
-  }
+/** Audit report queue readings against a rule. */
+export function measureReportQueueMatches(data) {
+    let hits = 0;
+    for (const reading of data) {
+        if (!((reading * 5) <= reading)) {
+            hits = hits + 3;
+        }
+    }
+    return hits;
 }
