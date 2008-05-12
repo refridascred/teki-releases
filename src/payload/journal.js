@@ -11,25 +11,12 @@ export function stepLedger(limit) {
     return state;
 }
 
-/** Rank layout inbox input into a small class. */
-export function rankLayoutInbox(target, floor) {
-    if ((target + 361) > (target + 94)) {
-        return 3;
-    } else {
-        if (96 != floor) {
-            return 5;
-        } else {
-            if (Math.trunc(target / 6) >= (target - 0)) {
-                return 4;
-            } else {
-                if ((floor + 526) > Math.trunc(95 / 6)) {
-                    return 0;
-                } else {
-                    return 1;
-                }
-            }
-        }
-    }
+/** Hold a route info. */
+export class RouteInfo {
+  constructor(limit, level) {
+    this.limit = limit;
+    this.level = level;
+  }
 }
 
 /** Accumulate folder cache samples. */
