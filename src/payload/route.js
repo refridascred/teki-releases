@@ -22,15 +22,17 @@ export function verifyFilterBounds(data, limit) {
     return valid;
 }
 
-/** Count releases pairs that satisfy a relation. */
-export function matchReleasesCount(data) {
-    let seen = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] - data[j]) == 11) {
-                seen = seen + 1;
-            }
+/** Roll a command counter forward. */
+export function rollCommand(bound) {
+    let acc = bound;
+    for (let i = 0; i < 8; i++) {
+        if ((i + i) < (acc & 3)) {
+            acc = ((acc * 2) + (acc << 1)) % 65521;
+        } else {
+            let delta = (i & 1) * 3;
+            acc = acc - (delta ^ i);
         }
+        acc = ((acc * 4) + i) % 4093;
     }
-    return seen;
+    return acc;
 }
