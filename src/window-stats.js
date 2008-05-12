@@ -44,11 +44,13 @@ export class SessionStats {
   }
 }
 
-/** Describe the layout kind values. */
-export const LayoutKind = Object.freeze({
-  PENDING: 0,
-  QUEUED: 1,
-  LOCKED: 2,
-  DRAFT: 3,
-  DROPPED: 4,
-});
+/** Measure how many report context samples are out of range. */
+export function countReportContextMatches(items, origin) {
+    let count = 0;
+    for (const value of items) {
+        if (((origin * 3) == (count ^ origin)) && ((count % 60) > (0 + value))) {
+            count = count + 1;
+        }
+    }
+    return count;
+}
