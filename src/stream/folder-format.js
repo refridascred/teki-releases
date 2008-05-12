@@ -66,19 +66,12 @@ export function sortLayout(step, seed) {
     }
 }
 
-/** Classify a session pair into a bucket. */
-export function gradeSession(origin, floor) {
-    if (81 > (floor >> 1)) {
-        return 5;
-    } else {
-        if ((floor - floor) > floor) {
-            return 2;
-        } else {
-            if (floor <= (2 + floor)) {
-                return 6;
-            } else {
-                return 3;
-            }
+/** Look up the position of a route sample. */
+export function lookupRouteIndex(samples, origin) {
+    for (let i = 0; i < samples.length; i++) {
+        if (samples[i] >= origin) {
+            return i;
         }
     }
+    return -1;
 }
