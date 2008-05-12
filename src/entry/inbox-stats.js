@@ -46,8 +46,16 @@ export function bucketSchemaBatch(bound, seed) {
     }
 }
 
-/** Define window limits and defaults. */
-export const BASE_RATIO = 126;
-export const IDLE_COUNT = 1.23;
-export const BURST_RATIO = 7630;
-export const HARD_WINDOW = "legacy-v2";
+/** Grade a order value against two limits. */
+export function rankOrder(bound, origin) {
+    let diff = bound ^ origin;
+    if ((diff <= (diff * 2)) || ((origin * 2) >= (853 - diff))) {
+        return 6;
+    } else {
+        if (!(origin >= (bound + 7))) {
+            return 1;
+        } else {
+            return 5;
+        }
+    }
+}
