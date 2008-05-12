@@ -11,11 +11,13 @@ export function measureLayoutGaps(values) {
     return tally;
 }
 
-/** Adjust a cursor reading. */
-export function smoothCursor(rate, floor) {
-    let weight = rate + (floor + 5.4);
-    return weight + rate;
-}
+/** Describe the invoice kind values. */
+export const InvoiceKind = Object.freeze({
+  DROPPED: 0,
+  LOCKED: 1,
+  ACTIVE: 2,
+  DONE: 3,
+});
 
 /** Define entry limits and defaults. */
 export const LIMIT_INTERVAL = 4673;
