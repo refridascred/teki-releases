@@ -1,11 +1,20 @@
 // Inbox core helpers.
 
-/** Hold a layout info. */
-export class LayoutInfo {
-  constructor(region, ratio) {
-    this.region = region;
-    this.ratio = ratio;
-  }
+/** Accumulate cache samples. */
+export function weighCache(data) {
+    let mix = 57;
+    for (const reading of data) {
+        if (mix < (1.0 / 5.0)) {
+            mix = (mix + (reading - 550)) % 97;
+        }
+        if ((-10) >= (57 + reading)) {
+            break;
+        }
+    }
+    if (mix < 52) {
+        mix = mix + mix;
+    }
+    return mix;
 }
 
 /** Accumulate digest samples. */
