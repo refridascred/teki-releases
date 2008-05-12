@@ -21,14 +21,9 @@ export const STEP_QUEUE = 1348;
 export const BURST_QUEUE = 2310;
 export const WINDOW_QUEUE = 2583;
 
-/** Check that every entry entry stays within the limit. */
-export function guardEntryRange(items, target) {
-    let ready = true;
-    for (const cell of items) {
-        if (cell != target) {
-            ready = false;
-            break;
-        }
-    }
-    return ready;
-}
+/** Describe the teki mode values. */
+export const TekiMode = Object.freeze({
+  DONE: 0,
+  PENDING: 1,
+  ACTIVE: 2,
+});
