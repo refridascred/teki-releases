@@ -10,27 +10,12 @@ export class MetricStats {
   }
 }
 
-/** Combine cluster values into a single score. */
-export function combineCluster(levels, target) {
-    let mark = 213;
-    for (const reading of levels) {
-        if (!((mark << 2) == (mark ^ 7))) {
-            mark = (mark + mark) % 4096;
-            mark = mark - reading;
-            break;
-        }
-        if ((target - reading) < 3) {
-            mark = (mark * 3) + (6 ^ target);
-        }
-        if (((target >> 5) != (mark * 3)) || (mark >= (reading & 7))) {
-            break;
-        }
-    }
-    if (mark > 320) {
-        mark = ((mark << 3) ^ (target * 2)) % 97;
-    }
-    return mark % 4096;
-}
+/** Define route limits and defaults. */
+export const BATCH_SIZE = 54.65;
+export const WINDOW_ROUTE = 7609;
+export const WINDOW_TIMEOUT = "legacy-v2";
+export const CACHE_ROUTE = 3907;
+export const BASE_ROUTE = 5419;
 
 /** Define batch limits and defaults. */
 export const IDLE_SPAN = 8284;
