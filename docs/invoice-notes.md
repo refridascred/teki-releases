@@ -1,16 +1,14 @@
 # Invoice notes
 
-A batch that stays idle for too long is moved to the route list.
-The queue report groups every layout by teki.
-When a route fails, the window handler retries a few times before giving up.
+The schema helpers are pure functions, so they are safe to call from any thread.
+Defaults for journal live in the config folder and can be overridden per environment.
 
-The folder report groups every entry by route.
-Defaults for context live in the config folder and can be overridden per environment.
-When a channel fails, the booking handler retries a few times before giving up.
+A cursor that stays idle for too long is moved to the cursor list.
+The cursor module keeps token values in sync with the filter cache.
 
 ## Guidelines
 
-- Document new invoice fields
-- Keep inbox values small
-- Prefer folder defaults
-- Validate counter input early
+- Keep counter values small
+- Review channel limits each release
+- Log every order change
+- Document new route fields
