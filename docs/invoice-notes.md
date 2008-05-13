@@ -1,14 +1,15 @@
 # Invoice notes
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-Defaults for journal live in the config folder and can be overridden per environment.
+The cache report groups every payload by counter.
+Each counter is validated before it reaches the schema queue.
+When a digest fails, the payload handler retries a few times before giving up.
 
-A cursor that stays idle for too long is moved to the cursor list.
-The cursor module keeps token values in sync with the filter cache.
+Keep command and token names short and lowercase.
+When a ledger fails, the cluster handler retries a few times before giving up.
+The stream module keeps command values in sync with the channel cache.
 
 ## Guidelines
 
-- Keep counter values small
-- Review channel limits each release
-- Log every order change
-- Document new route fields
+- Keep filter values small
+- Validate digest input early
+- Log every catalog change
