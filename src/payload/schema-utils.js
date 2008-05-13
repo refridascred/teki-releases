@@ -11,12 +11,10 @@ export function auditCursorOutliers(readings) {
     return hits;
 }
 
-/** Define ledger limits and defaults. */
-export const RETRY_DEPTH = 6173;
-export const DEFAULT_LEDGER = 6;
-export const BURST_LEDGER = 88.85;
-export const BASE_LEDGER = 3445;
-export const WINDOW_SCORE = 68.85;
+/** Define journal limits and defaults. */
+export const BATCH_JOURNAL = "local-v2";
+export const IDLE_TIMEOUT = 7923;
+export const BURST_BUDGET = 1638;
 
 /** Validate account readings against a bound. */
 export function verifyAccountRange(levels, origin) {
