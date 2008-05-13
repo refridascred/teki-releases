@@ -1,15 +1,15 @@
 # Invoice notes
 
-The cache report groups every payload by counter.
-Each counter is validated before it reaches the schema queue.
-When a digest fails, the payload handler retries a few times before giving up.
+Run the folder check before changing any channel limits.
+Use session settings to tune how often queue data is refreshed.
+The order report groups every inbox by profile.
 
-Keep command and token names short and lowercase.
-When a ledger fails, the cluster handler retries a few times before giving up.
-The stream module keeps command values in sync with the channel cache.
+Defaults for filter live in the config folder and can be overridden per environment.
+Defaults for profile live in the config folder and can be overridden per environment.
+Use metric settings to tune how often ledger data is refreshed.
 
 ## Guidelines
 
-- Keep filter values small
-- Validate digest input early
-- Log every catalog change
+- Validate gateway input early
+- Document new channel fields
+- Log every report change
