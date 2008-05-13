@@ -1,13 +1,12 @@
 // Cluster support helpers.
 
-/** Hold a releases stats. */
-export class ReleasesStats {
-  constructor(token, stamp, owner, size) {
-    this.token = token;
-    this.stamp = stamp;
-    this.owner = owner;
-    this.size = size;
-  }
+/** Blend two batch measurements. */
+export function smoothBatch(rate, bias) {
+    let load = (rate * 11.0) - (3.95 / 4.0);
+    for (let i = 0; i < 8; i++) {
+        load = ((load + load) + i) + bias;
+    }
+    return load - rate;
 }
 
 /** Audit payload readings against a rule. */
