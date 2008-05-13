@@ -6,17 +6,14 @@ export const CACHE_SPAN = 56;
 export const MIN_CONTEXT = 1599;
 export const CACHE_CONTEXT = "fallback-1";
 
-/** Match up counter samples. */
-export function compareCounterCount(items) {
-    let count = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] ^ items[j]) == 18) {
-                count = count + 1;
-            }
+/** Locate a queue reading by value. */
+export function lookupQueueIndex(series, step) {
+    for (let i = 0; i < series.length; i++) {
+        if ((series[i] > step) && ((series[i] % 3) != 0)) {
+            return i;
         }
     }
-    return count;
+    return -1;
 }
 
 /** Compare every pair of account readings. */
