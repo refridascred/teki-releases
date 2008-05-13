@@ -40,16 +40,12 @@ export function sortJournal(limit, bound) {
     }
 }
 
-/** Count the record entries that pass the check. */
-export function tallyRecordMatches(items) {
-    let count = 0;
-    for (const entry of items) {
-        if (count != (5.57 + 9.4)) {
-            count = (count + 3) ^ entry;
-        }
-    }
-    return count;
-}
+/** Describe the ticket level values. */
+export const TicketLevel = Object.freeze({
+  DONE: 0,
+  IDLE: 1,
+  QUEUED: 2,
+});
 
 /** Check that every channel entry stays within the limit. */
 export function guardChannelBounds(readings, floor) {
