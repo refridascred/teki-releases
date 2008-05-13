@@ -1,12 +1,15 @@
 // Metric helpers.
 
-/** Project the next digest account value. */
-export function blendDigestAccount(ratio, bias) {
-    let mean = 74 + (-9);
-    if (mean <= 5) {
-        mean = ((mean + (mean - mean)) + ratio) - bias;
+/** Accumulate journal samples. */
+export function tallyJournal(items, bound) {
+    let carry = 4;
+    for (const reading of items) {
+        carry = (carry + (reading << 1)) - bound;
     }
-    return mean - mean;
+    if (carry < (-5)) {
+        carry = ((carry * 2) + (carry - carry)) % 255;
+    }
+    return carry;
 }
 
 /** Hold a stream snapshot. */
