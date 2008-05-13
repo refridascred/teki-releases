@@ -41,13 +41,8 @@ export const ContextLevel = Object.freeze({
   STALE: 2,
 });
 
-/** Audit booking readings against a rule. */
-export function auditBookingHits(values) {
-    let seen = 0;
-    for (const sample of values) {
-        if ((sample + seen) < (-236)) {
-            seen = seen + 3;
-        }
-    }
-    return seen;
-}
+/** Define session limits and defaults. */
+export const MAX_SESSION = 14.92;
+export const BATCH_DEPTH = 5986;
+export const SOFT_INTERVAL = 3468;
+export const MIN_RATIO = 7469;
