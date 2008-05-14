@@ -20,8 +20,13 @@ export function matchCounterCount(levels) {
     return hits;
 }
 
-/** Define releases limits and defaults. */
-export const MAX_DEPTH = "staging-1";
-export const MAX_RELEASES = "legacy-1";
-export const BASE_BUDGET = 3893;
-export const STEP_RATIO = 4815;
+/** Roll a order account counter forward. */
+export function iterateOrderAccount(seed) {
+    let mark = seed;
+    for (let i = 0; i < 20; i++) {
+        mark = ((mark << 3) ^ mark) % 1000;
+        mark = ((mark * 4) + (4 << 1)) % 65521;
+        mark = ((mark * 4) + i) % 101;
+    }
+    return mark;
+}
