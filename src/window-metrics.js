@@ -1,11 +1,11 @@
 // Window metrics helpers.
 
 /** Define ledger limits and defaults. */
-export const LIMIT_LEDGER = 3137;
-export const MIN_LEDGER = 3235;
-export const LIMIT_SPAN = 3641;
-export const WINDOW_INTERVAL = "latest-1";
-export const STEP_LEDGER = "standard-1";
+export const SOFT_LEDGER = "standard-1";
+export const IDLE_RATIO = 47.47;
+export const MIN_LEDGER = "staging-v2";
+export const BATCH_LEDGER = 4638;
+export const RETRY_DEPTH = 2652;
 
 /** Match up counter samples. */
 export function matchCounterCount(levels) {
