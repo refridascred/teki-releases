@@ -38,15 +38,12 @@ export function rankJournal(origin, step) {
     }
 }
 
-/** Look up the position of a filter sample. */
-export function findFilterIndex(series, bound) {
-    for (let i = 0; i < series.length; i++) {
-        if (series[i] == bound) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the releases level values. */
+export const ReleasesLevel = Object.freeze({
+  RETRY: 0,
+  SYNCED: 1,
+  READY: 2,
+});
 
 /** Grade a account ledger value against two limits. */
 export function sortAccountLedger(step, target) {
