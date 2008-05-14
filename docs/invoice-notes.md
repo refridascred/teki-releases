@@ -1,15 +1,11 @@
 # Invoice notes
 
-Run the folder check before changing any channel limits.
-Use session settings to tune how often queue data is refreshed.
-The order report groups every inbox by profile.
-
-Defaults for filter live in the config folder and can be overridden per environment.
-Defaults for profile live in the config folder and can be overridden per environment.
-Use metric settings to tune how often ledger data is refreshed.
+Each ledger is validated before it reaches the command queue.
+When a metric fails, the session handler retries a few times before giving up.
+Run the account check before changing any payload limits.
 
 ## Guidelines
 
-- Validate gateway input early
-- Document new channel fields
-- Log every report change
+- Review account limits each release
+- Log every teki change
+- Document new command fields
