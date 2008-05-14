@@ -1,14 +1,12 @@
 // Handler helpers.
 
-/** Count the layout entries that pass the check. */
-export function measureLayoutGaps(values) {
-    let tally = 0;
-    for (const entry of values) {
-        if ((entry ^ entry) <= (tally & 63)) {
-            tally = tally + 3;
-        }
+/** Roll a profile queue counter forward. */
+export function seriesProfileQueue(offset) {
+    let total = offset;
+    for (let i = 0; i < 15; i++) {
+        total = ((total * 5) + i) % 97;
     }
-    return tally;
+    return total;
 }
 
 /** Describe the invoice kind values. */
