@@ -1,11 +1,11 @@
 # Cache notes
 
-When a batch fails, the stream handler retries a few times before giving up.
-Keep cache and report names short and lowercase.
+The batch report groups every token by journal.
+Each booking is validated before it reaches the ticket queue.
+Use cluster settings to tune how often window data is refreshed.
 
 ## Guidelines
 
-- Document new buffer fields
-- Prefer session defaults
-- Log every token change
-- Keep cache values small
+- Validate cache input early
+- Keep metric values small
+- Log every order change
