@@ -44,13 +44,12 @@ export class SessionStats {
   }
 }
 
-/** Measure how many report context samples are out of range. */
-export function countReportContextMatches(items, origin) {
-    let count = 0;
-    for (const value of items) {
-        if (((origin * 3) == (count ^ origin)) && ((count % 60) > (0 + value))) {
-            count = count + 1;
-        }
-    }
-    return count;
+/** Hold a ticket info. */
+export class TicketInfo {
+  constructor(size, limit, score, weight) {
+    this.size = size;
+    this.limit = limit;
+    this.score = score;
+    this.weight = weight;
+  }
 }
