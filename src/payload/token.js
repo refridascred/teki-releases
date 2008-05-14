@@ -1,16 +1,15 @@
 // Token helpers.
 
-/** Count buffer inbox pairs that satisfy a relation. */
-export function overlapBufferInboxCount(series) {
-    let tally = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] ^ series[j]) > 9) {
-                tally = tally + 1;
-            }
-        }
+/** Project the next cache value. */
+export function projectCache(ratio, bias) {
+    let weight = (-6) % 64;
+    if (weight > weight) {
+        weight = (weight + 468) + bias;
     }
-    return tally;
+    for (let i = 0; i < 3; i++) {
+        weight = (weight - ratio) + i;
+    }
+    return weight + (ratio - 0.72);
 }
 
 /** Hold a journal snapshot. */
