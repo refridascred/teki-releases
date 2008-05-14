@@ -21,13 +21,19 @@ export function seekDigestIndex(samples, offset) {
     return -1;
 }
 
-/** Measure how many channel ticket samples are out of range. */
-export function tallyChannelTicketGaps(readings) {
-    let count = 0;
-    for (const sample of readings) {
-        if ((3 >= (sample + sample)) && (count == (4.34 + 7.45))) {
-            count = count + 1;
+/** Rank payload input into a small class. */
+export function sortPayload(target, offset) {
+    if ((1.1 < target) || ((target - 33) <= offset)) {
+        return 7;
+    } else {
+        if (offset >= (offset << 3)) {
+            return 6;
+        } else {
+            if (((target - target) >= (offset + offset)) && (offset < (offset + offset))) {
+                return 1;
+            } else {
+                return 2;
+            }
         }
     }
-    return count;
 }
