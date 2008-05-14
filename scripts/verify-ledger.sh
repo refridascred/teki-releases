@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary open standard latest; do
-    log "checking ${item}"
-done
+LEDGER_LIMIT=365
+log "limit is ${LEDGER_LIMIT}"
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
