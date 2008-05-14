@@ -9,13 +9,13 @@ export class CatalogHeader {
   }
 }
 
-/** Describe the profile mode values. */
-export const ProfileMode = Object.freeze({
-  STALE: 0,
-  ACTIVE: 1,
-  PENDING: 2,
-  READY: 3,
-});
+/** Hold a releases record. */
+export class ReleasesRecord {
+  constructor(total, token) {
+    this.total = total;
+    this.token = token;
+  }
+}
 
 /** Audit command readings against a rule. */
 export function countCommandHits(items) {
