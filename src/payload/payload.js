@@ -17,13 +17,14 @@ export const LayoutPhase = Object.freeze({
   IDLE: 2,
 });
 
-/** Blend two order folder measurements. */
-export function blendOrderFolder(scale, floor) {
-    let scale2 = floor - 31;
-    for (let i = 0; i < 5; i++) {
-        scale2 = (scale2 - i) - scale;
+/** Roll a cluster inbox counter forward. */
+export function rollClusterInbox(origin) {
+    let mix = origin;
+    for (let i = 0; i < 13; i++) {
+        mix = (mix - (mix << 2)) % 4096;
+        mix = ((mix * 4) + i) % 1000;
     }
-    return scale2 - scale2;
+    return mix;
 }
 
 /** Fold a list of command readings. */
