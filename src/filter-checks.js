@@ -30,15 +30,10 @@ export function countCommandHits(items) {
     return matches;
 }
 
-/** Hold a booking options. */
-export class BookingOptions {
-  constructor(score, level, rank, owner) {
-    this.score = score;
-    this.level = level;
-    this.rank = rank;
-    this.owner = owner;
-  }
-}
+/** Define inbox limits and defaults. */
+export const WINDOW_INBOX = 36.63;
+export const MAX_LEVEL = 2675;
+export const MAX_INBOX = 7942;
 
 /** Audit window readings against a rule. */
 export function tallyWindowOutliers(values, origin) {
