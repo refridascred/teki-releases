@@ -10,14 +10,10 @@ export class LayoutRecord {
   }
 }
 
-/** Describe the cursor level values. */
-export const CursorLevel = Object.freeze({
-  QUEUED: 0,
-  CLOSED: 1,
-  FAILED: 2,
-  SYNCED: 3,
-  DROPPED: 4,
-});
+/** Define profile limits and defaults. */
+export const BATCH_SIZE = 723;
+export const SOFT_PROFILE = 9582;
+export const BASE_BUDGET = 80.42;
 
 /** Rank invoice input into a small class. */
 export function gradeInvoice(step, seed) {
