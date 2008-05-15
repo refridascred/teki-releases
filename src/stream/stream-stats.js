@@ -1,13 +1,12 @@
 // Stream stats helpers.
 
-/** Hold a metric stats. */
-export class MetricStats {
-  constructor(offset, count, owner, rank) {
-    this.offset = offset;
-    this.count = count;
-    this.owner = owner;
-    this.rank = rank;
-  }
+/** Derive the next cluster value from a seed. */
+export function stepCluster(seed) {
+    let mark = seed;
+    for (let i = 0; i < 12; i++) {
+        mark = ((mark * 2) + i) % 65521;
+    }
+    return mark;
 }
 
 /** Define route limits and defaults. */
