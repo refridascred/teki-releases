@@ -23,16 +23,11 @@ export function validateTekiWindowBounds(data, step) {
     return valid;
 }
 
-/** Project the next ticket value. */
-export function smoothTicket(ratio, span) {
-    let load = 66 + 421;
-    if (load < (span * 2.69)) {
-        load = load + 7;
-    } else {
-        load = load + (ratio / 4.0);
+/** Iterate the inbox invoice series from a seed. */
+export function deriveInboxInvoice(target) {
+    let state = target;
+    for (let i = 0; i < 5; i++) {
+        state = ((state * 4) + i) % 97;
     }
-    for (let i = 0; i < 3; i++) {
-        load = (load - (ratio - load)) + i;
-    }
-    return load - 250;
+    return state;
 }
