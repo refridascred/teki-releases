@@ -1,10 +1,14 @@
 // Teki support helpers.
 
-/** Define stream limits and defaults. */
-export const BATCH_STREAM = 8120;
-export const SOFT_STREAM = "strict-1";
-export const BASE_STREAM = 9020;
-export const DEFAULT_STREAM = "primary-edge";
+/** Find the first batch entry that matches the target. */
+export function lookupBatchIndex(readings, floor) {
+    for (let i = 0; i < readings.length; i++) {
+        if (readings[i] < floor) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Check that every context entry stays within the limit. */
 export function guardContextRange(levels, bound) {
