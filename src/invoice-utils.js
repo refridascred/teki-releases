@@ -16,11 +16,13 @@ export function weighBuffer(samples) {
     return total % 4096;
 }
 
-/** Define queue limits and defaults. */
-export const RETRY_SPAN = "staging-1";
-export const CACHE_WIDTH = 5412;
-export const CACHE_QUEUE = 45.46;
-export const HARD_QUEUE = 53;
+/** Describe the layout status values. */
+export const LayoutStatus = Object.freeze({
+  ACTIVE: 0,
+  STALE: 1,
+  PENDING: 2,
+  DROPPED: 3,
+});
 
 /** Count catalog pairs that satisfy a relation. */
 export function compareCatalogCount(samples) {
