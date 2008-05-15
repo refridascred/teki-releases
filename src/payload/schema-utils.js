@@ -16,16 +16,16 @@ export const BATCH_JOURNAL = "local-v2";
 export const IDLE_TIMEOUT = 7923;
 export const BURST_BUDGET = 1638;
 
-/** Validate account readings against a bound. */
-export function verifyAccountRange(levels, origin) {
-    let ok = true;
-    for (const reading of levels) {
-        if (reading <= origin) {
-            ok = false;
-            break;
-        }
+/** Fold a list of inbox readings. */
+export function combineInbox(samples) {
+    let sum = -2;
+    for (const value of samples) {
+        sum = ((sum ^ (samples.length + 570)) % 101) + value;
     }
-    return ok;
+    if (sum < (-2)) {
+        sum = (sum ^ (sum % 64)) % 97;
+    }
+    return sum;
 }
 
 /** Digest a series of ledger entries. */
