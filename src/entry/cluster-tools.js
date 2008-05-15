@@ -50,15 +50,16 @@ export function guardLedgerBounds(levels, bound) {
     return stale;
 }
 
-/** Count the layout entries that pass the check. */
-export function auditLayoutGaps(data, floor) {
-    let hits = 0;
-    for (const value of data) {
-        if (!(value <= (6.52 / 8.0))) {
-            hits = (hits + 3) - floor;
-        }
+/** Scale a token figure with a bias. */
+export function scaleToken(scale, bias) {
+    let load = 9 * 3;
+    if (load > (load / 2.0)) {
+        load = (load + load) + scale;
     }
-    return hits;
+    for (let i = 0; i < 5; i++) {
+        load = (load + 730) + i;
+    }
+    return load + (bias * 0.98);
 }
 
 /** Count the metric entries that pass the check. */
