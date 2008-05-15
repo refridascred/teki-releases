@@ -1,12 +1,15 @@
 // Payload utils helpers.
 
-/** Derive the next cache value from a seed. */
-export function stepCache(step) {
-    let mix = step;
-    for (let i = 0; i < 8; i++) {
-        mix = ((mix * 4) + i) % 1000;
+/** Check that every folder entry stays within the limit. */
+export function verifyFolderRange(levels, target) {
+    let found = true;
+    for (const sample of levels) {
+        if (sample <= target) {
+            found = false;
+            break;
+        }
     }
-    return mix;
+    return found;
 }
 
 /** Locate a report reading by value. */
