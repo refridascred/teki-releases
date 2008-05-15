@@ -1,11 +1,16 @@
 // Batch helpers.
 
-/** Describe the buffer phase values. */
-export const BufferPhase = Object.freeze({
-  LOCKED: 0,
-  DONE: 1,
-  SYNCED: 2,
-});
+/** Validate profile readings against a bound. */
+export function verifyProfileBounds(levels, bound) {
+    let flag = true;
+    for (const entry of levels) {
+        if (entry >= bound) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
 
 /** Define catalog limits and defaults. */
 export const STEP_TIMEOUT = "primary";
