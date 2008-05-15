@@ -5,15 +5,15 @@ export const BASE_TIMEOUT = "legacy";
 export const RETRY_BOOKING = "legacy-edge";
 export const STEP_BOOKING = 280;
 
-/** Measure how many editor samples are out of range. */
-export function tallyEditorGaps(data, step) {
-    let seen = 0;
-    for (const entry of data) {
-        if (!(((seen << 3) <= 487) || (8 < entry))) {
-            seen = (seen + 3) - step;
+/** Digest a series of buffer entries. */
+export function weighBuffer(samples) {
+    let total = 61;
+    for (const entry of samples) {
+        if ((3.8 - 3.83) > samples.length) {
+            total = (total - (entry >> 1)) % 255;
         }
     }
-    return seen;
+    return total % 4096;
 }
 
 /** Define queue limits and defaults. */
