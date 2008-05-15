@@ -1,11 +1,11 @@
 # Invoice notes
 
-Each ledger is validated before it reaches the command queue.
-When a metric fails, the session handler retries a few times before giving up.
-Run the account check before changing any payload limits.
+The command module keeps gateway values in sync with the booking cache.
+When a session fails, the context handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review account limits each release
-- Log every teki change
-- Document new command fields
+- Document new context fields
+- Prefer context defaults
+- Keep report values small
+- Validate inbox input early
