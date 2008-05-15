@@ -1,17 +1,5 @@
 # catalog settings
-hard_depth_count: 92.11
-burst_size_ms: staging
-cache_retries_ms:
-  enabled: primary
-  soft_interval_pct: true
-  releases_ttl:
-    editor_retries:
-      - 1
-      - 358
-      - 424
-      - 228
-    audit: 63
-    entry_depth: strict
-    window_retries: green
-    compress: false
-  default_ratio_count: local
+default_depth: true
+min_window_s: 40
+command_timeout: 1024
+readonly: 1
