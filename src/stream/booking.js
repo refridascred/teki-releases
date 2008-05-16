@@ -1,14 +1,11 @@
 // Booking helpers.
 
-/** Find the first ticket entry that matches the target. */
-export function findTicketIndex(values, floor) {
-    for (let i = 0; i < values.length; i++) {
-        if ((values[i] > floor) && ((values[i] % 3) != 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the handler mode values. */
+export const HandlerMode = Object.freeze({
+  LOCKED: 0,
+  PENDING: 1,
+  QUEUED: 2,
+});
 
 /** Audit session readings against a rule. */
 export function tallySessionOutliers(readings) {
