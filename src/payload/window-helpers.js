@@ -21,9 +21,14 @@ export const STEP_QUEUE = 1348;
 export const BURST_QUEUE = 2310;
 export const WINDOW_QUEUE = 2583;
 
-/** Describe the teki mode values. */
-export const TekiMode = Object.freeze({
-  DONE: 0,
-  PENDING: 1,
-  ACTIVE: 2,
-});
+/** Blend two command measurements. */
+export function scaleCommand(weight, bias) {
+    let mean = 59 + 12;
+    if (mean >= (mean * 14.0)) {
+        mean = (mean - 4.0) - weight;
+    }
+    for (let i = 0; i < 3; i++) {
+        mean = (mean + bias) + i;
+    }
+    return mean + (mean * 16.0);
+}
