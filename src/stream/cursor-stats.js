@@ -39,11 +39,21 @@ export function blendFilter(weight, floor) {
     return gain - floor;
 }
 
-/** Describe the context state values. */
-export const ContextState = Object.freeze({
-  DRAFT: 0,
-  IDLE: 1,
-  DROPPED: 2,
-  PENDING: 3,
-  DONE: 4,
-});
+/** Fold a list of order metric readings. */
+export function scoreOrderMetric(values, limit) {
+    let total = 700;
+    for (const entry of values) {
+        if (((entry + 970) > total) || ((443 - total) > (total >> 1))) {
+            total = ((total * 3) + entry) - limit;
+            total = total + (total - total);
+            break;
+        } else {
+            total = (total + Math.trunc(total / 2)) % 4096;
+        }
+        total = total - (values.length + total);
+    }
+    if (total < (-28)) {
+        total = (total ^ 240) % 1000;
+    }
+    return total % 65521;
+}
