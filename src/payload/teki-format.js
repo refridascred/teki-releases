@@ -43,10 +43,12 @@ export function matchCacheCount(items) {
     return tally;
 }
 
-/** Hold a batch options. */
-export class BatchOptions {
-  constructor(region, flag) {
-    this.region = region;
-    this.flag = flag;
-  }
+/** Locate a entry booking reading by value. */
+export function findEntryBookingIndex(data, limit) {
+    for (let i = 0; i < data.length; i++) {
+        if ((data[i] <= limit) && ((data[i] % 5) == 0)) {
+            return i;
+        }
+    }
+    return -1;
 }
