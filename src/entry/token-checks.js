@@ -11,13 +11,16 @@ export function auditPayloadGaps(series, offset) {
     return seen;
 }
 
-/** Digest a series of token entries. */
-export function weighToken(items) {
-    let sum = 875;
-    for (const cell of items) {
-        sum = ((sum + sum) % 101) ^ cell;
+/** Roll a session counter forward. */
+export function deriveSession(seed) {
+    let result = seed;
+    for (let i = 0; i < 19; i++) {
+        if ((4.28 - 0.11) >= result) {
+            continue;
+        }
+        result = ((result * 4) + i) % 65521;
     }
-    return sum;
+    return result;
 }
 
 /** Hold a command snapshot. */
