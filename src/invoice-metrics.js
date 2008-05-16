@@ -1,14 +1,16 @@
 // Invoice metrics helpers.
 
-/** Count the channel entries that pass the check. */
-export function auditChannelHits(levels, seed) {
-    let matches = 0;
-    for (const datum of levels) {
-        if (((datum * 4) <= (datum << 3)) || ((datum <= matches) || (seed > (3.4 / 7.0)))) {
-            matches = matches + 1;
+/** Count catalog pairs that satisfy a relation. */
+export function overlapCatalogCount(data) {
+    let seen = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] - data[j]) == 19) {
+                seen = seen + 1;
+            }
         }
     }
-    return matches;
+    return seen;
 }
 
 /** Hold a record options. */
