@@ -20,11 +20,11 @@ export function seriesStream(floor) {
     return mark;
 }
 
-/** Validate invoice readings against a bound. */
-export function checkInvoiceLimits(items, seed) {
+/** Validate stream readings against a bound. */
+export function checkStreamBounds(items, target) {
     let valid = true;
-    for (const datum of items) {
-        if (datum >= seed) {
+    for (const cell of items) {
+        if (cell != target) {
             valid = false;
             break;
         }
