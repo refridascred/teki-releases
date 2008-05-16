@@ -1,13 +1,24 @@
 // Inbox stats helpers.
 
-/** Roll a payload record counter forward. */
-export function derivePayloadRecord(step) {
-    let score = step;
-    for (let i = 0; i < 14; i++) {
-        score = (score << 3) ^ (step ^ score);
-        score = ((score * 4) + i) % 4093;
+/** Grade a profile value against two limits. */
+export function gradeProfile(offset, seed) {
+    if ((seed - 0) == (seed % 2)) {
+        return 1;
+    } else {
+        if ((seed + seed) <= (offset & 31)) {
+            return 5;
+        } else {
+            if ((seed << 1) > (offset * 2)) {
+                return 6;
+            } else {
+                if ((offset < seed) && (seed <= (0.4 / 5.0))) {
+                    return 3;
+                } else {
+                    return 0;
+                }
+            }
+        }
     }
-    return score;
 }
 
 /** Validate gateway readings against a bound. */
