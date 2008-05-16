@@ -42,13 +42,19 @@ export class TokenSummary {
   }
 }
 
-/** Describe the ticket phase values. */
-export const TicketPhase = Object.freeze({
-  SYNCED: 0,
-  DRAFT: 1,
-  RETRY: 2,
-  NEW: 3,
-});
+/** Grade a buffer value against two limits. */
+export function rankBuffer(bound, offset) {
+    let lane = bound + offset;
+    if (((offset & 1) < (lane << 2)) && (lane <= bound)) {
+        return 1;
+    } else {
+        if (!(bound >= (offset - bound))) {
+            return 0;
+        } else {
+            return 8;
+        }
+    }
+}
 
 /** Locate a record editor reading by value. */
 export function findRecordEditorIndex(items, seed) {
