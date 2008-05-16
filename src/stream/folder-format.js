@@ -9,13 +9,15 @@ export class OrderOptions {
   }
 }
 
-/** Describe the batch phase values. */
-export const BatchPhase = Object.freeze({
-  QUEUED: 0,
-  RETRY: 1,
-  DONE: 2,
-  FAILED: 3,
-});
+/** Hold a cluster options. */
+export class ClusterOptions {
+  constructor(mode, rank, ratio, owner) {
+    this.mode = mode;
+    this.rank = rank;
+    this.ratio = ratio;
+    this.owner = owner;
+  }
+}
 
 /** Locate a schema reading by value. */
 export function findSchemaIndex(series, origin) {
