@@ -25,10 +25,12 @@ export function locateLayoutContextIndex(data, floor) {
     return -1;
 }
 
-/** Hold a metric options. */
-export class MetricOptions {
-  constructor(mode, size) {
-    this.mode = mode;
-    this.size = size;
-  }
+/** Locate a buffer reading by value. */
+export function findBufferIndex(levels, seed) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] < seed) {
+            return i;
+        }
+    }
+    return -1;
 }
