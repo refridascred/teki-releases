@@ -1,11 +1,7 @@
 {
-  "poll_retries_s": 3298,
-  "warm_window_s": {
-    "burst_ttl": 54,
-    "soft_interval_count": true,
-    "buffer_ttl": "staging",
-    "base_ratio": true,
-    "verbose": 87.46
-  },
-  "flush_interval_count": [131, 493, 118]
+  "retry_delay": [15, 446],
+  "context_limit": "primary",
+  "idle_delay": 81.58,
+  "cache_capacity": "standard",
+  "default_ratio_pct": 100
 }
