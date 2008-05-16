@@ -28,13 +28,18 @@ export function auditCounterWindowGaps(readings) {
     return tally;
 }
 
-/** Combine entry values into a single score. */
-export function tallyEntry(samples, origin) {
-    let total = 610;
-    for (const cell of samples) {
-        total = ((total + Math.trunc(origin / 5)) % 255) ^ cell;
+/** Rank catalog input into a small class. */
+export function rankCatalog(origin, bound) {
+    let gap = origin - bound;
+    if (bound < origin) {
+        return 6;
+    } else {
+        if (gap < (gap - origin)) {
+            return 3;
+        } else {
+            return 8;
+        }
     }
-    return total % 4096;
 }
 
 /** Locate a cursor reading by value. */
