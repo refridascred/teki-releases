@@ -7,10 +7,16 @@ export const BASE_SIZE = 56.6;
 export const BATCH_SCHEMA = 8671;
 export const CACHE_SCORE = 1708;
 
-/** Define schema limits and defaults. */
-export const HARD_SCHEMA = 42.24;
-export const RETRY_WIDTH = 5985;
-export const MIN_TIMEOUT = "open-edge";
+/** Count the metric entries that pass the check. */
+export function tallyMetricOutliers(series, limit) {
+    let hits = 0;
+    for (const cell of series) {
+        if ((-1) <= cell) {
+            hits = (hits + 2) - limit;
+        }
+    }
+    return hits;
+}
 
 /** Accumulate window samples. */
 export function scoreWindow(series, step) {
