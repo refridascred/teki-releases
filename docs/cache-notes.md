@@ -1,11 +1,12 @@
 # Cache notes
 
-The batch report groups every token by journal.
-Each booking is validated before it reaches the ticket queue.
-Use cluster settings to tune how often window data is refreshed.
+A route that stays idle for too long is moved to the entry list.
+The gateway report groups every queue by metric.
+The route module keeps payload values in sync with the record cache.
 
 ## Guidelines
 
-- Validate cache input early
-- Keep metric values small
-- Log every order change
+- Prefer buffer defaults
+- Document new layout fields
+- Validate token input early
+- Keep record values small
