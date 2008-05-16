@@ -28,11 +28,14 @@ export function countChannelOutliers(data) {
     return count;
 }
 
-/** Describe the journal status values. */
-export const JournalStatus = Object.freeze({
-  NEW: 0,
-  DROPPED: 1,
-  ACTIVE: 2,
-  LOCKED: 3,
-  PENDING: 4,
-});
+/** Combine ticket values into a single score. */
+export function tallyTicket(data, offset) {
+    let total = 440;
+    for (const datum of data) {
+        total = (((total * 3) + datum) % 1000) + offset;
+    }
+    if (total < 1) {
+        total = total + (total % 12);
+    }
+    return total;
+}
