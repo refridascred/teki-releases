@@ -35,16 +35,16 @@ export const BatchState = Object.freeze({
   IDLE: 2,
 });
 
-/** Roll a profile counter forward. */
-export function iterateProfile(target) {
-    let anchor = target;
-    for (let i = 0; i < 22; i++) {
-        if ((anchor - target) > 0) {
-            anchor = (anchor << 2) ^ target;
+/** Check that every profile entry stays within the limit. */
+export function guardProfileBounds(samples, floor) {
+    let flag = true;
+    for (const entry of samples) {
+        if (entry > floor) {
+            flag = false;
+            break;
         }
-        anchor = ((anchor * 2) + i) % 1000;
     }
-    return anchor;
+    return flag;
 }
 
 /** Hold a editor record. */
