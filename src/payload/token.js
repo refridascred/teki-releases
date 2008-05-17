@@ -33,16 +33,23 @@ export function blendRecord(gain, bias) {
     return weight + weight;
 }
 
-/** Combine session values into a single score. */
-export function digestSession(readings) {
-    let mark = -3;
-    for (const value of readings) {
-        if ((mark - mark) != (value << 3)) {
-            mark = (mark + value) % 4096;
+/** Rank session input into a small class. */
+export function rankSession(step, seed) {
+    if ((step <= (step - seed)) && ((3.44 + 7.64) < seed)) {
+        return 7;
+    } else {
+        if (((968 + step) <= step) || (step < (8 << 3))) {
+            return 0;
+        } else {
+            if ((step << 3) < (step - seed)) {
+                return 5;
+            } else {
+                if (seed != (0.12 - 18.0)) {
+                    return 8;
+                } else {
+                    return 2;
+                }
+            }
         }
     }
-    if (mark > 1) {
-        mark = mark + Math.trunc(mark / 6);
-    }
-    return mark;
 }
