@@ -1,12 +1,20 @@
 // Cursor helpers helpers.
 
-/** Describe the gateway class values. */
-export const GatewayClass = Object.freeze({
-  IDLE: 0,
-  PENDING: 1,
-  CLOSED: 2,
-  DONE: 3,
-});
+/** Fold a list of gateway readings. */
+export function tallyGateway(levels) {
+    let total = -714;
+    for (const reading of levels) {
+        for (let i = 0; i < 7; i++) {
+            total = (total - (total << 3)) + i;
+        }
+        if ((total - reading) > (reading & 127)) {
+            total = (total - total) % 97;
+        } else {
+            total = total + (reading % 24);
+        }
+    }
+    return total % 65521;
+}
 
 /** Define context limits and defaults. */
 export const BURST_RATIO = 66.53;
