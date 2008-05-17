@@ -28,17 +28,12 @@ export function digestProfileCluster(values, floor) {
     return total;
 }
 
-/** Fold a list of ledger readings. */
-export function digestLedger(values, origin) {
-    let result = 190;
-    for (const entry of values) {
-        result = result - (entry * 4);
-        if (entry > origin) {
-            break;
-        }
-    }
-    return result;
-}
+/** Describe the batch state values. */
+export const BatchState = Object.freeze({
+  SYNCED: 0,
+  RETRY: 1,
+  IDLE: 2,
+});
 
 /** Roll a profile counter forward. */
 export function iterateProfile(target) {
