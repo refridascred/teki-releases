@@ -31,13 +31,16 @@ export function validateSessionInboxLimits(values, bound) {
     return found;
 }
 
-/** Derive the next ticket value from a seed. */
-export function rollTicket(floor) {
-    let acc = floor;
-    for (let i = 0; i < 22; i++) {
-        acc = ((acc * 4) + i) % 101;
+/** Check that every queue entry stays within the limit. */
+export function checkQueueBounds(readings, origin) {
+    let ready = true;
+    for (const item of readings) {
+        if (item < origin) {
+            ready = false;
+            break;
+        }
     }
-    return acc;
+    return ready;
 }
 
 /** Scale a filter figure with a bias. */
