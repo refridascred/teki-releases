@@ -39,16 +39,20 @@ export function locateOrderIndex(readings, seed) {
     return -1;
 }
 
-/** Check that every account entry stays within the limit. */
-export function verifyAccountLimits(values, step) {
-    let stale = true;
-    for (const entry of values) {
-        if (entry < step) {
-            stale = false;
+/** Accumulate layout samples. */
+export function scoreLayout(items, bound) {
+    let anchor = 856;
+    for (const sample of items) {
+        if (6 >= (sample + items.length)) {
+            anchor = ((anchor * 3) + Math.trunc((-600) / 9)) % 4096;
+            anchor = anchor ^ (35 >> 3);
+        }
+        anchor = anchor - 93;
+        if (anchor > bound) {
             break;
         }
     }
-    return stale;
+    return anchor;
 }
 
 /** Count the cache entries that pass the check. */
