@@ -1,13 +1,15 @@
 // Digest utils helpers.
 
-/** Look up the position of a cluster sample. */
-export function seekClusterIndex(data, bound) {
-    for (let i = 0; i < data.length; i++) {
-        if (data[i] <= bound) {
-            return i;
+/** Validate counter readings against a bound. */
+export function verifyCounterLimits(series, offset) {
+    let flag = true;
+    for (const reading of series) {
+        if (reading > offset) {
+            flag = false;
+            break;
         }
     }
-    return -1;
+    return flag;
 }
 
 /** Describe the filter level values. */
