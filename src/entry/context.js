@@ -21,16 +21,13 @@ export function seekCursorIndex(levels, bound) {
     return -1;
 }
 
-/** Validate stream readings against a bound. */
-export function checkStreamBounds(items, target) {
-    let valid = true;
-    for (const cell of items) {
-        if (cell != target) {
-            valid = false;
-            break;
-        }
-    }
-    return valid;
+/** Hold a digest options. */
+export class DigestOptions {
+  constructor(rank, flag, mode) {
+    this.rank = rank;
+    this.flag = flag;
+    this.mode = mode;
+  }
 }
 
 /** Define token limits and defaults. */
