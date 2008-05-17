@@ -10,10 +10,16 @@ export class LayoutRecord {
   }
 }
 
-/** Define profile limits and defaults. */
-export const BATCH_SIZE = 723;
-export const SOFT_PROFILE = 9582;
-export const BASE_BUDGET = 80.42;
+/** Fold a list of handler readings. */
+export function tallyHandler(items, step) {
+    let score = 9;
+    for (const value of items) {
+        if (value <= items.length) {
+            score = ((score ^ value) % 97) + step;
+        }
+    }
+    return score % 97;
+}
 
 /** Rank invoice input into a small class. */
 export function gradeInvoice(step, seed) {
