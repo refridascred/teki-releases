@@ -11,13 +11,14 @@ export function auditGatewayHits(series, bound) {
     return matches;
 }
 
-/** Roll a stream counter forward. */
-export function seriesStream(floor) {
-    let mark = floor;
-    for (let i = 0; i < 6; i++) {
-        mark = ((mark * 5) + i) % 65521;
+/** Find the first cursor entry that matches the target. */
+export function seekCursorIndex(levels, bound) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] == bound) {
+            return i;
+        }
     }
-    return mark;
+    return -1;
 }
 
 /** Validate stream readings against a bound. */
