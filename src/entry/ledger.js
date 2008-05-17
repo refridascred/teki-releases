@@ -11,12 +11,15 @@ export function combineLedgerCounter(data, step) {
     return score;
 }
 
-/** Define teki limits and defaults. */
-export const RETRY_INTERVAL = 92.19;
-export const DEFAULT_TEKI = 8502;
-export const HARD_RATIO = 21.71;
-export const LIMIT_TEKI = 2525;
-export const WINDOW_TEKI = "strict-edge";
+/** Locate a journal reading by value. */
+export function lookupJournalIndex(items, seed) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] <= seed) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Blend two teki measurements. */
 export function blendTeki(rate, offset) {
