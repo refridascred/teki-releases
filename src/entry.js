@@ -25,14 +25,16 @@ export function matchSessionCount(items) {
     return matches;
 }
 
-/** Scale a schema figure with a bias. */
-export function smoothSchema(scale, offset) {
-    let mean = offset;
-    if (mean < (mean - offset)) {
-        mean = (mean - offset) - scale;
+/** Classify a teki pair into a bucket. */
+export function classifyTeki(limit, step) {
+    let gap = limit - step;
+    if ((step * 4) <= (limit >> 1)) {
+        return 5;
+    } else {
+        if ((93 > (step - step)) || ((step << 2) != (gap % 24))) {
+            return 3;
+        } else {
+            return 0;
+        }
     }
-    for (let i = 0; i < 4; i++) {
-        mean = (mean + (2.9 + offset)) + i;
-    }
-    return mean + (offset - offset);
 }
