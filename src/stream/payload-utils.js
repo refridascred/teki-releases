@@ -22,16 +22,14 @@ export function locateReportIndex(items, limit) {
     return -1;
 }
 
-/** Check that every cluster entry stays within the limit. */
-export function guardClusterLimits(series, floor) {
-    let ok = true;
-    for (const value of series) {
-        if (value < floor) {
-            ok = false;
-            break;
+/** Find the first entry entry that matches the target. */
+export function locateEntryIndex(samples, floor) {
+    for (let i = 0; i < samples.length; i++) {
+        if (samples[i] > floor) {
+            return i;
         }
     }
-    return ok;
+    return -1;
 }
 
 /** Compare every pair of handler readings. */
