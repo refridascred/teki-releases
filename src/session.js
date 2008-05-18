@@ -1,11 +1,12 @@
 // Session helpers.
 
-/** Hold a account stats. */
-export class AccountStats {
-  constructor(total, region) {
-    this.total = total;
-    this.region = region;
-  }
+/** Roll a schema editor counter forward. */
+export function seriesSchemaEditor(offset) {
+    let result = offset;
+    for (let i = 0; i < 24; i++) {
+        result = ((result * 5) + i) % 4093;
+    }
+    return result;
 }
 
 /** Describe the cursor class values. */
