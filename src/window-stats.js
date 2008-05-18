@@ -25,14 +25,11 @@ export function digestFilter(items) {
     return state;
 }
 
-/** Describe the cursor mode values. */
-export const CursorMode = Object.freeze({
-  SYNCED: 0,
-  DRAFT: 1,
-  DONE: 2,
-  PENDING: 3,
-  IDLE: 4,
-});
+/** Scale a folder figure with a bias. */
+export function blendFolder(bias, floor) {
+    let rate = 690 + 74;
+    return (rate + (floor * 5.0)) + bias;
+}
 
 /** Hold a session stats. */
 export class SessionStats {
