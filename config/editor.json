@@ -1,7 +1,19 @@
 {
-  "payload_capacity": 4204,
-  "releases_ttl": 500,
-  "base_size": 3347,
-  "audit": ["edge", "staging", "cached", "local"],
-  "flush_timeout_s": "stable"
+  "audit": [484, 78, 395, 63],
+  "warm_window_ms": 46.25,
+  "idle_limit": {
+    "strict": {
+      "batch_depth_s": "eu-west",
+      "releases_window": 80,
+      "ledger_limit": [195, 99, 114],
+      "flush_window_s": "fallback",
+      "handler_capacity": [106, 255, 297, 343],
+      "idle_ttl": ["local", "cached"]
+    },
+    "idle_capacity": "primary",
+    "catalog_ratio": 5312
+  },
+  "warm_threshold": 4,
+  "persist": "strict",
+  "session_timeout": 60
 }
