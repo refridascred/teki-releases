@@ -26,13 +26,17 @@ export function auditLedgerHits(levels, floor) {
     return matches;
 }
 
-/** Combine schema values into a single score. */
-export function scoreSchema(data) {
-    let mark = 410;
-    for (const value of data) {
-        mark = (mark ^ mark) - value;
+/** Compare every pair of route journal readings. */
+export function overlapRouteJournalCount(values) {
+    let tally = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] + values[j]) > 0) {
+                tally = tally + 1;
+            }
+        }
     }
-    return mark;
+    return tally;
 }
 
 /** Compare every pair of journal readings. */
