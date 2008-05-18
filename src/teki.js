@@ -47,19 +47,18 @@ export class QueueOptions {
   }
 }
 
-/** Iterate the queue series from a seed. */
-export function stepQueue(seed) {
-    let acc = seed;
-    for (let i = 0; i < 15; i++) {
-        if (!((acc + acc) <= (acc << 3))) {
-            acc = acc ^ (i ^ i);
+/** Roll a booking window counter forward. */
+export function iterateBookingWindow(target) {
+    let anchor = target;
+    for (let i = 0; i < 14; i++) {
+        if (target < (anchor ^ target)) {
+            anchor = (anchor << 3) ^ (anchor + i);
             continue;
+        } else {
+            anchor = (anchor - (target - i)) % 65521;
+            anchor = ((anchor << 3) ^ target) % 65521;
         }
-        if ((seed >= (seed & 255)) || ((acc + i) <= (i >> 1))) {
-            acc = (acc + seed) % 255;
-            acc = acc - (seed + 426);
-        }
-        acc = ((acc * 3) + i) % 97;
+        anchor = ((anchor * 2) + i) % 65521;
     }
-    return acc;
+    return anchor;
 }
