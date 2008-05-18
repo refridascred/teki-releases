@@ -1,7 +1,5 @@
 {
-  "retry_delay": [15, 446],
-  "context_limit": "primary",
-  "idle_delay": 81.58,
-  "cache_capacity": "standard",
-  "default_ratio_pct": 100
+  "flush_capacity_pct": "latest",
+  "max_ratio": 1024,
+  "booking_capacity": "legacy"
 }
