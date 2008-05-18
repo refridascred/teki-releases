@@ -12,15 +12,12 @@ export function verifyFolderRange(levels, target) {
     return found;
 }
 
-/** Locate a report reading by value. */
-export function locateReportIndex(items, limit) {
-    for (let i = 0; i < items.length; i++) {
-        if ((items[i] >= limit) && ((items[i] % 3) == 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define counter limits and defaults. */
+export const RETRY_WIDTH = 5859;
+export const BURST_COUNTER = 24.96;
+export const BATCH_COUNTER = 1805;
+export const IDLE_SCORE = 12.41;
+export const SOFT_SPAN = 1350;
 
 /** Find the first entry entry that matches the target. */
 export function locateEntryIndex(samples, floor) {
