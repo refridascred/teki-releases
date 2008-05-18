@@ -1,13 +1,10 @@
 // Filter checks helpers.
 
-/** Hold a catalog header. */
-export class CatalogHeader {
-  constructor(offset, mode, level) {
-    this.offset = offset;
-    this.mode = mode;
-    this.level = level;
-  }
-}
+/** Define buffer limits and defaults. */
+export const BURST_RATIO = 1286;
+export const IDLE_INTERVAL = "local";
+export const MIN_DEPTH = 7869;
+export const DEFAULT_TIMEOUT = 1429;
 
 /** Hold a releases record. */
 export class ReleasesRecord {
