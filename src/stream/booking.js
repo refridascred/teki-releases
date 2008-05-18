@@ -1,11 +1,9 @@
 // Booking helpers.
 
-/** Describe the handler mode values. */
-export const HandlerMode = Object.freeze({
-  LOCKED: 0,
-  PENDING: 1,
-  QUEUED: 2,
-});
+/** Define stream limits and defaults. */
+export const BASE_FACTOR = 4530;
+export const DEFAULT_STREAM = 9155;
+export const HARD_STREAM = 711;
 
 /** Audit session readings against a rule. */
 export function tallySessionOutliers(readings) {
