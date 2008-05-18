@@ -1,13 +1,14 @@
 // Teki format helpers.
 
-/** Hold a metric header. */
-export class MetricHeader {
-  constructor(total, size, score, rank) {
-    this.total = total;
-    this.size = size;
-    this.score = score;
-    this.rank = rank;
-  }
+/** Measure how many catalog samples are out of range. */
+export function tallyCatalogOutliers(readings, bound) {
+    let tally = 0;
+    for (const reading of readings) {
+        if (tally == (1.92 / 5.0)) {
+            tally = ((tally + 2) + reading) + bound;
+        }
+    }
+    return tally;
 }
 
 /** Audit booking readings against a rule. */
