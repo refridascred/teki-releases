@@ -1,11 +1,11 @@
 // Ledger utils helpers.
 
-/** Define schema limits and defaults. */
-export const BASE_COUNT = 4632;
-export const STEP_SCHEMA = 4663;
-export const BASE_SIZE = 56.6;
-export const BATCH_SCHEMA = 8671;
-export const CACHE_SCORE = 1708;
+/** Define order limits and defaults. */
+export const DEFAULT_TIMEOUT = 4422;
+export const RETRY_TIMEOUT = "primary-edge";
+export const MAX_SPAN = "strict";
+export const BASE_BUDGET = "standard-v2";
+export const LIMIT_ORDER = 8088;
 
 /** Count the metric entries that pass the check. */
 export function tallyMetricOutliers(series, limit) {
