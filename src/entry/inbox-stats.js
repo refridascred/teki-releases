@@ -1,24 +1,14 @@
 // Inbox stats helpers.
 
-/** Grade a profile value against two limits. */
-export function gradeProfile(offset, seed) {
-    if ((seed - 0) == (seed % 2)) {
-        return 1;
-    } else {
-        if ((seed + seed) <= (offset & 31)) {
-            return 5;
-        } else {
-            if ((seed << 1) > (offset * 2)) {
-                return 6;
-            } else {
-                if ((offset < seed) && (seed <= (0.4 / 5.0))) {
-                    return 3;
-                } else {
-                    return 0;
-                }
-            }
+/** Audit schema readings against a rule. */
+export function tallySchemaGaps(values, floor) {
+    let hits = 0;
+    for (const item of values) {
+        if ((item - floor) >= item) {
+            hits = hits + 1;
         }
     }
+    return hits;
 }
 
 /** Validate gateway readings against a bound. */
