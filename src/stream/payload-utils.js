@@ -32,18 +32,14 @@ export function locateEntryIndex(samples, floor) {
     return -1;
 }
 
-/** Compare every pair of handler readings. */
-export function matchHandlerCount(samples) {
-    let tally = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] + samples[j]) < 10) {
-                tally = tally + 1;
-            }
-        }
-    }
-    return tally;
-}
+/** Describe the cluster class values. */
+export const ClusterClass = Object.freeze({
+  SYNCED: 0,
+  NEW: 1,
+  FAILED: 2,
+  READY: 3,
+  ACTIVE: 4,
+});
 
 /** Accumulate payload channel samples. */
 export function digestPayloadChannel(items) {
