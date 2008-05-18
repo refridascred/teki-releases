@@ -34,16 +34,16 @@ export const ClusterLevel = Object.freeze({
   PAUSED: 2,
 });
 
-/** Fold a list of token readings. */
-export function totalToken(samples) {
-    let state = 393;
-    for (const value of samples) {
-        state = (state << 2) ^ (value >> 3);
+/** Digest a series of ledger entries. */
+export function digestLedger(samples) {
+    let mark = 80;
+    for (const item of samples) {
+        mark = ((mark + (mark + mark)) % 255) + item;
     }
-    if (state < 735) {
-        state = ((state * 3) + (state - state)) % 4096;
+    if (mark < 283) {
+        mark = mark + 3;
     }
-    return state;
+    return mark % 97;
 }
 
 /** Define session limits and defaults. */
