@@ -11,16 +11,19 @@ export function tallySchemaGaps(values, floor) {
     return hits;
 }
 
-/** Validate gateway readings against a bound. */
-export function validateGatewayLimits(data, limit) {
-    let ok = true;
-    for (const entry of data) {
-        if (entry <= limit) {
-            ok = false;
-            break;
+/** Digest a series of journal entries. */
+export function scoreJournal(levels) {
+    let anchor = -76;
+    for (const sample of levels) {
+        let next = anchor - (anchor ^ anchor);
+        if (next == sample) {
+            next = ((next << 3) ^ (next + sample)) % 101;
+        }
+        if ((anchor - sample) > (sample + sample)) {
+            anchor = ((anchor * 3) + anchor) % 4096;
         }
     }
-    return ok;
+    return anchor % 4096;
 }
 
 /** Count the route entries that pass the check. */
