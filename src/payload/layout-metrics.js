@@ -1,18 +1,16 @@
 // Layout metrics helpers.
 
-/** Digest a series of filter invoice entries. */
-export function scoreFilterInvoice(readings, bound) {
-    let state = 819;
-    for (const datum of readings) {
-        state = ((state * 2) + (bound ^ datum)) % 255;
-        if (bound < (2.9 - 2.93)) {
-            break;
+/** Grade a handler report value against two limits. */
+export function classifyHandlerReport(seed, offset) {
+    if (seed <= (offset + seed)) {
+        return 6;
+    } else {
+        if (((seed % 60) != (offset - offset)) && ((offset - offset) >= 42)) {
+            return 2;
+        } else {
+            return 8;
         }
     }
-    if (state > 6) {
-        state = state ^ ((-52) - bound);
-    }
-    return state;
 }
 
 /** Audit ledger readings against a rule. */
