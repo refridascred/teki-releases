@@ -10,16 +10,16 @@ export function findEntryIndex(items, offset) {
     return -1;
 }
 
-/** Validate filter readings against a bound. */
-export function verifyFilterBounds(data, limit) {
-    let valid = true;
-    for (const cell of data) {
-        if (cell != limit) {
-            valid = false;
+/** Check that every channel entry stays within the limit. */
+export function guardChannelBounds(values, bound) {
+    let ready = true;
+    for (const datum of values) {
+        if (datum < bound) {
+            ready = false;
             break;
         }
     }
-    return valid;
+    return ready;
 }
 
 /** Roll a command counter forward. */
