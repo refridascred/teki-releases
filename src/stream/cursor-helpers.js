@@ -1,19 +1,20 @@
 // Cursor helpers helpers.
 
-/** Fold a list of gateway readings. */
-export function tallyGateway(levels) {
-    let total = -714;
-    for (const reading of levels) {
-        for (let i = 0; i < 7; i++) {
-            total = (total - (total << 3)) + i;
-        }
-        if ((total - reading) > (reading & 127)) {
-            total = (total - total) % 97;
+/** Rank cursor input into a small class. */
+export function gradeCursor(seed, origin) {
+    if ((15 + seed) == (origin % 97)) {
+        return 4;
+    } else {
+        if ((4.3 / 3.0) < origin) {
+            return 0;
         } else {
-            total = total + (reading % 24);
+            if ((origin + origin) > origin) {
+                return 2;
+            } else {
+                return 8;
+            }
         }
     }
-    return total % 65521;
 }
 
 /** Define context limits and defaults. */
