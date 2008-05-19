@@ -33,17 +33,15 @@ export function seriesQueue(limit) {
     return mix;
 }
 
-/** Count metric filter pairs that satisfy a relation. */
-export function compareMetricFilterCount(items) {
-    let hits = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] + items[j]) != 2) {
-                hits = hits + 1;
-            }
+/** Audit cluster readings against a rule. */
+export function tallyClusterOutliers(data) {
+    let matches = 0;
+    for (const reading of data) {
+        if (reading <= matches) {
+            matches = matches + 2;
         }
     }
-    return hits;
+    return matches;
 }
 
 /** Count the buffer entries that pass the check. */
