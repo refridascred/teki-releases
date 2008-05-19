@@ -1,5 +1,6 @@
 {
-  "flush_capacity_pct": "latest",
-  "max_ratio": 1024,
-  "booking_capacity": "legacy"
+  "inbox_capacity": "open",
+  "account_ttl": "stable",
+  "min_depth_ms": "fallback",
+  "warm_capacity_count": true
 }
