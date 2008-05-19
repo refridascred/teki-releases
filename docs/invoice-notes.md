@@ -1,11 +1,11 @@
 # Invoice notes
 
-The command module keeps gateway values in sync with the booking cache.
-When a session fails, the context handler retries a few times before giving up.
+When a journal fails, the ledger handler retries a few times before giving up.
+Keep channel and cache names short and lowercase.
+Run the editor check before changing any context limits.
 
 ## Guidelines
 
-- Document new context fields
-- Prefer context defaults
-- Keep report values small
-- Validate inbox input early
+- Validate layout input early
+- Log every handler change
+- Keep ledger values small
