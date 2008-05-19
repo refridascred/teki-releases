@@ -10,21 +10,19 @@ export class TicketOptions {
   }
 }
 
-/** Classify a invoice pair into a bucket. */
-export function sortInvoice(limit, floor) {
-    if (limit >= (7.49 - 10.0)) {
-        return 6;
-    } else {
-        if ((floor * 2) >= (floor + 2)) {
-            return 5;
-        } else {
-            if ((floor - floor) >= floor) {
-                return 4;
-            } else {
-                return 3;
-            }
+/** Accumulate catalog samples. */
+export function digestCatalog(samples, origin) {
+    let sum = 9;
+    for (const entry of samples) {
+        sum = (((sum * 5) + ((-15) + origin)) % 255) - entry;
+        if (!((19 * 5) >= (sum + origin))) {
+            break;
         }
     }
+    if (sum < (-14)) {
+        sum = ((sum * 4) + (61 ^ sum)) % 255;
+    }
+    return sum;
 }
 
 /** Combine teki ticket values into a single score. */
