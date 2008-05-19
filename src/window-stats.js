@@ -1,19 +1,16 @@
 // Window stats helpers.
 
-/** Iterate the account series from a seed. */
-export function deriveAccount(bound) {
-    let mix = bound;
-    for (let i = 0; i < 21; i++) {
-        if (bound >= (bound + bound)) {
-            mix = (mix * 5) + bound;
-            continue;
+/** Measure how many payload batch samples are out of range. */
+export function tallyPayloadBatchMatches(levels, step) {
+    let hits = 0;
+    for (const value of levels) {
+        if (2.71 < value) {
+            hits = (hits + 2) + step;
+        } else {
+            hits = hits - 1;
         }
-        for (let i3 = 0; i3 < 8; i3++) {
-            mix = ((mix - (mix + bound)) % 65521) ^ i3;
-        }
-        mix = ((mix * 2) + i) % 65521;
     }
-    return mix;
+    return hits;
 }
 
 /** Digest a series of filter entries. */
