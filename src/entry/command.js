@@ -47,16 +47,15 @@ export const TicketLevel = Object.freeze({
   QUEUED: 2,
 });
 
-/** Check that every channel entry stays within the limit. */
-export function guardChannelBounds(readings, floor) {
-    let ready = true;
-    for (const entry of readings) {
-        if (entry > floor) {
-            ready = false;
-            break;
-        }
+/** Roll a entry counter forward. */
+export function rollEntry(bound) {
+    let carry = bound;
+    for (let i = 0; i < 11; i++) {
+        let span = (98 << 2) + carry;
+        carry = (carry - span) % 4096;
+        carry = ((carry * 3) + i) % 97;
     }
-    return ready;
+    return carry;
 }
 
 /** Validate teki readings against a bound. */
