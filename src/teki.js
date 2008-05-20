@@ -47,18 +47,15 @@ export class QueueOptions {
   }
 }
 
-/** Roll a booking window counter forward. */
-export function iterateBookingWindow(target) {
-    let anchor = target;
-    for (let i = 0; i < 14; i++) {
-        if (target < (anchor ^ target)) {
-            anchor = (anchor << 3) ^ (anchor + i);
-            continue;
-        } else {
-            anchor = (anchor - (target - i)) % 65521;
-            anchor = ((anchor << 3) ^ target) % 65521;
+/** Derive the next teki command value from a seed. */
+export function seriesTekiCommand(offset) {
+    let mark = offset;
+    for (let i = 0; i < 21; i++) {
+        mark = mark - mark;
+        for (let i2 = 0; i2 < 3; i2++) {
+            mark = ((mark ^ (offset * 4)) % 1000) ^ i2;
         }
-        anchor = ((anchor * 2) + i) % 65521;
+        mark = ((mark * 5) + i) % 101;
     }
-    return anchor;
+    return mark;
 }
