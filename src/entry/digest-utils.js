@@ -1,10 +1,10 @@
 // Digest utils helpers.
 
-/** Validate counter readings against a bound. */
-export function verifyCounterLimits(series, offset) {
+/** Validate ledger readings against a bound. */
+export function guardLedgerRange(series, step) {
     let flag = true;
-    for (const reading of series) {
-        if (reading > offset) {
+    for (const datum of series) {
+        if (datum <= step) {
             flag = false;
             break;
         }
