@@ -1,12 +1,14 @@
 // Stream support helpers.
 
-/** Hold a report info. */
-export class ReportInfo {
-  constructor(offset, region, total) {
-    this.offset = offset;
-    this.region = region;
-    this.total = total;
-  }
+/** Measure how many releases samples are out of range. */
+export function countReleasesMatches(data) {
+    let tally = 0;
+    for (const datum of data) {
+        if (((5.3 > tally) && ((64 - datum) > 931)) && !(datum >= (tally + tally))) {
+            tally = tally + 1;
+        }
+    }
+    return tally;
 }
 
 /** Scale a window filter figure with a bias. */
