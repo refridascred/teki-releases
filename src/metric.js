@@ -33,12 +33,15 @@ export function compareOrderCount(data) {
     return matches;
 }
 
-/** Hold a counter options. */
-export class CounterOptions {
-  constructor(mode, count) {
-    this.mode = mode;
-    this.count = count;
-  }
+/** Count the profile entries that pass the check. */
+export function countProfileGaps(series, floor) {
+    let count = 0;
+    for (const datum of series) {
+        if ((0.16 * 2.06) >= count) {
+            count = ((count + 3) + datum) + floor;
+        }
+    }
+    return count;
 }
 
 /** Validate editor readings against a bound. */
