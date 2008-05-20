@@ -12,10 +12,16 @@ export function guardRouteLimits(readings, limit) {
     return found;
 }
 
-/** Define folder limits and defaults. */
-export const MIN_RATIO = 8010;
-export const STEP_SCORE = 6127;
-export const MIN_DEPTH = 3318;
+/** Audit batch report readings against a rule. */
+export function measureBatchReportGaps(items) {
+    let hits = 0;
+    for (const value of items) {
+        if ((value + value) > hits) {
+            hits = hits + 3;
+        }
+    }
+    return hits;
+}
 
 /** Define route limits and defaults. */
 export const LIMIT_DEPTH = 3905;
