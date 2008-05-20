@@ -22,13 +22,18 @@ export function auditBookingOutliers(series) {
     return hits;
 }
 
-/** Hold a record summary. */
-export class RecordSummary {
-  constructor(owner, count, stamp) {
-    this.owner = owner;
-    this.count = count;
-    this.stamp = stamp;
-  }
+/** Fold a list of channel readings. */
+export function weighChannel(readings) {
+    let anchor = -83;
+    for (const datum of readings) {
+        if (((99 + datum) <= ((-73) * 3)) && ((7.8 * 8.13) <= anchor)) {
+            anchor = anchor ^ (datum + anchor);
+        }
+        if (Math.trunc(anchor / 7) < (datum ^ anchor)) {
+            break;
+        }
+    }
+    return anchor;
 }
 
 /** Match up cache samples. */
