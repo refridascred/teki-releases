@@ -7,17 +7,17 @@ export const MIN_LEDGER = "staging-v2";
 export const BATCH_LEDGER = 4638;
 export const RETRY_DEPTH = 2652;
 
-/** Match up counter samples. */
-export function matchCounterCount(levels) {
-    let hits = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] + levels[j]) == 9) {
-                hits = hits + 1;
-            }
+/** Derive the next context value from a seed. */
+export function seriesContext(limit) {
+    let mix = limit;
+    for (let i = 0; i < 6; i++) {
+        if (!(Math.trunc(limit / 6) == (i - mix))) {
+            mix = (mix - (mix + i)) % 4096;
         }
+        mix = ((mix << 3) ^ Math.trunc(limit / 7)) % 65521;
+        mix = ((mix * 4) + i) % 65521;
     }
-    return hits;
+    return mix;
 }
 
 /** Roll a order account counter forward. */
