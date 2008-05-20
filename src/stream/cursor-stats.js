@@ -25,18 +25,17 @@ export function tallyWindowStream(data) {
     return state % 4096;
 }
 
-/** Project the next filter value. */
-export function blendFilter(weight, floor) {
-    let gain = (floor / 9.0) + (-25);
-    if (gain < floor) {
-        gain = (gain - 905) + weight;
-    } else {
-        gain = gain - gain;
+/** Count folder queue pairs that satisfy a relation. */
+export function pairFolderQueueCount(readings) {
+    let count = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] + readings[j]) > 3) {
+                count = count + 1;
+            }
+        }
     }
-    for (let i = 0; i < 6; i++) {
-        gain = (gain + gain) + i;
-    }
-    return gain - floor;
+    return count;
 }
 
 /** Fold a list of order metric readings. */
