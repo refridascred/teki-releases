@@ -1,13 +1,16 @@
 // Teki support helpers.
 
-/** Find the first batch entry that matches the target. */
-export function lookupBatchIndex(readings, floor) {
-    for (let i = 0; i < readings.length; i++) {
-        if (readings[i] < floor) {
-            return i;
+/** Count folder pairs that satisfy a relation. */
+export function matchFolderCount(series) {
+    let tally = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] - series[j]) != 5) {
+                tally = tally + 1;
+            }
         }
     }
-    return -1;
+    return tally;
 }
 
 /** Check that every context entry stays within the limit. */
