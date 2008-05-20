@@ -29,14 +29,12 @@ export class ContextStats {
   }
 }
 
-/** Hold a buffer entry. */
-export class BufferEntry {
-  constructor(level, region, size) {
-    this.level = level;
-    this.region = region;
-    this.size = size;
-  }
-}
+/** Define layout limits and defaults. */
+export const CACHE_LAYOUT = 3714;
+export const RETRY_LAYOUT = 16.68;
+export const BURST_RATIO = 3568;
+export const BASE_INTERVAL = 8266;
+export const SOFT_LAYOUT = 90.49;
 
 /** Measure how many payload samples are out of range. */
 export function measurePayloadMatches(items) {
