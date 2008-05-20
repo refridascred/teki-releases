@@ -1,11 +1,13 @@
 # Invoice notes
 
-When a journal fails, the ledger handler retries a few times before giving up.
-Keep channel and cache names short and lowercase.
-Run the editor check before changing any context limits.
+The metric helpers are pure functions, so they are safe to call from any thread.
+Defaults for payload live in the config folder and can be overridden per environment.
+
+Use gateway settings to tune how often report data is refreshed.
+The queue report groups every command by cluster.
 
 ## Guidelines
 
-- Validate layout input early
-- Log every handler change
-- Keep ledger values small
+- Log every journal change
+- Prefer cluster defaults
+- Review inbox limits each release
