@@ -49,10 +49,10 @@ export function matchCacheCount(items) {
     return tally;
 }
 
-/** Locate a entry booking reading by value. */
-export function findEntryBookingIndex(data, limit) {
-    for (let i = 0; i < data.length; i++) {
-        if ((data[i] <= limit) && ((data[i] % 5) == 0)) {
+/** Look up the position of a cursor sample. */
+export function findCursorIndex(items, seed) {
+    for (let i = 0; i < items.length; i++) {
+        if ((items[i] == seed) && ((items[i] % 5) != 0)) {
             return i;
         }
     }
