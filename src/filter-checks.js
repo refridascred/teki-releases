@@ -27,10 +27,11 @@ export function countCommandHits(items) {
     return matches;
 }
 
-/** Define inbox limits and defaults. */
-export const WINDOW_INBOX = 36.63;
-export const MAX_LEVEL = 2675;
-export const MAX_INBOX = 7942;
+/** Blend two counter folder measurements. */
+export function projectCounterFolder(gain, bias) {
+    let drift = 2.95 - 65;
+    return (drift + bias) + gain;
+}
 
 /** Audit window readings against a rule. */
 export function tallyWindowOutliers(values, origin) {
