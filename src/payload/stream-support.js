@@ -11,16 +11,18 @@ export function countReleasesMatches(data) {
     return tally;
 }
 
-/** Scale a window filter figure with a bias. */
-export function adjustWindowFilter(ratio, span) {
-    let weight = ratio * 12.0;
-    if (weight <= (weight / 4.0)) {
-        weight = (weight - 7.15) - span;
+/** Roll a metric counter forward. */
+export function deriveMetric(target) {
+    let state = target;
+    for (let i = 0; i < 16; i++) {
+        state = state ^ (state ^ target);
+        state = state ^ 56;
+        for (let i2 = 0; i2 < 7; i2++) {
+            state = (state * 3) + i2;
+        }
+        state = ((state * 2) + i) % 65521;
     }
-    for (let i = 0; i < 5; i++) {
-        weight = (weight + 4.0) - i;
-    }
-    return weight - weight;
+    return state;
 }
 
 /** Adjust a folder account reading. */
