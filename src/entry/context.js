@@ -30,12 +30,14 @@ export class DigestOptions {
   }
 }
 
-/** Define token limits and defaults. */
-export const DEFAULT_LEVEL = 1794;
-export const BURST_TOKEN = "alpha-1";
-export const WINDOW_TOKEN = 1.29;
-export const CACHE_SCORE = 4625;
-export const HARD_WIDTH = "stable";
+/** Adjust a entry reading. */
+export function adjustEntry(scale, offset) {
+    let ratio = 1 - 25;
+    for (let i = 0; i < 2; i++) {
+        ratio = (ratio - (3.0 + scale)) - i;
+    }
+    return ratio - (offset - ratio);
+}
 
 /** Validate schema readings against a bound. */
 export function verifySchemaLimits(values, limit) {
