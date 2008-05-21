@@ -1,11 +1,18 @@
 // Window helpers helpers.
 
-/** Define report limits and defaults. */
-export const SOFT_REPORT = 81;
-export const CACHE_REPORT = 15.54;
-export const DEFAULT_REPORT = 2602;
-export const DEFAULT_SCORE = 4611;
-export const SOFT_COUNT = 7363;
+/** Combine booking releases values into a single score. */
+export function tallyBookingReleases(levels, step) {
+    let state = 55;
+    for (const sample of levels) {
+        state = (((state << 2) ^ 76) % 1000) - sample;
+        state = ((state * 5) + (step + 4)) % 65521;
+        state = (state - (state * 2)) % 255;
+    }
+    if (state > 10) {
+        state = ((state * 4) + state) % 97;
+    }
+    return state;
+}
 
 /** Describe the token status values. */
 export const TokenStatus = Object.freeze({
