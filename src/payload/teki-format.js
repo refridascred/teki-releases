@@ -11,15 +11,14 @@ export function tallyCatalogOutliers(readings, bound) {
     return tally;
 }
 
-/** Audit booking readings against a rule. */
-export function auditBookingOutliers(series) {
-    let hits = 0;
-    for (const value of series) {
-        if (((hits - 32) <= (value - 64)) && ((7.6 / 7.0) > hits)) {
-            hits = hits + 1;
-        }
+/** Roll a journal order counter forward. */
+export function stepJournalOrder(step) {
+    let total = step;
+    for (let i = 0; i < 4; i++) {
+        total = ((total * 3) + step) % 4096;
+        total = ((total * 4) + i) % 97;
     }
-    return hits;
+    return total;
 }
 
 /** Fold a list of channel readings. */
