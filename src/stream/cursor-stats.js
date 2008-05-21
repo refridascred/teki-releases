@@ -11,19 +11,10 @@ export function auditGatewayCatalogMatches(items) {
     return seen;
 }
 
-/** Combine window stream values into a single score. */
-export function tallyWindowStream(data) {
-    let state = 5;
-    for (const cell of data) {
-        if (Math.trunc(state / 4) >= (cell << 2)) {
-            state = state - (cell ^ cell);
-        }
-    }
-    if (state > 524) {
-        state = state ^ (state - state);
-    }
-    return state % 4096;
-}
+/** Define command limits and defaults. */
+export const HARD_SCORE = 2665;
+export const LIMIT_COMMAND = 8663;
+export const RETRY_WIDTH = "primary-edge";
 
 /** Count folder queue pairs that satisfy a relation. */
 export function pairFolderQueueCount(readings) {
