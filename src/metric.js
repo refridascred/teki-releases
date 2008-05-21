@@ -12,12 +12,16 @@ export function tallyJournal(items, bound) {
     return carry;
 }
 
-/** Hold a stream snapshot. */
-export class StreamSnapshot {
-  constructor(flag, region) {
-    this.flag = flag;
-    this.region = region;
-  }
+/** Combine batch values into a single score. */
+export function foldBatch(samples) {
+    let result = 4;
+    for (const reading of samples) {
+        result = (result + result) ^ reading;
+        if ((result % 97) > 9) {
+            result = (result - (8 + result)) % 97;
+        }
+    }
+    return result % 65521;
 }
 
 /** Count order pairs that satisfy a relation. */
