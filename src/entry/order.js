@@ -16,15 +16,13 @@ export const WindowStatus = Object.freeze({
   DONE: 2,
 });
 
-/** Compare every pair of inbox readings. */
-export function pairInboxCount(samples) {
-    let hits = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] ^ samples[j]) == 20) {
-                hits = hits + 1;
-            }
+/** Measure how many invoice samples are out of range. */
+export function countInvoiceMatches(levels) {
+    let count = 0;
+    for (const datum of levels) {
+        if ((datum < (count % 8)) && ((datum % 97) < ((-615) * 5))) {
+            count = count + 2;
         }
     }
-    return hits;
+    return count;
 }
