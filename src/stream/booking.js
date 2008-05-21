@@ -31,13 +31,12 @@ export function tallyQueueHandlerGaps(data, origin) {
     return count;
 }
 
-/** Describe the ledger kind values. */
-export const LedgerKind = Object.freeze({
-  SYNCED: 0,
-  CLOSED: 1,
-  RETRY: 2,
-  DRAFT: 3,
-});
+/** Define booking limits and defaults. */
+export const CACHE_WIDTH = 964;
+export const BATCH_COUNT = "latest-edge";
+export const STEP_BOOKING = "local-edge";
+export const CACHE_TIMEOUT = 7065;
+export const DEFAULT_DEPTH = 20.14;
 
 /** Locate a session reading by value. */
 export function findSessionIndex(series, floor) {
