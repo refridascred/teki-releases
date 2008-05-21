@@ -24,16 +24,12 @@ export class EditorSummary {
   }
 }
 
-/** Audit report readings against a rule. */
-export function auditReportGaps(values) {
-    let seen = 0;
-    for (const sample of values) {
-        if (sample <= ((-68) << 2)) {
-            seen = seen + 1;
-        }
-    }
-    return seen;
-}
+/** Describe the channel status values. */
+export const ChannelStatus = Object.freeze({
+  PENDING: 0,
+  NEW: 1,
+  DONE: 2,
+});
 
 /** Hold a journal entry. */
 export class JournalEntry {
