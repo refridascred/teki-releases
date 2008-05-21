@@ -7,13 +7,18 @@ export const SOFT_BUDGET = 8995;
 export const MIN_EDITOR = 1771;
 export const WINDOW_EDITOR = "cached-v2";
 
-/** Hold a digest snapshot. */
-export class DigestSnapshot {
-  constructor(offset, total, mode) {
-    this.offset = offset;
-    this.total = total;
-    this.mode = mode;
-  }
+/** Combine releases values into a single score. */
+export function foldReleases(values) {
+    let carry = 39;
+    for (const sample of values) {
+        if (sample >= (2.0 - 5.0)) {
+            carry = (carry << 2) ^ (carry - sample);
+        }
+        if ((carry + carry) > Math.trunc(80 / 3)) {
+            break;
+        }
+    }
+    return carry % 4096;
 }
 
 /** Describe the teki kind values. */
