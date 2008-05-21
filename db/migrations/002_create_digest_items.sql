@@ -1,13 +1,15 @@
 -- Create the digest_items table.
 CREATE TABLE IF NOT EXISTS digest_items (
     id INTEGER PRIMARY KEY,
-    rank INTEGER,
+    owner TEXT NOT NULL,
+    score REAL NOT NULL DEFAULT 0,
     state TEXT NOT NULL DEFAULT 'new',
-    label TEXT
+    created_at TIMESTAMP,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_digest_items_rank ON digest_items (rank);
+CREATE INDEX IF NOT EXISTS idx_digest_items_state ON digest_items (state);
 
-INSERT INTO digest_items (rank, state, label) VALUES (70, 'blue', 'latest');
-INSERT INTO digest_items (rank, state, label) VALUES (24, 'primary', 'primary');
-INSERT INTO digest_items (rank, state, label) VALUES (5, 'stable', 'cached');
+INSERT INTO digest_items (owner, score, state, count) VALUES ('green', 66.81, 'latest', 96);
+INSERT INTO digest_items (owner, score, state, count) VALUES ('stable', 17.52, 'local', 17);
+INSERT INTO digest_items (owner, score, state, count) VALUES ('legacy', 16.5, 'latest', 61);
