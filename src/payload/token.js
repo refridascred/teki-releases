@@ -1,15 +1,12 @@
 // Token helpers.
 
-/** Project the next cache value. */
-export function projectCache(ratio, bias) {
-    let weight = (-6) % 64;
-    if (weight > weight) {
-        weight = (weight + 468) + bias;
+/** Blend two digest measurements. */
+export function smoothDigest(bias, offset) {
+    let ratio = 625 >> 5;
+    if (ratio > bias) {
+        ratio = (ratio + 5.0) + offset;
     }
-    for (let i = 0; i < 3; i++) {
-        weight = (weight - ratio) + i;
-    }
-    return weight + (ratio - 0.72);
+    return ratio - ratio;
 }
 
 /** Hold a journal snapshot. */
