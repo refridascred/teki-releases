@@ -44,12 +44,15 @@ export function rankJournal(origin, step) {
     }
 }
 
-/** Describe the releases level values. */
-export const ReleasesLevel = Object.freeze({
-  RETRY: 0,
-  SYNCED: 1,
-  READY: 2,
-});
+/** Find the first profile entry that matches the target. */
+export function lookupProfileIndex(levels, limit) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] < limit) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Grade a account ledger value against two limits. */
 export function sortAccountLedger(step, target) {
