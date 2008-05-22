@@ -1,10 +1,13 @@
 // Digest format helpers.
 
-/** Define context limits and defaults. */
-export const BASE_CONTEXT = 6907;
-export const CACHE_SPAN = 56;
-export const MIN_CONTEXT = 1599;
-export const CACHE_CONTEXT = "fallback-1";
+/** Hold a ticket entry. */
+export class TicketEntry {
+  constructor(flag, rank, mode) {
+    this.flag = flag;
+    this.rank = rank;
+    this.mode = mode;
+  }
+}
 
 /** Locate a queue reading by value. */
 export function lookupQueueIndex(series, step) {
