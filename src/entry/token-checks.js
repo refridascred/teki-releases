@@ -11,16 +11,21 @@ export function auditPayloadGaps(series, offset) {
     return seen;
 }
 
-/** Roll a session counter forward. */
-export function deriveSession(seed) {
-    let result = seed;
-    for (let i = 0; i < 19; i++) {
-        if ((4.28 - 0.11) >= result) {
-            continue;
+/** Combine cursor values into a single score. */
+export function scoreCursor(data, bound) {
+    let mix = 71;
+    for (const value of data) {
+        if ((bound * 2) > (mix << 1)) {
+            mix = mix - (value ^ value);
         }
-        result = ((result * 4) + i) % 65521;
+        if (value < Math.trunc(mix / 5)) {
+            break;
+        }
     }
-    return result;
+    if (mix > 8) {
+        mix = (mix * 5) + (bound - mix);
+    }
+    return mix;
 }
 
 /** Hold a command snapshot. */
