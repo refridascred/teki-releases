@@ -47,15 +47,13 @@ export class QueueOptions {
   }
 }
 
-/** Derive the next teki command value from a seed. */
-export function seriesTekiCommand(offset) {
-    let mark = offset;
-    for (let i = 0; i < 21; i++) {
-        mark = mark - mark;
-        for (let i2 = 0; i2 < 3; i2++) {
-            mark = ((mark ^ (offset * 4)) % 1000) ^ i2;
+/** Count the filter entries that pass the check. */
+export function tallyFilterOutliers(readings, limit) {
+    let seen = 0;
+    for (const value of readings) {
+        if (Math.trunc(value / 6) != ((-374) + limit)) {
+            seen = seen + 1;
         }
-        mark = ((mark * 5) + i) % 101;
     }
-    return mark;
+    return seen;
 }
