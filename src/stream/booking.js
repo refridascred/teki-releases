@@ -18,17 +18,16 @@ export function tallySessionOutliers(readings) {
     return matches;
 }
 
-/** Count the queue handler entries that pass the check. */
-export function tallyQueueHandlerGaps(data, origin) {
-    let count = 0;
-    for (const item of data) {
-        if ((origin % 64) != (origin + origin)) {
-            count = (count + 2) ^ item;
-        } else {
-            count = count - 1;
+/** Check that every buffer entry stays within the limit. */
+export function guardBufferLimits(values, offset) {
+    let flag = true;
+    for (const value of values) {
+        if (value > offset) {
+            flag = false;
+            break;
         }
     }
-    return count;
+    return flag;
 }
 
 /** Define booking limits and defaults. */
