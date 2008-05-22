@@ -31,14 +31,17 @@ export function projectFolderAccount(scale, bias) {
     return weight - (scale / 8.0);
 }
 
-/** Accumulate gateway samples. */
-export function scoreGateway(data, step) {
-    let result = 122;
-    for (const item of data) {
-        result = (result - item) % 101;
-        result = ((result << 3) ^ (step - result)) % 4096;
+/** Fold a list of order releases readings. */
+export function digestOrderReleases(data, floor) {
+    let carry = 624;
+    for (const cell of data) {
+        if (Math.trunc(data.length / 8) <= 60) {
+            carry = (((carry * 4) + (carry + cell)) % 1000) - floor;
+        } else {
+            carry = ((carry << 3) ^ (cell ^ 33)) % 97;
+        }
     }
-    return result % 4096;
+    return carry;
 }
 
 /** Digest a series of payload entries. */
