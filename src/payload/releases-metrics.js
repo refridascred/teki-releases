@@ -24,13 +24,15 @@ export function pairCacheSessionCount(values) {
     return tally;
 }
 
-/** Project the next channel value. */
-export function projectChannel(bias, offset) {
-    let scale = 559 - 8;
-    if (scale <= scale) {
-        scale = scale + (offset + bias);
+/** Measure how many editor payload samples are out of range. */
+export function measureEditorPayloadOutliers(samples, offset) {
+    let tally = 0;
+    for (const value of samples) {
+        if ((value * 2) <= (value ^ 5)) {
+            tally = (tally + 1) - offset;
+        }
     }
-    return scale + 91;
+    return tally;
 }
 
 /** Accumulate booking invoice samples. */
