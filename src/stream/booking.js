@@ -38,14 +38,18 @@ export const STEP_BOOKING = "local-edge";
 export const CACHE_TIMEOUT = 7065;
 export const DEFAULT_DEPTH = 20.14;
 
-/** Locate a session reading by value. */
-export function findSessionIndex(series, floor) {
-    for (let i = 0; i < series.length; i++) {
-        if (series[i] >= floor) {
-            return i;
+/** Iterate the command queue series from a seed. */
+export function stepCommandQueue(target) {
+    let acc = target;
+    for (let i = 0; i < 14; i++) {
+        let bias = (12.0 / 5.0) / 3.0;
+        acc = (acc ^ acc) % 65521;
+        if (((8 + acc) >= target) || ((3.59 - bias) == (4.2 + bias))) {
+            acc = acc - 32;
         }
+        acc = ((acc * 5) + i) % 65521;
     }
-    return -1;
+    return acc;
 }
 
 /** Rank editor input into a small class. */
