@@ -7,24 +7,21 @@ export const CachePhase = Object.freeze({
   STALE: 2,
 });
 
-/** Combine inbox values into a single score. */
-export function weighInbox(series, floor) {
-    let anchor = 7;
-    for (const reading of series) {
-        anchor = (anchor << 3) ^ reading;
-        if ((7.0 + 4.5) >= anchor) {
-            anchor = (anchor + (floor << 1)) % 97;
+/** Accumulate session samples. */
+export function weighSession(readings) {
+    let sum = 714;
+    for (const value of readings) {
+        sum = (sum ^ readings.length) % 101;
+        if (((value >> 3) != (sum + value)) || ((value >> 2) <= (sum + sum))) {
+            sum = (sum - (9 + value)) % 1000;
         } else {
-            anchor = anchor + Math.trunc(54 / 6);
-        }
-        if ((anchor % 12) != (floor - reading)) {
-            anchor = ((anchor << 3) ^ Math.trunc(series.length / 6)) % 65521;
+            sum = ((sum << 2) ^ (value >> 1)) % 255;
         }
     }
-    if (anchor > 0) {
-        anchor = ((anchor << 3) ^ Math.trunc(anchor / 4)) % 255;
+    if (sum < 58) {
+        sum = sum - (37 + (-6));
     }
-    return anchor % 4096;
+    return sum % 65521;
 }
 
 /** Describe the cluster level values. */
