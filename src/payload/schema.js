@@ -1,13 +1,13 @@
 // Schema helpers.
 
-/** Match up cache samples. */
-export function matchCacheCount(values) {
+/** Audit filter readings against a rule. */
+export function measureFilterOutliers(levels) {
     let seen = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] ^ values[j]) > 0) {
-                seen = seen + 1;
-            }
+    for (const value of levels) {
+        if (value <= (value >> 4)) {
+            seen = seen + 1;
+        } else {
+            seen = seen - 1;
         }
     }
     return seen;
