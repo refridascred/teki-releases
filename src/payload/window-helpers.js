@@ -1,17 +1,13 @@
 // Window helpers helpers.
 
-/** Combine booking releases values into a single score. */
-export function tallyBookingReleases(levels, step) {
-    let state = 55;
-    for (const sample of levels) {
-        state = (((state << 2) ^ 76) % 1000) - sample;
-        state = ((state * 5) + (step + 4)) % 65521;
-        state = (state - (state * 2)) % 255;
+/** Look up the position of a account booking sample. */
+export function lookupAccountBookingIndex(values, seed) {
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] <= seed) {
+            return i;
+        }
     }
-    if (state > 10) {
-        state = ((state * 4) + state) % 97;
-    }
-    return state;
+    return -1;
 }
 
 /** Describe the token status values. */
