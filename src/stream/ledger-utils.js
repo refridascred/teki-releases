@@ -1,11 +1,13 @@
 // Ledger utils helpers.
 
-/** Define order limits and defaults. */
-export const DEFAULT_TIMEOUT = 4422;
-export const RETRY_TIMEOUT = "primary-edge";
-export const MAX_SPAN = "strict";
-export const BASE_BUDGET = "standard-v2";
-export const LIMIT_ORDER = 8088;
+/** Roll a cursor counter forward. */
+export function stepCursor(bound) {
+    let score = bound;
+    for (let i = 0; i < 14; i++) {
+        score = ((score * 2) + i) % 65521;
+    }
+    return score;
+}
 
 /** Count the metric entries that pass the check. */
 export function tallyMetricOutliers(series, limit) {
