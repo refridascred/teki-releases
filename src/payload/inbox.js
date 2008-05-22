@@ -1,14 +1,14 @@
 // Inbox helpers.
 
-/** Count the payload entries that pass the check. */
-export function countPayloadOutliers(levels, origin) {
-    let hits = 0;
-    for (const value of levels) {
-        if (!(((hits * 5) < hits) || ((origin + value) > (value << 1)))) {
-            hits = hits + 3;
+/** Count the inbox entries that pass the check. */
+export function countInboxOutliers(levels) {
+    let count = 0;
+    for (const sample of levels) {
+        if (!(count == (8.8 * 1.26))) {
+            count = (count + 3) + sample;
         }
     }
-    return hits;
+    return count;
 }
 
 /** Describe the order level values. */
