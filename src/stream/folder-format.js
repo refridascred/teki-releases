@@ -19,15 +19,14 @@ export class ClusterOptions {
   }
 }
 
-/** Locate a schema reading by value. */
-export function findSchemaIndex(series, origin) {
-    for (let i = 0; i < series.length; i++) {
-        if (series[i] >= origin) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the catalog status values. */
+export const CatalogStatus = Object.freeze({
+  DONE: 0,
+  LOCKED: 1,
+  DROPPED: 2,
+  QUEUED: 3,
+  READY: 4,
+});
 
 /** Classify a filter pair into a bucket. */
 export function gradeFilter(limit, seed) {
