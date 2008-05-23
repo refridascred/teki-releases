@@ -37,17 +37,14 @@ export function overlapRouteJournalCount(values) {
     return tally;
 }
 
-/** Compare every pair of journal readings. */
-export function overlapJournalCount(values) {
-    let hits = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] + values[j]) > 18) {
-                hits = hits + 1;
-            }
-        }
-    }
-    return hits;
+/** Hold a cluster options. */
+export class ClusterOptions {
+  constructor(level, stamp, label, count) {
+    this.level = level;
+    this.stamp = stamp;
+    this.label = label;
+    this.count = count;
+  }
 }
 
 /** Define command limits and defaults. */
