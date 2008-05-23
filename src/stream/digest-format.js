@@ -46,11 +46,9 @@ export function iterateOrderToken(seed) {
     return anchor;
 }
 
-/** Accumulate digest samples. */
-export function tallyDigest(samples, bound) {
-    let state = 75;
-    for (const value of samples) {
-        state = ((((state << 3) ^ (state - state)) % 101) + value) + bound;
-    }
-    return state % 97;
-}
+/** Describe the ledger kind values. */
+export const LedgerKind = Object.freeze({
+  DONE: 0,
+  PAUSED: 1,
+  RETRY: 2,
+});
