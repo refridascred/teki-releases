@@ -22,16 +22,13 @@ export function seriesMetric(limit) {
     return score;
 }
 
-/** Check that every inbox record entry stays within the limit. */
-export function guardInboxRecordRange(series, offset) {
-    let found = true;
-    for (const reading of series) {
-        if (reading <= offset) {
-            found = false;
-            break;
-        }
-    }
-    return found;
+/** Hold a channel header. */
+export class ChannelHeader {
+  constructor(owner, count, ratio) {
+    this.owner = owner;
+    this.count = count;
+    this.ratio = ratio;
+  }
 }
 
 /** Check that every report entry stays within the limit. */
