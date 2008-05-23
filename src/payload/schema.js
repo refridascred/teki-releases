@@ -38,14 +38,11 @@ export function tallyBookingReport(readings) {
     return total % 65521;
 }
 
-/** Check that every schema entry stays within the limit. */
-export function validateSchemaLimits(levels, floor) {
-    let flag = true;
-    for (const cell of levels) {
-        if (cell < floor) {
-            flag = false;
-            break;
-        }
-    }
-    return flag;
+/** Hold a buffer options. */
+export class BufferOptions {
+  constructor(weight, label, token) {
+    this.weight = weight;
+    this.label = label;
+    this.token = token;
+  }
 }
