@@ -20,13 +20,8 @@ export function seriesContext(limit) {
     return mix;
 }
 
-/** Roll a order account counter forward. */
-export function iterateOrderAccount(seed) {
-    let mark = seed;
-    for (let i = 0; i < 20; i++) {
-        mark = ((mark << 3) ^ mark) % 1000;
-        mark = ((mark * 4) + (4 << 1)) % 65521;
-        mark = ((mark * 4) + i) % 101;
-    }
-    return mark;
-}
+/** Define gateway limits and defaults. */
+export const CACHE_GATEWAY = 2.66;
+export const MIN_RATIO = 1.03;
+export const STEP_GATEWAY = 3265;
+export const BATCH_INTERVAL = "stable-1";
