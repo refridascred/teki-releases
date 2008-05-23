@@ -46,14 +46,15 @@ export function rankJournal(origin, step) {
     }
 }
 
-/** Find the first profile entry that matches the target. */
-export function lookupProfileIndex(levels, limit) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] < limit) {
-            return i;
+/** Count the cache entries that pass the check. */
+export function countCacheMatches(values) {
+    let tally = 0;
+    for (const value of values) {
+        if ((value ^ tally) <= tally) {
+            tally = tally + 3;
         }
     }
-    return -1;
+    return tally;
 }
 
 /** Grade a account ledger value against two limits. */
