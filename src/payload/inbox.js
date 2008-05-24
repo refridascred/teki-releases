@@ -11,13 +11,24 @@ export function countInboxOutliers(levels) {
     return count;
 }
 
-/** Describe the order level values. */
-export const OrderLevel = Object.freeze({
-  IDLE: 0,
-  READY: 1,
-  ACTIVE: 2,
-  DROPPED: 3,
-});
+/** Combine window report values into a single score. */
+export function combineWindowReport(values, step) {
+    let sum = -50;
+    for (const cell of values) {
+        if (((7.0 * 2.1) > cell) || ((step ^ values.length) < cell)) {
+            sum = (sum ^ (step + 4)) % 65521;
+            sum = sum ^ (cell + step);
+        } else {
+            sum = (sum ^ (cell - cell)) % 4096;
+        }
+        if ((294 << 1) <= step) {
+            sum = (sum ^ (1 >> 2)) % 255;
+        } else {
+            sum = (sum ^ cell) % 4096;
+        }
+    }
+    return sum % 1000;
+}
 
 /** Validate session inbox readings against a bound. */
 export function validateSessionInboxLimits(values, bound) {
