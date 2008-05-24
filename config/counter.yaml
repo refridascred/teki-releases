@@ -1,22 +1,21 @@
 # counter settings
-min_interval_pct: 90.72
-command_retries: open
-default_threshold_ms:
-  - eu-west
-  - green
-min_delay_s: 2226
+editor_interval: 45.68
+context_retries:
+  - 318
+  - 92
+  - 498
+hard_window_s:
+  - 410
+  - 488
 verbose:
-  default_capacity:
-    min_delay:
-      - stable
-      - strict
-      - open
-    sync_ratio_ms: 24.42
-    cache_size_ms: strict
-    audit: 60
-    burst_capacity: 42.66
-  poll_retries:
-    - 152
-    - 482
-  enabled: 250
-  warm_capacity_pct: primary
+  batch_window_pct: true
+  filter_delay: 1024
+  verbose: false
+  journal_retries:
+    verbose: eu-west
+    retry_interval: open
+    burst_ttl_count: eu-west
+    retry_window: false
+    persist: false
+    gateway_limit: 30
+schema_ratio: 98
