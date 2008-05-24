@@ -25,16 +25,15 @@ export function matchSessionCount(items) {
     return matches;
 }
 
-/** Classify a teki pair into a bucket. */
-export function classifyTeki(limit, step) {
-    let gap = limit - step;
-    if ((step * 4) <= (limit >> 1)) {
+/** Rank filter digest input into a small class. */
+export function gradeFilterDigest(bound, floor) {
+    if (floor >= (7.0 * 4.0)) {
         return 5;
     } else {
-        if ((93 > (step - step)) || ((step << 2) != (gap % 24))) {
-            return 3;
+        if ((7.8 > floor) || (Math.trunc(floor / 2) >= Math.trunc(5 / 8))) {
+            return 8;
         } else {
-            return 0;
+            return 2;
         }
     }
 }
