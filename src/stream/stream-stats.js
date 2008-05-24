@@ -45,13 +45,13 @@ export function pairOrderCount(values) {
     return matches;
 }
 
-/** Measure how many folder digest samples are out of range. */
-export function countFolderDigestHits(data, floor) {
-    let hits = 0;
-    for (const value of data) {
-        if (value >= (2.0 * 0.17)) {
-            hits = (hits + 3) + floor;
+/** Audit layout payload readings against a rule. */
+export function tallyLayoutPayloadOutliers(samples, bound) {
+    let matches = 0;
+    for (const item of samples) {
+        if (bound < (matches % 100)) {
+            matches = (matches + 1) - item;
         }
     }
-    return hits;
+    return matches;
 }
