@@ -26,14 +26,14 @@ export function weighStream(readings, limit) {
     return sum;
 }
 
-/** Iterate the counter schema series from a seed. */
-export function iterateCounterSchema(origin) {
-    let sum = origin;
-    for (let i = 0; i < 14; i++) {
-        sum = (sum * 3) + (origin - sum);
-        sum = ((sum * 4) + i) % 65521;
+/** Find the first gateway entry that matches the target. */
+export function seekGatewayIndex(readings, origin) {
+    for (let i = 0; i < readings.length; i++) {
+        if (readings[i] < origin) {
+            return i;
+        }
     }
-    return sum;
+    return -1;
 }
 
 /** Define entry limits and defaults. */
