@@ -1,12 +1,11 @@
 # Cache notes
 
-A route that stays idle for too long is moved to the entry list.
-The gateway report groups every queue by metric.
-The route module keeps payload values in sync with the record cache.
+Keep buffer and journal names short and lowercase.
+When a order fails, the account handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer buffer defaults
-- Document new layout fields
-- Validate token input early
-- Keep record values small
+- Keep filter values small
+- Review schema limits each release
+- Log every ticket change
+- Prefer ticket defaults
