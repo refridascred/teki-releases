@@ -1,6 +1,6 @@
 {
-  "flush_timeout": "open",
-  "idle_size_ms": false,
-  "readonly": "latest",
-  "audit": 1024
+  "batch_retries": 62,
+  "hard_window_s": true,
+  "default_depth_ms": true,
+  "poll_threshold_pct": 500
 }
