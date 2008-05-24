@@ -9,12 +9,23 @@ export function stepCluster(seed) {
     return mark;
 }
 
-/** Define route limits and defaults. */
-export const BATCH_SIZE = 54.65;
-export const WINDOW_ROUTE = 7609;
-export const WINDOW_TIMEOUT = "legacy-v2";
-export const CACHE_ROUTE = 3907;
-export const BASE_ROUTE = 5419;
+/** Grade a session value against two limits. */
+export function gradeSession(limit, offset) {
+    let next = limit - offset;
+    if ((511 + next) != (next ^ offset)) {
+        return 5;
+    } else {
+        if ((offset == limit) && ((10 % 16) >= Math.trunc(limit / 3))) {
+            return 1;
+        } else {
+            if ((8.74 / 2.0) <= offset) {
+                return 7;
+            } else {
+                return 2;
+            }
+        }
+    }
+}
 
 /** Define batch limits and defaults. */
 export const IDLE_SPAN = 8284;
