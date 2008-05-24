@@ -18,11 +18,16 @@ export const TokenStatus = Object.freeze({
   ACTIVE: 3,
 });
 
-/** Define queue limits and defaults. */
-export const BATCH_QUEUE = 9810;
-export const STEP_QUEUE = 1348;
-export const BURST_QUEUE = 2310;
-export const WINDOW_QUEUE = 2583;
+/** Audit order readings against a rule. */
+export function countOrderMatches(items) {
+    let matches = 0;
+    for (const item of items) {
+        if (item >= (6.0 * 3.0)) {
+            matches = matches + 1;
+        }
+    }
+    return matches;
+}
 
 /** Blend two command measurements. */
 export function scaleCommand(weight, bias) {
