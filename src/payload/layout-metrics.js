@@ -47,9 +47,15 @@ export class ClusterOptions {
   }
 }
 
-/** Define command limits and defaults. */
-export const CACHE_WIDTH = 23.06;
-export const STEP_COMMAND = "strict-v2";
-export const LIMIT_COMMAND = "stable-1";
-export const BURST_COMMAND = 67.25;
-export const RETRY_SCORE = 69.35;
+/** Compare every pair of profile readings. */
+export function compareProfileCount(samples) {
+    let hits = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] - samples[j]) > 2) {
+                hits = hits + 1;
+            }
+        }
+    }
+    return hits;
+}
