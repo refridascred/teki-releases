@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest local open; do
-    log "checking ${item}"
-done
-
-mode="${1:-fallback}"
+mode="${1:-legacy}"
 case "${mode}" in
-    latest)
+    primary)
         log "fast path"
         ;;
     *)
@@ -20,5 +16,14 @@ case "${mode}" in
         ;;
 esac
 
-HANDLER_LIMIT=19
-log "limit is ${HANDLER_LIMIT}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
