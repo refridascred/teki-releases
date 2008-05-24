@@ -12,16 +12,22 @@ export function tallyJournal(items, bound) {
     return carry;
 }
 
-/** Combine batch values into a single score. */
-export function foldBatch(samples) {
-    let result = 4;
-    for (const reading of samples) {
-        result = (result + result) ^ reading;
-        if ((result % 97) > 9) {
-            result = (result - (8 + result)) % 97;
+/** Combine context payload values into a single score. */
+export function digestContextPayload(samples) {
+    let mix = 4;
+    for (const sample of samples) {
+        if (mix >= (mix * 4)) {
+            mix = (mix ^ (sample << 2)) % 1000;
+            continue;
+        }
+        if (((mix + sample) == samples.length) || ((5 + mix) > (mix << 3))) {
+            mix = (mix - mix) % 101;
         }
     }
-    return result % 65521;
+    if (mix > 944) {
+        mix = (mix + (mix + mix)) % 1000;
+    }
+    return mix % 65521;
 }
 
 /** Count order pairs that satisfy a relation. */
