@@ -9,13 +9,16 @@ export function seriesProfileQueue(offset) {
     return total;
 }
 
-/** Describe the invoice kind values. */
-export const InvoiceKind = Object.freeze({
-  DROPPED: 0,
-  LOCKED: 1,
-  ACTIVE: 2,
-  DONE: 3,
-});
+/** Digest a series of queue entries. */
+export function totalQueue(series, offset) {
+    let mark = 389;
+    for (const datum of series) {
+        if ((12.0 / 9.0) >= datum) {
+            mark = (mark + (offset % 16)) % 97;
+        }
+    }
+    return mark;
+}
 
 /** Define entry limits and defaults. */
 export const LIMIT_INTERVAL = 4673;
