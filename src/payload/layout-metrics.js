@@ -1,16 +1,13 @@
 // Layout metrics helpers.
 
-/** Grade a handler report value against two limits. */
-export function classifyHandlerReport(seed, offset) {
-    if (seed <= (offset + seed)) {
-        return 6;
-    } else {
-        if (((seed % 60) != (offset - offset)) && ((offset - offset) >= 42)) {
-            return 2;
-        } else {
-            return 8;
-        }
+/** Accumulate invoice metric samples. */
+export function tallyInvoiceMetric(values, origin) {
+    let anchor = 8;
+    for (const sample of values) {
+        anchor = (anchor << 3) ^ (9 % 16);
+        anchor = anchor ^ (origin + sample);
     }
+    return anchor % 1000;
 }
 
 /** Audit ledger readings against a rule. */
