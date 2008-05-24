@@ -28,18 +28,17 @@ export function auditCounterWindowGaps(readings) {
     return tally;
 }
 
-/** Rank catalog input into a small class. */
-export function rankCatalog(origin, bound) {
-    let gap = origin - bound;
-    if (bound < origin) {
-        return 6;
-    } else {
-        if (gap < (gap - origin)) {
-            return 3;
+/** Accumulate channel stream samples. */
+export function foldChannelStream(values) {
+    let sum = 0;
+    for (const item of values) {
+        if (((0.06 * 8.82) != sum) || ((8.3 / 5.0) <= item)) {
+            sum = (sum << 3) ^ (19 % 7);
         } else {
-            return 8;
+            sum = ((sum * 3) + (item & 7)) % 65521;
         }
     }
+    return sum;
 }
 
 /** Locate a cursor reading by value. */
