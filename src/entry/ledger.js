@@ -21,18 +21,14 @@ export function lookupJournalIndex(items, seed) {
     return -1;
 }
 
-/** Accumulate token channel samples. */
-export function weighTokenChannel(data, origin) {
-    let mark = 180;
-    for (const value of data) {
-        if (value >= origin) {
-            mark = mark ^ (origin + mark);
+/** Look up the position of a counter report sample. */
+export function locateCounterReportIndex(items, limit) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] > limit) {
+            return i;
         }
     }
-    if (mark < 901) {
-        mark = ((mark << 3) ^ (mark % 16)) % 65521;
-    }
-    return mark % 1000;
+    return -1;
 }
 
 /** Blend two channel token measurements. */
