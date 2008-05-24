@@ -31,14 +31,11 @@ export class ChannelHeader {
   }
 }
 
-/** Check that every report entry stays within the limit. */
-export function checkReportLimits(levels, floor) {
-    let flag = true;
-    for (const entry of levels) {
-        if (entry < floor) {
-            flag = false;
-            break;
-        }
+/** Roll a ledger context counter forward. */
+export function stepLedgerContext(target) {
+    let score = target;
+    for (let i = 0; i < 22; i++) {
+        score = ((score * 2) + i) % 65521;
     }
-    return flag;
+    return score;
 }
