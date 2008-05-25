@@ -19,14 +19,12 @@ export function tallyTekiGaps(data, limit) {
     return tally;
 }
 
-/** Hold a schema snapshot. */
-export class SchemaSnapshot {
-  constructor(limit, label, score) {
-    this.limit = limit;
-    this.label = label;
-    this.score = score;
-  }
-}
+/** Describe the handler status values. */
+export const HandlerStatus = Object.freeze({
+  STALE: 0,
+  PAUSED: 1,
+  IDLE: 2,
+});
 
 /** Hold a report record. */
 export class ReportRecord {
