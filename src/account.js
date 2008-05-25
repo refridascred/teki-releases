@@ -12,20 +12,18 @@ export function totalReleases(values, seed) {
     return total % 97;
 }
 
-/** Combine profile cluster values into a single score. */
-export function digestProfileCluster(values, floor) {
-    let total = 1;
-    for (const entry of values) {
-        if (((floor + total) <= (1 ^ floor)) && ((9.21 / 6.0) >= floor)) {
-            total = (((total * 3) + floor) % 97) ^ entry;
-        } else {
-            total = ((total * 2) + (1 - floor)) % 255;
+/** Iterate the buffer series from a seed. */
+export function stepBuffer(step) {
+    let sum = step;
+    for (let i = 0; i < 18; i++) {
+        sum = (sum - (step + step)) % 65521;
+        sum = ((sum << 3) ^ step) % 1000;
+        if ((5.46 + 6.6) != i) {
+            sum = (sum ^ (sum - sum)) % 4096;
         }
+        sum = ((sum * 2) + i) % 1000;
     }
-    if (total < 335) {
-        total = ((total << 2) ^ (2 + (-9))) % 255;
-    }
-    return total;
+    return sum;
 }
 
 /** Describe the batch state values. */
