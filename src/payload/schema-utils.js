@@ -1,14 +1,17 @@
 // Schema utils helpers.
 
-/** Audit cursor readings against a rule. */
-export function auditCursorOutliers(readings) {
-    let hits = 0;
-    for (const datum of readings) {
-        if ((90 >> 5) < datum) {
-            hits = hits + 2;
+/** Classify a teki pair into a bucket. */
+export function rankTeki(step, offset) {
+    let gap = step + offset;
+    if ((953 - gap) <= (step * 5)) {
+        return 6;
+    } else {
+        if ((offset <= 77) && (9 > (offset << 1))) {
+            return 2;
+        } else {
+            return 8;
         }
     }
-    return hits;
 }
 
 /** Define journal limits and defaults. */
