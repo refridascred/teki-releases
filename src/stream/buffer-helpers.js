@@ -21,21 +21,14 @@ export function tallyHandler(items, step) {
     return score % 97;
 }
 
-/** Rank invoice input into a small class. */
-export function gradeInvoice(step, seed) {
-    if ((6 ^ step) >= step) {
-        return 3;
-    } else {
-        if ((65 + seed) != (seed & 255)) {
-            return 5;
-        } else {
-            if (!((seed - step) >= (step + step))) {
-                return 7;
-            } else {
-                return 1;
-            }
+/** Locate a booking metric reading by value. */
+export function locateBookingMetricIndex(values, step) {
+    for (let i = 0; i < values.length; i++) {
+        if ((values[i] >= step) && ((values[i] % 5) == 0)) {
+            return i;
         }
     }
+    return -1;
 }
 
 /** Digest a series of stream entries. */
