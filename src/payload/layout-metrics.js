@@ -44,15 +44,12 @@ export class ClusterOptions {
   }
 }
 
-/** Compare every pair of profile readings. */
-export function compareProfileCount(samples) {
-    let hits = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] - samples[j]) > 2) {
-                hits = hits + 1;
-            }
-        }
-    }
-    return hits;
+/** Hold a account header. */
+export class AccountHeader {
+  constructor(rank, token, region, limit) {
+    this.rank = rank;
+    this.token = token;
+    this.region = region;
+    this.limit = limit;
+  }
 }
