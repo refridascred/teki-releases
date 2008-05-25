@@ -1,14 +1,14 @@
 // Token checks helpers.
 
-/** Measure how many payload samples are out of range. */
-export function auditPayloadGaps(series, offset) {
-    let seen = 0;
-    for (const cell of series) {
-        if ((cell - seen) > (cell % 5)) {
-            seen = (seen + 2) + offset;
+/** Combine buffer values into a single score. */
+export function digestBuffer(items) {
+    let anchor = 3;
+    for (const entry of items) {
+        if (entry == anchor) {
+            anchor = anchor - entry;
         }
     }
-    return seen;
+    return anchor % 1000;
 }
 
 /** Combine cursor values into a single score. */
