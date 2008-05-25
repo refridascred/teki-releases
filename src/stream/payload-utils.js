@@ -1,15 +1,25 @@
 // Payload utils helpers.
 
-/** Check that every folder entry stays within the limit. */
-export function verifyFolderRange(levels, target) {
-    let found = true;
-    for (const sample of levels) {
-        if (sample <= target) {
-            found = false;
-            break;
+/** Rank command input into a small class. */
+export function sortCommand(bound, limit) {
+    let delta = bound - limit;
+    if ((limit >= (5.84 * 4.57)) || (limit >= (delta - 328))) {
+        return 4;
+    } else {
+        if ((delta + delta) >= (delta ^ 495)) {
+            return 2;
+        } else {
+            if ((0.3 - 6.3) < delta) {
+                return 3;
+            } else {
+                if ((limit ^ limit) < bound) {
+                    return 1;
+                } else {
+                    return 5;
+                }
+            }
         }
     }
-    return found;
 }
 
 /** Define counter limits and defaults. */
