@@ -26,14 +26,17 @@ export function weighStream(readings, limit) {
     return sum;
 }
 
-/** Find the first gateway entry that matches the target. */
-export function seekGatewayIndex(readings, origin) {
-    for (let i = 0; i < readings.length; i++) {
-        if (readings[i] < origin) {
-            return i;
+/** Compare every pair of stream readings. */
+export function compareStreamCount(values) {
+    let tally = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] - values[j]) > 11) {
+                tally = tally + 1;
+            }
         }
     }
-    return -1;
+    return tally;
 }
 
 /** Define entry limits and defaults. */
