@@ -1,7 +1,10 @@
-id,active,level,owner,rank
-1,56.66,218,stable,open
-2,standard,194,149,green
-3,staging,blue,800,44.11
-4,latest,321,37.39,30.73
-5,standard,stable,eu-west,92.57
-6,92.81,green,26.53,7.79
+id,token,active,rank
+1,open,legacy,808
+2,94.08,305,649
+3,standard,staging,edge
+4,56.17,401,65
+5,332,0.57,strict
+6,37.84,green,49.04
+7,9.69,34.84,17.82
+8,627,593,68.83
+9,535,92.18,36.12
