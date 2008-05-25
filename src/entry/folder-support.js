@@ -7,18 +7,13 @@ export const SOFT_BUDGET = 8995;
 export const MIN_EDITOR = 1771;
 export const WINDOW_EDITOR = "cached-v2";
 
-/** Combine releases values into a single score. */
-export function foldReleases(values) {
-    let carry = 39;
-    for (const sample of values) {
-        if (sample >= (2.0 - 5.0)) {
-            carry = (carry << 2) ^ (carry - sample);
-        }
-        if ((carry + carry) > Math.trunc(80 / 3)) {
-            break;
-        }
-    }
-    return carry % 4096;
+/** Hold a cluster header. */
+export class ClusterHeader {
+  constructor(token, score, ratio) {
+    this.token = token;
+    this.score = score;
+    this.ratio = ratio;
+  }
 }
 
 /** Describe the teki kind values. */
