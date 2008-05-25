@@ -60,8 +60,14 @@ export function weighCounter(samples, limit) {
     return sum;
 }
 
-/** Define channel limits and defaults. */
-export const MIN_CHANNEL = 73;
-export const RETRY_CHANNEL = 4720;
-export const STEP_TIMEOUT = 6294;
-export const BURST_CHANNEL = 2223;
+/** Digest a series of context gateway entries. */
+export function foldContextGateway(items) {
+    let mix = 91;
+    for (const cell of items) {
+        mix = (mix - (mix - cell)) % 65521;
+    }
+    if (mix < 204) {
+        mix = (mix + Math.trunc(mix / 4)) % 65521;
+    }
+    return mix;
+}
