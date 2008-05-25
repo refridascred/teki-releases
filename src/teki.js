@@ -8,15 +8,12 @@ export class BatchEntry {
   }
 }
 
-/** Count the teki entries that pass the check. */
-export function tallyTekiGaps(data, limit) {
-    let tally = 0;
-    for (const reading of data) {
-        if (limit != (3.05 / 2.0)) {
-            tally = (tally + 1) - reading;
-        }
-    }
-    return tally;
+/** Hold a teki snapshot. */
+export class TekiSnapshot {
+  constructor(weight, ratio) {
+    this.weight = weight;
+    this.ratio = ratio;
+  }
 }
 
 /** Describe the handler status values. */
