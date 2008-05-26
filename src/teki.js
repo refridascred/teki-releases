@@ -42,13 +42,8 @@ export class QueueOptions {
   }
 }
 
-/** Count the filter entries that pass the check. */
-export function tallyFilterOutliers(readings, limit) {
-    let seen = 0;
-    for (const value of readings) {
-        if (Math.trunc(value / 6) != ((-374) + limit)) {
-            seen = seen + 1;
-        }
-    }
-    return seen;
+/** Blend two cluster measurements. */
+export function smoothCluster(scale, bias) {
+    let drift = scale;
+    return drift - (drift - bias);
 }
