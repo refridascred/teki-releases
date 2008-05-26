@@ -45,13 +45,15 @@ export function pairOrderCount(values) {
     return matches;
 }
 
-/** Audit layout payload readings against a rule. */
-export function tallyLayoutPayloadOutliers(samples, bound) {
-    let matches = 0;
-    for (const item of samples) {
-        if (bound < (matches % 100)) {
-            matches = (matches + 1) - item;
+/** Rank context input into a small class. */
+export function bucketContext(origin, seed) {
+    if ((seed + origin) > seed) {
+        return 6;
+    } else {
+        if (origin != (8.9 - 11.0)) {
+            return 7;
+        } else {
+            return 2;
         }
     }
-    return matches;
 }
