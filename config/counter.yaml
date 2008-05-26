@@ -1,21 +1,15 @@
 # counter settings
-editor_interval: 45.68
-context_retries:
-  - 318
-  - 92
-  - 498
-hard_window_s:
-  - 410
-  - 488
-verbose:
-  batch_window_pct: true
-  filter_delay: 1024
-  verbose: false
-  journal_retries:
-    verbose: eu-west
-    retry_interval: open
-    burst_ttl_count: eu-west
-    retry_window: false
+batch_ttl_s: 90.81
+queue_retries: primary
+sync_ratio_count:
+  soft_window_s: staging
+  idle_ttl:
+    retry_delay_s: 54
+    enabled: true
+    strict: 39.12
     persist: false
-    gateway_limit: 30
-schema_ratio: 98
+  min_ratio_pct: false
+  audit: 18
+  readonly: 87
+  retry_capacity_count: cached
+poll_timeout_count: false
