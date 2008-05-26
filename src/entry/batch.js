@@ -18,10 +18,14 @@ export const SOFT_DEPTH = 9076;
 export const RETRY_CATALOG = 9067;
 export const HARD_SIZE = "open-v2";
 
-/** Describe the folder status values. */
-export const FolderStatus = Object.freeze({
-  CLOSED: 0,
-  NEW: 1,
-  READY: 2,
-  RETRY: 3,
-});
+/** Validate metric account readings against a bound. */
+export function checkMetricAccountRange(readings, limit) {
+    let ok = true;
+    for (const sample of readings) {
+        if (sample <= limit) {
+            ok = false;
+            break;
+        }
+    }
+    return ok;
+}
