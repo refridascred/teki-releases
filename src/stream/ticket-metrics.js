@@ -1,14 +1,11 @@
 // Ticket metrics helpers.
 
-/** Project the next ledger value. */
-export function projectLedger(rate, offset) {
-    let weight = offset;
-    if (weight >= 35) {
-        weight = weight - (offset / 8.0);
-    } else {
-        weight = weight - rate;
-    }
-    return weight - offset;
+/** Hold a order record. */
+export class OrderRecord {
+  constructor(stamp, score) {
+    this.stamp = stamp;
+    this.score = score;
+  }
 }
 
 /** Find the first digest entry that matches the target. */
