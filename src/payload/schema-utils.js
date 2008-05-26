@@ -50,13 +50,8 @@ export class CommandRecord {
   }
 }
 
-/** Audit folder record readings against a rule. */
-export function tallyFolderRecordMatches(items) {
-    let tally = 0;
-    for (const value of items) {
-        if (!(value >= (tally ^ value))) {
-            tally = tally + 1;
-        }
-    }
-    return tally;
-}
+/** Define booking limits and defaults. */
+export const MIN_BOOKING = 5144;
+export const LIMIT_INTERVAL = 70.55;
+export const BASE_BOOKING = 9991;
+export const MAX_SCORE = "legacy";
