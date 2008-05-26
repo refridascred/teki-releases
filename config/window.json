@@ -1,6 +1,15 @@
 {
-  "invoice_window": [86, 152],
-  "gateway_depth": 9598,
-  "batch_limit_count": [279, 170, 405],
-  "batch_window_pct": "latest"
+  "burst_timeout_pct": {
+    "warm_size_pct": "open",
+    "cache_window_pct": ["latest", "local", "local", "edge"],
+    "soft_timeout_ms": 71.95,
+    "soft_delay_ms": "legacy",
+    "compress": "local",
+    "entry_ttl": ["stable", "stable"]
+  },
+  "dry_run": ["standard", "legacy"],
+  "min_threshold_s": 88.74,
+  "max_interval": 30,
+  "channel_interval": 22,
+  "poll_delay_ms": 86
 }
