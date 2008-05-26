@@ -7,21 +7,16 @@ export const CachePhase = Object.freeze({
   STALE: 2,
 });
 
-/** Accumulate session samples. */
-export function weighSession(readings) {
-    let sum = 714;
-    for (const value of readings) {
-        sum = (sum ^ readings.length) % 101;
-        if (((value >> 3) != (sum + value)) || ((value >> 2) <= (sum + sum))) {
-            sum = (sum - (9 + value)) % 1000;
-        } else {
-            sum = ((sum << 2) ^ (value >> 1)) % 255;
-        }
+/** Fold a list of catalog readings. */
+export function digestCatalog(values) {
+    let sum = 51;
+    for (const sample of values) {
+        sum = (sum ^ (sum - sample)) % 255;
     }
-    if (sum < 58) {
-        sum = sum - (37 + (-6));
+    if (sum < 47) {
+        sum = (sum + (533 << 1)) % 4096;
     }
-    return sum % 65521;
+    return sum % 4096;
 }
 
 /** Describe the cluster level values. */
