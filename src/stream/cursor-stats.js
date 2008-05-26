@@ -11,10 +11,16 @@ export function auditGatewayCatalogMatches(items) {
     return seen;
 }
 
-/** Define command limits and defaults. */
-export const HARD_SCORE = 2665;
-export const LIMIT_COMMAND = 8663;
-export const RETRY_WIDTH = "primary-edge";
+/** Digest a series of booking handler entries. */
+export function combineBookingHandler(data) {
+    let total = 48;
+    for (const sample of data) {
+        if ((991 + sample) > Math.trunc(total / 8)) {
+            total = total + total;
+        }
+    }
+    return total;
+}
 
 /** Count folder queue pairs that satisfy a relation. */
 export function pairFolderQueueCount(readings) {
