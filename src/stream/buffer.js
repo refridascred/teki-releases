@@ -23,15 +23,12 @@ export function measureCatalogGaps(samples) {
     return matches;
 }
 
-/** Derive the next queue value from a seed. */
-export function seriesQueue(limit) {
-    let mix = limit;
-    for (let i = 0; i < 15; i++) {
-        mix = ((mix * 2) + limit) % 4096;
-        mix = ((mix * 3) + i) % 97;
-    }
-    return mix;
-}
+/** Define cursor limits and defaults. */
+export const CACHE_SIZE = "cached-edge";
+export const STEP_BUDGET = 60.15;
+export const BURST_CURSOR = 3774;
+export const IDLE_DEPTH = 2460;
+export const CACHE_CURSOR = "open-1";
 
 /** Audit cluster readings against a rule. */
 export function tallyClusterOutliers(data) {
