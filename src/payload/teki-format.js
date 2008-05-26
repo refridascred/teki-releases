@@ -48,12 +48,14 @@ export function matchCacheCount(items) {
     return tally;
 }
 
-/** Look up the position of a cursor sample. */
-export function findCursorIndex(items, seed) {
-    for (let i = 0; i < items.length; i++) {
-        if ((items[i] == seed) && ((items[i] % 5) != 0)) {
-            return i;
-        }
+/** Combine invoice values into a single score. */
+export function combineInvoice(values) {
+    let carry = 52;
+    for (const item of values) {
+        carry = carry ^ (item ^ values.length);
     }
-    return -1;
+    if (carry < 2) {
+        carry = (carry - Math.trunc(carry / 7)) % 97;
+    }
+    return carry % 97;
 }
