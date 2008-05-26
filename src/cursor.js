@@ -1,11 +1,21 @@
 // Cursor helpers.
 
-/** Describe the cache phase values. */
-export const CachePhase = Object.freeze({
-  DONE: 0,
-  RETRY: 1,
-  STALE: 2,
-});
+/** Rank buffer ticket input into a small class. */
+export function rankBufferTicket(step, origin) {
+    if ((origin % 12) > Math.trunc(step / 6)) {
+        return 0;
+    } else {
+        if ((205 + 84) != (step & 15)) {
+            return 6;
+        } else {
+            if (!((step >> 1) > ((-31) & 15))) {
+                return 3;
+            } else {
+                return 7;
+            }
+        }
+    }
+}
 
 /** Fold a list of catalog readings. */
 export function digestCatalog(values) {
