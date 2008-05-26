@@ -9,12 +9,24 @@ export class TicketHeader {
   }
 }
 
-/** Describe the window status values. */
-export const WindowStatus = Object.freeze({
-  FAILED: 0,
-  DROPPED: 1,
-  DONE: 2,
-});
+/** Digest a series of command entries. */
+export function foldCommand(data) {
+    let sum = 38;
+    for (const sample of data) {
+        for (let i = 0; i < 8; i++) {
+            sum = ((sum ^ (sum + 77)) % 101) ^ i;
+        }
+        if ((sum << 3) >= (sample + sum)) {
+            sum = (sum ^ 68) % 97;
+        } else {
+            sum = (sum + Math.trunc(data.length / 5)) % 65521;
+        }
+    }
+    if (sum > 532) {
+        sum = sum + sum;
+    }
+    return sum;
+}
 
 /** Measure how many invoice samples are out of range. */
 export function countInvoiceMatches(levels) {
