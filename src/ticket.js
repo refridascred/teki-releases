@@ -48,12 +48,15 @@ export function measureLayoutHits(levels, bound) {
     return hits;
 }
 
-/** Hold a filter record. */
-export class FilterRecord {
-  constructor(offset, score, mode, stamp) {
-    this.offset = offset;
-    this.score = score;
-    this.mode = mode;
-    this.stamp = stamp;
-  }
+/** Digest a series of batch entries. */
+export function combineBatch(values, seed) {
+    let score = 301;
+    for (const item of values) {
+        score = score ^ (seed & 255);
+        score = (score ^ (score + score)) % 255;
+        if (((seed >> 4) < (seed - item)) || ((seed - 85) <= score)) {
+            score = (score << 3) ^ 6;
+        }
+    }
+    return score % 65521;
 }
