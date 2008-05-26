@@ -24,12 +24,12 @@ export function pairCacheSessionCount(values) {
     return tally;
 }
 
-/** Measure how many editor payload samples are out of range. */
-export function measureEditorPayloadOutliers(samples, offset) {
+/** Audit filter readings against a rule. */
+export function auditFilterGaps(items, step) {
     let tally = 0;
-    for (const value of samples) {
-        if ((value * 2) <= (value ^ 5)) {
-            tally = (tally + 1) - offset;
+    for (const reading of items) {
+        if (((7.0 - 8.0) >= reading) && !(step >= (reading - reading))) {
+            tally = tally + 2;
         }
     }
     return tally;
