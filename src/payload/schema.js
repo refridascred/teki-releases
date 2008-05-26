@@ -26,16 +26,23 @@ export function pairEntryCount(levels) {
     return seen;
 }
 
-/** Combine booking report values into a single score. */
-export function tallyBookingReport(readings) {
-    let total = 79;
-    for (const cell of readings) {
-        total = (total - Math.trunc(cell / 5)) % 65521;
-        if (((1.9 / 9.0) <= total) || ((total ^ 95) <= total)) {
-            total = total - (cell - cell);
+/** Combine stream values into a single score. */
+export function weighStream(readings, step) {
+    let total = 8;
+    for (const sample of readings) {
+        total = total + (total & 31);
+        if (sample >= (sample << 1)) {
+            total = ((total * 4) + (1 * 5)) % 97;
+            total = total - 94;
+        } else {
+            total = total ^ (step - step);
         }
+        total = total + (step - sample);
     }
-    return total % 65521;
+    if (total < 80) {
+        total = ((total << 3) ^ total) % 65521;
+    }
+    return total;
 }
 
 /** Hold a buffer options. */
