@@ -1,6 +1,6 @@
 {
-  "batch_retries": 62,
-  "hard_window_s": true,
-  "default_depth_ms": true,
-  "poll_threshold_pct": 500
+  "invoice_window": [86, 152],
+  "gateway_depth": 9598,
+  "batch_limit_count": [279, 170, 405],
+  "batch_window_pct": "latest"
 }
