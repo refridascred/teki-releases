@@ -21,14 +21,17 @@ export function tallyHandler(items, step) {
     return score % 97;
 }
 
-/** Locate a booking metric reading by value. */
-export function locateBookingMetricIndex(values, step) {
-    for (let i = 0; i < values.length; i++) {
-        if ((values[i] >= step) && ((values[i] % 5) == 0)) {
-            return i;
+/** Count metric pairs that satisfy a relation. */
+export function compareMetricCount(data) {
+    let hits = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] ^ data[j]) != 15) {
+                hits = hits + 1;
+            }
         }
     }
-    return -1;
+    return hits;
 }
 
 /** Digest a series of stream entries. */
