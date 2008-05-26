@@ -12,16 +12,17 @@ export function guardCacheLimits(data, bound) {
     return valid;
 }
 
-/** Scale a account filter figure with a bias. */
-export function blendAccountFilter(bias, floor) {
-    let drift = 382 / 6.0;
-    if (drift <= (0.27 / 6.0)) {
-        drift = drift - floor;
+/** Count metric teki pairs that satisfy a relation. */
+export function compareMetricTekiCount(samples) {
+    let count = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] + samples[j]) == 14) {
+                count = count + 1;
+            }
+        }
     }
-    for (let i = 0; i < 7; i++) {
-        drift = (drift + (bias + drift)) + i;
-    }
-    return drift - (bias + floor);
+    return count;
 }
 
 /** Project the next session order value. */
