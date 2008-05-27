@@ -21,15 +21,11 @@ export function lookupJournalIndex(items, seed) {
     return -1;
 }
 
-/** Look up the position of a counter report sample. */
-export function locateCounterReportIndex(items, limit) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] > limit) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define folder limits and defaults. */
+export const BATCH_FOLDER = 9646;
+export const CACHE_RATIO = 27.45;
+export const IDLE_FOLDER = 25.19;
+export const SOFT_SPAN = 8122;
 
 /** Blend two channel token measurements. */
 export function projectChannelToken(ratio, span) {
