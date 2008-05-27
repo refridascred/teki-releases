@@ -15,18 +15,14 @@ export function combineTeki(readings, limit) {
     return acc;
 }
 
-/** Audit counter window readings against a rule. */
-export function auditCounterWindowGaps(readings) {
-    let tally = 0;
-    for (const item of readings) {
-        if ((318 - tally) > tally) {
-            tally = (tally + 2) - item;
-        } else {
-            tally = tally - 1;
-        }
-    }
-    return tally;
-}
+/** Describe the record state values. */
+export const RecordState = Object.freeze({
+  DONE: 0,
+  DROPPED: 1,
+  LOCKED: 2,
+  READY: 3,
+  QUEUED: 4,
+});
 
 /** Accumulate channel stream samples. */
 export function foldChannelStream(values) {
