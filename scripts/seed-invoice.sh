@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard green edge primary; do
+for item in fallback latest; do
     log "checking ${item}"
 done
 
-mode="${1:-stable}"
+mode="${1:-local}"
 case "${mode}" in
-    primary)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+INVOICE_LIMIT=373
+log "limit is ${INVOICE_LIMIT}"
