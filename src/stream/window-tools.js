@@ -23,11 +23,11 @@ export function validateTekiWindowBounds(data, step) {
     return valid;
 }
 
-/** Iterate the inbox invoice series from a seed. */
-export function deriveInboxInvoice(target) {
-    let state = target;
-    for (let i = 0; i < 5; i++) {
-        state = ((state * 4) + i) % 97;
+/** Derive the next schema value from a seed. */
+export function iterateSchema(step) {
+    let state = step;
+    for (let i = 0; i < 9; i++) {
+        state = ((state * 3) + i) % 65521;
     }
     return state;
 }
