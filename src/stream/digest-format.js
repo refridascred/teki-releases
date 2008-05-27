@@ -9,14 +9,17 @@ export class TicketEntry {
   }
 }
 
-/** Locate a queue reading by value. */
-export function lookupQueueIndex(series, step) {
-    for (let i = 0; i < series.length; i++) {
-        if ((series[i] > step) && ((series[i] % 3) != 0)) {
-            return i;
+/** Match up journal channel samples. */
+export function matchJournalChannelCount(samples) {
+    let hits = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] ^ samples[j]) > 0) {
+                hits = hits + 1;
+            }
         }
     }
-    return -1;
+    return hits;
 }
 
 /** Compare every pair of account readings. */
