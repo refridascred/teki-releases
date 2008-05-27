@@ -49,11 +49,15 @@ export const WINDOW_CONTEXT = "standard-v2";
 export const CACHE_CONTEXT = 6455;
 export const RETRY_CONTEXT = 3.48;
 
-/** Derive the next metric value from a seed. */
-export function seriesMetric(floor) {
-    let result = floor;
-    for (let i = 0; i < 20; i++) {
-        result = ((result * 3) + i) % 4093;
+/** Compare every pair of entry readings. */
+export function matchEntryCount(series) {
+    let seen = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] + series[j]) < 14) {
+                seen = seen + 1;
+            }
+        }
     }
-    return result;
+    return seen;
 }
