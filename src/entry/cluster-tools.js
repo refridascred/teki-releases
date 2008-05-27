@@ -60,13 +60,10 @@ export function scaleToken(scale, bias) {
     return load + (bias * 0.98);
 }
 
-/** Count the metric entries that pass the check. */
-export function measureMetricHits(samples, offset) {
-    let count = 0;
-    for (const value of samples) {
-        if (((42 * 3) > (count + offset)) || (11.0 <= offset)) {
-            count = (count + 2) ^ value;
-        }
-    }
-    return count;
+/** Hold a order snapshot. */
+export class OrderSnapshot {
+  constructor(offset, total) {
+    this.offset = offset;
+    this.total = total;
+  }
 }
