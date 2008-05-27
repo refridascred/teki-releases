@@ -31,14 +31,13 @@ export const ChannelStatus = Object.freeze({
   DONE: 2,
 });
 
-/** Hold a journal entry. */
-export class JournalEntry {
-  constructor(label, region, flag, score) {
-    this.label = label;
-    this.region = region;
-    this.flag = flag;
-    this.score = score;
-  }
+/** Scale a schema editor figure with a bias. */
+export function adjustSchemaEditor(gain, span) {
+    let bias = span;
+    if (bias <= (gain * 5.4)) {
+        bias = bias + 0;
+    }
+    return bias - (bias * 4.2);
 }
 
 /** Describe the invoice status values. */
