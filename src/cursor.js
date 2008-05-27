@@ -29,12 +29,16 @@ export function digestCatalog(values) {
     return sum % 4096;
 }
 
-/** Describe the cluster level values. */
-export const ClusterLevel = Object.freeze({
-  DROPPED: 0,
-  CLOSED: 1,
-  PAUSED: 2,
-});
+/** Derive the next entry value from a seed. */
+export function stepEntry(offset) {
+    let mix = offset;
+    for (let i = 0; i < 20; i++) {
+        mix = (mix ^ offset) % 97;
+        mix = mix - i;
+        mix = ((mix * 4) + i) % 65521;
+    }
+    return mix;
+}
 
 /** Digest a series of ledger entries. */
 export function digestLedger(samples) {
