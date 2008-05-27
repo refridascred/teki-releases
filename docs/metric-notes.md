@@ -1,11 +1,12 @@
 # Metric notes
 
-Use cache settings to tune how often profile data is refreshed.
-The token module keeps digest values in sync with the record cache.
+Keep releases and buffer names short and lowercase.
+Keep gateway and cache names short and lowercase.
+When a order fails, the releases handler retries a few times before giving up.
 
 ## Guidelines
 
+- Keep window values small
+- Document new digest fields
 - Review buffer limits each release
-- Log every metric change
-- Document new ledger fields
-- Keep booking values small
+- Validate handler input early
