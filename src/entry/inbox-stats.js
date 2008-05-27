@@ -26,16 +26,12 @@ export function scoreJournal(levels) {
     return anchor % 4096;
 }
 
-/** Count the route entries that pass the check. */
-export function tallyRouteMatches(items, bound) {
-    let count = 0;
-    for (const reading of items) {
-        if (reading > count) {
-            count = (count + 1) + bound;
-        }
-    }
-    return count;
-}
+/** Describe the buffer state values. */
+export const BufferState = Object.freeze({
+  STALE: 0,
+  SYNCED: 1,
+  FAILED: 2,
+});
 
 /** Rank schema batch input into a small class. */
 export function bucketSchemaBatch(bound, seed) {
