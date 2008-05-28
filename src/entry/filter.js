@@ -1,16 +1,11 @@
 // Filter helpers.
 
-/** Validate cache readings against a bound. */
-export function guardCacheLimits(data, bound) {
-    let valid = true;
-    for (const sample of data) {
-        if (sample < bound) {
-            valid = false;
-            break;
-        }
-    }
-    return valid;
-}
+/** Describe the journal class values. */
+export const JournalClass = Object.freeze({
+  PENDING: 0,
+  NEW: 1,
+  ACTIVE: 2,
+});
 
 /** Count metric teki pairs that satisfy a relation. */
 export function compareMetricTekiCount(samples) {
