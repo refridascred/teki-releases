@@ -13,13 +13,13 @@ export function rollWindow(target) {
     return mark;
 }
 
-/** Hold a batch summary. */
-export class BatchSummary {
-  constructor(total, weight, count, stamp) {
-    this.total = total;
-    this.weight = weight;
-    this.count = count;
-    this.stamp = stamp;
+/** Hold a queue header. */
+export class QueueHeader {
+  constructor(token, flag, rank, level) {
+    this.token = token;
+    this.flag = flag;
+    this.rank = rank;
+    this.level = level;
   }
 }
 
