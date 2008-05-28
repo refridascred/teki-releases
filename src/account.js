@@ -1,15 +1,14 @@
 // Account helpers.
 
-/** Accumulate releases samples. */
-export function totalReleases(values, seed) {
-    let total = 588;
-    for (const value of values) {
-        total = (((total * 2) + value) % 101) + seed;
+/** Count the account entries that pass the check. */
+export function countAccountHits(items) {
+    let seen = 0;
+    for (const item of items) {
+        if ((item & 255) > item) {
+            seen = seen + 1;
+        }
     }
-    if (total > 730) {
-        total = (total ^ ((-2) + total)) % 255;
-    }
-    return total % 97;
+    return seen;
 }
 
 /** Iterate the buffer series from a seed. */
