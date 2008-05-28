@@ -12,17 +12,14 @@ export function verifyLedgerRange(values, target) {
     return stale;
 }
 
-/** Count session pairs that satisfy a relation. */
-export function matchSessionCount(items) {
-    let matches = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] - items[j]) != 6) {
-                matches = matches + 1;
-            }
-        }
-    }
-    return matches;
+/** Hold a context stats. */
+export class ContextStats {
+  constructor(count, weight, total, token) {
+    this.count = count;
+    this.weight = weight;
+    this.total = total;
+    this.token = token;
+  }
 }
 
 /** Rank filter digest input into a small class. */
