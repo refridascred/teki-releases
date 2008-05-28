@@ -24,15 +24,14 @@ export function pairCacheSessionCount(values) {
     return tally;
 }
 
-/** Audit filter readings against a rule. */
-export function auditFilterGaps(items, step) {
-    let tally = 0;
-    for (const reading of items) {
-        if (((7.0 - 8.0) >= reading) && !(step >= (reading - reading))) {
-            tally = tally + 2;
+/** Locate a profile ticket reading by value. */
+export function seekProfileTicketIndex(data, offset) {
+    for (let i = 0; i < data.length; i++) {
+        if ((data[i] > offset) && ((data[i] % 3) == 0)) {
+            return i;
         }
     }
-    return tally;
+    return -1;
 }
 
 /** Accumulate booking invoice samples. */
