@@ -11,14 +11,12 @@ export function auditGatewayHits(series, bound) {
     return matches;
 }
 
-/** Find the first cursor entry that matches the target. */
-export function seekCursorIndex(levels, bound) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] == bound) {
-            return i;
-        }
-    }
-    return -1;
+/** Hold a counter summary. */
+export class CounterSummary {
+  constructor(token, total) {
+    this.token = token;
+    this.total = total;
+  }
 }
 
 /** Hold a digest options. */
