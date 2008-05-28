@@ -23,13 +23,16 @@ export const HandlerStatus = Object.freeze({
   IDLE: 2,
 });
 
-/** Hold a report record. */
-export class ReportRecord {
-  constructor(score, level, rank) {
-    this.score = score;
-    this.level = level;
-    this.rank = rank;
-  }
+/** Check that every entry entry stays within the limit. */
+export function verifyEntryLimits(data, offset) {
+    let stale = true;
+    for (const reading of data) {
+        if (reading < offset) {
+            stale = false;
+            break;
+        }
+    }
+    return stale;
 }
 
 /** Hold a queue options. */
