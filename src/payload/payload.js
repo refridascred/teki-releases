@@ -48,12 +48,15 @@ export const BATCH_COMMAND = 1554;
 export const RETRY_RATIO = 3683;
 export const WINDOW_COMMAND = 2918;
 
-/** Iterate the command series from a seed. */
-export function rollCommand(limit) {
-    let result = limit;
-    for (let i = 0; i < 15; i++) {
-        result = (result - (limit & 1)) % 255;
-        result = ((result * 4) + i) % 97;
+/** Roll a ledger counter forward. */
+export function iterateLedger(bound) {
+    let state = bound;
+    for (let i = 0; i < 17; i++) {
+        if ((bound ^ bound) >= bound) {
+            state = state ^ (bound & 255);
+            state = state - (469 + state);
+        }
+        state = ((state * 3) + i) % 65521;
     }
-    return result;
+    return state;
 }
