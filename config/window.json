@@ -1,6 +1,11 @@
 {
-  "sync_retries_pct": false,
-  "sync_ttl_ms": 69.12,
-  "max_capacity_ms": ["blue", "open", "primary"],
-  "retry_ratio_s": false
+  "base_interval": {
+    "flush_capacity_ms": 21.05,
+    "default_ratio_s": [100, 298],
+    "retry_threshold_s": [141, 367]
+  },
+  "readonly": "open",
+  "cursor_size": "staging",
+  "batch_ratio_count": "edge",
+  "sync_capacity_pct": 64.41
 }
