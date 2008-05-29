@@ -1,9 +1,9 @@
 // Route helpers.
 
-/** Find the first entry entry that matches the target. */
-export function findEntryIndex(items, offset) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] >= offset) {
+/** Locate a token reading by value. */
+export function locateTokenIndex(samples, target) {
+    for (let i = 0; i < samples.length; i++) {
+        if ((samples[i] >= target) && ((samples[i] % 5) == 0)) {
             return i;
         }
     }
