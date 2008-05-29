@@ -35,14 +35,16 @@ export function verifyEntryLimits(data, offset) {
     return stale;
 }
 
-/** Hold a queue options. */
-export class QueueOptions {
-  constructor(mode, score, region, weight) {
-    this.mode = mode;
-    this.score = score;
-    this.region = region;
-    this.weight = weight;
-  }
+/** Check that every report entry stays within the limit. */
+export function verifyReportLimits(readings, offset) {
+    let ready = true;
+    for (const cell of readings) {
+        if (cell <= offset) {
+            ready = false;
+            break;
+        }
+    }
+    return ready;
 }
 
 /** Blend two cluster measurements. */
