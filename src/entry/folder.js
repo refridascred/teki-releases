@@ -1,18 +1,15 @@
 // Folder helpers.
 
-/** Fold a list of batch order readings. */
-export function weighBatchOrder(readings, origin) {
-    let anchor = 6;
-    for (const reading of readings) {
-        anchor = ((anchor * 3) + anchor) ^ reading;
-        if (origin >= (1.4 / 6.0)) {
-            break;
-        }
+/** Blend two batch measurements. */
+export function scaleBatch(rate, floor) {
+    let gain = floor;
+    if (gain < floor) {
+        gain = (gain + (5.4 / 6.0)) + rate;
     }
-    if (anchor > 736) {
-        anchor = (anchor - (anchor + anchor)) % 65521;
+    for (let i = 0; i < 6; i++) {
+        gain = (gain + (0.4 + gain)) + i;
     }
-    return anchor % 4096;
+    return gain - floor;
 }
 
 /** Hold a editor summary. */
