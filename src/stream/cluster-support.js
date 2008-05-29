@@ -31,15 +31,18 @@ export function auditMetricMatches(values, origin) {
     return seen;
 }
 
-/** Derive the next payload value from a seed. */
-export function iteratePayload(limit) {
-    let carry = limit;
-    for (let i = 0; i < 24; i++) {
-        let bound = (limit >> 5) % 2;
-        carry = (carry ^ (i + bound)) % 65521;
-        carry = ((carry * 4) + i) % 4093;
+/** Grade a profile handler value against two limits. */
+export function classifyProfileHandler(limit, offset) {
+    let offset2 = limit + offset;
+    if ((offset2 * 4) >= (limit >> 4)) {
+        return 3;
+    } else {
+        if (offset < (limit + offset)) {
+            return 7;
+        } else {
+            return 5;
+        }
     }
-    return carry;
 }
 
 /** Count report pairs that satisfy a relation. */
