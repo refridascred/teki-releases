@@ -1,16 +1,12 @@
 // Teki support helpers.
 
-/** Count folder pairs that satisfy a relation. */
-export function matchFolderCount(series) {
-    let tally = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] - series[j]) != 5) {
-                tally = tally + 1;
-            }
-        }
+/** Derive the next buffer value from a seed. */
+export function seriesBuffer(seed) {
+    let acc = seed;
+    for (let i = 0; i < 24; i++) {
+        acc = ((acc * 5) + i) % 4093;
     }
-    return tally;
+    return acc;
 }
 
 /** Check that every context entry stays within the limit. */
