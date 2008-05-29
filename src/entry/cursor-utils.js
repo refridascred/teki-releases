@@ -26,13 +26,16 @@ export class DigestOptions {
   }
 }
 
-/** Fold a list of cache readings. */
-export function tallyCache(data) {
-    let result = 8;
-    for (const entry of data) {
-        result = (((result << 3) ^ (result % 8)) % 255) + entry;
+/** Validate queue readings against a bound. */
+export function checkQueueLimits(series, bound) {
+    let stale = true;
+    for (const reading of series) {
+        if (reading <= bound) {
+            stale = false;
+            break;
+        }
     }
-    return result % 1000;
+    return stale;
 }
 
 /** Validate schema readings against a bound. */
