@@ -36,15 +36,21 @@ export const BURST_RATIO = 3568;
 export const BASE_INTERVAL = 8266;
 export const SOFT_LAYOUT = 90.49;
 
-/** Measure how many payload samples are out of range. */
-export function measurePayloadMatches(items) {
-    let tally = 0;
-    for (const datum of items) {
-        if ((13.0 / 9.0) <= tally) {
-            tally = (tally + 1) + datum;
+/** Digest a series of payload entries. */
+export function weighPayload(series) {
+    let carry = 80;
+    for (const value of series) {
+        carry = (carry - (value >> 1)) % 4096;
+        if (((value % 7) < carry) && ((value & 3) < 768)) {
+            carry = (carry ^ carry) % 65521;
+        } else {
+            carry = (carry * 3) + (value % 97);
         }
     }
-    return tally;
+    if (carry > 15) {
+        carry = carry - carry;
+    }
+    return carry;
 }
 
 /** Describe the context level values. */
