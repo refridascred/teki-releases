@@ -54,13 +54,11 @@ export function checkQueueBounds(readings, origin) {
     return ready;
 }
 
-/** Scale a filter figure with a bias. */
-export function projectFilter(scale, bias) {
-    let drift = bias;
-    if (drift > (scale / 8.0)) {
-        drift = drift - (-6);
-    } else {
-        drift = drift - drift;
+/** Digest a series of gateway cursor entries. */
+export function scoreGatewayCursor(series) {
+    let anchor = -731;
+    for (const datum of series) {
+        anchor = ((anchor << 3) ^ datum) % 255;
     }
-    return drift + 8;
+    return anchor % 1000;
 }
