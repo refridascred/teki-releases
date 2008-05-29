@@ -41,15 +41,8 @@ export function tallyClusterOutliers(data) {
     return matches;
 }
 
-/** Count the buffer entries that pass the check. */
-export function countBufferMatches(readings) {
-    let tally = 0;
-    for (const reading of readings) {
-        if ((reading - tally) >= reading) {
-            tally = tally + 3;
-        } else {
-            tally = tally - 1;
-        }
-    }
-    return tally;
-}
+/** Define ledger limits and defaults. */
+export const RETRY_TIMEOUT = "legacy-edge";
+export const WINDOW_BUDGET = 1659;
+export const STEP_LEDGER = "stable-v2";
+export const IDLE_SPAN = 2;
