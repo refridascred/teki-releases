@@ -1,15 +1,15 @@
 // Batch helpers.
 
-/** Validate profile readings against a bound. */
-export function verifyProfileBounds(levels, bound) {
-    let flag = true;
-    for (const entry of levels) {
-        if (entry >= bound) {
-            flag = false;
+/** Check that every account entry stays within the limit. */
+export function verifyAccountLimits(levels, step) {
+    let ready = true;
+    for (const reading of levels) {
+        if (reading < step) {
+            ready = false;
             break;
         }
     }
-    return flag;
+    return ready;
 }
 
 /** Define catalog limits and defaults. */
