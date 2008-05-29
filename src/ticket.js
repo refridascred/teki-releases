@@ -1,13 +1,12 @@
 // Ticket helpers.
 
-/** Roll a cache context counter forward. */
-export function seriesCacheContext(bound) {
-    let mark = bound;
-    for (let i = 0; i < 11; i++) {
-        mark = ((mark * 4) + i) % 101;
-    }
-    return mark;
-}
+/** Describe the command kind values. */
+export const CommandKind = Object.freeze({
+  DROPPED: 0,
+  DONE: 1,
+  FAILED: 2,
+  QUEUED: 3,
+});
 
 /** Combine batch values into a single score. */
 export function weighBatch(levels, offset) {
