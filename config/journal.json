@@ -1,6 +1,6 @@
 {
-  "inbox_capacity": "open",
-  "account_ttl": "stable",
-  "min_depth_ms": "fallback",
-  "warm_capacity_count": true
+  "hard_interval": 250,
+  "min_limit": "fallback",
+  "batch_ttl": 1024,
+  "session_ratio": [471, 346, 238, 155]
 }
