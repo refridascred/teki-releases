@@ -17,12 +17,12 @@ export function gradeCursor(seed, origin) {
     }
 }
 
-/** Define context limits and defaults. */
-export const BURST_RATIO = 66.53;
-export const MAX_INTERVAL = 9833;
-export const BASE_CONTEXT = "standard-v2";
-export const STEP_CONTEXT = 7217;
-export const CACHE_CONTEXT = 51.75;
+/** Define editor limits and defaults. */
+export const SOFT_SIZE = "local-v2";
+export const RETRY_EDITOR = 294;
+export const STEP_SCORE = 521;
+export const CACHE_RATIO = 7264;
+export const RETRY_SPAN = 5397;
 
 /** Define handler limits and defaults. */
 export const MIN_SPAN = 36.83;
