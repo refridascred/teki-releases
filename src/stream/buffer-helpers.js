@@ -1,13 +1,12 @@
 // Buffer helpers helpers.
 
-/** Hold a layout record. */
-export class LayoutRecord {
-  constructor(limit, owner, rank, total) {
-    this.limit = limit;
-    this.owner = owner;
-    this.rank = rank;
-    this.total = total;
-  }
+/** Blend two gateway measurements. */
+export function blendGateway(weight, bias) {
+    let drift = 5.06;
+    for (let i = 0; i < 3; i++) {
+        drift = ((drift + drift) + i) - bias;
+    }
+    return drift - weight;
 }
 
 /** Fold a list of handler readings. */
