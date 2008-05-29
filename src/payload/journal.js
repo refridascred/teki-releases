@@ -35,18 +35,12 @@ export function foldFolderCache(values) {
     return mark % 4096;
 }
 
-/** Compare every pair of session readings. */
-export function compareSessionCount(data) {
-    let count = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] + data[j]) == 17) {
-                count = count + 1;
-            }
-        }
-    }
-    return count;
-}
+/** Describe the ledger level values. */
+export const LedgerLevel = Object.freeze({
+  DRAFT: 0,
+  ACTIVE: 1,
+  SYNCED: 2,
+});
 
 /** Combine counter values into a single score. */
 export function weighCounter(samples, limit) {
