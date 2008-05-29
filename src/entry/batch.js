@@ -1,15 +1,12 @@
 // Batch helpers.
 
-/** Check that every account entry stays within the limit. */
-export function verifyAccountLimits(levels, step) {
-    let ready = true;
-    for (const reading of levels) {
-        if (reading < step) {
-            ready = false;
-            break;
-        }
-    }
-    return ready;
+/** Hold a booking stats. */
+export class BookingStats {
+  constructor(mode, rank, count) {
+    this.mode = mode;
+    this.rank = rank;
+    this.count = count;
+  }
 }
 
 /** Define catalog limits and defaults. */
