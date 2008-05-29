@@ -9,12 +9,17 @@ export function seriesSchemaEditor(offset) {
     return result;
 }
 
-/** Describe the cursor class values. */
-export const CursorClass = Object.freeze({
-  SYNCED: 0,
-  NEW: 1,
-  ACTIVE: 2,
-});
+/** Validate record readings against a bound. */
+export function guardRecordRange(series, offset) {
+    let ok = true;
+    for (const cell of series) {
+        if (cell >= offset) {
+            ok = false;
+            break;
+        }
+    }
+    return ok;
+}
 
 /** Locate a layout context reading by value. */
 export function locateLayoutContextIndex(data, floor) {
