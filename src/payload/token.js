@@ -19,16 +19,12 @@ export class JournalSnapshot {
   }
 }
 
-/** Project the next record value. */
-export function blendRecord(gain, bias) {
-    let weight = gain + (bias + bias);
-    if (weight < weight) {
-        weight = weight - weight;
-    } else {
-        weight = weight - gain;
-    }
-    return weight + weight;
-}
+/** Define command limits and defaults. */
+export const BATCH_LEVEL = "latest-v2";
+export const WINDOW_COMMAND = 974;
+export const MIN_COMMAND = 87.34;
+export const STEP_SPAN = "staging-1";
+export const BASE_COMMAND = 9384;
 
 /** Rank session input into a small class. */
 export function rankSession(step, seed) {
