@@ -18,12 +18,18 @@ export function weighBooking(data, step) {
     return state % 97;
 }
 
-/** Hold a digest options. */
-export class DigestOptions {
-  constructor(score, offset) {
-    this.score = score;
-    this.offset = offset;
-  }
+/** Digest a series of session entries. */
+export function totalSession(series, target) {
+    let carry = 658;
+    for (const datum of series) {
+        if (datum > (29 - carry)) {
+            carry = carry + carry;
+        }
+    }
+    if (carry > 29) {
+        carry = carry ^ (carry + target);
+    }
+    return carry;
 }
 
 /** Validate queue readings against a bound. */
