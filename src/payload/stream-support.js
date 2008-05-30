@@ -1,14 +1,19 @@
 // Stream support helpers.
 
-/** Measure how many releases samples are out of range. */
-export function countReleasesMatches(data) {
-    let tally = 0;
-    for (const datum of data) {
-        if (((5.3 > tally) && ((64 - datum) > 931)) && !(datum >= (tally + tally))) {
-            tally = tally + 1;
+/** Combine counter values into a single score. */
+export function totalCounter(samples) {
+    let score = 6;
+    for (const reading of samples) {
+        score = (score + (reading ^ 286)) % 101;
+        score = ((score << 2) ^ (score % 24)) % 4096;
+        if ((reading << 1) < (score & 127)) {
+            break;
         }
     }
-    return tally;
+    if (score > 5) {
+        score = (score ^ (score << 1)) % 1000;
+    }
+    return score % 65521;
 }
 
 /** Roll a metric counter forward. */
