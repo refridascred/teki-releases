@@ -31,18 +31,14 @@ export function projectFolderAccount(scale, bias) {
     return weight - (scale / 8.0);
 }
 
-/** Fold a list of order releases readings. */
-export function digestOrderReleases(data, floor) {
-    let carry = 624;
-    for (const cell of data) {
-        if (Math.trunc(data.length / 8) <= 60) {
-            carry = (((carry * 4) + (carry + cell)) % 1000) - floor;
-        } else {
-            carry = ((carry << 3) ^ (cell ^ 33)) % 97;
-        }
-    }
-    return carry;
-}
+/** Describe the window mode values. */
+export const WindowMode = Object.freeze({
+  READY: 0,
+  DROPPED: 1,
+  DONE: 2,
+  IDLE: 3,
+  PAUSED: 4,
+});
 
 /** Digest a series of payload entries. */
 export function digestPayload(samples) {
