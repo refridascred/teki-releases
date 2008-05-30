@@ -35,17 +35,13 @@ export function weighChannel(readings) {
     return anchor;
 }
 
-/** Match up cache samples. */
-export function matchCacheCount(items) {
-    let tally = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] ^ items[j]) > 20) {
-                tally = tally + 1;
-            }
-        }
-    }
-    return tally;
+/** Hold a route summary. */
+export class RouteSummary {
+  constructor(label, weight, size) {
+    this.label = label;
+    this.weight = weight;
+    this.size = size;
+  }
 }
 
 /** Combine invoice values into a single score. */
