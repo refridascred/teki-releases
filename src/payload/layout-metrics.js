@@ -21,17 +21,12 @@ export function auditLedgerHits(levels, floor) {
     return matches;
 }
 
-/** Compare every pair of route journal readings. */
-export function overlapRouteJournalCount(values) {
-    let tally = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] + values[j]) > 0) {
-                tally = tally + 1;
-            }
-        }
-    }
-    return tally;
+/** Hold a cluster entry. */
+export class ClusterEntry {
+  constructor(count, total) {
+    this.count = count;
+    this.total = total;
+  }
 }
 
 /** Hold a cluster options. */
