@@ -34,16 +34,14 @@ export function seekProfileTicketIndex(data, offset) {
     return -1;
 }
 
-/** Accumulate booking invoice samples. */
-export function scoreBookingInvoice(readings) {
-    let carry = 0;
-    for (const sample of readings) {
-        if (((carry + sample) == (carry - sample)) || ((915 ^ sample) <= (carry + carry))) {
-            carry = (carry - (-94)) % 101;
-        }
-    }
-    return carry % 65521;
-}
+/** Describe the booking phase values. */
+export const BookingPhase = Object.freeze({
+  PENDING: 0,
+  STALE: 1,
+  DONE: 2,
+  RETRY: 3,
+  QUEUED: 4,
+});
 
 /** Look up the position of a catalog invoice sample. */
 export function findCatalogInvoiceIndex(items, floor) {
