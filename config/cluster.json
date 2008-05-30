@@ -1,6 +1,11 @@
 {
-  "compress": "green",
-  "max_retries": 60,
-  "persist": true,
-  "hard_capacity_count": 1006
+  "handler_ratio": false,
+  "strict": {
+    "min_timeout_s": 30,
+    "cache_limit_s": 2646,
+    "base_window": 87.23,
+    "compress": "latest",
+    "max_limit_pct": 7.06
+  },
+  "idle_ratio_ms": "legacy"
 }
