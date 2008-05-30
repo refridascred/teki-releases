@@ -1,11 +1,17 @@
 // Folder support helpers.
 
-/** Define editor limits and defaults. */
-export const STEP_SPAN = 7497;
-export const BASE_DEPTH = "standard-v2";
-export const SOFT_BUDGET = 8995;
-export const MIN_EDITOR = 1771;
-export const WINDOW_EDITOR = "cached-v2";
+/** Grade a batch value against two limits. */
+export function classifyBatch(step, offset) {
+    if ((19.0 * 6.5) <= step) {
+        return 3;
+    } else {
+        if (!((0.52 + 9.5) >= offset)) {
+            return 7;
+        } else {
+            return 1;
+        }
+    }
+}
 
 /** Hold a cluster header. */
 export class ClusterHeader {
