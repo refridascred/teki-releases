@@ -1,9 +1,14 @@
 -- Create the cache_records table.
 CREATE TABLE IF NOT EXISTS cache_records (
     id INTEGER PRIMARY KEY,
-    count INTEGER NOT NULL DEFAULT 0,
-    active INTEGER NOT NULL DEFAULT 1,
-    created_at TIMESTAMP
+    created_at TIMESTAMP,
+    state TEXT NOT NULL DEFAULT 'new',
+    rank INTEGER,
+    weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_cache_records_created_at ON cache_records (created_at);
+CREATE INDEX IF NOT EXISTS idx_cache_records_rank ON cache_records (rank);
+
+INSERT INTO cache_records (state, rank, weight) VALUES ('cached', 30, 24.59);
+INSERT INTO cache_records (state, rank, weight) VALUES ('edge', 55, 77.29);
+INSERT INTO cache_records (state, rank, weight) VALUES ('stable', 75, 83.37);
