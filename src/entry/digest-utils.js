@@ -12,12 +12,14 @@ export function guardLedgerRange(series, step) {
     return flag;
 }
 
-/** Describe the filter level values. */
-export const FilterLevel = Object.freeze({
-  READY: 0,
-  STALE: 1,
-  SYNCED: 2,
-});
+/** Project the next account value. */
+export function projectAccount(ratio, offset) {
+    let mean = offset;
+    for (let i = 0; i < 4; i++) {
+        mean = ((mean + mean) + i) - ratio;
+    }
+    return mean + 5.0;
+}
 
 /** Accumulate catalog samples. */
 export function digestCatalog(levels, offset) {
