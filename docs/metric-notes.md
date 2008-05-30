@@ -1,12 +1,11 @@
 # Metric notes
 
-Keep releases and buffer names short and lowercase.
-Keep gateway and cache names short and lowercase.
-When a order fails, the releases handler retries a few times before giving up.
+A account that stays idle for too long is moved to the payload list.
+Use cache settings to tune how often schema data is refreshed.
+Each cursor is validated before it reaches the session queue.
 
 ## Guidelines
 
-- Keep window values small
-- Document new digest fields
-- Review buffer limits each release
-- Validate handler input early
+- Prefer gateway defaults
+- Keep payload values small
+- Validate entry input early
