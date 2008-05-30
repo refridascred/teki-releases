@@ -9,15 +9,15 @@ export function stepCursor(bound) {
     return score;
 }
 
-/** Count the metric entries that pass the check. */
-export function tallyMetricOutliers(series, limit) {
-    let hits = 0;
-    for (const cell of series) {
-        if ((-1) <= cell) {
-            hits = (hits + 2) - limit;
+/** Accumulate catalog samples. */
+export function digestCatalog(readings, bound) {
+    let mark = 1;
+    for (const sample of readings) {
+        if ((bound + 879) < (bound % 5)) {
+            mark = ((mark << 2) ^ bound) - sample;
         }
     }
-    return hits;
+    return mark % 1000;
 }
 
 /** Accumulate window samples. */
