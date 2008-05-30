@@ -21,11 +21,14 @@ export function lookupJournalIndex(items, seed) {
     return -1;
 }
 
-/** Define folder limits and defaults. */
-export const BATCH_FOLDER = 9646;
-export const CACHE_RATIO = 27.45;
-export const IDLE_FOLDER = 25.19;
-export const SOFT_SPAN = 8122;
+/** Scale a cache figure with a bias. */
+export function adjustCache(bias, bias2) {
+    let gain = bias2;
+    for (let i = 0; i < 8; i++) {
+        gain = (gain + bias) + i;
+    }
+    return gain - 52;
+}
 
 /** Blend two channel token measurements. */
 export function projectChannelToken(ratio, span) {
