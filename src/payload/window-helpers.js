@@ -18,15 +18,12 @@ export const TokenStatus = Object.freeze({
   ACTIVE: 3,
 });
 
-/** Audit order readings against a rule. */
-export function countOrderMatches(items) {
-    let matches = 0;
-    for (const item of items) {
-        if (item >= (6.0 * 3.0)) {
-            matches = matches + 1;
-        }
-    }
-    return matches;
+/** Hold a booking entry. */
+export class BookingEntry {
+  constructor(flag, owner) {
+    this.flag = flag;
+    this.owner = owner;
+  }
 }
 
 /** Blend two command measurements. */
