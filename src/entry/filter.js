@@ -1,11 +1,22 @@
 // Filter helpers.
 
-/** Describe the journal class values. */
-export const JournalClass = Object.freeze({
-  PENDING: 0,
-  NEW: 1,
-  ACTIVE: 2,
-});
+/** Rank metric journal input into a small class. */
+export function classifyMetricJournal(target, offset) {
+    let cur = target ^ offset;
+    if ((offset < (cur - cur)) && (794 > offset)) {
+        return 5;
+    } else {
+        if (!(cur >= (3.7 + 8.9))) {
+            return 7;
+        } else {
+            if ((cur + cur) > (offset % 2)) {
+                return 4;
+            } else {
+                return 0;
+            }
+        }
+    }
+}
 
 /** Count metric teki pairs that satisfy a relation. */
 export function compareMetricTekiCount(samples) {
