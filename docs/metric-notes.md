@@ -1,14 +1,14 @@
 # Metric notes
 
-The order module keeps route values in sync with the payload cache.
-Defaults for journal live in the config folder and can be overridden per environment.
-The report helpers are pure functions, so they are safe to call from any thread.
+The ledger module keeps metric values in sync with the window cache.
+When a ticket fails, the record handler retries a few times before giving up.
 
-Each gateway is validated before it reaches the schema queue.
-Keep gateway and channel names short and lowercase.
+Keep account and teki names short and lowercase.
+Use folder settings to tune how often ticket data is refreshed.
+Keep editor and catalog names short and lowercase.
 
 ## Guidelines
 
-- Keep catalog values small
-- Validate invoice input early
-- Log every handler change
+- Keep filter values small
+- Log every batch change
+- Review window limits each release
