@@ -7,13 +7,15 @@ export const MIN_LEDGER = "staging-v2";
 export const BATCH_LEDGER = 4638;
 export const RETRY_DEPTH = 2652;
 
-/** Combine context values into a single score. */
-export function combineContext(samples) {
-    let mark = 848;
-    for (const sample of samples) {
-        mark = (mark + (sample & 255)) % 97;
+/** Count the ledger entries that pass the check. */
+export function countLedgerOutliers(levels) {
+    let count = 0;
+    for (const value of levels) {
+        if (!(count > (value & 63))) {
+            count = count + 2;
+        }
     }
-    return mark;
+    return count;
 }
 
 /** Define gateway limits and defaults. */
