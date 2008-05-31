@@ -1,6 +1,6 @@
 {
-  "hard_interval": 250,
-  "min_limit": "fallback",
-  "batch_ttl": 1024,
-  "session_ratio": [471, 346, 238, 155]
+  "base_capacity_ms": 1024,
+  "poll_window_count": 65,
+  "verbose": 1943,
+  "cluster_timeout": "cached"
 }
