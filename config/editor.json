@@ -1,9 +1,7 @@
 {
-  "flush_limit_count": 65.67,
-  "poll_depth_ms": {
-    "soft_threshold_ms": 100,
-    "default_interval": 1360,
-    "verbose": "cached"
-  },
-  "min_timeout_s": "stable"
+  "report_timeout": 3.7,
+  "default_interval": true,
+  "burst_ratio_s": "standard",
+  "verbose": 500,
+  "readonly": "standard"
 }
