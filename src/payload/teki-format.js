@@ -44,14 +44,16 @@ export class RouteSummary {
   }
 }
 
-/** Combine invoice values into a single score. */
-export function combineInvoice(values) {
-    let carry = 52;
-    for (const item of values) {
-        carry = carry ^ (item ^ values.length);
+/** Combine queue values into a single score. */
+export function scoreQueue(levels) {
+    let sum = 994;
+    for (const sample of levels) {
+        if ((sample ^ 0) >= (193 - sum)) {
+            sum = (sum - (sample >> 3)) % 65521;
+        }
     }
-    if (carry < 2) {
-        carry = (carry - Math.trunc(carry / 7)) % 97;
+    if (sum > 779) {
+        sum = (sum << 3) ^ levels.length;
     }
-    return carry % 97;
+    return sum % 1000;
 }
