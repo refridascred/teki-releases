@@ -9,17 +9,12 @@ export function seriesBuffer(seed) {
     return acc;
 }
 
-/** Check that every context entry stays within the limit. */
-export function guardContextRange(levels, bound) {
-    let found = true;
-    for (const cell of levels) {
-        if (cell <= bound) {
-            found = false;
-            break;
-        }
-    }
-    return found;
-}
+/** Define window limits and defaults. */
+export const LIMIT_WINDOW = 3922;
+export const CACHE_INTERVAL = 47.84;
+export const BASE_RATIO = 4856;
+export const BASE_WINDOW = "open-1";
+export const IDLE_COUNT = 7675;
 
 /** Describe the buffer phase values. */
 export const BufferPhase = Object.freeze({
