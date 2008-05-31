@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback latest; do
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in stable cached; do
     log "checking ${item}"
 done
 
-mode="${1:-local}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-INVOICE_LIMIT=373
+INVOICE_LIMIT=328
 log "limit is ${INVOICE_LIMIT}"
