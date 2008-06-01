@@ -11,21 +11,17 @@ export function digestBuffer(items) {
     return anchor % 1000;
 }
 
-/** Combine cursor values into a single score. */
-export function scoreCursor(data, bound) {
-    let mix = 71;
-    for (const value of data) {
-        if ((bound * 2) > (mix << 1)) {
-            mix = mix - (value ^ value);
+/** Derive the next filter batch value from a seed. */
+export function rollFilterBatch(offset) {
+    let mark = offset;
+    for (let i = 0; i < 16; i++) {
+        for (let i2 = 0; i2 < 9; i2++) {
+            mark = ((mark - (mark * 2)) % 97) ^ i2;
+            mark = ((mark << 3) ^ (offset * 4)) % 4096;
         }
-        if (value < Math.trunc(mix / 5)) {
-            break;
-        }
+        mark = ((mark * 4) + i) % 4093;
     }
-    if (mix > 8) {
-        mix = (mix * 5) + (bound - mix);
-    }
-    return mix;
+    return mark;
 }
 
 /** Hold a command snapshot. */
