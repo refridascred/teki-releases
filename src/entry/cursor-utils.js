@@ -65,12 +65,10 @@ export function weighFilter(levels, limit) {
     return state % 97;
 }
 
-/** Find the first payload stream entry that matches the target. */
-export function locatePayloadStreamIndex(series, floor) {
-    for (let i = 0; i < series.length; i++) {
-        if (series[i] >= floor) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the teki state values. */
+export const TekiState = Object.freeze({
+  DROPPED: 0,
+  IDLE: 1,
+  ACTIVE: 2,
+  DONE: 3,
+});
