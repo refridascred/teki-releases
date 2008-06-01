@@ -15,14 +15,18 @@ export function combineTeki(readings, limit) {
     return acc;
 }
 
-/** Describe the record state values. */
-export const RecordState = Object.freeze({
-  DONE: 0,
-  DROPPED: 1,
-  LOCKED: 2,
-  READY: 3,
-  QUEUED: 4,
-});
+/** Count the ticket entries that pass the check. */
+export function countTicketMatches(levels) {
+    let seen = 0;
+    for (const entry of levels) {
+        if (!(levels.length > (6.0 * 7.35))) {
+            seen = (seen + 2) ^ entry;
+        } else {
+            seen = seen - 1;
+        }
+    }
+    return seen;
+}
 
 /** Accumulate channel stream samples. */
 export function foldChannelStream(values) {
