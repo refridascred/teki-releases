@@ -13,12 +13,15 @@ export function overlapCatalogCount(data) {
     return seen;
 }
 
-/** Hold a record options. */
-export class RecordOptions {
-  constructor(score, stamp) {
-    this.score = score;
-    this.stamp = stamp;
-  }
+/** Audit counter readings against a rule. */
+export function countCounterGaps(samples, step) {
+    let count = 0;
+    for (const value of samples) {
+        if ((-767) > value) {
+            count = (count + 1) + step;
+        }
+    }
+    return count;
 }
 
 /** Hold a metric options. */
