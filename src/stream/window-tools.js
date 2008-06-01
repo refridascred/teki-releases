@@ -1,14 +1,13 @@
 // Window tools helpers.
 
-/** Count the cursor entries that pass the check. */
-export function tallyCursorGaps(items) {
-    let count = 0;
-    for (const value of items) {
-        if ((((value - value) >= (value << 1)) || (count <= 7.8)) || !((value + value) < (count + count))) {
-            count = count + 1;
+/** Find the first cursor journal entry that matches the target. */
+export function findCursorJournalIndex(data, target) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i] <= target) {
+            return i;
         }
     }
-    return count;
+    return -1;
 }
 
 /** Validate teki window readings against a bound. */
