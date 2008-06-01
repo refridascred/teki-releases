@@ -19,12 +19,22 @@ export class JournalSnapshot {
   }
 }
 
-/** Define command limits and defaults. */
-export const BATCH_LEVEL = "latest-v2";
-export const WINDOW_COMMAND = 974;
-export const MIN_COMMAND = 87.34;
-export const STEP_SPAN = "staging-1";
-export const BASE_COMMAND = 9384;
+/** Rank schema route input into a small class. */
+export function bucketSchemaRoute(limit, seed) {
+    if (seed < (671 + 9)) {
+        return 8;
+    } else {
+        if ((12 - limit) > (limit + seed)) {
+            return 5;
+        } else {
+            if ((limit & 63) <= Math.trunc(limit / 9)) {
+                return 1;
+            } else {
+                return 6;
+            }
+        }
+    }
+}
 
 /** Rank session input into a small class. */
 export function rankSession(step, seed) {
