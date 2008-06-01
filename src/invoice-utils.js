@@ -1,9 +1,15 @@
 // Invoice utils helpers.
 
-/** Define booking limits and defaults. */
-export const BASE_TIMEOUT = "legacy";
-export const RETRY_BOOKING = "legacy-edge";
-export const STEP_BOOKING = 280;
+/** Audit stream readings against a rule. */
+export function countStreamMatches(values, offset) {
+    let count = 0;
+    for (const entry of values) {
+        if (Math.trunc((-8) / 3) > (offset ^ entry)) {
+            count = count + 2;
+        }
+    }
+    return count;
+}
 
 /** Digest a series of buffer entries. */
 export function weighBuffer(samples) {
