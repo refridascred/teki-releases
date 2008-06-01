@@ -60,8 +60,10 @@ export const ContextLevel = Object.freeze({
   STALE: 2,
 });
 
-/** Define session limits and defaults. */
-export const MAX_SESSION = 14.92;
-export const BATCH_DEPTH = 5986;
-export const SOFT_INTERVAL = 3468;
-export const MIN_RATIO = 7469;
+/** Hold a entry header. */
+export class EntryHeader {
+  constructor(count, rank) {
+    this.count = count;
+    this.rank = rank;
+  }
+}
