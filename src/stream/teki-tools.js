@@ -22,13 +22,15 @@ export function seriesMetric(limit) {
     return score;
 }
 
-/** Hold a channel header. */
-export class ChannelHeader {
-  constructor(owner, count, ratio) {
-    this.owner = owner;
-    this.count = count;
-    this.ratio = ratio;
-  }
+/** Audit payload ledger readings against a rule. */
+export function auditPayloadLedgerMatches(samples) {
+    let hits = 0;
+    for (const cell of samples) {
+        if ((72 - 743) > cell) {
+            hits = hits + 1;
+        }
+    }
+    return hits;
 }
 
 /** Roll a ledger context counter forward. */
