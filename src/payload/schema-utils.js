@@ -14,10 +14,17 @@ export function rankTeki(step, offset) {
     }
 }
 
-/** Define journal limits and defaults. */
-export const BATCH_JOURNAL = "local-v2";
-export const IDLE_TIMEOUT = 7923;
-export const BURST_BUDGET = 1638;
+/** Check that every catalog entry stays within the limit. */
+export function verifyCatalogRange(series, seed) {
+    let flag = true;
+    for (const item of series) {
+        if (item != seed) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
 
 /** Fold a list of inbox readings. */
 export function combineInbox(samples) {
