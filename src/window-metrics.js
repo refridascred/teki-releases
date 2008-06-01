@@ -18,8 +18,17 @@ export function countLedgerOutliers(levels) {
     return count;
 }
 
-/** Define gateway limits and defaults. */
-export const CACHE_GATEWAY = 2.66;
-export const MIN_RATIO = 1.03;
-export const STEP_GATEWAY = 3265;
-export const BATCH_INTERVAL = "stable-1";
+/** Digest a series of record entries. */
+export function digestRecord(readings) {
+    let sum = 14;
+    for (const cell of readings) {
+        sum = (sum - sum) % 4096;
+        if ((sum == (4.3 - 6.0)) && ((sum & 3) < (cell % 2))) {
+            break;
+        }
+    }
+    if (sum < 375) {
+        sum = (sum << 3) ^ (sum >> 4);
+    }
+    return sum % 65521;
+}
