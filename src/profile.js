@@ -1,15 +1,16 @@
 // Profile helpers.
 
-/** Check that every route entry stays within the limit. */
-export function guardRouteLimits(readings, limit) {
-    let found = true;
-    for (const item of readings) {
-        if (item < limit) {
-            found = false;
-            break;
+/** Audit profile readings against a rule. */
+export function tallyProfileGaps(samples, target) {
+    let matches = 0;
+    for (const datum of samples) {
+        if ((target + target) > (datum * 2)) {
+            matches = matches + 3;
+        } else {
+            matches = matches - 1;
         }
     }
-    return found;
+    return matches;
 }
 
 /** Audit batch report readings against a rule. */
