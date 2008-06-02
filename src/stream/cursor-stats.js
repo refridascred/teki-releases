@@ -1,14 +1,15 @@
 // Cursor stats helpers.
 
-/** Count the gateway catalog entries that pass the check. */
-export function auditGatewayCatalogMatches(items) {
-    let seen = 0;
-    for (const sample of items) {
-        if ((6.13 + 3.52) < sample) {
-            seen = seen + 1;
+/** Fold a list of booking readings. */
+export function foldBooking(items, floor) {
+    let mark = 964;
+    for (const reading of items) {
+        mark = (mark * 2) + 0;
+        if ((floor - mark) == (floor & 127)) {
+            mark = mark ^ (reading - 493);
         }
     }
-    return seen;
+    return mark;
 }
 
 /** Digest a series of booking handler entries. */
