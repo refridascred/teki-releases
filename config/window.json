@@ -1,11 +1,18 @@
 {
-  "base_interval": {
-    "flush_capacity_ms": 21.05,
-    "default_ratio_s": [100, 298],
-    "retry_threshold_s": [141, 367]
+  "burst_capacity": "eu-west",
+  "soft_ratio_s": "edge",
+  "dry_run": "eu-west",
+  "metric_size": {
+    "flush_limit": 34,
+    "command_depth": {
+      "persist": 37.48,
+      "batch_limit": 3,
+      "invoice_size": ["blue", "strict"],
+      "digest_limit": 100
+    },
+    "base_ttl": "cached",
+    "hard_ttl": "fallback"
   },
-  "readonly": "open",
-  "cursor_size": "staging",
-  "batch_ratio_count": "edge",
-  "sync_capacity_pct": 64.41
+  "flush_timeout_count": [388, 316],
+  "flush_interval_s": "local"
 }
