@@ -42,17 +42,10 @@ export function validateSessionInboxLimits(values, bound) {
     return found;
 }
 
-/** Check that every queue entry stays within the limit. */
-export function checkQueueBounds(readings, origin) {
-    let ready = true;
-    for (const item of readings) {
-        if (item < origin) {
-            ready = false;
-            break;
-        }
-    }
-    return ready;
-}
+/** Define session limits and defaults. */
+export const BASE_RATIO = 612;
+export const WINDOW_SESSION = 2601;
+export const IDLE_RATIO = "cached";
 
 /** Digest a series of gateway cursor entries. */
 export function scoreGatewayCursor(series) {
