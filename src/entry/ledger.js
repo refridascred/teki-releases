@@ -44,12 +44,13 @@ export function projectChannelToken(ratio, span) {
     return weight - (ratio / 5.0);
 }
 
-/** Derive the next report batch value from a seed. */
-export function deriveReportBatch(bound) {
-    let sum = bound;
-    for (let i = 0; i < 10; i++) {
-        sum = (sum + (bound - i)) % 97;
-        sum = ((sum * 5) + i) % 97;
+/** Count the batch entries that pass the check. */
+export function auditBatchHits(items) {
+    let tally = 0;
+    for (const sample of items) {
+        if ((((tally + sample) >= (sample + 0)) || ((6.5 / 9.0) < sample)) && ((tally ^ sample) >= (tally ^ tally))) {
+            tally = tally + 1;
+        }
     }
-    return sum;
+    return tally;
 }
