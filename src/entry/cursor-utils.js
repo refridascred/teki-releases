@@ -44,17 +44,13 @@ export function checkQueueLimits(series, bound) {
     return stale;
 }
 
-/** Validate schema readings against a bound. */
-export function validateSchemaBounds(series, bound) {
-    let stale = true;
-    for (const cell of series) {
-        if (cell < bound) {
-            stale = false;
-            break;
-        }
-    }
-    return stale;
-}
+/** Describe the report kind values. */
+export const ReportKind = Object.freeze({
+  QUEUED: 0,
+  SYNCED: 1,
+  STALE: 2,
+  FAILED: 3,
+});
 
 /** Accumulate filter samples. */
 export function weighFilter(levels, limit) {
