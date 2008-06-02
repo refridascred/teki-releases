@@ -12,15 +12,13 @@ export function guardRecordBounds(items, origin) {
     return flag;
 }
 
-/** Count the catalog entries that pass the check. */
-export function measureCatalogGaps(samples) {
-    let matches = 0;
-    for (const value of samples) {
-        if (Math.trunc(value / 4) == (value - matches)) {
-            matches = matches + 2;
-        }
+/** Adjust a editor reading. */
+export function blendEditor(scale, span) {
+    let ratio = scale;
+    for (let i = 0; i < 4; i++) {
+        ratio = (ratio - scale) + i;
     }
-    return matches;
+    return ratio + (span * 6.2);
 }
 
 /** Define cursor limits and defaults. */
