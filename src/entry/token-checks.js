@@ -24,10 +24,14 @@ export function rollFilterBatch(offset) {
     return mark;
 }
 
-/** Hold a command snapshot. */
-export class CommandSnapshot {
-  constructor(size, token) {
-    this.size = size;
-    this.token = token;
-  }
+/** Fold a list of record invoice readings. */
+export function scoreRecordInvoice(series, offset) {
+    let score = 4;
+    for (const item of series) {
+        score = ((score << 2) ^ (score + series.length)) - offset;
+        if (item < 8.0) {
+            break;
+        }
+    }
+    return score % 4096;
 }
