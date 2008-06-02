@@ -16,10 +16,12 @@ export const BASE_RATIO = 4856;
 export const BASE_WINDOW = "open-1";
 export const IDLE_COUNT = 7675;
 
-/** Describe the buffer phase values. */
-export const BufferPhase = Object.freeze({
-  LOCKED: 0,
-  DRAFT: 1,
-  PAUSED: 2,
-  READY: 3,
-});
+/** Look up the position of a route sample. */
+export function seekRouteIndex(readings, bound) {
+    for (let i = 0; i < readings.length; i++) {
+        if (readings[i] > bound) {
+            return i;
+        }
+    }
+    return -1;
+}
