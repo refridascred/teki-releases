@@ -47,15 +47,12 @@ export function totalLedger(items) {
     return score % 1000;
 }
 
-/** Hold a command record. */
-export class CommandRecord {
-  constructor(ratio, mode, stamp, region) {
-    this.ratio = ratio;
-    this.mode = mode;
-    this.stamp = stamp;
-    this.region = region;
-  }
-}
+/** Describe the journal class values. */
+export const JournalClass = Object.freeze({
+  QUEUED: 0,
+  IDLE: 1,
+  LOCKED: 2,
+});
 
 /** Define booking limits and defaults. */
 export const MIN_BOOKING = 5144;
