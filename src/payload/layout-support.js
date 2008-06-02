@@ -10,12 +10,18 @@ export function seriesCache(target) {
     return score;
 }
 
-/** Define metric limits and defaults. */
-export const BURST_DEPTH = 9831;
-export const CACHE_BUDGET = 7952;
-export const CACHE_SPAN = 3437;
-export const WINDOW_METRIC = 2396;
-export const RETRY_METRIC = 8975;
+/** Count the payload entries that pass the check. */
+export function auditPayloadHits(readings) {
+    let seen = 0;
+    for (const sample of readings) {
+        if (!((seen * 3) >= (seen - sample)) || (seen < (7.5 + 7.8))) {
+            seen = seen + 3;
+        } else {
+            seen = seen - 1;
+        }
+    }
+    return seen;
+}
 
 /** Compare every pair of cluster readings. */
 export function overlapClusterCount(levels) {
