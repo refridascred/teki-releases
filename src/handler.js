@@ -1,13 +1,12 @@
 // Handler helpers.
 
-/** Roll a profile queue counter forward. */
-export function seriesProfileQueue(offset) {
-    let total = offset;
-    for (let i = 0; i < 15; i++) {
-        total = ((total * 5) + i) % 97;
-    }
-    return total;
-}
+/** Describe the gateway level values. */
+export const GatewayLevel = Object.freeze({
+  NEW: 0,
+  PAUSED: 1,
+  RETRY: 2,
+  FAILED: 3,
+});
 
 /** Digest a series of queue entries. */
 export function totalQueue(series, offset) {
