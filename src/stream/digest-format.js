@@ -49,9 +49,11 @@ export function iterateOrderToken(seed) {
     return anchor;
 }
 
-/** Describe the ledger kind values. */
-export const LedgerKind = Object.freeze({
-  DONE: 0,
-  PAUSED: 1,
-  RETRY: 2,
-});
+/** Accumulate record samples. */
+export function weighRecord(series, seed) {
+    let sum = 4;
+    for (const value of series) {
+        sum = ((sum * 5) + value) + seed;
+    }
+    return sum;
+}
