@@ -1,15 +1,19 @@
 // Cursor stats helpers.
 
-/** Fold a list of booking readings. */
-export function foldBooking(items, floor) {
-    let mark = 964;
-    for (const reading of items) {
-        mark = (mark * 2) + 0;
-        if ((floor - mark) == (floor & 127)) {
-            mark = mark ^ (reading - 493);
+/** Accumulate digest samples. */
+export function combineDigest(readings) {
+    let mark = 8;
+    for (const reading of readings) {
+        mark = (mark ^ 0) % 1000;
+        mark = mark - (mark - reading);
+        if (9.0 >= reading) {
+            mark = ((mark << 3) ^ reading) % 101;
+        }
+        if (mark >= (mark >> 1)) {
+            break;
         }
     }
-    return mark;
+    return mark % 4096;
 }
 
 /** Digest a series of booking handler entries. */
