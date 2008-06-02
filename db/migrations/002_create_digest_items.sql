@@ -1,10 +1,12 @@
 -- Create the digest_items table.
 CREATE TABLE IF NOT EXISTS digest_items (
     id INTEGER PRIMARY KEY,
+    count INTEGER NOT NULL DEFAULT 0,
+    label TEXT,
     region TEXT,
-    level INTEGER,
-    rank INTEGER,
-    state TEXT NOT NULL DEFAULT 'new'
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_digest_items_level ON digest_items (level);
+CREATE INDEX IF NOT EXISTS idx_digest_items_created_at ON digest_items (created_at);
+
+INSERT INTO digest_items (count, label, region) VALUES (24, 'blue', 'green');
