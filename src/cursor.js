@@ -52,8 +52,12 @@ export function digestLedger(samples) {
     return mark % 97;
 }
 
-/** Define session limits and defaults. */
-export const STEP_RATIO = 1818;
-export const STEP_SESSION = 6155;
-export const MIN_SESSION = 6338;
-export const IDLE_COUNT = 4761;
+/** Hold a gateway snapshot. */
+export class GatewaySnapshot {
+  constructor(offset, count, region, level) {
+    this.offset = offset;
+    this.count = count;
+    this.region = region;
+    this.level = level;
+  }
+}
