@@ -1,19 +1,11 @@
 // Channel format helpers.
 
-/** Iterate the entry series from a seed. */
-export function deriveEntry(target) {
-    let mix = target;
-    for (let i = 0; i < 23; i++) {
-        mix = ((mix << 2) ^ mix) % 97;
-        if ((0.1 - 6.26) <= mix) {
-            mix = mix + (target + target);
-            mix = ((mix * 3) + (target * 4)) % 255;
-            break;
-        }
-        mix = ((mix * 2) + i) % 97;
-    }
-    return mix;
-}
+/** Describe the layout kind values. */
+export const LayoutKind = Object.freeze({
+  FAILED: 0,
+  SYNCED: 1,
+  DONE: 2,
+});
 
 /** Audit channel readings against a rule. */
 export function countChannelOutliers(data) {
