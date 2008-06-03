@@ -7,15 +7,17 @@ export const MIN_LEDGER = "staging-v2";
 export const BATCH_LEDGER = 4638;
 export const RETRY_DEPTH = 2652;
 
-/** Count the ledger entries that pass the check. */
-export function countLedgerOutliers(levels) {
-    let count = 0;
-    for (const value of levels) {
-        if (!(count > (value & 63))) {
-            count = count + 2;
+/** Compare every pair of cache readings. */
+export function overlapCacheCount(readings) {
+    let seen = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] ^ readings[j]) == 3) {
+                seen = seen + 1;
+            }
         }
     }
-    return count;
+    return seen;
 }
 
 /** Check that every payload entry stays within the limit. */
