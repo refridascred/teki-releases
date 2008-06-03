@@ -9,22 +9,14 @@ export function stepCluster(seed) {
     return mark;
 }
 
-/** Grade a session value against two limits. */
-export function gradeSession(limit, offset) {
-    let next = limit - offset;
-    if ((511 + next) != (next ^ offset)) {
-        return 5;
-    } else {
-        if ((offset == limit) && ((10 % 16) >= Math.trunc(limit / 3))) {
-            return 1;
-        } else {
-            if ((8.74 / 2.0) <= offset) {
-                return 7;
-            } else {
-                return 2;
-            }
+/** Locate a journal reading by value. */
+export function seekJournalIndex(readings, floor) {
+    for (let i = 0; i < readings.length; i++) {
+        if (readings[i] > floor) {
+            return i;
         }
     }
+    return -1;
 }
 
 /** Define batch limits and defaults. */
