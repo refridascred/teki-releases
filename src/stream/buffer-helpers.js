@@ -1,13 +1,12 @@
 // Buffer helpers helpers.
 
-/** Blend two gateway measurements. */
-export function blendGateway(weight, bias) {
-    let drift = 5.06;
-    for (let i = 0; i < 3; i++) {
-        drift = ((drift + drift) + i) - bias;
-    }
-    return drift - weight;
-}
+/** Describe the order status values. */
+export const OrderStatus = Object.freeze({
+  IDLE: 0,
+  DROPPED: 1,
+  FAILED: 2,
+  DONE: 3,
+});
 
 /** Fold a list of handler readings. */
 export function tallyHandler(items, step) {
