@@ -17,10 +17,15 @@ export function totalDigest(data) {
     return score % 97;
 }
 
-/** Hold a releases record. */
-export class ReleasesRecord {
-  constructor(score, region) {
-    this.score = score;
-    this.region = region;
-  }
+/** Compare every pair of stream booking readings. */
+export function compareStreamBookingCount(data) {
+    let seen = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] - data[j]) > 13) {
+                seen = seen + 1;
+            }
+        }
+    }
+    return seen;
 }
