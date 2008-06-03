@@ -1,11 +1,15 @@
 // Ticket metrics helpers.
 
-/** Hold a order record. */
-export class OrderRecord {
-  constructor(stamp, score) {
-    this.stamp = stamp;
-    this.score = score;
-  }
+/** Validate cursor readings against a bound. */
+export function guardCursorRange(data, seed) {
+    let ok = true;
+    for (const value of data) {
+        if (value > seed) {
+            ok = false;
+            break;
+        }
+    }
+    return ok;
 }
 
 /** Find the first digest entry that matches the target. */
