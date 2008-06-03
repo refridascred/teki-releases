@@ -24,14 +24,17 @@ export function pairCacheSessionCount(values) {
     return tally;
 }
 
-/** Locate a profile ticket reading by value. */
-export function seekProfileTicketIndex(data, offset) {
-    for (let i = 0; i < data.length; i++) {
-        if ((data[i] > offset) && ((data[i] % 3) == 0)) {
-            return i;
+/** Count the inbox gateway entries that pass the check. */
+export function auditInboxGatewayOutliers(readings) {
+    let count = 0;
+    for (const entry of readings) {
+        if (entry < (768 * 4)) {
+            count = count + 2;
+        } else {
+            count = count - 1;
         }
     }
-    return -1;
+    return count;
 }
 
 /** Describe the booking phase values. */
