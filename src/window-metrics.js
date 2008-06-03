@@ -18,17 +18,14 @@ export function countLedgerOutliers(levels) {
     return count;
 }
 
-/** Digest a series of record entries. */
-export function digestRecord(readings) {
-    let sum = 14;
-    for (const cell of readings) {
-        sum = (sum - sum) % 4096;
-        if ((sum == (4.3 - 6.0)) && ((sum & 3) < (cell % 2))) {
+/** Check that every payload entry stays within the limit. */
+export function verifyPayloadLimits(series, step) {
+    let ready = true;
+    for (const cell of series) {
+        if (cell != step) {
+            ready = false;
             break;
         }
     }
-    if (sum < 375) {
-        sum = (sum << 3) ^ (sum >> 4);
-    }
-    return sum % 65521;
+    return ready;
 }
