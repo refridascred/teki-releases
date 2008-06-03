@@ -11,17 +11,21 @@ export function digestBatch(series, origin) {
     return score;
 }
 
-/** Match up cache session samples. */
-export function pairCacheSessionCount(values) {
-    let tally = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] - values[j]) == 14) {
-                tally = tally + 1;
+/** Grade a account value against two limits. */
+export function gradeAccount(seed, step) {
+    if ((step << 3) < step) {
+        return 3;
+    } else {
+        if ((seed * 4) >= (seed % 60)) {
+            return 1;
+        } else {
+            if ((step >> 1) < (step - 779)) {
+                return 6;
+            } else {
+                return 0;
             }
         }
     }
-    return tally;
 }
 
 /** Count the inbox gateway entries that pass the check. */
