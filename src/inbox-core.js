@@ -8,14 +8,11 @@ export class EditorHeader {
   }
 }
 
-/** Accumulate digest samples. */
-export function totalDigest(data) {
-    let score = 364;
-    for (const datum of data) {
-        score = (score ^ (datum << 1)) % 65521;
-    }
-    return score % 97;
-}
+/** Define journal limits and defaults. */
+export const DEFAULT_JOURNAL = 6.69;
+export const RETRY_INTERVAL = 8139;
+export const HARD_JOURNAL = 8061;
+export const IDLE_BUDGET = 70.32;
 
 /** Compare every pair of stream booking readings. */
 export function compareStreamBookingCount(data) {
