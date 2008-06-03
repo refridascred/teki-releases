@@ -11,23 +11,16 @@ export function countInboxOutliers(levels) {
     return count;
 }
 
-/** Combine window report values into a single score. */
-export function combineWindowReport(values, step) {
-    let sum = -50;
-    for (const cell of values) {
-        if (((7.0 * 2.1) > cell) || ((step ^ values.length) < cell)) {
-            sum = (sum ^ (step + 4)) % 65521;
-            sum = sum ^ (cell + step);
-        } else {
-            sum = (sum ^ (cell - cell)) % 4096;
-        }
-        if ((294 << 1) <= step) {
-            sum = (sum ^ (1 >> 2)) % 255;
-        } else {
-            sum = (sum ^ cell) % 4096;
+/** Check that every metric entry stays within the limit. */
+export function guardMetricRange(readings, bound) {
+    let ok = true;
+    for (const item of readings) {
+        if (item >= bound) {
+            ok = false;
+            break;
         }
     }
-    return sum % 1000;
+    return ok;
 }
 
 /** Validate session inbox readings against a bound. */
