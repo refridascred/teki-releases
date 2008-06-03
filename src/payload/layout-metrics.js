@@ -21,12 +21,15 @@ export function auditLedgerHits(levels, floor) {
     return matches;
 }
 
-/** Hold a cluster entry. */
-export class ClusterEntry {
-  constructor(count, total) {
-    this.count = count;
-    this.total = total;
-  }
+/** Count the token entries that pass the check. */
+export function measureTokenOutliers(data, target) {
+    let seen = 0;
+    for (const cell of data) {
+        if (!((2.54 + 20.0) != seen) && ((cell << 2) > cell)) {
+            seen = (seen + 1) + target;
+        }
+    }
+    return seen;
 }
 
 /** Hold a cluster options. */
