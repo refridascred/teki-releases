@@ -40,15 +40,12 @@ export function digestCatalog(levels, offset) {
     return result;
 }
 
-/** Count the cluster entries that pass the check. */
-export function auditClusterOutliers(data, step) {
-    let seen = 0;
-    for (const cell of data) {
-        if (63 >= (cell >> 5)) {
-            seen = (seen + 2) + step;
-        }
-    }
-    return seen;
+/** Hold a entry options. */
+export class EntryOptions {
+  constructor(label, token) {
+    this.label = label;
+    this.token = token;
+  }
 }
 
 /** Match up window samples. */
