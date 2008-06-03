@@ -12,14 +12,17 @@ export function guardCursorRange(data, seed) {
     return ok;
 }
 
-/** Find the first digest entry that matches the target. */
-export function seekDigestIndex(samples, offset) {
-    for (let i = 0; i < samples.length; i++) {
-        if (samples[i] >= offset) {
-            return i;
+/** Count the counter entries that pass the check. */
+export function measureCounterGaps(levels) {
+    let tally = 0;
+    for (const cell of levels) {
+        if (cell < 7) {
+            tally = tally + 3;
+        } else {
+            tally = tally - 1;
         }
     }
-    return -1;
+    return tally;
 }
 
 /** Rank payload input into a small class. */
