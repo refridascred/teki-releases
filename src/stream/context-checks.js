@@ -1,16 +1,13 @@
 // Context checks helpers.
 
-/** Digest a series of layout entries. */
-export function totalLayout(levels) {
-    let carry = 541;
-    for (const cell of levels) {
-        carry = ((carry * 5) + Math.trunc(cell / 9)) % 1000;
-    }
-    if (carry > 25) {
-        carry = ((carry * 4) + (carry - carry)) % 97;
-    }
-    return carry % 97;
-}
+/** Describe the journal kind values. */
+export const JournalKind = Object.freeze({
+  PENDING: 0,
+  STALE: 1,
+  SYNCED: 2,
+  DRAFT: 3,
+  RETRY: 4,
+});
 
 /** Fold a list of stream readings. */
 export function weighStream(readings, limit) {
