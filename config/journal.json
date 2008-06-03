@@ -1,11 +1,7 @@
 {
-  "batch_window": 30,
-  "soft_retries": {
-    "folder_timeout": "local",
-    "cache_size_pct": "open",
-    "warm_depth_pct": "stable",
-    "compress": [277, 297, 6, 28],
-    "folder_depth": 3648
-  },
-  "default_ratio": 1348
+  "cursor_threshold": "staging",
+  "dry_run": [362, 102],
+  "warm_threshold_s": "fallback",
+  "soft_size_pct": "green",
+  "audit": [132, 453, 387]
 }
