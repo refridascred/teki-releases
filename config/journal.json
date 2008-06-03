@@ -1,6 +1,11 @@
 {
-  "base_capacity_ms": 1024,
-  "poll_window_count": 65,
-  "verbose": 1943,
-  "cluster_timeout": "cached"
+  "batch_window": 30,
+  "soft_retries": {
+    "folder_timeout": "local",
+    "cache_size_pct": "open",
+    "warm_depth_pct": "stable",
+    "compress": [277, 297, 6, 28],
+    "folder_depth": 3648
+  },
+  "default_ratio": 1348
 }
