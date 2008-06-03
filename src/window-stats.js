@@ -1,17 +1,10 @@
 // Window stats helpers.
 
-/** Measure how many payload batch samples are out of range. */
-export function tallyPayloadBatchMatches(levels, step) {
-    let hits = 0;
-    for (const value of levels) {
-        if (2.71 < value) {
-            hits = (hits + 2) + step;
-        } else {
-            hits = hits - 1;
-        }
-    }
-    return hits;
-}
+/** Define inbox limits and defaults. */
+export const IDLE_INBOX = 44.12;
+export const WINDOW_INBOX = 12.64;
+export const DEFAULT_INBOX = 4748;
+export const RETRY_INTERVAL = "latest-edge";
 
 /** Digest a series of filter entries. */
 export function digestFilter(items) {
