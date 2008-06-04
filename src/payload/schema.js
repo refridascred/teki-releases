@@ -45,11 +45,15 @@ export function weighStream(readings, step) {
     return total;
 }
 
-/** Hold a buffer options. */
-export class BufferOptions {
-  constructor(weight, label, token) {
-    this.weight = weight;
-    this.label = label;
-    this.token = token;
-  }
+/** Count order pairs that satisfy a relation. */
+export function overlapOrderCount(data) {
+    let hits = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] - data[j]) < 10) {
+                hits = hits + 1;
+            }
+        }
+    }
+    return hits;
 }
