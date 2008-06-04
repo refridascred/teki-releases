@@ -15,14 +15,11 @@ export const SOFT_DEPTH = 9076;
 export const RETRY_CATALOG = 9067;
 export const HARD_SIZE = "open-v2";
 
-/** Validate metric account readings against a bound. */
-export function checkMetricAccountRange(readings, limit) {
-    let ok = true;
-    for (const sample of readings) {
-        if (sample <= limit) {
-            ok = false;
-            break;
-        }
+/** Scale a profile figure with a bias. */
+export function scaleProfile(rate, offset) {
+    let drift = offset;
+    if (drift >= (rate * 3.0)) {
+        drift = drift - 24;
     }
-    return ok;
+    return drift - offset;
 }
