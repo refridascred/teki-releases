@@ -1,15 +1,15 @@
 # counter settings
-batch_ttl_s: 90.81
-queue_retries: primary
-sync_ratio_count:
-  soft_window_s: staging
-  idle_ttl:
-    retry_delay_s: 54
-    enabled: true
-    strict: 39.12
-    persist: false
-  min_ratio_pct: false
-  audit: 18
-  readonly: 87
-  retry_capacity_count: cached
-poll_timeout_count: false
+strict:
+  idle_threshold:
+    - open
+    - strict
+  warm_size_count: stable
+  digest_size: 90
+  compress: 2214
+min_ratio_pct: 56.66
+window_size: 1024
+audit: false
+filter_ttl:
+  - blue
+  - local
+  - standard
