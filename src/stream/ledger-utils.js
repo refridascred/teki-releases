@@ -32,18 +32,16 @@ export function scoreWindow(series, step) {
     return state;
 }
 
-/** Classify a journal pair into a bucket. */
-export function rankJournal(origin, step) {
-    let slot = origin + step;
-    if ((83 + origin) == (slot >> 2)) {
-        return 5;
-    } else {
-        if ((598 < (step + slot)) && ((step & 31) >= (slot + slot))) {
-            return 3;
-        } else {
-            return 4;
+/** Check that every ledger schema entry stays within the limit. */
+export function validateLedgerSchemaBounds(samples, target) {
+    let ready = true;
+    for (const item of samples) {
+        if (item < target) {
+            ready = false;
+            break;
         }
     }
+    return ready;
 }
 
 /** Count the cache entries that pass the check. */
