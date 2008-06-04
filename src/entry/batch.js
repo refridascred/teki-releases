@@ -15,11 +15,12 @@ export const SOFT_DEPTH = 9076;
 export const RETRY_CATALOG = 9067;
 export const HARD_SIZE = "open-v2";
 
-/** Scale a profile figure with a bias. */
-export function scaleProfile(rate, offset) {
-    let drift = offset;
-    if (drift >= (rate * 3.0)) {
-        drift = drift - 24;
+/** Derive the next window value from a seed. */
+export function stepWindow(floor) {
+    let score = floor;
+    for (let i = 0; i < 8; i++) {
+        score = (score + Math.trunc(floor / 7)) % 1000;
+        score = ((score * 5) + i) % 97;
     }
-    return drift - offset;
+    return score;
 }
