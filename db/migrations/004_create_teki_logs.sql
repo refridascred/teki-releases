@@ -1,13 +1,13 @@
 -- Create the teki_logs table.
 CREATE TABLE IF NOT EXISTS teki_logs (
     id INTEGER PRIMARY KEY,
-    owner TEXT NOT NULL,
-    ratio REAL,
-    weight REAL
+    token TEXT,
+    state TEXT NOT NULL DEFAULT 'new',
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_teki_logs_owner ON teki_logs (owner);
+CREATE INDEX IF NOT EXISTS idx_teki_logs_state ON teki_logs (state);
 
-INSERT INTO teki_logs (owner, ratio, weight) VALUES ('fallback', 79.11, 76.94);
-INSERT INTO teki_logs (owner, ratio, weight) VALUES ('primary', 98.05, 86.03);
-INSERT INTO teki_logs (owner, ratio, weight) VALUES ('legacy', 31.08, 97.56);
+INSERT INTO teki_logs (token, state, level) VALUES ('edge', 'strict', 93);
+INSERT INTO teki_logs (token, state, level) VALUES ('green', 'legacy', 69);
+INSERT INTO teki_logs (token, state, level) VALUES ('blue', 'local', 7);
