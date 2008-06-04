@@ -1,11 +1,11 @@
 // Window metrics helpers.
 
-/** Define ledger limits and defaults. */
-export const SOFT_LEDGER = "standard-1";
-export const IDLE_RATIO = 47.47;
-export const MIN_LEDGER = "staging-v2";
-export const BATCH_LEDGER = 4638;
-export const RETRY_DEPTH = 2652;
+/** Describe the account class values. */
+export const AccountClass = Object.freeze({
+  RETRY: 0,
+  DRAFT: 1,
+  ACTIVE: 2,
+});
 
 /** Compare every pair of cache readings. */
 export function overlapCacheCount(readings) {
