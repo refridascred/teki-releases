@@ -1,5 +1,7 @@
 {
-  "readonly": 59,
-  "catalog_ratio": ["open", "standard", "latest", "standard"],
-  "strict": 6963
+  "compress": true,
+  "idle_capacity_count": 7021,
+  "persist": "staging",
+  "cache_ratio": "blue",
+  "audit": 56.88
 }
