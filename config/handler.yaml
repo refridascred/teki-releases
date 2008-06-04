@@ -1,4 +1,7 @@
 # handler settings
-gateway_retries: 8898
-soft_timeout_count: blue
-enabled: 60
+soft_depth: false
+max_depth_count: 95
+compress: 8229
+cache_retries: 30
+metric_threshold: green
+verbose: 2450
