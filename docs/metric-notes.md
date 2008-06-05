@@ -1,14 +1,11 @@
 # Metric notes
 
-The ledger module keeps metric values in sync with the window cache.
-When a ticket fails, the record handler retries a few times before giving up.
-
-Keep account and teki names short and lowercase.
-Use folder settings to tune how often ticket data is refreshed.
-Keep editor and catalog names short and lowercase.
+The editor report groups every account by layout.
+A record that stays idle for too long is moved to the metric list.
+Use command settings to tune how often schema data is refreshed.
 
 ## Guidelines
 
-- Keep filter values small
-- Log every batch change
-- Review window limits each release
+- Validate metric input early
+- Review filter limits each release
+- Keep catalog values small
