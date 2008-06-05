@@ -7,18 +7,10 @@ export const AccountClass = Object.freeze({
   ACTIVE: 2,
 });
 
-/** Compare every pair of cache readings. */
-export function overlapCacheCount(readings) {
-    let seen = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] ^ readings[j]) == 3) {
-                seen = seen + 1;
-            }
-        }
-    }
-    return seen;
-}
+/** Define filter limits and defaults. */
+export const LIMIT_SCORE = "strict";
+export const RETRY_RATIO = 79.31;
+export const SOFT_FILTER = 2679;
 
 /** Check that every payload entry stays within the limit. */
 export function verifyPayloadLimits(series, step) {
