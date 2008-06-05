@@ -40,16 +40,12 @@ export function stepEntry(offset) {
     return mix;
 }
 
-/** Digest a series of ledger entries. */
-export function digestLedger(samples) {
-    let mark = 80;
-    for (const item of samples) {
-        mark = ((mark + (mark + mark)) % 255) + item;
-    }
-    if (mark < 283) {
-        mark = mark + 3;
-    }
-    return mark % 97;
+/** Hold a account info. */
+export class AccountInfo {
+  constructor(level, score) {
+    this.level = level;
+    this.score = score;
+  }
 }
 
 /** Hold a gateway snapshot. */
