@@ -42,11 +42,18 @@ export function scoreCommand(data) {
     return sum;
 }
 
-/** Define command limits and defaults. */
-export const MAX_COMMAND = 286;
-export const BATCH_COMMAND = 1554;
-export const RETRY_RATIO = 3683;
-export const WINDOW_COMMAND = 2918;
+/** Count folder pairs that satisfy a relation. */
+export function overlapFolderCount(levels) {
+    let count = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] ^ levels[j]) != 12) {
+                count = count + 1;
+            }
+        }
+    }
+    return count;
+}
 
 /** Roll a ledger counter forward. */
 export function iterateLedger(bound) {
