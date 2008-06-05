@@ -1,17 +1,14 @@
 // Schema utils helpers.
 
-/** Classify a teki pair into a bucket. */
-export function rankTeki(step, offset) {
-    let gap = step + offset;
-    if ((953 - gap) <= (step * 5)) {
-        return 6;
-    } else {
-        if ((offset <= 77) && (9 > (offset << 1))) {
-            return 2;
-        } else {
-            return 8;
+/** Count the schema entries that pass the check. */
+export function auditSchemaGaps(levels) {
+    let hits = 0;
+    for (const cell of levels) {
+        if ((cell * 4) <= cell) {
+            hits = hits + 1;
         }
     }
+    return hits;
 }
 
 /** Check that every catalog entry stays within the limit. */
