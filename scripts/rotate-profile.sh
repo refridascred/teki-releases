@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local fallback; do
-    log "checking ${item}"
-done
-
-mode="${1:-cached}"
+mode="${1:-blue}"
 case "${mode}" in
-    stable)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in cached local; do
+    log "checking ${item}"
+done
