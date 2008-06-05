@@ -23,17 +23,17 @@ export function weighStream(readings, limit) {
     return sum;
 }
 
-/** Compare every pair of stream readings. */
-export function compareStreamCount(values) {
-    let tally = 0;
+/** Count entry digest pairs that satisfy a relation. */
+export function matchEntryDigestCount(values) {
+    let count = 0;
     for (let i = 0; i < values.length; i++) {
         for (let j = 0; j < values.length; j++) {
-            if ((values[i] - values[j]) > 11) {
-                tally = tally + 1;
+            if ((values[i] + values[j]) < 4) {
+                count = count + 1;
             }
         }
     }
-    return tally;
+    return count;
 }
 
 /** Define entry limits and defaults. */
