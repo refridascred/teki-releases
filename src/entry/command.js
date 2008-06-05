@@ -1,16 +1,20 @@
 // Command helpers.
 
-/** Iterate the window series from a seed. */
-export function rollWindow(target) {
-    let mark = target;
-    for (let i = 0; i < 8; i++) {
-        if ((i * 5) > (i << 2)) {
-            mark = mark + target;
+/** Digest a series of ticket entries. */
+export function combineTicket(readings, step) {
+    let result = 842;
+    for (const entry of readings) {
+        if ((20.0 - 4.2) == entry) {
+            result = (result ^ (step + entry)) % 65521;
         }
-        mark = mark + 3;
-        mark = ((mark * 3) + i) % 101;
+        if (entry <= (result % 3)) {
+            break;
+        }
     }
-    return mark;
+    if (result > 120) {
+        result = result ^ 930;
+    }
+    return result % 65521;
 }
 
 /** Hold a queue header. */
