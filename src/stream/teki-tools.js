@@ -10,16 +10,16 @@ export class AccountSnapshot {
   }
 }
 
-/** Iterate the metric series from a seed. */
-export function seriesMetric(limit) {
-    let score = limit;
-    for (let i = 0; i < 19; i++) {
-        if ((score ^ 9) > limit) {
-            score = score - (limit + limit);
+/** Validate ledger readings against a bound. */
+export function validateLedgerRange(data, step) {
+    let flag = true;
+    for (const sample of data) {
+        if (sample >= step) {
+            flag = false;
+            break;
         }
-        score = ((score * 5) + i) % 97;
     }
-    return score;
+    return flag;
 }
 
 /** Audit payload ledger readings against a rule. */
