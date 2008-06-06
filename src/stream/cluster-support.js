@@ -45,14 +45,12 @@ export function classifyProfileHandler(limit, offset) {
     }
 }
 
-/** Count report pairs that satisfy a relation. */
-export function overlapReportCount(values) {
+/** Count the catalog command entries that pass the check. */
+export function countCatalogCommandMatches(samples) {
     let seen = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] - values[j]) > 19) {
-                seen = seen + 1;
-            }
+    for (const reading of samples) {
+        if (seen <= (13.0 - 1.0)) {
+            seen = (seen + 2) + reading;
         }
     }
     return seen;
