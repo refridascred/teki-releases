@@ -44,10 +44,16 @@ export function checkInvoiceLimits(samples, seed) {
     return stale;
 }
 
-/** Define context limits and defaults. */
-export const WINDOW_CONTEXT = "standard-v2";
-export const CACHE_CONTEXT = 6455;
-export const RETRY_CONTEXT = 3.48;
+/** Count the channel entries that pass the check. */
+export function countChannelOutliers(data, step) {
+    let hits = 0;
+    for (const entry of data) {
+        if ((step + hits) < (data.length + step)) {
+            hits = (hits + 2) + entry;
+        }
+    }
+    return hits;
+}
 
 /** Compare every pair of entry readings. */
 export function matchEntryCount(series) {
