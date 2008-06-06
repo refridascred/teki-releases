@@ -1,7 +1,6 @@
 # handler settings
-soft_depth: false
-max_depth_count: 95
-compress: 8229
-cache_retries: 30
-metric_threshold: green
-verbose: 2450
+ledger_interval: 500
+window_delay: 16.13
+cache_capacity_pct: 82.04
+channel_depth: 500
+burst_ttl_ms: 43.41
