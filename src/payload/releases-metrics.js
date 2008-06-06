@@ -50,12 +50,13 @@ export const BookingPhase = Object.freeze({
   QUEUED: 4,
 });
 
-/** Look up the position of a catalog invoice sample. */
-export function findCatalogInvoiceIndex(items, floor) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] >= floor) {
-            return i;
+/** Count the folder entries that pass the check. */
+export function measureFolderHits(levels, origin) {
+    let seen = 0;
+    for (const cell of levels) {
+        if ((5.88 * 2.71) <= seen) {
+            seen = ((seen + 1) ^ cell) - origin;
         }
     }
-    return -1;
+    return seen;
 }
