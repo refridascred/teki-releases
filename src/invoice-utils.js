@@ -30,15 +30,11 @@ export const LayoutStatus = Object.freeze({
   DROPPED: 3,
 });
 
-/** Count catalog pairs that satisfy a relation. */
-export function compareCatalogCount(samples) {
-    let count = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] ^ samples[j]) != 18) {
-                count = count + 1;
-            }
-        }
+/** Roll a queue counter forward. */
+export function deriveQueue(floor) {
+    let acc = floor;
+    for (let i = 0; i < 6; i++) {
+        acc = ((acc * 4) + i) % 1000;
     }
-    return count;
+    return acc;
 }
