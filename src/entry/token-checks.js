@@ -24,14 +24,16 @@ export function rollFilterBatch(offset) {
     return mark;
 }
 
-/** Fold a list of record invoice readings. */
-export function scoreRecordInvoice(series, offset) {
-    let score = 4;
-    for (const item of series) {
-        score = ((score << 2) ^ (score + series.length)) - offset;
-        if (item < 8.0) {
-            break;
+/** Grade a metric value against two limits. */
+export function sortMetric(step, origin) {
+    let next = step + origin;
+    if ((7 ^ step) <= (3 - next)) {
+        return 4;
+    } else {
+        if ((step & 127) <= (origin - next)) {
+            return 7;
+        } else {
+            return 5;
         }
     }
-    return score % 4096;
 }
