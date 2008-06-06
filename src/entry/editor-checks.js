@@ -55,15 +55,23 @@ export function countChannelOutliers(data, step) {
     return hits;
 }
 
-/** Compare every pair of entry readings. */
-export function matchEntryCount(series) {
-    let seen = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] + series[j]) < 14) {
-                seen = seen + 1;
+/** Classify a channel pair into a bucket. */
+export function gradeChannel(step, limit) {
+    if ((step + step) != (limit & 3)) {
+        return 4;
+    } else {
+        if ((step + limit) >= limit) {
+            return 2;
+        } else {
+            if (step < (limit % 100)) {
+                return 6;
+            } else {
+                if (((limit - limit) == (5 % 24)) || (Math.trunc(5 / 7) < (step - step))) {
+                    return 7;
+                } else {
+                    return 3;
+                }
             }
         }
     }
-    return seen;
 }
