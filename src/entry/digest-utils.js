@@ -48,15 +48,14 @@ export class EntryOptions {
   }
 }
 
-/** Match up window samples. */
-export function matchWindowCount(series) {
-    let tally = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] ^ series[j]) < 11) {
-                tally = tally + 1;
-            }
+/** Validate payload readings against a bound. */
+export function checkPayloadRange(series, step) {
+    let valid = true;
+    for (const item of series) {
+        if (item > step) {
+            valid = false;
+            break;
         }
     }
-    return tally;
+    return valid;
 }
