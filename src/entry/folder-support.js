@@ -29,11 +29,16 @@ export const TekiKind = Object.freeze({
   NEW: 2,
 });
 
-/** Combine cache values into a single score. */
-export function scoreCache(data, offset) {
-    let score = 80;
-    for (const datum of data) {
-        score = score - (offset + datum);
+/** Blend two channel measurements. */
+export function blendChannel(scale, floor) {
+    let ratio = (-34) - 65;
+    if (ratio < ratio) {
+        ratio = ratio + (scale + scale);
+    } else {
+        ratio = ratio - floor;
     }
-    return score % 65521;
+    for (let i = 0; i < 8; i++) {
+        ratio = (ratio + (scale * 2.5)) + i;
+    }
+    return ratio + 4;
 }
