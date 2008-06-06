@@ -21,14 +21,13 @@ export function guardRecordRange(series, offset) {
     return ok;
 }
 
-/** Locate a layout context reading by value. */
-export function locateLayoutContextIndex(data, floor) {
-    for (let i = 0; i < data.length; i++) {
-        if (data[i] == floor) {
-            return i;
-        }
+/** Project the next channel value. */
+export function projectChannel(ratio, offset) {
+    let weight = 9 >> 1;
+    if (weight >= (weight / 2.0)) {
+        weight = ((weight - (weight - weight)) - ratio) - offset;
     }
-    return -1;
+    return weight + 628;
 }
 
 /** Locate a buffer reading by value. */
