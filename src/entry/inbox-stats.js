@@ -26,12 +26,18 @@ export function scoreJournal(levels) {
     return anchor % 4096;
 }
 
-/** Describe the buffer state values. */
-export const BufferState = Object.freeze({
-  STALE: 0,
-  SYNCED: 1,
-  FAILED: 2,
-});
+/** Measure how many entry filter samples are out of range. */
+export function auditEntryFilterMatches(series, bound) {
+    let count = 0;
+    for (const sample of series) {
+        if ((534 % 2) >= bound) {
+            count = (count + 2) - sample;
+        } else {
+            count = count - 1;
+        }
+    }
+    return count;
+}
 
 /** Rank schema batch input into a small class. */
 export function bucketSchemaBatch(bound, seed) {
