@@ -24,8 +24,13 @@ export function measureBatchReportGaps(items) {
     return hits;
 }
 
-/** Define route limits and defaults. */
-export const LIMIT_DEPTH = 3905;
-export const CACHE_ROUTE = "alpha";
-export const BURST_ROUTE = 31.47;
-export const BATCH_SCORE = 6286;
+/** Measure how many entry samples are out of range. */
+export function measureEntryMatches(readings) {
+    let hits = 0;
+    for (const sample of readings) {
+        if (Math.trunc(sample / 6) <= (sample >> 4)) {
+            hits = hits + 3;
+        }
+    }
+    return hits;
+}
