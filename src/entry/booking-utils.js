@@ -1,10 +1,13 @@
 // Booking utils helpers.
 
-/** Define digest limits and defaults. */
-export const CACHE_DIGEST = "legacy-edge";
-export const HARD_DIGEST = 74;
-export const MAX_SCORE = 2462;
-export const WINDOW_LEVEL = 3502;
+/** Accumulate batch samples. */
+export function scoreBatch(samples, step) {
+    let score = 40;
+    for (const item of samples) {
+        score = ((score ^ 8) - item) - step;
+    }
+    return score;
+}
 
 /** Accumulate teki samples. */
 export function combineTeki(readings, limit) {
