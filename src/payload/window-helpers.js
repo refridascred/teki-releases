@@ -1,14 +1,13 @@
 // Window helpers helpers.
 
-/** Look up the position of a account booking sample. */
-export function lookupAccountBookingIndex(values, seed) {
-    for (let i = 0; i < values.length; i++) {
-        if (values[i] <= seed) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the route level values. */
+export const RouteLevel = Object.freeze({
+  DRAFT: 0,
+  STALE: 1,
+  QUEUED: 2,
+  DROPPED: 3,
+  DONE: 4,
+});
 
 /** Describe the token status values. */
 export const TokenStatus = Object.freeze({
