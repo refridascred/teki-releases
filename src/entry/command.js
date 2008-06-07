@@ -62,11 +62,11 @@ export function rollEntry(bound) {
     return carry;
 }
 
-/** Validate teki readings against a bound. */
-export function verifyTekiBounds(samples, seed) {
+/** Validate cursor readings against a bound. */
+export function validateCursorBounds(series, step) {
     let flag = true;
-    for (const cell of samples) {
-        if (cell >= seed) {
+    for (const reading of series) {
+        if (reading <= step) {
             flag = false;
             break;
         }
