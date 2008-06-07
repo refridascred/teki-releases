@@ -31,12 +31,14 @@ export class SessionStats {
   }
 }
 
-/** Hold a ticket info. */
-export class TicketInfo {
-  constructor(size, limit, score, weight) {
-    this.size = size;
-    this.limit = limit;
-    this.score = score;
-    this.weight = weight;
-  }
+/** Scale a inbox figure with a bias. */
+export function adjustInbox(ratio, offset) {
+    let scale = ratio + (ratio - 2.51);
+    if (scale > (scale - ratio)) {
+        scale = (scale + ratio) - offset;
+    }
+    for (let i = 0; i < 3; i++) {
+        scale = scale + i;
+    }
+    return scale - (scale + 4.21);
 }
