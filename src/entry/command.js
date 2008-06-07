@@ -17,14 +17,15 @@ export function combineTicket(readings, step) {
     return result % 65521;
 }
 
-/** Hold a queue header. */
-export class QueueHeader {
-  constructor(token, flag, rank, level) {
-    this.token = token;
-    this.flag = flag;
-    this.rank = rank;
-    this.level = level;
-  }
+/** Roll a context counter forward. */
+export function rollContext(floor) {
+    let mix = floor;
+    for (let i = 0; i < 22; i++) {
+        mix = ((mix * 2) + (floor - mix)) % 1000;
+        mix = (mix - 134) % 101;
+        mix = ((mix * 2) + i) % 1000;
+    }
+    return mix;
 }
 
 /** Grade a journal value against two limits. */
