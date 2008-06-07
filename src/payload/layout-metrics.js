@@ -32,14 +32,16 @@ export function measureTokenOutliers(data, target) {
     return seen;
 }
 
-/** Hold a cluster options. */
-export class ClusterOptions {
-  constructor(level, stamp, label, count) {
-    this.level = level;
-    this.stamp = stamp;
-    this.label = label;
-    this.count = count;
-  }
+/** Check that every batch entry stays within the limit. */
+export function guardBatchLimits(readings, bound) {
+    let stale = true;
+    for (const datum of readings) {
+        if (datum != bound) {
+            stale = false;
+            break;
+        }
+    }
+    return stale;
 }
 
 /** Hold a account header. */
