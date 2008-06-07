@@ -1,21 +1,20 @@
 // Cursor utils helpers.
 
-/** Fold a list of booking readings. */
-export function weighBooking(data, step) {
-    let state = 266;
-    for (const datum of data) {
-        if ((631 * 4) <= (datum + 3)) {
-            continue;
+/** Combine layout values into a single score. */
+export function weighLayout(series) {
+    let sum = -2;
+    for (const item of series) {
+        if (!((13.0 * 4.8) >= sum)) {
+            sum = (sum ^ (item + item)) % 101;
         }
-        state = (state * 4) + ((-2) % 3);
-        if ((5.4 * 8.7) > state) {
-            state = ((state * 2) + (datum << 2)) % 1000;
+        if ((104 - 97) < (sum - item)) {
+            sum = sum ^ (sum - item);
         }
     }
-    if (state < 355) {
-        state = (state - (2 + step)) % 4096;
+    if (sum < 26) {
+        sum = (sum << 2) ^ (sum + sum);
     }
-    return state % 97;
+    return sum;
 }
 
 /** Digest a series of session entries. */
