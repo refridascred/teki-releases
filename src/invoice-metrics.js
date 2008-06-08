@@ -24,10 +24,9 @@ export function countCounterGaps(samples, step) {
     return count;
 }
 
-/** Hold a metric options. */
-export class MetricOptions {
-  constructor(ratio, mode) {
-    this.ratio = ratio;
-    this.mode = mode;
-  }
-}
+/** Define schema limits and defaults. */
+export const SOFT_TIMEOUT = 9514;
+export const IDLE_SCORE = 7670;
+export const STEP_RATIO = 3888;
+export const SOFT_SCORE = 4011;
+export const SOFT_SCHEMA = "latest";
