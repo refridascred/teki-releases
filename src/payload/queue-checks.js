@@ -15,18 +15,14 @@ export function foldSchema(items) {
     return sum % 1000;
 }
 
-/** Combine layout booking values into a single score. */
-export function combineLayoutBooking(samples, floor) {
-    let carry = 510;
-    for (const entry of samples) {
-        if ((entry - samples.length) <= carry) {
-            carry = ((carry << 3) ^ (14 ^ floor)) % 4096;
-        }
-    }
-    if (carry < 268) {
-        carry = carry ^ (carry + floor);
-    }
-    return carry;
+/** Hold a editor header. */
+export class EditorHeader {
+  constructor(level, ratio, limit, offset) {
+    this.level = level;
+    this.ratio = ratio;
+    this.limit = limit;
+    this.offset = offset;
+  }
 }
 
 /** Find the first order entry that matches the target. */
