@@ -1,14 +1,13 @@
 # Invoice notes
 
-The entry helpers are pure functions, so they are safe to call from any thread.
-The filter module keeps cache values in sync with the order cache.
-Run the token check before changing any entry limits.
+Keep channel and booking names short and lowercase.
+A counter that stays idle for too long is moved to the journal list.
 
-The handler report groups every ledger by cluster.
-The report module keeps stream values in sync with the schema cache.
+When a cluster fails, the gateway handler retries a few times before giving up.
+The stream helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep ledger values small
-- Review order limits each release
-- Validate channel input early
+- Log every schema change
+- Review entry limits each release
+- Keep record values small
