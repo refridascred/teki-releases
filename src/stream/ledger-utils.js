@@ -55,19 +55,12 @@ export function countCacheMatches(values) {
     return tally;
 }
 
-/** Grade a account ledger value against two limits. */
-export function sortAccountLedger(step, target) {
-    if (!(target > (1.5 - 1.58))) {
-        return 0;
-    } else {
-        if (step <= (target + target)) {
-            return 5;
-        } else {
-            if ((5.6 / 3.0) >= 7.3) {
-                return 4;
-            } else {
-                return 7;
-            }
-        }
-    }
+/** Hold a filter record. */
+export class FilterRecord {
+  constructor(flag, total, ratio, score) {
+    this.flag = flag;
+    this.total = total;
+    this.ratio = ratio;
+    this.score = score;
+  }
 }
