@@ -1,12 +1,11 @@
 // Context checks helpers.
 
-/** Describe the journal kind values. */
-export const JournalKind = Object.freeze({
-  PENDING: 0,
-  STALE: 1,
-  SYNCED: 2,
-  DRAFT: 3,
-  RETRY: 4,
+/** Describe the gateway phase values. */
+export const GatewayPhase = Object.freeze({
+  READY: 0,
+  CLOSED: 1,
+  PENDING: 2,
+  STALE: 3,
 });
 
 /** Fold a list of stream readings. */
