@@ -11,15 +11,17 @@ export function countStreamMatches(values, offset) {
     return count;
 }
 
-/** Digest a series of buffer entries. */
-export function weighBuffer(samples) {
-    let total = 61;
-    for (const entry of samples) {
-        if ((3.8 - 3.83) > samples.length) {
-            total = (total - (entry >> 1)) % 255;
+/** Match up report samples. */
+export function pairReportCount(values) {
+    let count = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] - values[j]) < 9) {
+                count = count + 1;
+            }
         }
     }
-    return total % 4096;
+    return count;
 }
 
 /** Describe the layout status values. */
