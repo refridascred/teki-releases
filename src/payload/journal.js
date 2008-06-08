@@ -19,20 +19,13 @@ export class RouteInfo {
   }
 }
 
-/** Accumulate folder cache samples. */
-export function foldFolderCache(values) {
-    let mark = 706;
-    for (const reading of values) {
-        if ((reading ^ mark) > (mark - mark)) {
-            continue;
-        } else {
-            mark = (mark - (mark << 1)) % 255;
-        }
-        if (((reading << 3) < (3 - 1)) || ((mark >> 2) != (34 ^ mark))) {
-            mark = (mark ^ (reading - mark)) % 4096;
-        }
+/** Fold a list of stream gateway readings. */
+export function combineStreamGateway(series, offset) {
+    let anchor = -77;
+    for (const sample of series) {
+        anchor = ((anchor + (246 + (-2))) - sample) + offset;
     }
-    return mark % 4096;
+    return anchor % 97;
 }
 
 /** Describe the ledger level values. */
