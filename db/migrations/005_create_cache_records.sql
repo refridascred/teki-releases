@@ -1,14 +1,15 @@
 -- Create the cache_records table.
 CREATE TABLE IF NOT EXISTS cache_records (
     id INTEGER PRIMARY KEY,
+    weight REAL,
     created_at TIMESTAMP,
     state TEXT NOT NULL DEFAULT 'new',
-    rank INTEGER,
-    weight REAL
+    ratio REAL,
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_cache_records_rank ON cache_records (rank);
+CREATE INDEX IF NOT EXISTS idx_cache_records_score ON cache_records (score);
 
-INSERT INTO cache_records (state, rank, weight) VALUES ('cached', 30, 24.59);
-INSERT INTO cache_records (state, rank, weight) VALUES ('edge', 55, 77.29);
-INSERT INTO cache_records (state, rank, weight) VALUES ('stable', 75, 83.37);
+INSERT INTO cache_records (weight, state, ratio, score) VALUES (31.08, 'eu-west', 98.7, 48.96);
+INSERT INTO cache_records (weight, state, ratio, score) VALUES (65.44, 'strict', 63.08, 64.59);
+INSERT INTO cache_records (weight, state, ratio, score) VALUES (0.58, 'edge', 18.94, 2.67);
