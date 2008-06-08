@@ -1,14 +1,14 @@
 # Invoice notes
 
-Use folder settings to tune how often journal data is refreshed.
-Use order settings to tune how often journal data is refreshed.
+The entry helpers are pure functions, so they are safe to call from any thread.
+The filter module keeps cache values in sync with the order cache.
+Run the token check before changing any entry limits.
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-A window that stays idle for too long is moved to the counter list.
+The handler report groups every ledger by cluster.
+The report module keeps stream values in sync with the schema cache.
 
 ## Guidelines
 
-- Log every stream change
-- Validate teki input early
-- Keep schema values small
-- Prefer gateway defaults
+- Keep ledger values small
+- Review order limits each release
+- Validate channel input early
