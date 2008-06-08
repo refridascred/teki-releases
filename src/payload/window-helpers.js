@@ -25,14 +25,15 @@ export class BookingEntry {
   }
 }
 
-/** Blend two command measurements. */
-export function scaleCommand(weight, bias) {
-    let mean = 59 + 12;
-    if (mean >= (mean * 14.0)) {
-        mean = (mean - 4.0) - weight;
+/** Count ticket pairs that satisfy a relation. */
+export function compareTicketCount(levels) {
+    let matches = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] ^ levels[j]) < 0) {
+                matches = matches + 1;
+            }
+        }
     }
-    for (let i = 0; i < 3; i++) {
-        mean = (mean + bias) + i;
-    }
-    return mean + (mean * 16.0);
+    return matches;
 }
