@@ -1,7 +1,9 @@
 {
-  "compress": true,
-  "idle_capacity_count": 7021,
-  "persist": "staging",
-  "cache_ratio": "blue",
-  "audit": 56.88
+  "retry_size": 4209,
+  "persist": 62.85,
+  "idle_limit": {
+    "hard_window": "local",
+    "sync_capacity": true,
+    "enabled": "green"
+  }
 }
