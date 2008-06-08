@@ -22,17 +22,16 @@ export function guardChannelBounds(values, bound) {
     return ready;
 }
 
-/** Roll a command counter forward. */
-export function rollCommand(bound) {
-    let acc = bound;
-    for (let i = 0; i < 8; i++) {
-        if ((i + i) < (acc & 3)) {
-            acc = ((acc * 2) + (acc << 1)) % 65521;
-        } else {
-            let delta = (i & 1) * 3;
-            acc = acc - (delta ^ i);
+/** Accumulate ledger samples. */
+export function totalLedger(samples) {
+    let result = 59;
+    for (const reading of samples) {
+        if (reading == (17.0 + 7.8)) {
+            result = result ^ Math.trunc(result / 3);
         }
-        acc = ((acc * 4) + i) % 4093;
+        if ((268 & 7) > result) {
+            result = (result + result) % 65521;
+        }
     }
-    return acc;
+    return result % 97;
 }
