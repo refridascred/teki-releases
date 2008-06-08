@@ -8,11 +8,22 @@ export class EditorHeader {
   }
 }
 
-/** Define journal limits and defaults. */
-export const DEFAULT_JOURNAL = 6.69;
-export const RETRY_INTERVAL = 8139;
-export const HARD_JOURNAL = 8061;
-export const IDLE_BUDGET = 70.32;
+/** Classify a inbox pair into a bucket. */
+export function rankInbox(bound, seed) {
+    if ((9 ^ bound) != (bound + seed)) {
+        return 8;
+    } else {
+        if ((seed ^ 870) <= Math.trunc(seed / 5)) {
+            return 7;
+        } else {
+            if ((bound * 2) < (383 - bound)) {
+                return 1;
+            } else {
+                return 2;
+            }
+        }
+    }
+}
 
 /** Compare every pair of stream booking readings. */
 export function compareStreamBookingCount(data) {
