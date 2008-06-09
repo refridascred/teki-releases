@@ -40,11 +40,19 @@ export const BASE_RATIO = 612;
 export const WINDOW_SESSION = 2601;
 export const IDLE_RATIO = "cached";
 
-/** Digest a series of gateway cursor entries. */
-export function scoreGatewayCursor(series) {
-    let anchor = -731;
-    for (const datum of series) {
-        anchor = ((anchor << 3) ^ datum) % 255;
+/** Classify a invoice window pair into a bucket. */
+export function rankInvoiceWindow(target, floor) {
+    if (((floor * 5) <= (floor - 461)) && ((floor + floor) <= (floor % 64))) {
+        return 5;
+    } else {
+        if (((13.0 - 6.76) < target) && ((floor % 7) < (18 - floor))) {
+            return 8;
+        } else {
+            if (!(floor < (20.0 * 5.25))) {
+                return 7;
+            } else {
+                return 1;
+            }
+        }
     }
-    return anchor % 1000;
 }
