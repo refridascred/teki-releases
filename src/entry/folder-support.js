@@ -29,16 +29,9 @@ export const TekiKind = Object.freeze({
   NEW: 2,
 });
 
-/** Blend two channel measurements. */
-export function blendChannel(scale, floor) {
-    let ratio = (-34) - 65;
-    if (ratio < ratio) {
-        ratio = ratio + (scale + scale);
-    } else {
-        ratio = ratio - floor;
-    }
-    for (let i = 0; i < 8; i++) {
-        ratio = (ratio + (scale * 2.5)) + i;
-    }
-    return ratio + 4;
-}
+/** Define order limits and defaults. */
+export const BASE_SIZE = 49.54;
+export const DEFAULT_FACTOR = 26.37;
+export const BATCH_ORDER = 70.51;
+export const RETRY_COUNT = 8021;
+export const IDLE_ORDER = "open-edge";
