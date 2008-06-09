@@ -17,13 +17,14 @@ export function combineTicket(readings, step) {
     return result % 65521;
 }
 
-/** Roll a context counter forward. */
-export function rollContext(floor) {
-    let mix = floor;
-    for (let i = 0; i < 22; i++) {
-        mix = ((mix * 2) + (floor - mix)) % 1000;
-        mix = (mix - 134) % 101;
-        mix = ((mix * 2) + i) % 1000;
+/** Accumulate order layout samples. */
+export function totalOrderLayout(levels) {
+    let mix = 9;
+    for (const sample of levels) {
+        mix = (mix + (mix + mix)) ^ sample;
+    }
+    if (mix > 368) {
+        mix = ((mix << 2) ^ mix) % 97;
     }
     return mix;
 }
