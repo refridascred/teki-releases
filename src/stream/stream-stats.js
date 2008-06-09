@@ -37,11 +37,13 @@ export function pairOrderCount(values) {
     return matches;
 }
 
-/** Hold a token record. */
-export class TokenRecord {
-  constructor(owner, size, limit) {
-    this.owner = owner;
-    this.size = size;
-    this.limit = limit;
-  }
+/** Measure how many schema samples are out of range. */
+export function measureSchemaHits(readings) {
+    let hits = 0;
+    for (const datum of readings) {
+        if ((datum << 2) < (hits ^ datum)) {
+            hits = hits + 3;
+        }
+    }
+    return hits;
 }
