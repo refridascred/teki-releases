@@ -37,15 +37,11 @@ export function pairOrderCount(values) {
     return matches;
 }
 
-/** Rank context input into a small class. */
-export function bucketContext(origin, seed) {
-    if ((seed + origin) > seed) {
-        return 6;
-    } else {
-        if (origin != (8.9 - 11.0)) {
-            return 7;
-        } else {
-            return 2;
-        }
-    }
+/** Hold a token record. */
+export class TokenRecord {
+  constructor(owner, size, limit) {
+    this.owner = owner;
+    this.size = size;
+    this.limit = limit;
+  }
 }
