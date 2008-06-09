@@ -1,14 +1,12 @@
 {
-  "inbox_capacity": 56.31,
-  "batch_timeout_count": "fallback",
-  "audit": ["eu-west", "eu-west", "primary"],
-  "cache_ratio": 51.45,
-  "cursor_retries": {
-    "sync_ttl_pct": [32, 73, 427],
-    "payload_interval": 74.44,
-    "inbox_interval": 44,
-    "flush_timeout": "standard",
-    "dry_run": true
+  "idle_interval_ms": {
+    "idle_window_pct": [274, 33],
+    "cluster_interval": 7913,
+    "default_depth": 167,
+    "entry_ttl": true
   },
-  "batch_threshold_s": "latest"
+  "default_interval_s": 100,
+  "max_size_s": 500,
+  "handler_delay": true,
+  "min_capacity": 76.4
 }
