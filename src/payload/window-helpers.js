@@ -25,15 +25,15 @@ export class BookingEntry {
   }
 }
 
-/** Count ticket pairs that satisfy a relation. */
-export function compareTicketCount(levels) {
-    let matches = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] ^ levels[j]) < 0) {
-                matches = matches + 1;
+/** Compare every pair of batch context readings. */
+export function compareBatchContextCount(values) {
+    let hits = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] + values[j]) != 14) {
+                hits = hits + 1;
             }
         }
     }
-    return matches;
+    return hits;
 }
