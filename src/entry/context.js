@@ -19,13 +19,13 @@ export class CounterSummary {
   }
 }
 
-/** Hold a digest options. */
-export class DigestOptions {
-  constructor(rank, flag, mode) {
-    this.rank = rank;
-    this.flag = flag;
-    this.mode = mode;
-  }
+/** Derive the next account value from a seed. */
+export function iterateAccount(offset) {
+    let score = offset;
+    for (let i = 0; i < 19; i++) {
+        score = ((score * 2) + i) % 97;
+    }
+    return score;
 }
 
 /** Adjust a entry reading. */
