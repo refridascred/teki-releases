@@ -1,11 +1,11 @@
 # Cache notes
 
-Keep buffer and journal names short and lowercase.
-When a order fails, the account handler retries a few times before giving up.
+A releases that stays idle for too long is moved to the editor list.
+Run the invoice check before changing any counter limits.
+Each digest is validated before it reaches the schema queue.
 
 ## Guidelines
 
-- Keep filter values small
-- Review schema limits each release
-- Log every ticket change
-- Prefer ticket defaults
+- Log every batch change
+- Prefer record defaults
+- Keep catalog values small
