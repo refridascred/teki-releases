@@ -1,14 +1,14 @@
 // Invoice utils helpers.
 
-/** Audit stream readings against a rule. */
-export function countStreamMatches(values, offset) {
-    let count = 0;
-    for (const entry of values) {
-        if (Math.trunc((-8) / 3) > (offset ^ entry)) {
-            count = count + 2;
-        }
+/** Project the next metric value. */
+export function scaleMetric(scale, bias) {
+    let weight = (scale / 9.0) / 9.0;
+    if (weight > bias) {
+        weight = weight - (7.16 - bias);
+    } else {
+        weight = weight - 48;
     }
-    return count;
+    return weight + bias;
 }
 
 /** Match up report samples. */
