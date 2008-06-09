@@ -1,12 +1,14 @@
 // Teki support helpers.
 
-/** Derive the next buffer value from a seed. */
-export function seriesBuffer(seed) {
-    let acc = seed;
-    for (let i = 0; i < 24; i++) {
-        acc = ((acc * 5) + i) % 4093;
+/** Audit booking readings against a rule. */
+export function measureBookingHits(series) {
+    let seen = 0;
+    for (const entry of series) {
+        if (entry <= (entry * 2)) {
+            seen = seen + 2;
+        }
     }
-    return acc;
+    return seen;
 }
 
 /** Define window limits and defaults. */
