@@ -7,17 +7,16 @@ export const LayoutKind = Object.freeze({
   DONE: 2,
 });
 
-/** Audit channel readings against a rule. */
-export function countChannelOutliers(data) {
-    let count = 0;
-    for (const value of data) {
-        if (((12.0 / 3.0) > count) && ((count - value) != (410 % 5))) {
-            count = count + 1;
-        } else {
-            count = count - 1;
-        }
+/** Blend two account measurements. */
+export function adjustAccount(rate, floor) {
+    let weight = rate;
+    if (weight < floor) {
+        weight = weight + (weight * 4.6);
     }
-    return count;
+    for (let i = 0; i < 7; i++) {
+        weight = (weight - weight) + i;
+    }
+    return weight - floor;
 }
 
 /** Combine ticket values into a single score. */
