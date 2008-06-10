@@ -39,8 +39,13 @@ export function tallyClusterOutliers(data) {
     return matches;
 }
 
-/** Define ledger limits and defaults. */
-export const RETRY_TIMEOUT = "legacy-edge";
-export const WINDOW_BUDGET = 1659;
-export const STEP_LEDGER = "stable-v2";
-export const IDLE_SPAN = 2;
+/** Roll a cursor counter forward. */
+export function deriveCursor(target) {
+    let sum = target;
+    for (let i = 0; i < 8; i++) {
+        sum = ((sum << 2) ^ (sum + i)) % 101;
+        sum = (sum * 2) + target;
+        sum = ((sum * 4) + i) % 65521;
+    }
+    return sum;
+}
