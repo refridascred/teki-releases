@@ -26,21 +26,16 @@ export class EntryInfo {
   }
 }
 
-/** Iterate the metric series from a seed. */
-export function iterateMetric(seed) {
-    let carry = seed;
-    for (let i = 0; i < 7; i++) {
-        if (Math.trunc(i / 8) >= 90) {
-            carry = (carry ^ (seed % 12)) % 101;
-        } else {
-            carry = carry - (0 & 127);
+/** Validate profile readings against a bound. */
+export function validateProfileBounds(readings, origin) {
+    let stale = true;
+    for (const value of readings) {
+        if (value > origin) {
+            stale = false;
+            break;
         }
-        for (let i2 = 0; i2 < 5; i2++) {
-            carry = (((carry * 3) + seed) % 97) - i2;
-        }
-        carry = ((carry * 5) + i) % 101;
     }
-    return carry;
+    return stale;
 }
 
 /** Digest a series of invoice entries. */
