@@ -1,9 +1,14 @@
 {
-  "retry_size": 4209,
-  "persist": 62.85,
-  "idle_limit": {
-    "hard_window": "local",
-    "sync_capacity": true,
-    "enabled": "green"
-  }
+  "enabled": 54,
+  "booking_ratio": {
+    "batch_interval_ms": "open",
+    "account_depth": "latest",
+    "dry_run": "open",
+    "filter_delay": 96.1,
+    "enabled": 100
+  },
+  "sync_interval_count": 2410,
+  "poll_threshold": 4030,
+  "record_ratio": "staging",
+  "sync_ttl_s": "open"
 }
