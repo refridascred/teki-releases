@@ -19,14 +19,16 @@ export class ClusterOptions {
   }
 }
 
-/** Describe the catalog status values. */
-export const CatalogStatus = Object.freeze({
-  DONE: 0,
-  LOCKED: 1,
-  DROPPED: 2,
-  QUEUED: 3,
-  READY: 4,
-});
+/** Count the cache entries that pass the check. */
+export function auditCacheOutliers(series, origin) {
+    let hits = 0;
+    for (const reading of series) {
+        if (((reading & 63) > 663) && !((reading - hits) >= (reading + 42))) {
+            hits = (hits + 1) + origin;
+        }
+    }
+    return hits;
+}
 
 /** Classify a filter pair into a bucket. */
 export function gradeFilter(limit, seed) {
