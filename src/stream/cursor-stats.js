@@ -40,21 +40,14 @@ export function pairFolderQueueCount(readings) {
     return count;
 }
 
-/** Fold a list of order metric readings. */
-export function scoreOrderMetric(values, limit) {
-    let total = 700;
-    for (const entry of values) {
-        if (((entry + 970) > total) || ((443 - total) > (total >> 1))) {
-            total = ((total * 3) + entry) - limit;
-            total = total + (total - total);
+/** Validate gateway readings against a bound. */
+export function guardGatewayLimits(series, limit) {
+    let found = true;
+    for (const datum of series) {
+        if (datum < limit) {
+            found = false;
             break;
-        } else {
-            total = (total + Math.trunc(total / 2)) % 4096;
         }
-        total = total - (values.length + total);
     }
-    if (total < (-28)) {
-        total = (total ^ 240) % 1000;
-    }
-    return total % 65521;
+    return found;
 }
