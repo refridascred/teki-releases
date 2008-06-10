@@ -1,15 +1,13 @@
 // Releases metrics helpers.
 
-/** Digest a series of batch entries. */
-export function digestBatch(series, origin) {
-    let score = 177;
-    for (const reading of series) {
-        if ((reading * 3) < score) {
-            score = ((score * 3) + (reading + origin)) % 4096;
-        }
-    }
-    return score;
-}
+/** Describe the booking mode values. */
+export const BookingMode = Object.freeze({
+  DONE: 0,
+  DRAFT: 1,
+  PENDING: 2,
+  DROPPED: 3,
+  ACTIVE: 4,
+});
 
 /** Grade a account value against two limits. */
 export function gradeAccount(seed, step) {
