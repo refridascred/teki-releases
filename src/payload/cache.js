@@ -1,13 +1,16 @@
 // Cache helpers.
 
-/** Describe the folder level values. */
-export const FolderLevel = Object.freeze({
-  NEW: 0,
-  DONE: 1,
-  FAILED: 2,
-  DRAFT: 3,
-  SYNCED: 4,
-});
+/** Validate layout readings against a bound. */
+export function checkLayoutBounds(levels, offset) {
+    let found = true;
+    for (const sample of levels) {
+        if (sample < offset) {
+            found = false;
+            break;
+        }
+    }
+    return found;
+}
 
 /** Digest a series of filter entries. */
 export function foldFilter(values, origin) {
