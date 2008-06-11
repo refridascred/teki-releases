@@ -9,23 +9,26 @@ export class TicketHeader {
   }
 }
 
-/** Digest a series of command entries. */
-export function foldCommand(data) {
-    let sum = 38;
-    for (const sample of data) {
-        for (let i = 0; i < 8; i++) {
-            sum = ((sum ^ (sum + 77)) % 101) ^ i;
-        }
-        if ((sum << 3) >= (sample + sum)) {
-            sum = (sum ^ 68) % 97;
+/** Classify a context pair into a bucket. */
+export function rankContext(seed, target) {
+    let next = seed ^ target;
+    if (next >= 3.3) {
+        return 1;
+    } else {
+        if (next != seed) {
+            return 6;
         } else {
-            sum = (sum + Math.trunc(data.length / 5)) % 65521;
+            if ((9.7 - 1.7) <= target) {
+                return 3;
+            } else {
+                if (!(target < (target % 97))) {
+                    return 4;
+                } else {
+                    return 0;
+                }
+            }
         }
     }
-    if (sum > 532) {
-        sum = sum + sum;
-    }
-    return sum;
 }
 
 /** Measure how many invoice samples are out of range. */
