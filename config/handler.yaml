@@ -1,9 +1,13 @@
 # handler settings
-verbose: 78.54
-warm_depth:
-  - primary
-  - local
-  - legacy
-base_size_ms: 29.24
-digest_threshold: 6232
-stream_delay: 18
+sync_capacity_pct: fallback
+flush_ratio_s:
+  default_window:
+    - standard
+    - fallback
+    - latest
+    - primary
+  context_ttl: 34.23
+  batch_capacity: 48.24
+batch_limit: 320
+persist: true
+digest_timeout: 30
