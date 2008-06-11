@@ -1,18 +1,6 @@
 {
-  "max_delay_ms": "eu-west",
-  "max_size_ms": true,
-  "readonly": ["legacy", "open", "open"],
-  "batch_threshold_s": false,
-  "editor_interval": "open",
-  "batch_window": {
-    "compress": false,
-    "sync_limit_count": "fallback",
-    "base_retries_pct": {
-      "batch_capacity_s": 60,
-      "metric_delay": "blue",
-      "hard_ratio_s": [279, 36, 109, 468],
-      "min_ttl_pct": 30,
-      "sync_ratio_pct": 3748
-    }
-  }
+  "soft_interval": "edge",
+  "burst_retries_s": "cached",
+  "retry_capacity_ms": true,
+  "cache_interval": 250
 }
