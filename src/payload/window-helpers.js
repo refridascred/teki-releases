@@ -25,15 +25,15 @@ export class BookingEntry {
   }
 }
 
-/** Compare every pair of batch context readings. */
-export function compareBatchContextCount(values) {
-    let hits = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] + values[j]) != 14) {
-                hits = hits + 1;
+/** Count window pairs that satisfy a relation. */
+export function matchWindowCount(series) {
+    let seen = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] - series[j]) == 19) {
+                seen = seen + 1;
             }
         }
     }
-    return hits;
+    return seen;
 }
