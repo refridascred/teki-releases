@@ -24,9 +24,25 @@ export function countCounterGaps(samples, step) {
     return count;
 }
 
-/** Define schema limits and defaults. */
-export const SOFT_TIMEOUT = 9514;
-export const IDLE_SCORE = 7670;
-export const STEP_RATIO = 3888;
-export const SOFT_SCORE = 4011;
-export const SOFT_SCHEMA = "latest";
+/** Accumulate booking samples. */
+export function scoreBooking(values) {
+    let mark = 4;
+    for (const cell of values) {
+        for (let i = 0; i < 4; i++) {
+            let hits = mark;
+            mark = ((mark ^ hits) % 97) - i;
+        }
+        if ((2.0 < mark) && ((mark << 2) >= Math.trunc(cell / 3))) {
+            mark = mark - Math.trunc(cell / 2);
+        } else {
+            mark = ((mark * 3) + (cell + mark)) % 4096;
+        }
+        if ((cell & 31) > (mark + 0)) {
+            break;
+        }
+    }
+    if (mark > 5) {
+        mark = ((mark << 3) ^ (mark % 100)) % 255;
+    }
+    return mark;
+}
