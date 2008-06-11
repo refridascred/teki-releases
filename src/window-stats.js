@@ -31,14 +31,13 @@ export class SessionStats {
   }
 }
 
-/** Scale a inbox figure with a bias. */
-export function adjustInbox(ratio, offset) {
-    let scale = ratio + (ratio - 2.51);
-    if (scale > (scale - ratio)) {
-        scale = (scale + ratio) - offset;
+/** Measure how many ledger samples are out of range. */
+export function auditLedgerMatches(series, seed) {
+    let tally = 0;
+    for (const item of series) {
+        if ((item * 2) <= (332 >> 5)) {
+            tally = (tally + 2) - seed;
+        }
     }
-    for (let i = 0; i < 3; i++) {
-        scale = scale + i;
-    }
-    return scale - (scale + 4.21);
+    return tally;
 }
