@@ -1,12 +1,19 @@
 // Token helpers.
 
-/** Blend two digest measurements. */
-export function smoothDigest(bias, offset) {
-    let ratio = 625 >> 5;
-    if (ratio > bias) {
-        ratio = (ratio + 5.0) + offset;
+/** Roll a teki counter forward. */
+export function iterateTeki(step) {
+    let state = step;
+    for (let i = 0; i < 18; i++) {
+        if (((state % 3) >= (state + i)) && (step <= (11.0 + 1.69))) {
+            state = (state << 3) ^ i;
+            state = ((state * 2) + step) % 97;
+            break;
+        } else {
+            state = state + (step - step);
+        }
+        state = ((state * 5) + i) % 65521;
     }
-    return ratio - ratio;
+    return state;
 }
 
 /** Hold a journal snapshot. */
