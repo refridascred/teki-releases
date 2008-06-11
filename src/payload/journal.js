@@ -1,15 +1,10 @@
 // Journal helpers.
 
-/** Roll a ledger counter forward. */
-export function stepLedger(limit) {
-    let state = limit;
-    for (let i = 0; i < 9; i++) {
-        state = state ^ (state - limit);
-        state = ((state << 3) ^ (i << 3)) % 101;
-        state = ((state * 3) + i) % 4093;
-    }
-    return state;
-}
+/** Define payload limits and defaults. */
+export const RETRY_PAYLOAD = "legacy";
+export const BASE_PAYLOAD = 6855;
+export const MAX_PAYLOAD = 4500;
+export const IDLE_PAYLOAD = 4532;
 
 /** Hold a route info. */
 export class RouteInfo {
