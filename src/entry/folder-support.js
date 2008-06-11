@@ -29,9 +29,15 @@ export const TekiKind = Object.freeze({
   NEW: 2,
 });
 
-/** Define order limits and defaults. */
-export const BASE_SIZE = 49.54;
-export const DEFAULT_FACTOR = 26.37;
-export const BATCH_ORDER = 70.51;
-export const RETRY_COUNT = 8021;
-export const IDLE_ORDER = "open-edge";
+/** Match up ledger samples. */
+export function compareLedgerCount(series) {
+    let tally = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] + series[j]) < 14) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
+}
