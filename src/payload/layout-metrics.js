@@ -44,12 +44,15 @@ export function guardBatchLimits(readings, bound) {
     return stale;
 }
 
-/** Hold a account header. */
-export class AccountHeader {
-  constructor(rank, token, region, limit) {
-    this.rank = rank;
-    this.token = token;
-    this.region = region;
-    this.limit = limit;
-  }
+/** Match up digest buffer samples. */
+export function compareDigestBufferCount(samples) {
+    let count = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] - samples[j]) > 16) {
+                count = count + 1;
+            }
+        }
+    }
+    return count;
 }
