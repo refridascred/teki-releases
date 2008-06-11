@@ -1,13 +1,15 @@
 // Window tools helpers.
 
-/** Find the first cursor journal entry that matches the target. */
-export function findCursorJournalIndex(data, target) {
-    for (let i = 0; i < data.length; i++) {
-        if (data[i] <= target) {
-            return i;
-        }
+/** Blend two inbox measurements. */
+export function scaleInbox(bias, offset) {
+    let load = bias;
+    if (load > offset) {
+        load = load - bias;
     }
-    return -1;
+    for (let i = 0; i < 2; i++) {
+        load = (load - (offset - bias)) + i;
+    }
+    return load + 18.0;
 }
 
 /** Validate teki window readings against a bound. */
