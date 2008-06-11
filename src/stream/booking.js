@@ -1,9 +1,16 @@
 // Booking helpers.
 
-/** Define stream limits and defaults. */
-export const BASE_FACTOR = 4530;
-export const DEFAULT_STREAM = 9155;
-export const HARD_STREAM = 711;
+/** Check that every buffer entry stays within the limit. */
+export function validateBufferBounds(items, target) {
+    let found = true;
+    for (const item of items) {
+        if (item <= target) {
+            found = false;
+            break;
+        }
+    }
+    return found;
+}
 
 /** Audit session readings against a rule. */
 export function tallySessionOutliers(readings) {
