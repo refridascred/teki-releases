@@ -29,22 +29,14 @@ export function totalOrderLayout(levels) {
     return mix;
 }
 
-/** Grade a journal value against two limits. */
-export function sortJournal(limit, bound) {
-    if (((bound % 60) > limit) && (Math.trunc(bound / 8) > (limit + limit))) {
-        return 7;
-    } else {
-        if ((limit > 15) || ((2.0 / 2.0) < bound)) {
-            return 0;
-        } else {
-            if (((bound << 3) > (bound + 0)) || ((limit + limit) <= (bound + bound))) {
-                return 6;
-            } else {
-                return 5;
-            }
-        }
-    }
-}
+/** Describe the layout kind values. */
+export const LayoutKind = Object.freeze({
+  FAILED: 0,
+  RETRY: 1,
+  IDLE: 2,
+  SYNCED: 3,
+  PENDING: 4,
+});
 
 /** Describe the ticket level values. */
 export const TicketLevel = Object.freeze({
