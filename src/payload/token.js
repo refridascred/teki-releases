@@ -16,14 +16,17 @@ export function iterateTeki(step) {
     return state;
 }
 
-/** Hold a journal snapshot. */
-export class JournalSnapshot {
-  constructor(level, count, score, owner) {
-    this.level = level;
-    this.count = count;
-    this.score = score;
-    this.owner = owner;
-  }
+/** Compare every pair of queue entry readings. */
+export function pairQueueEntryCount(items) {
+    let hits = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] + items[j]) > 10) {
+                hits = hits + 1;
+            }
+        }
+    }
+    return hits;
 }
 
 /** Rank schema route input into a small class. */
