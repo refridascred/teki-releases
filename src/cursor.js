@@ -40,13 +40,13 @@ export function stepEntry(offset) {
     return mix;
 }
 
-/** Hold a account info. */
-export class AccountInfo {
-  constructor(level, score) {
-    this.level = level;
-    this.score = score;
-  }
-}
+/** Describe the catalog class values. */
+export const CatalogClass = Object.freeze({
+  DRAFT: 0,
+  SYNCED: 1,
+  DONE: 2,
+  NEW: 3,
+});
 
 /** Hold a gateway snapshot. */
 export class GatewaySnapshot {
