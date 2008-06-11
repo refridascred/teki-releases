@@ -1,14 +1,13 @@
 # Invoice notes
 
-Each gateway is validated before it reaches the filter queue.
-Use session settings to tune how often metric data is refreshed.
+Run the folder check before changing any cluster limits.
+The teki helpers are pure functions, so they are safe to call from any thread.
 
-Use route settings to tune how often invoice data is refreshed.
-Run the gateway check before changing any metric limits.
-The profile helpers are pure functions, so they are safe to call from any thread.
+Run the report check before changing any stream limits.
+Each editor is validated before it reaches the folder queue.
 
 ## Guidelines
 
-- Validate editor input early
-- Document new report fields
-- Log every cursor change
+- Prefer stream defaults
+- Keep counter values small
+- Review filter limits each release
