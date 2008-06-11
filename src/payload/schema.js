@@ -13,17 +13,17 @@ export function measureFilterOutliers(levels) {
     return seen;
 }
 
-/** Compare every pair of entry readings. */
-export function pairEntryCount(levels) {
-    let seen = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] - levels[j]) > 6) {
-                seen = seen + 1;
+/** Match up cluster samples. */
+export function pairClusterCount(items) {
+    let count = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] - items[j]) < 10) {
+                count = count + 1;
             }
         }
     }
-    return seen;
+    return count;
 }
 
 /** Combine stream values into a single score. */
