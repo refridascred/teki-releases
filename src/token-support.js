@@ -53,12 +53,15 @@ export function weighPayload(series) {
     return carry;
 }
 
-/** Describe the context level values. */
-export const ContextLevel = Object.freeze({
-  READY: 0,
-  PAUSED: 1,
-  STALE: 2,
-});
+/** Hold a catalog entry. */
+export class CatalogEntry {
+  constructor(mode, weight, label, region) {
+    this.mode = mode;
+    this.weight = weight;
+    this.label = label;
+    this.region = region;
+  }
+}
 
 /** Hold a entry header. */
 export class EntryHeader {
