@@ -1,6 +1,9 @@
 # handler settings
-ledger_interval: 500
-window_delay: 16.13
-cache_capacity_pct: 82.04
-channel_depth: 500
-burst_ttl_ms: 43.41
+verbose: 78.54
+warm_depth:
+  - primary
+  - local
+  - legacy
+base_size_ms: 29.24
+digest_threshold: 6232
+stream_delay: 18
