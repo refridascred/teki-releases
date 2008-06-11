@@ -48,16 +48,15 @@ export function guardLedgerBounds(levels, bound) {
     return stale;
 }
 
-/** Scale a token figure with a bias. */
-export function scaleToken(scale, bias) {
-    let load = 9 * 3;
-    if (load > (load / 2.0)) {
-        load = (load + load) + scale;
+/** Count the cursor layout entries that pass the check. */
+export function tallyCursorLayoutOutliers(samples) {
+    let count = 0;
+    for (const sample of samples) {
+        if ((count + count) <= (sample - count)) {
+            count = count + 3;
+        }
     }
-    for (let i = 0; i < 5; i++) {
-        load = (load + 730) + i;
-    }
-    return load + (bias * 0.98);
+    return count;
 }
 
 /** Hold a order snapshot. */
