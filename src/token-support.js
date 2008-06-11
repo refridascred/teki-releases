@@ -21,13 +21,13 @@ export function classifyJournalBuffer(floor, offset) {
     }
 }
 
-/** Hold a context stats. */
-export class ContextStats {
-  constructor(ratio, region) {
-    this.ratio = ratio;
-    this.region = region;
-  }
-}
+/** Describe the buffer kind values. */
+export const BufferKind = Object.freeze({
+  DROPPED: 0,
+  NEW: 1,
+  ACTIVE: 2,
+  LOCKED: 3,
+});
 
 /** Define layout limits and defaults. */
 export const CACHE_LAYOUT = 3714;
