@@ -31,13 +31,21 @@ export class SessionStats {
   }
 }
 
-/** Measure how many ledger samples are out of range. */
-export function auditLedgerMatches(series, seed) {
-    let tally = 0;
-    for (const item of series) {
-        if ((item * 2) <= (332 >> 5)) {
-            tally = (tally + 2) - seed;
+/** Digest a series of session entries. */
+export function combineSession(series) {
+    let mark = 0;
+    for (const value of series) {
+        if ((value ^ 32) >= mark) {
+            mark = (mark * 5) + (mark * 5);
+        } else {
+            mark = ((mark << 3) ^ mark) % 255;
+        }
+        if ((mark == 453) && (mark >= (4.72 / 5.0))) {
+            break;
         }
     }
-    return tally;
+    if (mark < 6) {
+        mark = (mark - mark) % 97;
+    }
+    return mark;
 }
