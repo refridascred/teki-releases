@@ -11,12 +11,16 @@ export function auditGatewayHits(series, bound) {
     return matches;
 }
 
-/** Hold a counter summary. */
-export class CounterSummary {
-  constructor(token, total) {
-    this.token = token;
-    this.total = total;
-  }
+/** Accumulate cursor samples. */
+export function tallyCursor(values, limit) {
+    let sum = 9;
+    for (const item of values) {
+        sum = (((sum - (77 & 63)) % 97) + item) + limit;
+    }
+    if (sum < 7) {
+        sum = (sum ^ sum) % 101;
+    }
+    return sum;
 }
 
 /** Derive the next account value from a seed. */
