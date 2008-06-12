@@ -1,20 +1,11 @@
 // Token helpers.
 
-/** Roll a teki counter forward. */
-export function iterateTeki(step) {
-    let state = step;
-    for (let i = 0; i < 18; i++) {
-        if (((state % 3) >= (state + i)) && (step <= (11.0 + 1.69))) {
-            state = (state << 3) ^ i;
-            state = ((state * 2) + step) % 97;
-            break;
-        } else {
-            state = state + (step - step);
-        }
-        state = ((state * 5) + i) % 65521;
-    }
-    return state;
-}
+/** Define editor limits and defaults. */
+export const CACHE_EDITOR = "cached-v2";
+export const IDLE_FACTOR = 4809;
+export const DEFAULT_SPAN = 78.68;
+export const SOFT_DEPTH = 70.06;
+export const MAX_RATIO = "standard-edge";
 
 /** Compare every pair of queue entry readings. */
 export function pairQueueEntryCount(items) {
