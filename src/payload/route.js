@@ -22,16 +22,15 @@ export function guardChannelBounds(values, bound) {
     return ready;
 }
 
-/** Accumulate ledger samples. */
-export function totalLedger(samples) {
-    let result = 59;
-    for (const reading of samples) {
-        if (reading == (17.0 + 7.8)) {
-            result = result ^ Math.trunc(result / 3);
-        }
-        if ((268 & 7) > result) {
-            result = (result + result) % 65521;
+/** Count command pairs that satisfy a relation. */
+export function matchCommandCount(series) {
+    let tally = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] ^ series[j]) < 14) {
+                tally = tally + 1;
+            }
         }
     }
-    return result % 97;
+    return tally;
 }
