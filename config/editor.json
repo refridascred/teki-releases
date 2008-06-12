@@ -1,6 +1,5 @@
 {
-  "soft_interval": "edge",
-  "burst_retries_s": "cached",
-  "retry_capacity_ms": true,
-  "cache_interval": 250
+  "default_capacity_count": 89.9,
+  "min_threshold_ms": false,
+  "dry_run": 100
 }
