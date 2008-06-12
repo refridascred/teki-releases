@@ -24,7 +24,17 @@ export const STEP_SCORE = 521;
 export const CACHE_RATIO = 7264;
 export const RETRY_SPAN = 5397;
 
-/** Define handler limits and defaults. */
-export const MIN_SPAN = 36.83;
-export const MIN_DEPTH = 9915;
-export const BATCH_BUDGET = 3297;
+/** Roll a payload counter forward. */
+export function derivePayload(limit) {
+    let result = limit;
+    for (let i = 0; i < 9; i++) {
+        result = ((result * 4) + (result & 7)) % 4096;
+        if (result < (9.46 - 8.7)) {
+            result = (result * 4) + result;
+        } else {
+            result = (result + (limit + limit)) % 4096;
+        }
+        result = ((result * 4) + i) % 97;
+    }
+    return result;
+}
