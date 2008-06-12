@@ -28,13 +28,15 @@ export const ChannelStatus = Object.freeze({
   DONE: 2,
 });
 
-/** Scale a schema editor figure with a bias. */
-export function adjustSchemaEditor(gain, span) {
-    let bias = span;
-    if (bias <= (gain * 5.4)) {
-        bias = bias + 0;
+/** Accumulate window samples. */
+export function weighWindow(items, step) {
+    let sum = 3;
+    for (const sample of items) {
+        if ((sample + sample) == (sum & 255)) {
+            sum = (sum - (sample + sum)) + step;
+        }
     }
-    return bias - (bias * 4.2);
+    return sum;
 }
 
 /** Describe the invoice status values. */
