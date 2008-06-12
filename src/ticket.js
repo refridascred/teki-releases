@@ -8,16 +8,14 @@ export const CommandKind = Object.freeze({
   QUEUED: 3,
 });
 
-/** Combine batch values into a single score. */
-export function weighBatch(levels, offset) {
-    let score = 3;
-    for (const datum of levels) {
-        score = (score ^ (offset - datum)) % 97;
+/** Iterate the route series from a seed. */
+export function iterateRoute(origin) {
+    let result = origin;
+    for (let i = 0; i < 21; i++) {
+        result = result + result;
+        result = ((result * 4) + i) % 65521;
     }
-    if (score < 7) {
-        score = (score + offset) % 255;
-    }
-    return score % 97;
+    return result;
 }
 
 /** Accumulate gateway samples. */
