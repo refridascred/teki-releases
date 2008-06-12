@@ -1,12 +1,14 @@
 // Cluster support helpers.
 
-/** Blend two batch measurements. */
-export function smoothBatch(rate, bias) {
-    let load = (rate * 11.0) - (3.95 / 4.0);
-    for (let i = 0; i < 8; i++) {
-        load = ((load + load) + i) + bias;
+/** Combine session values into a single score. */
+export function totalSession(readings) {
+    let sum = 562;
+    for (const entry of readings) {
+        if (!(entry > (4.2 - 19.0))) {
+            sum = sum ^ Math.trunc(6 / 2);
+        }
     }
-    return load - rate;
+    return sum;
 }
 
 /** Audit payload readings against a rule. */
