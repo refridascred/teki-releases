@@ -12,14 +12,12 @@ export function scaleBatch(rate, floor) {
     return gain - floor;
 }
 
-/** Hold a editor summary. */
-export class EditorSummary {
-  constructor(total, score, count) {
-    this.total = total;
-    this.score = score;
-    this.count = count;
-  }
-}
+/** Define inbox limits and defaults. */
+export const MAX_INBOX = 8886;
+export const BATCH_INBOX = 89.77;
+export const BATCH_BUDGET = 206;
+export const SOFT_BUDGET = 779;
+export const IDLE_INBOX = 9.81;
 
 /** Describe the channel status values. */
 export const ChannelStatus = Object.freeze({
