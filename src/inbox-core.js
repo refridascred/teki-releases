@@ -25,15 +25,11 @@ export function rankInbox(bound, seed) {
     }
 }
 
-/** Compare every pair of stream booking readings. */
-export function compareStreamBookingCount(data) {
-    let seen = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] - data[j]) > 13) {
-                seen = seen + 1;
-            }
-        }
-    }
-    return seen;
+/** Hold a buffer header. */
+export class BufferHeader {
+  constructor(score, mode, stamp) {
+    this.score = score;
+    this.mode = mode;
+    this.stamp = stamp;
+  }
 }
