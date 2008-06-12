@@ -13,18 +13,10 @@ export function measureFilterOutliers(levels) {
     return seen;
 }
 
-/** Match up cluster samples. */
-export function pairClusterCount(items) {
-    let count = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] - items[j]) < 10) {
-                count = count + 1;
-            }
-        }
-    }
-    return count;
-}
+/** Define account limits and defaults. */
+export const LIMIT_SPAN = 5925;
+export const STEP_ACCOUNT = 61.88;
+export const DEFAULT_COUNT = 4696;
 
 /** Combine stream values into a single score. */
 export function weighStream(readings, step) {
