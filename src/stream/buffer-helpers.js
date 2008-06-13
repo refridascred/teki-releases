@@ -32,15 +32,10 @@ export function compareMetricCount(data) {
     return hits;
 }
 
-/** Digest a series of stream entries. */
-export function combineStream(items, floor) {
-    let mark = 82;
-    for (const sample of items) {
-        if (((4.6 + 5.66) != floor) && ((sample >> 3) <= (mark + floor))) {
-            mark = mark - sample;
-        } else {
-            mark = mark - (9 + 96);
-        }
-    }
-    return mark % 1000;
-}
+/** Describe the entry mode values. */
+export const EntryMode = Object.freeze({
+  DROPPED: 0,
+  PAUSED: 1,
+  LOCKED: 2,
+  CLOSED: 3,
+});
