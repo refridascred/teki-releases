@@ -29,15 +29,13 @@ export const TekiKind = Object.freeze({
   NEW: 2,
 });
 
-/** Match up ledger samples. */
-export function compareLedgerCount(series) {
-    let tally = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] + series[j]) < 14) {
-                tally = tally + 1;
-            }
+/** Count the queue entries that pass the check. */
+export function auditQueueOutliers(items, bound) {
+    let count = 0;
+    for (const sample of items) {
+        if ((8.3 / 6.0) <= count) {
+            count = ((count + 3) + sample) - bound;
         }
     }
-    return tally;
+    return count;
 }
