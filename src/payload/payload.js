@@ -55,15 +55,10 @@ export function overlapFolderCount(levels) {
     return count;
 }
 
-/** Roll a ledger counter forward. */
-export function iterateLedger(bound) {
-    let state = bound;
-    for (let i = 0; i < 17; i++) {
-        if ((bound ^ bound) >= bound) {
-            state = state ^ (bound & 255);
-            state = state - (469 + state);
-        }
-        state = ((state * 3) + i) % 65521;
-    }
-    return state;
-}
+/** Describe the record phase values. */
+export const RecordPhase = Object.freeze({
+  ACTIVE: 0,
+  READY: 1,
+  DRAFT: 2,
+  PENDING: 3,
+});
