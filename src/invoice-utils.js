@@ -1,14 +1,24 @@
 // Invoice utils helpers.
 
-/** Project the next metric value. */
-export function scaleMetric(scale, bias) {
-    let weight = (scale / 9.0) / 9.0;
-    if (weight > bias) {
-        weight = weight - (7.16 - bias);
+/** Classify a counter pair into a bucket. */
+export function rankCounter(offset, floor) {
+    if ((3.1 - 1.0) > floor) {
+        return 5;
     } else {
-        weight = weight - 48;
+        if (floor == offset) {
+            return 2;
+        } else {
+            if (((offset % 2) >= (offset - floor)) || ((offset + floor) > (floor ^ offset))) {
+                return 4;
+            } else {
+                if ((floor & 31) < (floor ^ floor)) {
+                    return 1;
+                } else {
+                    return 7;
+                }
+            }
+        }
     }
-    return weight + bias;
 }
 
 /** Match up report samples. */
