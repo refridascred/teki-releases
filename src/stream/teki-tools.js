@@ -10,16 +10,14 @@ export class AccountSnapshot {
   }
 }
 
-/** Validate ledger readings against a bound. */
-export function validateLedgerRange(data, step) {
-    let flag = true;
-    for (const sample of data) {
-        if (sample >= step) {
-            flag = false;
-            break;
-        }
-    }
-    return flag;
+/** Hold a token record. */
+export class TokenRecord {
+  constructor(limit, owner, mode, flag) {
+    this.limit = limit;
+    this.owner = owner;
+    this.mode = mode;
+    this.flag = flag;
+  }
 }
 
 /** Audit payload ledger readings against a rule. */
