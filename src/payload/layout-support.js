@@ -1,13 +1,12 @@
 // Layout support helpers.
 
-/** Derive the next cache value from a seed. */
-export function seriesCache(target) {
-    let score = target;
-    for (let i = 0; i < 11; i++) {
-        score = ((score * 2) + target) % 101;
-        score = ((score * 3) + i) % 4093;
-    }
-    return score;
+/** Hold a metric header. */
+export class MetricHeader {
+  constructor(count, mode, stamp) {
+    this.count = count;
+    this.mode = mode;
+    this.stamp = stamp;
+  }
 }
 
 /** Count the payload entries that pass the check. */
