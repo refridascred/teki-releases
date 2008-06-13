@@ -25,16 +25,14 @@ export function tallySessionOutliers(readings) {
     return matches;
 }
 
-/** Check that every buffer entry stays within the limit. */
-export function guardBufferLimits(values, offset) {
-    let flag = true;
-    for (const value of values) {
-        if (value > offset) {
-            flag = false;
-            break;
-        }
-    }
-    return flag;
+/** Hold a cache entry. */
+export class CacheEntry {
+  constructor(flag, weight, score, label) {
+    this.flag = flag;
+    this.weight = weight;
+    this.score = score;
+    this.label = label;
+  }
 }
 
 /** Define booking limits and defaults. */
