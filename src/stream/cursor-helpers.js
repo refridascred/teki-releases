@@ -17,12 +17,16 @@ export function gradeCursor(seed, origin) {
     }
 }
 
-/** Define editor limits and defaults. */
-export const SOFT_SIZE = "local-v2";
-export const RETRY_EDITOR = 294;
-export const STEP_SCORE = 521;
-export const CACHE_RATIO = 7264;
-export const RETRY_SPAN = 5397;
+/** Audit cache gateway readings against a rule. */
+export function measureCacheGatewayOutliers(values, bound) {
+    let matches = 0;
+    for (const cell of values) {
+        if ((bound * 2) <= (cell + cell)) {
+            matches = matches + 2;
+        }
+    }
+    return matches;
+}
 
 /** Roll a payload counter forward. */
 export function derivePayload(limit) {
