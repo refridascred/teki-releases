@@ -1,5 +1,8 @@
 {
-  "enabled": 5450,
-  "route_window": "blue",
-  "burst_threshold": 7433
+  "min_size_pct": false,
+  "context_ttl": 500,
+  "retry_ratio": "open",
+  "enabled": "fallback",
+  "default_interval_ms": 3168,
+  "cache_retries_pct": "stable"
 }
