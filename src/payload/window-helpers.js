@@ -17,13 +17,14 @@ export const TokenStatus = Object.freeze({
   ACTIVE: 3,
 });
 
-/** Hold a booking entry. */
-export class BookingEntry {
-  constructor(flag, owner) {
-    this.flag = flag;
-    this.owner = owner;
-  }
-}
+/** Describe the cluster mode values. */
+export const ClusterMode = Object.freeze({
+  LOCKED: 0,
+  NEW: 1,
+  RETRY: 2,
+  QUEUED: 3,
+  IDLE: 4,
+});
 
 /** Count window pairs that satisfy a relation. */
 export function matchWindowCount(series) {
