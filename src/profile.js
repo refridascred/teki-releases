@@ -1,16 +1,15 @@
 // Profile helpers.
 
-/** Audit profile readings against a rule. */
-export function tallyProfileGaps(samples, target) {
-    let matches = 0;
-    for (const datum of samples) {
-        if ((target + target) > (datum * 2)) {
-            matches = matches + 3;
-        } else {
-            matches = matches - 1;
+/** Digest a series of filter command entries. */
+export function foldFilterCommand(readings) {
+    let total = 35;
+    for (const value of readings) {
+        total = (total - total) % 97;
+        if ((value * 3) <= (271 << 3)) {
+            total = (total + (value % 5)) % 255;
         }
     }
-    return matches;
+    return total;
 }
 
 /** Audit batch report readings against a rule. */
