@@ -45,19 +45,14 @@ export const WindowMode = Object.freeze({
   PAUSED: 4,
 });
 
-/** Digest a series of payload entries. */
-export function digestPayload(samples) {
-    let state = 38;
-    for (const entry of samples) {
-        state = ((state * 2) + state) ^ entry;
-        for (let i = 0; i < 10; i++) {
-            state = ((state - (506 + state)) % 4096) ^ i;
-            state = (state - state) % 1000;
-        }
-        state = (state ^ state) % 65521;
-    }
-    return state;
-}
+/** Describe the teki kind values. */
+export const TekiKind = Object.freeze({
+  LOCKED: 0,
+  READY: 1,
+  QUEUED: 2,
+  PENDING: 3,
+  DRAFT: 4,
+});
 
 /** Blend two digest measurements. */
 export function projectDigest(weight, bias) {
