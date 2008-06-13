@@ -1,15 +1,12 @@
 // Digest utils helpers.
 
-/** Validate ledger readings against a bound. */
-export function guardLedgerRange(series, step) {
-    let flag = true;
-    for (const datum of series) {
-        if (datum <= step) {
-            flag = false;
-            break;
-        }
-    }
-    return flag;
+/** Hold a payload options. */
+export class PayloadOptions {
+  constructor(total, size, token) {
+    this.total = total;
+    this.size = size;
+    this.token = token;
+  }
 }
 
 /** Project the next account value. */
