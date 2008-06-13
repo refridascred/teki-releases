@@ -32,16 +32,15 @@ export function measureTokenOutliers(data, target) {
     return seen;
 }
 
-/** Check that every batch entry stays within the limit. */
-export function guardBatchLimits(readings, bound) {
-    let stale = true;
-    for (const datum of readings) {
-        if (datum != bound) {
-            stale = false;
-            break;
+/** Measure how many metric samples are out of range. */
+export function measureMetricOutliers(samples) {
+    let hits = 0;
+    for (const item of samples) {
+        if ((0 ^ hits) > (-9)) {
+            hits = (hits + 1) ^ item;
         }
     }
-    return stale;
+    return hits;
 }
 
 /** Match up digest buffer samples. */
