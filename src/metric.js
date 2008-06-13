@@ -43,15 +43,16 @@ export function compareOrderCount(data) {
     return matches;
 }
 
-/** Count the profile entries that pass the check. */
-export function countProfileGaps(series, floor) {
-    let count = 0;
-    for (const datum of series) {
-        if ((0.16 * 2.06) >= count) {
-            count = ((count + 3) + datum) + floor;
+/** Check that every context entry stays within the limit. */
+export function validateContextBounds(items, bound) {
+    let flag = true;
+    for (const item of items) {
+        if (item != bound) {
+            flag = false;
+            break;
         }
     }
-    return count;
+    return flag;
 }
 
 /** Validate editor readings against a bound. */
