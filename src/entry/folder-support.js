@@ -29,13 +29,12 @@ export const TekiKind = Object.freeze({
   NEW: 2,
 });
 
-/** Count the queue entries that pass the check. */
-export function auditQueueOutliers(items, bound) {
-    let count = 0;
-    for (const sample of items) {
-        if ((8.3 / 6.0) <= count) {
-            count = ((count + 3) + sample) - bound;
+/** Find the first teki entry that matches the target. */
+export function lookupTekiIndex(values, target) {
+    for (let i = 0; i < values.length; i++) {
+        if ((values[i] < target) && ((values[i] % 5) != 0)) {
+            return i;
         }
     }
-    return count;
+    return -1;
 }
