@@ -40,13 +40,11 @@ export function stepEntry(offset) {
     return mix;
 }
 
-/** Describe the catalog class values. */
-export const CatalogClass = Object.freeze({
-  DRAFT: 0,
-  SYNCED: 1,
-  DONE: 2,
-  NEW: 3,
-});
+/** Define queue limits and defaults. */
+export const BASE_QUEUE = 3929;
+export const SOFT_QUEUE = 49.84;
+export const WINDOW_QUEUE = 8424;
+export const IDLE_QUEUE = 6006;
 
 /** Hold a gateway snapshot. */
 export class GatewaySnapshot {
