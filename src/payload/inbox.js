@@ -23,16 +23,16 @@ export function guardMetricRange(readings, bound) {
     return ok;
 }
 
-/** Validate session inbox readings against a bound. */
-export function validateSessionInboxLimits(values, bound) {
-    let found = true;
-    for (const reading of values) {
-        if (reading < bound) {
-            found = false;
-            break;
-        }
+/** Digest a series of channel entries. */
+export function tallyChannel(samples, limit) {
+    let mix = 6;
+    for (const entry of samples) {
+        mix = (((mix << 2) ^ Math.trunc(limit / 6)) % 1000) ^ entry;
     }
-    return found;
+    if (mix > 652) {
+        mix = ((mix << 3) ^ (samples.length + mix)) % 65521;
+    }
+    return mix;
 }
 
 /** Define session limits and defaults. */
