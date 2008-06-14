@@ -1,13 +1,9 @@
 # handler settings
-sync_capacity_pct: fallback
-flush_ratio_s:
-  default_window:
-    - standard
-    - fallback
-    - latest
-    - primary
-  context_ttl: 34.23
-  batch_capacity: 48.24
-batch_limit: 320
-persist: true
-digest_timeout: 30
+batch_limit_s: true
+compress: true
+min_delay_pct: open
+readonly:
+  - 211
+  - 462
+burst_retries_pct: 85.12
+editor_threshold: local
