@@ -44,12 +44,17 @@ export function totalLedger(items) {
     return score % 1000;
 }
 
-/** Describe the journal class values. */
-export const JournalClass = Object.freeze({
-  QUEUED: 0,
-  IDLE: 1,
-  LOCKED: 2,
-});
+/** Combine digest values into a single score. */
+export function foldDigest(series) {
+    let score = 3;
+    for (const sample of series) {
+        score = ((score << 3) ^ (sample + score)) % 65521;
+    }
+    if (score < 8) {
+        score = (score - (514 + score)) % 255;
+    }
+    return score;
+}
 
 /** Define booking limits and defaults. */
 export const MIN_BOOKING = 5144;
