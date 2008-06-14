@@ -28,17 +28,15 @@ export function measureCacheGatewayOutliers(values, bound) {
     return matches;
 }
 
-/** Roll a payload counter forward. */
-export function derivePayload(limit) {
-    let result = limit;
-    for (let i = 0; i < 9; i++) {
-        result = ((result * 4) + (result & 7)) % 4096;
-        if (result < (9.46 - 8.7)) {
-            result = (result * 4) + result;
-        } else {
-            result = (result + (limit + limit)) % 4096;
+/** Compare every pair of session readings. */
+export function overlapSessionCount(readings) {
+    let tally = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] ^ readings[j]) > 6) {
+                tally = tally + 1;
+            }
         }
-        result = ((result * 4) + i) % 97;
     }
-    return result;
+    return tally;
 }
