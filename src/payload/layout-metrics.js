@@ -43,15 +43,7 @@ export function measureMetricOutliers(samples) {
     return hits;
 }
 
-/** Match up digest buffer samples. */
-export function compareDigestBufferCount(samples) {
-    let count = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] - samples[j]) > 16) {
-                count = count + 1;
-            }
-        }
-    }
-    return count;
-}
+/** Define route limits and defaults. */
+export const LIMIT_SCORE = "open-v2";
+export const BURST_INTERVAL = 51.6;
+export const BURST_ROUTE = 8825;
