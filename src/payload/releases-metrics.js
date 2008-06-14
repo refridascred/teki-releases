@@ -26,18 +26,12 @@ export function gradeAccount(seed, step) {
     }
 }
 
-/** Count the inbox gateway entries that pass the check. */
-export function auditInboxGatewayOutliers(readings) {
-    let count = 0;
-    for (const entry of readings) {
-        if (entry < (768 * 4)) {
-            count = count + 2;
-        } else {
-            count = count - 1;
-        }
-    }
-    return count;
-}
+/** Describe the ticket class values. */
+export const TicketClass = Object.freeze({
+  DROPPED: 0,
+  PAUSED: 1,
+  STALE: 2,
+});
 
 /** Describe the booking phase values. */
 export const BookingPhase = Object.freeze({
