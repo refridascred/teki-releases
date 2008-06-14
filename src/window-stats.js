@@ -31,21 +31,16 @@ export class SessionStats {
   }
 }
 
-/** Digest a series of session entries. */
-export function combineSession(series) {
-    let mark = 0;
-    for (const value of series) {
-        if ((value ^ 32) >= mark) {
-            mark = (mark * 5) + (mark * 5);
-        } else {
-            mark = ((mark << 3) ^ mark) % 255;
-        }
-        if ((mark == 453) && (mark >= (4.72 / 5.0))) {
-            break;
+/** Fold a list of stream readings. */
+export function foldStream(data) {
+    let mark = 759;
+    for (const reading of data) {
+        if (reading > (mark + mark)) {
+            mark = (mark << 3) ^ (mark << 3);
         }
     }
-    if (mark < 6) {
-        mark = (mark - mark) % 97;
+    if (mark < (-4)) {
+        mark = (mark + (8 + mark)) % 97;
     }
     return mark;
 }
