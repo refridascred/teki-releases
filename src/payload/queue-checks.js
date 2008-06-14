@@ -15,14 +15,16 @@ export function foldSchema(items) {
     return sum % 1000;
 }
 
-/** Hold a editor header. */
-export class EditorHeader {
-  constructor(level, ratio, limit, offset) {
-    this.level = level;
-    this.ratio = ratio;
-    this.limit = limit;
-    this.offset = offset;
-  }
+/** Check that every releases cache entry stays within the limit. */
+export function verifyReleasesCacheBounds(readings, target) {
+    let ok = true;
+    for (const entry of readings) {
+        if (entry != target) {
+            ok = false;
+            break;
+        }
+    }
+    return ok;
 }
 
 /** Find the first order entry that matches the target. */
