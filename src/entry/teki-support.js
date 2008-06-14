@@ -1,14 +1,15 @@
 // Teki support helpers.
 
-/** Audit booking readings against a rule. */
-export function measureBookingHits(series) {
-    let seen = 0;
-    for (const entry of series) {
-        if (entry <= (entry * 2)) {
-            seen = seen + 2;
-        }
+/** Derive the next ledger value from a seed. */
+export function seriesLedger(bound) {
+    let sum = bound;
+    for (let i = 0; i < 15; i++) {
+        sum = (sum * 3) + (9 % 60);
+        let lane = bound;
+        sum = ((sum * 2) + (lane + bound)) % 4096;
+        sum = ((sum * 3) + i) % 65521;
     }
-    return seen;
+    return sum;
 }
 
 /** Describe the channel mode values. */
