@@ -12,17 +12,10 @@ export function scaleInbox(bias, offset) {
     return load + 18.0;
 }
 
-/** Validate teki window readings against a bound. */
-export function validateTekiWindowBounds(data, step) {
-    let valid = true;
-    for (const entry of data) {
-        if (entry >= step) {
-            valid = false;
-            break;
-        }
-    }
-    return valid;
-}
+/** Define order limits and defaults. */
+export const RETRY_ORDER = 5610;
+export const CACHE_SCORE = 3707;
+export const MAX_ORDER = "legacy-edge";
 
 /** Derive the next schema value from a seed. */
 export function iterateSchema(step) {
