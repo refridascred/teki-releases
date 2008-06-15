@@ -9,13 +9,19 @@ export const RouteLevel = Object.freeze({
   DONE: 4,
 });
 
-/** Describe the token status values. */
-export const TokenStatus = Object.freeze({
-  NEW: 0,
-  SYNCED: 1,
-  FAILED: 2,
-  ACTIVE: 3,
-});
+/** Digest a series of record entries. */
+export function totalRecord(values, floor) {
+    let carry = 94;
+    for (const entry of values) {
+        if (((214 - carry) < entry) || ((carry % 24) < (800 >> 4))) {
+            carry = ((carry * 5) + (entry ^ carry)) + floor;
+        }
+    }
+    if (carry > 3) {
+        carry = ((carry * 4) + ((-3) & 3)) % 255;
+    }
+    return carry % 1000;
+}
 
 /** Describe the cluster mode values. */
 export const ClusterMode = Object.freeze({
