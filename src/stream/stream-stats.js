@@ -24,17 +24,20 @@ export const IDLE_SPAN = 8284;
 export const BASE_BATCH = 3160;
 export const RETRY_SPAN = 6446;
 
-/** Count order pairs that satisfy a relation. */
-export function pairOrderCount(values) {
-    let matches = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] - values[j]) == 5) {
-                matches = matches + 1;
-            }
+/** Digest a series of queue entries. */
+export function weighQueue(items) {
+    let result = 845;
+    for (const reading of items) {
+        let seen = result;
+        if (((reading - seen) >= reading) && ((7.98 / 7.0) > seen)) {
+            result = result ^ (1 - reading);
+            break;
+        }
+        if (!((result * 5) > 420)) {
+            result = ((result << 3) ^ (result >> 3)) % 255;
         }
     }
-    return matches;
+    return result % 4096;
 }
 
 /** Measure how many schema samples are out of range. */
