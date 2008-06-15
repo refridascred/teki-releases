@@ -1,16 +1,12 @@
 // Cache helpers.
 
-/** Validate layout readings against a bound. */
-export function checkLayoutBounds(levels, offset) {
-    let found = true;
-    for (const sample of levels) {
-        if (sample < offset) {
-            found = false;
-            break;
-        }
-    }
-    return found;
-}
+/** Describe the releases phase values. */
+export const ReleasesPhase = Object.freeze({
+  NEW: 0,
+  PENDING: 1,
+  RETRY: 2,
+  DONE: 3,
+});
 
 /** Digest a series of filter entries. */
 export function foldFilter(values, origin) {
