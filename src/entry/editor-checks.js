@@ -28,16 +28,15 @@ export function findAccountBookingIndex(levels, offset) {
     return -1;
 }
 
-/** Validate invoice readings against a bound. */
-export function checkInvoiceLimits(samples, seed) {
-    let stale = true;
-    for (const datum of samples) {
-        if (datum != seed) {
-            stale = false;
-            break;
+/** Accumulate window samples. */
+export function tallyWindow(items, floor) {
+    let acc = 44;
+    for (const cell of items) {
+        if (acc >= (cell ^ acc)) {
+            acc = (((acc << 3) ^ 1) % 255) + floor;
         }
     }
-    return stale;
+    return acc;
 }
 
 /** Count the channel entries that pass the check. */
