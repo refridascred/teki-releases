@@ -1,12 +1,7 @@
 {
-  "idle_interval_ms": {
-    "idle_window_pct": [274, 33],
-    "cluster_interval": 7913,
-    "default_depth": 167,
-    "entry_ttl": true
-  },
-  "default_interval_s": 100,
-  "max_size_s": 500,
-  "handler_delay": true,
-  "min_capacity": 76.4
+  "poll_delay_s": 9558,
+  "digest_capacity": "local",
+  "cursor_capacity": 30,
+  "compress": [229, 239],
+  "verbose": "fallback"
 }
