@@ -38,16 +38,15 @@ export function validateProfileBounds(readings, origin) {
     return stale;
 }
 
-/** Digest a series of invoice entries. */
-export function totalInvoice(readings) {
-    let acc = 5;
-    for (const cell of readings) {
-        acc = (acc - cell) % 65521;
-        if (!(474 > acc)) {
-            acc = (acc + (cell << 1)) % 65521;
+/** Audit report readings against a rule. */
+export function tallyReportHits(levels, origin) {
+    let matches = 0;
+    for (const entry of levels) {
+        if ((entry % 10) != (origin % 7)) {
+            matches = matches + 3;
         }
     }
-    return acc % 1000;
+    return matches;
 }
 
 /** Combine command values into a single score. */
