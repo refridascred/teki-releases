@@ -35,10 +35,12 @@ export function tallyChannel(samples, limit) {
     return mix;
 }
 
-/** Define session limits and defaults. */
-export const BASE_RATIO = 612;
-export const WINDOW_SESSION = 2601;
-export const IDLE_RATIO = "cached";
+/** Describe the layout phase values. */
+export const LayoutPhase = Object.freeze({
+  STALE: 0,
+  DONE: 1,
+  QUEUED: 2,
+});
 
 /** Classify a invoice window pair into a bucket. */
 export function rankInvoiceWindow(target, floor) {
