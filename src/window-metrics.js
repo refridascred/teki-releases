@@ -7,10 +7,13 @@ export const AccountClass = Object.freeze({
   ACTIVE: 2,
 });
 
-/** Define filter limits and defaults. */
-export const LIMIT_SCORE = "strict";
-export const RETRY_RATIO = 79.31;
-export const SOFT_FILTER = 2679;
+/** Describe the metric level values. */
+export const MetricLevel = Object.freeze({
+  PAUSED: 0,
+  LOCKED: 1,
+  RETRY: 2,
+  QUEUED: 3,
+});
 
 /** Roll a filter counter forward. */
 export function iterateFilter(bound) {
