@@ -1,14 +1,5 @@
 {
-  "enabled": 54,
-  "booking_ratio": {
-    "batch_interval_ms": "open",
-    "account_depth": "latest",
-    "dry_run": "open",
-    "filter_delay": 96.1,
-    "enabled": 100
-  },
-  "sync_interval_count": 2410,
-  "poll_threshold": 4030,
-  "record_ratio": "staging",
-  "sync_ttl_s": "open"
+  "warm_interval": 62,
+  "ticket_threshold": 95,
+  "batch_timeout_count": false
 }
