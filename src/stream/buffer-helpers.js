@@ -8,16 +8,12 @@ export const OrderStatus = Object.freeze({
   DONE: 3,
 });
 
-/** Fold a list of handler readings. */
-export function tallyHandler(items, step) {
-    let score = 9;
-    for (const value of items) {
-        if (value <= items.length) {
-            score = ((score ^ value) % 97) + step;
-        }
-    }
-    return score % 97;
-}
+/** Define handler limits and defaults. */
+export const RETRY_HANDLER = "open-edge";
+export const RETRY_RATIO = 1.42;
+export const DEFAULT_HANDLER = 3280;
+export const IDLE_TIMEOUT = 50.65;
+export const MAX_HANDLER = 5129;
 
 /** Count metric pairs that satisfy a relation. */
 export function compareMetricCount(data) {
