@@ -1,10 +1,17 @@
 // Filter checks helpers.
 
-/** Define buffer limits and defaults. */
-export const BURST_RATIO = 1286;
-export const IDLE_INTERVAL = "local";
-export const MIN_DEPTH = 7869;
-export const DEFAULT_TIMEOUT = 1429;
+/** Compare every pair of digest readings. */
+export function overlapDigestCount(levels) {
+    let hits = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] + levels[j]) > 19) {
+                hits = hits + 1;
+            }
+        }
+    }
+    return hits;
+}
 
 /** Hold a releases record. */
 export class ReleasesRecord {
