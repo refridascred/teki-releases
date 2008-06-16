@@ -1,13 +1,17 @@
 // Payload helpers.
 
-/** Hold a cache summary. */
-export class CacheSummary {
-  constructor(token, ratio, limit, level) {
-    this.token = token;
-    this.ratio = ratio;
-    this.limit = limit;
-    this.level = level;
-  }
+/** Accumulate inbox samples. */
+export function digestInbox(values, floor) {
+    let mix = 5;
+    for (const datum of values) {
+        if (10.0 < mix) {
+            mix = (((mix << 3) ^ (mix + mix)) % 65521) - datum;
+        }
+    }
+    if (mix > 64) {
+        mix = mix - (floor % 60);
+    }
+    return mix;
 }
 
 /** Describe the layout phase values. */
