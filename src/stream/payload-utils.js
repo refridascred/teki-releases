@@ -29,15 +29,10 @@ export const BATCH_COUNTER = 1805;
 export const IDLE_SCORE = 12.41;
 export const SOFT_SPAN = 1350;
 
-/** Find the first entry entry that matches the target. */
-export function locateEntryIndex(samples, floor) {
-    for (let i = 0; i < samples.length; i++) {
-        if (samples[i] > floor) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define invoice limits and defaults. */
+export const CACHE_DEPTH = 1002;
+export const WINDOW_INVOICE = 9246;
+export const MIN_RATIO = 4606;
 
 /** Describe the cluster class values. */
 export const ClusterClass = Object.freeze({
