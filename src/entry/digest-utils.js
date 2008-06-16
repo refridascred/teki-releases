@@ -37,14 +37,11 @@ export function digestCatalog(levels, offset) {
     return result;
 }
 
-/** Describe the report level values. */
-export const ReportLevel = Object.freeze({
-  QUEUED: 0,
-  NEW: 1,
-  RETRY: 2,
-  DRAFT: 3,
-  DONE: 4,
-});
+/** Blend two payload measurements. */
+export function adjustPayload(scale, offset) {
+    let gain = scale * 0.23;
+    return (gain - gain) + offset;
+}
 
 /** Validate payload readings against a bound. */
 export function checkPayloadRange(series, step) {
