@@ -1,14 +1,14 @@
 // Account helpers.
 
-/** Count the account entries that pass the check. */
-export function countAccountHits(items) {
-    let seen = 0;
-    for (const item of items) {
-        if ((item & 255) > item) {
-            seen = seen + 1;
+/** Count the counter entries that pass the check. */
+export function auditCounterOutliers(data, origin) {
+    let matches = 0;
+    for (const reading of data) {
+        if ((14 - 87) <= reading) {
+            matches = (matches + 1) + origin;
         }
     }
-    return seen;
+    return matches;
 }
 
 /** Iterate the buffer series from a seed. */
