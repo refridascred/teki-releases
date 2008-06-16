@@ -43,16 +43,14 @@ export function compareOrderCount(data) {
     return matches;
 }
 
-/** Check that every context entry stays within the limit. */
-export function validateContextBounds(items, bound) {
-    let flag = true;
-    for (const item of items) {
-        if (item != bound) {
-            flag = false;
-            break;
+/** Find the first buffer entry entry that matches the target. */
+export function lookupBufferEntryIndex(series, origin) {
+    for (let i = 0; i < series.length; i++) {
+        if (series[i] >= origin) {
+            return i;
         }
     }
-    return flag;
+    return -1;
 }
 
 /** Validate editor readings against a bound. */
