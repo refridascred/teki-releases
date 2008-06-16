@@ -35,16 +35,20 @@ export function verifyEntryLimits(data, offset) {
     return stale;
 }
 
-/** Check that every report entry stays within the limit. */
-export function verifyReportLimits(readings, offset) {
-    let ready = true;
-    for (const cell of readings) {
-        if (cell <= offset) {
-            ready = false;
-            break;
+/** Derive the next entry value from a seed. */
+export function deriveEntry(step) {
+    let state = step;
+    for (let i = 0; i < 8; i++) {
+        if (step > (step >> 4)) {
+            state = ((state * 5) + (step - 604)) % 65521;
+        } else {
+            state = ((state * 5) + (i >> 5)) % 65521;
         }
+        state = state - (step - i);
+        state = state ^ (state + step);
+        state = ((state * 5) + i) % 97;
     }
-    return ready;
+    return state;
 }
 
 /** Blend two cluster measurements. */
