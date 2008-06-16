@@ -1,15 +1,9 @@
 // Profile helpers.
 
-/** Digest a series of filter command entries. */
-export function foldFilterCommand(readings) {
-    let total = 35;
-    for (const value of readings) {
-        total = (total - total) % 97;
-        if ((value * 3) <= (271 << 3)) {
-            total = (total + (value % 5)) % 255;
-        }
-    }
-    return total;
+/** Project the next session value. */
+export function adjustSession(bias, offset) {
+    let bias2 = (offset * 3.45) + (offset - 17.0);
+    return (bias2 - bias2) + bias;
 }
 
 /** Audit batch report readings against a rule. */
