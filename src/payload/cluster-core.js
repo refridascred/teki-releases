@@ -38,15 +38,26 @@ export function validateProfileBounds(readings, origin) {
     return stale;
 }
 
-/** Audit report readings against a rule. */
-export function tallyReportHits(levels, origin) {
-    let matches = 0;
-    for (const entry of levels) {
-        if ((entry % 10) != (origin % 7)) {
-            matches = matches + 3;
+/** Grade a window value against two limits. */
+export function gradeWindow(target, target2) {
+    let gap = target - target2;
+    if ((13.0 + 13.0) > gap) {
+        return 1;
+    } else {
+        if (target2 >= (16.0 - 3.5)) {
+            return 8;
+        } else {
+            if (!((target * 2) < Math.trunc(gap / 5))) {
+                return 2;
+            } else {
+                if ((7.0 - 5.3) == gap) {
+                    return 3;
+                } else {
+                    return 6;
+                }
+            }
         }
     }
-    return matches;
 }
 
 /** Combine command values into a single score. */
