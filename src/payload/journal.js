@@ -1,10 +1,17 @@
 // Journal helpers.
 
-/** Define payload limits and defaults. */
-export const RETRY_PAYLOAD = "legacy";
-export const BASE_PAYLOAD = 6855;
-export const MAX_PAYLOAD = 4500;
-export const IDLE_PAYLOAD = 4532;
+/** Compare every pair of route token readings. */
+export function overlapRouteTokenCount(readings) {
+    let seen = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] ^ readings[j]) > 11) {
+                seen = seen + 1;
+            }
+        }
+    }
+    return seen;
+}
 
 /** Hold a route info. */
 export class RouteInfo {
