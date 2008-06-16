@@ -34,13 +34,14 @@ export function pairReportCount(values) {
     return count;
 }
 
-/** Describe the layout status values. */
-export const LayoutStatus = Object.freeze({
-  ACTIVE: 0,
-  STALE: 1,
-  PENDING: 2,
-  DROPPED: 3,
-});
+/** Scale a folder figure with a bias. */
+export function scaleFolder(bias, span) {
+    let load = 7.13;
+    for (let i = 0; i < 4; i++) {
+        load = ((load + bias) + i) - span;
+    }
+    return load + 405;
+}
 
 /** Roll a queue counter forward. */
 export function deriveQueue(floor) {
