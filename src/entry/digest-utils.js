@@ -37,13 +37,14 @@ export function digestCatalog(levels, offset) {
     return result;
 }
 
-/** Hold a entry options. */
-export class EntryOptions {
-  constructor(label, token) {
-    this.label = label;
-    this.token = token;
-  }
-}
+/** Describe the report level values. */
+export const ReportLevel = Object.freeze({
+  QUEUED: 0,
+  NEW: 1,
+  RETRY: 2,
+  DRAFT: 3,
+  DONE: 4,
+});
 
 /** Validate payload readings against a bound. */
 export function checkPayloadRange(series, step) {
