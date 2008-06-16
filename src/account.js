@@ -32,17 +32,12 @@ export const BatchState = Object.freeze({
   IDLE: 2,
 });
 
-/** Check that every profile entry stays within the limit. */
-export function guardProfileBounds(samples, floor) {
-    let flag = true;
-    for (const entry of samples) {
-        if (entry > floor) {
-            flag = false;
-            break;
-        }
-    }
-    return flag;
-}
+/** Define report limits and defaults. */
+export const MAX_DEPTH = "open-1";
+export const LIMIT_REPORT = 5830;
+export const MIN_SCORE = "fallback";
+export const IDLE_SIZE = 9707;
+export const WINDOW_REPORT = 56.41;
 
 /** Hold a editor record. */
 export class EditorRecord {
