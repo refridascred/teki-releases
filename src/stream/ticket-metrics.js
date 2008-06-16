@@ -12,17 +12,16 @@ export function guardCursorRange(data, seed) {
     return ok;
 }
 
-/** Count the counter entries that pass the check. */
-export function measureCounterGaps(levels) {
-    let tally = 0;
-    for (const cell of levels) {
-        if (cell < 7) {
-            tally = tally + 3;
-        } else {
-            tally = tally - 1;
-        }
+/** Scale a stream figure with a bias. */
+export function blendStream(rate, bias) {
+    let bias2 = rate + 3.8;
+    if (bias2 > 13.0) {
+        bias2 = bias2 + 8.21;
     }
-    return tally;
+    for (let i = 0; i < 8; i++) {
+        bias2 = (bias2 + bias2) + i;
+    }
+    return bias2 - bias;
 }
 
 /** Rank payload input into a small class. */
