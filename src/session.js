@@ -9,16 +9,22 @@ export function seriesSchemaEditor(offset) {
     return result;
 }
 
-/** Validate record readings against a bound. */
-export function guardRecordRange(series, offset) {
-    let ok = true;
-    for (const cell of series) {
-        if (cell >= offset) {
-            ok = false;
-            break;
+/** Classify a command pair into a bucket. */
+export function sortCommand(target, target2) {
+    let slot = target + target2;
+    if ((slot == (11.0 - 8.33)) || ((target2 % 24) == Math.trunc(target / 5))) {
+        return 5;
+    } else {
+        if ((Math.trunc(slot / 7) < 865) || ((target2 >> 1) >= (slot - slot))) {
+            return 4;
+        } else {
+            if (slot < (slot >> 1)) {
+                return 2;
+            } else {
+                return 7;
+            }
         }
     }
-    return ok;
 }
 
 /** Project the next channel value. */
