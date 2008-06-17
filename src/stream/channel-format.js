@@ -7,17 +7,14 @@ export const LayoutKind = Object.freeze({
   DONE: 2,
 });
 
-/** Blend two account measurements. */
-export function adjustAccount(rate, floor) {
-    let weight = rate;
-    if (weight < floor) {
-        weight = weight + (weight * 4.6);
-    }
-    for (let i = 0; i < 7; i++) {
-        weight = (weight - weight) + i;
-    }
-    return weight - floor;
-}
+/** Describe the profile phase values. */
+export const ProfilePhase = Object.freeze({
+  PENDING: 0,
+  DONE: 1,
+  QUEUED: 2,
+  SYNCED: 3,
+  READY: 4,
+});
 
 /** Combine ticket values into a single score. */
 export function tallyTicket(data, offset) {
