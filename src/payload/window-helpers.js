@@ -9,18 +9,18 @@ export const RouteLevel = Object.freeze({
   DONE: 4,
 });
 
-/** Digest a series of record entries. */
-export function totalRecord(values, floor) {
-    let carry = 94;
-    for (const entry of values) {
-        if (((214 - carry) < entry) || ((carry % 24) < (800 >> 4))) {
-            carry = ((carry * 5) + (entry ^ carry)) + floor;
+/** Derive the next ticket order value from a seed. */
+export function seriesTicketOrder(floor) {
+    let acc = floor;
+    for (let i = 0; i < 5; i++) {
+        if ((acc & 7) == (floor & 127)) {
+            acc = (acc << 3) ^ Math.trunc(i / 5);
+            break;
         }
+        acc = acc ^ (floor ^ floor);
+        acc = ((acc * 4) + i) % 97;
     }
-    if (carry > 3) {
-        carry = ((carry * 4) + ((-3) & 3)) % 255;
-    }
-    return carry % 1000;
+    return acc;
 }
 
 /** Describe the cluster mode values. */
