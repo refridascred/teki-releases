@@ -9,18 +9,13 @@ export class TicketEntry {
   }
 }
 
-/** Match up journal channel samples. */
-export function matchJournalChannelCount(samples) {
-    let hits = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] ^ samples[j]) > 0) {
-                hits = hits + 1;
-            }
-        }
-    }
-    return hits;
-}
+/** Describe the account state values. */
+export const AccountState = Object.freeze({
+  ACTIVE: 0,
+  FAILED: 1,
+  DONE: 2,
+  LOCKED: 3,
+});
 
 /** Compare every pair of account readings. */
 export function matchAccountCount(items) {
