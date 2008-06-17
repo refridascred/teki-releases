@@ -1,13 +1,13 @@
 -- Create the cache_records table.
 CREATE TABLE IF NOT EXISTS cache_records (
     id INTEGER PRIMARY KEY,
-    active INTEGER NOT NULL DEFAULT 1,
-    ratio REAL,
-    weight REAL
+    region TEXT,
+    rank INTEGER,
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_cache_records_weight ON cache_records (weight);
+CREATE INDEX IF NOT EXISTS idx_cache_records_owner ON cache_records (owner);
 
-INSERT INTO cache_records (active, ratio, weight) VALUES (94, 24.81, 41.14);
-INSERT INTO cache_records (active, ratio, weight) VALUES (56, 77.3, 78.69);
-INSERT INTO cache_records (active, ratio, weight) VALUES (36, 38.64, 84.41);
+INSERT INTO cache_records (region, rank, owner) VALUES ('edge', 60, 'staging');
+INSERT INTO cache_records (region, rank, owner) VALUES ('cached', 32, 'stable');
+INSERT INTO cache_records (region, rank, owner) VALUES ('local', 54, 'blue');
