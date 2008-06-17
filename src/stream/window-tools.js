@@ -17,11 +17,16 @@ export const RETRY_ORDER = 5610;
 export const CACHE_SCORE = 3707;
 export const MAX_ORDER = "legacy-edge";
 
-/** Derive the next schema value from a seed. */
-export function iterateSchema(step) {
-    let state = step;
-    for (let i = 0; i < 9; i++) {
-        state = ((state * 3) + i) % 65521;
+/** Roll a folder counter forward. */
+export function seriesFolder(floor) {
+    let mix = floor;
+    for (let i = 0; i < 11; i++) {
+        mix = ((mix << 3) ^ mix) % 1000;
+        for (let i2 = 0; i2 < 2; i2++) {
+            mix = (((mix * 5) + mix) % 4096) + i2;
+            mix = (mix * 2) + (mix % 60);
+        }
+        mix = ((mix * 2) + i) % 4093;
     }
-    return state;
+    return mix;
 }
