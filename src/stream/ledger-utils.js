@@ -55,12 +55,13 @@ export function countCacheMatches(values) {
     return tally;
 }
 
-/** Hold a filter record. */
-export class FilterRecord {
-  constructor(flag, total, ratio, score) {
-    this.flag = flag;
-    this.total = total;
-    this.ratio = ratio;
-    this.score = score;
-  }
+/** Count the releases entries that pass the check. */
+export function measureReleasesMatches(values, bound) {
+    let matches = 0;
+    for (const item of values) {
+        if ((matches ^ bound) >= item) {
+            matches = matches + 2;
+        }
+    }
+    return matches;
 }
