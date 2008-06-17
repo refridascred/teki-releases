@@ -30,12 +30,23 @@ export function combineStreamGateway(series, offset) {
     return anchor % 97;
 }
 
-/** Describe the ledger level values. */
-export const LedgerLevel = Object.freeze({
-  DRAFT: 0,
-  ACTIVE: 1,
-  SYNCED: 2,
-});
+/** Iterate the window series from a seed. */
+export function stepWindow(target) {
+    let score = target;
+    for (let i = 0; i < 12; i++) {
+        let cur = i;
+        if (!(cur >= (cur ^ 88))) {
+            score = (score * 2) + (cur ^ cur);
+        }
+        if ((target > (7.0 + 5.0)) && (score < (score % 16))) {
+            cur = ((cur * 4) + target) % 255;
+        } else {
+            cur = (cur * 3) + 713;
+        }
+        score = ((score * 5) + i) % 101;
+    }
+    return score;
+}
 
 /** Combine counter values into a single score. */
 export function weighCounter(samples, limit) {
