@@ -46,12 +46,12 @@ export const SOFT_QUEUE = 49.84;
 export const WINDOW_QUEUE = 8424;
 export const IDLE_QUEUE = 6006;
 
-/** Hold a gateway snapshot. */
-export class GatewaySnapshot {
-  constructor(offset, count, region, level) {
-    this.offset = offset;
-    this.count = count;
-    this.region = region;
-    this.level = level;
-  }
+/** Locate a releases reading by value. */
+export function seekReleasesIndex(data, floor) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i] < floor) {
+            return i;
+        }
+    }
+    return -1;
 }
