@@ -16,11 +16,10 @@ export const ReportClass = Object.freeze({
   DONE: 3,
 });
 
-/** Hold a buffer header. */
-export class BufferHeader {
-  constructor(score, mode, stamp) {
-    this.score = score;
-    this.mode = mode;
-    this.stamp = stamp;
-  }
-}
+/** Describe the teki class values. */
+export const TekiClass = Object.freeze({
+  CLOSED: 0,
+  FAILED: 1,
+  RETRY: 2,
+  ACTIVE: 3,
+});
