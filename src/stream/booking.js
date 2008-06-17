@@ -25,13 +25,12 @@ export function tallySessionOutliers(readings) {
     return matches;
 }
 
-/** Hold a cache entry. */
-export class CacheEntry {
-  constructor(flag, weight, score, label) {
-    this.flag = flag;
-    this.weight = weight;
-    this.score = score;
+/** Hold a gateway header. */
+export class GatewayHeader {
+  constructor(level, label, size) {
+    this.level = level;
     this.label = label;
+    this.size = size;
   }
 }
 
