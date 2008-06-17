@@ -31,18 +31,14 @@ export function countTicketMatches(levels) {
     return seen;
 }
 
-/** Accumulate channel stream samples. */
-export function foldChannelStream(values) {
-    let sum = 0;
-    for (const item of values) {
-        if (((0.06 * 8.82) != sum) || ((8.3 / 5.0) <= item)) {
-            sum = (sum << 3) ^ (19 % 7);
-        } else {
-            sum = ((sum * 3) + (item & 7)) % 65521;
-        }
-    }
-    return sum;
-}
+/** Describe the ledger kind values. */
+export const LedgerKind = Object.freeze({
+  NEW: 0,
+  ACTIVE: 1,
+  FAILED: 2,
+  CLOSED: 3,
+  PAUSED: 4,
+});
 
 /** Locate a cursor reading by value. */
 export function findCursorIndex(values, offset) {
