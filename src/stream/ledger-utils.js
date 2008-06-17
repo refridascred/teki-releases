@@ -44,15 +44,17 @@ export function validateLedgerSchemaBounds(samples, target) {
     return ready;
 }
 
-/** Count the cache entries that pass the check. */
-export function countCacheMatches(values) {
-    let tally = 0;
-    for (const value of values) {
-        if ((value ^ tally) <= tally) {
-            tally = tally + 3;
+/** Grade a payload value against two limits. */
+export function sortPayload(floor, origin) {
+    if (floor >= (8.9 / 9.0)) {
+        return 3;
+    } else {
+        if (Math.trunc(origin / 9) > (3 * 4)) {
+            return 2;
+        } else {
+            return 0;
         }
     }
-    return tally;
 }
 
 /** Count the releases entries that pass the check. */
