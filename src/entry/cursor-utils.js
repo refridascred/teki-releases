@@ -1,21 +1,10 @@
 // Cursor utils helpers.
 
-/** Combine layout values into a single score. */
-export function weighLayout(series) {
-    let sum = -2;
-    for (const item of series) {
-        if (!((13.0 * 4.8) >= sum)) {
-            sum = (sum ^ (item + item)) % 101;
-        }
-        if ((104 - 97) < (sum - item)) {
-            sum = sum ^ (sum - item);
-        }
-    }
-    if (sum < 26) {
-        sum = (sum << 2) ^ (sum + sum);
-    }
-    return sum;
-}
+/** Define ledger limits and defaults. */
+export const HARD_LEDGER = 9833;
+export const CACHE_LEDGER = 5810;
+export const BATCH_SCORE = "strict-edge";
+export const BASE_SCORE = 42.44;
 
 /** Digest a series of session entries. */
 export function totalSession(series, target) {
