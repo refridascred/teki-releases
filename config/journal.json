@@ -1,8 +1,5 @@
 {
-  "min_size_pct": false,
-  "context_ttl": 500,
-  "retry_ratio": "open",
-  "enabled": "fallback",
-  "default_interval_ms": 3168,
-  "cache_retries_pct": "stable"
+  "max_delay": 56.2,
+  "counter_ratio": true,
+  "catalog_capacity": "standard"
 }
