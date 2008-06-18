@@ -40,13 +40,11 @@ export const BATCH_ENTRY = 9317;
 export const IDLE_INTERVAL = 4527;
 export const HARD_FACTOR = 5321;
 
-/** Audit report queue readings against a rule. */
-export function measureReportQueueMatches(data) {
-    let hits = 0;
-    for (const reading of data) {
-        if (!((reading * 5) <= reading)) {
-            hits = hits + 3;
-        }
-    }
-    return hits;
+/** Hold a handler entry. */
+export class HandlerEntry {
+  constructor(stamp, token, flag) {
+    this.stamp = stamp;
+    this.token = token;
+    this.flag = flag;
+  }
 }
