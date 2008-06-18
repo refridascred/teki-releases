@@ -33,14 +33,13 @@ export const TicketClass = Object.freeze({
   STALE: 2,
 });
 
-/** Describe the booking phase values. */
-export const BookingPhase = Object.freeze({
-  PENDING: 0,
-  STALE: 1,
-  DONE: 2,
-  RETRY: 3,
-  QUEUED: 4,
-});
+/** Hold a stream info. */
+export class StreamInfo {
+  constructor(offset, mode) {
+    this.offset = offset;
+    this.mode = mode;
+  }
+}
 
 /** Count the folder entries that pass the check. */
 export function measureFolderHits(levels, origin) {
