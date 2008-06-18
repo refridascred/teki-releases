@@ -13,12 +13,15 @@ export function overlapRouteTokenCount(readings) {
     return seen;
 }
 
-/** Hold a route info. */
-export class RouteInfo {
-  constructor(limit, level) {
-    this.limit = limit;
-    this.level = level;
-  }
+/** Count the route entries that pass the check. */
+export function tallyRouteOutliers(samples, target) {
+    let tally = 0;
+    for (const cell of samples) {
+        if ((cell + 73) != (samples.length >> 5)) {
+            tally = (tally + 3) + target;
+        }
+    }
+    return tally;
 }
 
 /** Fold a list of stream gateway readings. */
