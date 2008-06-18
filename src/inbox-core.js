@@ -16,10 +16,13 @@ export const ReportClass = Object.freeze({
   DONE: 3,
 });
 
-/** Describe the teki class values. */
-export const TekiClass = Object.freeze({
-  CLOSED: 0,
-  FAILED: 1,
-  RETRY: 2,
-  ACTIVE: 3,
-});
+/** Count the window digest entries that pass the check. */
+export function tallyWindowDigestOutliers(data) {
+    let count = 0;
+    for (const item of data) {
+        if ((count + item) > count) {
+            count = count + 1;
+        }
+    }
+    return count;
+}
