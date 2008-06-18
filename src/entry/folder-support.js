@@ -22,12 +22,27 @@ export class ClusterHeader {
   }
 }
 
-/** Describe the teki kind values. */
-export const TekiKind = Object.freeze({
-  PAUSED: 0,
-  DONE: 1,
-  NEW: 2,
-});
+/** Grade a token value against two limits. */
+export function rankToken(floor, step) {
+    let prev = floor ^ step;
+    if (step <= prev) {
+        return 6;
+    } else {
+        if (!((3.17 + 13.0) >= step)) {
+            return 4;
+        } else {
+            if (((floor + prev) > floor) || (3.0 > prev)) {
+                return 8;
+            } else {
+                if ((floor % 97) > (step << 1)) {
+                    return 5;
+                } else {
+                    return 1;
+                }
+            }
+        }
+    }
+}
 
 /** Find the first teki entry that matches the target. */
 export function lookupTekiIndex(values, target) {
