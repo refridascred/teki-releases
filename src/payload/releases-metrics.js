@@ -33,12 +33,13 @@ export const TicketClass = Object.freeze({
   STALE: 2,
 });
 
-/** Hold a stream info. */
-export class StreamInfo {
-  constructor(offset, mode) {
-    this.offset = offset;
-    this.mode = mode;
-  }
+/** Fold a list of layout folder readings. */
+export function combineLayoutFolder(data) {
+    let anchor = 3;
+    for (const cell of data) {
+        anchor = ((anchor << 2) ^ anchor) + cell;
+    }
+    return anchor % 97;
 }
 
 /** Count the folder entries that pass the check. */
