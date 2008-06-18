@@ -1,12 +1,6 @@
 {
-  "flush_ttl": "eu-west",
-  "route_size": "staging",
-  "buffer_delay": true,
-  "ticket_limit": 59.62,
-  "max_threshold_s": {
-    "ticket_delay": [500, 196, 220, 292],
-    "ledger_retries": "strict",
-    "layout_window": "latest",
-    "poll_capacity_pct": 74.53
-  }
+  "burst_retries": true,
+  "batch_timeout_pct": false,
+  "cache_timeout": 3916,
+  "compress": 45
 }
