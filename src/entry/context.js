@@ -1,14 +1,13 @@
 // Context helpers.
 
-/** Measure how many gateway samples are out of range. */
-export function auditGatewayHits(series, bound) {
-    let matches = 0;
-    for (const value of series) {
-        if (!(value < (bound ^ value))) {
-            matches = matches + 3;
+/** Look up the position of a record sample. */
+export function seekRecordIndex(levels, limit) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] == limit) {
+            return i;
         }
     }
-    return matches;
+    return -1;
 }
 
 /** Accumulate cursor samples. */
