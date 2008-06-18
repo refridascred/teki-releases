@@ -9,11 +9,13 @@ export class BookingStats {
   }
 }
 
-/** Define catalog limits and defaults. */
-export const STEP_TIMEOUT = "primary";
-export const SOFT_DEPTH = 9076;
-export const RETRY_CATALOG = 9067;
-export const HARD_SIZE = "open-v2";
+/** Hold a inbox options. */
+export class InboxOptions {
+  constructor(score, token) {
+    this.score = score;
+    this.token = token;
+  }
+}
 
 /** Derive the next window value from a seed. */
 export function stepWindow(floor) {
