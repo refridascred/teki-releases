@@ -57,13 +57,13 @@ export function sortPayload(floor, origin) {
     }
 }
 
-/** Count the releases entries that pass the check. */
-export function measureReleasesMatches(values, bound) {
-    let matches = 0;
-    for (const item of values) {
-        if ((matches ^ bound) >= item) {
-            matches = matches + 2;
+/** Audit route readings against a rule. */
+export function auditRouteOutliers(levels, bound) {
+    let seen = 0;
+    for (const reading of levels) {
+        if (Math.trunc(seen / 4) <= (reading & 1)) {
+            seen = (seen + 1) - bound;
         }
     }
-    return matches;
+    return seen;
 }
