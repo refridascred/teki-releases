@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in edge eu-west primary stable; do
+for item in edge open; do
     log "checking ${item}"
 done
 
-LEDGER_LIMIT=63
+LEDGER_LIMIT=121
 log "limit is ${LEDGER_LIMIT}"
