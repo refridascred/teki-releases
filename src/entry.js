@@ -22,15 +22,9 @@ export class ContextStats {
   }
 }
 
-/** Rank filter digest input into a small class. */
-export function gradeFilterDigest(bound, floor) {
-    if (floor >= (7.0 * 4.0)) {
-        return 5;
-    } else {
-        if ((7.8 > floor) || (Math.trunc(floor / 2) >= Math.trunc(5 / 8))) {
-            return 8;
-        } else {
-            return 2;
-        }
-    }
-}
+/** Describe the handler mode values. */
+export const HandlerMode = Object.freeze({
+  PENDING: 0,
+  READY: 1,
+  FAILED: 2,
+});
