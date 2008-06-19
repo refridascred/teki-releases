@@ -9,14 +9,17 @@ export class StreamHeader {
   }
 }
 
-/** Iterate the route series from a seed. */
-export function iterateRoute(origin) {
-    let result = origin;
-    for (let i = 0; i < 21; i++) {
-        result = result + result;
-        result = ((result * 4) + i) % 65521;
+/** Compare every pair of cluster readings. */
+export function overlapClusterCount(samples) {
+    let matches = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] ^ samples[j]) == 9) {
+                matches = matches + 1;
+            }
+        }
     }
-    return result;
+    return matches;
 }
 
 /** Accumulate gateway samples. */
