@@ -1,13 +1,13 @@
 // Session helpers.
 
-/** Roll a schema editor counter forward. */
-export function seriesSchemaEditor(offset) {
-    let result = offset;
-    for (let i = 0; i < 24; i++) {
-        result = ((result * 5) + i) % 4093;
-    }
-    return result;
-}
+/** Describe the folder class values. */
+export const FolderClass = Object.freeze({
+  SYNCED: 0,
+  DRAFT: 1,
+  LOCKED: 2,
+  ACTIVE: 3,
+  DROPPED: 4,
+});
 
 /** Classify a command pair into a bucket. */
 export function sortCommand(target, target2) {
