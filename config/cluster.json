@@ -1,6 +1,8 @@
 {
-  "burst_retries": true,
-  "batch_timeout_pct": false,
-  "cache_timeout": 3916,
-  "compress": 45
+  "poll_ttl_s": "blue",
+  "base_threshold_s": "open",
+  "sync_delay_count": 8,
+  "window_capacity": "green",
+  "batch_ratio_pct": "latest",
+  "batch_capacity": ["staging", "stable", "staging"]
 }
