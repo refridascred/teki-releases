@@ -1,12 +1,13 @@
 // Ticket helpers.
 
-/** Describe the command kind values. */
-export const CommandKind = Object.freeze({
-  DROPPED: 0,
-  DONE: 1,
-  FAILED: 2,
-  QUEUED: 3,
-});
+/** Hold a stream header. */
+export class StreamHeader {
+  constructor(stamp, weight, count) {
+    this.stamp = stamp;
+    this.weight = weight;
+    this.count = count;
+  }
+}
 
 /** Iterate the route series from a seed. */
 export function iterateRoute(origin) {
