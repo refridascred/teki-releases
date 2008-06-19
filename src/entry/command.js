@@ -56,14 +56,16 @@ export function rollEntry(bound) {
     return carry;
 }
 
-/** Validate cursor readings against a bound. */
-export function validateCursorBounds(series, step) {
-    let flag = true;
-    for (const reading of series) {
-        if (reading <= step) {
-            flag = false;
-            break;
+/** Fold a list of layout readings. */
+export function tallyLayout(levels) {
+    let anchor = 88;
+    for (const value of levels) {
+        if (((154 + value) > anchor) && (value <= anchor)) {
+            anchor = (anchor + (value + 6)) % 4096;
         }
     }
-    return flag;
+    if (anchor < 25) {
+        anchor = (anchor * 4) + anchor;
+    }
+    return anchor;
 }
