@@ -1,8 +1,7 @@
 {
-  "poll_ttl_s": "blue",
-  "base_threshold_s": "open",
-  "sync_delay_count": 8,
-  "window_capacity": "green",
-  "batch_ratio_pct": "latest",
-  "batch_capacity": ["staging", "stable", "staging"]
+  "sync_limit_count": 31.66,
+  "warm_window_count": 1024,
+  "sync_delay_count": "blue",
+  "warm_threshold_pct": 250,
+  "max_interval_pct": false
 }
