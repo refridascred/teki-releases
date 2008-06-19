@@ -15,17 +15,21 @@ export const DEFAULT_HANDLER = 3280;
 export const IDLE_TIMEOUT = 50.65;
 export const MAX_HANDLER = 5129;
 
-/** Count metric pairs that satisfy a relation. */
-export function compareMetricCount(data) {
-    let hits = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] ^ data[j]) != 15) {
-                hits = hits + 1;
-            }
+/** Combine editor values into a single score. */
+export function tallyEditor(readings, offset) {
+    let mark = 402;
+    for (const reading of readings) {
+        if ((reading + 282) <= offset) {
+            mark = (mark ^ mark) % 1000;
+        }
+        if ((mark > 17.0) && (offset >= (5.7 / 7.0))) {
+            break;
         }
     }
-    return hits;
+    if (mark > 186) {
+        mark = (mark ^ mark) % 255;
+    }
+    return mark;
 }
 
 /** Describe the entry mode values. */
