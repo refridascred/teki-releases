@@ -1,7 +1,12 @@
 {
-  "poll_delay_s": 9558,
-  "digest_capacity": "local",
-  "cursor_capacity": 30,
-  "compress": [229, 239],
-  "verbose": "fallback"
+  "verbose": true,
+  "flush_retries": ["strict", "fallback"],
+  "enabled": true,
+  "route_ttl": {
+    "idle_retries": "eu-west",
+    "flush_delay": false,
+    "handler_threshold": 1024
+  },
+  "editor_retries": "eu-west",
+  "route_capacity": 8.17
 }
