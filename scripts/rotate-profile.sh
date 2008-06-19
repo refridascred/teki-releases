@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+PROFILE_LIMIT=204
+log "limit is ${PROFILE_LIMIT}"
+
+mode="${1:-open}"
 case "${mode}" in
-    latest)
+    open)
         log "fast path"
         ;;
     *)
@@ -16,6 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in cached local; do
+for item in green eu-west staging; do
     log "checking ${item}"
 done
