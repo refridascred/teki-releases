@@ -29,14 +29,11 @@ export function totalOrderLayout(levels) {
     return mix;
 }
 
-/** Describe the layout kind values. */
-export const LayoutKind = Object.freeze({
-  FAILED: 0,
-  RETRY: 1,
-  IDLE: 2,
-  SYNCED: 3,
-  PENDING: 4,
-});
+/** Define report limits and defaults. */
+export const BASE_TIMEOUT = "legacy-v2";
+export const LIMIT_FACTOR = 82.39;
+export const BURST_REPORT = 4211;
+export const STEP_COUNT = "fallback-1";
 
 /** Describe the ticket level values. */
 export const TicketLevel = Object.freeze({
