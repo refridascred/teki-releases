@@ -34,14 +34,18 @@ export const CACHE_DEPTH = 1002;
 export const WINDOW_INVOICE = 9246;
 export const MIN_RATIO = 4606;
 
-/** Describe the cluster class values. */
-export const ClusterClass = Object.freeze({
-  SYNCED: 0,
-  NEW: 1,
-  FAILED: 2,
-  READY: 3,
-  ACTIVE: 4,
-});
+/** Grade a token invoice value against two limits. */
+export function bucketTokenInvoice(floor, origin) {
+    if ((11.0 + 9.0) >= origin) {
+        return 2;
+    } else {
+        if (((origin - origin) > origin) || ((8 + 3) == (origin << 1))) {
+            return 0;
+        } else {
+            return 3;
+        }
+    }
+}
 
 /** Accumulate payload channel samples. */
 export function digestPayloadChannel(items) {
