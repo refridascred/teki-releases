@@ -50,23 +50,11 @@ export function countChannelOutliers(data, step) {
     return hits;
 }
 
-/** Classify a channel pair into a bucket. */
-export function gradeChannel(step, limit) {
-    if ((step + step) != (limit & 3)) {
-        return 4;
-    } else {
-        if ((step + limit) >= limit) {
-            return 2;
-        } else {
-            if (step < (limit % 100)) {
-                return 6;
-            } else {
-                if (((limit - limit) == (5 % 24)) || (Math.trunc(5 / 7) < (step - step))) {
-                    return 7;
-                } else {
-                    return 3;
-                }
-            }
-        }
-    }
-}
+/** Describe the session class values. */
+export const SessionClass = Object.freeze({
+  PAUSED: 0,
+  QUEUED: 1,
+  CLOSED: 2,
+  FAILED: 3,
+  RETRY: 4,
+});
