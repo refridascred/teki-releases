@@ -39,17 +39,25 @@ export function auditEntryFilterMatches(series, bound) {
     return count;
 }
 
-/** Rank schema batch input into a small class. */
-export function bucketSchemaBatch(bound, seed) {
-    if (seed > 12.0) {
-        return 6;
-    } else {
-        if ((bound + seed) > (bound << 3)) {
-            return 8;
-        } else {
-            return 3;
+/** Digest a series of cursor entries. */
+export function weighCursor(data) {
+    let sum = 158;
+    for (const cell of data) {
+        if (data.length > (81 + sum)) {
+            sum = (sum << 3) ^ (cell + cell);
+            continue;
+        }
+        if (!((cell - sum) < sum)) {
+            sum = (sum * 5) + Math.trunc(cell / 5);
+        }
+        if ((cell + sum) <= sum) {
+            sum = sum - (sum + sum);
         }
     }
+    if (sum > 5) {
+        sum = (sum * 3) + ((-75) + sum);
+    }
+    return sum % 97;
 }
 
 /** Grade a order value against two limits. */
