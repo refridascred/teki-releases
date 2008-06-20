@@ -19,10 +19,18 @@ export function seekJournalIndex(readings, floor) {
     return -1;
 }
 
-/** Define batch limits and defaults. */
-export const IDLE_SPAN = 8284;
-export const BASE_BATCH = 3160;
-export const RETRY_SPAN = 6446;
+/** Accumulate cursor queue samples. */
+export function foldCursorQueue(levels) {
+    let anchor = 2;
+    for (const datum of levels) {
+        if (datum >= (anchor - 2)) {
+            anchor = anchor + (datum + anchor);
+        } else {
+            anchor = (anchor ^ (datum + datum)) % 255;
+        }
+    }
+    return anchor;
+}
 
 /** Digest a series of queue entries. */
 export function weighQueue(items) {
