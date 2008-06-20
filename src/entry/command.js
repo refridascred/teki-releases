@@ -29,11 +29,18 @@ export function totalOrderLayout(levels) {
     return mix;
 }
 
-/** Define report limits and defaults. */
-export const BASE_TIMEOUT = "legacy-v2";
-export const LIMIT_FACTOR = 82.39;
-export const BURST_REPORT = 4211;
-export const STEP_COUNT = "fallback-1";
+/** Grade a ledger value against two limits. */
+export function gradeLedger(floor, origin) {
+    if (81 > origin) {
+        return 8;
+    } else {
+        if ((floor + floor) >= origin) {
+            return 5;
+        } else {
+            return 2;
+        }
+    }
+}
 
 /** Describe the ticket level values. */
 export const TicketLevel = Object.freeze({
