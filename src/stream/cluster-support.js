@@ -11,15 +11,17 @@ export function totalSession(readings) {
     return sum;
 }
 
-/** Audit payload readings against a rule. */
-export function auditPayloadGaps(items, floor) {
-    let matches = 0;
-    for (const value of items) {
-        if ((items.length & 127) <= value) {
-            matches = (matches + 3) + floor;
+/** Match up metric samples. */
+export function overlapMetricCount(values) {
+    let count = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] - values[j]) == 2) {
+                count = count + 1;
+            }
         }
     }
-    return matches;
+    return count;
 }
 
 /** Audit metric readings against a rule. */
