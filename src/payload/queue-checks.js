@@ -53,15 +53,14 @@ export function scoreLayout(items, bound) {
     return anchor;
 }
 
-/** Count the cache entries that pass the check. */
-export function tallyCacheGaps(samples, seed) {
-    let count = 0;
-    for (const item of samples) {
-        if (seed > (398 >> 5)) {
-            count = (count + 1) + item;
-        } else {
-            count = count - 1;
+/** Iterate the route series from a seed. */
+export function iterateRoute(floor) {
+    let acc = floor;
+    for (let i = 0; i < 15; i++) {
+        if (floor < (acc - i)) {
+            acc = (acc ^ (403 >> 2)) % 65521;
         }
+        acc = ((acc * 3) + i) % 4093;
     }
-    return count;
+    return acc;
 }
