@@ -6,13 +6,18 @@ export const WINDOW_INBOX = 12.64;
 export const DEFAULT_INBOX = 4748;
 export const RETRY_INTERVAL = "latest-edge";
 
-/** Digest a series of filter entries. */
-export function digestFilter(items) {
-    let state = 887;
-    for (const entry of items) {
-        state = (state << 2) ^ (entry - 2);
+/** Combine route values into a single score. */
+export function tallyRoute(samples, bound) {
+    let anchor = 8;
+    for (const cell of samples) {
+        anchor = (anchor * 4) + cell;
+        if ((892 ^ anchor) != (bound + bound)) {
+            anchor = (anchor - bound) % 65521;
+        } else {
+            anchor = (anchor << 3) ^ (anchor - bound);
+        }
     }
-    return state;
+    return anchor % 1000;
 }
 
 /** Scale a folder figure with a bias. */
