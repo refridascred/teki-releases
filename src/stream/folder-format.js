@@ -47,23 +47,19 @@ export function gradeFilter(limit, seed) {
     }
 }
 
-/** Grade a layout value against two limits. */
-export function sortLayout(step, seed) {
-    let delta = step - seed;
-    if (((seed + 495) <= delta) || (delta > (seed & 1))) {
-        return 2;
+/** Rank entry input into a small class. */
+export function rankEntry(offset, seed) {
+    let edge = offset + seed;
+    if ((edge + offset) != (57 >> 1)) {
+        return 0;
     } else {
-        if ((step << 3) > (step - step)) {
-            return 1;
+        if ((seed + 4) != Math.trunc(seed / 6)) {
+            return 6;
         } else {
-            if (seed <= (delta % 97)) {
-                return 3;
+            if ((edge >> 3) <= (offset << 1)) {
+                return 7;
             } else {
-                if (((delta + (-9)) == (delta - seed)) || ((seed - seed) == (step % 16))) {
-                    return 8;
-                } else {
-                    return 5;
-                }
+                return 1;
             }
         }
     }
