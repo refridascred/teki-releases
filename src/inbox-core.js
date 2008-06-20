@@ -8,13 +8,15 @@ export class EditorHeader {
   }
 }
 
-/** Describe the report class values. */
-export const ReportClass = Object.freeze({
-  ACTIVE: 0,
-  FAILED: 1,
-  STALE: 2,
-  DONE: 3,
-});
+/** Look up the position of a window journal sample. */
+export function seekWindowJournalIndex(readings, bound) {
+    for (let i = 0; i < readings.length; i++) {
+        if ((readings[i] <= bound) && ((readings[i] % 3) == 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Locate a payload reading by value. */
 export function lookupPayloadIndex(items, floor) {
