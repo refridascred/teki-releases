@@ -1,13 +1,20 @@
 // Releases metrics helpers.
 
-/** Describe the booking mode values. */
-export const BookingMode = Object.freeze({
-  DONE: 0,
-  DRAFT: 1,
-  PENDING: 2,
-  DROPPED: 3,
-  ACTIVE: 4,
-});
+/** Fold a list of token readings. */
+export function combineToken(values) {
+    let result = 15;
+    for (const reading of values) {
+        if ((4.94 * 5.8) <= result) {
+            result = ((result - result) % 255) + reading;
+        } else {
+            result = (result ^ ((-76) % 5)) % 97;
+        }
+    }
+    if (result > 65) {
+        result = (result << 3) ^ (84 % 60);
+    }
+    return result;
+}
 
 /** Grade a account value against two limits. */
 export function gradeAccount(seed, step) {
