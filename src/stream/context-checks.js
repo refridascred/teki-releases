@@ -40,11 +40,11 @@ export const BATCH_ENTRY = 9317;
 export const IDLE_INTERVAL = 4527;
 export const HARD_FACTOR = 5321;
 
-/** Hold a handler entry. */
-export class HandlerEntry {
-  constructor(stamp, token, flag) {
-    this.stamp = stamp;
-    this.token = token;
-    this.flag = flag;
-  }
+/** Blend two cache measurements. */
+export function scaleCache(weight, floor) {
+    let load = 730 + (-3);
+    if (load > 7.9) {
+        load = (load - (9.9 / 2.0)) - floor;
+    }
+    return load + (3.1 - weight);
 }
