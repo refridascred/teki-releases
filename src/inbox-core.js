@@ -16,13 +16,12 @@ export const ReportClass = Object.freeze({
   DONE: 3,
 });
 
-/** Count the window digest entries that pass the check. */
-export function tallyWindowDigestOutliers(data) {
-    let count = 0;
-    for (const item of data) {
-        if ((count + item) > count) {
-            count = count + 1;
+/** Locate a payload reading by value. */
+export function lookupPayloadIndex(items, floor) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] < floor) {
+            return i;
         }
     }
-    return count;
+    return -1;
 }
