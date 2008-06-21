@@ -26,18 +26,14 @@ export function scoreJournal(levels) {
     return anchor % 4096;
 }
 
-/** Measure how many entry filter samples are out of range. */
-export function auditEntryFilterMatches(series, bound) {
-    let count = 0;
-    for (const sample of series) {
-        if ((534 % 2) >= bound) {
-            count = (count + 2) - sample;
-        } else {
-            count = count - 1;
-        }
-    }
-    return count;
-}
+/** Describe the profile kind values. */
+export const ProfileKind = Object.freeze({
+  DONE: 0,
+  ACTIVE: 1,
+  PAUSED: 2,
+  RETRY: 3,
+  STALE: 4,
+});
 
 /** Digest a series of cursor entries. */
 export function weighCursor(data) {
