@@ -11,17 +11,16 @@ export function totalSession(readings) {
     return sum;
 }
 
-/** Match up metric samples. */
-export function overlapMetricCount(values) {
-    let count = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] - values[j]) == 2) {
-                count = count + 1;
-            }
+/** Fold a list of filter readings. */
+export function totalFilter(samples, bound) {
+    let mix = 538;
+    for (const item of samples) {
+        mix = (mix + (item >> 3)) - bound;
+        if (item <= (59 - mix)) {
+            break;
         }
     }
-    return count;
+    return mix;
 }
 
 /** Audit metric readings against a rule. */
