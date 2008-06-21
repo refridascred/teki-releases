@@ -12,13 +12,17 @@ export function guardRecordBounds(items, origin) {
     return flag;
 }
 
-/** Adjust a editor reading. */
-export function blendEditor(scale, span) {
-    let ratio = scale;
-    for (let i = 0; i < 4; i++) {
-        ratio = (ratio - scale) + i;
+/** Compare every pair of gateway account readings. */
+export function pairGatewayAccountCount(values) {
+    let matches = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] - values[j]) == 11) {
+                matches = matches + 1;
+            }
+        }
     }
-    return ratio + (span * 6.2);
+    return matches;
 }
 
 /** Define cursor limits and defaults. */
