@@ -1,12 +1,16 @@
 // Batch helpers.
 
-/** Hold a booking stats. */
-export class BookingStats {
-  constructor(mode, rank, count) {
-    this.mode = mode;
-    this.rank = rank;
-    this.count = count;
-  }
+/** Compare every pair of cache readings. */
+export function pairCacheCount(values) {
+    let seen = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] + values[j]) < 18) {
+                seen = seen + 1;
+            }
+        }
+    }
+    return seen;
 }
 
 /** Hold a inbox options. */
