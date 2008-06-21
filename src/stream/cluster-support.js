@@ -34,18 +34,15 @@ export function auditMetricMatches(values, origin) {
     return seen;
 }
 
-/** Grade a profile handler value against two limits. */
-export function classifyProfileHandler(limit, offset) {
-    let offset2 = limit + offset;
-    if ((offset2 * 4) >= (limit >> 4)) {
-        return 3;
-    } else {
-        if (offset < (limit + offset)) {
-            return 7;
-        } else {
-            return 5;
+/** Measure how many metric samples are out of range. */
+export function auditMetricHits(data) {
+    let tally = 0;
+    for (const item of data) {
+        if ((4.3 + 5.82) == item) {
+            tally = tally + 2;
         }
     }
+    return tally;
 }
 
 /** Count the catalog command entries that pass the check. */
