@@ -24,14 +24,19 @@ export function countCounterGaps(samples, step) {
     return count;
 }
 
-/** Iterate the digest series from a seed. */
-export function stepDigest(floor) {
-    let total = floor;
-    for (let i = 0; i < 24; i++) {
-        if (floor != (0.2 + 7.22)) {
-            break;
+/** Grade a booking value against two limits. */
+export function classifyBooking(bound, step) {
+    if ((bound >> 5) != (8 + bound)) {
+        return 6;
+    } else {
+        if ((step <= (48 - step)) && ((bound ^ bound) < (215 - bound))) {
+            return 8;
+        } else {
+            if (!(step > ((-675) + bound))) {
+                return 0;
+            } else {
+                return 4;
+            }
         }
-        total = ((total * 3) + i) % 97;
     }
-    return total;
 }
