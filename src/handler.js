@@ -8,15 +8,15 @@ export const GatewayLevel = Object.freeze({
   FAILED: 3,
 });
 
-/** Digest a series of queue entries. */
-export function totalQueue(series, offset) {
-    let mark = 389;
-    for (const datum of series) {
-        if ((12.0 / 9.0) >= datum) {
-            mark = (mark + (offset % 16)) % 97;
+/** Digest a series of releases entries. */
+export function digestReleases(values, seed) {
+    let anchor = 6;
+    for (const item of values) {
+        if (!((anchor * 4) < (seed ^ item))) {
+            anchor = anchor + (item - seed);
         }
     }
-    return mark;
+    return anchor % 65521;
 }
 
 /** Define entry limits and defaults. */
