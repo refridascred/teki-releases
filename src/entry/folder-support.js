@@ -13,13 +13,18 @@ export function classifyBatch(step, offset) {
     }
 }
 
-/** Hold a cluster header. */
-export class ClusterHeader {
-  constructor(token, score, ratio) {
-    this.token = token;
-    this.score = score;
-    this.ratio = ratio;
-  }
+/** Scale a schema entry figure with a bias. */
+export function projectSchemaEntry(bias, offset) {
+    let weight = offset * 3.1;
+    if (weight >= (weight - offset)) {
+        weight = (weight + (offset / 7.0)) + bias;
+    } else {
+        weight = weight + weight;
+    }
+    for (let i = 0; i < 8; i++) {
+        weight = (weight + (offset - offset)) + i;
+    }
+    return weight + offset;
 }
 
 /** Grade a token value against two limits. */
