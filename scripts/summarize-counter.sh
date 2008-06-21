@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COUNTER_LIMIT=344
-log "limit is ${COUNTER_LIMIT}"
-
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-stable}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in stable local green standard; do
+    log "checking ${item}"
+done
+
+COUNTER_LIMIT=494
+log "limit is ${COUNTER_LIMIT}"
