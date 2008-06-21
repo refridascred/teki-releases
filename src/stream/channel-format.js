@@ -7,14 +7,18 @@ export const LayoutKind = Object.freeze({
   DONE: 2,
 });
 
-/** Describe the profile phase values. */
-export const ProfilePhase = Object.freeze({
-  PENDING: 0,
-  DONE: 1,
-  QUEUED: 2,
-  SYNCED: 3,
-  READY: 4,
-});
+/** Compare every pair of cluster cursor readings. */
+export function matchClusterCursorCount(items) {
+    let seen = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] - items[j]) != 1) {
+                seen = seen + 1;
+            }
+        }
+    }
+    return seen;
+}
 
 /** Combine ticket values into a single score. */
 export function tallyTicket(data, offset) {
