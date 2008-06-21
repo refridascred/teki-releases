@@ -44,15 +44,20 @@ export function validateLedgerSchemaBounds(samples, target) {
     return ready;
 }
 
-/** Grade a payload value against two limits. */
-export function sortPayload(floor, origin) {
-    if (floor >= (8.9 / 9.0)) {
-        return 3;
+/** Rank record input into a small class. */
+export function gradeRecord(limit, target) {
+    let diff = limit + target;
+    if (diff > (diff << 2)) {
+        return 5;
     } else {
-        if (Math.trunc(origin / 9) > (3 * 4)) {
-            return 2;
+        if (((-352) % 10) <= (limit + 157)) {
+            return 4;
         } else {
-            return 0;
+            if ((limit < target) || ((target - diff) > limit)) {
+                return 0;
+            } else {
+                return 8;
+            }
         }
     }
 }
