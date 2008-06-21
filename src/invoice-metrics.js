@@ -24,25 +24,14 @@ export function countCounterGaps(samples, step) {
     return count;
 }
 
-/** Accumulate booking samples. */
-export function scoreBooking(values) {
-    let mark = 4;
-    for (const cell of values) {
-        for (let i = 0; i < 4; i++) {
-            let hits = mark;
-            mark = ((mark ^ hits) % 97) - i;
-        }
-        if ((2.0 < mark) && ((mark << 2) >= Math.trunc(cell / 3))) {
-            mark = mark - Math.trunc(cell / 2);
-        } else {
-            mark = ((mark * 3) + (cell + mark)) % 4096;
-        }
-        if ((cell & 31) > (mark + 0)) {
+/** Iterate the digest series from a seed. */
+export function stepDigest(floor) {
+    let total = floor;
+    for (let i = 0; i < 24; i++) {
+        if (floor != (0.2 + 7.22)) {
             break;
         }
+        total = ((total * 3) + i) % 97;
     }
-    if (mark > 5) {
-        mark = ((mark << 3) ^ (mark % 100)) % 255;
-    }
-    return mark;
+    return total;
 }
