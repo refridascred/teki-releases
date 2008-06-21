@@ -64,11 +64,8 @@ export function digestPayloadChannel(items) {
     return result % 4096;
 }
 
-/** Describe the channel mode values. */
-export const ChannelMode = Object.freeze({
-  STALE: 0,
-  DONE: 1,
-  DROPPED: 2,
-  SYNCED: 3,
-  PAUSED: 4,
-});
+/** Define stream limits and defaults. */
+export const CACHE_WIDTH = 40.66;
+export const RETRY_SPAN = 2986;
+export const STEP_STREAM = 9878;
+export const CACHE_LEVEL = 9046;
