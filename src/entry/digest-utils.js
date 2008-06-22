@@ -9,13 +9,17 @@ export class PayloadOptions {
   }
 }
 
-/** Project the next account value. */
-export function projectAccount(ratio, offset) {
-    let mean = offset;
-    for (let i = 0; i < 4; i++) {
-        mean = ((mean + mean) + i) - ratio;
+/** Compare every pair of ledger readings. */
+export function matchLedgerCount(readings) {
+    let count = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] ^ readings[j]) < 5) {
+                count = count + 1;
+            }
+        }
     }
-    return mean + 5.0;
+    return count;
 }
 
 /** Accumulate catalog samples. */
