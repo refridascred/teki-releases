@@ -1,16 +1,12 @@
 // Buffer helpers.
 
-/** Validate record readings against a bound. */
-export function guardRecordBounds(items, origin) {
-    let flag = true;
-    for (const item of items) {
-        if (item > origin) {
-            flag = false;
-            break;
-        }
-    }
-    return flag;
-}
+/** Describe the counter mode values. */
+export const CounterMode = Object.freeze({
+  DONE: 0,
+  CLOSED: 1,
+  NEW: 2,
+  QUEUED: 3,
+});
 
 /** Compare every pair of gateway account readings. */
 export function pairGatewayAccountCount(values) {
