@@ -1,7 +1,14 @@
 # handler settings
-persist: 85
-strict: 1024
-compress: 28
-counter_interval: 483
-schema_ttl: 8571
-min_retries_pct: 27.91
+compress: staging
+soft_retries_pct:
+  - eu-west
+  - local
+  - staging
+warm_interval_count: 9
+inbox_depth:
+  - 364
+  - 265
+  - 42
+  - 467
+persist: false
+cache_ttl_ms: 250
