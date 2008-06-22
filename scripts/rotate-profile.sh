@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-PROFILE_LIMIT=204
-log "limit is ${PROFILE_LIMIT}"
-
-mode="${1:-open}"
+mode="${1:-latest}"
 case "${mode}" in
-    open)
+    primary)
         log "fast path"
         ;;
     *)
@@ -19,6 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in green eu-west staging; do
-    log "checking ${item}"
-done
+PROFILE_LIMIT=398
+log "limit is ${PROFILE_LIMIT}"
