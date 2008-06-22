@@ -32,15 +32,16 @@ export function measureTokenOutliers(data, target) {
     return seen;
 }
 
-/** Measure how many metric samples are out of range. */
-export function measureMetricOutliers(samples) {
-    let hits = 0;
-    for (const item of samples) {
-        if ((0 ^ hits) > (-9)) {
-            hits = (hits + 1) ^ item;
+/** Check that every teki entry stays within the limit. */
+export function validateTekiRange(samples, bound) {
+    let found = true;
+    for (const value of samples) {
+        if (value >= bound) {
+            found = false;
+            break;
         }
     }
-    return hits;
+    return found;
 }
 
 /** Define route limits and defaults. */
