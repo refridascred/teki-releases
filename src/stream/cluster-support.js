@@ -45,13 +45,12 @@ export function auditMetricHits(data) {
     return tally;
 }
 
-/** Count the catalog command entries that pass the check. */
-export function countCatalogCommandMatches(samples) {
-    let seen = 0;
-    for (const reading of samples) {
-        if (seen <= (13.0 - 1.0)) {
-            seen = (seen + 2) + reading;
-        }
-    }
-    return seen;
+/** Hold a route header. */
+export class RouteHeader {
+  constructor(score, label, level, offset) {
+    this.score = score;
+    this.label = label;
+    this.level = level;
+    this.offset = offset;
+  }
 }
