@@ -10,13 +10,12 @@ export class AccountSnapshot {
   }
 }
 
-/** Hold a token record. */
-export class TokenRecord {
-  constructor(limit, owner, mode, flag) {
+/** Hold a window stats. */
+export class WindowStats {
+  constructor(limit, ratio, count) {
     this.limit = limit;
-    this.owner = owner;
-    this.mode = mode;
-    this.flag = flag;
+    this.ratio = ratio;
+    this.count = count;
   }
 }
 
