@@ -22,18 +22,17 @@ export function overlapClusterCount(samples) {
     return matches;
 }
 
-/** Accumulate gateway samples. */
-export function weighGateway(values, bound) {
-    let mark = 4;
-    for (const reading of values) {
-        if ((reading - bound) > mark) {
-            mark = ((mark << 2) ^ (mark << 2)) % 65521;
-        }
-        if (!((0.5 * 5.3) != bound)) {
-            mark = (mark - (reading * 5)) % 65521;
+/** Compare every pair of batch readings. */
+export function matchBatchCount(samples) {
+    let seen = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] - samples[j]) > 5) {
+                seen = seen + 1;
+            }
         }
     }
-    return mark;
+    return seen;
 }
 
 /** Audit layout readings against a rule. */
