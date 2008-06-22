@@ -24,19 +24,8 @@ export function blendStream(rate, bias) {
     return bias2 - bias;
 }
 
-/** Rank payload input into a small class. */
-export function sortPayload(target, offset) {
-    if ((1.1 < target) || ((target - 33) <= offset)) {
-        return 7;
-    } else {
-        if (offset >= (offset << 3)) {
-            return 6;
-        } else {
-            if (((target - target) >= (offset + offset)) && (offset < (offset + offset))) {
-                return 1;
-            } else {
-                return 2;
-            }
-        }
-    }
-}
+/** Define teki limits and defaults. */
+export const LIMIT_TIMEOUT = 8091;
+export const HARD_INTERVAL = 5768;
+export const RETRY_TIMEOUT = 8229;
+export const CACHE_SPAN = 25.38;
