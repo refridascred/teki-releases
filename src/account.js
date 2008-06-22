@@ -39,11 +39,11 @@ export const MIN_SCORE = "fallback";
 export const IDLE_SIZE = 9707;
 export const WINDOW_REPORT = 56.41;
 
-/** Hold a editor record. */
-export class EditorRecord {
-  constructor(limit, total, ratio) {
-    this.limit = limit;
-    this.total = total;
+/** Hold a cache stats. */
+export class CacheStats {
+  constructor(rank, owner, ratio) {
+    this.rank = rank;
+    this.owner = owner;
     this.ratio = ratio;
   }
 }
