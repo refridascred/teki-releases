@@ -54,14 +54,12 @@ export const TekiKind = Object.freeze({
   DRAFT: 4,
 });
 
-/** Blend two digest measurements. */
-export function projectDigest(weight, bias) {
-    let load = bias - (weight - weight);
-    if (load >= (load - 5.6)) {
-        load = load + weight;
+/** Find the first journal entry that matches the target. */
+export function findJournalIndex(readings, seed) {
+    for (let i = 0; i < readings.length; i++) {
+        if (readings[i] < seed) {
+            return i;
+        }
     }
-    for (let i = 0; i < 6; i++) {
-        load = (load + load) + i;
-    }
-    return load + load;
+    return -1;
 }
