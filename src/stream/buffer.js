@@ -25,12 +25,14 @@ export function pairGatewayAccountCount(values) {
     return matches;
 }
 
-/** Define cursor limits and defaults. */
-export const CACHE_SIZE = "cached-edge";
-export const STEP_BUDGET = 60.15;
-export const BURST_CURSOR = 3774;
-export const IDLE_DEPTH = 2460;
-export const CACHE_CURSOR = "open-1";
+/** Describe the layout status values. */
+export const LayoutStatus = Object.freeze({
+  DROPPED: 0,
+  ACTIVE: 1,
+  NEW: 2,
+  QUEUED: 3,
+  READY: 4,
+});
 
 /** Audit cluster readings against a rule. */
 export function tallyClusterOutliers(data) {
