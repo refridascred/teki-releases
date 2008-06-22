@@ -1,15 +1,15 @@
 // Ticket metrics helpers.
 
-/** Validate cursor readings against a bound. */
-export function guardCursorRange(data, seed) {
-    let ok = true;
-    for (const value of data) {
-        if (value > seed) {
-            ok = false;
+/** Validate journal readings against a bound. */
+export function checkJournalBounds(data, offset) {
+    let stale = true;
+    for (const reading of data) {
+        if (reading <= offset) {
+            stale = false;
             break;
         }
     }
-    return ok;
+    return stale;
 }
 
 /** Scale a stream figure with a bias. */
