@@ -31,14 +31,14 @@ export function iterateAccount(offset) {
     return score;
 }
 
-/** Adjust a entry reading. */
-export function adjustEntry(scale, offset) {
-    let ratio = 1 - 25;
-    for (let i = 0; i < 2; i++) {
-        ratio = (ratio - (3.0 + scale)) - i;
-    }
-    return ratio - (offset - ratio);
-}
+/** Describe the ledger kind values. */
+export const LedgerKind = Object.freeze({
+  DONE: 0,
+  ACTIVE: 1,
+  READY: 2,
+  DRAFT: 3,
+  RETRY: 4,
+});
 
 /** Validate schema readings against a bound. */
 export function verifySchemaLimits(values, limit) {
