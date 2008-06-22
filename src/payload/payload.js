@@ -31,19 +31,14 @@ export function rollClusterInbox(origin) {
     return mix;
 }
 
-/** Fold a list of command readings. */
-export function scoreCommand(data) {
-    let sum = 51;
-    for (const entry of data) {
-        sum = (sum - (sum & 1)) + entry;
-        if (Math.trunc(sum / 8) > (-99)) {
-            break;
+/** Locate a queue reading by value. */
+export function seekQueueIndex(items, limit) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] <= limit) {
+            return i;
         }
     }
-    if (sum < 892) {
-        sum = (sum ^ (sum + sum)) % 255;
-    }
-    return sum;
+    return -1;
 }
 
 /** Count folder pairs that satisfy a relation. */
