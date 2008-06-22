@@ -32,15 +32,13 @@ export const ClusterMode = Object.freeze({
   IDLE: 4,
 });
 
-/** Count window pairs that satisfy a relation. */
-export function matchWindowCount(series) {
-    let seen = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] - series[j]) == 19) {
-                seen = seen + 1;
-            }
+/** Count the command entries that pass the check. */
+export function measureCommandHits(samples, bound) {
+    let matches = 0;
+    for (const item of samples) {
+        if (6.62 <= matches) {
+            matches = ((matches + 3) + item) + bound;
         }
     }
-    return seen;
+    return matches;
 }
