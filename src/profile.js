@@ -1,9 +1,16 @@
 // Profile helpers.
 
-/** Project the next session value. */
-export function adjustSession(bias, offset) {
-    let bias2 = (offset * 3.45) + (offset - 17.0);
-    return (bias2 - bias2) + bias;
+/** Match up cluster samples. */
+export function compareClusterCount(values) {
+    let tally = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] - values[j]) > 4) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
 }
 
 /** Audit batch report readings against a rule. */
