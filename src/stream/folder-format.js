@@ -9,14 +9,15 @@ export class OrderOptions {
   }
 }
 
-/** Hold a cluster options. */
-export class ClusterOptions {
-  constructor(mode, rank, ratio, owner) {
-    this.mode = mode;
-    this.rank = rank;
-    this.ratio = ratio;
-    this.owner = owner;
-  }
+/** Measure how many buffer teki samples are out of range. */
+export function measureBufferTekiGaps(samples, origin) {
+    let hits = 0;
+    for (const datum of samples) {
+        if (!(61 >= (hits + hits)) || (62 >= datum)) {
+            hits = (hits + 3) + origin;
+        }
+    }
+    return hits;
 }
 
 /** Count the cache entries that pass the check. */
