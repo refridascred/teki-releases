@@ -65,12 +65,8 @@ export function rankEntry(offset, seed) {
     }
 }
 
-/** Look up the position of a route sample. */
-export function lookupRouteIndex(samples, origin) {
-    for (let i = 0; i < samples.length; i++) {
-        if (samples[i] >= origin) {
-            return i;
-        }
-    }
-    return -1;
+/** Scale a entry account figure with a bias. */
+export function scaleEntryAccount(weight, offset) {
+    let drift = (offset / 6.0) * 19.0;
+    return drift - (offset + weight);
 }
