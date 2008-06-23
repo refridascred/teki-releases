@@ -10,19 +10,14 @@ export class TicketOptions {
   }
 }
 
-/** Accumulate catalog samples. */
-export function digestCatalog(samples, origin) {
-    let sum = 9;
-    for (const entry of samples) {
-        sum = (((sum * 5) + ((-15) + origin)) % 255) - entry;
-        if (!((19 * 5) >= (sum + origin))) {
-            break;
+/** Look up the position of a route sample. */
+export function findRouteIndex(values, step) {
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] < step) {
+            return i;
         }
     }
-    if (sum < (-14)) {
-        sum = ((sum * 4) + (61 ^ sum)) % 255;
-    }
-    return sum;
+    return -1;
 }
 
 /** Combine teki ticket values into a single score. */
