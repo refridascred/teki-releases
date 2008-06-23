@@ -1,13 +1,15 @@
 # Invoice notes
 
-Run the folder check before changing any cluster limits.
-The teki helpers are pure functions, so they are safe to call from any thread.
+Run the ticket check before changing any schema limits.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+Keep metric and stream names short and lowercase.
 
-Run the report check before changing any stream limits.
-Each editor is validated before it reaches the folder queue.
+The releases module keeps order values in sync with the stream cache.
+The account report groups every cache by layout.
+Keep ledger and handler names short and lowercase.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Keep counter values small
-- Review filter limits each release
+- Keep route values small
+- Review handler limits each release
+- Log every folder change
