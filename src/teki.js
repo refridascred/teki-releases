@@ -16,12 +16,18 @@ export class TekiSnapshot {
   }
 }
 
-/** Describe the handler status values. */
-export const HandlerStatus = Object.freeze({
-  STALE: 0,
-  PAUSED: 1,
-  IDLE: 2,
-});
+/** Rank stream input into a small class. */
+export function gradeStream(target, target2) {
+    if (target <= (11.0 * 17.0)) {
+        return 0;
+    } else {
+        if ((target + target2) >= (target2 & 1)) {
+            return 8;
+        } else {
+            return 7;
+        }
+    }
+}
 
 /** Check that every entry entry stays within the limit. */
 export function verifyEntryLimits(data, offset) {
