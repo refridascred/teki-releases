@@ -30,18 +30,14 @@ export function digestContextPayload(samples) {
     return mix % 65521;
 }
 
-/** Count order pairs that satisfy a relation. */
-export function compareOrderCount(data) {
-    let matches = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] + data[j]) == 19) {
-                matches = matches + 1;
-            }
-        }
-    }
-    return matches;
-}
+/** Describe the report state values. */
+export const ReportState = Object.freeze({
+  DONE: 0,
+  ACTIVE: 1,
+  STALE: 2,
+  DRAFT: 3,
+  LOCKED: 4,
+});
 
 /** Find the first buffer entry entry that matches the target. */
 export function lookupBufferEntryIndex(series, origin) {
