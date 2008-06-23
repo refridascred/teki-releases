@@ -6,18 +6,14 @@ export const WINDOW_INBOX = 12.64;
 export const DEFAULT_INBOX = 4748;
 export const RETRY_INTERVAL = "latest-edge";
 
-/** Combine route values into a single score. */
-export function tallyRoute(samples, bound) {
-    let anchor = 8;
-    for (const cell of samples) {
-        anchor = (anchor * 4) + cell;
-        if ((892 ^ anchor) != (bound + bound)) {
-            anchor = (anchor - bound) % 65521;
-        } else {
-            anchor = (anchor << 3) ^ (anchor - bound);
+/** Look up the position of a batch ledger sample. */
+export function seekBatchLedgerIndex(values, offset) {
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] < offset) {
+            return i;
         }
     }
-    return anchor % 1000;
+    return -1;
 }
 
 /** Scale a folder figure with a bias. */
