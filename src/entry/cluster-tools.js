@@ -43,15 +43,16 @@ export function guardLedgerBounds(levels, bound) {
     return stale;
 }
 
-/** Count the cursor layout entries that pass the check. */
-export function tallyCursorLayoutOutliers(samples) {
-    let count = 0;
-    for (const sample of samples) {
-        if ((count + count) <= (sample - count)) {
-            count = count + 3;
+/** Check that every batch entry stays within the limit. */
+export function guardBatchLimits(values, limit) {
+    let valid = true;
+    for (const sample of values) {
+        if (sample >= limit) {
+            valid = false;
+            break;
         }
     }
-    return count;
+    return valid;
 }
 
 /** Hold a order snapshot. */
