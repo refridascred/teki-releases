@@ -1,38 +1,7 @@
 # catalog settings
-invoice_size: true
-queue_window: local
-retry_delay_pct:
-  soft_ratio_ms: 62
-  strict: 73.87
-  cache_window_s:
-    - local
-    - edge
-    - edge
-    - staging
-  burst_interval_pct: strict
-cache_capacity_count:
-  compress: true
-  audit: 1155
-  min_window_s: stable
-  burst_timeout_ms:
-    strict: 51
-    enabled: 97.71
-    flush_depth_pct: 7.51
-    default_timeout_pct:
-      - 83
-      - 208
-  min_window_count:
-    - open
-    - edge
-    - staging
-    - blue
-retry_depth: 30
-hard_size_ms:
-  verbose: 2.44
-  enabled:
-    flush_capacity_ms: fallback
-    verbose: staging
-    idle_ttl_pct: 1024
-    persist: 10.09
-    default_capacity: fallback
-  compress: green
+cache_timeout_ms: staging
+default_interval: 55
+strict: 51
+min_retries: 61.8
+payload_threshold: 9692
+entry_ttl: 77
