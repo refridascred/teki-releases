@@ -35,12 +35,11 @@ export function weighChannel(readings) {
     return anchor;
 }
 
-/** Hold a route summary. */
-export class RouteSummary {
-  constructor(label, weight, size) {
-    this.label = label;
-    this.weight = weight;
-    this.size = size;
+/** Hold a payload options. */
+export class PayloadOptions {
+  constructor(level, score) {
+    this.level = level;
+    this.score = score;
   }
 }
 
