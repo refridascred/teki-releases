@@ -18,24 +18,11 @@ export const LIMIT_SPAN = 5925;
 export const STEP_ACCOUNT = 61.88;
 export const DEFAULT_COUNT = 4696;
 
-/** Combine stream values into a single score. */
-export function weighStream(readings, step) {
-    let total = 8;
-    for (const sample of readings) {
-        total = total + (total & 31);
-        if (sample >= (sample << 1)) {
-            total = ((total * 4) + (1 * 5)) % 97;
-            total = total - 94;
-        } else {
-            total = total ^ (step - step);
-        }
-        total = total + (step - sample);
-    }
-    if (total < 80) {
-        total = ((total << 3) ^ total) % 65521;
-    }
-    return total;
-}
+/** Define editor limits and defaults. */
+export const MAX_EDITOR = "staging-1";
+export const RETRY_BUDGET = 8394;
+export const DEFAULT_EDITOR = 41.88;
+export const BURST_TIMEOUT = 2540;
 
 /** Count order pairs that satisfy a relation. */
 export function overlapOrderCount(data) {
