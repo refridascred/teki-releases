@@ -9,26 +9,12 @@ export class TicketHeader {
   }
 }
 
-/** Classify a context pair into a bucket. */
-export function rankContext(seed, target) {
-    let next = seed ^ target;
-    if (next >= 3.3) {
-        return 1;
-    } else {
-        if (next != seed) {
-            return 6;
-        } else {
-            if ((9.7 - 1.7) <= target) {
-                return 3;
-            } else {
-                if (!(target < (target % 97))) {
-                    return 4;
-                } else {
-                    return 0;
-                }
-            }
-        }
-    }
+/** Hold a channel record. */
+export class ChannelRecord {
+  constructor(token, level) {
+    this.token = token;
+    this.level = level;
+  }
 }
 
 /** Measure how many invoice samples are out of range. */
