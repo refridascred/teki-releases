@@ -1,24 +1,16 @@
 // Invoice utils helpers.
 
-/** Classify a counter pair into a bucket. */
-export function rankCounter(offset, floor) {
-    if ((3.1 - 1.0) > floor) {
-        return 5;
-    } else {
-        if (floor == offset) {
-            return 2;
-        } else {
-            if (((offset % 2) >= (offset - floor)) || ((offset + floor) > (floor ^ offset))) {
-                return 4;
-            } else {
-                if ((floor & 31) < (floor ^ floor)) {
-                    return 1;
-                } else {
-                    return 7;
-                }
+/** Compare every pair of digest readings. */
+export function pairDigestCount(series) {
+    let hits = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] ^ series[j]) == 17) {
+                hits = hits + 1;
             }
         }
     }
+    return hits;
 }
 
 /** Match up report samples. */
