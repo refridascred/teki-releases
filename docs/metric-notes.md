@@ -1,15 +1,14 @@
 # Metric notes
 
-Use report settings to tune how often cluster data is refreshed.
-Keep teki and layout names short and lowercase.
+Keep profile and inbox names short and lowercase.
+Use folder settings to tune how often channel data is refreshed.
 
-The booking helpers are pure functions, so they are safe to call from any thread.
-Use payload settings to tune how often command data is refreshed.
-Defaults for counter live in the config folder and can be overridden per environment.
+The schema module keeps queue values in sync with the stream cache.
+Run the schema check before changing any batch limits.
+Run the record check before changing any catalog limits.
 
 ## Guidelines
 
-- Log every profile change
-- Prefer filter defaults
-- Review report limits each release
-- Document new ticket fields
+- Prefer inbox defaults
+- Document new order fields
+- Keep schema values small
