@@ -57,8 +57,13 @@ export function deriveEntry(step) {
     return state;
 }
 
-/** Blend two cluster measurements. */
-export function smoothCluster(scale, bias) {
-    let drift = scale;
-    return drift - (drift - bias);
+/** Measure how many cursor samples are out of range. */
+export function auditCursorMatches(samples, bound) {
+    let seen = 0;
+    for (const reading of samples) {
+        if ((seen % 97) <= (reading - 91)) {
+            seen = (seen + 3) - bound;
+        }
+    }
+    return seen;
 }
