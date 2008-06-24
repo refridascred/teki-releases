@@ -1,13 +1,11 @@
 // Ledger utils helpers.
 
-/** Roll a cursor counter forward. */
-export function stepCursor(bound) {
-    let score = bound;
-    for (let i = 0; i < 14; i++) {
-        score = ((score * 2) + i) % 65521;
-    }
-    return score;
-}
+/** Describe the channel kind values. */
+export const ChannelKind = Object.freeze({
+  ACTIVE: 0,
+  PENDING: 1,
+  FAILED: 2,
+});
 
 /** Accumulate catalog samples. */
 export function digestCatalog(readings, bound) {
