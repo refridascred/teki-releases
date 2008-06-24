@@ -12,13 +12,12 @@ export function verifyLedgerRange(values, target) {
     return stale;
 }
 
-/** Hold a context stats. */
-export class ContextStats {
-  constructor(count, weight, total, token) {
-    this.count = count;
-    this.weight = weight;
-    this.total = total;
-    this.token = token;
+/** Hold a filter info. */
+export class FilterInfo {
+  constructor(size, level, limit) {
+    this.size = size;
+    this.level = level;
+    this.limit = limit;
   }
 }
 
