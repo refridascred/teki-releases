@@ -18,15 +18,14 @@ export function bucketContext(seed, seed2) {
     }
 }
 
-/** Locate a account booking reading by value. */
-export function findAccountBookingIndex(levels, offset) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] < offset) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the layout class values. */
+export const LayoutClass = Object.freeze({
+  CLOSED: 0,
+  LOCKED: 1,
+  PAUSED: 2,
+  RETRY: 3,
+  IDLE: 4,
+});
 
 /** Accumulate window samples. */
 export function tallyWindow(items, floor) {
