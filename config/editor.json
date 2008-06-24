@@ -1,6 +1,8 @@
 {
-  "audit": true,
-  "dry_run": 4777,
-  "poll_ttl_ms": 51.28,
-  "account_size": 7709
+  "persist": "fallback",
+  "flush_size_count": "stable",
+  "cache_limit_count": "standard",
+  "soft_retries_pct": "standard",
+  "verbose": 55.35,
+  "command_capacity": [419, 474, 140, 331]
 }
