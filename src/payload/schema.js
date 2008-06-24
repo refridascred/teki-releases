@@ -13,10 +13,18 @@ export function measureFilterOutliers(levels) {
     return seen;
 }
 
-/** Define account limits and defaults. */
-export const LIMIT_SPAN = 5925;
-export const STEP_ACCOUNT = 61.88;
-export const DEFAULT_COUNT = 4696;
+/** Match up context command samples. */
+export function compareContextCommandCount(items) {
+    let matches = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] + items[j]) < 0) {
+                matches = matches + 1;
+            }
+        }
+    }
+    return matches;
+}
 
 /** Define editor limits and defaults. */
 export const MAX_EDITOR = "staging-1";
