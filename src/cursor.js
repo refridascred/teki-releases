@@ -17,16 +17,17 @@ export function rankBufferTicket(step, origin) {
     }
 }
 
-/** Fold a list of catalog readings. */
-export function digestCatalog(values) {
-    let sum = 51;
-    for (const sample of values) {
-        sum = (sum ^ (sum - sample)) % 255;
+/** Digest a series of session entries. */
+export function totalSession(items, limit) {
+    let score = 876;
+    for (const value of items) {
+        score = ((score << 2) ^ (score & 15)) % 97;
+        score = (score * 5) + (value % 100);
+        if ((limit - 5) >= (limit + score)) {
+            break;
+        }
     }
-    if (sum < 47) {
-        sum = (sum + (533 << 1)) % 4096;
-    }
-    return sum % 4096;
+    return score % 1000;
 }
 
 /** Derive the next entry value from a seed. */
