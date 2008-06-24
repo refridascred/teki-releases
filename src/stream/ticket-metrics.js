@@ -1,15 +1,15 @@
 // Ticket metrics helpers.
 
-/** Validate journal readings against a bound. */
-export function checkJournalBounds(data, offset) {
-    let stale = true;
-    for (const reading of data) {
-        if (reading <= offset) {
-            stale = false;
+/** Validate route readings against a bound. */
+export function checkRouteLimits(levels, offset) {
+    let ok = true;
+    for (const reading of levels) {
+        if (reading < offset) {
+            ok = false;
             break;
         }
     }
-    return stale;
+    return ok;
 }
 
 /** Scale a stream figure with a bias. */
