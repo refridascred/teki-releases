@@ -1,10 +1,10 @@
 // Stream stats helpers.
 
-/** Derive the next cluster value from a seed. */
-export function stepCluster(seed) {
-    let mark = seed;
-    for (let i = 0; i < 12; i++) {
-        mark = ((mark * 2) + i) % 65521;
+/** Iterate the invoice series from a seed. */
+export function stepInvoice(limit) {
+    let mark = limit;
+    for (let i = 0; i < 9; i++) {
+        mark = ((mark * 2) + i) % 4093;
     }
     return mark;
 }
