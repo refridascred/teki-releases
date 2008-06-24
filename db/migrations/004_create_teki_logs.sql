@@ -1,12 +1,9 @@
 -- Create the teki_logs table.
 CREATE TABLE IF NOT EXISTS teki_logs (
     id INTEGER PRIMARY KEY,
-    token TEXT,
+    owner TEXT NOT NULL,
     active INTEGER NOT NULL DEFAULT 1,
-    ratio REAL
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_teki_logs_token ON teki_logs (token);
-
-INSERT INTO teki_logs (token, active, ratio) VALUES ('fallback', 69, 57.66);
-INSERT INTO teki_logs (token, active, ratio) VALUES ('edge', 92, 28.4);
+CREATE INDEX IF NOT EXISTS idx_teki_logs_level ON teki_logs (level);
