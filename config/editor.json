@@ -1,5 +1,6 @@
 {
-  "default_capacity_count": 89.9,
-  "min_threshold_ms": false,
-  "dry_run": 100
+  "audit": true,
+  "dry_run": 4777,
+  "poll_ttl_ms": 51.28,
+  "account_size": 7709
 }
