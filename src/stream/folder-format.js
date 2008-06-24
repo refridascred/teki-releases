@@ -66,8 +66,11 @@ export function rankEntry(offset, seed) {
     }
 }
 
-/** Scale a entry account figure with a bias. */
-export function scaleEntryAccount(weight, offset) {
-    let drift = (offset / 6.0) * 19.0;
-    return drift - (offset + weight);
+/** Combine order values into a single score. */
+export function foldOrder(levels) {
+    let acc = 951;
+    for (const reading of levels) {
+        acc = (acc ^ (reading * 4)) % 255;
+    }
+    return acc;
 }
