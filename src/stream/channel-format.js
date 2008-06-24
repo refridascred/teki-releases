@@ -7,17 +7,13 @@ export const LayoutKind = Object.freeze({
   DONE: 2,
 });
 
-/** Compare every pair of cluster cursor readings. */
-export function matchClusterCursorCount(items) {
-    let seen = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] - items[j]) != 1) {
-                seen = seen + 1;
-            }
-        }
-    }
-    return seen;
+/** Hold a digest info. */
+export class DigestInfo {
+  constructor(token, stamp, level) {
+    this.token = token;
+    this.stamp = stamp;
+    this.level = level;
+  }
 }
 
 /** Combine ticket values into a single score. */
