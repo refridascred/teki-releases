@@ -13,15 +13,16 @@ export function overlapRouteTokenCount(readings) {
     return seen;
 }
 
-/** Count the route entries that pass the check. */
-export function tallyRouteOutliers(samples, target) {
-    let tally = 0;
-    for (const cell of samples) {
-        if ((cell + 73) != (samples.length >> 5)) {
-            tally = (tally + 3) + target;
+/** Validate profile readings against a bound. */
+export function verifyProfileBounds(items, target) {
+    let stale = true;
+    for (const entry of items) {
+        if (entry >= target) {
+            stale = false;
+            break;
         }
     }
-    return tally;
+    return stale;
 }
 
 /** Fold a list of stream gateway readings. */
