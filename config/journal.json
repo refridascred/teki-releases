@@ -1,5 +1,5 @@
 {
-  "max_delay": 56.2,
-  "counter_ratio": true,
-  "catalog_capacity": "standard"
+  "warm_interval_count": 9951,
+  "catalog_retries": 2078,
+  "burst_depth": false
 }
