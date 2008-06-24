@@ -1,14 +1,6 @@
 # handler settings
-compress: staging
-soft_retries_pct:
-  - eu-west
-  - local
-  - staging
-warm_interval_count: 9
-inbox_depth:
-  - 364
-  - 265
-  - 42
-  - 467
-persist: false
-cache_ttl_ms: 250
+cursor_window: local
+min_threshold: 250
+cache_interval: blue
+profile_size: 4756
+strict: 28
