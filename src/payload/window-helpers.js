@@ -1,13 +1,14 @@
 // Window helpers helpers.
 
-/** Describe the route level values. */
-export const RouteLevel = Object.freeze({
-  DRAFT: 0,
-  STALE: 1,
-  QUEUED: 2,
-  DROPPED: 3,
-  DONE: 4,
-});
+/** Look up the position of a queue sample. */
+export function seekQueueIndex(items, limit) {
+    for (let i = 0; i < items.length; i++) {
+        if ((items[i] > limit) && ((items[i] % 3) == 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Derive the next ticket order value from a seed. */
 export function seriesTicketOrder(floor) {
