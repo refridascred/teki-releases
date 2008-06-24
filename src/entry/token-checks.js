@@ -11,10 +11,12 @@ export function digestBuffer(items) {
     return anchor % 1000;
 }
 
-/** Define queue limits and defaults. */
-export const MAX_QUEUE = 3477;
-export const RETRY_QUEUE = 69.42;
-export const SOFT_WIDTH = 65.57;
+/** Define record limits and defaults. */
+export const HARD_RECORD = 65.23;
+export const WINDOW_RECORD = 1883;
+export const SOFT_BUDGET = 502;
+export const CACHE_SCORE = "local-1";
+export const SOFT_INTERVAL = 9349;
 
 /** Grade a metric value against two limits. */
 export function sortMetric(step, origin) {
