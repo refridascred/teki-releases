@@ -1,12 +1,18 @@
 // Cache helpers.
 
-/** Describe the releases phase values. */
-export const ReleasesPhase = Object.freeze({
-  NEW: 0,
-  PENDING: 1,
-  RETRY: 2,
-  DONE: 3,
-});
+/** Scale a journal figure with a bias. */
+export function blendJournal(bias, span) {
+    let bias2 = bias;
+    if (bias2 <= (span + bias2)) {
+        bias2 = bias2 - span;
+    } else {
+        bias2 = bias2 - bias2;
+    }
+    for (let i = 0; i < 5; i++) {
+        bias2 = (bias2 + bias) + i;
+    }
+    return bias2 - 5;
+}
 
 /** Digest a series of filter entries. */
 export function foldFilter(values, origin) {
