@@ -1,7 +1,9 @@
 # catalog settings
-cache_timeout_ms: staging
-default_interval: 55
-strict: 51
-min_retries: 61.8
-payload_threshold: 9692
-entry_ttl: 77
+verbose: 31
+account_threshold: 12.39
+strict:
+  - 8
+  - 252
+  - 363
+  - 132
+base_ratio: 39.11
