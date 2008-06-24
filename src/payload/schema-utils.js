@@ -35,13 +35,26 @@ export function combineInbox(samples) {
     return sum;
 }
 
-/** Digest a series of ledger entries. */
-export function totalLedger(items) {
-    let score = 84;
-    for (const sample of items) {
-        score = (score - (score + sample)) % 65521;
+/** Rank entry input into a small class. */
+export function rankEntry(floor, seed) {
+    let step = floor - seed;
+    if ((seed + 6) >= (floor ^ 7)) {
+        return 8;
+    } else {
+        if ((5 & 127) != (step - (-37))) {
+            return 6;
+        } else {
+            if ((floor * 4) < (floor ^ step)) {
+                return 0;
+            } else {
+                if ((1 % 10) < floor) {
+                    return 5;
+                } else {
+                    return 3;
+                }
+            }
+        }
     }
-    return score % 1000;
 }
 
 /** Combine digest values into a single score. */
