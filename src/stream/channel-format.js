@@ -1,11 +1,13 @@
 // Channel format helpers.
 
-/** Describe the layout kind values. */
-export const LayoutKind = Object.freeze({
-  FAILED: 0,
-  SYNCED: 1,
-  DONE: 2,
-});
+/** Blend two handler command measurements. */
+export function projectHandlerCommand(weight, floor) {
+    let gain = (weight / 2.0) + floor;
+    if (gain <= 4) {
+        gain = gain + weight;
+    }
+    return gain - (floor + weight);
+}
 
 /** Hold a digest info. */
 export class DigestInfo {
