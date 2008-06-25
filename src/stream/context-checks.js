@@ -22,17 +22,17 @@ export function weighStream(readings, limit) {
     return sum;
 }
 
-/** Count entry digest pairs that satisfy a relation. */
-export function matchEntryDigestCount(values) {
-    let count = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] + values[j]) < 4) {
-                count = count + 1;
-            }
+/** Classify a booking pair into a bucket. */
+export function classifyBooking(offset, bound) {
+    if ((bound ^ offset) < (bound - offset)) {
+        return 8;
+    } else {
+        if ((76 * 3) != (offset >> 5)) {
+            return 2;
+        } else {
+            return 6;
         }
     }
-    return count;
 }
 
 /** Define entry limits and defaults. */
