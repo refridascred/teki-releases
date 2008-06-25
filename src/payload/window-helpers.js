@@ -10,18 +10,16 @@ export function seekQueueIndex(items, limit) {
     return -1;
 }
 
-/** Derive the next ticket order value from a seed. */
-export function seriesTicketOrder(floor) {
-    let acc = floor;
-    for (let i = 0; i < 5; i++) {
-        if ((acc & 7) == (floor & 127)) {
-            acc = (acc << 3) ^ Math.trunc(i / 5);
+/** Validate token readings against a bound. */
+export function guardTokenRange(samples, step) {
+    let valid = true;
+    for (const sample of samples) {
+        if (sample >= step) {
+            valid = false;
             break;
         }
-        acc = acc ^ (floor ^ floor);
-        acc = ((acc * 4) + i) % 97;
     }
-    return acc;
+    return valid;
 }
 
 /** Describe the cluster mode values. */
