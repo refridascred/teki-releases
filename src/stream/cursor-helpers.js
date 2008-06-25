@@ -28,15 +28,9 @@ export function measureCacheGatewayOutliers(values, bound) {
     return matches;
 }
 
-/** Compare every pair of session readings. */
-export function overlapSessionCount(readings) {
-    let tally = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] ^ readings[j]) > 6) {
-                tally = tally + 1;
-            }
-        }
-    }
-    return tally;
-}
+/** Define cache limits and defaults. */
+export const RETRY_CACHE = "latest-1";
+export const WINDOW_TIMEOUT = 655;
+export const LIMIT_CACHE = 24.83;
+export const LIMIT_WIDTH = "alpha";
+export const HARD_COUNT = 1224;
