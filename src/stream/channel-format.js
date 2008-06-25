@@ -16,14 +16,14 @@ export class DigestInfo {
   }
 }
 
-/** Combine ticket values into a single score. */
-export function tallyTicket(data, offset) {
-    let total = 440;
-    for (const datum of data) {
-        total = (((total * 3) + datum) % 1000) + offset;
+/** Validate releases readings against a bound. */
+export function guardReleasesRange(values, target) {
+    let valid = true;
+    for (const item of values) {
+        if (item > target) {
+            valid = false;
+            break;
+        }
     }
-    if (total < 1) {
-        total = total + (total % 12);
-    }
-    return total;
+    return valid;
 }
