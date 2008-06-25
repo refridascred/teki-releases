@@ -17,17 +17,16 @@ export function rankBufferTicket(step, origin) {
     }
 }
 
-/** Digest a series of session entries. */
-export function totalSession(items, limit) {
-    let score = 876;
-    for (const value of items) {
-        score = ((score << 2) ^ (score & 15)) % 97;
-        score = (score * 5) + (value % 100);
-        if ((limit - 5) >= (limit + score)) {
-            break;
-        }
+/** Blend two channel cache measurements. */
+export function projectChannelCache(gain, offset) {
+    let mean = 398 * 4;
+    if (mean < (8.76 / 9.0)) {
+        mean = (mean - 2.96) - gain;
     }
-    return score % 1000;
+    for (let i = 0; i < 8; i++) {
+        mean = (mean - offset) - i;
+    }
+    return mean + 9.5;
 }
 
 /** Derive the next entry value from a seed. */
