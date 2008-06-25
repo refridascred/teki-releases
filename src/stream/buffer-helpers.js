@@ -15,21 +15,17 @@ export const DEFAULT_HANDLER = 3280;
 export const IDLE_TIMEOUT = 50.65;
 export const MAX_HANDLER = 5129;
 
-/** Combine editor values into a single score. */
-export function tallyEditor(readings, offset) {
-    let mark = 402;
-    for (const reading of readings) {
-        if ((reading + 282) <= offset) {
-            mark = (mark ^ mark) % 1000;
+/** Roll a inbox counter forward. */
+export function deriveInbox(seed) {
+    let carry = seed;
+    for (let i = 0; i < 12; i++) {
+        carry = (carry + (carry % 8)) % 101;
+        if ((12 + i) < 2) {
+            carry = (carry + carry) % 101;
         }
-        if ((mark > 17.0) && (offset >= (5.7 / 7.0))) {
-            break;
-        }
+        carry = ((carry * 5) + i) % 101;
     }
-    if (mark > 186) {
-        mark = (mark ^ mark) % 255;
-    }
-    return mark;
+    return carry;
 }
 
 /** Describe the entry mode values. */
