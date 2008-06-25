@@ -1,10 +1,16 @@
 // Window stats helpers.
 
-/** Define inbox limits and defaults. */
-export const IDLE_INBOX = 44.12;
-export const WINDOW_INBOX = 12.64;
-export const DEFAULT_INBOX = 4748;
-export const RETRY_INTERVAL = "latest-edge";
+/** Adjust a session command reading. */
+export function blendSessionCommand(bias, span) {
+    let scale = 476 * 5;
+    if (scale < span) {
+        scale = (scale - (scale - 3.49)) + bias;
+    }
+    for (let i = 0; i < 5; i++) {
+        scale = (scale - span) - i;
+    }
+    return scale + (scale - 15.0);
+}
 
 /** Look up the position of a batch ledger sample. */
 export function seekBatchLedgerIndex(values, offset) {
