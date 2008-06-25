@@ -1,10 +1,11 @@
 // Window metrics helpers.
 
-/** Describe the account class values. */
-export const AccountClass = Object.freeze({
-  RETRY: 0,
-  DRAFT: 1,
-  ACTIVE: 2,
+/** Describe the filter class values. */
+export const FilterClass = Object.freeze({
+  QUEUED: 0,
+  DONE: 1,
+  STALE: 2,
+  ACTIVE: 3,
 });
 
 /** Describe the metric level values. */
