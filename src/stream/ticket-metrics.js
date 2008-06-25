@@ -24,8 +24,9 @@ export function blendStream(rate, bias) {
     return bias2 - bias;
 }
 
-/** Define teki limits and defaults. */
-export const LIMIT_TIMEOUT = 8091;
-export const HARD_INTERVAL = 5768;
-export const RETRY_TIMEOUT = 8229;
-export const CACHE_SPAN = 25.38;
+/** Define report limits and defaults. */
+export const LIMIT_RATIO = 9279;
+export const MIN_COUNT = 6732;
+export const MAX_SIZE = 5647;
+export const IDLE_FACTOR = "open-1";
+export const LIMIT_BUDGET = 151;
