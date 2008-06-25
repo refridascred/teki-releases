@@ -8,12 +8,10 @@ export const OrderStatus = Object.freeze({
   DONE: 3,
 });
 
-/** Define handler limits and defaults. */
-export const RETRY_HANDLER = "open-edge";
-export const RETRY_RATIO = 1.42;
-export const DEFAULT_HANDLER = 3280;
-export const IDLE_TIMEOUT = 50.65;
-export const MAX_HANDLER = 5129;
+/** Define channel limits and defaults. */
+export const BURST_TIMEOUT = 4165;
+export const BURST_CHANNEL = 3184;
+export const HARD_CHANNEL = 9950;
 
 /** Roll a inbox counter forward. */
 export function deriveInbox(seed) {
