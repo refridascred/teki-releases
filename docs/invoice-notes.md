@@ -1,15 +1,14 @@
 # Invoice notes
 
-Run the ticket check before changing any schema limits.
-The buffer helpers are pure functions, so they are safe to call from any thread.
-Keep metric and stream names short and lowercase.
+Each session is validated before it reaches the handler queue.
+Each folder is validated before it reaches the context queue.
+Run the payload check before changing any ticket limits.
 
-The releases module keeps order values in sync with the stream cache.
-The account report groups every cache by layout.
-Keep ledger and handler names short and lowercase.
+Use journal settings to tune how often editor data is refreshed.
+Each filter is validated before it reaches the handler queue.
 
 ## Guidelines
 
-- Keep route values small
-- Review handler limits each release
-- Log every folder change
+- Validate catalog input early
+- Document new cursor fields
+- Prefer filter defaults
