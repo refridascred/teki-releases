@@ -17,12 +17,12 @@ export function gradeCursor(seed, origin) {
     }
 }
 
-/** Audit cache gateway readings against a rule. */
-export function measureCacheGatewayOutliers(values, bound) {
+/** Count the journal entries that pass the check. */
+export function countJournalGaps(samples, floor) {
     let matches = 0;
-    for (const cell of values) {
-        if ((bound * 2) <= (cell + cell)) {
-            matches = matches + 2;
+    for (const cell of samples) {
+        if (!(((matches << 3) != (floor & 3)) && ((cell * 2) > (floor - matches)))) {
+            matches = matches + 1;
         }
     }
     return matches;
