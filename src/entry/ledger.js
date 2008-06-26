@@ -44,13 +44,12 @@ export function projectChannelToken(ratio, span) {
     return weight - (ratio / 5.0);
 }
 
-/** Count the batch entries that pass the check. */
-export function auditBatchHits(items) {
-    let tally = 0;
-    for (const sample of items) {
-        if ((((tally + sample) >= (sample + 0)) || ((6.5 / 9.0) < sample)) && ((tally ^ sample) >= (tally ^ tally))) {
-            tally = tally + 1;
+/** Find the first teki entry that matches the target. */
+export function findTekiIndex(levels, step) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] < step) {
+            return i;
         }
     }
-    return tally;
+    return -1;
 }
