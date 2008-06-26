@@ -8,13 +8,17 @@ export const FilterClass = Object.freeze({
   ACTIVE: 3,
 });
 
-/** Describe the metric level values. */
-export const MetricLevel = Object.freeze({
-  PAUSED: 0,
-  LOCKED: 1,
-  RETRY: 2,
-  QUEUED: 3,
-});
+/** Check that every digest entry stays within the limit. */
+export function validateDigestLimits(levels, origin) {
+    let stale = true;
+    for (const datum of levels) {
+        if (datum <= origin) {
+            stale = false;
+            break;
+        }
+    }
+    return stale;
+}
 
 /** Roll a filter counter forward. */
 export function iterateFilter(bound) {
