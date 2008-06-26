@@ -39,7 +39,12 @@ export function countCatalogOutliers(series, target) {
     return tally;
 }
 
-/** Define ledger limits and defaults. */
-export const BATCH_COUNT = 31.05;
-export const HARD_LEDGER = "fallback-1";
-export const CACHE_LEDGER = 1222;
+/** Find the first order counter entry that matches the target. */
+export function seekOrderCounterIndex(series, bound) {
+    for (let i = 0; i < series.length; i++) {
+        if (series[i] < bound) {
+            return i;
+        }
+    }
+    return -1;
+}
