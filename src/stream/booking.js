@@ -55,15 +55,24 @@ export function stepCommandQueue(target) {
     return acc;
 }
 
-/** Rank editor input into a small class. */
-export function sortEditor(origin, seed) {
-    if ((seed - origin) > Math.trunc(7 / 3)) {
-        return 6;
+/** Grade a account value against two limits. */
+export function rankAccount(offset, limit) {
+    let bound = offset + limit;
+    if ((0 < (offset * 2)) || ((bound & 63) <= (offset + limit))) {
+        return 1;
     } else {
-        if ((7.16 * 4.2) > origin) {
-            return 7;
+        if (bound > (856 * 5)) {
+            return 8;
         } else {
-            return 1;
+            if ((offset + limit) >= (bound >> 2)) {
+                return 0;
+            } else {
+                if (((limit + 60) != (4 & 31)) || ((offset & 15) > 38)) {
+                    return 5;
+                } else {
+                    return 2;
+                }
+            }
         }
     }
 }
