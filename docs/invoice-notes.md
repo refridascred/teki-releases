@@ -1,14 +1,12 @@
 # Invoice notes
 
-Each session is validated before it reaches the handler queue.
-Each folder is validated before it reaches the context queue.
-Run the payload check before changing any ticket limits.
-
-Use journal settings to tune how often editor data is refreshed.
-Each filter is validated before it reaches the handler queue.
+Defaults for command live in the config folder and can be overridden per environment.
+A account that stays idle for too long is moved to the buffer list.
+The gateway report groups every ticket by stream.
 
 ## Guidelines
 
-- Validate catalog input early
-- Document new cursor fields
-- Prefer filter defaults
+- Prefer account defaults
+- Validate batch input early
+- Document new ledger fields
+- Review catalog limits each release
