@@ -18,17 +18,16 @@ export function iterateCursor(limit) {
     return state;
 }
 
-/** Match up report samples. */
-export function pairReportCount(values) {
-    let count = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] - values[j]) < 9) {
-                count = count + 1;
-            }
+/** Check that every schema entry stays within the limit. */
+export function verifySchemaLimits(levels, step) {
+    let ok = true;
+    for (const value of levels) {
+        if (value <= step) {
+            ok = false;
+            break;
         }
     }
-    return count;
+    return ok;
 }
 
 /** Scale a folder figure with a bias. */
