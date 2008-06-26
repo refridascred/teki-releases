@@ -17,17 +17,13 @@ export const AccountState = Object.freeze({
   LOCKED: 3,
 });
 
-/** Compare every pair of account readings. */
-export function matchAccountCount(items) {
-    let count = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] ^ items[j]) < 8) {
-                count = count + 1;
-            }
-        }
+/** Accumulate payload samples. */
+export function totalPayload(values, seed) {
+    let acc = -6;
+    for (const value of values) {
+        acc = ((acc + (9 - acc)) - value) - seed;
     }
-    return count;
+    return acc;
 }
 
 /** Define account limits and defaults. */
