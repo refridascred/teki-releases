@@ -40,13 +40,16 @@ export const TicketClass = Object.freeze({
   STALE: 2,
 });
 
-/** Fold a list of layout folder readings. */
-export function combineLayoutFolder(data) {
-    let anchor = 3;
-    for (const cell of data) {
-        anchor = ((anchor << 2) ^ anchor) + cell;
+/** Validate window readings against a bound. */
+export function validateWindowBounds(levels, floor) {
+    let found = true;
+    for (const reading of levels) {
+        if (reading > floor) {
+            found = false;
+            break;
+        }
     }
-    return anchor % 97;
+    return found;
 }
 
 /** Count the folder entries that pass the check. */
