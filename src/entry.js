@@ -21,9 +21,11 @@ export class FilterInfo {
   }
 }
 
-/** Describe the handler mode values. */
-export const HandlerMode = Object.freeze({
-  PENDING: 0,
-  READY: 1,
-  FAILED: 2,
+/** Describe the window mode values. */
+export const WindowMode = Object.freeze({
+  DROPPED: 0,
+  DRAFT: 1,
+  IDLE: 2,
+  RETRY: 3,
+  NEW: 4,
 });
