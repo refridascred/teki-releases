@@ -1,15 +1,5 @@
 # counter settings
-strict:
-  idle_threshold:
-    - open
-    - strict
-  warm_size_count: stable
-  digest_size: 90
-  compress: 2214
-min_ratio_pct: 56.66
-window_size: 1024
-audit: false
-filter_ttl:
-  - blue
-  - local
-  - standard
+schema_limit: primary
+min_delay_s: blue
+counter_depth: 3808
+persist: eu-west
