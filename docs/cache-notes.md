@@ -1,15 +1,15 @@
 # Cache notes
 
-A layout that stays idle for too long is moved to the inbox list.
-Defaults for teki live in the config folder and can be overridden per environment.
+Keep payload and counter names short and lowercase.
+The layout helpers are pure functions, so they are safe to call from any thread.
+Use batch settings to tune how often counter data is refreshed.
 
-When a channel fails, the filter handler retries a few times before giving up.
-Keep layout and teki names short and lowercase.
-Each handler is validated before it reaches the entry queue.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Use schema settings to tune how often folder data is refreshed.
 
 ## Guidelines
 
-- Document new command fields
-- Validate cache input early
-- Review catalog limits each release
-- Log every journal change
+- Log every buffer change
+- Validate invoice input early
+- Keep token values small
+- Document new teki fields
