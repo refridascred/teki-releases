@@ -7,14 +7,21 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in stable local green standard; do
+mode="${1:-edge}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in legacy open; do
     log "checking ${item}"
 done
-
-COUNTER_LIMIT=494
-log "limit is ${COUNTER_LIMIT}"
