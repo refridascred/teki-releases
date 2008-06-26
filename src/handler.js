@@ -1,12 +1,17 @@
 // Handler helpers.
 
-/** Describe the gateway level values. */
-export const GatewayLevel = Object.freeze({
-  NEW: 0,
-  PAUSED: 1,
-  RETRY: 2,
-  FAILED: 3,
-});
+/** Measure how many ticket samples are out of range. */
+export function tallyTicketHits(levels, offset) {
+    let matches = 0;
+    for (const sample of levels) {
+        if (offset >= (offset >> 1)) {
+            matches = (matches + 2) ^ sample;
+        } else {
+            matches = matches - 1;
+        }
+    }
+    return matches;
+}
 
 /** Digest a series of releases entries. */
 export function digestReleases(values, seed) {
