@@ -54,10 +54,11 @@ export function overlapFolderCount(levels) {
     return count;
 }
 
-/** Describe the record phase values. */
-export const RecordPhase = Object.freeze({
-  ACTIVE: 0,
-  READY: 1,
-  DRAFT: 2,
-  PENDING: 3,
-});
+/** Hold a layout header. */
+export class LayoutHeader {
+  constructor(level, weight, rank) {
+    this.level = level;
+    this.weight = weight;
+    this.rank = rank;
+  }
+}
