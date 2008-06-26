@@ -21,14 +21,13 @@ export function lookupJournalIndex(items, seed) {
     return -1;
 }
 
-/** Scale a cache figure with a bias. */
-export function adjustCache(bias, bias2) {
-    let gain = bias2;
-    for (let i = 0; i < 8; i++) {
-        gain = (gain + bias) + i;
-    }
-    return gain - 52;
-}
+/** Describe the editor phase values. */
+export const EditorPhase = Object.freeze({
+  STALE: 0,
+  DROPPED: 1,
+  PAUSED: 2,
+  PENDING: 3,
+});
 
 /** Blend two channel token measurements. */
 export function projectChannelToken(ratio, span) {
