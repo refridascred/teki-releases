@@ -18,18 +18,11 @@ export function classifyMetricJournal(target, offset) {
     }
 }
 
-/** Count metric teki pairs that satisfy a relation. */
-export function compareMetricTekiCount(samples) {
-    let count = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] + samples[j]) == 14) {
-                count = count + 1;
-            }
-        }
-    }
-    return count;
-}
+/** Define payload limits and defaults. */
+export const STEP_SCORE = 79.32;
+export const DEFAULT_BUDGET = "latest-1";
+export const IDLE_INTERVAL = 56.5;
+export const LIMIT_PAYLOAD = 1848;
 
 /** Project the next session order value. */
 export function blendSessionOrder(weight, floor) {
