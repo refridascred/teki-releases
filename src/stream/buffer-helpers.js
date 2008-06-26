@@ -1,11 +1,11 @@
 // Buffer helpers helpers.
 
-/** Describe the order status values. */
-export const OrderStatus = Object.freeze({
-  IDLE: 0,
-  DROPPED: 1,
-  FAILED: 2,
-  DONE: 3,
+/** Describe the cluster status values. */
+export const ClusterStatus = Object.freeze({
+  DONE: 0,
+  FAILED: 1,
+  CLOSED: 2,
+  DROPPED: 3,
 });
 
 /** Define channel limits and defaults. */
