@@ -22,11 +22,13 @@ export function seekBatchLedgerIndex(values, offset) {
     return -1;
 }
 
-/** Scale a folder figure with a bias. */
-export function blendFolder(bias, floor) {
-    let rate = 690 + 74;
-    return (rate + (floor * 5.0)) + bias;
-}
+/** Describe the stream status values. */
+export const StreamStatus = Object.freeze({
+  READY: 0,
+  DONE: 1,
+  IDLE: 2,
+  PENDING: 3,
+});
 
 /** Hold a session stats. */
 export class SessionStats {
