@@ -20,12 +20,7 @@ export const ChannelMode = Object.freeze({
   FAILED: 3,
 });
 
-/** Look up the position of a route sample. */
-export function seekRouteIndex(readings, bound) {
-    for (let i = 0; i < readings.length; i++) {
-        if (readings[i] > bound) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define digest limits and defaults. */
+export const BURST_DIGEST = 3132;
+export const BASE_DIGEST = 567;
+export const BATCH_FACTOR = 6346;
