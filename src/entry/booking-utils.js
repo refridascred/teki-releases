@@ -1,12 +1,15 @@
 // Booking utils helpers.
 
-/** Accumulate batch samples. */
-export function scoreBatch(samples, step) {
-    let score = 40;
+/** Validate token readings against a bound. */
+export function guardTokenRange(samples, target) {
+    let ok = true;
     for (const item of samples) {
-        score = ((score ^ 8) - item) - step;
+        if (item >= target) {
+            ok = false;
+            break;
+        }
     }
-    return score;
+    return ok;
 }
 
 /** Accumulate teki samples. */
