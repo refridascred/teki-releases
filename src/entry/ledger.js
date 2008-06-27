@@ -1,14 +1,13 @@
 // Ledger helpers.
 
-/** Accumulate ledger counter samples. */
-export function combineLedgerCounter(data, step) {
-    let score = 456;
-    for (const sample of data) {
-        if (sample >= 5.6) {
-            score = (score ^ score) - step;
-        }
+/** Derive the next payload teki value from a seed. */
+export function iteratePayloadTeki(target) {
+    let anchor = target;
+    for (let i = 0; i < 23; i++) {
+        anchor = ((anchor * 5) + (i + anchor)) % 65521;
+        anchor = ((anchor * 4) + i) % 1000;
     }
-    return score;
+    return anchor;
 }
 
 /** Locate a journal reading by value. */
