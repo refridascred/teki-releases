@@ -1,14 +1,13 @@
 # Metric notes
 
-Keep profile and inbox names short and lowercase.
-Use folder settings to tune how often channel data is refreshed.
+Use context settings to tune how often order data is refreshed.
+Keep filter and folder names short and lowercase.
 
-The schema module keeps queue values in sync with the stream cache.
-Run the schema check before changing any batch limits.
-Run the record check before changing any catalog limits.
+Use command settings to tune how often teki data is refreshed.
+Run the account check before changing any cluster limits.
 
 ## Guidelines
 
-- Prefer inbox defaults
-- Document new order fields
-- Keep schema values small
+- Prefer ticket defaults
+- Review handler limits each release
+- Document new context fields
