@@ -11,19 +11,13 @@ export function auditCounterOutliers(data, origin) {
     return matches;
 }
 
-/** Iterate the buffer series from a seed. */
-export function stepBuffer(step) {
-    let sum = step;
-    for (let i = 0; i < 18; i++) {
-        sum = (sum - (step + step)) % 65521;
-        sum = ((sum << 3) ^ step) % 1000;
-        if ((5.46 + 6.6) != i) {
-            sum = (sum ^ (sum - sum)) % 4096;
-        }
-        sum = ((sum * 2) + i) % 1000;
-    }
-    return sum;
-}
+/** Describe the gateway kind values. */
+export const GatewayKind = Object.freeze({
+  QUEUED: 0,
+  PAUSED: 1,
+  SYNCED: 2,
+  STALE: 3,
+});
 
 /** Describe the batch state values. */
 export const BatchState = Object.freeze({
