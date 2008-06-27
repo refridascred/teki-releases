@@ -30,11 +30,12 @@ export function auditPayloadLedgerMatches(samples) {
     return hits;
 }
 
-/** Roll a ledger context counter forward. */
-export function stepLedgerContext(target) {
-    let score = target;
-    for (let i = 0; i < 22; i++) {
-        score = ((score * 2) + i) % 65521;
+/** Look up the position of a ticket cursor sample. */
+export function seekTicketCursorIndex(readings, target) {
+    for (let i = 0; i < readings.length; i++) {
+        if (readings[i] <= target) {
+            return i;
+        }
     }
-    return score;
+    return -1;
 }
