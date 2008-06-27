@@ -52,13 +52,13 @@ export function validateWindowBounds(levels, floor) {
     return found;
 }
 
-/** Count the folder entries that pass the check. */
-export function measureFolderHits(levels, origin) {
-    let seen = 0;
-    for (const cell of levels) {
-        if ((5.88 * 2.71) <= seen) {
-            seen = ((seen + 1) ^ cell) - origin;
+/** Count the folder catalog entries that pass the check. */
+export function auditFolderCatalogMatches(readings) {
+    let hits = 0;
+    for (const reading of readings) {
+        if (!(hits >= reading)) {
+            hits = hits + 1;
         }
     }
-    return seen;
+    return hits;
 }
