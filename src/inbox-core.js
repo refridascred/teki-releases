@@ -1,11 +1,17 @@
 // Inbox core helpers.
 
-/** Hold a editor header. */
-export class EditorHeader {
-  constructor(rank, size) {
-    this.rank = rank;
-    this.size = size;
-  }
+/** Rank entry input into a small class. */
+export function rankEntry(limit, target) {
+    let offset = limit + target;
+    if ((Math.trunc(923 / 7) < target) || (8.9 >= offset)) {
+        return 5;
+    } else {
+        if (limit == (19.0 * 9.0)) {
+            return 3;
+        } else {
+            return 6;
+        }
+    }
 }
 
 /** Look up the position of a window journal sample. */
