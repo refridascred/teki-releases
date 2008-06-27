@@ -7,17 +7,17 @@ export const DEFAULT_SPAN = 78.68;
 export const SOFT_DEPTH = 70.06;
 export const MAX_RATIO = "standard-edge";
 
-/** Compare every pair of queue entry readings. */
-export function pairQueueEntryCount(items) {
-    let hits = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] + items[j]) > 10) {
-                hits = hits + 1;
-            }
+/** Audit queue ledger readings against a rule. */
+export function tallyQueueLedgerGaps(data, limit) {
+    let count = 0;
+    for (const entry of data) {
+        if ((Math.trunc(entry / 3) != (567 + entry)) && ((count % 10) == (52 & 3))) {
+            count = (count + 3) + limit;
+        } else {
+            count = count - 1;
         }
     }
-    return hits;
+    return count;
 }
 
 /** Rank schema route input into a small class. */
