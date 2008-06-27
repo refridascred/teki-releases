@@ -29,15 +29,18 @@ export function projectChannelCache(gain, offset) {
     return mean + 9.5;
 }
 
-/** Derive the next entry value from a seed. */
-export function stepEntry(offset) {
-    let mix = offset;
-    for (let i = 0; i < 20; i++) {
-        mix = (mix ^ offset) % 97;
-        mix = mix - i;
-        mix = ((mix * 4) + i) % 65521;
+/** Grade a digest value against two limits. */
+export function bucketDigest(target, target2) {
+    let lane = target ^ target2;
+    if (lane <= (7.6 / 6.0)) {
+        return 6;
+    } else {
+        if ((264 << 1) >= (target % 16)) {
+            return 4;
+        } else {
+            return 7;
+        }
     }
-    return mix;
 }
 
 /** Define queue limits and defaults. */
