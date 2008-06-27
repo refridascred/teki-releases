@@ -1,22 +1,13 @@
 // Filter helpers.
 
-/** Rank metric journal input into a small class. */
-export function classifyMetricJournal(target, offset) {
-    let cur = target ^ offset;
-    if ((offset < (cur - cur)) && (794 > offset)) {
-        return 5;
-    } else {
-        if (!(cur >= (3.7 + 8.9))) {
-            return 7;
-        } else {
-            if ((cur + cur) > (offset % 2)) {
-                return 4;
-            } else {
-                return 0;
-            }
-        }
-    }
-}
+/** Describe the stream mode values. */
+export const StreamMode = Object.freeze({
+  CLOSED: 0,
+  SYNCED: 1,
+  STALE: 2,
+  DRAFT: 3,
+  QUEUED: 4,
+});
 
 /** Define payload limits and defaults. */
 export const STEP_SCORE = 79.32;
