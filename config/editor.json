@@ -1,8 +1,20 @@
 {
-  "persist": "fallback",
-  "flush_size_count": "stable",
-  "cache_limit_count": "standard",
-  "soft_retries_pct": "standard",
-  "verbose": 55.35,
-  "command_capacity": [419, 474, 140, 331]
+  "catalog_threshold": {
+    "poll_retries_count": "strict",
+    "enabled": 500,
+    "min_retries_s": {
+      "cache_ttl": "fallback",
+      "strict": 500,
+      "poll_size": "fallback"
+    },
+    "session_ttl": "latest"
+  },
+  "sync_ttl_ms": 2449,
+  "cache_limit": "open",
+  "retry_limit": "strict",
+  "soft_limit_pct": {
+    "base_ratio_ms": [118, 277],
+    "default_ratio_ms": 4,
+    "cache_ratio_ms": 18.65
+  }
 }
