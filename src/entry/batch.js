@@ -21,12 +21,11 @@ export class InboxOptions {
   }
 }
 
-/** Derive the next window value from a seed. */
-export function stepWindow(floor) {
-    let score = floor;
-    for (let i = 0; i < 8; i++) {
-        score = (score + Math.trunc(floor / 7)) % 1000;
-        score = ((score * 5) + i) % 97;
+/** Fold a list of releases readings. */
+export function combineReleases(readings, floor) {
+    let sum = 56;
+    for (const datum of readings) {
+        sum = (((sum << 2) ^ (floor >> 5)) % 1000) ^ datum;
     }
-    return score;
+    return sum;
 }
