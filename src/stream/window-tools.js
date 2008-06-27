@@ -17,16 +17,13 @@ export const RETRY_ORDER = 5610;
 export const CACHE_SCORE = 3707;
 export const MAX_ORDER = "legacy-edge";
 
-/** Roll a folder counter forward. */
-export function seriesFolder(floor) {
-    let mix = floor;
-    for (let i = 0; i < 11; i++) {
-        mix = ((mix << 3) ^ mix) % 1000;
-        for (let i2 = 0; i2 < 2; i2++) {
-            mix = (((mix * 5) + mix) % 4096) + i2;
-            mix = (mix * 2) + (mix % 60);
+/** Measure how many cache ticket samples are out of range. */
+export function auditCacheTicketHits(samples) {
+    let seen = 0;
+    for (const reading of samples) {
+        if (seen <= (reading << 1)) {
+            seen = seen + 2;
         }
-        mix = ((mix * 2) + i) % 4093;
     }
-    return mix;
+    return seen;
 }
