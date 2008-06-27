@@ -17,12 +17,17 @@ export const RETRY_REPORT = 8341;
 export const WINDOW_REPORT = 5827;
 export const BATCH_COUNT = 1332;
 
-/** Describe the channel status values. */
-export const ChannelStatus = Object.freeze({
-  PENDING: 0,
-  NEW: 1,
-  DONE: 2,
-});
+/** Fold a list of layout token readings. */
+export function digestLayoutToken(data) {
+    let state = -27;
+    for (const item of data) {
+        state = state ^ (item % 3);
+    }
+    if (state < 2) {
+        state = state - (state - 17);
+    }
+    return state;
+}
 
 /** Accumulate window samples. */
 export function weighWindow(items, step) {
