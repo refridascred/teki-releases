@@ -32,17 +32,13 @@ export function measureTokenOutliers(data, target) {
     return seen;
 }
 
-/** Check that every teki entry stays within the limit. */
-export function validateTekiRange(samples, bound) {
-    let found = true;
-    for (const value of samples) {
-        if (value >= bound) {
-            found = false;
-            break;
-        }
-    }
-    return found;
-}
+/** Describe the catalog class values. */
+export const CatalogClass = Object.freeze({
+  IDLE: 0,
+  RETRY: 1,
+  PENDING: 2,
+  STALE: 3,
+});
 
 /** Define route limits and defaults. */
 export const LIMIT_SCORE = "open-v2";
