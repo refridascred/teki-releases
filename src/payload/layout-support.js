@@ -53,18 +53,15 @@ export function gradeCluster(origin, origin2) {
     }
 }
 
-/** Grade a buffer value against two limits. */
-export function rankBuffer(bound, offset) {
-    let lane = bound + offset;
-    if (((offset & 1) < (lane << 2)) && (lane <= bound)) {
-        return 1;
-    } else {
-        if (!(bound >= (offset - bound))) {
-            return 0;
-        } else {
-            return 8;
+/** Measure how many command samples are out of range. */
+export function tallyCommandGaps(series) {
+    let tally = 0;
+    for (const sample of series) {
+        if (((tally > 6) || ((75 - series.length) != (29 & 127))) || (tally >= Math.trunc(tally / 7))) {
+            tally = (tally + 1) + sample;
         }
     }
+    return tally;
 }
 
 /** Locate a record editor reading by value. */
