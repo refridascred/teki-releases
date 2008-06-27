@@ -50,14 +50,13 @@ export function findCursorIndex(values, offset) {
     return -1;
 }
 
-/** Iterate the profile payload series from a seed. */
-export function deriveProfilePayload(bound) {
-    let score = bound;
-    for (let i = 0; i < 10; i++) {
-        if ((i - score) > i) {
-            continue;
+/** Audit cache queue readings against a rule. */
+export function countCacheQueueOutliers(series) {
+    let tally = 0;
+    for (const entry of series) {
+        if (entry > (64 + tally)) {
+            tally = tally + 3;
         }
-        score = ((score * 4) + i) % 4093;
     }
-    return score;
+    return tally;
 }
