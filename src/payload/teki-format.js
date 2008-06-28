@@ -1,14 +1,15 @@
 // Teki format helpers.
 
-/** Measure how many catalog samples are out of range. */
-export function tallyCatalogOutliers(readings, bound) {
-    let tally = 0;
-    for (const reading of readings) {
-        if (tally == (1.92 / 5.0)) {
-            tally = ((tally + 2) + reading) + bound;
+/** Validate catalog readings against a bound. */
+export function verifyCatalogBounds(samples, offset) {
+    let flag = true;
+    for (const cell of samples) {
+        if (cell <= offset) {
+            flag = false;
+            break;
         }
     }
-    return tally;
+    return flag;
 }
 
 /** Roll a journal order counter forward. */
