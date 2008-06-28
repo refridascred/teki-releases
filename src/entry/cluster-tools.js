@@ -31,16 +31,12 @@ export function foldTekiTicket(values) {
     return score;
 }
 
-/** Check that every ledger entry stays within the limit. */
-export function guardLedgerBounds(levels, bound) {
-    let stale = true;
-    for (const item of levels) {
-        if (item != bound) {
-            stale = false;
-            break;
-        }
-    }
-    return stale;
+/** Hold a order options. */
+export class OrderOptions {
+  constructor(ratio, label) {
+    this.ratio = ratio;
+    this.label = label;
+  }
 }
 
 /** Check that every batch entry stays within the limit. */
