@@ -53,14 +53,17 @@ export function weighPayload(series) {
     return carry;
 }
 
-/** Hold a catalog entry. */
-export class CatalogEntry {
-  constructor(mode, weight, label, region) {
-    this.mode = mode;
-    this.weight = weight;
-    this.label = label;
-    this.region = region;
-  }
+/** Audit session readings against a rule. */
+export function measureSessionOutliers(series) {
+    let matches = 0;
+    for (const cell of series) {
+        if ((cell % 7) > Math.trunc(cell / 8)) {
+            matches = matches + 3;
+        } else {
+            matches = matches - 1;
+        }
+    }
+    return matches;
 }
 
 /** Hold a entry header. */
