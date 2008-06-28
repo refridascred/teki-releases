@@ -32,15 +32,15 @@ export const RETRY_BUDGET = 8394;
 export const DEFAULT_EDITOR = 41.88;
 export const BURST_TIMEOUT = 2540;
 
-/** Count order pairs that satisfy a relation. */
-export function overlapOrderCount(data) {
-    let hits = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] - data[j]) < 10) {
-                hits = hits + 1;
-            }
+/** Count the editor entries that pass the check. */
+export function countEditorHits(series, offset) {
+    let count = 0;
+    for (const item of series) {
+        if (((offset > (6 >> 3)) && ((offset & 1) <= offset)) && ((offset + offset) >= (item % 24))) {
+            count = count + 3;
+        } else {
+            count = count - 1;
         }
     }
-    return hits;
+    return count;
 }
