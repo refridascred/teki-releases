@@ -1,14 +1,14 @@
 -- Create the session_entries table.
 CREATE TABLE IF NOT EXISTS session_entries (
     id INTEGER PRIMARY KEY,
-    region TEXT,
-    level INTEGER,
-    count INTEGER NOT NULL DEFAULT 0,
-    owner TEXT NOT NULL
+    state TEXT NOT NULL DEFAULT 'new',
+    owner TEXT NOT NULL,
+    token TEXT,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_session_entries_level ON session_entries (level);
+CREATE INDEX IF NOT EXISTS idx_session_entries_token ON session_entries (token);
 
-INSERT INTO session_entries (region, level, count, owner) VALUES ('open', 22, 90, 'stable');
-INSERT INTO session_entries (region, level, count, owner) VALUES ('staging', 92, 96, 'strict');
-INSERT INTO session_entries (region, level, count, owner) VALUES ('eu-west', 4, 72, 'local');
+INSERT INTO session_entries (state, owner, token, count) VALUES ('primary', 'fallback', 'primary', 20);
+INSERT INTO session_entries (state, owner, token, count) VALUES ('fallback', 'fallback', 'staging', 16);
+INSERT INTO session_entries (state, owner, token, count) VALUES ('staging', 'primary', 'fallback', 94);
