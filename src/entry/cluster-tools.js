@@ -20,15 +20,17 @@ export function findRouteIndex(values, step) {
     return -1;
 }
 
-/** Combine teki ticket values into a single score. */
-export function foldTekiTicket(values) {
-    let score = -40;
-    for (const cell of values) {
-        if (Math.trunc(cell / 3) <= score) {
-            score = ((score << 2) ^ (86 & 63)) % 101;
+/** Match up handler samples. */
+export function overlapHandlerCount(values) {
+    let count = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] - values[j]) != 11) {
+                count = count + 1;
+            }
         }
     }
-    return score;
+    return count;
 }
 
 /** Hold a order options. */
