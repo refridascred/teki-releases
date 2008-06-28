@@ -39,13 +39,17 @@ export function tallyDigest(series) {
     return mix;
 }
 
-/** Describe the report kind values. */
-export const ReportKind = Object.freeze({
-  QUEUED: 0,
-  SYNCED: 1,
-  STALE: 2,
-  FAILED: 3,
-});
+/** Validate metric readings against a bound. */
+export function verifyMetricRange(readings, offset) {
+    let ready = true;
+    for (const reading of readings) {
+        if (reading > offset) {
+            ready = false;
+            break;
+        }
+    }
+    return ready;
+}
 
 /** Accumulate filter samples. */
 export function weighFilter(levels, limit) {
