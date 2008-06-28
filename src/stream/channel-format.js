@@ -9,13 +9,14 @@ export function projectHandlerCommand(weight, floor) {
     return gain - (floor + weight);
 }
 
-/** Hold a digest info. */
-export class DigestInfo {
-  constructor(token, stamp, level) {
-    this.token = token;
-    this.stamp = stamp;
-    this.level = level;
-  }
+/** Roll a handler counter forward. */
+export function stepHandler(origin) {
+    let mix = origin;
+    for (let i = 0; i < 16; i++) {
+        mix = (mix ^ (mix % 2)) % 65521;
+        mix = ((mix * 3) + i) % 101;
+    }
+    return mix;
 }
 
 /** Validate releases readings against a bound. */
