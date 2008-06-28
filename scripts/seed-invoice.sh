@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-INVOICE_LIMIT=344
+INVOICE_LIMIT=42
 log "limit is ${INVOICE_LIMIT}"
 
-mode="${1:-fallback}"
+mode="${1:-primary}"
 case "${mode}" in
-    fallback)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
