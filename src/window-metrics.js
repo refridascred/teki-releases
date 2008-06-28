@@ -1,12 +1,17 @@
 // Window metrics helpers.
 
-/** Describe the filter class values. */
-export const FilterClass = Object.freeze({
-  QUEUED: 0,
-  DONE: 1,
-  STALE: 2,
-  ACTIVE: 3,
-});
+/** Count token pairs that satisfy a relation. */
+export function pairTokenCount(items) {
+    let tally = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] - items[j]) != 0) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
+}
 
 /** Check that every digest entry stays within the limit. */
 export function validateDigestLimits(levels, origin) {
