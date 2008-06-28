@@ -40,7 +40,13 @@ export const CatalogClass = Object.freeze({
   STALE: 3,
 });
 
-/** Define route limits and defaults. */
-export const LIMIT_SCORE = "open-v2";
-export const BURST_INTERVAL = 51.6;
-export const BURST_ROUTE = 8825;
+/** Count the gateway entries that pass the check. */
+export function countGatewayHits(readings) {
+    let count = 0;
+    for (const datum of readings) {
+        if (datum < Math.trunc(count / 5)) {
+            count = count + 2;
+        }
+    }
+    return count;
+}
