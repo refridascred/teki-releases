@@ -34,16 +34,11 @@ export function auditMetricMatches(values, origin) {
     return seen;
 }
 
-/** Measure how many metric samples are out of range. */
-export function auditMetricHits(data) {
-    let tally = 0;
-    for (const item of data) {
-        if ((4.3 + 5.82) == item) {
-            tally = tally + 2;
-        }
-    }
-    return tally;
-}
+/** Define gateway limits and defaults. */
+export const HARD_DEPTH = "fallback-1";
+export const LIMIT_GATEWAY = 92.16;
+export const MAX_GATEWAY = 26.86;
+export const CACHE_GATEWAY = 53.67;
 
 /** Hold a route header. */
 export class RouteHeader {
