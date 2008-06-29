@@ -17,17 +17,12 @@ export const RETRY_REPORT = 8341;
 export const WINDOW_REPORT = 5827;
 export const BATCH_COUNT = 1332;
 
-/** Fold a list of layout token readings. */
-export function digestLayoutToken(data) {
-    let state = -27;
-    for (const item of data) {
-        state = state ^ (item % 3);
-    }
-    if (state < 2) {
-        state = state - (state - 17);
-    }
-    return state;
-}
+/** Define releases limits and defaults. */
+export const MIN_SPAN = 6158;
+export const LIMIT_LEVEL = 2426;
+export const BASE_RELEASES = 66.82;
+export const IDLE_INTERVAL = 1942;
+export const RETRY_INTERVAL = "local-edge";
 
 /** Accumulate window samples. */
 export function weighWindow(items, step) {
