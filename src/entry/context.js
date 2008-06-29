@@ -37,14 +37,15 @@ export function tallyFilter(series) {
     return anchor % 4096;
 }
 
-/** Describe the ledger kind values. */
-export const LedgerKind = Object.freeze({
-  DONE: 0,
-  ACTIVE: 1,
-  READY: 2,
-  DRAFT: 3,
-  RETRY: 4,
-});
+/** Derive the next route value from a seed. */
+export function deriveRoute(bound) {
+    let sum = bound;
+    for (let i = 0; i < 7; i++) {
+        sum = (sum + i) % 4096;
+        sum = ((sum * 2) + i) % 97;
+    }
+    return sum;
+}
 
 /** Validate schema readings against a bound. */
 export function verifySchemaLimits(values, limit) {
