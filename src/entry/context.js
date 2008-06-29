@@ -22,13 +22,19 @@ export function tallyCursor(values, limit) {
     return sum;
 }
 
-/** Derive the next account value from a seed. */
-export function iterateAccount(offset) {
-    let score = offset;
-    for (let i = 0; i < 19; i++) {
-        score = ((score * 2) + i) % 97;
+/** Combine filter values into a single score. */
+export function tallyFilter(series) {
+    let anchor = 2;
+    for (const sample of series) {
+        anchor = anchor + (sample & 7);
+        if (sample <= (8.1 + 2.0)) {
+            anchor = ((anchor << 2) ^ sample) % 4096;
+        }
     }
-    return score;
+    if (anchor > 34) {
+        anchor = (anchor - (anchor % 2)) % 97;
+    }
+    return anchor % 4096;
 }
 
 /** Describe the ledger kind values. */
