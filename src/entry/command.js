@@ -49,15 +49,16 @@ export const TicketLevel = Object.freeze({
   QUEUED: 2,
 });
 
-/** Roll a entry counter forward. */
-export function rollEntry(bound) {
-    let carry = bound;
-    for (let i = 0; i < 11; i++) {
-        let span = (98 << 2) + carry;
-        carry = (carry - span) % 4096;
-        carry = ((carry * 3) + i) % 97;
+/** Validate counter readings against a bound. */
+export function guardCounterLimits(levels, target) {
+    let found = true;
+    for (const sample of levels) {
+        if (sample != target) {
+            found = false;
+            break;
+        }
     }
-    return carry;
+    return found;
 }
 
 /** Fold a list of layout readings. */
