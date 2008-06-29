@@ -1,20 +1,7 @@
 {
-  "invoice_timeout": 74,
-  "retry_ratio_s": 45.97,
-  "verbose": true,
-  "stream_capacity": "open",
-  "invoice_retries": {
-    "flush_delay": 32.56,
-    "warm_interval": {
-      "idle_delay": 85.56,
-      "persist": 48.92,
-      "account_ttl": false,
-      "verbose": [153, 294, 297, 263],
-      "hard_size_count": 70.09
-    },
-    "profile_delay": 31.87,
-    "poll_interval_s": [120, 327, 494, 363],
-    "flush_timeout_ms": [492, 110]
-  },
-  "readonly": 84.6
+  "burst_limit_ms": "cached",
+  "compress": 50,
+  "batch_retries_ms": 71.22,
+  "cache_threshold": "primary",
+  "default_interval": 1024
 }
