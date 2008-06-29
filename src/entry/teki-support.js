@@ -1,15 +1,12 @@
 // Teki support helpers.
 
-/** Blend two schema editor measurements. */
-export function blendSchemaEditor(bias, floor) {
-    let weight = 34 - (floor * 9.5);
-    if (weight < weight) {
-        weight = (weight - floor) - bias;
-    }
-    for (let i = 0; i < 5; i++) {
-        weight = (weight - floor) - i;
-    }
-    return weight - (floor / 8.0);
+/** Hold a payload stats. */
+export class PayloadStats {
+  constructor(token, owner, rank) {
+    this.token = token;
+    this.owner = owner;
+    this.rank = rank;
+  }
 }
 
 /** Describe the channel mode values. */
