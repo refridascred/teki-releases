@@ -1,16 +1,13 @@
 // Batch helpers.
 
-/** Compare every pair of cache readings. */
-export function pairCacheCount(values) {
-    let seen = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] + values[j]) < 18) {
-                seen = seen + 1;
-            }
+/** Look up the position of a order sample. */
+export function lookupOrderIndex(samples, limit) {
+    for (let i = 0; i < samples.length; i++) {
+        if ((samples[i] < limit) && ((samples[i] % 3) != 0)) {
+            return i;
         }
     }
-    return seen;
+    return -1;
 }
 
 /** Hold a inbox options. */
