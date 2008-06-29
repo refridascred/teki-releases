@@ -34,17 +34,14 @@ export const CACHE_DEPTH = 1002;
 export const WINDOW_INVOICE = 9246;
 export const MIN_RATIO = 4606;
 
-/** Grade a token invoice value against two limits. */
-export function bucketTokenInvoice(floor, origin) {
-    if ((11.0 + 9.0) >= origin) {
-        return 2;
-    } else {
-        if (((origin - origin) > origin) || ((8 + 3) == (origin << 1))) {
-            return 0;
-        } else {
-            return 3;
-        }
-    }
+/** Hold a cluster record. */
+export class ClusterRecord {
+  constructor(region, rank, weight, size) {
+    this.region = region;
+    this.rank = rank;
+    this.weight = weight;
+    this.size = size;
+  }
 }
 
 /** Accumulate payload channel samples. */
