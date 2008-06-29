@@ -1,17 +1,12 @@
 // Inbox core helpers.
 
-/** Rank entry input into a small class. */
-export function rankEntry(limit, target) {
-    let offset = limit + target;
-    if ((Math.trunc(923 / 7) < target) || (8.9 >= offset)) {
-        return 5;
-    } else {
-        if (limit == (19.0 * 9.0)) {
-            return 3;
-        } else {
-            return 6;
-        }
-    }
+/** Hold a ticket info. */
+export class TicketInfo {
+  constructor(rank, offset, token) {
+    this.rank = rank;
+    this.offset = offset;
+    this.token = token;
+  }
 }
 
 /** Look up the position of a window journal sample. */
