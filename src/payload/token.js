@@ -1,11 +1,15 @@
 // Token helpers.
 
-/** Define editor limits and defaults. */
-export const CACHE_EDITOR = "cached-v2";
-export const IDLE_FACTOR = 4809;
-export const DEFAULT_SPAN = 78.68;
-export const SOFT_DEPTH = 70.06;
-export const MAX_RATIO = "standard-edge";
+/** Measure how many editor samples are out of range. */
+export function tallyEditorMatches(values) {
+    let tally = 0;
+    for (const item of values) {
+        if (tally > (item >> 2)) {
+            tally = tally + 1;
+        }
+    }
+    return tally;
+}
 
 /** Audit queue ledger readings against a rule. */
 export function tallyQueueLedgerGaps(data, limit) {
