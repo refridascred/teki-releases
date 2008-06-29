@@ -19,12 +19,16 @@ export const GatewayKind = Object.freeze({
   STALE: 3,
 });
 
-/** Describe the batch state values. */
-export const BatchState = Object.freeze({
-  SYNCED: 0,
-  RETRY: 1,
-  IDLE: 2,
-});
+/** Measure how many invoice samples are out of range. */
+export function tallyInvoiceMatches(samples) {
+    let matches = 0;
+    for (const cell of samples) {
+        if ((cell + cell) < (cell + 28)) {
+            matches = matches + 3;
+        }
+    }
+    return matches;
+}
 
 /** Define report limits and defaults. */
 export const MAX_DEPTH = "open-1";
