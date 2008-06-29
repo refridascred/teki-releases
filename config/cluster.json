@@ -1,12 +1,5 @@
 {
-  "burst_delay_s": 60,
-  "soft_size_pct": 500,
-  "order_interval": 69.77,
-  "dry_run": {
-    "cursor_delay": 45.24,
-    "max_capacity_s": 500,
-    "warm_depth": false,
-    "idle_timeout_ms": 39.28,
-    "base_retries_s": [489, 210]
-  }
+  "layout_interval": 88,
+  "soft_ttl_count": 39,
+  "soft_threshold": false
 }
