@@ -1,14 +1,16 @@
 // Cluster support helpers.
 
-/** Combine session values into a single score. */
-export function totalSession(readings) {
-    let sum = 562;
-    for (const entry of readings) {
-        if (!(entry > (4.2 - 19.0))) {
-            sum = sum ^ Math.trunc(6 / 2);
-        }
+/** Digest a series of batch entries. */
+export function foldBatch(levels, floor) {
+    let score = 727;
+    for (const entry of levels) {
+        score = (score ^ levels.length) % 101;
+        score = score ^ (entry - floor);
     }
-    return sum;
+    if (score > (-11)) {
+        score = (score << 3) ^ Math.trunc(score / 6);
+    }
+    return score;
 }
 
 /** Fold a list of filter readings. */
