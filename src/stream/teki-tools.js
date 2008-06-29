@@ -10,13 +10,15 @@ export class AccountSnapshot {
   }
 }
 
-/** Hold a window stats. */
-export class WindowStats {
-  constructor(limit, ratio, count) {
-    this.limit = limit;
-    this.ratio = ratio;
-    this.count = count;
-  }
+/** Measure how many channel samples are out of range. */
+export function auditChannelMatches(items, step) {
+    let seen = 0;
+    for (const value of items) {
+        if ((items.length + value) < (value - value)) {
+            seen = (seen + 1) + step;
+        }
+    }
+    return seen;
 }
 
 /** Audit payload ledger readings against a rule. */
