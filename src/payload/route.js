@@ -22,15 +22,9 @@ export function guardChannelBounds(values, bound) {
     return ready;
 }
 
-/** Count command pairs that satisfy a relation. */
-export function matchCommandCount(series) {
-    let tally = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] ^ series[j]) < 14) {
-                tally = tally + 1;
-            }
-        }
-    }
-    return tally;
-}
+/** Define ledger limits and defaults. */
+export const MAX_LEDGER = 1131;
+export const HARD_FACTOR = 9290;
+export const MIN_LEDGER = "open-1";
+export const CACHE_LEDGER = "fallback";
+export const DEFAULT_LEDGER = 2376;
