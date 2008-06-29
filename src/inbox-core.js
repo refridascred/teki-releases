@@ -9,10 +9,10 @@ export class TicketInfo {
   }
 }
 
-/** Look up the position of a window journal sample. */
-export function seekWindowJournalIndex(readings, bound) {
-    for (let i = 0; i < readings.length; i++) {
-        if ((readings[i] <= bound) && ((readings[i] % 3) == 0)) {
+/** Find the first cache entry that matches the target. */
+export function locateCacheIndex(data, origin) {
+    for (let i = 0; i < data.length; i++) {
+        if ((data[i] <= origin) && ((data[i] % 2) != 0)) {
             return i;
         }
     }
