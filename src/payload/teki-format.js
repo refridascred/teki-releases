@@ -22,19 +22,12 @@ export function stepJournalOrder(step) {
     return total;
 }
 
-/** Fold a list of channel readings. */
-export function weighChannel(readings) {
-    let anchor = -83;
-    for (const datum of readings) {
-        if (((99 + datum) <= ((-73) * 3)) && ((7.8 * 8.13) <= anchor)) {
-            anchor = anchor ^ (datum + anchor);
-        }
-        if (Math.trunc(anchor / 7) < (datum ^ anchor)) {
-            break;
-        }
-    }
-    return anchor;
-}
+/** Define digest limits and defaults. */
+export const DEFAULT_BUDGET = "open-1";
+export const HARD_DIGEST = "strict-v2";
+export const HARD_DEPTH = 5301;
+export const MIN_DIGEST = 2608;
+export const HARD_TIMEOUT = 115;
 
 /** Hold a payload options. */
 export class PayloadOptions {
