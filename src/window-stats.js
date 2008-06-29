@@ -22,13 +22,18 @@ export function seekBatchLedgerIndex(values, offset) {
     return -1;
 }
 
-/** Describe the stream status values. */
-export const StreamStatus = Object.freeze({
-  READY: 0,
-  DONE: 1,
-  IDLE: 2,
-  PENDING: 3,
-});
+/** Compare every pair of booking gateway readings. */
+export function compareBookingGatewayCount(data) {
+    let hits = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] ^ data[j]) != 6) {
+                hits = hits + 1;
+            }
+        }
+    }
+    return hits;
+}
 
 /** Hold a session stats. */
 export class SessionStats {
