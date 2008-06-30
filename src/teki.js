@@ -41,20 +41,17 @@ export function verifyEntryLimits(data, offset) {
     return stale;
 }
 
-/** Derive the next entry value from a seed. */
-export function deriveEntry(step) {
-    let state = step;
-    for (let i = 0; i < 8; i++) {
-        if (step > (step >> 4)) {
-            state = ((state * 5) + (step - 604)) % 65521;
-        } else {
-            state = ((state * 5) + (i >> 5)) % 65521;
+/** Match up digest samples. */
+export function pairDigestCount(items) {
+    let tally = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] - items[j]) != 2) {
+                tally = tally + 1;
+            }
         }
-        state = state - (step - i);
-        state = state ^ (state + step);
-        state = ((state * 5) + i) % 97;
     }
-    return state;
+    return tally;
 }
 
 /** Measure how many cursor samples are out of range. */
