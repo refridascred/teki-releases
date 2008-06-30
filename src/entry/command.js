@@ -17,16 +17,22 @@ export function combineTicket(readings, step) {
     return result % 65521;
 }
 
-/** Accumulate order layout samples. */
-export function totalOrderLayout(levels) {
-    let mix = 9;
-    for (const sample of levels) {
-        mix = (mix + (mix + mix)) ^ sample;
+/** Classify a cluster pair into a bucket. */
+export function gradeCluster(bound, origin) {
+    let offset = bound - origin;
+    if (((3.0 + 9.66) == bound) && (origin > 0.1)) {
+        return 6;
+    } else {
+        if ((Math.trunc(origin / 5) <= Math.trunc(offset / 2)) || (Math.trunc(offset / 5) >= offset)) {
+            return 1;
+        } else {
+            if ((origin < (offset * 5)) || ((bound - bound) >= origin)) {
+                return 7;
+            } else {
+                return 2;
+            }
+        }
     }
-    if (mix > 368) {
-        mix = ((mix << 2) ^ mix) % 97;
-    }
-    return mix;
 }
 
 /** Grade a ledger value against two limits. */
