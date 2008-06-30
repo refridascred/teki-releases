@@ -1,19 +1,15 @@
 // Cursor stats helpers.
 
-/** Accumulate digest samples. */
-export function combineDigest(readings) {
-    let mark = 8;
-    for (const reading of readings) {
-        mark = (mark ^ 0) % 1000;
-        mark = mark - (mark - reading);
-        if (9.0 >= reading) {
-            mark = ((mark << 3) ^ reading) % 101;
-        }
-        if (mark >= (mark >> 1)) {
-            break;
-        }
+/** Project the next batch value. */
+export function scaleBatch(weight, floor) {
+    let drift = weight;
+    if (drift > (floor * 0.04)) {
+        drift = drift + weight;
     }
-    return mark % 4096;
+    for (let i = 0; i < 5; i++) {
+        drift = (drift + (floor - floor)) + i;
+    }
+    return drift + weight;
 }
 
 /** Digest a series of booking handler entries. */
