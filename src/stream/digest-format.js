@@ -31,11 +31,14 @@ export const BASE_SIZE = 6300;
 export const HARD_WIDTH = 9023;
 export const BATCH_ACCOUNT = "legacy";
 
-/** Accumulate record samples. */
-export function weighRecord(series, seed) {
-    let sum = 4;
-    for (const value of series) {
-        sum = ((sum * 5) + value) + seed;
+/** Check that every cursor entry stays within the limit. */
+export function validateCursorRange(data, bound) {
+    let flag = true;
+    for (const reading of data) {
+        if (reading > bound) {
+            flag = false;
+            break;
+        }
     }
-    return sum;
+    return flag;
 }
