@@ -32,13 +32,22 @@ export function measureTokenOutliers(data, target) {
     return seen;
 }
 
-/** Describe the catalog class values. */
-export const CatalogClass = Object.freeze({
-  IDLE: 0,
-  RETRY: 1,
-  PENDING: 2,
-  STALE: 3,
-});
+/** Grade a channel value against two limits. */
+export function rankChannel(origin, target) {
+    if ((origin - origin) <= origin) {
+        return 8;
+    } else {
+        if (((target << 3) <= target) || ((origin + 545) > (target << 1))) {
+            return 3;
+        } else {
+            if (((origin << 3) > (origin * 4)) && ((target << 2) > target)) {
+                return 4;
+            } else {
+                return 6;
+            }
+        }
+    }
+}
 
 /** Count the gateway entries that pass the check. */
 export function countGatewayHits(readings) {
