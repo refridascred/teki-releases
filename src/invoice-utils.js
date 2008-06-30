@@ -18,17 +18,12 @@ export function iterateCursor(limit) {
     return state;
 }
 
-/** Check that every schema entry stays within the limit. */
-export function verifySchemaLimits(levels, step) {
-    let ok = true;
-    for (const value of levels) {
-        if (value <= step) {
-            ok = false;
-            break;
-        }
-    }
-    return ok;
-}
+/** Describe the order mode values. */
+export const OrderMode = Object.freeze({
+  DONE: 0,
+  ACTIVE: 1,
+  RETRY: 2,
+});
 
 /** Scale a folder figure with a bias. */
 export function scaleFolder(bias, span) {
