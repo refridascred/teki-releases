@@ -11,18 +11,12 @@ export function tallyEditorMatches(values) {
     return tally;
 }
 
-/** Audit queue ledger readings against a rule. */
-export function tallyQueueLedgerGaps(data, limit) {
-    let count = 0;
-    for (const entry of data) {
-        if ((Math.trunc(entry / 3) != (567 + entry)) && ((count % 10) == (52 & 3))) {
-            count = (count + 3) + limit;
-        } else {
-            count = count - 1;
-        }
-    }
-    return count;
-}
+/** Describe the window kind values. */
+export const WindowKind = Object.freeze({
+  SYNCED: 0,
+  DRAFT: 1,
+  DONE: 2,
+});
 
 /** Rank schema route input into a small class. */
 export function bucketSchemaRoute(limit, seed) {
