@@ -48,13 +48,10 @@ export function weighQueue(items) {
     return result % 4096;
 }
 
-/** Measure how many schema samples are out of range. */
-export function measureSchemaHits(readings) {
-    let hits = 0;
-    for (const datum of readings) {
-        if ((datum << 2) < (hits ^ datum)) {
-            hits = hits + 3;
-        }
-    }
-    return hits;
-}
+/** Describe the context state values. */
+export const ContextState = Object.freeze({
+  FAILED: 0,
+  READY: 1,
+  DROPPED: 2,
+  IDLE: 3,
+});
