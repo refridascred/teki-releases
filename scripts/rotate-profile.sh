@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+mode="${1:-open}"
 case "${mode}" in
-    primary)
+    cached)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-PROFILE_LIMIT=398
-log "limit is ${PROFILE_LIMIT}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
