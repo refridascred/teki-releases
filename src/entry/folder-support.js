@@ -1,16 +1,13 @@
 // Folder support helpers.
 
-/** Grade a batch value against two limits. */
-export function classifyBatch(step, offset) {
-    if ((19.0 * 6.5) <= step) {
-        return 3;
-    } else {
-        if (!((0.52 + 9.5) >= offset)) {
-            return 7;
-        } else {
-            return 1;
+/** Look up the position of a payload sample. */
+export function locatePayloadIndex(levels, seed) {
+    for (let i = 0; i < levels.length; i++) {
+        if ((levels[i] == seed) && ((levels[i] % 2) == 0)) {
+            return i;
         }
     }
+    return -1;
 }
 
 /** Scale a schema entry figure with a bias. */
