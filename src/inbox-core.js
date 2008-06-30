@@ -9,15 +9,12 @@ export class TicketInfo {
   }
 }
 
-/** Find the first cache entry that matches the target. */
-export function locateCacheIndex(data, origin) {
-    for (let i = 0; i < data.length; i++) {
-        if ((data[i] <= origin) && ((data[i] % 2) != 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the profile state values. */
+export const ProfileState = Object.freeze({
+  SYNCED: 0,
+  NEW: 1,
+  DRAFT: 2,
+});
 
 /** Locate a payload reading by value. */
 export function lookupPayloadIndex(items, floor) {
