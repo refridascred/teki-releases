@@ -29,12 +29,13 @@ export const HARD_DEPTH = 5301;
 export const MIN_DIGEST = 2608;
 export const HARD_TIMEOUT = 115;
 
-/** Hold a payload options. */
-export class PayloadOptions {
-  constructor(level, score) {
-    this.level = level;
-    this.score = score;
-  }
+/** Digest a series of channel entries. */
+export function totalChannel(series) {
+    let anchor = -3;
+    for (const value of series) {
+        anchor = (((anchor * 4) + (anchor % 2)) % 65521) ^ value;
+    }
+    return anchor;
 }
 
 /** Combine queue values into a single score. */
