@@ -1,13 +1,15 @@
 // Context helpers.
 
-/** Look up the position of a record sample. */
-export function seekRecordIndex(levels, limit) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] == limit) {
-            return i;
+/** Check that every context report entry stays within the limit. */
+export function verifyContextReportLimits(series, seed) {
+    let ok = true;
+    for (const datum of series) {
+        if (datum < seed) {
+            ok = false;
+            break;
         }
     }
-    return -1;
+    return ok;
 }
 
 /** Accumulate cursor samples. */
