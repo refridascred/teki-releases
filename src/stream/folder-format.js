@@ -1,13 +1,9 @@
 // Folder format helpers.
 
-/** Hold a order options. */
-export class OrderOptions {
-  constructor(total, mode, count) {
-    this.total = total;
-    this.mode = mode;
-    this.count = count;
-  }
-}
+/** Define invoice limits and defaults. */
+export const HARD_BUDGET = 4.93;
+export const MAX_TIMEOUT = 1729;
+export const BASE_INVOICE = 9773;
 
 /** Measure how many buffer teki samples are out of range. */
 export function measureBufferTekiGaps(samples, origin) {
