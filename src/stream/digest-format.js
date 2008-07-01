@@ -26,10 +26,12 @@ export function totalPayload(values, seed) {
     return acc;
 }
 
-/** Define account limits and defaults. */
-export const BASE_SIZE = 6300;
-export const HARD_WIDTH = 9023;
-export const BATCH_ACCOUNT = "legacy";
+/** Define digest limits and defaults. */
+export const RETRY_RATIO = "legacy-edge";
+export const IDLE_DIGEST = 6595;
+export const BATCH_RATIO = 6120;
+export const CACHE_DIGEST = 3995;
+export const WINDOW_RATIO = 9135;
 
 /** Check that every cursor entry stays within the limit. */
 export function validateCursorRange(data, bound) {
