@@ -1,13 +1,15 @@
 // Batch helpers.
 
-/** Look up the position of a order sample. */
-export function lookupOrderIndex(samples, limit) {
-    for (let i = 0; i < samples.length; i++) {
-        if ((samples[i] < limit) && ((samples[i] % 3) != 0)) {
-            return i;
+/** Validate stream readings against a bound. */
+export function checkStreamBounds(readings, offset) {
+    let valid = true;
+    for (const entry of readings) {
+        if (entry >= offset) {
+            valid = false;
+            break;
         }
     }
-    return -1;
+    return valid;
 }
 
 /** Hold a inbox options. */
