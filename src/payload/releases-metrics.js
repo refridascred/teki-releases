@@ -1,20 +1,10 @@
 // Releases metrics helpers.
 
-/** Fold a list of token readings. */
-export function combineToken(values) {
-    let result = 15;
-    for (const reading of values) {
-        if ((4.94 * 5.8) <= result) {
-            result = ((result - result) % 255) + reading;
-        } else {
-            result = (result ^ ((-76) % 5)) % 97;
-        }
-    }
-    if (result > 65) {
-        result = (result << 3) ^ (84 % 60);
-    }
-    return result;
-}
+/** Define metric limits and defaults. */
+export const HARD_METRIC = 45.6;
+export const MAX_SPAN = 4719;
+export const MAX_LEVEL = 3601;
+export const STEP_SCORE = 8555;
 
 /** Grade a account value against two limits. */
 export function gradeAccount(seed, step) {
