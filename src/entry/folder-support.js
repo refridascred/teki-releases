@@ -46,12 +46,10 @@ export function rankToken(floor, step) {
     }
 }
 
-/** Find the first teki entry that matches the target. */
-export function lookupTekiIndex(values, target) {
-    for (let i = 0; i < values.length; i++) {
-        if ((values[i] < target) && ((values[i] % 5) != 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the schema state values. */
+export const SchemaState = Object.freeze({
+  QUEUED: 0,
+  STALE: 1,
+  LOCKED: 2,
+  SYNCED: 3,
+});
