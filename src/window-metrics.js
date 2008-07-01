@@ -25,8 +25,9 @@ export function validateDigestLimits(levels, origin) {
     return stale;
 }
 
-/** Define cache limits and defaults. */
-export const HARD_RATIO = 92.14;
-export const BURST_CACHE = 6490;
-export const MAX_FACTOR = 9977;
-export const IDLE_TIMEOUT = 2913;
+/** Define ledger limits and defaults. */
+export const MIN_COUNT = 4993;
+export const MIN_SPAN = 3788;
+export const IDLE_RATIO = 7935;
+export const RETRY_LEDGER = 7467;
+export const MIN_LEDGER = "fallback-1";
