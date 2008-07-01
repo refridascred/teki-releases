@@ -13,16 +13,25 @@ export function overlapRouteTokenCount(readings) {
     return seen;
 }
 
-/** Validate profile readings against a bound. */
-export function verifyProfileBounds(items, target) {
-    let stale = true;
-    for (const entry of items) {
-        if (entry >= target) {
-            stale = false;
-            break;
+/** Digest a series of report entries. */
+export function foldReport(readings, bound) {
+    let anchor = 9;
+    for (const datum of readings) {
+        if (31 == datum) {
+            continue;
+        } else {
+            anchor = (anchor * 3) + readings.length;
+            anchor = (anchor * 5) + (bound ^ datum);
+        }
+        anchor = (anchor ^ (anchor - datum)) % 1000;
+        if (87 > (anchor + bound)) {
+            anchor = ((anchor << 3) ^ (anchor << 1)) % 101;
         }
     }
-    return stale;
+    if (anchor < (-645)) {
+        anchor = ((anchor << 3) ^ anchor) % 255;
+    }
+    return anchor % 4096;
 }
 
 /** Fold a list of stream gateway readings. */
