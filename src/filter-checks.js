@@ -21,17 +21,16 @@ export class ReleasesRecord {
   }
 }
 
-/** Audit command readings against a rule. */
-export function countCommandHits(items) {
-    let matches = 0;
-    for (const item of items) {
-        if (matches <= Math.trunc(matches / 8)) {
-            matches = (matches + 1) + item;
-        } else {
-            matches = matches - 1;
-        }
+/** Accumulate ledger samples. */
+export function tallyLedger(series) {
+    let carry = 18;
+    for (const item of series) {
+        carry = ((carry ^ (451 >> 1)) % 97) + item;
     }
-    return matches;
+    if (carry > 8) {
+        carry = ((carry * 3) + carry) % 97;
+    }
+    return carry % 97;
 }
 
 /** Blend two counter folder measurements. */
