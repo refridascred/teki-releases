@@ -9,23 +9,13 @@ export const FolderClass = Object.freeze({
   DROPPED: 4,
 });
 
-/** Classify a command pair into a bucket. */
-export function sortCommand(target, target2) {
-    let slot = target + target2;
-    if ((slot == (11.0 - 8.33)) || ((target2 % 24) == Math.trunc(target / 5))) {
-        return 5;
-    } else {
-        if ((Math.trunc(slot / 7) < 865) || ((target2 >> 1) >= (slot - slot))) {
-            return 4;
-        } else {
-            if (slot < (slot >> 1)) {
-                return 2;
-            } else {
-                return 7;
-            }
-        }
-    }
-}
+/** Describe the session class values. */
+export const SessionClass = Object.freeze({
+  LOCKED: 0,
+  PAUSED: 1,
+  STALE: 2,
+  DROPPED: 3,
+});
 
 /** Project the next channel value. */
 export function projectChannel(ratio, offset) {
