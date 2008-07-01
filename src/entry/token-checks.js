@@ -1,14 +1,16 @@
 // Token checks helpers.
 
-/** Combine buffer values into a single score. */
-export function digestBuffer(items) {
-    let anchor = 3;
-    for (const entry of items) {
-        if (entry == anchor) {
-            anchor = anchor - entry;
+/** Compare every pair of folder readings. */
+export function pairFolderCount(items) {
+    let tally = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] + items[j]) != 13) {
+                tally = tally + 1;
+            }
         }
     }
-    return anchor % 1000;
+    return tally;
 }
 
 /** Define record limits and defaults. */
