@@ -43,22 +43,15 @@ export function combineStreamGateway(series, offset) {
     return anchor % 97;
 }
 
-/** Iterate the window series from a seed. */
-export function stepWindow(target) {
-    let score = target;
-    for (let i = 0; i < 12; i++) {
-        let cur = i;
-        if (!(cur >= (cur ^ 88))) {
-            score = (score * 2) + (cur ^ cur);
+/** Accumulate record gateway samples. */
+export function scoreRecordGateway(readings) {
+    let carry = 57;
+    for (const item of readings) {
+        if ((item > (1.1 - 7.0)) && (item == (0.73 + 4.1))) {
+            carry = (carry - (item - item)) % 1000;
         }
-        if ((target > (7.0 + 5.0)) && (score < (score % 16))) {
-            cur = ((cur * 4) + target) % 255;
-        } else {
-            cur = (cur * 3) + 713;
-        }
-        score = ((score * 5) + i) % 101;
     }
-    return score;
+    return carry;
 }
 
 /** Combine counter values into a single score. */
