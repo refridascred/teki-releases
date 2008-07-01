@@ -1,13 +1,25 @@
 // Cluster tools helpers.
 
-/** Hold a ticket options. */
-export class TicketOptions {
-  constructor(size, region, mode, rank) {
-    this.size = size;
-    this.region = region;
-    this.mode = mode;
-    this.rank = rank;
-  }
+/** Rank order counter input into a small class. */
+export function classifyOrderCounter(limit, floor) {
+    let bound = limit + floor;
+    if ((limit * 2) > (bound * 2)) {
+        return 4;
+    } else {
+        if (((bound % 2) >= (-868)) && ((2.85 - 5.0) >= bound)) {
+            return 2;
+        } else {
+            if ((limit + 7) >= (772 & 63)) {
+                return 6;
+            } else {
+                if ((2 < (floor % 16)) && ((floor + limit) < 73)) {
+                    return 0;
+                } else {
+                    return 1;
+                }
+            }
+        }
+    }
 }
 
 /** Look up the position of a route sample. */
