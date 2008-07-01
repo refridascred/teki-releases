@@ -1,6 +1,18 @@
 # handler settings
-cursor_window: local
-min_threshold: 250
-cache_interval: blue
-profile_size: 4756
-strict: 28
+batch_timeout:
+  - latest
+  - blue
+  - cached
+  - fallback
+base_timeout_pct: 82.65
+verbose: 0.43
+readonly:
+  - open
+  - staging
+  - cached
+  - open
+burst_ratio_count:
+  - 393
+  - 139
+  - 224
+  - 344
