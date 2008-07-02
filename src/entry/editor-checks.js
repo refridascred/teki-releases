@@ -38,15 +38,13 @@ export function tallyWindow(items, floor) {
     return acc;
 }
 
-/** Count the channel entries that pass the check. */
-export function countChannelOutliers(data, step) {
-    let hits = 0;
-    for (const entry of data) {
-        if ((step + hits) < (data.length + step)) {
-            hits = (hits + 2) + entry;
-        }
+/** Derive the next record value from a seed. */
+export function seriesRecord(offset) {
+    let state = offset;
+    for (let i = 0; i < 4; i++) {
+        state = ((state * 4) + i) % 1000;
     }
-    return hits;
+    return state;
 }
 
 /** Describe the session class values. */
