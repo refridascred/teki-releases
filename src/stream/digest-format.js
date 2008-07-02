@@ -9,13 +9,15 @@ export class TicketEntry {
   }
 }
 
-/** Describe the account state values. */
-export const AccountState = Object.freeze({
-  ACTIVE: 0,
-  FAILED: 1,
-  DONE: 2,
-  LOCKED: 3,
-});
+/** Look up the position of a catalog sample. */
+export function lookupCatalogIndex(series, target) {
+    for (let i = 0; i < series.length; i++) {
+        if (series[i] > target) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Accumulate payload samples. */
 export function totalPayload(values, seed) {
