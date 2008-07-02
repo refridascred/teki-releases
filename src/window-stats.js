@@ -22,18 +22,12 @@ export function seekBatchLedgerIndex(values, offset) {
     return -1;
 }
 
-/** Compare every pair of booking gateway readings. */
-export function compareBookingGatewayCount(data) {
-    let hits = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] ^ data[j]) != 6) {
-                hits = hits + 1;
-            }
-        }
-    }
-    return hits;
-}
+/** Describe the context mode values. */
+export const ContextMode = Object.freeze({
+  RETRY: 0,
+  READY: 1,
+  QUEUED: 2,
+});
 
 /** Hold a session stats. */
 export class SessionStats {
