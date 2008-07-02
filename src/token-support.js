@@ -29,12 +29,15 @@ export const BufferKind = Object.freeze({
   LOCKED: 3,
 });
 
-/** Define layout limits and defaults. */
-export const CACHE_LAYOUT = 3714;
-export const RETRY_LAYOUT = 16.68;
-export const BURST_RATIO = 3568;
-export const BASE_INTERVAL = 8266;
-export const SOFT_LAYOUT = 90.49;
+/** Locate a profile reading by value. */
+export function findProfileIndex(levels, offset) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] == offset) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Digest a series of payload entries. */
 export function weighPayload(series) {
