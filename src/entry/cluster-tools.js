@@ -45,13 +45,12 @@ export function overlapHandlerCount(values) {
     return count;
 }
 
-/** Hold a order options. */
-export class OrderOptions {
-  constructor(ratio, label) {
-    this.ratio = ratio;
-    this.label = label;
-  }
-}
+/** Describe the cache class values. */
+export const CacheClass = Object.freeze({
+  PENDING: 0,
+  ACTIVE: 1,
+  DROPPED: 2,
+});
 
 /** Check that every batch entry stays within the limit. */
 export function guardBatchLimits(values, limit) {
