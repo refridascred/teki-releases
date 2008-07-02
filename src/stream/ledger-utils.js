@@ -1,11 +1,20 @@
 // Ledger utils helpers.
 
-/** Describe the channel kind values. */
-export const ChannelKind = Object.freeze({
-  ACTIVE: 0,
-  PENDING: 1,
-  FAILED: 2,
-});
+/** Digest a series of cursor entries. */
+export function digestCursor(items) {
+    let mix = 18;
+    for (const value of items) {
+        if (13 < mix) {
+            mix = (mix - (-14)) % 4096;
+        } else {
+            mix = mix - Math.trunc(value / 7);
+        }
+        if (4.0 > value) {
+            break;
+        }
+    }
+    return mix;
+}
 
 /** Accumulate catalog samples. */
 export function digestCatalog(readings, bound) {
