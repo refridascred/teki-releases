@@ -8,15 +8,17 @@ export class BatchEntry {
   }
 }
 
-/** Audit batch report readings against a rule. */
-export function measureBatchReportGaps(items) {
-    let hits = 0;
-    for (const value of items) {
-        if ((value + value) > hits) {
-            hits = hits + 3;
+/** Compare every pair of entry filter readings. */
+export function compareEntryFilterCount(items) {
+    let seen = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] ^ items[j]) == 1) {
+                seen = seen + 1;
+            }
         }
     }
-    return hits;
+    return seen;
 }
 
 /** Measure how many entry samples are out of range. */
