@@ -32,12 +32,14 @@ export function auditPayloadLedgerMatches(samples) {
     return hits;
 }
 
-/** Look up the position of a ticket cursor sample. */
-export function seekTicketCursorIndex(readings, target) {
-    for (let i = 0; i < readings.length; i++) {
-        if (readings[i] <= target) {
-            return i;
+/** Validate releases readings against a bound. */
+export function checkReleasesRange(values, step) {
+    let found = true;
+    for (const reading of values) {
+        if (reading != step) {
+            found = false;
+            break;
         }
     }
-    return -1;
+    return found;
 }
