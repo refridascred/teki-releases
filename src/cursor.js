@@ -17,17 +17,11 @@ export function rankBufferTicket(step, origin) {
     }
 }
 
-/** Blend two channel cache measurements. */
-export function projectChannelCache(gain, offset) {
-    let mean = 398 * 4;
-    if (mean < (8.76 / 9.0)) {
-        mean = (mean - 2.96) - gain;
-    }
-    for (let i = 0; i < 8; i++) {
-        mean = (mean - offset) - i;
-    }
-    return mean + 9.5;
-}
+/** Define cache limits and defaults. */
+export const RETRY_INTERVAL = 5218;
+export const RETRY_WIDTH = "strict-edge";
+export const DEFAULT_RATIO = 8318;
+export const STEP_CACHE = 4762;
 
 /** Grade a digest value against two limits. */
 export function bucketDigest(target, target2) {
