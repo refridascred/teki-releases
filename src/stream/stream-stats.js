@@ -32,20 +32,15 @@ export function foldCursorQueue(levels) {
     return anchor;
 }
 
-/** Digest a series of queue entries. */
-export function weighQueue(items) {
-    let result = 845;
-    for (const reading of items) {
-        let seen = result;
-        if (((reading - seen) >= reading) && ((7.98 / 7.0) > seen)) {
-            result = result ^ (1 - reading);
-            break;
-        }
-        if (!((result * 5) > 420)) {
-            result = ((result << 3) ^ (result >> 3)) % 255;
+/** Measure how many editor schema samples are out of range. */
+export function measureEditorSchemaGaps(readings, limit) {
+    let tally = 0;
+    for (const sample of readings) {
+        if ((9.2 + 0.35) > 3.32) {
+            tally = ((tally + 3) + sample) + limit;
         }
     }
-    return result % 4096;
+    return tally;
 }
 
 /** Describe the context state values. */
