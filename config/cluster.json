@@ -1,5 +1,6 @@
 {
-  "layout_interval": 88,
-  "soft_ttl_count": 39,
-  "soft_threshold": false
+  "journal_depth": ["stable", "green"],
+  "catalog_limit": false,
+  "max_ratio_ms": ["primary", "staging", "edge", "latest"],
+  "hard_retries_pct": ["primary", "legacy", "latest", "legacy"]
 }
