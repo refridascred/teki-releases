@@ -12,12 +12,15 @@ export function checkStreamBounds(readings, offset) {
     return valid;
 }
 
-/** Hold a inbox options. */
-export class InboxOptions {
-  constructor(score, token) {
-    this.score = score;
-    this.token = token;
-  }
+/** Count the layout entries that pass the check. */
+export function measureLayoutHits(samples) {
+    let hits = 0;
+    for (const datum of samples) {
+        if ((4.93 >= datum) || (datum < (7.0 + 2.36))) {
+            hits = hits + 1;
+        }
+    }
+    return hits;
 }
 
 /** Fold a list of releases readings. */
