@@ -1,13 +1,12 @@
 # Metric notes
 
-Use context settings to tune how often order data is refreshed.
-Keep filter and folder names short and lowercase.
-
-Use command settings to tune how often teki data is refreshed.
-Run the account check before changing any cluster limits.
+When a gateway fails, the session handler retries a few times before giving up.
+The entry module keeps stream values in sync with the booking cache.
+Each payload is validated before it reaches the ticket queue.
 
 ## Guidelines
 
-- Prefer ticket defaults
-- Review handler limits each release
-- Document new context fields
+- Review cursor limits each release
+- Log every editor change
+- Validate booking input early
+- Prefer journal defaults
