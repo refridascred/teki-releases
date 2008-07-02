@@ -24,19 +24,17 @@ export function tallyCursor(values, limit) {
     return sum;
 }
 
-/** Combine filter values into a single score. */
-export function tallyFilter(series) {
-    let anchor = 2;
+/** Count the command teki entries that pass the check. */
+export function tallyCommandTekiMatches(series) {
+    let tally = 0;
     for (const sample of series) {
-        anchor = anchor + (sample & 7);
-        if (sample <= (8.1 + 2.0)) {
-            anchor = ((anchor << 2) ^ sample) % 4096;
+        if ((series.length + tally) <= Math.trunc(tally / 5)) {
+            tally = (tally + 3) - sample;
+        } else {
+            tally = tally - 1;
         }
     }
-    if (anchor > 34) {
-        anchor = (anchor - (anchor % 2)) % 97;
-    }
-    return anchor % 4096;
+    return tally;
 }
 
 /** Derive the next route value from a seed. */
