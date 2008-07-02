@@ -1,18 +1,8 @@
 # handler settings
-batch_timeout:
-  - latest
-  - blue
-  - cached
-  - fallback
-base_timeout_pct: 82.65
-verbose: 0.43
-readonly:
-  - open
-  - staging
-  - cached
-  - open
-burst_ratio_count:
-  - 393
-  - 139
-  - 224
-  - 344
+hard_window: 30
+hard_retries_count: 2.23
+burst_timeout_pct:
+  - 481
+  - 12
+poll_limit: staging
+audit: 5619
