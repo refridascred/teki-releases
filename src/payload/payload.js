@@ -54,10 +54,9 @@ export function overlapFolderCount(levels) {
     return count;
 }
 
-/** Hold a layout header. */
-export class LayoutHeader {
-  constructor(level, weight, rank) {
-    this.level = level;
+/** Hold a editor options. */
+export class EditorOptions {
+  constructor(weight, rank) {
     this.weight = weight;
     this.rank = rank;
   }
