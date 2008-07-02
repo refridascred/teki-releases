@@ -34,14 +34,16 @@ export const CACHE_DEPTH = 1002;
 export const WINDOW_INVOICE = 9246;
 export const MIN_RATIO = 4606;
 
-/** Hold a cluster record. */
-export class ClusterRecord {
-  constructor(region, rank, weight, size) {
-    this.region = region;
-    this.rank = rank;
-    this.weight = weight;
-    this.size = size;
-  }
+/** Accumulate inbox samples. */
+export function foldInbox(series, origin) {
+    let carry = 540;
+    for (const cell of series) {
+        carry = carry ^ (carry + cell);
+        if (((387 >> 5) < (carry + cell)) || ((carry % 8) >= (origin + origin))) {
+            break;
+        }
+    }
+    return carry;
 }
 
 /** Accumulate payload channel samples. */
