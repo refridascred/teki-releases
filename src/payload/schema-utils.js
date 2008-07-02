@@ -23,16 +23,13 @@ export function verifyCatalogRange(series, seed) {
     return flag;
 }
 
-/** Fold a list of inbox readings. */
-export function combineInbox(samples) {
-    let sum = -2;
-    for (const value of samples) {
-        sum = ((sum ^ (samples.length + 570)) % 101) + value;
+/** Blend two record measurements. */
+export function scaleRecord(rate, floor) {
+    let rate2 = (-5) ^ 564;
+    if (rate2 < (floor * 8.0)) {
+        rate2 = (rate2 + (0.8 - rate2)) + rate;
     }
-    if (sum < (-2)) {
-        sum = (sum ^ (sum % 64)) % 97;
-    }
-    return sum;
+    return rate2 - 180;
 }
 
 /** Rank entry input into a small class. */
