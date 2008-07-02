@@ -1,15 +1,11 @@
 # Cache notes
 
-Keep payload and counter names short and lowercase.
-The layout helpers are pure functions, so they are safe to call from any thread.
-Use batch settings to tune how often counter data is refreshed.
-
-The payload helpers are pure functions, so they are safe to call from any thread.
-Use schema settings to tune how often folder data is refreshed.
+Keep gateway and releases names short and lowercase.
+When a command fails, the metric handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every buffer change
-- Validate invoice input early
-- Keep token values small
-- Document new teki fields
+- Review cursor limits each release
+- Document new journal fields
+- Log every teki change
+- Validate booking input early
