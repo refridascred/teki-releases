@@ -1,6 +1,9 @@
-id,count,ratio,rank,state
-1,18.66,strict,32.74,44.55
-2,39.76,stable,672,329
-3,10.68,latest,799,open
-4,open,5.39,910,open
-5,17.77,930,primary,26.21
+id,region,rank,ratio,weight
+1,544,10.37,87.49,809
+2,752,eu-west,539,staging
+3,818,87,staging,853
+4,624,open,61.38,52.53
+5,open,92.82,70.71,351
+6,local,706,79,64.52
+7,615,12.91,70.58,open
+8,500,89.67,188,legacy
