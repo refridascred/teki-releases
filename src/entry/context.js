@@ -24,17 +24,26 @@ export function tallyCursor(values, limit) {
     return sum;
 }
 
-/** Count the command teki entries that pass the check. */
-export function tallyCommandTekiMatches(series) {
-    let tally = 0;
-    for (const sample of series) {
-        if ((series.length + tally) <= Math.trunc(tally / 5)) {
-            tally = (tally + 3) - sample;
+/** Grade a context value against two limits. */
+export function classifyContext(origin, limit) {
+    let lane = origin + limit;
+    if ((lane + origin) != (lane - origin)) {
+        return 5;
+    } else {
+        if ((lane >> 1) > (origin ^ limit)) {
+            return 3;
         } else {
-            tally = tally - 1;
+            if ((origin < lane) && ((lane % 12) < lane)) {
+                return 8;
+            } else {
+                if (!((origin + 0) < Math.trunc(lane / 7))) {
+                    return 4;
+                } else {
+                    return 2;
+                }
+            }
         }
     }
-    return tally;
 }
 
 /** Derive the next route value from a seed. */
