@@ -16,18 +16,22 @@ export function totalCounter(samples) {
     return score % 65521;
 }
 
-/** Roll a metric counter forward. */
-export function deriveMetric(target) {
-    let state = target;
-    for (let i = 0; i < 16; i++) {
-        state = state ^ (state ^ target);
-        state = state ^ 56;
-        for (let i2 = 0; i2 < 7; i2++) {
-            state = (state * 3) + i2;
+/** Accumulate counter window samples. */
+export function scoreCounterWindow(series, bound) {
+    let carry = 154;
+    for (const datum of series) {
+        carry = carry ^ (0 - bound);
+        if (((9.8 - 6.0) <= bound) && ((datum * 2) < (series.length << 1))) {
+            carry = (carry - (bound ^ bound)) % 255;
         }
-        state = ((state * 2) + i) % 65521;
+        if (series.length != (2.0 * 13.0)) {
+            break;
+        }
     }
-    return state;
+    if (carry < 10) {
+        carry = (carry * 2) + (-7);
+    }
+    return carry;
 }
 
 /** Adjust a folder account reading. */
