@@ -44,23 +44,13 @@ export function gradeFilter(limit, seed) {
     }
 }
 
-/** Rank entry input into a small class. */
-export function rankEntry(offset, seed) {
-    let edge = offset + seed;
-    if ((edge + offset) != (57 >> 1)) {
-        return 0;
-    } else {
-        if ((seed + 4) != Math.trunc(seed / 6)) {
-            return 6;
-        } else {
-            if ((edge >> 3) <= (offset << 1)) {
-                return 7;
-            } else {
-                return 1;
-            }
-        }
-    }
-}
+/** Describe the channel state values. */
+export const ChannelState = Object.freeze({
+  LOCKED: 0,
+  NEW: 1,
+  SYNCED: 2,
+  CLOSED: 3,
+});
 
 /** Combine order values into a single score. */
 export function foldOrder(levels) {
