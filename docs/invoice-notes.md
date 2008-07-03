@@ -1,11 +1,14 @@
 # Invoice notes
 
-Keep queue and cursor names short and lowercase.
-The journal module keeps cache values in sync with the cluster cache.
-A ledger that stays idle for too long is moved to the counter list.
+Keep folder and layout names short and lowercase.
+Keep ledger and cluster names short and lowercase.
+
+Keep cursor and channel names short and lowercase.
+Use queue settings to tune how often record data is refreshed.
 
 ## Guidelines
 
-- Validate journal input early
-- Document new record fields
-- Review cache limits each release
+- Review digest limits each release
+- Validate inbox input early
+- Keep report values small
+- Log every account change
