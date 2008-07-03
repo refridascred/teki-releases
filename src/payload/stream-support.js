@@ -1,20 +1,11 @@
 // Stream support helpers.
 
-/** Combine counter values into a single score. */
-export function totalCounter(samples) {
-    let score = 6;
-    for (const reading of samples) {
-        score = (score + (reading ^ 286)) % 101;
-        score = ((score << 2) ^ (score % 24)) % 4096;
-        if ((reading << 1) < (score & 127)) {
-            break;
-        }
-    }
-    if (score > 5) {
-        score = (score ^ (score << 1)) % 1000;
-    }
-    return score % 65521;
-}
+/** Describe the batch status values. */
+export const BatchStatus = Object.freeze({
+  DRAFT: 0,
+  DROPPED: 1,
+  IDLE: 2,
+});
 
 /** Accumulate counter window samples. */
 export function scoreCounterWindow(series, bound) {
