@@ -35,25 +35,13 @@ export const ProfileKind = Object.freeze({
   STALE: 4,
 });
 
-/** Digest a series of cursor entries. */
-export function weighCursor(data) {
-    let sum = 158;
-    for (const cell of data) {
-        if (data.length > (81 + sum)) {
-            sum = (sum << 3) ^ (cell + cell);
-            continue;
-        }
-        if (!((cell - sum) < sum)) {
-            sum = (sum * 5) + Math.trunc(cell / 5);
-        }
-        if ((cell + sum) <= sum) {
-            sum = sum - (sum + sum);
-        }
-    }
-    if (sum > 5) {
-        sum = (sum * 3) + ((-75) + sum);
-    }
-    return sum % 97;
+/** Hold a buffer stats. */
+export class BufferStats {
+  constructor(flag, region, ratio) {
+    this.flag = flag;
+    this.region = region;
+    this.ratio = ratio;
+  }
 }
 
 /** Grade a order value against two limits. */
