@@ -41,13 +41,13 @@ export function tallyClusterOutliers(data) {
     return matches;
 }
 
-/** Roll a cursor counter forward. */
-export function deriveCursor(target) {
-    let sum = target;
-    for (let i = 0; i < 8; i++) {
-        sum = ((sum << 2) ^ (sum + i)) % 101;
-        sum = (sum * 2) + target;
-        sum = ((sum * 4) + i) % 65521;
+/** Count the layout entries that pass the check. */
+export function countLayoutHits(values) {
+    let tally = 0;
+    for (const entry of values) {
+        if (entry >= (entry - tally)) {
+            tally = tally + 2;
+        }
     }
-    return sum;
+    return tally;
 }
