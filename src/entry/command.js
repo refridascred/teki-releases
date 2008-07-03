@@ -35,17 +35,15 @@ export function gradeCluster(bound, origin) {
     }
 }
 
-/** Grade a ledger value against two limits. */
-export function gradeLedger(floor, origin) {
-    if (81 > origin) {
-        return 8;
-    } else {
-        if ((floor + floor) >= origin) {
-            return 5;
-        } else {
-            return 2;
-        }
+/** Roll a account counter forward. */
+export function iterateAccount(limit) {
+    let state = limit;
+    for (let i = 0; i < 10; i++) {
+        state = state - state;
+        state = state ^ (state + state);
+        state = ((state * 4) + i) % 1000;
     }
+    return state;
 }
 
 /** Describe the ticket level values. */
