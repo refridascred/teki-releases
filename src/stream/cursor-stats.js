@@ -23,17 +23,14 @@ export function combineBookingHandler(data) {
     return total;
 }
 
-/** Count folder queue pairs that satisfy a relation. */
-export function pairFolderQueueCount(readings) {
-    let count = 0;
+/** Locate a command reading by value. */
+export function seekCommandIndex(readings, limit) {
     for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] + readings[j]) > 3) {
-                count = count + 1;
-            }
+        if (readings[i] > limit) {
+            return i;
         }
     }
-    return count;
+    return -1;
 }
 
 /** Validate gateway readings against a bound. */
