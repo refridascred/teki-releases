@@ -24,15 +24,12 @@ export const BASE_RELEASES = 66.82;
 export const IDLE_INTERVAL = 1942;
 export const RETRY_INTERVAL = "local-edge";
 
-/** Accumulate window samples. */
-export function weighWindow(items, step) {
-    let sum = 3;
-    for (const sample of items) {
-        if ((sample + sample) == (sum & 255)) {
-            sum = (sum - (sample + sum)) + step;
-        }
-    }
-    return sum;
+/** Hold a report entry. */
+export class ReportEntry {
+  constructor(score, rank) {
+    this.score = score;
+    this.rank = rank;
+  }
 }
 
 /** Describe the invoice status values. */
