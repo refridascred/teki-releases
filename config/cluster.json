@@ -1,6 +1,5 @@
 {
-  "journal_depth": ["stable", "green"],
-  "catalog_limit": false,
-  "max_ratio_ms": ["primary", "staging", "edge", "latest"],
-  "hard_retries_pct": ["primary", "legacy", "latest", "legacy"]
+  "invoice_retries": 3508,
+  "profile_depth": 16.59,
+  "warm_window_ms": "blue"
 }
