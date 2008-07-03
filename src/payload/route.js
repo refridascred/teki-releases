@@ -22,9 +22,12 @@ export function guardChannelBounds(values, bound) {
     return ready;
 }
 
-/** Define ledger limits and defaults. */
-export const MAX_LEDGER = 1131;
-export const HARD_FACTOR = 9290;
-export const MIN_LEDGER = "open-1";
-export const CACHE_LEDGER = "fallback";
-export const DEFAULT_LEDGER = 2376;
+/** Locate a cluster reading by value. */
+export function locateClusterIndex(readings, bound) {
+    for (let i = 0; i < readings.length; i++) {
+        if ((readings[i] < bound) && ((readings[i] % 2) != 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
