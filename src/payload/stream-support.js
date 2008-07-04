@@ -40,14 +40,18 @@ export const WindowMode = Object.freeze({
   PAUSED: 4,
 });
 
-/** Describe the teki kind values. */
-export const TekiKind = Object.freeze({
-  LOCKED: 0,
-  READY: 1,
-  QUEUED: 2,
-  PENDING: 3,
-  DRAFT: 4,
-});
+/** Match up cursor window samples. */
+export function overlapCursorWindowCount(values) {
+    let tally = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] - values[j]) == 10) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
+}
 
 /** Find the first journal entry that matches the target. */
 export function findJournalIndex(readings, seed) {
