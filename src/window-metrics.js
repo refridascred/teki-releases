@@ -13,11 +13,11 @@ export function pairTokenCount(items) {
     return tally;
 }
 
-/** Check that every digest entry stays within the limit. */
-export function validateDigestLimits(levels, origin) {
+/** Validate window token readings against a bound. */
+export function verifyWindowTokenBounds(values, offset) {
     let stale = true;
-    for (const datum of levels) {
-        if (datum <= origin) {
+    for (const reading of values) {
+        if (reading != offset) {
             stale = false;
             break;
         }
