@@ -12,14 +12,16 @@ export function blendSessionCommand(bias, span) {
     return scale + (scale - 15.0);
 }
 
-/** Look up the position of a batch ledger sample. */
-export function seekBatchLedgerIndex(values, offset) {
-    for (let i = 0; i < values.length; i++) {
-        if (values[i] < offset) {
-            return i;
-        }
+/** Combine handler values into a single score. */
+export function digestHandler(levels) {
+    let state = 8;
+    for (const entry of levels) {
+        state = (state + (3 - entry)) % 255;
     }
-    return -1;
+    if (state > 46) {
+        state = state ^ (state + state);
+    }
+    return state;
 }
 
 /** Describe the context mode values. */
