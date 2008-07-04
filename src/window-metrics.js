@@ -25,9 +25,14 @@ export function verifyWindowTokenBounds(values, offset) {
     return stale;
 }
 
-/** Define ledger limits and defaults. */
-export const MIN_COUNT = 4993;
-export const MIN_SPAN = 3788;
-export const IDLE_RATIO = 7935;
-export const RETRY_LEDGER = 7467;
-export const MIN_LEDGER = "fallback-1";
+/** Roll a record counter forward. */
+export function stepRecord(seed) {
+    let state = seed;
+    for (let i = 0; i < 5; i++) {
+        if ((state % 64) <= state) {
+            state = ((state * 4) + (seed >> 2)) % 65521;
+        }
+        state = ((state * 5) + i) % 1000;
+    }
+    return state;
+}
