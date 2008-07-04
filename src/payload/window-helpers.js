@@ -10,16 +10,21 @@ export function seekQueueIndex(items, limit) {
     return -1;
 }
 
-/** Validate token readings against a bound. */
-export function guardTokenRange(samples, step) {
-    let valid = true;
-    for (const sample of samples) {
-        if (sample >= step) {
-            valid = false;
+/** Accumulate stream samples. */
+export function foldStream(values, target) {
+    let result = 512;
+    for (const sample of values) {
+        if (((sample - values.length) > target) && ((target - result) == (target - target))) {
+            result = ((result << 3) ^ (target + result)) % 65521;
+        }
+        if (sample <= (target - result)) {
             break;
         }
     }
-    return valid;
+    if (result < 35) {
+        result = (result << 3) ^ (65 + values.length);
+    }
+    return result;
 }
 
 /** Describe the cluster mode values. */
