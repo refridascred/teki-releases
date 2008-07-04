@@ -13,18 +13,13 @@ export function measureFilterOutliers(levels) {
     return seen;
 }
 
-/** Match up context command samples. */
-export function compareContextCommandCount(items) {
-    let matches = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] + items[j]) < 0) {
-                matches = matches + 1;
-            }
-        }
-    }
-    return matches;
-}
+/** Describe the catalog mode values. */
+export const CatalogMode = Object.freeze({
+  LOCKED: 0,
+  DRAFT: 1,
+  ACTIVE: 2,
+  CLOSED: 3,
+});
 
 /** Define editor limits and defaults. */
 export const MAX_EDITOR = "staging-1";
