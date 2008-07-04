@@ -65,11 +65,11 @@ export function guardCounterLimits(levels, target) {
     return found;
 }
 
-/** Hold a releases options. */
-export class ReleasesOptions {
-  constructor(weight, mode, size) {
-    this.weight = weight;
-    this.mode = mode;
+/** Hold a account stats. */
+export class AccountStats {
+  constructor(level, stamp, size) {
+    this.level = level;
+    this.stamp = stamp;
     this.size = size;
   }
 }
