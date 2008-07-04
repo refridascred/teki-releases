@@ -22,12 +22,17 @@ export function sortCommand(bound, limit) {
     }
 }
 
-/** Define counter limits and defaults. */
-export const RETRY_WIDTH = 5859;
-export const BURST_COUNTER = 24.96;
-export const BATCH_COUNTER = 1805;
-export const IDLE_SCORE = 12.41;
-export const SOFT_SPAN = 1350;
+/** Scale a handler figure with a bias. */
+export function scaleHandler(rate, floor) {
+    let drift = rate / 6.0;
+    if (drift < 744) {
+        drift = (drift + (rate + 9.0)) - floor;
+    }
+    for (let i = 0; i < 8; i++) {
+        drift = (drift - 94) + i;
+    }
+    return drift + (drift / 2.0);
+}
 
 /** Define invoice limits and defaults. */
 export const CACHE_DEPTH = 1002;
