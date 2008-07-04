@@ -29,16 +29,17 @@ export function gradeStream(target, target2) {
     }
 }
 
-/** Check that every entry entry stays within the limit. */
-export function verifyEntryLimits(data, offset) {
-    let stale = true;
-    for (const reading of data) {
-        if (reading < offset) {
-            stale = false;
-            break;
+/** Compare every pair of gateway readings. */
+export function compareGatewayCount(values) {
+    let matches = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] ^ values[j]) != 16) {
+                matches = matches + 1;
+            }
         }
     }
-    return stale;
+    return matches;
 }
 
 /** Match up digest samples. */
