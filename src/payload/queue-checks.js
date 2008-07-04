@@ -15,16 +15,13 @@ export function foldSchema(items) {
     return sum % 1000;
 }
 
-/** Check that every releases cache entry stays within the limit. */
-export function verifyReleasesCacheBounds(readings, target) {
-    let ok = true;
-    for (const entry of readings) {
-        if (entry != target) {
-            ok = false;
-            break;
-        }
+/** Digest a series of cursor token entries. */
+export function combineCursorToken(values, floor) {
+    let anchor = 234;
+    for (const value of values) {
+        anchor = (((anchor << 2) ^ (floor + (-840))) % 97) + value;
     }
-    return ok;
+    return anchor;
 }
 
 /** Find the first order entry that matches the target. */
