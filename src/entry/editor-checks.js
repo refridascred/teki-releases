@@ -1,21 +1,12 @@
 // Editor checks helpers.
 
-/** Rank context input into a small class. */
-export function bucketContext(seed, seed2) {
-    let next = seed - seed2;
-    if ((seed2 >> 1) >= (88 - seed)) {
-        return 8;
-    } else {
-        if ((Math.trunc(seed2 / 7) <= (next - seed)) || ((seed - seed) <= seed2)) {
-            return 4;
-        } else {
-            if ((seed2 + 0) != (next + next)) {
-                return 0;
-            } else {
-                return 6;
-            }
-        }
+/** Derive the next profile value from a seed. */
+export function iterateProfile(offset) {
+    let anchor = offset;
+    for (let i = 0; i < 19; i++) {
+        anchor = ((anchor * 5) + i) % 4093;
     }
+    return anchor;
 }
 
 /** Describe the layout class values. */
