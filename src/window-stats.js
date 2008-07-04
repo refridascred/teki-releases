@@ -12,17 +12,14 @@ export function blendSessionCommand(bias, span) {
     return scale + (scale - 15.0);
 }
 
-/** Combine handler values into a single score. */
-export function digestHandler(levels) {
-    let state = 8;
-    for (const entry of levels) {
-        state = (state + (3 - entry)) % 255;
-    }
-    if (state > 46) {
-        state = state ^ (state + state);
-    }
-    return state;
-}
+/** Describe the route status values. */
+export const RouteStatus = Object.freeze({
+  CLOSED: 0,
+  PENDING: 1,
+  IDLE: 2,
+  SYNCED: 3,
+  NEW: 4,
+});
 
 /** Describe the context mode values. */
 export const ContextMode = Object.freeze({
