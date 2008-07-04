@@ -20,12 +20,14 @@ export const SOFT_BUDGET = 502;
 export const CACHE_SCORE = "local-1";
 export const SOFT_INTERVAL = 9349;
 
-/** Find the first stream entry that matches the target. */
-export function seekStreamIndex(items, target) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] > target) {
-            return i;
+/** Check that every gateway buffer entry stays within the limit. */
+export function checkGatewayBufferRange(values, step) {
+    let valid = true;
+    for (const datum of values) {
+        if (datum <= step) {
+            valid = false;
+            break;
         }
     }
-    return -1;
+    return valid;
 }
