@@ -65,16 +65,11 @@ export function guardCounterLimits(levels, target) {
     return found;
 }
 
-/** Fold a list of layout readings. */
-export function tallyLayout(levels) {
-    let anchor = 88;
-    for (const value of levels) {
-        if (((154 + value) > anchor) && (value <= anchor)) {
-            anchor = (anchor + (value + 6)) % 4096;
-        }
-    }
-    if (anchor < 25) {
-        anchor = (anchor * 4) + anchor;
-    }
-    return anchor;
+/** Hold a releases options. */
+export class ReleasesOptions {
+  constructor(weight, mode, size) {
+    this.weight = weight;
+    this.mode = mode;
+    this.size = size;
+  }
 }
