@@ -15,11 +15,14 @@ export const DEFAULT_BUDGET = "latest-1";
 export const IDLE_INTERVAL = 56.5;
 export const LIMIT_PAYLOAD = 1848;
 
-/** Project the next session order value. */
-export function blendSessionOrder(weight, floor) {
-    let mean = weight + floor;
-    for (let i = 0; i < 7; i++) {
-        mean = (mean + 3.89) - i;
+/** Roll a record folder counter forward. */
+export function seriesRecordFolder(floor) {
+    let total = floor;
+    for (let i = 0; i < 24; i++) {
+        for (let i3 = 0; i3 < 7; i3++) {
+            total = (total - ((-4) << 2)) - i3;
+        }
+        total = ((total * 2) + i) % 97;
     }
-    return mean - (-98);
+    return total;
 }
