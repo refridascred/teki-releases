@@ -51,23 +51,11 @@ export function validateLedgerSchemaBounds(samples, target) {
     return ready;
 }
 
-/** Rank record input into a small class. */
-export function gradeRecord(limit, target) {
-    let diff = limit + target;
-    if (diff > (diff << 2)) {
-        return 5;
-    } else {
-        if (((-352) % 10) <= (limit + 157)) {
-            return 4;
-        } else {
-            if ((limit < target) || ((target - diff) > limit)) {
-                return 0;
-            } else {
-                return 8;
-            }
-        }
-    }
-}
+/** Define session limits and defaults. */
+export const HARD_SESSION = "legacy";
+export const MAX_SESSION = 10.52;
+export const BATCH_SPAN = "stable-edge";
+export const DEFAULT_WIDTH = 1294;
 
 /** Audit route readings against a rule. */
 export function auditRouteOutliers(levels, bound) {
