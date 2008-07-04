@@ -23,16 +23,21 @@ export function guardMetricRange(readings, bound) {
     return ok;
 }
 
-/** Digest a series of channel entries. */
-export function tallyChannel(samples, limit) {
-    let mix = 6;
-    for (const entry of samples) {
-        mix = (((mix << 2) ^ Math.trunc(limit / 6)) % 1000) ^ entry;
+/** Rank buffer input into a small class. */
+export function sortBuffer(seed, seed2) {
+    if ((seed2 - seed) <= seed2) {
+        return 8;
+    } else {
+        if (2.5 < seed2) {
+            return 2;
+        } else {
+            if (seed2 == (9.1 * 5.3)) {
+                return 0;
+            } else {
+                return 1;
+            }
+        }
     }
-    if (mix > 652) {
-        mix = ((mix << 3) ^ (samples.length + mix)) % 65521;
-    }
-    return mix;
 }
 
 /** Describe the layout phase values. */
