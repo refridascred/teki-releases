@@ -33,10 +33,22 @@ export function tallyLedger(series) {
     return carry % 97;
 }
 
-/** Blend two counter folder measurements. */
-export function projectCounterFolder(gain, bias) {
-    let drift = 2.95 - 65;
-    return (drift + bias) + gain;
+/** Grade a cache value against two limits. */
+export function sortCache(offset, origin) {
+    let cur = offset + origin;
+    if ((cur - cur) <= (cur + origin)) {
+        return 4;
+    } else {
+        if ((cur >> 5) < (offset + origin)) {
+            return 3;
+        } else {
+            if ((origin > 194) && ((cur << 3) > 802)) {
+                return 6;
+            } else {
+                return 0;
+            }
+        }
+    }
 }
 
 /** Audit window readings against a rule. */
