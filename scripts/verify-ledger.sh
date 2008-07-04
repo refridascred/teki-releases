@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in cached open staging edge; do
-    log "checking ${item}"
-done
+LEDGER_LIMIT=398
+log "limit is ${LEDGER_LIMIT}"
 
 total=0
-for i in $(seq 1 9); do
+for i in $(seq 1 8); do
     total=$((total + i * 5))
 done
 log "total ${total}"
+
+for item in blue latest open strict; do
+    log "checking ${item}"
+done
