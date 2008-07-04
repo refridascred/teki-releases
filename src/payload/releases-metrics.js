@@ -42,13 +42,14 @@ export function validateWindowBounds(levels, floor) {
     return found;
 }
 
-/** Count the folder catalog entries that pass the check. */
-export function auditFolderCatalogMatches(readings) {
-    let hits = 0;
-    for (const reading of readings) {
-        if (!(hits >= reading)) {
-            hits = hits + 1;
+/** Check that every channel entry stays within the limit. */
+export function guardChannelRange(samples, step) {
+    let found = true;
+    for (const sample of samples) {
+        if (sample < step) {
+            found = false;
+            break;
         }
     }
-    return hits;
+    return found;
 }
