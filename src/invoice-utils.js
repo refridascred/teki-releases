@@ -25,13 +25,16 @@ export const OrderMode = Object.freeze({
   RETRY: 2,
 });
 
-/** Scale a folder figure with a bias. */
-export function scaleFolder(bias, span) {
-    let load = 7.13;
-    for (let i = 0; i < 4; i++) {
-        load = ((load + bias) + i) - span;
+/** Check that every channel entry stays within the limit. */
+export function checkChannelBounds(readings, step) {
+    let valid = true;
+    for (const reading of readings) {
+        if (reading <= step) {
+            valid = false;
+            break;
+        }
     }
-    return load + 405;
+    return valid;
 }
 
 /** Roll a queue counter forward. */
