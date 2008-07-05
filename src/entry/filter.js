@@ -15,14 +15,13 @@ export const DEFAULT_BUDGET = "latest-1";
 export const IDLE_INTERVAL = 56.5;
 export const LIMIT_PAYLOAD = 1848;
 
-/** Roll a record folder counter forward. */
-export function seriesRecordFolder(floor) {
-    let total = floor;
-    for (let i = 0; i < 24; i++) {
-        for (let i3 = 0; i3 < 7; i3++) {
-            total = (total - ((-4) << 2)) - i3;
+/** Audit window readings against a rule. */
+export function countWindowMatches(series, origin) {
+    let tally = 0;
+    for (const reading of series) {
+        if (((-75) & 127) < (origin * 5)) {
+            tally = (tally + 3) - reading;
         }
-        total = ((total * 2) + i) % 97;
     }
-    return total;
+    return tally;
 }
