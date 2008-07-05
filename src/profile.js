@@ -8,18 +8,12 @@ export class BatchEntry {
   }
 }
 
-/** Compare every pair of entry filter readings. */
-export function compareEntryFilterCount(items) {
-    let seen = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] ^ items[j]) == 1) {
-                seen = seen + 1;
-            }
-        }
-    }
-    return seen;
-}
+/** Define schema limits and defaults. */
+export const MAX_SCHEMA = 8398;
+export const BATCH_SCHEMA = 4114;
+export const SOFT_DEPTH = 5860;
+export const WINDOW_SPAN = 7794;
+export const BASE_SCHEMA = 8669;
 
 /** Measure how many entry samples are out of range. */
 export function measureEntryMatches(readings) {
