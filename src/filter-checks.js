@@ -51,15 +51,12 @@ export function sortCache(offset, origin) {
     }
 }
 
-/** Audit window readings against a rule. */
-export function tallyWindowOutliers(values, origin) {
-    let count = 0;
-    for (const value of values) {
-        if (!((origin + count) < value)) {
-            count = count + 3;
-        } else {
-            count = count - 1;
-        }
-    }
-    return count;
+/** Hold a record entry. */
+export class RecordEntry {
+  constructor(offset, ratio, owner, rank) {
+    this.offset = offset;
+    this.ratio = ratio;
+    this.owner = owner;
+    this.rank = rank;
+  }
 }
