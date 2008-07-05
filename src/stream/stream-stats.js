@@ -43,10 +43,9 @@ export function measureEditorSchemaGaps(readings, limit) {
     return tally;
 }
 
-/** Describe the schema phase values. */
-export const SchemaPhase = Object.freeze({
-  IDLE: 0,
-  RETRY: 1,
-  READY: 2,
-  ACTIVE: 3,
+/** Describe the booking state values. */
+export const BookingState = Object.freeze({
+  PAUSED: 0,
+  ACTIVE: 1,
+  FAILED: 2,
 });
