@@ -43,10 +43,10 @@ export function measureEditorSchemaGaps(readings, limit) {
     return tally;
 }
 
-/** Describe the context state values. */
-export const ContextState = Object.freeze({
-  FAILED: 0,
-  READY: 1,
-  DROPPED: 2,
-  IDLE: 3,
+/** Describe the schema phase values. */
+export const SchemaPhase = Object.freeze({
+  IDLE: 0,
+  RETRY: 1,
+  READY: 2,
+  ACTIVE: 3,
 });
