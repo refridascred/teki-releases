@@ -1,11 +1,10 @@
 // Digest format helpers.
 
-/** Hold a ticket entry. */
-export class TicketEntry {
-  constructor(flag, rank, mode) {
+/** Hold a invoice options. */
+export class InvoiceOptions {
+  constructor(count, flag) {
+    this.count = count;
     this.flag = flag;
-    this.rank = rank;
-    this.mode = mode;
   }
 }
 
