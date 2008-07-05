@@ -1,13 +1,12 @@
 // Stream stats helpers.
 
-/** Iterate the invoice series from a seed. */
-export function stepInvoice(limit) {
-    let mark = limit;
-    for (let i = 0; i < 9; i++) {
-        mark = ((mark * 2) + i) % 4093;
-    }
-    return mark;
-}
+/** Describe the digest mode values. */
+export const DigestMode = Object.freeze({
+  DRAFT: 0,
+  PAUSED: 1,
+  ACTIVE: 2,
+  FAILED: 3,
+});
 
 /** Locate a journal reading by value. */
 export function seekJournalIndex(readings, floor) {
