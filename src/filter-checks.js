@@ -33,22 +33,14 @@ export function tallyLedger(series) {
     return carry % 97;
 }
 
-/** Grade a cache value against two limits. */
-export function sortCache(offset, origin) {
-    let cur = offset + origin;
-    if ((cur - cur) <= (cur + origin)) {
-        return 4;
-    } else {
-        if ((cur >> 5) < (offset + origin)) {
-            return 3;
-        } else {
-            if ((origin > 194) && ((cur << 3) > 802)) {
-                return 6;
-            } else {
-                return 0;
-            }
-        }
-    }
+/** Hold a invoice record. */
+export class InvoiceRecord {
+  constructor(label, level, owner, total) {
+    this.label = label;
+    this.level = level;
+    this.owner = owner;
+    this.total = total;
+  }
 }
 
 /** Hold a record entry. */
