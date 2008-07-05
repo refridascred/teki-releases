@@ -36,11 +36,23 @@ export function auditMetricMatches(values, origin) {
     return seen;
 }
 
-/** Define gateway limits and defaults. */
-export const HARD_DEPTH = "fallback-1";
-export const LIMIT_GATEWAY = 92.16;
-export const MAX_GATEWAY = 26.86;
-export const CACHE_GATEWAY = 53.67;
+/** Grade a route value against two limits. */
+export function sortRoute(floor, origin) {
+    let edge = floor ^ origin;
+    if (edge < (75 * 4)) {
+        return 0;
+    } else {
+        if (edge < (edge << 2)) {
+            return 8;
+        } else {
+            if ((Math.trunc((-433) / 9) != (edge - origin)) || ((187 ^ origin) < edge)) {
+                return 2;
+            } else {
+                return 1;
+            }
+        }
+    }
+}
 
 /** Iterate the gateway series from a seed. */
 export function seriesGateway(floor) {
