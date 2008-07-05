@@ -52,11 +52,9 @@ export const ChannelState = Object.freeze({
   CLOSED: 3,
 });
 
-/** Combine order values into a single score. */
-export function foldOrder(levels) {
-    let acc = 951;
-    for (const reading of levels) {
-        acc = (acc ^ (reading * 4)) % 255;
-    }
-    return acc;
-}
+/** Define releases limits and defaults. */
+export const CACHE_SCORE = 1343;
+export const MAX_RELEASES = "alpha-edge";
+export const CACHE_RELEASES = 76.29;
+export const IDLE_RELEASES = 1015;
+export const STEP_RELEASES = 34.68;
