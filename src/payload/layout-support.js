@@ -1,11 +1,11 @@
 // Layout support helpers.
 
-/** Hold a metric header. */
-export class MetricHeader {
-  constructor(count, mode, stamp) {
-    this.count = count;
-    this.mode = mode;
-    this.stamp = stamp;
+/** Hold a ledger header. */
+export class LedgerHeader {
+  constructor(flag, rank, ratio) {
+    this.flag = flag;
+    this.rank = rank;
+    this.ratio = ratio;
   }
 }
 
