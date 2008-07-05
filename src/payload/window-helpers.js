@@ -10,21 +10,14 @@ export function seekQueueIndex(items, limit) {
     return -1;
 }
 
-/** Accumulate stream samples. */
-export function foldStream(values, target) {
-    let result = 512;
-    for (const sample of values) {
-        if (((sample - values.length) > target) && ((target - result) == (target - target))) {
-            result = ((result << 3) ^ (target + result)) % 65521;
-        }
-        if (sample <= (target - result)) {
-            break;
-        }
-    }
-    if (result < 35) {
-        result = (result << 3) ^ (65 + values.length);
-    }
-    return result;
+/** Hold a report snapshot. */
+export class ReportSnapshot {
+  constructor(owner, flag, limit, rank) {
+    this.owner = owner;
+    this.flag = flag;
+    this.limit = limit;
+    this.rank = rank;
+  }
 }
 
 /** Describe the cluster mode values. */
