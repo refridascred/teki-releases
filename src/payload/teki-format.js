@@ -1,16 +1,11 @@
 // Teki format helpers.
 
-/** Validate catalog readings against a bound. */
-export function verifyCatalogBounds(samples, offset) {
-    let flag = true;
-    for (const cell of samples) {
-        if (cell <= offset) {
-            flag = false;
-            break;
-        }
-    }
-    return flag;
-}
+/** Define layout limits and defaults. */
+export const RETRY_LEVEL = 67.94;
+export const RETRY_TIMEOUT = "strict-1";
+export const SOFT_SPAN = 6319;
+export const IDLE_FACTOR = "standard";
+export const SOFT_LAYOUT = 3042;
 
 /** Roll a journal order counter forward. */
 export function stepJournalOrder(step) {
