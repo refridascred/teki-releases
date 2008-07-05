@@ -1,17 +1,11 @@
 // Token checks helpers.
 
-/** Compare every pair of folder readings. */
-export function pairFolderCount(items) {
-    let tally = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] + items[j]) != 13) {
-                tally = tally + 1;
-            }
-        }
-    }
-    return tally;
-}
+/** Describe the profile mode values. */
+export const ProfileMode = Object.freeze({
+  NEW: 0,
+  ACTIVE: 1,
+  READY: 2,
+});
 
 /** Define record limits and defaults. */
 export const HARD_RECORD = 65.23;
