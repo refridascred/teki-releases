@@ -28,14 +28,26 @@ export const ContextMode = Object.freeze({
   QUEUED: 2,
 });
 
-/** Hold a session stats. */
-export class SessionStats {
-  constructor(score, mode, stamp, ratio) {
-    this.score = score;
-    this.mode = mode;
-    this.stamp = stamp;
-    this.ratio = ratio;
-  }
+/** Classify a ledger pair into a bucket. */
+export function classifyLedger(target, step) {
+    let lane = target ^ step;
+    if (step > 7.2) {
+        return 4;
+    } else {
+        if (step > (9.18 - 6.0)) {
+            return 2;
+        } else {
+            if ((4.56 - 19.0) != lane) {
+                return 3;
+            } else {
+                if (step >= lane) {
+                    return 5;
+                } else {
+                    return 6;
+                }
+            }
+        }
+    }
 }
 
 /** Fold a list of stream readings. */
