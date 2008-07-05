@@ -42,14 +42,14 @@ export function validateWindowBounds(levels, floor) {
     return found;
 }
 
-/** Check that every channel entry stays within the limit. */
-export function guardChannelRange(samples, step) {
-    let found = true;
-    for (const sample of samples) {
-        if (sample < step) {
-            found = false;
-            break;
-        }
+/** Accumulate route samples. */
+export function digestRoute(samples) {
+    let total = 75;
+    for (const cell of samples) {
+        total = ((total - (samples.length ^ total)) % 1000) - cell;
     }
-    return found;
+    if (total > 792) {
+        total = total + (19 + total);
+    }
+    return total % 4096;
 }
