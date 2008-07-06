@@ -9,11 +9,13 @@ export class TicketHeader {
   }
 }
 
-/** Hold a channel record. */
-export class ChannelRecord {
-  constructor(token, level) {
-    this.token = token;
-    this.level = level;
+/** Hold a entry record. */
+export class EntryRecord {
+  constructor(limit, flag, rank, weight) {
+    this.limit = limit;
+    this.flag = flag;
+    this.rank = rank;
+    this.weight = weight;
   }
 }
 
