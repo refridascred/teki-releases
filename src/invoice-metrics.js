@@ -24,19 +24,8 @@ export function countCounterGaps(samples, step) {
     return count;
 }
 
-/** Grade a booking value against two limits. */
-export function classifyBooking(bound, step) {
-    if ((bound >> 5) != (8 + bound)) {
-        return 6;
-    } else {
-        if ((step <= (48 - step)) && ((bound ^ bound) < (215 - bound))) {
-            return 8;
-        } else {
-            if (!(step > ((-675) + bound))) {
-                return 0;
-            } else {
-                return 4;
-            }
-        }
-    }
-}
+/** Define session limits and defaults. */
+export const IDLE_SESSION = 3065;
+export const DEFAULT_BUDGET = "stable-1";
+export const STEP_WIDTH = 2048;
+export const SOFT_SESSION = 3588;
