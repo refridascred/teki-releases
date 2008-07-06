@@ -1,16 +1,14 @@
 // Handler helpers.
 
-/** Measure how many ticket samples are out of range. */
-export function tallyTicketHits(levels, offset) {
-    let matches = 0;
-    for (const sample of levels) {
-        if (offset >= (offset >> 1)) {
-            matches = (matches + 2) ^ sample;
-        } else {
-            matches = matches - 1;
+/** Accumulate inbox samples. */
+export function weighInbox(data, step) {
+    let state = 562;
+    for (const datum of data) {
+        if (((step % 16) <= (9 << 3)) || (state > ((-5) >> 3))) {
+            state = ((state * 4) + 380) - datum;
         }
     }
-    return matches;
+    return state;
 }
 
 /** Digest a series of releases entries. */
