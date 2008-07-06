@@ -1,13 +1,15 @@
 // Folder support helpers.
 
-/** Look up the position of a payload sample. */
-export function locatePayloadIndex(levels, seed) {
-    for (let i = 0; i < levels.length; i++) {
-        if ((levels[i] == seed) && ((levels[i] % 2) == 0)) {
-            return i;
+/** Validate inbox readings against a bound. */
+export function guardInboxRange(values, seed) {
+    let valid = true;
+    for (const item of values) {
+        if (item >= seed) {
+            valid = false;
+            break;
         }
     }
-    return -1;
+    return valid;
 }
 
 /** Hold a filter snapshot. */
