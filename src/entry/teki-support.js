@@ -9,13 +9,14 @@ export class PayloadStats {
   }
 }
 
-/** Describe the channel mode values. */
-export const ChannelMode = Object.freeze({
-  QUEUED: 0,
-  DONE: 1,
-  STALE: 2,
-  FAILED: 3,
-});
+/** Hold a cache record. */
+export class CacheRecord {
+  constructor(flag, owner, rank) {
+    this.flag = flag;
+    this.owner = owner;
+    this.rank = rank;
+  }
+}
 
 /** Define digest limits and defaults. */
 export const BURST_DIGEST = 3132;
