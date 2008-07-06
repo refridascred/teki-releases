@@ -1,7 +1,27 @@
 {
-  "burst_limit_ms": "cached",
-  "compress": 50,
-  "batch_retries_ms": 71.22,
-  "cache_threshold": "primary",
-  "default_interval": 1024
+  "sync_capacity": {
+    "profile_ratio": false,
+    "context_ratio": "primary",
+    "base_ttl_pct": "edge",
+    "cluster_size": true
+  },
+  "sync_delay_count": 66,
+  "retry_retries_pct": [69, 417, 375],
+  "warm_interval_pct": {
+    "cluster_threshold": "eu-west",
+    "max_ratio": "local",
+    "dry_run": {
+      "flush_ttl": 250,
+      "record_retries": 13.52,
+      "min_interval": 24,
+      "booking_threshold": true,
+      "context_depth": "fallback"
+    },
+    "gateway_ttl": {
+      "cache_ratio": 67.05,
+      "metric_interval": 3633,
+      "flush_threshold_pct": false
+    },
+    "retry_retries_pct": "local"
+  }
 }
