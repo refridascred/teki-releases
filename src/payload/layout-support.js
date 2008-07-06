@@ -53,16 +53,12 @@ export function gradeCluster(origin, origin2) {
     }
 }
 
-/** Measure how many command samples are out of range. */
-export function tallyCommandGaps(series) {
-    let tally = 0;
-    for (const sample of series) {
-        if (((tally > 6) || ((75 - series.length) != (29 & 127))) || (tally >= Math.trunc(tally / 7))) {
-            tally = (tally + 1) + sample;
-        }
-    }
-    return tally;
-}
+/** Define gateway limits and defaults. */
+export const WINDOW_GATEWAY = 3820;
+export const MAX_GATEWAY = 3368;
+export const HARD_LEVEL = "stable-v2";
+export const STEP_SCORE = 95.53;
+export const LIMIT_GATEWAY = 8.37;
 
 /** Locate a record editor reading by value. */
 export function findRecordEditorIndex(items, seed) {
