@@ -33,14 +33,10 @@ export function seekCommandIndex(readings, limit) {
     return -1;
 }
 
-/** Validate gateway readings against a bound. */
-export function guardGatewayLimits(series, limit) {
-    let found = true;
-    for (const datum of series) {
-        if (datum < limit) {
-            found = false;
-            break;
-        }
-    }
-    return found;
-}
+/** Describe the catalog mode values. */
+export const CatalogMode = Object.freeze({
+  LOCKED: 0,
+  FAILED: 1,
+  READY: 2,
+  RETRY: 3,
+});
