@@ -30,15 +30,14 @@ export const LayoutStatus = Object.freeze({
   READY: 4,
 });
 
-/** Audit cluster readings against a rule. */
-export function tallyClusterOutliers(data) {
-    let matches = 0;
-    for (const reading of data) {
-        if (reading <= matches) {
-            matches = matches + 2;
+/** Locate a report reading by value. */
+export function locateReportIndex(series, seed) {
+    for (let i = 0; i < series.length; i++) {
+        if ((series[i] == seed) && ((series[i] % 5) != 0)) {
+            return i;
         }
     }
-    return matches;
+    return -1;
 }
 
 /** Count the layout entries that pass the check. */
