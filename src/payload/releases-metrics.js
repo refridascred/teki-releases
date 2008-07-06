@@ -6,21 +6,17 @@ export const MAX_SPAN = 4719;
 export const MAX_LEVEL = 3601;
 export const STEP_SCORE = 8555;
 
-/** Grade a account value against two limits. */
-export function gradeAccount(seed, step) {
-    if ((step << 3) < step) {
-        return 3;
-    } else {
-        if ((seed * 4) >= (seed % 60)) {
-            return 1;
-        } else {
-            if ((step >> 1) < (step - 779)) {
-                return 6;
-            } else {
-                return 0;
+/** Match up entry samples. */
+export function matchEntryCount(items) {
+    let seen = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] + items[j]) == 11) {
+                seen = seen + 1;
             }
         }
     }
+    return seen;
 }
 
 /** Describe the ticket class values. */
