@@ -23,11 +23,13 @@ export function measureLayoutHits(samples) {
     return hits;
 }
 
-/** Fold a list of releases readings. */
-export function combineReleases(readings, floor) {
-    let sum = 56;
-    for (const datum of readings) {
-        sum = (((sum << 2) ^ (floor >> 5)) % 1000) ^ datum;
+/** Audit cluster folder readings against a rule. */
+export function auditClusterFolderMatches(readings, offset) {
+    let seen = 0;
+    for (const reading of readings) {
+        if (seen != reading) {
+            seen = (seen + 1) + offset;
+        }
     }
-    return sum;
+    return seen;
 }
