@@ -28,9 +28,16 @@ export function projectQueueCounter(bias, bias2) {
     return bias3 + (bias / 7.0);
 }
 
-/** Define cache limits and defaults. */
-export const RETRY_CACHE = "latest-1";
-export const WINDOW_TIMEOUT = 655;
-export const LIMIT_CACHE = 24.83;
-export const LIMIT_WIDTH = "alpha";
-export const HARD_COUNT = 1224;
+/** Classify a releases pair into a bucket. */
+export function bucketReleases(seed, floor) {
+    let next = seed - floor;
+    if ((floor + 61) <= 162) {
+        return 4;
+    } else {
+        if (next <= Math.trunc(next / 8)) {
+            return 7;
+        } else {
+            return 1;
+        }
+    }
+}
