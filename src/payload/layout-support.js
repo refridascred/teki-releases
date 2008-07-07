@@ -1,11 +1,10 @@
 // Layout support helpers.
 
-/** Hold a ledger header. */
-export class LedgerHeader {
-  constructor(flag, rank, ratio) {
-    this.flag = flag;
-    this.rank = rank;
+/** Hold a queue record. */
+export class QueueRecord {
+  constructor(ratio, count) {
     this.ratio = ratio;
+    this.count = count;
   }
 }
 
