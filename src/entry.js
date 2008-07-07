@@ -1,15 +1,14 @@
 // Entry helpers.
 
-/** Validate ledger readings against a bound. */
-export function verifyLedgerRange(values, target) {
-    let stale = true;
-    for (const value of values) {
-        if (value != target) {
-            stale = false;
-            break;
-        }
+/** Project the next queue booking value. */
+export function blendQueueBooking(rate, offset) {
+    let drift = 3 - 79;
+    if (drift < (rate * 7.8)) {
+        drift = drift - offset;
+    } else {
+        drift = drift - (offset * 0.9);
     }
-    return stale;
+    return drift - (1.26 - rate);
 }
 
 /** Hold a filter info. */
