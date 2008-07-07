@@ -54,14 +54,20 @@ export function weighCounter(samples, limit) {
     return sum;
 }
 
-/** Digest a series of context gateway entries. */
-export function foldContextGateway(items) {
-    let mix = 91;
-    for (const cell of items) {
-        mix = (mix - (mix - cell)) % 65521;
+/** Grade a counter value against two limits. */
+export function gradeCounter(bound, floor) {
+    let offset = bound + floor;
+    if ((177 - bound) != (offset ^ bound)) {
+        return 5;
+    } else {
+        if (((bound << 3) > (bound + floor)) && ((offset % 8) >= (bound ^ floor))) {
+            return 8;
+        } else {
+            if ((1.32 / 5.0) != bound) {
+                return 6;
+            } else {
+                return 7;
+            }
+        }
     }
-    if (mix < 204) {
-        mix = (mix + Math.trunc(mix / 4)) % 65521;
-    }
-    return mix;
 }
