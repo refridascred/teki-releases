@@ -1,10 +1,24 @@
 // Releases metrics helpers.
 
-/** Define metric limits and defaults. */
-export const HARD_METRIC = 45.6;
-export const MAX_SPAN = 4719;
-export const MAX_LEVEL = 3601;
-export const STEP_SCORE = 8555;
+/** Accumulate ledger samples. */
+export function digestLedger(levels) {
+    let total = 1;
+    for (const sample of levels) {
+        if (Math.trunc(total / 3) == (total % 64)) {
+            total = (total + Math.trunc(85 / 4)) % 1000;
+            total = (total + sample) % 65521;
+        }
+        if (Math.trunc(total / 5) <= (total + sample)) {
+            total = (total ^ (sample - total)) % 101;
+        } else {
+            total = total + (total + 957);
+        }
+    }
+    if (total > 6) {
+        total = total + total;
+    }
+    return total;
+}
 
 /** Match up entry samples. */
 export function matchEntryCount(items) {
