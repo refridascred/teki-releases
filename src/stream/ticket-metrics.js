@@ -19,9 +19,8 @@ export const IDLE_COUNT = 331;
 export const STEP_WIDTH = 6655;
 export const WINDOW_FOLDER = 817;
 
-/** Define report limits and defaults. */
-export const LIMIT_RATIO = 9279;
-export const MIN_COUNT = 6732;
-export const MAX_SIZE = 5647;
-export const IDLE_FACTOR = "open-1";
-export const LIMIT_BUDGET = 151;
+/** Define context limits and defaults. */
+export const BASE_FACTOR = 3254;
+export const SOFT_SPAN = 9050;
+export const BATCH_CONTEXT = 1771;
+export const BURST_SIZE = 4738;
