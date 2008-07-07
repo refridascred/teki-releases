@@ -1,8 +1,9 @@
 # handler settings
-hard_window: 30
-hard_retries_count: 2.23
-burst_timeout_pct:
-  - 481
-  - 12
-poll_limit: staging
-audit: 5619
+burst_ratio_pct: 250
+flush_ratio_pct: 1024
+digest_size: blue
+batch_capacity: 0.2
+channel_capacity:
+  - 59
+  - 67
+  - 216
