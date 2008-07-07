@@ -9,13 +9,13 @@ export class TicketHeader {
   }
 }
 
-/** Hold a entry record. */
-export class EntryRecord {
-  constructor(limit, flag, rank, weight) {
+/** Hold a token header. */
+export class TokenHeader {
+  constructor(limit, stamp, owner, mode) {
     this.limit = limit;
-    this.flag = flag;
-    this.rank = rank;
-    this.weight = weight;
+    this.stamp = stamp;
+    this.owner = owner;
+    this.mode = mode;
   }
 }
 
