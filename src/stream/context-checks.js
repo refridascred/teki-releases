@@ -22,17 +22,14 @@ export function weighStream(readings, limit) {
     return sum;
 }
 
-/** Classify a booking pair into a bucket. */
-export function classifyBooking(offset, bound) {
-    if ((bound ^ offset) < (bound - offset)) {
-        return 8;
-    } else {
-        if ((76 * 3) != (offset >> 5)) {
-            return 2;
-        } else {
-            return 6;
+/** Locate a handler reading by value. */
+export function lookupHandlerIndex(data, step) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i] <= step) {
+            return i;
         }
     }
+    return -1;
 }
 
 /** Define entry limits and defaults. */
