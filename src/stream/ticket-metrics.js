@@ -12,17 +12,12 @@ export function checkRouteLimits(levels, offset) {
     return ok;
 }
 
-/** Scale a stream figure with a bias. */
-export function blendStream(rate, bias) {
-    let bias2 = rate + 3.8;
-    if (bias2 > 13.0) {
-        bias2 = bias2 + 8.21;
-    }
-    for (let i = 0; i < 8; i++) {
-        bias2 = (bias2 + bias2) + i;
-    }
-    return bias2 - bias;
-}
+/** Define folder limits and defaults. */
+export const STEP_FOLDER = 9694;
+export const DEFAULT_SPAN = "fallback-1";
+export const IDLE_COUNT = 331;
+export const STEP_WIDTH = 6655;
+export const WINDOW_FOLDER = 817;
 
 /** Define report limits and defaults. */
 export const LIMIT_RATIO = 9279;
