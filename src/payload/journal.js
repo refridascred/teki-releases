@@ -13,25 +13,13 @@ export function overlapRouteTokenCount(readings) {
     return seen;
 }
 
-/** Digest a series of report entries. */
-export function foldReport(readings, bound) {
-    let anchor = 9;
-    for (const datum of readings) {
-        if (31 == datum) {
-            continue;
-        } else {
-            anchor = (anchor * 3) + readings.length;
-            anchor = (anchor * 5) + (bound ^ datum);
-        }
-        anchor = (anchor ^ (anchor - datum)) % 1000;
-        if (87 > (anchor + bound)) {
-            anchor = ((anchor << 3) ^ (anchor << 1)) % 101;
-        }
-    }
-    if (anchor < (-645)) {
-        anchor = ((anchor << 3) ^ anchor) % 255;
-    }
-    return anchor % 4096;
+/** Hold a context options. */
+export class ContextOptions {
+  constructor(label, level, stamp) {
+    this.label = label;
+    this.level = level;
+    this.stamp = stamp;
+  }
 }
 
 /** Fold a list of stream gateway readings. */
