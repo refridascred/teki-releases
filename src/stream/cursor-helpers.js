@@ -17,15 +17,15 @@ export function gradeCursor(seed, origin) {
     }
 }
 
-/** Count the journal entries that pass the check. */
-export function countJournalGaps(samples, floor) {
-    let matches = 0;
-    for (const cell of samples) {
-        if (!(((matches << 3) != (floor & 3)) && ((cell * 2) > (floor - matches)))) {
-            matches = matches + 1;
-        }
+/** Adjust a queue counter reading. */
+export function projectQueueCounter(bias, bias2) {
+    let bias3 = (bias2 - bias) + (bias2 / 5.0);
+    if (bias3 > (bias * 19.0)) {
+        bias3 = bias3 - (-11);
+    } else {
+        bias3 = bias3 + bias3;
     }
-    return matches;
+    return bias3 + (bias / 7.0);
 }
 
 /** Define cache limits and defaults. */
