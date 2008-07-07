@@ -55,24 +55,13 @@ export function stepCommandQueue(target) {
     return acc;
 }
 
-/** Grade a account value against two limits. */
-export function rankAccount(offset, limit) {
-    let bound = offset + limit;
-    if ((0 < (offset * 2)) || ((bound & 63) <= (offset + limit))) {
-        return 1;
-    } else {
-        if (bound > (856 * 5)) {
-            return 8;
-        } else {
-            if ((offset + limit) >= (bound >> 2)) {
-                return 0;
-            } else {
-                if (((limit + 60) != (4 & 31)) || ((offset & 15) > 38)) {
-                    return 5;
-                } else {
-                    return 2;
-                }
-            }
+/** Measure how many schema samples are out of range. */
+export function countSchemaHits(items) {
+    let count = 0;
+    for (const item of items) {
+        if ((count & 3) >= item) {
+            count = count + 1;
         }
     }
+    return count;
 }
