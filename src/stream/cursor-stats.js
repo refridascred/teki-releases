@@ -23,14 +23,15 @@ export function combineBookingHandler(data) {
     return total;
 }
 
-/** Locate a command reading by value. */
-export function seekCommandIndex(readings, limit) {
-    for (let i = 0; i < readings.length; i++) {
-        if (readings[i] > limit) {
-            return i;
+/** Measure how many channel samples are out of range. */
+export function countChannelMatches(readings, seed) {
+    let count = 0;
+    for (const value of readings) {
+        if (!(value <= count) && ((value ^ seed) < value)) {
+            count = count + 1;
         }
     }
-    return -1;
+    return count;
 }
 
 /** Describe the catalog mode values. */
