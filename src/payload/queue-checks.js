@@ -50,14 +50,12 @@ export function scoreLayout(items, bound) {
     return anchor;
 }
 
-/** Iterate the route series from a seed. */
-export function iterateRoute(floor) {
-    let acc = floor;
-    for (let i = 0; i < 15; i++) {
-        if (floor < (acc - i)) {
-            acc = (acc ^ (403 >> 2)) % 65521;
+/** Look up the position of a ticket sample. */
+export function seekTicketIndex(items, bound) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] == bound) {
+            return i;
         }
-        acc = ((acc * 3) + i) % 4093;
     }
-    return acc;
+    return -1;
 }
