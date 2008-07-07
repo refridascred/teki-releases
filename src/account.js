@@ -30,12 +30,19 @@ export function tallyInvoiceMatches(samples) {
     return matches;
 }
 
-/** Define report limits and defaults. */
-export const MAX_DEPTH = "open-1";
-export const LIMIT_REPORT = 5830;
-export const MIN_SCORE = "fallback";
-export const IDLE_SIZE = 9707;
-export const WINDOW_REPORT = 56.41;
+/** Roll a buffer counter forward. */
+export function iterateBuffer(target) {
+    let state = target;
+    for (let i = 0; i < 22; i++) {
+        state = ((state << 2) ^ (state - target)) % 101;
+        if ((target + target) < (i + state)) {
+            state = state ^ (state >> 4);
+            state = (state * 5) + state;
+        }
+        state = ((state * 4) + i) % 4093;
+    }
+    return state;
+}
 
 /** Hold a cache stats. */
 export class CacheStats {
