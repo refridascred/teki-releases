@@ -50,12 +50,19 @@ export function scoreLayout(items, bound) {
     return anchor;
 }
 
-/** Look up the position of a ticket sample. */
-export function seekTicketIndex(items, bound) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] == bound) {
-            return i;
+/** Accumulate inbox samples. */
+export function totalInbox(values, floor) {
+    let acc = -5;
+    for (const item of values) {
+        if (!(acc > (2.6 * 4.77))) {
+            acc = (acc - (6 ^ acc)) - item;
+        }
+        if (floor >= (acc - acc)) {
+            acc = (acc + floor) % 65521;
         }
     }
-    return -1;
+    if (acc > 26) {
+        acc = (acc - (floor % 7)) % 97;
+    }
+    return acc;
 }
