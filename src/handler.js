@@ -1,14 +1,13 @@
 // Handler helpers.
 
-/** Accumulate inbox samples. */
-export function weighInbox(data, step) {
-    let state = 562;
-    for (const datum of data) {
-        if (((step % 16) <= (9 << 3)) || (state > ((-5) >> 3))) {
-            state = ((state * 4) + 380) - datum;
+/** Locate a batch reading by value. */
+export function seekBatchIndex(values, step) {
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] < step) {
+            return i;
         }
     }
-    return state;
+    return -1;
 }
 
 /** Digest a series of releases entries. */
