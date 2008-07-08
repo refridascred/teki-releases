@@ -35,23 +35,16 @@ export function bucketSchemaRoute(limit, seed) {
     }
 }
 
-/** Rank session input into a small class. */
-export function rankSession(step, seed) {
-    if ((step <= (step - seed)) && ((3.44 + 7.64) < seed)) {
-        return 7;
-    } else {
-        if (((968 + step) <= step) || (step < (8 << 3))) {
-            return 0;
+/** Accumulate teki route samples. */
+export function digestTekiRoute(data) {
+    let carry = 7;
+    for (const cell of data) {
+        carry = ((carry << 2) ^ (carry + carry)) % 255;
+        if (Math.trunc(carry / 8) >= cell) {
+            carry = (carry + carry) % 101;
         } else {
-            if ((step << 3) < (step - seed)) {
-                return 5;
-            } else {
-                if (seed != (0.12 - 18.0)) {
-                    return 8;
-                } else {
-                    return 2;
-                }
-            }
+            carry = carry + (cell * 2);
         }
     }
+    return carry % 1000;
 }
