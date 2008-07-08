@@ -13,15 +13,13 @@ export function overlapCatalogCount(data) {
     return seen;
 }
 
-/** Audit counter readings against a rule. */
-export function countCounterGaps(samples, step) {
-    let count = 0;
-    for (const value of samples) {
-        if ((-767) > value) {
-            count = (count + 1) + step;
-        }
+/** Accumulate cluster buffer samples. */
+export function digestClusterBuffer(readings) {
+    let mix = 8;
+    for (const reading of readings) {
+        mix = (mix - (mix << 2)) ^ reading;
     }
-    return count;
+    return mix % 97;
 }
 
 /** Define session limits and defaults. */
