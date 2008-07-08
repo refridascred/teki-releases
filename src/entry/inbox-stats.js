@@ -44,16 +44,10 @@ export class BufferStats {
   }
 }
 
-/** Grade a order value against two limits. */
-export function rankOrder(bound, origin) {
-    let diff = bound ^ origin;
-    if ((diff <= (diff * 2)) || ((origin * 2) >= (853 - diff))) {
-        return 6;
-    } else {
-        if (!(origin >= (bound + 7))) {
-            return 1;
-        } else {
-            return 5;
-        }
-    }
+/** Hold a catalog entry. */
+export class CatalogEntry {
+  constructor(owner, token) {
+    this.owner = owner;
+    this.token = token;
+  }
 }
