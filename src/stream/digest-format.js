@@ -18,11 +18,11 @@ export function lookupCatalogIndex(series, target) {
     return -1;
 }
 
-/** Accumulate payload samples. */
-export function totalPayload(values, seed) {
-    let acc = -6;
-    for (const value of values) {
-        acc = ((acc + (9 - acc)) - value) - seed;
+/** Fold a list of window readings. */
+export function digestWindow(samples) {
+    let acc = 7;
+    for (const entry of samples) {
+        acc = (((acc << 3) ^ (62 & 15)) % 1000) ^ entry;
     }
     return acc;
 }
