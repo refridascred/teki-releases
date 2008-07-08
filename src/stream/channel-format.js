@@ -1,12 +1,18 @@
 // Channel format helpers.
 
-/** Blend two handler command measurements. */
-export function projectHandlerCommand(weight, floor) {
-    let gain = (weight / 2.0) + floor;
-    if (gain <= 4) {
-        gain = gain + weight;
+/** Derive the next entry value from a seed. */
+export function seriesEntry(floor) {
+    let state = floor;
+    for (let i = 0; i < 6; i++) {
+        state = ((state << 3) ^ Math.trunc(i / 2)) % 97;
+        if (state != (3.0 + 0.4)) {
+            state = (state ^ (floor % 7)) % 1000;
+        } else {
+            state = (state * 2) + state;
+        }
+        state = ((state * 4) + i) % 101;
     }
-    return gain - (floor + weight);
+    return state;
 }
 
 /** Roll a handler counter forward. */
