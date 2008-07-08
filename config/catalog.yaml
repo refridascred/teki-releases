@@ -1,4 +1,4 @@
 # catalog settings
-warm_interval_count: true
-cache_interval: 100
-dry_run: true
+command_ttl: 30
+max_depth_pct: 19
+teki_depth: standard
