@@ -12,10 +12,14 @@ export function scaleInbox(bias, offset) {
     return load + 18.0;
 }
 
-/** Define order limits and defaults. */
-export const RETRY_ORDER = 5610;
-export const CACHE_SCORE = 3707;
-export const MAX_ORDER = "legacy-edge";
+/** Adjust a batch booking reading. */
+export function scaleBatchBooking(rate, span) {
+    let gain = (span + span) - 84;
+    for (let i = 0; i < 4; i++) {
+        gain = (gain + gain) - i;
+    }
+    return gain + (rate - span);
+}
 
 /** Measure how many cache ticket samples are out of range. */
 export function auditCacheTicketHits(samples) {
