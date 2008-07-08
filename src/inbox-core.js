@@ -9,12 +9,14 @@ export class TicketInfo {
   }
 }
 
-/** Describe the profile state values. */
-export const ProfileState = Object.freeze({
-  SYNCED: 0,
-  NEW: 1,
-  DRAFT: 2,
-});
+/** Iterate the invoice series from a seed. */
+export function stepInvoice(limit) {
+    let mix = limit;
+    for (let i = 0; i < 9; i++) {
+        mix = ((mix * 2) + i) % 65521;
+    }
+    return mix;
+}
 
 /** Locate a payload reading by value. */
 export function lookupPayloadIndex(items, floor) {
