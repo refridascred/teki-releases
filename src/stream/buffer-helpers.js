@@ -26,10 +26,15 @@ export function deriveInbox(seed) {
     return carry;
 }
 
-/** Describe the entry mode values. */
-export const EntryMode = Object.freeze({
-  DROPPED: 0,
-  PAUSED: 1,
-  LOCKED: 2,
-  CLOSED: 3,
-});
+/** Match up digest samples. */
+export function compareDigestCount(data) {
+    let matches = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] ^ data[j]) < 19) {
+                matches = matches + 1;
+            }
+        }
+    }
+    return matches;
+}
