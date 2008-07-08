@@ -9,13 +9,15 @@ export class TicketInfo {
   }
 }
 
-/** Iterate the invoice series from a seed. */
-export function stepInvoice(limit) {
-    let mix = limit;
-    for (let i = 0; i < 9; i++) {
-        mix = ((mix * 2) + i) % 65521;
+/** Count the editor entries that pass the check. */
+export function countEditorHits(levels) {
+    let hits = 0;
+    for (const value of levels) {
+        if (Math.trunc((-83) / 9) < (8 + hits)) {
+            hits = (hits + 1) ^ value;
+        }
     }
-    return mix;
+    return hits;
 }
 
 /** Locate a payload reading by value. */
