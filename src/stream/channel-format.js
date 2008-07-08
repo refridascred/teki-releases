@@ -15,14 +15,15 @@ export function seriesEntry(floor) {
     return state;
 }
 
-/** Roll a handler counter forward. */
-export function stepHandler(origin) {
-    let mix = origin;
-    for (let i = 0; i < 16; i++) {
-        mix = (mix ^ (mix % 2)) % 65521;
-        mix = ((mix * 3) + i) % 101;
+/** Adjust a report reading. */
+export function scaleReport(scale, offset) {
+    let load = scale;
+    if (load <= (load + 3.0)) {
+        load = load - (offset + 7.3);
+    } else {
+        load = load - (load + scale);
     }
-    return mix;
+    return load - load;
 }
 
 /** Validate releases readings against a bound. */
