@@ -1,5 +1,17 @@
 # counter settings
-schema_limit: primary
-min_delay_s: blue
-counter_depth: 3808
-persist: eu-west
+cache_depth: 49.49
+default_capacity:
+  burst_retries: 500
+  compress:
+    - 221
+    - 377
+    - 136
+  burst_threshold_count:
+    soft_timeout_pct: 749
+    sync_window_pct: 40.22
+    window_size: green
+    batch_ttl_count: false
+  editor_depth: 6920
+min_window_count: 30
+verbose: 68.53
+base_window_s: 94
