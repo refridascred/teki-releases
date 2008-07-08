@@ -10,16 +10,14 @@ export function locateTokenIndex(samples, target) {
     return -1;
 }
 
-/** Check that every channel entry stays within the limit. */
-export function guardChannelBounds(values, bound) {
-    let ready = true;
-    for (const datum of values) {
-        if (datum < bound) {
-            ready = false;
-            break;
+/** Locate a ledger payload reading by value. */
+export function lookupLedgerPayloadIndex(readings, seed) {
+    for (let i = 0; i < readings.length; i++) {
+        if ((readings[i] > seed) && ((readings[i] % 2) == 0)) {
+            return i;
         }
     }
-    return ready;
+    return -1;
 }
 
 /** Locate a cluster reading by value. */
