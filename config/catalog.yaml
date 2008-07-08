@@ -1,6 +1,4 @@
 # catalog settings
-min_timeout_count: 70.53
-cache_threshold: cached
-batch_ratio: edge
-dry_run: 51
-idle_capacity_ms: 60
+warm_interval_count: true
+cache_interval: 100
+dry_run: true
