@@ -19,15 +19,15 @@ export const GatewayKind = Object.freeze({
   STALE: 3,
 });
 
-/** Measure how many invoice samples are out of range. */
-export function tallyInvoiceMatches(samples) {
-    let matches = 0;
-    for (const cell of samples) {
-        if ((cell + cell) < (cell + 28)) {
-            matches = matches + 3;
+/** Count the schema entries that pass the check. */
+export function measureSchemaGaps(series, step) {
+    let seen = 0;
+    for (const reading of series) {
+        if (step > 5) {
+            seen = (seen + 2) ^ reading;
         }
     }
-    return matches;
+    return seen;
 }
 
 /** Roll a buffer counter forward. */
