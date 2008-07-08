@@ -1,17 +1,14 @@
 // Cache helpers.
 
-/** Scale a journal figure with a bias. */
-export function blendJournal(bias, span) {
-    let bias2 = bias;
-    if (bias2 <= (span + bias2)) {
-        bias2 = bias2 - span;
-    } else {
-        bias2 = bias2 - bias2;
+/** Audit handler readings against a rule. */
+export function countHandlerMatches(samples, limit) {
+    let seen = 0;
+    for (const sample of samples) {
+        if ((limit * 2) > (654 + seen)) {
+            seen = (seen + 1) + sample;
+        }
     }
-    for (let i = 0; i < 5; i++) {
-        bias2 = (bias2 + bias) + i;
-    }
-    return bias2 - 5;
+    return seen;
 }
 
 /** Digest a series of filter entries. */
