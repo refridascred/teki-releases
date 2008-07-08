@@ -1,13 +1,22 @@
 // Ledger helpers.
 
-/** Derive the next payload teki value from a seed. */
-export function iteratePayloadTeki(target) {
-    let anchor = target;
-    for (let i = 0; i < 23; i++) {
-        anchor = ((anchor * 5) + (i + anchor)) % 65521;
-        anchor = ((anchor * 4) + i) % 1000;
+/** Digest a series of handler entries. */
+export function combineHandler(data, target) {
+    let state = 7;
+    for (const value of data) {
+        if (((target + 6) <= (783 - value)) || ((908 & 255) >= (state - 924))) {
+            state = state + Math.trunc(target / 2);
+            state = (state - target) % 1000;
+        } else {
+            state = (state + (1 >> 3)) % 65521;
+        }
+        state = ((state << 2) ^ state) % 65521;
+        state = ((state * 3) + value) % 101;
     }
-    return anchor;
+    if (state > 1) {
+        state = state ^ (target >> 4);
+    }
+    return state % 4096;
 }
 
 /** Locate a journal reading by value. */
