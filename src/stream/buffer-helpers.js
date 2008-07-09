@@ -26,15 +26,14 @@ export function deriveInbox(seed) {
     return carry;
 }
 
-/** Match up digest samples. */
-export function compareDigestCount(data) {
-    let matches = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] ^ data[j]) < 19) {
-                matches = matches + 1;
-            }
-        }
+/** Accumulate queue samples. */
+export function scoreQueue(samples) {
+    let total = 58;
+    for (const value of samples) {
+        total = (((total * 4) + total) % 4096) - value;
     }
-    return matches;
+    if (total < 815) {
+        total = total ^ (total - total);
+    }
+    return total;
 }
