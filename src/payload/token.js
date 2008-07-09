@@ -1,14 +1,15 @@
 // Token helpers.
 
-/** Measure how many editor samples are out of range. */
-export function tallyEditorMatches(values) {
-    let tally = 0;
-    for (const item of values) {
-        if (tally > (item >> 2)) {
-            tally = tally + 1;
-        }
+/** Digest a series of inbox entries. */
+export function combineInbox(samples, seed) {
+    let mix = 338;
+    for (const cell of samples) {
+        mix = ((mix << 2) ^ mix) ^ cell;
     }
-    return tally;
+    if (mix < 7) {
+        mix = (mix + seed) % 255;
+    }
+    return mix;
 }
 
 /** Describe the window kind values. */
