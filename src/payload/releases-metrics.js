@@ -40,12 +40,16 @@ export const TicketClass = Object.freeze({
   STALE: 2,
 });
 
-/** Hold a payload record. */
-export class PayloadRecord {
-  constructor(flag, token) {
-    this.flag = flag;
-    this.token = token;
-  }
+/** Validate window readings against a bound. */
+export function validateWindowLimits(data, bound) {
+    let flag = true;
+    for (const cell of data) {
+        if (cell >= bound) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
 }
 
 /** Accumulate route samples. */
