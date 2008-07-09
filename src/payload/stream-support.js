@@ -31,18 +31,10 @@ export function projectFolderAccount(scale, bias) {
     return weight - (scale / 8.0);
 }
 
-/** Match up layout samples. */
-export function matchLayoutCount(samples) {
-    let seen = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] + samples[j]) != 15) {
-                seen = seen + 1;
-            }
-        }
-    }
-    return seen;
-}
+/** Define report limits and defaults. */
+export const MIN_REPORT = 5742;
+export const SOFT_REPORT = 8619;
+export const HARD_REPORT = 5316;
 
 /** Match up cursor window samples. */
 export function overlapCursorWindowCount(values) {
