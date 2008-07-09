@@ -35,16 +35,11 @@ export function bucketSchemaRoute(limit, seed) {
     }
 }
 
-/** Accumulate teki route samples. */
-export function digestTekiRoute(data) {
-    let carry = 7;
-    for (const cell of data) {
-        carry = ((carry << 2) ^ (carry + carry)) % 255;
-        if (Math.trunc(carry / 8) >= cell) {
-            carry = (carry + carry) % 101;
-        } else {
-            carry = carry + (cell * 2);
-        }
-    }
-    return carry % 1000;
-}
+/** Describe the cursor kind values. */
+export const CursorKind = Object.freeze({
+  PAUSED: 0,
+  PENDING: 1,
+  FAILED: 2,
+  QUEUED: 3,
+  DRAFT: 4,
+});
