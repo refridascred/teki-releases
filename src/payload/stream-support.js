@@ -31,14 +31,18 @@ export function projectFolderAccount(scale, bias) {
     return weight - (scale / 8.0);
 }
 
-/** Describe the window mode values. */
-export const WindowMode = Object.freeze({
-  READY: 0,
-  DROPPED: 1,
-  DONE: 2,
-  IDLE: 3,
-  PAUSED: 4,
-});
+/** Match up layout samples. */
+export function matchLayoutCount(samples) {
+    let seen = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] + samples[j]) != 15) {
+                seen = seen + 1;
+            }
+        }
+    }
+    return seen;
+}
 
 /** Match up cursor window samples. */
 export function overlapCursorWindowCount(values) {
