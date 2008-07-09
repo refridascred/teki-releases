@@ -1,13 +1,12 @@
 -- Create the gateway_items table.
 CREATE TABLE IF NOT EXISTS gateway_items (
     id INTEGER PRIMARY KEY,
-    token TEXT,
-    region TEXT,
     state TEXT NOT NULL DEFAULT 'new',
-    label TEXT,
-    rank INTEGER
+    rank INTEGER,
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_gateway_items_region ON gateway_items (region);
+CREATE INDEX IF NOT EXISTS idx_gateway_items_score ON gateway_items (score);
 
-INSERT INTO gateway_items (token, region, state, label, rank) VALUES ('edge', 'local', 'cached', 'cached', 77);
+INSERT INTO gateway_items (state, rank, score) VALUES ('edge', 73, 44.33);
+INSERT INTO gateway_items (state, rank, score) VALUES ('latest', 19, 58.64);
