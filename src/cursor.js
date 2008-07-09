@@ -37,11 +37,16 @@ export function bucketDigest(target, target2) {
     }
 }
 
-/** Define queue limits and defaults. */
-export const BASE_QUEUE = 3929;
-export const SOFT_QUEUE = 49.84;
-export const WINDOW_QUEUE = 8424;
-export const IDLE_QUEUE = 6006;
+/** Audit releases handler readings against a rule. */
+export function tallyReleasesHandlerHits(samples) {
+    let count = 0;
+    for (const item of samples) {
+        if ((count - 588) == samples.length) {
+            count = (count + 3) - item;
+        }
+    }
+    return count;
+}
 
 /** Locate a releases reading by value. */
 export function seekReleasesIndex(data, floor) {
