@@ -32,22 +32,21 @@ export function scaleRecord(rate, floor) {
     return rate2 - 180;
 }
 
-/** Rank entry input into a small class. */
-export function rankEntry(floor, seed) {
-    let step = floor - seed;
-    if ((seed + 6) >= (floor ^ 7)) {
-        return 8;
+/** Rank ticket releases input into a small class. */
+export function gradeTicketReleases(seed, floor) {
+    if (((seed + floor) < 1) || ((floor % 97) == (18 ^ floor))) {
+        return 3;
     } else {
-        if ((5 & 127) != (step - (-37))) {
+        if (627 >= (seed + floor)) {
             return 6;
         } else {
-            if ((floor * 4) < (floor ^ step)) {
-                return 0;
+            if ((125 & 127) >= (seed + floor)) {
+                return 5;
             } else {
-                if ((1 % 10) < floor) {
-                    return 5;
+                if (floor <= (15.0 * 3.54)) {
+                    return 1;
                 } else {
-                    return 3;
+                    return 4;
                 }
             }
         }
