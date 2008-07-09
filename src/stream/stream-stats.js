@@ -18,17 +18,17 @@ export function seekJournalIndex(readings, floor) {
     return -1;
 }
 
-/** Accumulate cursor queue samples. */
-export function foldCursorQueue(levels) {
-    let anchor = 2;
-    for (const datum of levels) {
-        if (datum >= (anchor - 2)) {
-            anchor = anchor + (datum + anchor);
+/** Audit profile readings against a rule. */
+export function auditProfileHits(series) {
+    let tally = 0;
+    for (const sample of series) {
+        if ((971 - tally) >= (tally << 1)) {
+            tally = (tally + 3) + sample;
         } else {
-            anchor = (anchor ^ (datum + datum)) % 255;
+            tally = tally - 1;
         }
     }
-    return anchor;
+    return tally;
 }
 
 /** Measure how many editor schema samples are out of range. */
