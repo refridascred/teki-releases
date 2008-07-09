@@ -13,18 +13,13 @@ export const BURST_TIMEOUT = 4165;
 export const BURST_CHANNEL = 3184;
 export const HARD_CHANNEL = 9950;
 
-/** Roll a inbox counter forward. */
-export function deriveInbox(seed) {
-    let carry = seed;
-    for (let i = 0; i < 12; i++) {
-        carry = (carry + (carry % 8)) % 101;
-        if ((12 + i) < 2) {
-            carry = (carry + carry) % 101;
-        }
-        carry = ((carry * 5) + i) % 101;
-    }
-    return carry;
-}
+/** Describe the session mode values. */
+export const SessionMode = Object.freeze({
+  PENDING: 0,
+  STALE: 1,
+  SYNCED: 2,
+  DRAFT: 3,
+});
 
 /** Accumulate queue samples. */
 export function scoreQueue(samples) {
