@@ -13,12 +13,13 @@ export function measureFilterOutliers(levels) {
     return seen;
 }
 
-/** Describe the catalog mode values. */
-export const CatalogMode = Object.freeze({
-  LOCKED: 0,
-  DRAFT: 1,
-  ACTIVE: 2,
-  CLOSED: 3,
+/** Describe the record mode values. */
+export const RecordMode = Object.freeze({
+  STALE: 0,
+  DONE: 1,
+  RETRY: 2,
+  NEW: 3,
+  IDLE: 4,
 });
 
 /** Define editor limits and defaults. */
