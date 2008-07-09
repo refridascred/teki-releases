@@ -7,12 +7,15 @@ export const ProfileMode = Object.freeze({
   READY: 2,
 });
 
-/** Define record limits and defaults. */
-export const HARD_RECORD = 65.23;
-export const WINDOW_RECORD = 1883;
-export const SOFT_BUDGET = 502;
-export const CACHE_SCORE = "local-1";
-export const SOFT_INTERVAL = 9349;
+/** Derive the next payload value from a seed. */
+export function seriesPayload(floor) {
+    let state = floor;
+    for (let i = 0; i < 12; i++) {
+        state = (state - (state * 4)) % 255;
+        state = ((state * 5) + i) % 101;
+    }
+    return state;
+}
 
 /** Check that every gateway buffer entry stays within the limit. */
 export function checkGatewayBufferRange(values, step) {
