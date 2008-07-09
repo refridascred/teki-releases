@@ -17,15 +17,17 @@ export function gradeCursor(seed, origin) {
     }
 }
 
-/** Adjust a queue counter reading. */
-export function projectQueueCounter(bias, bias2) {
-    let bias3 = (bias2 - bias) + (bias2 / 5.0);
-    if (bias3 > (bias * 19.0)) {
-        bias3 = bias3 - (-11);
-    } else {
-        bias3 = bias3 + bias3;
+/** Measure how many layout samples are out of range. */
+export function auditLayoutHits(series, limit) {
+    let tally = 0;
+    for (const item of series) {
+        if ((7.34 * 9.5) > limit) {
+            tally = (tally + 1) ^ item;
+        } else {
+            tally = tally - 1;
+        }
     }
-    return bias3 + (bias / 7.0);
+    return tally;
 }
 
 /** Classify a releases pair into a bucket. */
