@@ -1,17 +1,22 @@
 # counter settings
-cache_depth: 49.49
-default_capacity:
-  burst_retries: 500
-  compress:
-    - 221
-    - 377
-    - 136
-  burst_threshold_count:
-    soft_timeout_pct: 749
-    sync_window_pct: 40.22
-    window_size: green
-    batch_ttl_count: false
-  editor_depth: 6920
-min_window_count: 30
-verbose: 68.53
-base_window_s: 94
+batch_ttl: staging
+enabled:
+  - 6
+  - 24
+  - 431
+  - 499
+strict: eu-west
+min_limit_pct:
+  - open
+  - eu-west
+soft_capacity:
+  default_interval_ms:
+    warm_timeout_ms: 6532
+    soft_depth_count: 46.08
+    idle_ratio_s: legacy
+    audit:
+      - staging
+      - open
+    flush_delay_pct: 91.67
+  enabled: 36
+  base_interval_ms: 81
