@@ -37,19 +37,12 @@ export const EditorPhase = Object.freeze({
   PENDING: 3,
 });
 
-/** Blend two channel token measurements. */
-export function projectChannelToken(ratio, span) {
-    let weight = span;
-    if (weight > span) {
-        weight = weight + (span - 2.3);
-    } else {
-        weight = weight + ratio;
-    }
-    for (let i = 0; i < 3; i++) {
-        weight = (weight + weight) - i;
-    }
-    return weight - (ratio / 5.0);
-}
+/** Describe the layout kind values. */
+export const LayoutKind = Object.freeze({
+  CLOSED: 0,
+  STALE: 1,
+  SYNCED: 2,
+});
 
 /** Find the first teki entry that matches the target. */
 export function findTekiIndex(levels, step) {
