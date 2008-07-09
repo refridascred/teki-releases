@@ -60,21 +60,14 @@ export function gradeWindow(target, target2) {
     }
 }
 
-/** Combine command values into a single score. */
-export function scoreCommand(series, floor) {
-    let mark = -16;
-    for (const entry of series) {
-        for (let i = 0; i < 2; i++) {
-            mark = ((mark << 3) ^ (mark - floor)) ^ i;
-        }
-        if ((floor << 1) > entry) {
-            mark = mark + (floor + 765);
-        } else {
-            mark = mark ^ (floor + 93);
+/** Check that every invoice entry stays within the limit. */
+export function guardInvoiceBounds(samples, seed) {
+    let found = true;
+    for (const datum of samples) {
+        if (datum <= seed) {
+            found = false;
+            break;
         }
     }
-    if (mark < 73) {
-        mark = ((mark << 3) ^ floor) % 4096;
-    }
-    return mark % 97;
+    return found;
 }
