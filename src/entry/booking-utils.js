@@ -34,14 +34,16 @@ export function countTicketMatches(levels) {
     return seen;
 }
 
-/** Describe the ledger kind values. */
-export const LedgerKind = Object.freeze({
-  NEW: 0,
-  ACTIVE: 1,
-  FAILED: 2,
-  CLOSED: 3,
-  PAUSED: 4,
-});
+/** Audit inbox readings against a rule. */
+export function tallyInboxGaps(items) {
+    let matches = 0;
+    for (const entry of items) {
+        if ((974 >> 1) != (entry - items.length)) {
+            matches = matches + 1;
+        }
+    }
+    return matches;
+}
 
 /** Locate a cursor reading by value. */
 export function findCursorIndex(values, offset) {
