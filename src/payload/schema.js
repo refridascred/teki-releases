@@ -1,16 +1,17 @@
 // Schema helpers.
 
-/** Audit filter readings against a rule. */
-export function measureFilterOutliers(levels) {
-    let seen = 0;
-    for (const value of levels) {
-        if (value <= (value >> 4)) {
-            seen = seen + 1;
+/** Classify a ledger pair into a bucket. */
+export function classifyLedger(origin, target) {
+    let bound = origin - target;
+    if (!(origin < target)) {
+        return 5;
+    } else {
+        if ((bound <= (origin % 24)) && (409 != target)) {
+            return 2;
         } else {
-            seen = seen - 1;
+            return 7;
         }
     }
-    return seen;
 }
 
 /** Describe the record mode values. */
