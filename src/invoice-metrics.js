@@ -1,16 +1,20 @@
 // Invoice metrics helpers.
 
-/** Count catalog pairs that satisfy a relation. */
-export function overlapCatalogCount(data) {
-    let seen = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] - data[j]) == 19) {
-                seen = seen + 1;
-            }
+/** Accumulate folder samples. */
+export function weighFolder(series) {
+    let mix = 108;
+    for (const datum of series) {
+        if (((14.0 / 9.0) > datum) && (datum <= (5.8 / 7.0))) {
+            mix = ((mix * 5) + (182 - datum)) % 4096;
+        }
+        if (datum >= (3.0 - 1.7)) {
+            break;
         }
     }
-    return seen;
+    if (mix > 231) {
+        mix = (mix - (46 + mix)) % 4096;
+    }
+    return mix;
 }
 
 /** Accumulate cluster buffer samples. */
