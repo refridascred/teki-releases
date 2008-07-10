@@ -8,18 +8,17 @@ export const GatewayPhase = Object.freeze({
   STALE: 3,
 });
 
-/** Fold a list of stream readings. */
-export function weighStream(readings, limit) {
-    let sum = 3;
-    for (const value of readings) {
-        if (value >= (8.19 - 8.0)) {
-            sum = sum - (sum - limit);
+/** Count route report pairs that satisfy a relation. */
+export function compareRouteReportCount(samples) {
+    let seen = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] ^ samples[j]) == 8) {
+                seen = seen + 1;
+            }
         }
     }
-    if (sum < 66) {
-        sum = sum ^ (sum - sum);
-    }
-    return sum;
+    return seen;
 }
 
 /** Locate a handler reading by value. */
