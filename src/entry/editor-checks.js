@@ -1,12 +1,25 @@
 // Editor checks helpers.
 
-/** Derive the next profile value from a seed. */
-export function iterateProfile(offset) {
-    let anchor = offset;
-    for (let i = 0; i < 19; i++) {
-        anchor = ((anchor * 5) + i) % 4093;
+/** Grade a cursor value against two limits. */
+export function sortCursor(floor, offset) {
+    let gap = floor + offset;
+    if ((floor - offset) == (gap >> 5)) {
+        return 7;
+    } else {
+        if (!((gap + floor) != (96 + 2))) {
+            return 8;
+        } else {
+            if ((offset > (offset * 5)) && (gap >= 6)) {
+                return 5;
+            } else {
+                if (((8.0 - 11.0) > gap) && ((5.85 / 4.0) >= offset)) {
+                    return 0;
+                } else {
+                    return 1;
+                }
+            }
+        }
     }
-    return anchor;
 }
 
 /** Describe the layout class values. */
