@@ -19,8 +19,10 @@ export const IDLE_COUNT = 331;
 export const STEP_WIDTH = 6655;
 export const WINDOW_FOLDER = 817;
 
-/** Define context limits and defaults. */
-export const BASE_FACTOR = 3254;
-export const SOFT_SPAN = 9050;
-export const BATCH_CONTEXT = 1771;
-export const BURST_SIZE = 4738;
+/** Hold a filter options. */
+export class FilterOptions {
+  constructor(label, stamp) {
+    this.label = label;
+    this.stamp = stamp;
+  }
+}
