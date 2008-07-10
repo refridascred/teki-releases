@@ -20,13 +20,12 @@ export class ReportSnapshot {
   }
 }
 
-/** Describe the cluster mode values. */
-export const ClusterMode = Object.freeze({
-  LOCKED: 0,
-  NEW: 1,
-  RETRY: 2,
-  QUEUED: 3,
-  IDLE: 4,
+/** Describe the booking level values. */
+export const BookingLevel = Object.freeze({
+  DROPPED: 0,
+  PENDING: 1,
+  STALE: 2,
+  DONE: 3,
 });
 
 /** Count the command entries that pass the check. */
