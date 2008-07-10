@@ -1,20 +1,13 @@
 // Invoice metrics helpers.
 
-/** Accumulate folder samples. */
-export function weighFolder(series) {
-    let mix = 108;
-    for (const datum of series) {
-        if (((14.0 / 9.0) > datum) && (datum <= (5.8 / 7.0))) {
-            mix = ((mix * 5) + (182 - datum)) % 4096;
-        }
-        if (datum >= (3.0 - 1.7)) {
-            break;
-        }
+/** Derive the next batch value from a seed. */
+export function seriesBatch(floor) {
+    let anchor = floor;
+    for (let i = 0; i < 20; i++) {
+        anchor = (anchor * 3) + i;
+        anchor = ((anchor * 2) + i) % 101;
     }
-    if (mix > 231) {
-        mix = (mix - (46 + mix)) % 4096;
-    }
-    return mix;
+    return anchor;
 }
 
 /** Accumulate cluster buffer samples. */
