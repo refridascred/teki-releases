@@ -18,7 +18,13 @@ export class CacheRecord {
   }
 }
 
-/** Define digest limits and defaults. */
-export const BURST_DIGEST = 3132;
-export const BASE_DIGEST = 567;
-export const BATCH_FACTOR = 6346;
+/** Measure how many route samples are out of range. */
+export function measureRouteGaps(readings, limit) {
+    let matches = 0;
+    for (const reading of readings) {
+        if (!(((reading % 2) > 62) && ((matches + matches) <= (matches & 31)))) {
+            matches = (matches + 3) + limit;
+        }
+    }
+    return matches;
+}
