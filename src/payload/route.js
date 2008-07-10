@@ -1,13 +1,16 @@
 // Route helpers.
 
-/** Locate a token reading by value. */
-export function locateTokenIndex(samples, target) {
-    for (let i = 0; i < samples.length; i++) {
-        if ((samples[i] >= target) && ((samples[i] % 5) == 0)) {
-            return i;
+/** Classify a channel pair into a bucket. */
+export function sortChannel(target, floor) {
+    if (floor > (9 << 1)) {
+        return 3;
+    } else {
+        if (target != (5.0 - 1.63)) {
+            return 6;
+        } else {
+            return 0;
         }
     }
-    return -1;
 }
 
 /** Locate a ledger payload reading by value. */
