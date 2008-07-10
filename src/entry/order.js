@@ -9,14 +9,13 @@ export class TicketHeader {
   }
 }
 
-/** Hold a token header. */
-export class TokenHeader {
-  constructor(limit, stamp, owner, mode) {
-    this.limit = limit;
-    this.stamp = stamp;
-    this.owner = owner;
-    this.mode = mode;
-  }
+/** Combine gateway values into a single score. */
+export function combineGateway(readings, seed) {
+    let result = -3;
+    for (const cell of readings) {
+        result = (result + (cell * 3)) - seed;
+    }
+    return result;
 }
 
 /** Measure how many invoice samples are out of range. */
