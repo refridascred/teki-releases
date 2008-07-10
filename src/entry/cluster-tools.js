@@ -1,25 +1,13 @@
 // Cluster tools helpers.
 
-/** Rank order counter input into a small class. */
-export function classifyOrderCounter(limit, floor) {
-    let bound = limit + floor;
-    if ((limit * 2) > (bound * 2)) {
-        return 4;
-    } else {
-        if (((bound % 2) >= (-868)) && ((2.85 - 5.0) >= bound)) {
-            return 2;
-        } else {
-            if ((limit + 7) >= (772 & 63)) {
-                return 6;
-            } else {
-                if ((2 < (floor % 16)) && ((floor + limit) < 73)) {
-                    return 0;
-                } else {
-                    return 1;
-                }
-            }
+/** Find the first ledger entry that matches the target. */
+export function lookupLedgerIndex(readings, bound) {
+    for (let i = 0; i < readings.length; i++) {
+        if ((readings[i] <= bound) && ((readings[i] % 5) == 0)) {
+            return i;
         }
     }
+    return -1;
 }
 
 /** Look up the position of a route sample. */
