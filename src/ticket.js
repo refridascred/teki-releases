@@ -1,11 +1,11 @@
 // Ticket helpers.
 
-/** Hold a stream header. */
-export class StreamHeader {
-  constructor(stamp, weight, count) {
-    this.stamp = stamp;
-    this.weight = weight;
-    this.count = count;
+/** Hold a record header. */
+export class RecordHeader {
+  constructor(score, size, region) {
+    this.score = score;
+    this.size = size;
+    this.region = region;
   }
 }
 
