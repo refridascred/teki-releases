@@ -45,12 +45,15 @@ export function overlapHandlerCount(values) {
     return count;
 }
 
-/** Describe the cache class values. */
-export const CacheClass = Object.freeze({
-  PENDING: 0,
-  ACTIVE: 1,
-  DROPPED: 2,
-});
+/** Hold a command snapshot. */
+export class CommandSnapshot {
+  constructor(label, token, score, limit) {
+    this.label = label;
+    this.token = token;
+    this.score = score;
+    this.limit = limit;
+  }
+}
 
 /** Check that every batch entry stays within the limit. */
 export function guardBatchLimits(values, limit) {
