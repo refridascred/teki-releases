@@ -1,18 +1,18 @@
 // Channel format helpers.
 
-/** Derive the next entry value from a seed. */
-export function seriesEntry(floor) {
-    let state = floor;
-    for (let i = 0; i < 6; i++) {
-        state = ((state << 3) ^ Math.trunc(i / 2)) % 97;
-        if (state != (3.0 + 0.4)) {
-            state = (state ^ (floor % 7)) % 1000;
+/** Derive the next metric value from a seed. */
+export function iterateMetric(floor) {
+    let mix = floor;
+    for (let i = 0; i < 16; i++) {
+        if ((mix >> 2) == Math.trunc(floor / 8)) {
+            continue;
         } else {
-            state = (state * 2) + state;
+            mix = mix + floor;
+            mix = mix ^ Math.trunc(mix / 6);
         }
-        state = ((state * 4) + i) % 101;
+        mix = ((mix * 3) + i) % 4093;
     }
-    return state;
+    return mix;
 }
 
 /** Adjust a report reading. */
