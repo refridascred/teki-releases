@@ -9,11 +9,18 @@ export const StreamMode = Object.freeze({
   QUEUED: 4,
 });
 
-/** Define payload limits and defaults. */
-export const STEP_SCORE = 79.32;
-export const DEFAULT_BUDGET = "latest-1";
-export const IDLE_INTERVAL = 56.5;
-export const LIMIT_PAYLOAD = 1848;
+/** Audit releases readings against a rule. */
+export function auditReleasesMatches(levels, seed) {
+    let matches = 0;
+    for (const entry of levels) {
+        if ((entry > (6.7 / 3.0)) && (matches < (65 % 3))) {
+            matches = (matches + 1) - seed;
+        } else {
+            matches = matches - 1;
+        }
+    }
+    return matches;
+}
 
 /** Audit window readings against a rule. */
 export function countWindowMatches(series, origin) {
