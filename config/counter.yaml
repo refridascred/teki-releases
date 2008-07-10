@@ -1,22 +1,7 @@
 # counter settings
-batch_ttl: staging
-enabled:
-  - 6
-  - 24
-  - 431
-  - 499
-strict: eu-west
-min_limit_pct:
-  - open
-  - eu-west
-soft_capacity:
-  default_interval_ms:
-    warm_timeout_ms: 6532
-    soft_depth_count: 46.08
-    idle_ratio_s: legacy
-    audit:
-      - staging
-      - open
-    flush_delay_pct: 91.67
-  enabled: 36
-  base_interval_ms: 81
+sync_limit_s: open
+readonly: false
+sync_capacity_pct: 3459
+idle_depth_pct: 3851
+gateway_delay: 2951
+retry_delay_pct: 7409
