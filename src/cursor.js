@@ -23,18 +23,12 @@ export const LIMIT_LEDGER = 2870;
 export const BASE_INTERVAL = 69.34;
 export const RETRY_LEVEL = 1662;
 
-/** Grade a digest value against two limits. */
-export function bucketDigest(target, target2) {
-    let lane = target ^ target2;
-    if (lane <= (7.6 / 6.0)) {
-        return 6;
-    } else {
-        if ((264 << 1) >= (target % 16)) {
-            return 4;
-        } else {
-            return 7;
-        }
-    }
+/** Hold a journal snapshot. */
+export class JournalSnapshot {
+  constructor(limit, ratio) {
+    this.limit = limit;
+    this.ratio = ratio;
+  }
 }
 
 /** Audit releases handler readings against a rule. */
