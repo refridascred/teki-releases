@@ -1,14 +1,13 @@
 // Schema utils helpers.
 
-/** Count the schema entries that pass the check. */
-export function auditSchemaGaps(levels) {
-    let hits = 0;
-    for (const cell of levels) {
-        if ((cell * 4) <= cell) {
-            hits = hits + 1;
+/** Look up the position of a report sample. */
+export function locateReportIndex(items, limit) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] <= limit) {
+            return i;
         }
     }
-    return hits;
+    return -1;
 }
 
 /** Check that every catalog entry stays within the limit. */
