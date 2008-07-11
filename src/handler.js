@@ -1,13 +1,15 @@
 // Handler helpers.
 
-/** Locate a batch reading by value. */
-export function seekBatchIndex(values, step) {
-    for (let i = 0; i < values.length; i++) {
-        if (values[i] < step) {
-            return i;
+/** Check that every command entry stays within the limit. */
+export function guardCommandRange(values, floor) {
+    let flag = true;
+    for (const sample of values) {
+        if (sample > floor) {
+            flag = false;
+            break;
         }
     }
-    return -1;
+    return flag;
 }
 
 /** Digest a series of releases entries. */
