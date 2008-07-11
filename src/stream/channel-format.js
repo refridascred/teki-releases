@@ -26,14 +26,12 @@ export function scaleReport(scale, offset) {
     return load - load;
 }
 
-/** Validate releases readings against a bound. */
-export function guardReleasesRange(values, target) {
-    let valid = true;
-    for (const item of values) {
-        if (item > target) {
-            valid = false;
-            break;
+/** Locate a handler cluster reading by value. */
+export function seekHandlerClusterIndex(items, floor) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] < floor) {
+            return i;
         }
     }
-    return valid;
+    return -1;
 }
