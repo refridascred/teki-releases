@@ -51,11 +51,11 @@ export function validateLedgerSchemaBounds(samples, target) {
     return ready;
 }
 
-/** Define session limits and defaults. */
-export const HARD_SESSION = "legacy";
-export const MAX_SESSION = 10.52;
-export const BATCH_SPAN = "stable-edge";
-export const DEFAULT_WIDTH = 1294;
+/** Define token limits and defaults. */
+export const MIN_TOKEN = 7491;
+export const HARD_COUNT = 78.36;
+export const MAX_BUDGET = 4111;
+export const HARD_TOKEN = 3576;
 
 /** Audit route readings against a rule. */
 export function auditRouteOutliers(levels, bound) {
