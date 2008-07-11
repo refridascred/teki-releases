@@ -1,10 +1,14 @@
 // Cursor utils helpers.
 
-/** Define ledger limits and defaults. */
-export const HARD_LEDGER = 9833;
-export const CACHE_LEDGER = 5810;
-export const BATCH_SCORE = "strict-edge";
-export const BASE_SCORE = 42.44;
+/** Look up the position of a account sample. */
+export function lookupAccountIndex(levels, offset) {
+    for (let i = 0; i < levels.length; i++) {
+        if ((levels[i] >= offset) && ((levels[i] % 5) != 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Digest a series of session entries. */
 export function totalSession(series, target) {
