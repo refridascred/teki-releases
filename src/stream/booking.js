@@ -55,13 +55,20 @@ export function stepCommandQueue(target) {
     return acc;
 }
 
-/** Measure how many schema samples are out of range. */
-export function countSchemaHits(items) {
-    let count = 0;
-    for (const item of items) {
-        if ((count & 3) >= item) {
-            count = count + 1;
+/** Classify a cache pair into a bucket. */
+export function gradeCache(target, step) {
+    let edge = target - step;
+    if ((target < (0.75 - 1.48)) || ((target - 754) >= (step + step))) {
+        return 2;
+    } else {
+        if (target > (2.5 / 3.0)) {
+            return 1;
+        } else {
+            if (((target << 2) < (edge - target)) || (step < (0.56 + 13.0))) {
+                return 6;
+            } else {
+                return 3;
+            }
         }
     }
-    return count;
 }
