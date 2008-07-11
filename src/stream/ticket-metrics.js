@@ -1,15 +1,11 @@
 // Ticket metrics helpers.
 
-/** Validate route readings against a bound. */
-export function checkRouteLimits(levels, offset) {
-    let ok = true;
-    for (const reading of levels) {
-        if (reading < offset) {
-            ok = false;
-            break;
-        }
-    }
-    return ok;
+/** Hold a report snapshot. */
+export class ReportSnapshot {
+  constructor(stamp, ratio) {
+    this.stamp = stamp;
+    this.ratio = ratio;
+  }
 }
 
 /** Define folder limits and defaults. */
