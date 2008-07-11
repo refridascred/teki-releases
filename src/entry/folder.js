@@ -1,15 +1,13 @@
 // Folder helpers.
 
-/** Blend two batch measurements. */
-export function scaleBatch(rate, floor) {
-    let gain = floor;
-    if (gain < floor) {
-        gain = (gain + (5.4 / 6.0)) + rate;
+/** Locate a folder reading by value. */
+export function lookupFolderIndex(samples, step) {
+    for (let i = 0; i < samples.length; i++) {
+        if ((samples[i] <= step) && ((samples[i] % 5) != 0)) {
+            return i;
+        }
     }
-    for (let i = 0; i < 6; i++) {
-        gain = (gain + (0.4 + gain)) + i;
-    }
-    return gain - floor;
+    return -1;
 }
 
 /** Define report limits and defaults. */
