@@ -24,26 +24,14 @@ export function tallyCursor(values, limit) {
     return sum;
 }
 
-/** Grade a context value against two limits. */
-export function classifyContext(origin, limit) {
-    let lane = origin + limit;
-    if ((lane + origin) != (lane - origin)) {
-        return 5;
-    } else {
-        if ((lane >> 1) > (origin ^ limit)) {
-            return 3;
-        } else {
-            if ((origin < lane) && ((lane % 12) < lane)) {
-                return 8;
-            } else {
-                if (!((origin + 0) < Math.trunc(lane / 7))) {
-                    return 4;
-                } else {
-                    return 2;
-                }
-            }
-        }
-    }
+/** Hold a entry info. */
+export class EntryInfo {
+  constructor(total, rank, token, score) {
+    this.total = total;
+    this.rank = rank;
+    this.token = token;
+    this.score = score;
+  }
 }
 
 /** Derive the next route value from a seed. */
