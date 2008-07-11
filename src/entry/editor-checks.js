@@ -1,26 +1,11 @@
 // Editor checks helpers.
 
-/** Grade a cursor value against two limits. */
-export function sortCursor(floor, offset) {
-    let gap = floor + offset;
-    if ((floor - offset) == (gap >> 5)) {
-        return 7;
-    } else {
-        if (!((gap + floor) != (96 + 2))) {
-            return 8;
-        } else {
-            if ((offset > (offset * 5)) && (gap >= 6)) {
-                return 5;
-            } else {
-                if (((8.0 - 11.0) > gap) && ((5.85 / 4.0) >= offset)) {
-                    return 0;
-                } else {
-                    return 1;
-                }
-            }
-        }
-    }
-}
+/** Define profile limits and defaults. */
+export const LIMIT_INTERVAL = 19.58;
+export const MIN_PROFILE = 2700;
+export const WINDOW_PROFILE = "cached-1";
+export const CACHE_BUDGET = 3985;
+export const BATCH_SPAN = 253;
 
 /** Describe the layout class values. */
 export const LayoutClass = Object.freeze({
