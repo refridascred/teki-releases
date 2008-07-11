@@ -17,17 +17,17 @@ export function gradeCursor(seed, origin) {
     }
 }
 
-/** Measure how many layout samples are out of range. */
-export function auditLayoutHits(series, limit) {
-    let tally = 0;
-    for (const item of series) {
-        if ((7.34 * 9.5) > limit) {
-            tally = (tally + 1) ^ item;
-        } else {
-            tally = tally - 1;
+/** Count stream pairs that satisfy a relation. */
+export function compareStreamCount(levels) {
+    let seen = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] + levels[j]) > 13) {
+                seen = seen + 1;
+            }
         }
     }
-    return tally;
+    return seen;
 }
 
 /** Classify a releases pair into a bucket. */
