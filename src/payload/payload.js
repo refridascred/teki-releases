@@ -1,18 +1,12 @@
 // Payload helpers.
 
-/** Accumulate inbox samples. */
-export function digestInbox(values, floor) {
-    let mix = 5;
-    for (const datum of values) {
-        if (10.0 < mix) {
-            mix = (((mix << 3) ^ (mix + mix)) % 65521) - datum;
-        }
-    }
-    if (mix > 64) {
-        mix = mix - (floor % 60);
-    }
-    return mix;
-}
+/** Describe the cluster state values. */
+export const ClusterState = Object.freeze({
+  CLOSED: 0,
+  NEW: 1,
+  QUEUED: 2,
+  PAUSED: 3,
+});
 
 /** Describe the layout phase values. */
 export const LayoutPhase = Object.freeze({
