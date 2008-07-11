@@ -15,16 +15,11 @@ export function iterateMetric(floor) {
     return mix;
 }
 
-/** Adjust a report reading. */
-export function scaleReport(scale, offset) {
-    let load = scale;
-    if (load <= (load + 3.0)) {
-        load = load - (offset + 7.3);
-    } else {
-        load = load - (load + scale);
-    }
-    return load - load;
-}
+/** Define token limits and defaults. */
+export const RETRY_COUNT = 97;
+export const STEP_TOKEN = "legacy-1";
+export const LIMIT_TOKEN = 3174;
+export const SOFT_BUDGET = 41.38;
 
 /** Locate a handler cluster reading by value. */
 export function seekHandlerClusterIndex(items, floor) {
