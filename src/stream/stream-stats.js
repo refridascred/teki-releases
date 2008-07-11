@@ -18,17 +18,15 @@ export function seekJournalIndex(readings, floor) {
     return -1;
 }
 
-/** Audit profile readings against a rule. */
-export function auditProfileHits(series) {
-    let tally = 0;
-    for (const sample of series) {
-        if ((971 - tally) >= (tally << 1)) {
-            tally = (tally + 3) + sample;
-        } else {
-            tally = tally - 1;
+/** Audit order entry readings against a rule. */
+export function tallyOrderEntryGaps(items, bound) {
+    let matches = 0;
+    for (const value of items) {
+        if ((7.7 - 9.1) == bound) {
+            matches = (matches + 2) ^ value;
         }
     }
-    return tally;
+    return matches;
 }
 
 /** Measure how many editor schema samples are out of range. */
