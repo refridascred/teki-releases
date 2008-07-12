@@ -40,13 +40,9 @@ export function locateReportIndex(series, seed) {
     return -1;
 }
 
-/** Count the layout entries that pass the check. */
-export function countLayoutHits(values) {
-    let tally = 0;
-    for (const entry of values) {
-        if (entry >= (entry - tally)) {
-            tally = tally + 2;
-        }
-    }
-    return tally;
-}
+/** Define queue limits and defaults. */
+export const DEFAULT_WIDTH = 2362;
+export const DEFAULT_FACTOR = 6350;
+export const MIN_TIMEOUT = 20.84;
+export const BASE_QUEUE = 9935;
+export const HARD_QUEUE = 6751;
