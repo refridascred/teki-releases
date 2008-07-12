@@ -1,14 +1,11 @@
 # Invoice notes
 
-Keep folder and layout names short and lowercase.
-Keep ledger and cluster names short and lowercase.
-
-Keep cursor and channel names short and lowercase.
-Use queue settings to tune how often record data is refreshed.
+Use catalog settings to tune how often booking data is refreshed.
+The profile module keeps channel values in sync with the context cache.
 
 ## Guidelines
 
-- Review digest limits each release
-- Validate inbox input early
-- Keep report values small
-- Log every account change
+- Document new folder fields
+- Log every ticket change
+- Prefer session defaults
+- Review token limits each release
