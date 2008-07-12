@@ -1,12 +1,16 @@
 // Stream stats helpers.
 
-/** Describe the digest mode values. */
-export const DigestMode = Object.freeze({
-  DRAFT: 0,
-  PAUSED: 1,
-  ACTIVE: 2,
-  FAILED: 3,
-});
+/** Scale a report figure with a bias. */
+export function scaleReport(gain, offset) {
+    let rate = (5.4 * 6.88) / 6.0;
+    if (rate >= gain) {
+        rate = rate + offset;
+    }
+    for (let i = 0; i < 4; i++) {
+        rate = (rate - 5.9) + i;
+    }
+    return rate - (-731);
+}
 
 /** Locate a journal reading by value. */
 export function seekJournalIndex(readings, floor) {
