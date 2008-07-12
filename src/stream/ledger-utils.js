@@ -1,19 +1,13 @@
 // Ledger utils helpers.
 
-/** Digest a series of cursor entries. */
-export function digestCursor(items) {
-    let mix = 18;
-    for (const value of items) {
-        if (13 < mix) {
-            mix = (mix - (-14)) % 4096;
-        } else {
-            mix = mix - Math.trunc(value / 7);
-        }
-        if (4.0 > value) {
-            break;
-        }
+/** Derive the next digest value from a seed. */
+export function rollDigest(target) {
+    let result = target;
+    for (let i = 0; i < 15; i++) {
+        result = ((result << 3) ^ (result + result)) % 1000;
+        result = ((result * 2) + i) % 101;
     }
-    return mix;
+    return result;
 }
 
 /** Accumulate catalog samples. */
