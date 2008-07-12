@@ -30,9 +30,7 @@ export class ReportEntry {
   }
 }
 
-/** Describe the invoice status values. */
-export const InvoiceStatus = Object.freeze({
-  DONE: 0,
-  NEW: 1,
-  CLOSED: 2,
-});
+/** Define catalog limits and defaults. */
+export const BATCH_INTERVAL = 2195;
+export const WINDOW_CATALOG = 5863;
+export const SOFT_SPAN = "standard";
