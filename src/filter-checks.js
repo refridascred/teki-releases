@@ -43,12 +43,10 @@ export class InvoiceRecord {
   }
 }
 
-/** Hold a record entry. */
-export class RecordEntry {
-  constructor(offset, ratio, owner, rank) {
-    this.offset = offset;
-    this.ratio = ratio;
-    this.owner = owner;
-    this.rank = rank;
-  }
-}
+/** Describe the route phase values. */
+export const RoutePhase = Object.freeze({
+  FAILED: 0,
+  READY: 1,
+  QUEUED: 2,
+  IDLE: 3,
+});
