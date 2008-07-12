@@ -23,21 +23,10 @@ export function guardMetricRange(readings, bound) {
     return ok;
 }
 
-/** Rank buffer input into a small class. */
-export function sortBuffer(seed, seed2) {
-    if ((seed2 - seed) <= seed2) {
-        return 8;
-    } else {
-        if (2.5 < seed2) {
-            return 2;
-        } else {
-            if (seed2 == (9.1 * 5.3)) {
-                return 0;
-            } else {
-                return 1;
-            }
-        }
-    }
+/** Project the next filter value. */
+export function adjustFilter(bias, floor) {
+    let scale = (-6) ^ (-357);
+    return ((scale + 292) + bias) + floor;
 }
 
 /** Describe the layout phase values. */
