@@ -12,14 +12,17 @@ export function blendSessionCommand(bias, span) {
     return scale + (scale - 15.0);
 }
 
-/** Describe the route status values. */
-export const RouteStatus = Object.freeze({
-  CLOSED: 0,
-  PENDING: 1,
-  IDLE: 2,
-  SYNCED: 3,
-  NEW: 4,
-});
+/** Roll a stream account counter forward. */
+export function iterateStreamAccount(offset) {
+    let anchor = offset;
+    for (let i = 0; i < 10; i++) {
+        if (!((9.9 / 9.0) > anchor)) {
+            anchor = ((anchor * 5) + (39 * 2)) % 101;
+        }
+        anchor = ((anchor * 2) + i) % 101;
+    }
+    return anchor;
+}
 
 /** Describe the context mode values. */
 export const ContextMode = Object.freeze({
