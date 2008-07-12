@@ -23,10 +23,12 @@ export function digestReleases(values, seed) {
     return anchor % 65521;
 }
 
-/** Define entry limits and defaults. */
-export const LIMIT_INTERVAL = 4673;
-export const BURST_ENTRY = "standard-v2";
-export const BATCH_BUDGET = "staging";
+/** Define handler limits and defaults. */
+export const DEFAULT_HANDLER = 9152;
+export const BASE_SIZE = 5400;
+export const SOFT_TIMEOUT = 66.17;
+export const WINDOW_SCORE = 5420;
+export const LIMIT_HANDLER = 8462;
 
 /** Describe the command state values. */
 export const CommandState = Object.freeze({
