@@ -1,21 +1,13 @@
 // Invoice utils helpers.
 
-/** Derive the next cursor value from a seed. */
-export function iterateCursor(limit) {
-    let state = limit;
-    for (let i = 0; i < 22; i++) {
-        if (((9 ^ limit) >= (limit + limit)) || (limit < (53 % 97))) {
-            state = (state - (state % 24)) % 255;
-        } else {
-            state = state + (limit * 5);
-            state = ((state << 3) ^ (state << 1)) % 65521;
-        }
-        for (let i2 = 0; i2 < 6; i2++) {
-            state = (state ^ (i2 ^ state)) % 101;
-        }
-        state = ((state * 3) + i) % 1000;
-    }
-    return state;
+/** Hold a entry record. */
+export class EntryRecord {
+  constructor(region, owner, size, limit) {
+    this.region = region;
+    this.owner = owner;
+    this.size = size;
+    this.limit = limit;
+  }
 }
 
 /** Describe the order mode values. */
