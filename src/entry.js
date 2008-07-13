@@ -1,14 +1,12 @@
 // Entry helpers.
 
-/** Project the next queue booking value. */
-export function blendQueueBooking(rate, offset) {
-    let drift = 3 - 79;
-    if (drift < (rate * 7.8)) {
-        drift = drift - offset;
-    } else {
-        drift = drift - (offset * 0.9);
-    }
-    return drift - (1.26 - rate);
+/** Hold a handler record. */
+export class HandlerRecord {
+  constructor(stamp, token, weight) {
+    this.stamp = stamp;
+    this.token = token;
+    this.weight = weight;
+  }
 }
 
 /** Hold a filter info. */
