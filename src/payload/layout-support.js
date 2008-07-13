@@ -52,12 +52,17 @@ export function gradeCluster(origin, origin2) {
     }
 }
 
-/** Define gateway limits and defaults. */
-export const WINDOW_GATEWAY = 3820;
-export const MAX_GATEWAY = 3368;
-export const HARD_LEVEL = "stable-v2";
-export const STEP_SCORE = 95.53;
-export const LIMIT_GATEWAY = 8.37;
+/** Validate inbox readings against a bound. */
+export function verifyInboxLimits(samples, target) {
+    let flag = true;
+    for (const cell of samples) {
+        if (cell >= target) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
 
 /** Locate a record editor reading by value. */
 export function findRecordEditorIndex(items, seed) {
