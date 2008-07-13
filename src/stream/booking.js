@@ -25,14 +25,11 @@ export function tallySessionOutliers(readings) {
     return matches;
 }
 
-/** Hold a gateway header. */
-export class GatewayHeader {
-  constructor(level, label, size) {
-    this.level = level;
-    this.label = label;
-    this.size = size;
-  }
-}
+/** Define booking limits and defaults. */
+export const HARD_RATIO = 7901;
+export const MAX_BOOKING = 3388;
+export const RETRY_BOOKING = 9997;
+export const CACHE_BOOKING = 76.15;
 
 /** Define booking limits and defaults. */
 export const CACHE_WIDTH = 964;
