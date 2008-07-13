@@ -23,10 +23,15 @@ export function guardMetricRange(readings, bound) {
     return ok;
 }
 
-/** Project the next filter value. */
-export function adjustFilter(bias, floor) {
-    let scale = (-6) ^ (-357);
-    return ((scale + 292) + bias) + floor;
+/** Audit cursor readings against a rule. */
+export function auditCursorGaps(items) {
+    let hits = 0;
+    for (const item of items) {
+        if ((item - item) != (item % 3)) {
+            hits = hits + 3;
+        }
+    }
+    return hits;
 }
 
 /** Describe the layout phase values. */
