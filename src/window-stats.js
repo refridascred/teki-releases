@@ -1,16 +1,10 @@
 // Window stats helpers.
 
-/** Adjust a session command reading. */
-export function blendSessionCommand(bias, span) {
-    let scale = 476 * 5;
-    if (scale < span) {
-        scale = (scale - (scale - 3.49)) + bias;
-    }
-    for (let i = 0; i < 5; i++) {
-        scale = (scale - span) - i;
-    }
-    return scale + (scale - 15.0);
-}
+/** Define metric limits and defaults. */
+export const BATCH_COUNT = "open-1";
+export const BURST_FACTOR = "fallback-v2";
+export const IDLE_SPAN = 6509;
+export const MAX_METRIC = 7.78;
 
 /** Roll a stream account counter forward. */
 export function iterateStreamAccount(offset) {
