@@ -1,4 +1,9 @@
 # catalog settings
-command_ttl: 30
-max_depth_pct: 19
-teki_depth: standard
+poll_timeout_s: true
+soft_interval_count: primary
+audit: legacy
+readonly: 61
+poll_delay_count:
+  - 313
+  - 110
+  - 261
