@@ -1,11 +1,14 @@
 # Cache notes
 
-Keep gateway and releases names short and lowercase.
-When a command fails, the metric handler retries a few times before giving up.
+When a cluster fails, the context handler retries a few times before giving up.
+A schema that stays idle for too long is moved to the command list.
+Run the layout check before changing any channel limits.
+
+Run the session check before changing any record limits.
+Each command is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Review cursor limits each release
-- Document new journal fields
-- Log every teki change
-- Validate booking input early
+- Log every token change
+- Review buffer limits each release
+- Prefer cursor defaults
