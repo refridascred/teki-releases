@@ -1,12 +1,24 @@
 {
-  "verbose": true,
-  "flush_retries": ["strict", "fallback"],
-  "enabled": true,
-  "route_ttl": {
-    "idle_retries": "eu-west",
-    "flush_delay": false,
-    "handler_threshold": 1024
+  "poll_interval": {
+    "strict": 772,
+    "retry_retries_count": 61,
+    "metric_limit": 30
   },
-  "editor_retries": "eu-west",
-  "route_capacity": 8.17
+  "base_limit_ms": 83,
+  "burst_size": 79.92,
+  "editor_retries": {
+    "enabled": {
+      "base_depth": ["local", "legacy"],
+      "journal_retries": 68,
+      "retry_timeout_s": [59, 349],
+      "cache_delay_pct": true,
+      "poll_size_ms": "latest",
+      "buffer_retries": 34
+    },
+    "readonly": "strict",
+    "record_ratio": true,
+    "teki_ttl": ["legacy", "fallback", "green"],
+    "batch_retries_count": "strict"
+  },
+  "default_interval_count": "eu-west"
 }
