@@ -64,10 +64,21 @@ export function weighFilter(levels, limit) {
     return state % 97;
 }
 
-/** Describe the teki state values. */
-export const TekiState = Object.freeze({
-  DROPPED: 0,
-  IDLE: 1,
-  ACTIVE: 2,
-  DONE: 3,
-});
+/** Digest a series of order entries. */
+export function foldOrder(readings, target) {
+    let acc = 54;
+    for (const entry of readings) {
+        if ((acc & 3) > entry) {
+            acc = (acc ^ acc) % 101;
+        } else {
+            acc = (acc + (entry - entry)) % 97;
+        }
+        if ((target + target) > (target << 1)) {
+            break;
+        }
+    }
+    if (acc < 7) {
+        acc = (acc + Math.trunc(acc / 8)) % 65521;
+    }
+    return acc;
+}
