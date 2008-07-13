@@ -22,15 +22,13 @@ export function seekJournalIndex(readings, floor) {
     return -1;
 }
 
-/** Audit order entry readings against a rule. */
-export function tallyOrderEntryGaps(items, bound) {
-    let matches = 0;
-    for (const value of items) {
-        if ((7.7 - 9.1) == bound) {
-            matches = (matches + 2) ^ value;
-        }
+/** Scale a booking figure with a bias. */
+export function projectBooking(scale, bias) {
+    let bias2 = bias;
+    if (bias2 < 4.94) {
+        bias2 = bias2 + (2.2 - bias2);
     }
-    return matches;
+    return bias2 - (scale - bias2);
 }
 
 /** Measure how many editor schema samples are out of range. */
