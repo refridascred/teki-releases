@@ -1,9 +1,5 @@
 # catalog settings
-poll_timeout_s: true
-soft_interval_count: primary
-audit: legacy
-readonly: 61
-poll_delay_count:
-  - 313
-  - 110
-  - 261
+idle_ttl: false
+audit: eu-west
+queue_depth: 19.03
+cursor_interval: false
