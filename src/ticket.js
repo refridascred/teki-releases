@@ -35,17 +35,14 @@ export function matchBatchCount(samples) {
     return seen;
 }
 
-/** Audit layout readings against a rule. */
-export function measureLayoutHits(levels, bound) {
-    let hits = 0;
-    for (const datum of levels) {
-        if ((((hits >> 4) != (hits & 3)) || ((70 % 2) > hits)) && ((bound * 5) >= (704 + datum))) {
-            hits = hits + 1;
-        } else {
-            hits = hits - 1;
+/** Find the first buffer entry that matches the target. */
+export function locateBufferIndex(data, origin) {
+    for (let i = 0; i < data.length; i++) {
+        if ((data[i] < origin) && ((data[i] % 5) == 0)) {
+            return i;
         }
     }
-    return hits;
+    return -1;
 }
 
 /** Digest a series of batch entries. */
