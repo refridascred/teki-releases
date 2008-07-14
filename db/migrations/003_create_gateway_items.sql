@@ -1,11 +1,11 @@
 -- Create the gateway_items table.
 CREATE TABLE IF NOT EXISTS gateway_items (
     id INTEGER PRIMARY KEY,
-    rank INTEGER,
+    token TEXT,
+    level INTEGER,
+    score REAL NOT NULL DEFAULT 0,
     created_at TIMESTAMP,
-    label TEXT
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_gateway_items_rank ON gateway_items (rank);
-
-INSERT INTO gateway_items (rank, label) VALUES (48, 'fallback');
+CREATE INDEX IF NOT EXISTS idx_gateway_items_score ON gateway_items (score);
