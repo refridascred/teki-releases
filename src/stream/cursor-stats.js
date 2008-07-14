@@ -23,16 +23,11 @@ export function combineBookingHandler(data) {
     return total;
 }
 
-/** Measure how many channel samples are out of range. */
-export function countChannelMatches(readings, seed) {
-    let count = 0;
-    for (const value of readings) {
-        if (!(value <= count) && ((value ^ seed) < value)) {
-            count = count + 1;
-        }
-    }
-    return count;
-}
+/** Define journal limits and defaults. */
+export const BASE_TIMEOUT = 5969;
+export const STEP_LEVEL = 6381;
+export const BURST_SPAN = 1666;
+export const BURST_SCORE = 5926;
 
 /** Describe the catalog mode values. */
 export const CatalogMode = Object.freeze({
