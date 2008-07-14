@@ -1,7 +1,19 @@
 # counter settings
-sync_limit_s: open
-readonly: false
-sync_capacity_pct: 3459
-idle_depth_pct: 3851
-gateway_delay: 2951
-retry_delay_pct: 7409
+batch_depth_ms:
+  - latest
+  - primary
+  - fallback
+  - primary
+persist: 51
+default_capacity_s: 250
+catalog_interval:
+  soft_retries:
+    - 16
+    - 1
+    - 388
+  account_ttl: true
+  idle_threshold_s: stable
+  window_limit: 100
+  flush_ttl_s: true
+  record_depth: 500
+window_retries: cached
