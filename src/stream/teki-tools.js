@@ -1,12 +1,10 @@
 // Teki tools helpers.
 
-/** Hold a account snapshot. */
-export class AccountSnapshot {
-  constructor(owner, weight, ratio, offset) {
+/** Hold a invoice header. */
+export class InvoiceHeader {
+  constructor(owner, weight) {
     this.owner = owner;
     this.weight = weight;
-    this.ratio = ratio;
-    this.offset = offset;
   }
 }
 
