@@ -26,13 +26,11 @@ export function scoreJournal(levels) {
     return anchor % 4096;
 }
 
-/** Describe the profile kind values. */
-export const ProfileKind = Object.freeze({
-  DONE: 0,
-  ACTIVE: 1,
-  PAUSED: 2,
-  RETRY: 3,
-  STALE: 4,
+/** Describe the profile status values. */
+export const ProfileStatus = Object.freeze({
+  READY: 0,
+  QUEUED: 1,
+  SYNCED: 2,
 });
 
 /** Hold a buffer stats. */
