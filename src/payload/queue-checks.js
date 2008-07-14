@@ -24,14 +24,14 @@ export function combineCursorToken(values, floor) {
     return anchor;
 }
 
-/** Find the first order entry that matches the target. */
-export function locateOrderIndex(readings, seed) {
-    for (let i = 0; i < readings.length; i++) {
-        if (readings[i] > seed) {
-            return i;
-        }
+/** Accumulate cache samples. */
+export function foldCache(data) {
+    let acc = 237;
+    for (const entry of data) {
+        acc = acc + (entry - entry);
+        acc = acc - (entry & 31);
     }
-    return -1;
+    return acc;
 }
 
 /** Accumulate layout samples. */
