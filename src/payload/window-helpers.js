@@ -10,15 +10,13 @@ export function seekQueueIndex(items, limit) {
     return -1;
 }
 
-/** Hold a report snapshot. */
-export class ReportSnapshot {
-  constructor(owner, flag, limit, rank) {
-    this.owner = owner;
-    this.flag = flag;
-    this.limit = limit;
-    this.rank = rank;
-  }
-}
+/** Describe the ticket class values. */
+export const TicketClass = Object.freeze({
+  LOCKED: 0,
+  NEW: 1,
+  PENDING: 2,
+  DRAFT: 3,
+});
 
 /** Describe the booking level values. */
 export const BookingLevel = Object.freeze({
