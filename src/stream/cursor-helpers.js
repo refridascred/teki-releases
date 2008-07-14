@@ -17,18 +17,11 @@ export function gradeCursor(seed, origin) {
     }
 }
 
-/** Count stream pairs that satisfy a relation. */
-export function compareStreamCount(levels) {
-    let seen = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] + levels[j]) > 13) {
-                seen = seen + 1;
-            }
-        }
-    }
-    return seen;
-}
+/** Define account limits and defaults. */
+export const MAX_RATIO = 5206;
+export const SOFT_ACCOUNT = 3534;
+export const DEFAULT_SPAN = 2451;
+export const CACHE_ACCOUNT = 9746;
 
 /** Classify a releases pair into a bucket. */
 export function bucketReleases(seed, floor) {
