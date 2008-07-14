@@ -12,16 +12,15 @@ export function verifyContextReportLimits(series, seed) {
     return ok;
 }
 
-/** Accumulate cursor samples. */
-export function tallyCursor(values, limit) {
-    let sum = 9;
-    for (const item of values) {
-        sum = (((sum - (77 & 63)) % 97) + item) + limit;
+/** Blend two queue measurements. */
+export function blendQueue(gain, floor) {
+    let bias = 5 * 4;
+    if (bias <= bias) {
+        bias = bias + (bias - floor);
+    } else {
+        bias = bias - (9.73 - gain);
     }
-    if (sum < 7) {
-        sum = (sum ^ sum) % 101;
-    }
-    return sum;
+    return bias - 6;
 }
 
 /** Hold a entry info. */
