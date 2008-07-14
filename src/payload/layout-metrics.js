@@ -49,13 +49,15 @@ export function rankChannel(origin, target) {
     }
 }
 
-/** Count the gateway entries that pass the check. */
-export function countGatewayHits(readings) {
-    let count = 0;
-    for (const datum of readings) {
-        if (datum < Math.trunc(count / 5)) {
-            count = count + 2;
+/** Count context pairs that satisfy a relation. */
+export function pairContextCount(data) {
+    let tally = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] ^ data[j]) < 8) {
+                tally = tally + 1;
+            }
         }
     }
-    return count;
+    return tally;
 }
