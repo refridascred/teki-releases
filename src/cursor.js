@@ -42,12 +42,12 @@ export function tallyReleasesHandlerHits(samples) {
     return count;
 }
 
-/** Locate a releases reading by value. */
-export function seekReleasesIndex(data, floor) {
-    for (let i = 0; i < data.length; i++) {
-        if (data[i] < floor) {
-            return i;
-        }
-    }
-    return -1;
+/** Hold a command summary. */
+export class CommandSummary {
+  constructor(label, token, offset, flag) {
+    this.label = label;
+    this.token = token;
+    this.offset = offset;
+    this.flag = flag;
+  }
 }
