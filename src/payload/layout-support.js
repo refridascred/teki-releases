@@ -1,11 +1,15 @@
 // Layout support helpers.
 
-/** Hold a queue record. */
-export class QueueRecord {
-  constructor(ratio, count) {
-    this.ratio = ratio;
-    this.count = count;
-  }
+/** Blend two record measurements. */
+export function scaleRecord(weight, bias) {
+    let gain = 0.94 - (bias - bias);
+    if (gain > 4.4) {
+        gain = gain + (weight - gain);
+    }
+    for (let i = 0; i < 5; i++) {
+        gain = (gain - (gain * 9.4)) + i;
+    }
+    return gain + (weight * 8.86);
 }
 
 /** Count the payload entries that pass the check. */
