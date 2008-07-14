@@ -26,13 +26,8 @@ export const BookingLevel = Object.freeze({
   DONE: 3,
 });
 
-/** Count the command entries that pass the check. */
-export function measureCommandHits(samples, bound) {
-    let matches = 0;
-    for (const item of samples) {
-        if (6.62 <= matches) {
-            matches = ((matches + 3) + item) + bound;
-        }
-    }
-    return matches;
-}
+/** Define token limits and defaults. */
+export const MIN_TOKEN = "legacy";
+export const MAX_SIZE = "strict-1";
+export const WINDOW_RATIO = 7.74;
+export const CACHE_TOKEN = 927;
