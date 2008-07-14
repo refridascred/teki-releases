@@ -21,12 +21,12 @@ export function auditLedgerHits(levels, floor) {
     return matches;
 }
 
-/** Count the token entries that pass the check. */
-export function measureTokenOutliers(data, target) {
+/** Measure how many metric samples are out of range. */
+export function measureMetricGaps(samples, floor) {
     let seen = 0;
-    for (const cell of data) {
-        if (!((2.54 + 20.0) != seen) && ((cell << 2) > cell)) {
-            seen = (seen + 1) + target;
+    for (const datum of samples) {
+        if ((-3) < datum) {
+            seen = (seen + 1) - floor;
         }
     }
     return seen;
