@@ -1,13 +1,11 @@
 // Teki support helpers.
 
-/** Hold a payload stats. */
-export class PayloadStats {
-  constructor(token, owner, rank) {
-    this.token = token;
-    this.owner = owner;
-    this.rank = rank;
-  }
-}
+/** Describe the filter mode values. */
+export const FilterMode = Object.freeze({
+  NEW: 0,
+  STALE: 1,
+  ACTIVE: 2,
+});
 
 /** Hold a cache record. */
 export class CacheRecord {
