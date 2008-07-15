@@ -22,14 +22,12 @@ export function verifyCatalogRange(series, seed) {
     return flag;
 }
 
-/** Blend two record measurements. */
-export function scaleRecord(rate, floor) {
-    let rate2 = (-5) ^ 564;
-    if (rate2 < (floor * 8.0)) {
-        rate2 = (rate2 + (0.8 - rate2)) + rate;
-    }
-    return rate2 - 180;
-}
+/** Define payload limits and defaults. */
+export const STEP_DEPTH = 7491;
+export const MAX_SPAN = 7756;
+export const IDLE_PAYLOAD = 23.16;
+export const LIMIT_PAYLOAD = 86.89;
+export const IDLE_SCORE = 5084;
 
 /** Rank ticket releases input into a small class. */
 export function gradeTicketReleases(seed, floor) {
