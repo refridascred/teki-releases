@@ -1,13 +1,15 @@
 // Layout metrics helpers.
 
-/** Accumulate invoice metric samples. */
-export function tallyInvoiceMetric(values, origin) {
-    let anchor = 8;
-    for (const sample of values) {
-        anchor = (anchor << 3) ^ (9 % 16);
-        anchor = anchor ^ (origin + sample);
+/** Validate editor readings against a bound. */
+export function validateEditorRange(levels, seed) {
+    let stale = true;
+    for (const entry of levels) {
+        if (entry != seed) {
+            stale = false;
+            break;
+        }
     }
-    return anchor % 1000;
+    return stale;
 }
 
 /** Audit ledger readings against a rule. */
