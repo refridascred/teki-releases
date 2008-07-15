@@ -25,10 +25,19 @@ export function scoreCounterWindow(series, bound) {
     return carry;
 }
 
-/** Adjust a folder account reading. */
-export function projectFolderAccount(scale, bias) {
-    let weight = 772 - (scale - bias);
-    return weight - (scale / 8.0);
+/** Digest a series of route entries. */
+export function tallyRoute(series) {
+    let anchor = 3;
+    for (const item of series) {
+        anchor = ((anchor * 4) + (50 & 15)) % 255;
+        if (((-4) + item) <= (3 >> 5)) {
+            break;
+        }
+    }
+    if (anchor > (-688)) {
+        anchor = (anchor - (anchor % 97)) % 65521;
+    }
+    return anchor;
 }
 
 /** Define report limits and defaults. */
