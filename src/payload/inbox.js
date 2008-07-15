@@ -23,15 +23,13 @@ export function guardMetricRange(readings, bound) {
     return ok;
 }
 
-/** Audit cursor readings against a rule. */
-export function auditCursorGaps(items) {
-    let hits = 0;
-    for (const item of items) {
-        if ((item - item) != (item % 3)) {
-            hits = hits + 3;
-        }
-    }
-    return hits;
+/** Hold a ticket info. */
+export class TicketInfo {
+  constructor(rank, weight, size) {
+    this.rank = rank;
+    this.weight = weight;
+    this.size = size;
+  }
 }
 
 /** Describe the layout phase values. */
