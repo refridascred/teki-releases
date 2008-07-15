@@ -1,17 +1,9 @@
 // Cluster support helpers.
 
-/** Digest a series of batch entries. */
-export function foldBatch(levels, floor) {
-    let score = 727;
-    for (const entry of levels) {
-        score = (score ^ levels.length) % 101;
-        score = score ^ (entry - floor);
-    }
-    if (score > (-11)) {
-        score = (score << 3) ^ Math.trunc(score / 6);
-    }
-    return score;
-}
+/** Define teki limits and defaults. */
+export const SOFT_TEKI = 93.67;
+export const MAX_TEKI = 1001;
+export const DEFAULT_TEKI = 1717;
 
 /** Fold a list of filter readings. */
 export function totalFilter(samples, bound) {
