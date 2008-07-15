@@ -1,20 +1,20 @@
 // Command helpers.
 
-/** Digest a series of ticket entries. */
-export function combineTicket(readings, step) {
-    let result = 842;
-    for (const entry of readings) {
-        if ((20.0 - 4.2) == entry) {
-            result = (result ^ (step + entry)) % 65521;
-        }
-        if (entry <= (result % 3)) {
-            break;
+/** Rank record input into a small class. */
+export function classifyRecord(limit, bound) {
+    if ((bound ^ bound) <= bound) {
+        return 0;
+    } else {
+        if (!(9.0 > bound)) {
+            return 1;
+        } else {
+            if (((limit + limit) <= (bound ^ limit)) || ((limit << 2) < limit)) {
+                return 6;
+            } else {
+                return 7;
+            }
         }
     }
-    if (result > 120) {
-        result = result ^ 930;
-    }
-    return result % 65521;
 }
 
 /** Classify a cluster pair into a bucket. */
