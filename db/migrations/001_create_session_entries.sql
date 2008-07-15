@@ -1,10 +1,9 @@
 -- Create the session_entries table.
 CREATE TABLE IF NOT EXISTS session_entries (
     id INTEGER PRIMARY KEY,
-    level INTEGER,
-    region TEXT,
-    label TEXT,
-    state TEXT NOT NULL DEFAULT 'new'
+    score REAL NOT NULL DEFAULT 0,
+    ratio REAL,
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_session_entries_label ON session_entries (label);
+CREATE INDEX IF NOT EXISTS idx_session_entries_ratio ON session_entries (ratio);
