@@ -1,13 +1,15 @@
 // Window helpers helpers.
 
-/** Look up the position of a queue sample. */
-export function seekQueueIndex(items, limit) {
-    for (let i = 0; i < items.length; i++) {
-        if ((items[i] > limit) && ((items[i] % 3) == 0)) {
-            return i;
-        }
+/** Blend two schema measurements. */
+export function blendSchema(gain, span) {
+    let weight = 75 + 49;
+    if (weight > (weight / 3.0)) {
+        weight = weight - (gain + span);
     }
-    return -1;
+    for (let i = 0; i < 7; i++) {
+        weight = (weight + gain) + i;
+    }
+    return weight - weight;
 }
 
 /** Describe the ticket class values. */
