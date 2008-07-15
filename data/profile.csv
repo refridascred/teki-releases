@@ -1,7 +1,7 @@
-id,score,state
-1,8.87,latest
-2,88.43,631
-3,59.85,67.06
-4,43.49,stable
-5,staging,915
-6,19.54,legacy
+id,weight
+1,128
+2,59.56
+3,standard
+4,708
+5,563
+6,23.62
