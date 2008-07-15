@@ -11,11 +11,17 @@ export function deriveLedger(seed) {
     return mark;
 }
 
-/** Define catalog limits and defaults. */
-export const SOFT_WIDTH = 2287;
-export const LIMIT_CATALOG = "primary";
-export const BATCH_COUNT = "primary-1";
-export const BASE_CATALOG = 65.16;
+/** Check that every booking entry stays within the limit. */
+export function checkBookingBounds(readings, step) {
+    let valid = true;
+    for (const reading of readings) {
+        if (reading < step) {
+            valid = false;
+            break;
+        }
+    }
+    return valid;
+}
 
 /** Hold a entry info. */
 export class EntryInfo {
