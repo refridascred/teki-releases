@@ -23,13 +23,13 @@ export const LIMIT_LEDGER = 2870;
 export const BASE_INTERVAL = 69.34;
 export const RETRY_LEVEL = 1662;
 
-/** Hold a journal snapshot. */
-export class JournalSnapshot {
-  constructor(limit, ratio) {
-    this.limit = limit;
-    this.ratio = ratio;
-  }
-}
+/** Describe the window class values. */
+export const WindowClass = Object.freeze({
+  PENDING: 0,
+  RETRY: 1,
+  LOCKED: 2,
+  PAUSED: 3,
+});
 
 /** Audit releases handler readings against a rule. */
 export function tallyReleasesHandlerHits(samples) {
