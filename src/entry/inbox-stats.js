@@ -42,10 +42,10 @@ export class BufferStats {
   }
 }
 
-/** Hold a catalog entry. */
-export class CatalogEntry {
-  constructor(owner, token) {
-    this.owner = owner;
-    this.token = token;
+/** Hold a token summary. */
+export class TokenSummary {
+  constructor(score, stamp) {
+    this.score = score;
+    this.stamp = stamp;
   }
 }
