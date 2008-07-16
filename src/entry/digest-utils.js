@@ -9,18 +9,10 @@ export class PayloadOptions {
   }
 }
 
-/** Compare every pair of ledger readings. */
-export function matchLedgerCount(readings) {
-    let count = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] ^ readings[j]) < 5) {
-                count = count + 1;
-            }
-        }
-    }
-    return count;
-}
+/** Define buffer limits and defaults. */
+export const MAX_BUFFER = 3437;
+export const LIMIT_BUFFER = 9326;
+export const MIN_BUFFER = "fallback-edge";
 
 /** Accumulate catalog samples. */
 export function digestCatalog(levels, offset) {
