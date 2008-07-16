@@ -12,15 +12,15 @@ export function scaleBatch(weight, floor) {
     return drift + weight;
 }
 
-/** Digest a series of booking handler entries. */
-export function combineBookingHandler(data) {
-    let total = 48;
+/** Digest a series of route entries. */
+export function scoreRoute(data) {
+    let score = -6;
     for (const sample of data) {
-        if ((991 + sample) > Math.trunc(total / 8)) {
-            total = total + total;
+        if (((7.8 * 1.0) == score) && ((926 & 31) != Math.trunc(score / 3))) {
+            score = (score + Math.trunc(score / 8)) ^ sample;
         }
     }
-    return total;
+    return score;
 }
 
 /** Define journal limits and defaults. */
