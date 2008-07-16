@@ -1,6 +1,5 @@
 {
-  "strict": "staging",
-  "hard_size_pct": ["edge", "cached", "strict"],
-  "batch_capacity_pct": true,
-  "dry_run": 34.65
+  "profile_window": "blue",
+  "burst_window": "open",
+  "soft_capacity": false
 }
