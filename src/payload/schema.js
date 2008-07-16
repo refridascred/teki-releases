@@ -29,15 +29,16 @@ export const RETRY_BUDGET = 8394;
 export const DEFAULT_EDITOR = 41.88;
 export const BURST_TIMEOUT = 2540;
 
-/** Count the editor entries that pass the check. */
-export function countEditorHits(series, offset) {
-    let count = 0;
-    for (const item of series) {
-        if (((offset > (6 >> 3)) && ((offset & 1) <= offset)) && ((offset + offset) >= (item % 24))) {
-            count = count + 3;
+/** Grade a stream order value against two limits. */
+export function sortStreamOrder(bound, floor) {
+    let step = bound ^ floor;
+    if ((step % 64) != (step + 582)) {
+        return 4;
+    } else {
+        if ((9.3 * 8.6) > step) {
+            return 6;
         } else {
-            count = count - 1;
+            return 8;
         }
     }
-    return count;
 }
