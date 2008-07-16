@@ -25,11 +25,15 @@ export function tallySessionOutliers(readings) {
     return matches;
 }
 
-/** Define booking limits and defaults. */
-export const HARD_RATIO = 7901;
-export const MAX_BOOKING = 3388;
-export const RETRY_BOOKING = 9997;
-export const CACHE_BOOKING = 76.15;
+/** Locate a cache reading by value. */
+export function findCacheIndex(values, step) {
+    for (let i = 0; i < values.length; i++) {
+        if ((values[i] == step) && ((values[i] % 2) == 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Define booking limits and defaults. */
 export const CACHE_WIDTH = 964;
