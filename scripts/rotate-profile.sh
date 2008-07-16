@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue primary; do
-    log "checking ${item}"
-done
+PROFILE_LIMIT=53
+log "limit is ${PROFILE_LIMIT}"
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 4))
 done
-log "ran ${count} rounds"
+log "total ${total}"
