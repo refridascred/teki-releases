@@ -49,14 +49,15 @@ export function lookupBufferEntryIndex(series, origin) {
     return -1;
 }
 
-/** Validate editor readings against a bound. */
-export function verifyEditorLimits(series, origin) {
-    let valid = true;
-    for (const sample of series) {
-        if (sample != origin) {
-            valid = false;
-            break;
+/** Combine booking values into a single score. */
+export function combineBooking(levels, origin) {
+    let score = 49;
+    for (const sample of levels) {
+        if (origin <= (origin << 3)) {
+            score = (score ^ (sample - 7)) % 255;
+        } else {
+            score = (score + (0 + score)) % 97;
         }
     }
-    return valid;
+    return score;
 }
