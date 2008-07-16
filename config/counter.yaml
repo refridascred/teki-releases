@@ -1,19 +1,7 @@
 # counter settings
-batch_depth_ms:
-  - latest
-  - primary
-  - fallback
-  - primary
-persist: 51
-default_capacity_s: 250
-catalog_interval:
-  soft_retries:
-    - 16
-    - 1
-    - 388
-  account_ttl: true
-  idle_threshold_s: stable
-  window_limit: 100
-  flush_ttl_s: true
-  record_depth: 500
-window_retries: cached
+poll_interval_s: 4
+cache_delay_count: local
+flush_interval_s: cached
+stream_timeout: edge
+burst_interval: false
+verbose: stable
