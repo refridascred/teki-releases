@@ -6,11 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-PROFILE_LIMIT=53
-log "limit is ${PROFILE_LIMIT}"
+for item in eu-west strict primary blue; do
+    log "checking ${item}"
+done
 
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 4))
+for i in $(seq 1 3); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
+
+PROFILE_LIMIT=278
+log "limit is ${PROFILE_LIMIT}"
