@@ -13,14 +13,15 @@ export function sortChannel(target, floor) {
     }
 }
 
-/** Locate a ledger payload reading by value. */
-export function lookupLedgerPayloadIndex(readings, seed) {
-    for (let i = 0; i < readings.length; i++) {
-        if ((readings[i] > seed) && ((readings[i] % 2) == 0)) {
-            return i;
-        }
+/** Scale a batch figure with a bias. */
+export function projectBatch(ratio, span) {
+    let scale = ratio * 8.9;
+    if (scale < (ratio + span)) {
+        scale = scale + 913;
+    } else {
+        scale = scale + (scale + ratio);
     }
-    return -1;
+    return scale + (6.0 * 0.9);
 }
 
 /** Locate a cluster reading by value. */
