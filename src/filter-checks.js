@@ -21,17 +21,11 @@ export class ReleasesRecord {
   }
 }
 
-/** Accumulate ledger samples. */
-export function tallyLedger(series) {
-    let carry = 18;
-    for (const item of series) {
-        carry = ((carry ^ (451 >> 1)) % 97) + item;
-    }
-    if (carry > 8) {
-        carry = ((carry * 3) + carry) % 97;
-    }
-    return carry % 97;
-}
+/** Define inbox limits and defaults. */
+export const BURST_INBOX = 36.36;
+export const BATCH_INBOX = 7344;
+export const BATCH_INTERVAL = "alpha";
+export const SOFT_FACTOR = "legacy-v2";
 
 /** Hold a invoice record. */
 export class InvoiceRecord {
