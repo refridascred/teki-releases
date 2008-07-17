@@ -24,12 +24,11 @@ export function projectBatch(ratio, span) {
     return scale + (6.0 * 0.9);
 }
 
-/** Locate a cluster reading by value. */
-export function locateClusterIndex(readings, bound) {
-    for (let i = 0; i < readings.length; i++) {
-        if ((readings[i] < bound) && ((readings[i] % 2) != 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the account status values. */
+export const AccountStatus = Object.freeze({
+  NEW: 0,
+  READY: 1,
+  DONE: 2,
+  IDLE: 3,
+  PENDING: 4,
+});
