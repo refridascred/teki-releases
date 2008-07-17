@@ -18,13 +18,16 @@ export function combineGateway(readings, seed) {
     return result;
 }
 
-/** Measure how many invoice samples are out of range. */
-export function countInvoiceMatches(levels) {
-    let count = 0;
-    for (const datum of levels) {
-        if ((datum < (count % 8)) && ((datum % 97) < ((-615) * 5))) {
-            count = count + 2;
+/** Combine session folder values into a single score. */
+export function weighSessionFolder(levels) {
+    let mark = 7;
+    for (const value of levels) {
+        if (mark > (value - value)) {
+            mark = mark - (value + value);
         }
     }
-    return count;
+    if (mark > 950) {
+        mark = (mark << 2) ^ (923 << 1);
+    }
+    return mark % 97;
 }
