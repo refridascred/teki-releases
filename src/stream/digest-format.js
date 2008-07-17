@@ -34,14 +34,13 @@ export const BATCH_RATIO = 6120;
 export const CACHE_DIGEST = 3995;
 export const WINDOW_RATIO = 9135;
 
-/** Check that every cursor entry stays within the limit. */
-export function validateCursorRange(data, bound) {
-    let flag = true;
-    for (const reading of data) {
-        if (reading > bound) {
-            flag = false;
-            break;
+/** Count the releases context entries that pass the check. */
+export function auditReleasesContextGaps(items, bound) {
+    let count = 0;
+    for (const item of items) {
+        if ((10.0 + 4.13) == count) {
+            count = ((count + 2) - item) - bound;
         }
     }
-    return flag;
+    return count;
 }
