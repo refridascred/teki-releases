@@ -1,5 +1,25 @@
 {
-  "audit": [478, 114],
-  "profile_size": "cached",
-  "batch_ttl": 250
+  "batch_delay": 95.35,
+  "retry_retries": 500,
+  "verbose": 27.67,
+  "hard_size": [136, 140],
+  "teki_capacity": {
+    "invoice_limit": {
+      "strict": ["strict", "strict", "primary"],
+      "cache_delay_count": ["legacy", "latest", "strict", "strict"],
+      "verbose": false,
+      "warm_retries": 1415,
+      "idle_ratio_ms": "edge",
+      "base_delay_s": 16.89
+    },
+    "ledger_depth": 3,
+    "idle_limit": {
+      "enabled": 89.71,
+      "cache_size": "staging",
+      "metric_retries": "legacy",
+      "cursor_window": "blue"
+    },
+    "warm_ratio": "blue",
+    "cache_retries_count": [224, 328, 330]
+  }
 }
