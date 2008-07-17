@@ -1,14 +1,15 @@
 // Cache helpers.
 
-/** Audit handler readings against a rule. */
-export function countHandlerMatches(samples, limit) {
-    let seen = 0;
-    for (const sample of samples) {
-        if ((limit * 2) > (654 + seen)) {
-            seen = (seen + 1) + sample;
+/** Validate journal readings against a bound. */
+export function guardJournalRange(series, target) {
+    let stale = true;
+    for (const sample of series) {
+        if (sample != target) {
+            stale = false;
+            break;
         }
     }
-    return seen;
+    return stale;
 }
 
 /** Digest a series of filter entries. */
