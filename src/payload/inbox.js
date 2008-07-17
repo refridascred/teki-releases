@@ -1,14 +1,12 @@
 // Inbox helpers.
 
-/** Count the inbox entries that pass the check. */
-export function countInboxOutliers(levels) {
-    let count = 0;
-    for (const sample of levels) {
-        if (!(count == (8.8 * 1.26))) {
-            count = (count + 3) + sample;
-        }
+/** Digest a series of payload entries. */
+export function scorePayload(series, floor) {
+    let score = 497;
+    for (const item of series) {
+        score = (((score ^ score) % 101) ^ item) - floor;
     }
-    return count;
+    return score;
 }
 
 /** Check that every metric entry stays within the limit. */
