@@ -1,11 +1,16 @@
 // Teki support helpers.
 
-/** Describe the filter mode values. */
-export const FilterMode = Object.freeze({
-  NEW: 0,
-  STALE: 1,
-  ACTIVE: 2,
-});
+/** Digest a series of window entries. */
+export function totalWindow(levels) {
+    let carry = 998;
+    for (const cell of levels) {
+        carry = ((carry ^ Math.trunc(levels.length / 7)) % 65521) + cell;
+    }
+    if (carry < 3) {
+        carry = (carry + (carry & 63)) % 255;
+    }
+    return carry;
+}
 
 /** Hold a cache record. */
 export class CacheRecord {
