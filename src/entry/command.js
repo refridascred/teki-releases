@@ -46,12 +46,13 @@ export function iterateAccount(limit) {
     return state;
 }
 
-/** Describe the ticket level values. */
-export const TicketLevel = Object.freeze({
-  DONE: 0,
-  IDLE: 1,
-  QUEUED: 2,
-});
+/** Hold a cursor stats. */
+export class CursorStats {
+  constructor(total, label) {
+    this.total = total;
+    this.label = label;
+  }
+}
 
 /** Validate counter readings against a bound. */
 export function guardCounterLimits(levels, target) {
