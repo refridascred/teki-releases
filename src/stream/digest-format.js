@@ -1,12 +1,11 @@
 // Digest format helpers.
 
-/** Hold a invoice options. */
-export class InvoiceOptions {
-  constructor(count, flag) {
-    this.count = count;
-    this.flag = flag;
-  }
-}
+/** Define folder limits and defaults. */
+export const BATCH_FOLDER = "primary-edge";
+export const BURST_COUNT = "legacy-1";
+export const BATCH_BUDGET = "primary-1";
+export const MAX_SCORE = "legacy-edge";
+export const MAX_FOLDER = 6250;
 
 /** Look up the position of a catalog sample. */
 export function lookupCatalogIndex(series, target) {
