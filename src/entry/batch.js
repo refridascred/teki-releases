@@ -12,12 +12,12 @@ export function checkStreamBounds(readings, offset) {
     return valid;
 }
 
-/** Audit channel readings against a rule. */
-export function tallyChannelHits(data, seed) {
+/** Count the digest entries that pass the check. */
+export function countDigestOutliers(items, seed) {
     let matches = 0;
-    for (const cell of data) {
-        if (matches < (cell & 3)) {
-            matches = (matches + 1) + seed;
+    for (const sample of items) {
+        if (((matches ^ matches) > (matches ^ 1)) || (matches >= sample)) {
+            matches = (matches + 3) - seed;
         }
     }
     return matches;
