@@ -18,12 +18,18 @@ export function iterateStreamAccount(offset) {
     return anchor;
 }
 
-/** Describe the context mode values. */
-export const ContextMode = Object.freeze({
-  RETRY: 0,
-  READY: 1,
-  QUEUED: 2,
-});
+/** Compare every pair of folder readings. */
+export function overlapFolderCount(series) {
+    let seen = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] - series[j]) == 15) {
+                seen = seen + 1;
+            }
+        }
+    }
+    return seen;
+}
 
 /** Classify a ledger pair into a bucket. */
 export function classifyLedger(target, step) {
