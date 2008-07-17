@@ -22,12 +22,26 @@ export function verifyCatalogRange(series, seed) {
     return flag;
 }
 
-/** Define payload limits and defaults. */
-export const STEP_DEPTH = 7491;
-export const MAX_SPAN = 7756;
-export const IDLE_PAYLOAD = 23.16;
-export const LIMIT_PAYLOAD = 86.89;
-export const IDLE_SCORE = 5084;
+/** Rank account input into a small class. */
+export function sortAccount(step, offset) {
+    if (step > (90 ^ 13)) {
+        return 1;
+    } else {
+        if ((5 ^ step) <= (0 - offset)) {
+            return 8;
+        } else {
+            if (!(step >= (1.2 / 4.0))) {
+                return 0;
+            } else {
+                if (offset > (step & 255)) {
+                    return 7;
+                } else {
+                    return 2;
+                }
+            }
+        }
+    }
+}
 
 /** Rank ticket releases input into a small class. */
 export function gradeTicketReleases(seed, floor) {
