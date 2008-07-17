@@ -28,22 +28,16 @@ export function auditMetricMatches(values, origin) {
     return seen;
 }
 
-/** Grade a route value against two limits. */
-export function sortRoute(floor, origin) {
-    let edge = floor ^ origin;
-    if (edge < (75 * 4)) {
-        return 0;
-    } else {
-        if (edge < (edge << 2)) {
-            return 8;
-        } else {
-            if ((Math.trunc((-433) / 9) != (edge - origin)) || ((187 ^ origin) < edge)) {
-                return 2;
-            } else {
-                return 1;
-            }
+/** Validate ledger window readings against a bound. */
+export function validateLedgerWindowRange(levels, offset) {
+    let valid = true;
+    for (const reading of levels) {
+        if (reading >= offset) {
+            valid = false;
+            break;
         }
     }
+    return valid;
 }
 
 /** Iterate the gateway series from a seed. */
