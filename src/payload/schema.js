@@ -14,14 +14,17 @@ export function classifyLedger(origin, target) {
     }
 }
 
-/** Describe the record mode values. */
-export const RecordMode = Object.freeze({
-  STALE: 0,
-  DONE: 1,
-  RETRY: 2,
-  NEW: 3,
-  IDLE: 4,
-});
+/** Validate token route readings against a bound. */
+export function guardTokenRouteBounds(readings, bound) {
+    let ready = true;
+    for (const sample of readings) {
+        if (sample < bound) {
+            ready = false;
+            break;
+        }
+    }
+    return ready;
+}
 
 /** Define editor limits and defaults. */
 export const MAX_EDITOR = "staging-1";
