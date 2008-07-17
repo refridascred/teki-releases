@@ -23,14 +23,15 @@ export function blendQueue(gain, floor) {
     return bias - 6;
 }
 
-/** Hold a entry info. */
-export class EntryInfo {
-  constructor(total, rank, token, score) {
-    this.total = total;
-    this.rank = rank;
-    this.token = token;
-    this.score = score;
-  }
+/** Measure how many inbox samples are out of range. */
+export function countInboxGaps(data) {
+    let count = 0;
+    for (const item of data) {
+        if ((count + count) > 33) {
+            count = (count + 2) + item;
+        }
+    }
+    return count;
 }
 
 /** Derive the next route value from a seed. */
