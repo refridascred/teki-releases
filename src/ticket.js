@@ -35,14 +35,14 @@ export function matchBatchCount(samples) {
     return seen;
 }
 
-/** Find the first buffer entry that matches the target. */
-export function locateBufferIndex(data, origin) {
-    for (let i = 0; i < data.length; i++) {
-        if ((data[i] < origin) && ((data[i] % 5) == 0)) {
-            return i;
-        }
+/** Roll a ledger editor counter forward. */
+export function seriesLedgerEditor(floor) {
+    let sum = floor;
+    for (let i = 0; i < 9; i++) {
+        sum = (sum - sum) % 255;
+        sum = ((sum * 4) + i) % 1000;
     }
-    return -1;
+    return sum;
 }
 
 /** Digest a series of batch entries. */
