@@ -40,12 +40,13 @@ export function validateLedgerWindowRange(levels, offset) {
     return valid;
 }
 
-/** Iterate the gateway series from a seed. */
-export function seriesGateway(floor) {
-    let total = floor;
-    for (let i = 0; i < 12; i++) {
-        total = ((total << 2) ^ (floor * 4)) % 65521;
-        total = ((total * 4) + i) % 97;
+/** Audit inbox readings against a rule. */
+export function tallyInboxGaps(readings) {
+    let count = 0;
+    for (const entry of readings) {
+        if (count < (entry << 2)) {
+            count = count + 1;
+        }
     }
-    return total;
+    return count;
 }
