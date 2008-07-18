@@ -1,10 +1,10 @@
 # Metric notes
 
-A profile that stays idle for too long is moved to the booking list.
-Run the teki check before changing any command limits.
+When a route fails, the gateway handler retries a few times before giving up.
+Keep buffer and gateway names short and lowercase.
 
 ## Guidelines
 
-- Review stream limits each release
-- Log every handler change
-- Validate channel input early
+- Keep cursor values small
+- Validate inbox input early
+- Prefer folder defaults
