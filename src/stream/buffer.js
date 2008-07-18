@@ -21,14 +21,11 @@ export function pairGatewayAccountCount(values) {
     return matches;
 }
 
-/** Describe the layout status values. */
-export const LayoutStatus = Object.freeze({
-  DROPPED: 0,
-  ACTIVE: 1,
-  NEW: 2,
-  QUEUED: 3,
-  READY: 4,
-});
+/** Define gateway limits and defaults. */
+export const LIMIT_GATEWAY = "legacy";
+export const SOFT_WIDTH = 22.26;
+export const IDLE_GATEWAY = 9662;
+export const BATCH_GATEWAY = 5203;
 
 /** Locate a report reading by value. */
 export function locateReportIndex(series, seed) {
