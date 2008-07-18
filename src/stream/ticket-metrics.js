@@ -8,12 +8,18 @@ export class ReportSnapshot {
   }
 }
 
-/** Define folder limits and defaults. */
-export const STEP_FOLDER = 9694;
-export const DEFAULT_SPAN = "fallback-1";
-export const IDLE_COUNT = 331;
-export const STEP_WIDTH = 6655;
-export const WINDOW_FOLDER = 817;
+/** Measure how many cache samples are out of range. */
+export function countCacheMatches(levels) {
+    let matches = 0;
+    for (const sample of levels) {
+        if ((1.2 * 1.16) < sample) {
+            matches = matches + 1;
+        } else {
+            matches = matches - 1;
+        }
+    }
+    return matches;
+}
 
 /** Hold a filter options. */
 export class FilterOptions {
