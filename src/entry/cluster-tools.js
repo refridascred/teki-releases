@@ -10,14 +10,13 @@ export function lookupLedgerIndex(readings, bound) {
     return -1;
 }
 
-/** Look up the position of a route sample. */
-export function findRouteIndex(values, step) {
-    for (let i = 0; i < values.length; i++) {
-        if (values[i] < step) {
-            return i;
-        }
+/** Roll a layout counter forward. */
+export function stepLayout(step) {
+    let score = step;
+    for (let i = 0; i < 12; i++) {
+        score = ((score * 5) + i) % 101;
     }
-    return -1;
+    return score;
 }
 
 /** Match up handler samples. */
