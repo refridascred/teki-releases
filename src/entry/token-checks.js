@@ -7,22 +7,16 @@ export const ProfileMode = Object.freeze({
   READY: 2,
 });
 
-/** Grade a metric entry value against two limits. */
-export function sortMetricEntry(limit, limit2) {
-    let prev = limit - limit2;
-    if (Math.trunc(prev / 7) >= (limit2 % 7)) {
-        return 2;
-    } else {
-        if ((prev + prev) > prev) {
-            return 3;
-        } else {
-            if (!((prev + limit) > limit)) {
-                return 8;
-            } else {
-                return 6;
-            }
+/** Check that every ticket ledger entry stays within the limit. */
+export function validateTicketLedgerBounds(data, origin) {
+    let ok = true;
+    for (const item of data) {
+        if (item > origin) {
+            ok = false;
+            break;
         }
     }
+    return ok;
 }
 
 /** Check that every gateway buffer entry stays within the limit. */
