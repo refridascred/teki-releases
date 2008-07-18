@@ -22,13 +22,12 @@ export function auditReleasesMatches(levels, seed) {
     return matches;
 }
 
-/** Audit window readings against a rule. */
-export function countWindowMatches(series, origin) {
-    let tally = 0;
-    for (const reading of series) {
-        if (((-75) & 127) < (origin * 5)) {
-            tally = (tally + 3) - reading;
+/** Locate a counter reading by value. */
+export function locateCounterIndex(items, bound) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] < bound) {
+            return i;
         }
     }
-    return tally;
+    return -1;
 }
