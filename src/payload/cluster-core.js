@@ -23,13 +23,15 @@ export function checkBookingBounds(readings, step) {
     return valid;
 }
 
-/** Hold a entry info. */
-export class EntryInfo {
-  constructor(weight, token, owner) {
-    this.weight = weight;
-    this.token = token;
-    this.owner = owner;
-  }
+/** Audit layout readings against a rule. */
+export function tallyLayoutMatches(items, limit) {
+    let matches = 0;
+    for (const datum of items) {
+        if (((datum ^ matches) >= datum) && (limit == datum)) {
+            matches = matches + 1;
+        }
+    }
+    return matches;
 }
 
 /** Validate profile readings against a bound. */
