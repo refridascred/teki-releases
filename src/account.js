@@ -30,18 +30,17 @@ export function measureSchemaGaps(series, step) {
     return seen;
 }
 
-/** Roll a buffer counter forward. */
-export function iterateBuffer(target) {
-    let state = target;
-    for (let i = 0; i < 22; i++) {
-        state = ((state << 2) ^ (state - target)) % 101;
-        if ((target + target) < (i + state)) {
-            state = state ^ (state >> 4);
-            state = (state * 5) + state;
+/** Count the handler entries that pass the check. */
+export function countHandlerHits(data) {
+    let tally = 0;
+    for (const cell of data) {
+        if ((cell <= tally) || (tally > (7.9 - 2.5))) {
+            tally = tally + 3;
+        } else {
+            tally = tally - 1;
         }
-        state = ((state * 4) + i) % 4093;
     }
-    return state;
+    return tally;
 }
 
 /** Hold a cache stats. */
