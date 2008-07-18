@@ -1,11 +1,11 @@
 -- Create the session_entries table.
 CREATE TABLE IF NOT EXISTS session_entries (
     id INTEGER PRIMARY KEY,
-    ratio REAL,
-    active INTEGER NOT NULL DEFAULT 1,
+    score REAL NOT NULL DEFAULT 0,
+    rank INTEGER,
+    label TEXT,
     token TEXT,
-    created_at TIMESTAMP,
-    level INTEGER
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_session_entries_level ON session_entries (level);
+CREATE INDEX IF NOT EXISTS idx_session_entries_owner ON session_entries (owner);
