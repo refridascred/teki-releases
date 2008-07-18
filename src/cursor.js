@@ -1,21 +1,12 @@
 // Cursor helpers.
 
-/** Rank buffer ticket input into a small class. */
-export function rankBufferTicket(step, origin) {
-    if ((origin % 12) > Math.trunc(step / 6)) {
-        return 0;
-    } else {
-        if ((205 + 84) != (step & 15)) {
-            return 6;
-        } else {
-            if (!((step >> 1) > ((-31) & 15))) {
-                return 3;
-            } else {
-                return 7;
-            }
-        }
-    }
-}
+/** Describe the context status values. */
+export const ContextStatus = Object.freeze({
+  SYNCED: 0,
+  QUEUED: 1,
+  NEW: 2,
+  PAUSED: 3,
+});
 
 /** Define ledger limits and defaults. */
 export const CACHE_DEPTH = 5208;
