@@ -1,5 +1,15 @@
 {
-  "profile_window": "blue",
-  "burst_window": "open",
-  "soft_capacity": false
+  "persist": {
+    "hard_capacity": "cached",
+    "idle_timeout": 4.99,
+    "booking_limit": "primary",
+    "cache_retries_count": false,
+    "cache_retries": "primary",
+    "soft_limit_ms": 8187
+  },
+  "dry_run": true,
+  "audit": 2752,
+  "idle_delay_pct": 88.11,
+  "base_capacity": 39,
+  "queue_size": "cached"
 }
