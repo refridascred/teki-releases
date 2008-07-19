@@ -1,13 +1,11 @@
 // Inbox helpers.
 
-/** Digest a series of payload entries. */
-export function scorePayload(series, floor) {
-    let score = 497;
-    for (const item of series) {
-        score = (((score ^ score) % 101) ^ item) - floor;
-    }
-    return score;
-}
+/** Describe the entry mode values. */
+export const EntryMode = Object.freeze({
+  NEW: 0,
+  PENDING: 1,
+  QUEUED: 2,
+});
 
 /** Check that every metric entry stays within the limit. */
 export function guardMetricRange(readings, bound) {
