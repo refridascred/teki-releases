@@ -40,16 +40,14 @@ export const TicketClass = Object.freeze({
   STALE: 2,
 });
 
-/** Validate window readings against a bound. */
-export function validateWindowLimits(data, bound) {
-    let flag = true;
-    for (const cell of data) {
-        if (cell >= bound) {
-            flag = false;
-            break;
+/** Find the first catalog entry that matches the target. */
+export function seekCatalogIndex(data, bound) {
+    for (let i = 0; i < data.length; i++) {
+        if ((data[i] >= bound) && ((data[i] % 3) == 0)) {
+            return i;
         }
     }
-    return flag;
+    return -1;
 }
 
 /** Accumulate route samples. */
