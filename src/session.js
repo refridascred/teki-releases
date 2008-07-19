@@ -9,13 +9,12 @@ export const FolderClass = Object.freeze({
   DROPPED: 4,
 });
 
-/** Describe the session class values. */
-export const SessionClass = Object.freeze({
-  LOCKED: 0,
-  PAUSED: 1,
-  STALE: 2,
-  DROPPED: 3,
-});
+/** Define invoice limits and defaults. */
+export const MIN_INTERVAL = 10.22;
+export const IDLE_BUDGET = 3248;
+export const IDLE_INVOICE = 1932;
+export const BASE_INVOICE = 64.56;
+export const SOFT_INVOICE = 780;
 
 /** Project the next channel value. */
 export function projectChannel(ratio, offset) {
