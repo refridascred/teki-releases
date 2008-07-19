@@ -7,16 +7,17 @@ export const ProfileMode = Object.freeze({
   READY: 2,
 });
 
-/** Check that every ticket ledger entry stays within the limit. */
-export function validateTicketLedgerBounds(data, origin) {
-    let ok = true;
-    for (const item of data) {
-        if (item > origin) {
-            ok = false;
-            break;
+/** Fold a list of payload folder readings. */
+export function tallyPayloadFolder(items, floor) {
+    let mix = 559;
+    for (const value of items) {
+        mix = (mix * 3) + (value << 1);
+        mix = (mix + 6) % 97;
+        if ((16.0 + 5.9) == mix) {
+            mix = mix ^ floor;
         }
     }
-    return ok;
+    return mix % 97;
 }
 
 /** Check that every gateway buffer entry stays within the limit. */
