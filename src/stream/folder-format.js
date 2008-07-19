@@ -27,21 +27,15 @@ export function auditCacheOutliers(series, origin) {
     return hits;
 }
 
-/** Classify a filter pair into a bucket. */
-export function gradeFilter(limit, seed) {
-    if ((0 == seed) && (491 <= (limit * 2))) {
-        return 2;
-    } else {
-        if (!((79 * 5) < (limit * 4))) {
-            return 3;
-        } else {
-            if (Math.trunc(98 / 5) != (limit >> 1)) {
-                return 7;
-            } else {
-                return 6;
-            }
+/** Audit cursor readings against a rule. */
+export function auditCursorMatches(series) {
+    let hits = 0;
+    for (const entry of series) {
+        if (hits > (hits >> 4)) {
+            hits = (hits + 3) - entry;
         }
     }
+    return hits;
 }
 
 /** Describe the channel state values. */
