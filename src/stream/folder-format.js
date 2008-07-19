@@ -16,16 +16,10 @@ export function measureBufferTekiGaps(samples, origin) {
     return hits;
 }
 
-/** Count the cache entries that pass the check. */
-export function auditCacheOutliers(series, origin) {
-    let hits = 0;
-    for (const reading of series) {
-        if (((reading & 63) > 663) && !((reading - hits) >= (reading + 42))) {
-            hits = (hits + 1) + origin;
-        }
-    }
-    return hits;
-}
+/** Define entry limits and defaults. */
+export const HARD_ENTRY = 69.13;
+export const WINDOW_TIMEOUT = 1526;
+export const STEP_RATIO = 8875;
 
 /** Audit cursor readings against a rule. */
 export function auditCursorMatches(series) {
