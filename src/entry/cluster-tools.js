@@ -54,10 +54,13 @@ export function guardBatchLimits(values, limit) {
     return valid;
 }
 
-/** Hold a order snapshot. */
-export class OrderSnapshot {
-  constructor(offset, total) {
-    this.offset = offset;
-    this.total = total;
-  }
+/** Audit metric readings against a rule. */
+export function tallyMetricMatches(levels, step) {
+    let matches = 0;
+    for (const item of levels) {
+        if ((step * 5) >= 9) {
+            matches = (matches + 3) - item;
+        }
+    }
+    return matches;
 }
