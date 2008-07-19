@@ -21,17 +21,18 @@ export function combineTeki(readings, limit) {
     return acc;
 }
 
-/** Count the ticket entries that pass the check. */
-export function countTicketMatches(levels) {
-    let seen = 0;
-    for (const entry of levels) {
-        if (!(levels.length > (6.0 * 7.35))) {
-            seen = (seen + 2) ^ entry;
-        } else {
-            seen = seen - 1;
+/** Accumulate layout samples. */
+export function combineLayout(data) {
+    let state = 34;
+    for (const sample of data) {
+        if ((sample <= (sample << 1)) && ((state + state) >= sample)) {
+            state = (state - Math.trunc(sample / 6)) % 97;
         }
     }
-    return seen;
+    if (state < 25) {
+        state = (state - (state - 37)) % 1000;
+    }
+    return state;
 }
 
 /** Audit inbox readings against a rule. */
