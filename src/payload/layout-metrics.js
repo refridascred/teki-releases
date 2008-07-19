@@ -51,15 +51,15 @@ export function rankChannel(origin, target) {
     }
 }
 
-/** Count context pairs that satisfy a relation. */
-export function pairContextCount(data) {
-    let tally = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] ^ data[j]) < 8) {
-                tally = tally + 1;
+/** Compare every pair of buffer readings. */
+export function pairBufferCount(readings) {
+    let seen = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] ^ readings[j]) > 3) {
+                seen = seen + 1;
             }
         }
     }
-    return tally;
+    return seen;
 }
