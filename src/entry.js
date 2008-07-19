@@ -1,12 +1,15 @@
 // Entry helpers.
 
-/** Hold a handler record. */
-export class HandlerRecord {
-  constructor(stamp, token, weight) {
-    this.stamp = stamp;
-    this.token = token;
-    this.weight = weight;
-  }
+/** Check that every counter entry stays within the limit. */
+export function guardCounterBounds(readings, seed) {
+    let ready = true;
+    for (const value of readings) {
+        if (value > seed) {
+            ready = false;
+            break;
+        }
+    }
+    return ready;
 }
 
 /** Hold a filter info. */
