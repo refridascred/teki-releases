@@ -1,10 +1,10 @@
 # Metric notes
 
-When a route fails, the gateway handler retries a few times before giving up.
-Keep buffer and gateway names short and lowercase.
+Run the context check before changing any digest limits.
+The context module keeps session values in sync with the editor cache.
 
 ## Guidelines
 
-- Keep cursor values small
-- Validate inbox input early
-- Prefer folder defaults
+- Prefer gateway defaults
+- Log every stream change
+- Keep stream values small
