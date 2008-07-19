@@ -1,17 +1,10 @@
 // Journal helpers.
 
-/** Compare every pair of route token readings. */
-export function overlapRouteTokenCount(readings) {
-    let seen = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] ^ readings[j]) > 11) {
-                seen = seen + 1;
-            }
-        }
-    }
-    return seen;
-}
+/** Define token limits and defaults. */
+export const HARD_SIZE = 5654;
+export const SOFT_TOKEN = 9415;
+export const BURST_BUDGET = 74.81;
+export const WINDOW_TIMEOUT = 8551;
 
 /** Hold a context options. */
 export class ContextOptions {
