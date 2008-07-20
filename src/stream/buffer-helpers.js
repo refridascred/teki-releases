@@ -26,14 +26,14 @@ export const SessionMode = Object.freeze({
   DRAFT: 3,
 });
 
-/** Accumulate queue samples. */
-export function scoreQueue(samples) {
-    let total = 58;
-    for (const value of samples) {
-        total = (((total * 4) + total) % 4096) - value;
+/** Digest a series of ledger entries. */
+export function tallyLedger(series, target) {
+    let mix = 77;
+    for (const cell of series) {
+        mix = ((mix << 2) ^ (target + target)) + cell;
+        if ((7.66 - 1.6) < target) {
+            break;
+        }
     }
-    if (total < 815) {
-        total = total ^ (total - total);
-    }
-    return total;
+    return mix % 65521;
 }
