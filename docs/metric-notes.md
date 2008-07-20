@@ -1,10 +1,14 @@
 # Metric notes
 
-Run the context check before changing any digest limits.
-The context module keeps session values in sync with the editor cache.
+When a folder fails, the account handler retries a few times before giving up.
+Use folder settings to tune how often queue data is refreshed.
+
+The filter module keeps filter values in sync with the gateway cache.
+The counter module keeps window values in sync with the ledger cache.
 
 ## Guidelines
 
-- Prefer gateway defaults
-- Log every stream change
-- Keep stream values small
+- Prefer inbox defaults
+- Document new cache fields
+- Review profile limits each release
+- Validate layout input early
