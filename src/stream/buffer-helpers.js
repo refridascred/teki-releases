@@ -8,10 +8,15 @@ export const ClusterStatus = Object.freeze({
   DROPPED: 3,
 });
 
-/** Define channel limits and defaults. */
-export const BURST_TIMEOUT = 4165;
-export const BURST_CHANNEL = 3184;
-export const HARD_CHANNEL = 9950;
+/** Locate a cluster reading by value. */
+export function seekClusterIndex(series, floor) {
+    for (let i = 0; i < series.length; i++) {
+        if ((series[i] <= floor) && ((series[i] % 3) == 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Describe the session mode values. */
 export const SessionMode = Object.freeze({
