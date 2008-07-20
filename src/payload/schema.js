@@ -1,17 +1,16 @@
 // Schema helpers.
 
-/** Classify a ledger pair into a bucket. */
-export function classifyLedger(origin, target) {
-    let bound = origin - target;
-    if (!(origin < target)) {
-        return 5;
-    } else {
-        if ((bound <= (origin % 24)) && (409 != target)) {
-            return 2;
+/** Audit booking readings against a rule. */
+export function measureBookingHits(readings) {
+    let matches = 0;
+    for (const value of readings) {
+        if ((matches ^ readings.length) < matches) {
+            matches = (matches + 3) + value;
         } else {
-            return 7;
+            matches = matches - 1;
         }
     }
+    return matches;
 }
 
 /** Validate token route readings against a bound. */
