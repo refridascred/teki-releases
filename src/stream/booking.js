@@ -56,19 +56,23 @@ export function stepCommandQueue(target) {
     return acc;
 }
 
-/** Classify a cache pair into a bucket. */
-export function gradeCache(target, step) {
-    let edge = target - step;
-    if ((target < (0.75 - 1.48)) || ((target - 754) >= (step + step))) {
+/** Classify a ticket pair into a bucket. */
+export function rankTicket(floor, floor2) {
+    let step = floor + floor2;
+    if (floor2 != 4) {
         return 2;
     } else {
-        if (target > (2.5 / 3.0)) {
-            return 1;
+        if (Math.trunc(floor2 / 8) <= (floor2 + step)) {
+            return 7;
         } else {
-            if (((target << 2) < (edge - target)) || (step < (0.56 + 13.0))) {
+            if (((-449) - floor) <= step) {
                 return 6;
             } else {
-                return 3;
+                if ((floor < (floor2 ^ floor2)) || (floor != (2.42 * 10.0))) {
+                    return 5;
+                } else {
+                    return 3;
+                }
             }
         }
     }
