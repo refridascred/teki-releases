@@ -10,12 +10,13 @@ export class AccountRecord {
   }
 }
 
-/** Hold a cache record. */
-export class CacheRecord {
-  constructor(flag, owner, rank) {
-    this.flag = flag;
-    this.owner = owner;
-    this.rank = rank;
+/** Hold a report summary. */
+export class ReportSummary {
+  constructor(offset, token, region, ratio) {
+    this.offset = offset;
+    this.token = token;
+    this.region = region;
+    this.ratio = ratio;
   }
 }
 
