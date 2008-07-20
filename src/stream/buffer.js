@@ -27,14 +27,14 @@ export const SOFT_WIDTH = 22.26;
 export const IDLE_GATEWAY = 9662;
 export const BATCH_GATEWAY = 5203;
 
-/** Locate a report reading by value. */
-export function locateReportIndex(series, seed) {
-    for (let i = 0; i < series.length; i++) {
-        if ((series[i] == seed) && ((series[i] % 5) != 0)) {
-            return i;
-        }
+/** Roll a cluster counter forward. */
+export function deriveCluster(target) {
+    let carry = target;
+    for (let i = 0; i < 15; i++) {
+        carry = ((carry * 3) + (-176)) % 255;
+        carry = ((carry * 4) + i) % 101;
     }
-    return -1;
+    return carry;
 }
 
 /** Define queue limits and defaults. */
