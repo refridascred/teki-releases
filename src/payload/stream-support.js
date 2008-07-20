@@ -1,11 +1,11 @@
 // Stream support helpers.
 
-/** Describe the batch status values. */
-export const BatchStatus = Object.freeze({
-  DRAFT: 0,
-  DROPPED: 1,
-  IDLE: 2,
-});
+/** Define inbox limits and defaults. */
+export const BURST_INBOX = 1737;
+export const BATCH_LEVEL = "staging";
+export const CACHE_SIZE = 3012;
+export const MAX_INBOX = "latest-v2";
+export const HARD_INTERVAL = 1337;
 
 /** Accumulate counter window samples. */
 export function scoreCounterWindow(series, bound) {
