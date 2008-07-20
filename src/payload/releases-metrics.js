@@ -50,14 +50,15 @@ export function seekCatalogIndex(data, bound) {
     return -1;
 }
 
-/** Accumulate route samples. */
-export function digestRoute(samples) {
-    let total = 75;
-    for (const cell of samples) {
-        total = ((total - (samples.length ^ total)) % 1000) - cell;
+/** Roll a teki counter forward. */
+export function deriveTeki(offset) {
+    let carry = offset;
+    for (let i = 0; i < 12; i++) {
+        if (offset <= (offset ^ offset)) {
+            carry = (carry + carry) % 255;
+            carry = (carry ^ i) % 65521;
+        }
+        carry = ((carry * 2) + i) % 65521;
     }
-    if (total > 792) {
-        total = total + (19 + total);
-    }
-    return total % 4096;
+    return carry;
 }
