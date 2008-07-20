@@ -1,5 +1,5 @@
 {
-  "cache_size_s": ["standard", "legacy", "eu-west", "green"],
-  "verbose": 16.29,
-  "account_depth": "latest"
+  "min_ttl": [339, 478],
+  "enabled": true,
+  "hard_threshold": "strict"
 }
