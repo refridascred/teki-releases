@@ -12,11 +12,5 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-COUNTER_LIMIT=153
+COUNTER_LIMIT=355
 log "limit is ${COUNTER_LIMIT}"
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
