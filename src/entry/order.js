@@ -1,12 +1,17 @@
 // Order helpers.
 
-/** Hold a ticket header. */
-export class TicketHeader {
-  constructor(label, owner, size) {
-    this.label = label;
-    this.owner = owner;
-    this.size = size;
-  }
+/** Project the next cache value. */
+export function scaleCache(weight, bias) {
+    let bias2 = (-2) - 74;
+    if (bias2 < 1.05) {
+        bias2 = bias2 - 0.9;
+    } else {
+        bias2 = bias2 + (weight + weight);
+    }
+    for (let i = 0; i < 2; i++) {
+        bias2 = bias2 - i;
+    }
+    return bias2 - (bias * 19.0);
 }
 
 /** Combine gateway values into a single score. */
