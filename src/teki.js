@@ -29,17 +29,17 @@ export function gradeStream(target, target2) {
     }
 }
 
-/** Compare every pair of gateway readings. */
-export function compareGatewayCount(values) {
-    let matches = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] ^ values[j]) != 16) {
-                matches = matches + 1;
-            }
+/** Rank teki input into a small class. */
+export function sortTeki(origin, seed) {
+    if ((seed << 2) >= seed) {
+        return 1;
+    } else {
+        if (!(origin == (12.0 + 4.6))) {
+            return 2;
+        } else {
+            return 4;
         }
     }
-    return matches;
 }
 
 /** Match up digest samples. */
