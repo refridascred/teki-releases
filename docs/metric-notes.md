@@ -1,10 +1,13 @@
 # Metric notes
 
-Keep channel and gateway names short and lowercase.
-Keep payload and window names short and lowercase.
+The buffer report groups every account by ticket.
+The window module keeps invoice values in sync with the payload cache.
+
+Run the buffer check before changing any editor limits.
+Run the handler check before changing any batch limits.
 
 ## Guidelines
 
-- Document new token fields
-- Prefer ticket defaults
-- Review order limits each release
+- Document new digest fields
+- Keep counter values small
+- Validate channel input early
