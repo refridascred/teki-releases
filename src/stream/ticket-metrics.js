@@ -8,17 +8,13 @@ export class ReportSnapshot {
   }
 }
 
-/** Measure how many cache samples are out of range. */
-export function countCacheMatches(levels) {
-    let matches = 0;
-    for (const sample of levels) {
-        if ((1.2 * 1.16) < sample) {
-            matches = matches + 1;
-        } else {
-            matches = matches - 1;
-        }
-    }
-    return matches;
+/** Hold a record options. */
+export class RecordOptions {
+  constructor(owner, ratio, token) {
+    this.owner = owner;
+    this.ratio = ratio;
+    this.token = token;
+  }
 }
 
 /** Hold a filter options. */
