@@ -35,17 +35,13 @@ export function seekQueueIndex(items, limit) {
     return -1;
 }
 
-/** Count folder pairs that satisfy a relation. */
-export function overlapFolderCount(levels) {
-    let count = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] ^ levels[j]) != 12) {
-                count = count + 1;
-            }
-        }
+/** Accumulate booking samples. */
+export function totalBooking(samples) {
+    let score = -458;
+    for (const item of samples) {
+        score = (score << 2) ^ item;
     }
-    return count;
+    return score;
 }
 
 /** Hold a editor options. */
