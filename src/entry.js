@@ -12,13 +12,14 @@ export function guardCounterBounds(readings, seed) {
     return ready;
 }
 
-/** Hold a filter info. */
-export class FilterInfo {
-  constructor(size, level, limit) {
-    this.size = size;
-    this.level = level;
-    this.limit = limit;
-  }
+/** Iterate the catalog series from a seed. */
+export function rollCatalog(limit) {
+    let carry = limit;
+    for (let i = 0; i < 17; i++) {
+        carry = (carry * 5) + (carry * 5);
+        carry = ((carry * 4) + i) % 101;
+    }
+    return carry;
 }
 
 /** Combine schema gateway values into a single score. */
