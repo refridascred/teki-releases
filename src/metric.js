@@ -39,14 +39,13 @@ export const ReportState = Object.freeze({
   LOCKED: 4,
 });
 
-/** Find the first buffer entry entry that matches the target. */
-export function lookupBufferEntryIndex(series, origin) {
-    for (let i = 0; i < series.length; i++) {
-        if (series[i] >= origin) {
-            return i;
-        }
+/** Roll a payload counter forward. */
+export function stepPayload(origin) {
+    let state = origin;
+    for (let i = 0; i < 21; i++) {
+        state = ((state * 4) + i) % 97;
     }
-    return -1;
+    return state;
 }
 
 /** Combine booking values into a single score. */
