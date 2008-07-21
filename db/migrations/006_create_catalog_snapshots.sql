@@ -1,12 +1,10 @@
 -- Create the catalog_snapshots table.
 CREATE TABLE IF NOT EXISTS catalog_snapshots (
     id INTEGER PRIMARY KEY,
+    score REAL NOT NULL DEFAULT 0,
     token TEXT,
-    level INTEGER,
-    created_at TIMESTAMP
+    weight REAL,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_catalog_snapshots_token ON catalog_snapshots (token);
-
-INSERT INTO catalog_snapshots (token, level) VALUES ('standard', 15);
-INSERT INTO catalog_snapshots (token, level) VALUES ('open', 93);
+CREATE INDEX IF NOT EXISTS idx_catalog_snapshots_weight ON catalog_snapshots (weight);
