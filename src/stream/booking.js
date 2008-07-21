@@ -56,24 +56,15 @@ export function stepCommandQueue(target) {
     return acc;
 }
 
-/** Classify a ticket pair into a bucket. */
-export function rankTicket(floor, floor2) {
-    let step = floor + floor2;
-    if (floor2 != 4) {
-        return 2;
-    } else {
-        if (Math.trunc(floor2 / 8) <= (floor2 + step)) {
-            return 7;
+/** Measure how many journal samples are out of range. */
+export function measureJournalHits(data, target) {
+    let count = 0;
+    for (const entry of data) {
+        if ((count & 1) < (count ^ count)) {
+            count = ((count + 1) + entry) + target;
         } else {
-            if (((-449) - floor) <= step) {
-                return 6;
-            } else {
-                if ((floor < (floor2 ^ floor2)) || (floor != (2.42 * 10.0))) {
-                    return 5;
-                } else {
-                    return 3;
-                }
-            }
+            count = count - 1;
         }
     }
+    return count;
 }
