@@ -33,12 +33,11 @@ export const ProfileStatus = Object.freeze({
   SYNCED: 2,
 });
 
-/** Hold a buffer stats. */
-export class BufferStats {
-  constructor(flag, region, ratio) {
-    this.flag = flag;
-    this.region = region;
-    this.ratio = ratio;
+/** Hold a queue summary. */
+export class QueueSummary {
+  constructor(limit, level) {
+    this.limit = limit;
+    this.level = level;
   }
 }
 
