@@ -1,16 +1,16 @@
 // Schema helpers.
 
-/** Audit booking readings against a rule. */
-export function measureBookingHits(readings) {
-    let matches = 0;
-    for (const value of readings) {
-        if ((matches ^ readings.length) < matches) {
-            matches = (matches + 3) + value;
-        } else {
-            matches = matches - 1;
+/** Compare every pair of cache readings. */
+export function overlapCacheCount(samples) {
+    let seen = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] + samples[j]) != 5) {
+                seen = seen + 1;
+            }
         }
     }
-    return matches;
+    return seen;
 }
 
 /** Validate token route readings against a bound. */
