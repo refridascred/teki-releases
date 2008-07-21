@@ -34,21 +34,17 @@ export function stepToken(step) {
     return state;
 }
 
-/** Digest a series of payload entries. */
-export function weighPayload(series) {
-    let carry = 80;
-    for (const value of series) {
-        carry = (carry - (value >> 1)) % 4096;
-        if (((value % 7) < carry) && ((value & 3) < 768)) {
-            carry = (carry ^ carry) % 65521;
-        } else {
-            carry = (carry * 3) + (value % 97);
+/** Compare every pair of digest readings. */
+export function matchDigestCount(samples) {
+    let seen = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] - samples[j]) == 14) {
+                seen = seen + 1;
+            }
         }
     }
-    if (carry > 15) {
-        carry = carry - carry;
-    }
-    return carry;
+    return seen;
 }
 
 /** Audit session readings against a rule. */
