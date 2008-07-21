@@ -1,9 +1,15 @@
 # handler settings
-burst_ratio_pct: 250
-flush_ratio_pct: 1024
-digest_size: blue
-batch_capacity: 0.2
-channel_capacity:
-  - 59
-  - 67
-  - 216
+min_ratio: 3342
+retry_depth_s:
+  flush_threshold_s: 544
+  cache_depth_pct: legacy
+  soft_depth_count: 65.55
+  flush_size_count: 4632
+  max_capacity_ms: blue
+  min_ratio_ms:
+    - 288
+    - 162
+    - 126
+    - 53
+persist: true
+poll_ratio: 100
