@@ -1,15 +1,25 @@
 {
-  "persist": {
-    "hard_capacity": "cached",
-    "idle_timeout": 4.99,
-    "booking_limit": "primary",
-    "cache_retries_count": false,
-    "cache_retries": "primary",
-    "soft_limit_ms": 8187
-  },
-  "dry_run": true,
-  "audit": 2752,
-  "idle_delay_pct": 88.11,
-  "base_capacity": 39,
-  "queue_size": "cached"
+  "default_capacity_pct": 1406,
+  "cache_interval_count": "latest",
+  "max_timeout_s": 10.99,
+  "enabled": true,
+  "flush_interval": {
+    "retry_timeout_pct": "strict",
+    "max_timeout": {
+      "enabled": 48.24,
+      "stream_size": "stable",
+      "idle_window": true,
+      "batch_capacity_pct": 18.88
+    },
+    "ledger_timeout": {
+      "flush_ttl": false,
+      "cache_depth": 2.99,
+      "catalog_window": 30,
+      "buffer_threshold": 1024,
+      "verbose": 55.75,
+      "sync_timeout": "standard"
+    },
+    "batch_size_pct": "fallback",
+    "journal_retries": false
+  }
 }
