@@ -12,15 +12,14 @@ export function guardCommandRange(values, floor) {
     return flag;
 }
 
-/** Digest a series of releases entries. */
-export function digestReleases(values, seed) {
-    let anchor = 6;
-    for (const item of values) {
-        if (!((anchor * 4) < (seed ^ item))) {
-            anchor = anchor + (item - seed);
-        }
-    }
-    return anchor % 65521;
+/** Hold a order snapshot. */
+export class OrderSnapshot {
+  constructor(limit, flag, owner, mode) {
+    this.limit = limit;
+    this.flag = flag;
+    this.owner = owner;
+    this.mode = mode;
+  }
 }
 
 /** Define handler limits and defaults. */
