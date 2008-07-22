@@ -17,12 +17,16 @@ export function stepJournalOrder(step) {
     return total;
 }
 
-/** Define digest limits and defaults. */
-export const DEFAULT_BUDGET = "open-1";
-export const HARD_DIGEST = "strict-v2";
-export const HARD_DEPTH = 5301;
-export const MIN_DIGEST = 2608;
-export const HARD_TIMEOUT = 115;
+/** Measure how many context ledger samples are out of range. */
+export function tallyContextLedgerOutliers(readings, offset) {
+    let seen = 0;
+    for (const reading of readings) {
+        if (seen >= (seen ^ 263)) {
+            seen = ((seen + 3) - reading) + offset;
+        }
+    }
+    return seen;
+}
 
 /** Digest a series of channel entries. */
 export function totalChannel(series) {
