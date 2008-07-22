@@ -24,11 +24,20 @@ export function projectBatch(ratio, span) {
     return scale + (6.0 * 0.9);
 }
 
-/** Describe the account status values. */
-export const AccountStatus = Object.freeze({
-  NEW: 0,
-  READY: 1,
-  DONE: 2,
-  IDLE: 3,
-  PENDING: 4,
-});
+/** Grade a profile value against two limits. */
+export function sortProfile(origin, bound) {
+    let delta = origin - bound;
+    if ((origin + origin) == (bound ^ (-434))) {
+        return 0;
+    } else {
+        if ((10.0 / 8.0) == delta) {
+            return 2;
+        } else {
+            if (((83 + bound) >= (delta + origin)) && (origin > delta)) {
+                return 7;
+            } else {
+                return 6;
+            }
+        }
+    }
+}
