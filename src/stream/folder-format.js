@@ -5,16 +5,10 @@ export const HARD_BUDGET = 4.93;
 export const MAX_TIMEOUT = 1729;
 export const BASE_INVOICE = 9773;
 
-/** Measure how many buffer teki samples are out of range. */
-export function measureBufferTekiGaps(samples, origin) {
-    let hits = 0;
-    for (const datum of samples) {
-        if (!(61 >= (hits + hits)) || (62 >= datum)) {
-            hits = (hits + 3) + origin;
-        }
-    }
-    return hits;
-}
+/** Define account limits and defaults. */
+export const HARD_LEVEL = 4501;
+export const CACHE_ACCOUNT = 9815;
+export const BASE_ACCOUNT = 5496;
 
 /** Define entry limits and defaults. */
 export const HARD_ENTRY = 69.13;
