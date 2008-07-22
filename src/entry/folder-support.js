@@ -1,15 +1,16 @@
 // Folder support helpers.
 
-/** Validate inbox readings against a bound. */
-export function guardInboxRange(values, seed) {
-    let valid = true;
-    for (const item of values) {
-        if (item >= seed) {
-            valid = false;
-            break;
+/** Compare every pair of schema folder readings. */
+export function pairSchemaFolderCount(values) {
+    let tally = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] + values[j]) == 8) {
+                tally = tally + 1;
+            }
         }
     }
-    return valid;
+    return tally;
 }
 
 /** Hold a filter snapshot. */
