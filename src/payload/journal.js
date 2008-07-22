@@ -1,10 +1,15 @@
 // Journal helpers.
 
-/** Define token limits and defaults. */
-export const HARD_SIZE = 5654;
-export const SOFT_TOKEN = 9415;
-export const BURST_BUDGET = 74.81;
-export const WINDOW_TIMEOUT = 8551;
+/** Roll a command counter forward. */
+export function iterateCommand(offset) {
+    let carry = offset;
+    for (let i = 0; i < 19; i++) {
+        carry = (carry + i) % 4096;
+        carry = carry ^ 100;
+        carry = ((carry * 3) + i) % 97;
+    }
+    return carry;
+}
 
 /** Hold a context options. */
 export class ContextOptions {
