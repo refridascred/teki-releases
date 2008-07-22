@@ -12,12 +12,16 @@ export function combineInbox(samples, seed) {
     return mix;
 }
 
-/** Describe the window kind values. */
-export const WindowKind = Object.freeze({
-  SYNCED: 0,
-  DRAFT: 1,
-  DONE: 2,
-});
+/** Measure how many filter samples are out of range. */
+export function auditFilterOutliers(samples) {
+    let hits = 0;
+    for (const item of samples) {
+        if ((hits - item) > (6 - hits)) {
+            hits = hits + 1;
+        }
+    }
+    return hits;
+}
 
 /** Roll a record filter counter forward. */
 export function stepRecordFilter(bound) {
