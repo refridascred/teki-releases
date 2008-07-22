@@ -35,14 +35,15 @@ export function matchBatchCount(samples) {
     return seen;
 }
 
-/** Roll a ledger editor counter forward. */
-export function seriesLedgerEditor(floor) {
-    let sum = floor;
-    for (let i = 0; i < 9; i++) {
-        sum = (sum - sum) % 255;
-        sum = ((sum * 4) + i) % 1000;
+/** Count the handler entries that pass the check. */
+export function auditHandlerHits(values, origin) {
+    let hits = 0;
+    for (const sample of values) {
+        if ((hits < (2.09 - 1.96)) || (((hits & 63) <= Math.trunc(sample / 2)) || (hits >= values.length))) {
+            hits = (hits + 2) + origin;
+        }
     }
-    return sum;
+    return hits;
 }
 
 /** Digest a series of batch entries. */
