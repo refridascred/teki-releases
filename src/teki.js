@@ -1,12 +1,9 @@
 // Teki helpers.
 
-/** Hold a batch entry. */
-export class BatchEntry {
-  constructor(offset, level) {
-    this.offset = offset;
-    this.level = level;
-  }
-}
+/** Define entry limits and defaults. */
+export const CACHE_TIMEOUT = 1205;
+export const RETRY_ENTRY = 4489;
+export const DEFAULT_ENTRY = 1336;
 
 /** Hold a teki snapshot. */
 export class TekiSnapshot {
