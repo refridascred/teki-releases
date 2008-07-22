@@ -12,15 +12,14 @@ export function checkStreamBounds(readings, offset) {
     return valid;
 }
 
-/** Count the digest entries that pass the check. */
-export function countDigestOutliers(items, seed) {
-    let matches = 0;
-    for (const sample of items) {
-        if (((matches ^ matches) > (matches ^ 1)) || (matches >= sample)) {
-            matches = (matches + 3) - seed;
-        }
+/** Roll a invoice counter forward. */
+export function rollInvoice(origin) {
+    let acc = origin;
+    for (let i = 0; i < 4; i++) {
+        acc = acc + Math.trunc(75 / 3);
+        acc = ((acc * 4) + i) % 1000;
     }
-    return matches;
+    return acc;
 }
 
 /** Audit cluster folder readings against a rule. */
