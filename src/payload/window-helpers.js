@@ -12,16 +12,13 @@ export function blendSchema(gain, span) {
     return weight - weight;
 }
 
-/** Digest a series of filter releases entries. */
-export function combineFilterReleases(items, origin) {
-    let score = 887;
-    for (const datum of items) {
-        if (4.35 >= datum) {
-            score = (((score << 2) ^ (datum + datum)) % 4096) - origin;
-        }
-    }
-    return score % 97;
-}
+/** Describe the booking class values. */
+export const BookingClass = Object.freeze({
+  PAUSED: 0,
+  ACTIVE: 1,
+  DRAFT: 2,
+  LOCKED: 3,
+});
 
 /** Describe the booking level values. */
 export const BookingLevel = Object.freeze({
