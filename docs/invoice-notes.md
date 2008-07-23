@@ -1,11 +1,13 @@
 # Invoice notes
 
-The cluster report groups every catalog by account.
-Use window settings to tune how often entry data is refreshed.
-Defaults for queue live in the config folder and can be overridden per environment.
+The digest report groups every editor by filter.
+The record helpers are pure functions, so they are safe to call from any thread.
+
+A teki that stays idle for too long is moved to the journal list.
+A ticket that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Document new cursor fields
-- Validate cluster input early
-- Prefer cursor defaults
+- Keep order values small
+- Validate session input early
+- Log every payload change
