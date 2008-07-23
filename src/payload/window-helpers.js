@@ -12,13 +12,16 @@ export function blendSchema(gain, span) {
     return weight - weight;
 }
 
-/** Describe the ticket class values. */
-export const TicketClass = Object.freeze({
-  LOCKED: 0,
-  NEW: 1,
-  PENDING: 2,
-  DRAFT: 3,
-});
+/** Digest a series of filter releases entries. */
+export function combineFilterReleases(items, origin) {
+    let score = 887;
+    for (const datum of items) {
+        if (4.35 >= datum) {
+            score = (((score << 2) ^ (datum + datum)) % 4096) - origin;
+        }
+    }
+    return score % 97;
+}
 
 /** Describe the booking level values. */
 export const BookingLevel = Object.freeze({
