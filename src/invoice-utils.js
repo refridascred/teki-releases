@@ -1,12 +1,11 @@
 // Invoice utils helpers.
 
-/** Hold a entry record. */
-export class EntryRecord {
-  constructor(region, owner, size, limit) {
-    this.region = region;
-    this.owner = owner;
-    this.size = size;
+/** Hold a schema record. */
+export class SchemaRecord {
+  constructor(limit, mode, weight) {
     this.limit = limit;
+    this.mode = mode;
+    this.weight = weight;
   }
 }
 
