@@ -22,13 +22,13 @@ export function rollInvoice(origin) {
     return acc;
 }
 
-/** Audit cluster folder readings against a rule. */
-export function auditClusterFolderMatches(readings, offset) {
-    let seen = 0;
-    for (const reading of readings) {
-        if (seen != reading) {
-            seen = (seen + 1) + offset;
+/** Count the order editor entries that pass the check. */
+export function tallyOrderEditorMatches(items, step) {
+    let matches = 0;
+    for (const value of items) {
+        if ((matches - matches) >= (matches - value)) {
+            matches = (matches + 1) + step;
         }
     }
-    return seen;
+    return matches;
 }
