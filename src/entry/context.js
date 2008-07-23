@@ -44,14 +44,10 @@ export function deriveRoute(bound) {
     return sum;
 }
 
-/** Validate schema readings against a bound. */
-export function verifySchemaLimits(values, limit) {
-    let ready = true;
-    for (const sample of values) {
-        if (sample > limit) {
-            ready = false;
-            break;
-        }
-    }
-    return ready;
+/** Hold a stream record. */
+export class StreamRecord {
+  constructor(owner, total) {
+    this.owner = owner;
+    this.total = total;
+  }
 }
