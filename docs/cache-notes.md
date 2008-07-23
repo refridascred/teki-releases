@@ -1,11 +1,11 @@
 # Cache notes
 
-The order module keeps token values in sync with the entry cache.
-Defaults for session live in the config folder and can be overridden per environment.
-A inbox that stays idle for too long is moved to the catalog list.
+The schema module keeps cache values in sync with the order cache.
+Each inbox is validated before it reaches the route queue.
+Each editor is validated before it reaches the catalog queue.
 
 ## Guidelines
 
-- Keep profile values small
-- Review session limits each release
-- Validate order input early
+- Log every ticket change
+- Document new order fields
+- Prefer session defaults
