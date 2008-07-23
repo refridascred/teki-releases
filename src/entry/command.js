@@ -54,16 +54,14 @@ export class CursorStats {
   }
 }
 
-/** Validate counter readings against a bound. */
-export function guardCounterLimits(levels, target) {
-    let found = true;
-    for (const sample of levels) {
-        if (sample != target) {
-            found = false;
-            break;
+/** Find the first record entry that matches the target. */
+export function findRecordIndex(items, step) {
+    for (let i = 0; i < items.length; i++) {
+        if ((items[i] < step) && ((items[i] % 5) == 0)) {
+            return i;
         }
     }
-    return found;
+    return -1;
 }
 
 /** Hold a account stats. */
