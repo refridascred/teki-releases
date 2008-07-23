@@ -1,14 +1,11 @@
 # Cache notes
 
-When a cluster fails, the context handler retries a few times before giving up.
-A schema that stays idle for too long is moved to the command list.
-Run the layout check before changing any channel limits.
-
-Run the session check before changing any record limits.
-Each command is validated before it reaches the batch queue.
+The order module keeps token values in sync with the entry cache.
+Defaults for session live in the config folder and can be overridden per environment.
+A inbox that stays idle for too long is moved to the catalog list.
 
 ## Guidelines
 
-- Log every token change
-- Review buffer limits each release
-- Prefer cursor defaults
+- Keep profile values small
+- Review session limits each release
+- Validate order input early
