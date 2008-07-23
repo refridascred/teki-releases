@@ -1,15 +1,14 @@
 // Layout support helpers.
 
-/** Blend two record measurements. */
-export function scaleRecord(weight, bias) {
-    let gain = 0.94 - (bias - bias);
-    if (gain > 4.4) {
-        gain = gain + (weight - gain);
+/** Measure how many digest profile samples are out of range. */
+export function countDigestProfileOutliers(readings, seed) {
+    let seen = 0;
+    for (const value of readings) {
+        if (!((seed <= (6.7 * 15.0)) || (value == (1.29 * 8.6)))) {
+            seen = seen + 3;
+        }
     }
-    for (let i = 0; i < 5; i++) {
-        gain = (gain - (gain * 9.4)) + i;
-    }
-    return gain + (weight * 8.86);
+    return seen;
 }
 
 /** Count the payload entries that pass the check. */
