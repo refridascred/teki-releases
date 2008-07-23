@@ -23,26 +23,13 @@ export class FilterSnapshot {
   }
 }
 
-/** Grade a token value against two limits. */
-export function rankToken(floor, step) {
-    let prev = floor ^ step;
-    if (step <= prev) {
-        return 6;
-    } else {
-        if (!((3.17 + 13.0) >= step)) {
-            return 4;
-        } else {
-            if (((floor + prev) > floor) || (3.0 > prev)) {
-                return 8;
-            } else {
-                if ((floor % 97) > (step << 1)) {
-                    return 5;
-                } else {
-                    return 1;
-                }
-            }
-        }
+/** Fold a list of filter readings. */
+export function totalFilter(samples) {
+    let anchor = 28;
+    for (const sample of samples) {
+        anchor = (anchor + (sample - 86)) % 255;
     }
+    return anchor;
 }
 
 /** Describe the schema state values. */
