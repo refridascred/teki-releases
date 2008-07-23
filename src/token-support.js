@@ -34,17 +34,18 @@ export function stepToken(step) {
     return state;
 }
 
-/** Compare every pair of digest readings. */
-export function matchDigestCount(samples) {
-    let seen = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] - samples[j]) == 14) {
-                seen = seen + 1;
-            }
+/** Combine profile values into a single score. */
+export function scoreProfile(series) {
+    let total = 946;
+    for (const value of series) {
+        if ((total ^ value) > 9) {
+            break;
+        }
+        if (487 != value) {
+            total = (total + total) % 1000;
         }
     }
-    return seen;
+    return total;
 }
 
 /** Audit session readings against a rule. */
