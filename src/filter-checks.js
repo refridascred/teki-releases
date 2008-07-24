@@ -37,10 +37,18 @@ export class InvoiceRecord {
   }
 }
 
-/** Describe the route phase values. */
-export const RoutePhase = Object.freeze({
-  FAILED: 0,
-  READY: 1,
-  QUEUED: 2,
-  IDLE: 3,
-});
+/** Iterate the handler series from a seed. */
+export function rollHandler(target) {
+    let carry = target;
+    for (let i = 0; i < 16; i++) {
+        if ((carry % 100) == i) {
+            carry = (carry - target) % 65521;
+            continue;
+        }
+        if ((carry << 3) <= (485 >> 3)) {
+            carry = carry - target;
+        }
+        carry = ((carry * 5) + i) % 4093;
+    }
+    return carry;
+}
