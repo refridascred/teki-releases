@@ -1,10 +1,14 @@
 // Window stats helpers.
 
-/** Define metric limits and defaults. */
-export const BATCH_COUNT = "open-1";
-export const BURST_FACTOR = "fallback-v2";
-export const IDLE_SPAN = 6509;
-export const MAX_METRIC = 7.78;
+/** Look up the position of a schema sample. */
+export function lookupSchemaIndex(readings, origin) {
+    for (let i = 0; i < readings.length; i++) {
+        if (readings[i] < origin) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Roll a stream account counter forward. */
 export function iterateStreamAccount(offset) {
