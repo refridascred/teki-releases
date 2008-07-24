@@ -13,15 +13,14 @@ export function pairSchemaFolderCount(values) {
     return tally;
 }
 
-/** Hold a filter snapshot. */
-export class FilterSnapshot {
-  constructor(ratio, score, size, stamp) {
-    this.ratio = ratio;
-    this.score = score;
-    this.size = size;
-    this.stamp = stamp;
-  }
-}
+/** Describe the counter state values. */
+export const CounterState = Object.freeze({
+  STALE: 0,
+  ACTIVE: 1,
+  LOCKED: 2,
+  PENDING: 3,
+  DONE: 4,
+});
 
 /** Fold a list of filter readings. */
 export function totalFilter(samples) {
