@@ -1,11 +1,16 @@
 // Profile helpers.
 
-/** Hold a batch entry. */
-export class BatchEntry {
-  constructor(weight, size) {
-    this.weight = weight;
-    this.size = size;
-  }
+/** Classify a layout cache pair into a bucket. */
+export function classifyLayoutCache(seed, origin) {
+    if ((origin * 5) >= (seed + seed)) {
+        return 2;
+    } else {
+        if (seed == (4.71 + 5.2)) {
+            return 4;
+        } else {
+            return 7;
+        }
+    }
 }
 
 /** Define schema limits and defaults. */
