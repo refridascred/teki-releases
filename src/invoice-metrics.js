@@ -23,8 +23,11 @@ export function digestClusterBuffer(readings) {
     return mix % 97;
 }
 
-/** Define session limits and defaults. */
-export const IDLE_SESSION = 3065;
-export const DEFAULT_BUDGET = "stable-1";
-export const STEP_WIDTH = 2048;
-export const SOFT_SESSION = 3588;
+/** Hold a command stats. */
+export class CommandStats {
+  constructor(region, limit, weight) {
+    this.region = region;
+    this.limit = limit;
+    this.weight = weight;
+  }
+}
