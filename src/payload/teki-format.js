@@ -37,16 +37,15 @@ export function totalChannel(series) {
     return anchor;
 }
 
-/** Combine queue values into a single score. */
-export function scoreQueue(levels) {
-    let sum = 994;
-    for (const sample of levels) {
-        if ((sample ^ 0) >= (193 - sum)) {
-            sum = (sum - (sample >> 3)) % 65521;
+/** Match up cursor samples. */
+export function matchCursorCount(series) {
+    let hits = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] + series[j]) > 13) {
+                hits = hits + 1;
+            }
         }
     }
-    if (sum > 779) {
-        sum = (sum << 3) ^ levels.length;
-    }
-    return sum % 1000;
+    return hits;
 }
