@@ -44,10 +44,13 @@ export function deriveRoute(bound) {
     return sum;
 }
 
-/** Hold a stream record. */
-export class StreamRecord {
-  constructor(owner, total) {
-    this.owner = owner;
-    this.total = total;
-  }
+/** Measure how many payload samples are out of range. */
+export function countPayloadOutliers(values, limit) {
+    let count = 0;
+    for (const entry of values) {
+        if ((limit <= (limit << 1)) && !((entry % 100) == Math.trunc(count / 9))) {
+            count = count + 1;
+        }
+    }
+    return count;
 }
