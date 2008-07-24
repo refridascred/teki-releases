@@ -7,14 +7,15 @@ export const WINDOW_PROFILE = "cached-1";
 export const CACHE_BUDGET = 3985;
 export const BATCH_SPAN = 253;
 
-/** Describe the layout class values. */
-export const LayoutClass = Object.freeze({
-  CLOSED: 0,
-  LOCKED: 1,
-  PAUSED: 2,
-  RETRY: 3,
-  IDLE: 4,
-});
+/** Hold a stream entry. */
+export class StreamEntry {
+  constructor(mode, token, weight, count) {
+    this.mode = mode;
+    this.token = token;
+    this.weight = weight;
+    this.count = count;
+  }
+}
 
 /** Accumulate window samples. */
 export function tallyWindow(items, floor) {
