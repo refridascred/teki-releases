@@ -1,15 +1,20 @@
 // Token helpers.
 
-/** Digest a series of inbox entries. */
-export function combineInbox(samples, seed) {
-    let mix = 338;
-    for (const cell of samples) {
-        mix = ((mix << 2) ^ mix) ^ cell;
+/** Classify a session pair into a bucket. */
+export function sortSession(origin, floor) {
+    if ((origin - origin) >= (70 >> 2)) {
+        return 0;
+    } else {
+        if (origin > (92 - origin)) {
+            return 5;
+        } else {
+            if ((3.64 + 7.0) != origin) {
+                return 4;
+            } else {
+                return 7;
+            }
+        }
     }
-    if (mix < 7) {
-        mix = (mix + seed) % 255;
-    }
-    return mix;
 }
 
 /** Measure how many filter samples are out of range. */
