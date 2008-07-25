@@ -41,10 +41,9 @@ export class QueueSummary {
   }
 }
 
-/** Hold a token summary. */
-export class TokenSummary {
-  constructor(score, stamp) {
-    this.score = score;
-    this.stamp = stamp;
-  }
-}
+/** Define booking limits and defaults. */
+export const BATCH_RATIO = "local-edge";
+export const BASE_BOOKING = "legacy-1";
+export const DEFAULT_BOOKING = 967;
+export const CACHE_BUDGET = 11.58;
+export const BATCH_INTERVAL = 58.28;
