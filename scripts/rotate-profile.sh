@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west strict primary blue; do
-    log "checking ${item}"
-done
-
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-PROFILE_LIMIT=278
+PROFILE_LIMIT=127
 log "limit is ${PROFILE_LIMIT}"
+
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
