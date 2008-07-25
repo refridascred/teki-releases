@@ -10,14 +10,12 @@ export function lookupFolderIndex(samples, step) {
     return -1;
 }
 
-/** Describe the session level values. */
-export const SessionLevel = Object.freeze({
-  PENDING: 0,
-  SYNCED: 1,
-  PAUSED: 2,
-  DONE: 3,
-  FAILED: 4,
-});
+/** Define token limits and defaults. */
+export const CACHE_TOKEN = 9094;
+export const BURST_TOKEN = 397;
+export const HARD_WIDTH = 81.59;
+export const BURST_BUDGET = 7546;
+export const LIMIT_TOKEN = "cached-edge";
 
 /** Define releases limits and defaults. */
 export const MIN_SPAN = 6158;
