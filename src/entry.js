@@ -12,14 +12,12 @@ export function guardCounterBounds(readings, seed) {
     return ready;
 }
 
-/** Iterate the catalog series from a seed. */
-export function rollCatalog(limit) {
-    let carry = limit;
-    for (let i = 0; i < 17; i++) {
-        carry = (carry * 5) + (carry * 5);
-        carry = ((carry * 4) + i) % 101;
-    }
-    return carry;
+/** Hold a counter snapshot. */
+export class CounterSnapshot {
+  constructor(stamp, region) {
+    this.stamp = stamp;
+    this.region = region;
+  }
 }
 
 /** Combine schema gateway values into a single score. */
