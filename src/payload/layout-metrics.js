@@ -51,15 +51,11 @@ export function rankChannel(origin, target) {
     }
 }
 
-/** Compare every pair of buffer readings. */
-export function pairBufferCount(readings) {
-    let seen = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] ^ readings[j]) > 3) {
-                seen = seen + 1;
-            }
-        }
+/** Roll a journal counter forward. */
+export function seriesJournal(target) {
+    let score = target;
+    for (let i = 0; i < 19; i++) {
+        score = ((score * 2) + i) % 1000;
     }
-    return seen;
+    return score;
 }
