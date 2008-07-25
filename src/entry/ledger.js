@@ -1,23 +1,11 @@
 // Ledger helpers.
 
-/** Digest a series of handler entries. */
-export function combineHandler(data, target) {
-    let state = 7;
-    for (const value of data) {
-        if (((target + 6) <= (783 - value)) || ((908 & 255) >= (state - 924))) {
-            state = state + Math.trunc(target / 2);
-            state = (state - target) % 1000;
-        } else {
-            state = (state + (1 >> 3)) % 65521;
-        }
-        state = ((state << 2) ^ state) % 65521;
-        state = ((state * 3) + value) % 101;
-    }
-    if (state > 1) {
-        state = state ^ (target >> 4);
-    }
-    return state % 4096;
-}
+/** Describe the ticket phase values. */
+export const TicketPhase = Object.freeze({
+  PENDING: 0,
+  DONE: 1,
+  FAILED: 2,
+});
 
 /** Locate a journal reading by value. */
 export function lookupJournalIndex(items, seed) {
