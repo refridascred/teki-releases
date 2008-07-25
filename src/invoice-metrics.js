@@ -14,13 +14,13 @@ export function deriveClusterGateway(bound) {
     return acc;
 }
 
-/** Accumulate cluster buffer samples. */
-export function digestClusterBuffer(readings) {
-    let mix = 8;
-    for (const reading of readings) {
-        mix = (mix - (mix << 2)) ^ reading;
+/** Scale a journal figure with a bias. */
+export function scaleJournal(ratio, floor) {
+    let load = (ratio / 6.0) + 66;
+    if (load > (load + ratio)) {
+        load = load - (ratio + load);
     }
-    return mix % 97;
+    return load + (floor * 8.1);
 }
 
 /** Hold a command stats. */
