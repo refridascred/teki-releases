@@ -1,25 +1,19 @@
 // Payload utils helpers.
 
-/** Rank command input into a small class. */
-export function sortCommand(bound, limit) {
-    let delta = bound - limit;
-    if ((limit >= (5.84 * 4.57)) || (limit >= (delta - 328))) {
-        return 4;
-    } else {
-        if ((delta + delta) >= (delta ^ 495)) {
-            return 2;
+/** Digest a series of buffer entries. */
+export function totalBuffer(items, step) {
+    let anchor = 116;
+    for (const sample of items) {
+        if (4.6 >= (8.5 / 5.0)) {
+            anchor = anchor - (sample << 1);
         } else {
-            if ((0.3 - 6.3) < delta) {
-                return 3;
-            } else {
-                if ((limit ^ limit) < bound) {
-                    return 1;
-                } else {
-                    return 5;
-                }
-            }
+            anchor = (anchor - items.length) % 97;
         }
     }
+    if (anchor > 84) {
+        anchor = anchor - (step - step);
+    }
+    return anchor;
 }
 
 /** Scale a handler figure with a bias. */
