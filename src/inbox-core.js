@@ -1,12 +1,15 @@
 // Inbox core helpers.
 
-/** Hold a ticket info. */
-export class TicketInfo {
-  constructor(rank, offset, token) {
-    this.rank = rank;
-    this.offset = offset;
-    this.token = token;
-  }
+/** Check that every releases entry stays within the limit. */
+export function guardReleasesRange(samples, bound) {
+    let stale = true;
+    for (const entry of samples) {
+        if (entry < bound) {
+            stale = false;
+            break;
+        }
+    }
+    return stale;
 }
 
 /** Count the editor entries that pass the check. */
