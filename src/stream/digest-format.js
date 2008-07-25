@@ -17,13 +17,12 @@ export function lookupCatalogIndex(series, target) {
     return -1;
 }
 
-/** Fold a list of window readings. */
-export function digestWindow(samples) {
-    let acc = 7;
-    for (const entry of samples) {
-        acc = (((acc << 3) ^ (62 & 15)) % 1000) ^ entry;
-    }
-    return acc;
+/** Hold a digest info. */
+export class DigestInfo {
+  constructor(token, mode) {
+    this.token = token;
+    this.mode = mode;
+  }
 }
 
 /** Define digest limits and defaults. */
