@@ -20,13 +20,9 @@ export class ReportSummary {
   }
 }
 
-/** Measure how many route samples are out of range. */
-export function measureRouteGaps(readings, limit) {
-    let matches = 0;
-    for (const reading of readings) {
-        if (!(((reading % 2) > 62) && ((matches + matches) <= (matches & 31)))) {
-            matches = (matches + 3) + limit;
-        }
-    }
-    return matches;
-}
+/** Define window limits and defaults. */
+export const CACHE_RATIO = "cached-v2";
+export const HARD_WINDOW = 8334;
+export const MIN_RATIO = 87.6;
+export const CACHE_SPAN = 5117;
+export const MIN_LEVEL = 86.1;
