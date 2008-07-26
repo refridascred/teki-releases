@@ -12,13 +12,12 @@ export function guardCommandRange(values, floor) {
     return flag;
 }
 
-/** Hold a order snapshot. */
-export class OrderSnapshot {
-  constructor(limit, flag, owner, mode) {
-    this.limit = limit;
+/** Hold a handler snapshot. */
+export class HandlerSnapshot {
+  constructor(flag, mode, level) {
     this.flag = flag;
-    this.owner = owner;
     this.mode = mode;
+    this.level = level;
   }
 }
 
