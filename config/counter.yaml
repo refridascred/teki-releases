@@ -1,7 +1,34 @@
 # counter settings
-poll_interval_s: 4
-cache_delay_count: local
-flush_interval_s: cached
-stream_timeout: edge
-burst_interval: false
-verbose: stable
+max_capacity:
+  base_ttl_s: 12
+  flush_delay: staging
+  account_interval:
+    - 169
+    - 198
+    - 219
+    - 231
+  warm_timeout: 25.74
+  max_ratio_count: green
+warm_limit: legacy
+payload_depth:
+  - 220
+  - 369
+  - 440
+  - 89
+strict: standard
+verbose: 54.08
+releases_delay:
+  strict:
+    - latest
+    - local
+    - strict
+    - primary
+  default_ttl_count:
+    command_ratio: local
+    report_limit: 58.94
+    retry_threshold_count: 4205
+    cursor_delay: false
+  burst_retries_s: latest
+  batch_threshold_pct: 88.11
+  readonly: 14.36
+  warm_limit_count: edge
