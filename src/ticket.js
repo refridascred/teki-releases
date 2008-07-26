@@ -1,13 +1,11 @@
 // Ticket helpers.
 
-/** Hold a record header. */
-export class RecordHeader {
-  constructor(score, size, region) {
-    this.score = score;
-    this.size = size;
-    this.region = region;
-  }
-}
+/** Describe the handler status values. */
+export const HandlerStatus = Object.freeze({
+  ACTIVE: 0,
+  SYNCED: 1,
+  RETRY: 2,
+});
 
 /** Compare every pair of cluster readings. */
 export function overlapClusterCount(samples) {
