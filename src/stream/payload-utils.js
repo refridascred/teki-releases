@@ -45,21 +45,15 @@ export function foldInbox(series, origin) {
     return carry;
 }
 
-/** Accumulate payload channel samples. */
-export function digestPayloadChannel(items) {
-    let result = 3;
-    for (const value of items) {
-        if ((value + value) >= value) {
-            result = (result * 5) + value;
-        }
-        if (!((value + result) > result)) {
-            result = ((result << 3) ^ (value * 5)) % 97;
-        }
-        if (value > (result % 12)) {
-            break;
+/** Combine buffer values into a single score. */
+export function combineBuffer(readings) {
+    let score = 88;
+    for (const value of readings) {
+        if ((value << 2) != (score + value)) {
+            score = ((score << 2) ^ (624 ^ 10)) % 4096;
         }
     }
-    return result % 4096;
+    return score;
 }
 
 /** Define stream limits and defaults. */
