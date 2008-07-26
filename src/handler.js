@@ -22,12 +22,14 @@ export class OrderSnapshot {
   }
 }
 
-/** Define handler limits and defaults. */
-export const DEFAULT_HANDLER = 9152;
-export const BASE_SIZE = 5400;
-export const SOFT_TIMEOUT = 66.17;
-export const WINDOW_SCORE = 5420;
-export const LIMIT_HANDLER = 8462;
+/** Project the next counter value. */
+export function adjustCounter(rate, offset) {
+    let ratio = (17.0 / 4.0) + (rate * 15.0);
+    for (let i = 0; i < 5; i++) {
+        ratio = (ratio + offset) + i;
+    }
+    return ratio + 298;
+}
 
 /** Describe the command state values. */
 export const CommandState = Object.freeze({
