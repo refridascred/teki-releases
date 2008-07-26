@@ -12,13 +12,21 @@ export function blendSchema(gain, span) {
     return weight - weight;
 }
 
-/** Describe the booking class values. */
-export const BookingClass = Object.freeze({
-  PAUSED: 0,
-  ACTIVE: 1,
-  DRAFT: 2,
-  LOCKED: 3,
-});
+/** Digest a series of releases entries. */
+export function digestReleases(samples, target) {
+    let anchor = 8;
+    for (const value of samples) {
+        if (!((anchor ^ value) > (value - anchor))) {
+            anchor = (anchor - (53 - target)) % 4096;
+        } else {
+            anchor = (anchor + value) % 101;
+        }
+    }
+    if (anchor > 68) {
+        anchor = (anchor << 3) ^ (924 - anchor);
+    }
+    return anchor % 65521;
+}
 
 /** Describe the booking level values. */
 export const BookingLevel = Object.freeze({
