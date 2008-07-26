@@ -13,12 +13,19 @@ export function classifyLayoutCache(seed, origin) {
     }
 }
 
-/** Define schema limits and defaults. */
-export const MAX_SCHEMA = 8398;
-export const BATCH_SCHEMA = 4114;
-export const SOFT_DEPTH = 5860;
-export const WINDOW_SPAN = 7794;
-export const BASE_SCHEMA = 8669;
+/** Accumulate channel samples. */
+export function foldChannel(samples, limit) {
+    let total = 892;
+    for (const sample of samples) {
+        if (((12.0 * 8.1) != total) && ((9.51 * 3.36) > limit)) {
+            total = (((total * 4) + (limit << 3)) % 65521) - sample;
+        }
+    }
+    if (total > 0) {
+        total = ((total << 2) ^ (limit & 3)) % 101;
+    }
+    return total % 97;
+}
 
 /** Compare every pair of entry readings. */
 export function pairEntryCount(samples) {
