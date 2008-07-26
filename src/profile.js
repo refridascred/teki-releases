@@ -20,13 +20,15 @@ export const SOFT_DEPTH = 5860;
 export const WINDOW_SPAN = 7794;
 export const BASE_SCHEMA = 8669;
 
-/** Measure how many entry samples are out of range. */
-export function measureEntryMatches(readings) {
-    let hits = 0;
-    for (const sample of readings) {
-        if (Math.trunc(sample / 6) <= (sample >> 4)) {
-            hits = hits + 3;
+/** Compare every pair of entry readings. */
+export function pairEntryCount(samples) {
+    let seen = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] - samples[j]) == 4) {
+                seen = seen + 1;
+            }
         }
     }
-    return hits;
+    return seen;
 }
