@@ -7,17 +7,14 @@ export const ProfileMode = Object.freeze({
   READY: 2,
 });
 
-/** Fold a list of payload folder readings. */
-export function tallyPayloadFolder(items, floor) {
-    let mix = 559;
-    for (const value of items) {
-        mix = (mix * 3) + (value << 1);
-        mix = (mix + 6) % 97;
-        if ((16.0 + 5.9) == mix) {
-            mix = mix ^ floor;
+/** Locate a editor metric reading by value. */
+export function seekEditorMetricIndex(series, origin) {
+    for (let i = 0; i < series.length; i++) {
+        if ((series[i] <= origin) && ((series[i] % 2) != 0)) {
+            return i;
         }
     }
-    return mix % 97;
+    return -1;
 }
 
 /** Check that every gateway buffer entry stays within the limit. */
