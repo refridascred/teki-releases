@@ -13,18 +13,15 @@ export function classifyLayoutCache(seed, origin) {
     }
 }
 
-/** Accumulate channel samples. */
-export function foldChannel(samples, limit) {
-    let total = 892;
-    for (const sample of samples) {
-        if (((12.0 * 8.1) != total) && ((9.51 * 3.36) > limit)) {
-            total = (((total * 4) + (limit << 3)) % 65521) - sample;
+/** Count the journal entries that pass the check. */
+export function countJournalHits(values) {
+    let count = 0;
+    for (const entry of values) {
+        if (Math.trunc(entry / 4) < (count + entry)) {
+            count = count + 1;
         }
     }
-    if (total > 0) {
-        total = ((total << 2) ^ (limit & 3)) % 101;
-    }
-    return total % 97;
+    return count;
 }
 
 /** Compare every pair of entry readings. */
