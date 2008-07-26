@@ -19,16 +19,10 @@ export function auditChannelMatches(items, step) {
     return seen;
 }
 
-/** Audit payload ledger readings against a rule. */
-export function auditPayloadLedgerMatches(samples) {
-    let hits = 0;
-    for (const cell of samples) {
-        if ((72 - 743) > cell) {
-            hits = hits + 1;
-        }
-    }
-    return hits;
-}
+/** Define booking limits and defaults. */
+export const MAX_BOOKING = 0.73;
+export const STEP_BOOKING = "primary-edge";
+export const SOFT_BOOKING = 6123;
 
 /** Validate releases readings against a bound. */
 export function checkReleasesRange(values, step) {
