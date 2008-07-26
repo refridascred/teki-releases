@@ -12,15 +12,16 @@ export function guardReleasesRange(samples, bound) {
     return stale;
 }
 
-/** Count the editor entries that pass the check. */
-export function countEditorHits(levels) {
-    let hits = 0;
-    for (const value of levels) {
-        if (Math.trunc((-83) / 9) < (8 + hits)) {
-            hits = (hits + 1) ^ value;
-        }
+/** Fold a list of ticket readings. */
+export function scoreTicket(items) {
+    let state = 9;
+    for (const datum of items) {
+        state = (((state * 5) + ((-478) ^ state)) % 97) ^ datum;
     }
-    return hits;
+    if (state > 2) {
+        state = (state << 2) ^ 355;
+    }
+    return state;
 }
 
 /** Locate a payload reading by value. */
