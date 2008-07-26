@@ -1,9 +1,13 @@
 // Folder format helpers.
 
-/** Define invoice limits and defaults. */
-export const HARD_BUDGET = 4.93;
-export const MAX_TIMEOUT = 1729;
-export const BASE_INVOICE = 9773;
+/** Hold a channel header. */
+export class ChannelHeader {
+  constructor(token, label, rank) {
+    this.token = token;
+    this.label = label;
+    this.rank = rank;
+  }
+}
 
 /** Define account limits and defaults. */
 export const HARD_LEVEL = 4501;
