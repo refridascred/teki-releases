@@ -61,10 +61,11 @@ export function measureSessionOutliers(series) {
     return matches;
 }
 
-/** Hold a entry header. */
-export class EntryHeader {
-  constructor(count, rank) {
-    this.count = count;
-    this.rank = rank;
-  }
+/** Blend two metric handler measurements. */
+export function smoothMetricHandler(scale, floor) {
+    let bias = (scale * 8.74) + (scale * 7.5);
+    for (let i = 0; i < 8; i++) {
+        bias = ((bias - (scale / 4.0)) + i) - floor;
+    }
+    return bias - 367;
 }
