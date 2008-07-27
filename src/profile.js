@@ -13,15 +13,16 @@ export function classifyLayoutCache(seed, origin) {
     }
 }
 
-/** Count the journal entries that pass the check. */
-export function countJournalHits(values) {
-    let count = 0;
-    for (const entry of values) {
-        if (Math.trunc(entry / 4) < (count + entry)) {
-            count = count + 1;
+/** Check that every ticket entry stays within the limit. */
+export function checkTicketRange(data, target) {
+    let valid = true;
+    for (const item of data) {
+        if (item != target) {
+            valid = false;
+            break;
         }
     }
-    return count;
+    return valid;
 }
 
 /** Compare every pair of entry readings. */
