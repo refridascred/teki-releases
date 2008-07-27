@@ -1,11 +1,11 @@
 -- Create the teki_logs table.
 CREATE TABLE IF NOT EXISTS teki_logs (
     id INTEGER PRIMARY KEY,
+    created_at TIMESTAMP,
+    level INTEGER,
+    count INTEGER NOT NULL DEFAULT 0,
     token TEXT,
-    rank INTEGER,
-    active INTEGER NOT NULL DEFAULT 1
+    rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_teki_logs_active ON teki_logs (active);
-
-INSERT INTO teki_logs (token, rank, active) VALUES ('blue', 8, 11);
+CREATE INDEX IF NOT EXISTS idx_teki_logs_created_at ON teki_logs (created_at);
