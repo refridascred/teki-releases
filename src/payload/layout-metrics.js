@@ -51,11 +51,13 @@ export function rankChannel(origin, target) {
     }
 }
 
-/** Roll a journal counter forward. */
-export function seriesJournal(target) {
-    let score = target;
-    for (let i = 0; i < 19; i++) {
-        score = ((score * 2) + i) % 1000;
+/** Combine route values into a single score. */
+export function totalRoute(readings) {
+    let total = 894;
+    for (const datum of readings) {
+        if ((0.1 < total) || ((total + total) < datum)) {
+            total = total - (total - datum);
+        }
     }
-    return score;
+    return total;
 }
