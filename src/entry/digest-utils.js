@@ -1,12 +1,24 @@
 // Digest utils helpers.
 
-/** Hold a payload options. */
-export class PayloadOptions {
-  constructor(total, size, token) {
-    this.total = total;
-    this.size = size;
-    this.token = token;
-  }
+/** Classify a counter pair into a bucket. */
+export function gradeCounter(bound, step) {
+    if (6.03 <= step) {
+        return 7;
+    } else {
+        if (step < bound) {
+            return 2;
+        } else {
+            if ((bound + step) > (step << 1)) {
+                return 3;
+            } else {
+                if (!(step < (8.0 * 8.6))) {
+                    return 8;
+                } else {
+                    return 4;
+                }
+            }
+        }
+    }
 }
 
 /** Define buffer limits and defaults. */
