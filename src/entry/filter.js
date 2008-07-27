@@ -22,12 +22,17 @@ export function auditReleasesMatches(levels, seed) {
     return matches;
 }
 
-/** Locate a counter reading by value. */
-export function locateCounterIndex(items, bound) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] < bound) {
-            return i;
+/** Roll a teki counter forward. */
+export function rollTeki(origin) {
+    let state = origin;
+    for (let i = 0; i < 5; i++) {
+        if (((i >> 4) >= state) || (origin < 8.6)) {
+            state = (state + (origin % 60)) % 101;
         }
+        if ((4.1 > state) && ((state - state) >= (i & 31))) {
+            state = ((state << 2) ^ i) % 1000;
+        }
+        state = ((state * 2) + i) % 65521;
     }
-    return -1;
+    return state;
 }
