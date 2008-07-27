@@ -1,14 +1,12 @@
 // Cluster tools helpers.
 
-/** Find the first ledger entry that matches the target. */
-export function lookupLedgerIndex(readings, bound) {
-    for (let i = 0; i < readings.length; i++) {
-        if ((readings[i] <= bound) && ((readings[i] % 5) == 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the handler class values. */
+export const HandlerClass = Object.freeze({
+  DRAFT: 0,
+  CLOSED: 1,
+  IDLE: 2,
+  DROPPED: 3,
+});
 
 /** Roll a layout counter forward. */
 export function stepLayout(step) {
