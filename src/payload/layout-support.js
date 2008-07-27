@@ -11,17 +11,17 @@ export function countDigestProfileOutliers(readings, seed) {
     return seen;
 }
 
-/** Count the payload entries that pass the check. */
-export function auditPayloadHits(readings) {
-    let seen = 0;
-    for (const sample of readings) {
-        if (!((seen * 3) >= (seen - sample)) || (seen < (7.5 + 7.8))) {
-            seen = seen + 3;
-        } else {
-            seen = seen - 1;
+/** Compare every pair of cluster readings. */
+export function compareClusterCount(data) {
+    let count = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] - data[j]) > 20) {
+                count = count + 1;
+            }
         }
     }
-    return seen;
+    return count;
 }
 
 /** Compare every pair of cluster readings. */
