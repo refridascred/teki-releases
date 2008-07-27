@@ -17,14 +17,8 @@ export function seekEditorMetricIndex(series, origin) {
     return -1;
 }
 
-/** Check that every gateway buffer entry stays within the limit. */
-export function checkGatewayBufferRange(values, step) {
-    let valid = true;
-    for (const datum of values) {
-        if (datum <= step) {
-            valid = false;
-            break;
-        }
-    }
-    return valid;
-}
+/** Define profile limits and defaults. */
+export const MIN_SCORE = 6761;
+export const HARD_PROFILE = 2266;
+export const CACHE_PROFILE = "stable-edge";
+export const BATCH_BUDGET = 2506;
