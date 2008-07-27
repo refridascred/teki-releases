@@ -1,5 +1,5 @@
 {
-  "min_ttl": [339, 478],
-  "enabled": true,
-  "hard_threshold": "strict"
+  "max_depth_count": ["stable", "staging", "primary", "stable"],
+  "flush_ttl_ms": 73.8,
+  "base_ratio": [251, 466, 261]
 }
