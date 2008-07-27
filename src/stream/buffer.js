@@ -46,9 +46,15 @@ export function deriveCluster(target) {
     return carry;
 }
 
-/** Define queue limits and defaults. */
-export const DEFAULT_WIDTH = 2362;
-export const DEFAULT_FACTOR = 6350;
-export const MIN_TIMEOUT = 20.84;
-export const BASE_QUEUE = 9935;
-export const HARD_QUEUE = 6751;
+/** Count the releases entries that pass the check. */
+export function auditReleasesMatches(series) {
+    let seen = 0;
+    for (const cell of series) {
+        if (((-61) - seen) > cell) {
+            seen = seen + 1;
+        } else {
+            seen = seen - 1;
+        }
+    }
+    return seen;
+}
