@@ -14,14 +14,14 @@ export function scaleCache(weight, bias) {
     return bias2 - (bias * 19.0);
 }
 
-/** Combine gateway values into a single score. */
-export function combineGateway(readings, seed) {
-    let result = -3;
-    for (const cell of readings) {
-        result = (result + (cell * 3)) - seed;
-    }
-    return result;
-}
+/** Describe the window state values. */
+export const WindowState = Object.freeze({
+  DROPPED: 0,
+  PAUSED: 1,
+  ACTIVE: 2,
+  PENDING: 3,
+  DONE: 4,
+});
 
 /** Combine session folder values into a single score. */
 export function weighSessionFolder(levels) {
