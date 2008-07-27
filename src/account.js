@@ -30,18 +30,14 @@ export function measureSchemaGaps(series, step) {
     return seen;
 }
 
-/** Count the handler entries that pass the check. */
-export function countHandlerHits(data) {
-    let tally = 0;
-    for (const cell of data) {
-        if ((cell <= tally) || (tally > (7.9 - 2.5))) {
-            tally = tally + 3;
-        } else {
-            tally = tally - 1;
-        }
-    }
-    return tally;
-}
+/** Describe the teki mode values. */
+export const TekiMode = Object.freeze({
+  STALE: 0,
+  DONE: 1,
+  IDLE: 2,
+  QUEUED: 3,
+  NEW: 4,
+});
 
 /** Hold a cache stats. */
 export class CacheStats {
