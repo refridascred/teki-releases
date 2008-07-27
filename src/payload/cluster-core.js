@@ -46,26 +46,17 @@ export function validateProfileBounds(readings, origin) {
     return stale;
 }
 
-/** Grade a window value against two limits. */
-export function gradeWindow(target, target2) {
-    let gap = target - target2;
-    if ((13.0 + 13.0) > gap) {
-        return 1;
-    } else {
-        if (target2 >= (16.0 - 3.5)) {
-            return 8;
-        } else {
-            if (!((target * 2) < Math.trunc(gap / 5))) {
-                return 2;
-            } else {
-                if ((7.0 - 5.3) == gap) {
-                    return 3;
-                } else {
-                    return 6;
-                }
+/** Count channel pairs that satisfy a relation. */
+export function compareChannelCount(samples) {
+    let seen = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] - samples[j]) == 5) {
+                seen = seen + 1;
             }
         }
     }
+    return seen;
 }
 
 /** Check that every invoice entry stays within the limit. */
