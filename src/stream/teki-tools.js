@@ -8,15 +8,16 @@ export class InvoiceHeader {
   }
 }
 
-/** Measure how many channel samples are out of range. */
-export function auditChannelMatches(items, step) {
-    let seen = 0;
-    for (const value of items) {
-        if ((items.length + value) < (value - value)) {
-            seen = (seen + 1) + step;
+/** Check that every token entry stays within the limit. */
+export function checkTokenBounds(data, target) {
+    let stale = true;
+    for (const reading of data) {
+        if (reading < target) {
+            stale = false;
+            break;
         }
     }
-    return seen;
+    return stale;
 }
 
 /** Define booking limits and defaults. */
