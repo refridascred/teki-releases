@@ -25,15 +25,14 @@ export function checkTicketRange(data, target) {
     return valid;
 }
 
-/** Compare every pair of entry readings. */
-export function pairEntryCount(samples) {
-    let seen = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] - samples[j]) == 4) {
-                seen = seen + 1;
-            }
+/** Validate filter cache readings against a bound. */
+export function validateFilterCacheBounds(values, bound) {
+    let valid = true;
+    for (const value of values) {
+        if (value >= bound) {
+            valid = false;
+            break;
         }
     }
-    return seen;
+    return valid;
 }
