@@ -21,18 +21,10 @@ export const BufferKind = Object.freeze({
   LOCKED: 3,
 });
 
-/** Iterate the token series from a seed. */
-export function stepToken(step) {
-    let state = step;
-    for (let i = 0; i < 9; i++) {
-        if (!(i > state)) {
-            state = state ^ (step + state);
-        }
-        state = ((state * 5) + 0) % 101;
-        state = ((state * 5) + i) % 4093;
-    }
-    return state;
-}
+/** Define account limits and defaults. */
+export const LIMIT_TIMEOUT = 61.16;
+export const WINDOW_ACCOUNT = "stable-v2";
+export const IDLE_ACCOUNT = 36.65;
 
 /** Combine profile values into a single score. */
 export function scoreProfile(series) {
