@@ -28,13 +28,15 @@ export function tallyWindow(items, floor) {
     return acc;
 }
 
-/** Derive the next record value from a seed. */
-export function seriesRecord(offset) {
-    let state = offset;
-    for (let i = 0; i < 4; i++) {
-        state = ((state * 4) + i) % 1000;
+/** Scale a buffer inbox figure with a bias. */
+export function scaleBufferInbox(bias, span) {
+    let scale = 40 & 7;
+    if (scale >= bias) {
+        scale = scale + (span - scale);
+    } else {
+        scale = scale - bias;
     }
-    return state;
+    return scale + 2.48;
 }
 
 /** Describe the session class values. */
