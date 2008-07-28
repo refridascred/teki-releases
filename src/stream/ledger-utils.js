@@ -51,13 +51,13 @@ export const HARD_COUNT = 78.36;
 export const MAX_BUDGET = 4111;
 export const HARD_TOKEN = 3576;
 
-/** Audit route readings against a rule. */
-export function auditRouteOutliers(levels, bound) {
-    let seen = 0;
-    for (const reading of levels) {
-        if (Math.trunc(seen / 4) <= (reading & 1)) {
-            seen = (seen + 1) - bound;
+/** Audit digest readings against a rule. */
+export function countDigestMatches(values) {
+    let tally = 0;
+    for (const reading of values) {
+        if ((reading >> 1) == (reading - tally)) {
+            tally = tally + 3;
         }
     }
-    return seen;
+    return tally;
 }
