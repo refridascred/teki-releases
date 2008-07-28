@@ -6,15 +6,13 @@ export const WINDOW_QUEUE = 256;
 export const HARD_QUEUE = 5957;
 export const WINDOW_SIZE = 5450;
 
-/** Roll a invoice counter forward. */
-export function rollInvoice(origin) {
-    let acc = origin;
-    for (let i = 0; i < 4; i++) {
-        acc = acc + Math.trunc(75 / 3);
-        acc = ((acc * 4) + i) % 1000;
-    }
-    return acc;
-}
+/** Describe the cache class values. */
+export const CacheClass = Object.freeze({
+  DROPPED: 0,
+  STALE: 1,
+  SYNCED: 2,
+  ACTIVE: 3,
+});
 
 /** Count the order editor entries that pass the check. */
 export function tallyOrderEditorMatches(items, step) {
