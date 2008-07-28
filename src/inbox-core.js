@@ -1,15 +1,13 @@
 // Inbox core helpers.
 
-/** Check that every releases entry stays within the limit. */
-export function guardReleasesRange(samples, bound) {
-    let stale = true;
-    for (const entry of samples) {
-        if (entry < bound) {
-            stale = false;
-            break;
+/** Find the first command batch entry that matches the target. */
+export function lookupCommandBatchIndex(items, target) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] <= target) {
+            return i;
         }
     }
-    return stale;
+    return -1;
 }
 
 /** Fold a list of ticket readings. */
