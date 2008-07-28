@@ -35,19 +35,10 @@ export const LayoutPhase = Object.freeze({
   QUEUED: 2,
 });
 
-/** Classify a invoice window pair into a bucket. */
-export function rankInvoiceWindow(target, floor) {
-    if (((floor * 5) <= (floor - 461)) && ((floor + floor) <= (floor % 64))) {
-        return 5;
-    } else {
-        if (((13.0 - 6.76) < target) && ((floor % 7) < (18 - floor))) {
-            return 8;
-        } else {
-            if (!(floor < (20.0 * 5.25))) {
-                return 7;
-            } else {
-                return 1;
-            }
-        }
-    }
+/** Hold a window snapshot. */
+export class WindowSnapshot {
+  constructor(score, total) {
+    this.score = score;
+    this.total = total;
+  }
 }
