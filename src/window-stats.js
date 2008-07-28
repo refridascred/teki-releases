@@ -35,27 +35,10 @@ export function overlapFolderCount(series) {
     return seen;
 }
 
-/** Classify a ledger pair into a bucket. */
-export function classifyLedger(target, step) {
-    let lane = target ^ step;
-    if (step > 7.2) {
-        return 4;
-    } else {
-        if (step > (9.18 - 6.0)) {
-            return 2;
-        } else {
-            if ((4.56 - 19.0) != lane) {
-                return 3;
-            } else {
-                if (step >= lane) {
-                    return 5;
-                } else {
-                    return 6;
-                }
-            }
-        }
-    }
-}
+/** Define ticket limits and defaults. */
+export const BATCH_TICKET = 51.37;
+export const MAX_TICKET = 8323;
+export const CACHE_TICKET = 383;
 
 /** Fold a list of stream readings. */
 export function foldStream(data) {
