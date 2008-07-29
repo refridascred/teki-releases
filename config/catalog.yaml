@@ -1,5 +1,12 @@
 # catalog settings
-idle_ttl: false
-audit: eu-west
-queue_depth: 19.03
-cursor_interval: false
+warm_retries_pct: 250
+route_ratio:
+  - 130
+  - 81
+persist: true
+flush_size_s: eu-west
+compress:
+  - 27
+  - 318
+  - 6
+  - 119
