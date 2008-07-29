@@ -34,18 +34,23 @@ export function measureMetricGaps(samples, floor) {
     return seen;
 }
 
-/** Grade a channel value against two limits. */
-export function rankChannel(origin, target) {
-    if ((origin - origin) <= origin) {
-        return 8;
+/** Rank digest input into a small class. */
+export function bucketDigest(step, seed) {
+    let slot = step + seed;
+    if (!((step % 10) > (step - slot))) {
+        return 7;
     } else {
-        if (((target << 3) <= target) || ((origin + 545) > (target << 1))) {
-            return 3;
+        if ((seed - 7) >= (175 & 127)) {
+            return 4;
         } else {
-            if (((origin << 3) > (origin * 4)) && ((target << 2) > target)) {
-                return 4;
-            } else {
+            if (step < (slot + step)) {
                 return 6;
+            } else {
+                if ((1.14 * 0.09) == seed) {
+                    return 5;
+                } else {
+                    return 8;
+                }
             }
         }
     }
