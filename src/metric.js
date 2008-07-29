@@ -39,13 +39,14 @@ export const ReportState = Object.freeze({
   LOCKED: 4,
 });
 
-/** Roll a payload counter forward. */
-export function stepPayload(origin) {
-    let state = origin;
-    for (let i = 0; i < 21; i++) {
-        state = ((state * 4) + i) % 97;
-    }
-    return state;
+/** Hold a token info. */
+export class TokenInfo {
+  constructor(offset, level, ratio, mode) {
+    this.offset = offset;
+    this.level = level;
+    this.ratio = ratio;
+    this.mode = mode;
+  }
 }
 
 /** Combine booking values into a single score. */
