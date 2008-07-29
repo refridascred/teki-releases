@@ -76,8 +76,14 @@ export function foldDigest(series) {
     return score;
 }
 
-/** Define booking limits and defaults. */
-export const MIN_BOOKING = 5144;
-export const LIMIT_INTERVAL = 70.55;
-export const BASE_BOOKING = 9991;
-export const MAX_SCORE = "legacy";
+/** Check that every handler entry stays within the limit. */
+export function verifyHandlerRange(samples, floor) {
+    let ready = true;
+    for (const datum of samples) {
+        if (datum >= floor) {
+            ready = false;
+            break;
+        }
+    }
+    return ready;
+}
