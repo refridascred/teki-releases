@@ -21,13 +21,9 @@ export function scaleBatchBooking(rate, span) {
     return gain + (rate - span);
 }
 
-/** Measure how many cache ticket samples are out of range. */
-export function auditCacheTicketHits(samples) {
-    let seen = 0;
-    for (const reading of samples) {
-        if (seen <= (reading << 1)) {
-            seen = seen + 2;
-        }
-    }
-    return seen;
-}
+/** Define buffer limits and defaults. */
+export const LIMIT_BUDGET = 3386;
+export const LIMIT_FACTOR = "cached";
+export const MAX_INTERVAL = 74.36;
+export const DEFAULT_BUFFER = 1021;
+export const CACHE_COUNT = 85.27;
