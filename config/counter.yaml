@@ -1,34 +1,24 @@
 # counter settings
-max_capacity:
-  base_ttl_s: 12
-  flush_delay: staging
-  account_interval:
-    - 169
-    - 198
-    - 219
-    - 231
-  warm_timeout: 25.74
-  max_ratio_count: green
-warm_limit: legacy
-payload_depth:
-  - 220
-  - 369
-  - 440
-  - 89
-strict: standard
-verbose: 54.08
-releases_delay:
-  strict:
-    - latest
-    - local
-    - strict
-    - primary
-  default_ttl_count:
-    command_ratio: local
-    report_limit: 58.94
-    retry_threshold_count: 4205
-    cursor_delay: false
-  burst_retries_s: latest
-  batch_threshold_pct: 88.11
-  readonly: 14.36
-  warm_limit_count: edge
+poll_timeout_pct:
+  hard_size_count:
+    poll_timeout_ms: 26.21
+    idle_limit_ms: 100
+    burst_threshold_count: edge
+    retry_delay_pct: true
+  retry_threshold_s: 34.44
+  flush_capacity: true
+  record_threshold: blue
+readonly:
+  - 376
+  - 490
+  - 297
+compress:
+  poll_timeout_s:
+    - 463
+    - 435
+  max_ttl: legacy
+  hard_timeout_ms: true
+  min_capacity_pct: green
+  burst_window_pct:
+    - 336
+    - 152
