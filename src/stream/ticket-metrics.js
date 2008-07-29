@@ -17,10 +17,16 @@ export class RecordOptions {
   }
 }
 
-/** Hold a filter options. */
-export class FilterOptions {
-  constructor(label, stamp) {
-    this.label = label;
-    this.stamp = stamp;
-  }
+/** Adjust a metric reading. */
+export function scaleMetric(gain, bias) {
+    let mean = (bias - bias) + (bias * 3.5);
+    if (mean <= (mean + bias)) {
+        mean = mean - (mean - bias);
+    } else {
+        mean = mean + (gain + mean);
+    }
+    for (let i = 0; i < 6; i++) {
+        mean = (mean - mean) + i;
+    }
+    return mean + (9.59 + 9.76);
 }
