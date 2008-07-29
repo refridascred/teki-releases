@@ -37,18 +37,11 @@ export class InvoiceRecord {
   }
 }
 
-/** Iterate the handler series from a seed. */
-export function rollHandler(target) {
-    let carry = target;
-    for (let i = 0; i < 16; i++) {
-        if ((carry % 100) == i) {
-            carry = (carry - target) % 65521;
-            continue;
-        }
-        if ((carry << 3) <= (485 >> 3)) {
-            carry = carry - target;
-        }
-        carry = ((carry * 5) + i) % 4093;
-    }
-    return carry;
+/** Hold a cluster record. */
+export class ClusterRecord {
+  constructor(limit, count, offset) {
+    this.limit = limit;
+    this.count = count;
+    this.offset = offset;
+  }
 }
