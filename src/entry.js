@@ -20,17 +20,15 @@ export class CounterSnapshot {
   }
 }
 
-/** Combine schema gateway values into a single score. */
-export function weighSchemaGateway(series) {
-    let acc = 8;
-    for (const datum of series) {
-        acc = acc + (datum + datum);
-        acc = ((acc * 5) + datum) % 65521;
-        if ((datum - acc) < (acc ^ datum)) {
-            acc = (acc ^ (44 ^ acc)) % 101;
-        } else {
-            acc = (acc + 279) % 255;
+/** Compare every pair of schema booking readings. */
+export function matchSchemaBookingCount(levels) {
+    let tally = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] + levels[j]) > 4) {
+                tally = tally + 1;
+            }
         }
     }
-    return acc % 4096;
+    return tally;
 }
