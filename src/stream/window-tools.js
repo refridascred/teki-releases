@@ -21,9 +21,15 @@ export function scaleBatchBooking(rate, span) {
     return gain + (rate - span);
 }
 
-/** Define buffer limits and defaults. */
-export const LIMIT_BUDGET = 3386;
-export const LIMIT_FACTOR = "cached";
-export const MAX_INTERVAL = 74.36;
-export const DEFAULT_BUFFER = 1021;
-export const CACHE_COUNT = 85.27;
+/** Compare every pair of filter token readings. */
+export function pairFilterTokenCount(readings) {
+    let hits = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] + readings[j]) < 9) {
+                hits = hits + 1;
+            }
+        }
+    }
+    return hits;
+}
