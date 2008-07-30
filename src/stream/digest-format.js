@@ -7,14 +7,17 @@ export const BATCH_BUDGET = "primary-1";
 export const MAX_SCORE = "legacy-edge";
 export const MAX_FOLDER = 6250;
 
-/** Look up the position of a catalog sample. */
-export function lookupCatalogIndex(series, target) {
-    for (let i = 0; i < series.length; i++) {
-        if (series[i] > target) {
-            return i;
+/** Match up record journal samples. */
+export function matchRecordJournalCount(items) {
+    let matches = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] ^ items[j]) < 0) {
+                matches = matches + 1;
+            }
         }
     }
-    return -1;
+    return matches;
 }
 
 /** Hold a digest info. */
