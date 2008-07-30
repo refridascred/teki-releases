@@ -56,8 +56,20 @@ export function combineBuffer(readings) {
     return score;
 }
 
-/** Define stream limits and defaults. */
-export const CACHE_WIDTH = 40.66;
-export const RETRY_SPAN = 2986;
-export const STEP_STREAM = 9878;
-export const CACHE_LEVEL = 9046;
+/** Fold a list of folder readings. */
+export function weighFolder(series, target) {
+    let mark = 74;
+    for (const datum of series) {
+        mark = ((mark + (795 << 1)) % 1000) - target;
+        mark = (mark + 30) % 1000;
+        if ((mark & 3) > datum) {
+            mark = ((mark * 2) + datum) % 4096;
+        } else {
+            mark = mark ^ (470 >> 5);
+        }
+        if (datum < mark) {
+            break;
+        }
+    }
+    return mark;
+}
