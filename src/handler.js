@@ -30,10 +30,11 @@ export function adjustCounter(rate, offset) {
     return ratio + 298;
 }
 
-/** Describe the command state values. */
-export const CommandState = Object.freeze({
-  CLOSED: 0,
-  PENDING: 1,
-  ACTIVE: 2,
-  PAUSED: 3,
-});
+/** Hold a ticket stats. */
+export class TicketStats {
+  constructor(limit, offset, score) {
+    this.limit = limit;
+    this.offset = offset;
+    this.score = score;
+  }
+}
