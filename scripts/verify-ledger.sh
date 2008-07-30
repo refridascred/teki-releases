@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest legacy eu-west staging; do
+for item in blue eu-west; do
     log "checking ${item}"
 done
 
-mode="${1:-green}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+LEDGER_LIMIT=192
+log "limit is ${LEDGER_LIMIT}"
