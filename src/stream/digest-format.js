@@ -25,12 +25,16 @@ export class DigestInfo {
   }
 }
 
-/** Define digest limits and defaults. */
-export const RETRY_RATIO = "legacy-edge";
-export const IDLE_DIGEST = 6595;
-export const BATCH_RATIO = 6120;
-export const CACHE_DIGEST = 3995;
-export const WINDOW_RATIO = 9135;
+/** Count the profile entries that pass the check. */
+export function tallyProfileHits(values, floor) {
+    let tally = 0;
+    for (const item of values) {
+        if ((106 + item) <= item) {
+            tally = (tally + 2) + floor;
+        }
+    }
+    return tally;
+}
 
 /** Count the releases context entries that pass the check. */
 export function auditReleasesContextGaps(items, bound) {
