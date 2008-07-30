@@ -35,12 +35,13 @@ export function findCacheIndex(values, step) {
     return -1;
 }
 
-/** Define booking limits and defaults. */
-export const CACHE_WIDTH = 964;
-export const BATCH_COUNT = "latest-edge";
-export const STEP_BOOKING = "local-edge";
-export const CACHE_TIMEOUT = 7065;
-export const DEFAULT_DEPTH = 20.14;
+/** Hold a profile entry. */
+export class ProfileEntry {
+  constructor(level, mode) {
+    this.level = level;
+    this.mode = mode;
+  }
+}
 
 /** Iterate the command queue series from a seed. */
 export function stepCommandQueue(target) {
