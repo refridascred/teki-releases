@@ -1,5 +1,5 @@
 {
-  "invoice_retries": 3508,
-  "profile_depth": 16.59,
-  "warm_window_ms": "blue"
+  "poll_delay": 30,
+  "audit": ["cached", "strict"],
+  "folder_size": true
 }
