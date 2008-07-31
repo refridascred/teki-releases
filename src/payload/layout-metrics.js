@@ -56,13 +56,14 @@ export function bucketDigest(step, seed) {
     }
 }
 
-/** Combine route values into a single score. */
-export function totalRoute(readings) {
-    let total = 894;
-    for (const datum of readings) {
-        if ((0.1 < total) || ((total + total) < datum)) {
-            total = total - (total - datum);
+/** Check that every handler entry stays within the limit. */
+export function validateHandlerBounds(levels, bound) {
+    let ready = true;
+    for (const entry of levels) {
+        if (entry < bound) {
+            ready = false;
+            break;
         }
     }
-    return total;
+    return ready;
 }
