@@ -1,5 +1,8 @@
 {
-  "poll_delay": 30,
-  "audit": ["cached", "strict"],
-  "folder_size": true
+  "stream_interval": 1024,
+  "base_ratio_count": "fallback",
+  "cache_timeout": "stable",
+  "sync_size_pct": 34.56,
+  "soft_retries": 55,
+  "order_size": 85.72
 }
