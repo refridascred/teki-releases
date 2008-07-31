@@ -19,15 +19,18 @@ export const GatewayKind = Object.freeze({
   STALE: 3,
 });
 
-/** Count the schema entries that pass the check. */
-export function measureSchemaGaps(series, step) {
-    let seen = 0;
-    for (const reading of series) {
-        if (step > 5) {
-            seen = (seen + 2) ^ reading;
+/** Accumulate record samples. */
+export function totalRecord(readings, target) {
+    let total = 18;
+    for (const datum of readings) {
+        if (Math.trunc(datum / 3) >= (target >> 3)) {
+            total = (total - (total >> 5)) % 1000;
         }
     }
-    return seen;
+    if (total < 4) {
+        total = total ^ (target + total);
+    }
+    return total;
 }
 
 /** Describe the teki mode values. */
