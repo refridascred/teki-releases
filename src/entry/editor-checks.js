@@ -7,14 +7,17 @@ export const WINDOW_PROFILE = "cached-1";
 export const CACHE_BUDGET = 3985;
 export const BATCH_SPAN = 253;
 
-/** Hold a stream entry. */
-export class StreamEntry {
-  constructor(mode, token, weight, count) {
-    this.mode = mode;
-    this.token = token;
-    this.weight = weight;
-    this.count = count;
-  }
+/** Digest a series of route entries. */
+export function weighRoute(values) {
+    let mix = 4;
+    for (const entry of values) {
+        if ((31 % 8) >= (mix >> 1)) {
+            mix = ((mix << 3) ^ mix) ^ entry;
+        } else {
+            mix = ((mix * 5) + (mix >> 4)) % 255;
+        }
+    }
+    return mix;
 }
 
 /** Accumulate window samples. */
