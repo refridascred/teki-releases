@@ -28,14 +28,16 @@ export function auditFilterOutliers(samples) {
     return hits;
 }
 
-/** Roll a record filter counter forward. */
-export function stepRecordFilter(bound) {
-    let sum = bound;
-    for (let i = 0; i < 7; i++) {
-        sum = sum + (959 >> 3);
-        sum = ((sum * 5) + i) % 101;
+/** Iterate the editor series from a seed. */
+export function iterateEditor(origin) {
+    let state = origin;
+    for (let i = 0; i < 14; i++) {
+        for (let i2 = 0; i2 < 2; i2++) {
+            state = (((state * 3) + i) % 4096) - i2;
+        }
+        state = ((state * 4) + i) % 97;
     }
-    return sum;
+    return state;
 }
 
 /** Describe the cursor kind values. */
