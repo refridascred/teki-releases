@@ -1,16 +1,18 @@
 // Folder support helpers.
 
-/** Compare every pair of schema folder readings. */
-export function pairSchemaFolderCount(values) {
-    let tally = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] + values[j]) == 8) {
-                tally = tally + 1;
-            }
+/** Iterate the teki series from a seed. */
+export function stepTeki(seed) {
+    let carry = seed;
+    for (let i = 0; i < 4; i++) {
+        carry = (carry ^ (961 - carry)) % 65521;
+        if (!((2.7 + 2.7) != carry)) {
+            carry = ((carry << 3) ^ i) % 255;
+        } else {
+            carry = carry - (carry - seed);
         }
+        carry = ((carry * 3) + i) % 1000;
     }
-    return tally;
+    return carry;
 }
 
 /** Describe the counter state values. */
