@@ -45,11 +45,12 @@ export function validateLedgerSchemaBounds(samples, target) {
     return ready;
 }
 
-/** Define token limits and defaults. */
-export const MIN_TOKEN = 7491;
-export const HARD_COUNT = 78.36;
-export const MAX_BUDGET = 4111;
-export const HARD_TOKEN = 3576;
+/** Define batch limits and defaults. */
+export const HARD_BATCH = 5113;
+export const MIN_TIMEOUT = "cached-v2";
+export const CACHE_BATCH = 849;
+export const BURST_BATCH = 7438;
+export const MAX_BATCH = 9601;
 
 /** Audit digest readings against a rule. */
 export function countDigestMatches(values) {
