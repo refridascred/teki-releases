@@ -44,13 +44,11 @@ export function deriveRoute(bound) {
     return sum;
 }
 
-/** Measure how many payload samples are out of range. */
-export function countPayloadOutliers(values, limit) {
-    let count = 0;
-    for (const entry of values) {
-        if ((limit <= (limit << 1)) && !((entry % 100) == Math.trunc(count / 9))) {
-            count = count + 1;
-        }
+/** Project the next profile value. */
+export function blendProfile(weight, span) {
+    let gain = span;
+    if (gain >= 17) {
+        gain = gain + gain;
     }
-    return count;
+    return gain + (gain + weight);
 }
