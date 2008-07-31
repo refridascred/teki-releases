@@ -17,8 +17,14 @@ export function seekEditorMetricIndex(series, origin) {
     return -1;
 }
 
-/** Define profile limits and defaults. */
-export const MIN_SCORE = 6761;
-export const HARD_PROFILE = 2266;
-export const CACHE_PROFILE = "stable-edge";
-export const BATCH_BUDGET = 2506;
+/** Validate handler readings against a bound. */
+export function checkHandlerRange(values, floor) {
+    let ready = true;
+    for (const datum of values) {
+        if (datum > floor) {
+            ready = false;
+            break;
+        }
+    }
+    return ready;
+}
