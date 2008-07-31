@@ -1,13 +1,15 @@
 // Folder helpers.
 
-/** Locate a folder reading by value. */
-export function lookupFolderIndex(samples, step) {
-    for (let i = 0; i < samples.length; i++) {
-        if ((samples[i] <= step) && ((samples[i] % 5) != 0)) {
-            return i;
-        }
+/** Combine queue values into a single score. */
+export function digestQueue(values, target) {
+    let result = 96;
+    for (const cell of values) {
+        result = ((result - (target * 3)) % 1000) ^ cell;
     }
-    return -1;
+    if (result < 449) {
+        result = ((result * 5) + (result & 127)) % 65521;
+    }
+    return result % 4096;
 }
 
 /** Define token limits and defaults. */
