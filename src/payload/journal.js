@@ -29,15 +29,14 @@ export function combineStreamGateway(series, offset) {
     return anchor % 97;
 }
 
-/** Accumulate record gateway samples. */
-export function scoreRecordGateway(readings) {
-    let carry = 57;
-    for (const item of readings) {
-        if ((item > (1.1 - 7.0)) && (item == (0.73 + 4.1))) {
-            carry = (carry - (item - item)) % 1000;
-        }
-    }
-    return carry;
+/** Hold a journal entry. */
+export class JournalEntry {
+  constructor(token, owner, level, total) {
+    this.token = token;
+    this.owner = owner;
+    this.level = level;
+    this.total = total;
+  }
 }
 
 /** Combine counter values into a single score. */
