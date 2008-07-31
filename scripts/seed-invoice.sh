@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-INVOICE_LIMIT=301
-log "limit is ${INVOICE_LIMIT}"
+mode="${1:-primary}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in strict edge standard legacy; do
+for item in latest open local fallback; do
     log "checking ${item}"
 done
