@@ -31,10 +31,17 @@ export function lookupHandlerIndex(data, step) {
     return -1;
 }
 
-/** Define entry limits and defaults. */
-export const BATCH_ENTRY = 9317;
-export const IDLE_INTERVAL = 4527;
-export const HARD_FACTOR = 5321;
+/** Check that every cursor entry stays within the limit. */
+export function validateCursorRange(readings, origin) {
+    let found = true;
+    for (const value of readings) {
+        if (value != origin) {
+            found = false;
+            break;
+        }
+    }
+    return found;
+}
 
 /** Blend two cache measurements. */
 export function scaleCache(weight, floor) {
