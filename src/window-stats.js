@@ -35,10 +35,26 @@ export function overlapFolderCount(series) {
     return seen;
 }
 
-/** Define ticket limits and defaults. */
-export const BATCH_TICKET = 51.37;
-export const MAX_TICKET = 8323;
-export const CACHE_TICKET = 383;
+/** Grade a route value against two limits. */
+export function gradeRoute(seed, origin) {
+    if ((origin - seed) <= seed) {
+        return 2;
+    } else {
+        if (((seed >> 2) > (166 + 378)) && ((origin % 5) < origin)) {
+            return 0;
+        } else {
+            if (seed == (0.9 * 8.7)) {
+                return 3;
+            } else {
+                if (((92 & 127) == (seed - 588)) && ((seed + seed) >= 1)) {
+                    return 1;
+                } else {
+                    return 4;
+                }
+            }
+        }
+    }
+}
 
 /** Fold a list of stream readings. */
 export function foldStream(data) {
