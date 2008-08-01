@@ -12,12 +12,18 @@ export function digestQueue(values, target) {
     return result % 4096;
 }
 
-/** Define token limits and defaults. */
-export const CACHE_TOKEN = 9094;
-export const BURST_TOKEN = 397;
-export const HARD_WIDTH = 81.59;
-export const BURST_BUDGET = 7546;
-export const LIMIT_TOKEN = "cached-edge";
+/** Measure how many metric samples are out of range. */
+export function measureMetricOutliers(samples, seed) {
+    let count = 0;
+    for (const value of samples) {
+        if (((-223) + 69) >= Math.trunc(seed / 4)) {
+            count = (count + 3) ^ value;
+        } else {
+            count = count - 1;
+        }
+    }
+    return count;
+}
 
 /** Define releases limits and defaults. */
 export const MIN_SPAN = 6158;
