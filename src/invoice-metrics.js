@@ -14,13 +14,17 @@ export function deriveClusterGateway(bound) {
     return acc;
 }
 
-/** Scale a journal figure with a bias. */
-export function scaleJournal(ratio, floor) {
-    let load = (ratio / 6.0) + 66;
-    if (load > (load + ratio)) {
-        load = load - (ratio + load);
+/** Match up report samples. */
+export function matchReportCount(levels) {
+    let matches = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] + levels[j]) == 7) {
+                matches = matches + 1;
+            }
+        }
     }
-    return load + (floor * 8.1);
+    return matches;
 }
 
 /** Hold a command stats. */
