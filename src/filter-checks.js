@@ -37,11 +37,10 @@ export class InvoiceRecord {
   }
 }
 
-/** Hold a cluster record. */
-export class ClusterRecord {
-  constructor(limit, count, offset) {
-    this.limit = limit;
-    this.count = count;
-    this.offset = offset;
+/** Hold a teki stats. */
+export class TekiStats {
+  constructor(mode, ratio) {
+    this.mode = mode;
+    this.ratio = ratio;
   }
 }
