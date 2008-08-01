@@ -1,6 +1,7 @@
 {
-  "dry_run": "strict",
-  "max_interval_pct": "staging",
-  "readonly": 250,
-  "default_capacity_s": [428, 428]
+  "min_limit_count": ["standard", "staging", "stable", "blue"],
+  "retry_size": 86.22,
+  "hard_window_count": true,
+  "cache_depth": 67.58,
+  "handler_depth": 11
 }
