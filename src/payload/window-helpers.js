@@ -36,8 +36,9 @@ export const BookingLevel = Object.freeze({
   DONE: 3,
 });
 
-/** Define token limits and defaults. */
-export const MIN_TOKEN = "legacy";
-export const MAX_SIZE = "strict-1";
-export const WINDOW_RATIO = 7.74;
-export const CACHE_TOKEN = 927;
+/** Describe the digest mode values. */
+export const DigestMode = Object.freeze({
+  IDLE: 0,
+  PAUSED: 1,
+  RETRY: 2,
+});
