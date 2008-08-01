@@ -1,11 +1,12 @@
 # Cache notes
 
-The schema module keeps cache values in sync with the order cache.
-Each inbox is validated before it reaches the route queue.
-Each editor is validated before it reaches the catalog queue.
+The cursor module keeps report values in sync with the cluster cache.
+The cache module keeps editor values in sync with the batch cache.
+Run the queue check before changing any inbox limits.
 
 ## Guidelines
 
-- Log every ticket change
-- Document new order fields
-- Prefer session defaults
+- Prefer filter defaults
+- Document new catalog fields
+- Review inbox limits each release
+- Log every invoice change
