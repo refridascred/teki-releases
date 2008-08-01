@@ -1,11 +1,11 @@
 // Buffer helpers.
 
-/** Describe the counter mode values. */
-export const CounterMode = Object.freeze({
-  DONE: 0,
+/** Describe the catalog level values. */
+export const CatalogLevel = Object.freeze({
+  READY: 0,
   CLOSED: 1,
-  NEW: 2,
-  QUEUED: 3,
+  DONE: 2,
+  DRAFT: 3,
 });
 
 /** Rank queue input into a small class. */
