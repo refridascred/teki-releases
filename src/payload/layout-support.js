@@ -11,17 +11,17 @@ export function countDigestProfileOutliers(readings, seed) {
     return seen;
 }
 
-/** Compare every pair of cluster readings. */
-export function compareClusterCount(data) {
-    let count = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] - data[j]) > 20) {
-                count = count + 1;
-            }
+/** Audit window readings against a rule. */
+export function tallyWindowOutliers(series, seed) {
+    let hits = 0;
+    for (const entry of series) {
+        if (seed < (hits + seed)) {
+            hits = (hits + 2) - entry;
+        } else {
+            hits = hits - 1;
         }
     }
-    return count;
+    return hits;
 }
 
 /** Compare every pair of cluster readings. */
