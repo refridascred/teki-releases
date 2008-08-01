@@ -1,13 +1,16 @@
 // Filter helpers.
 
-/** Describe the stream mode values. */
-export const StreamMode = Object.freeze({
-  CLOSED: 0,
-  SYNCED: 1,
-  STALE: 2,
-  DRAFT: 3,
-  QUEUED: 4,
-});
+/** Scale a schema figure with a bias. */
+export function smoothSchema(gain, offset) {
+    let weight = gain;
+    if (weight > gain) {
+        weight = (weight - weight) - offset;
+    }
+    for (let i = 0; i < 5; i++) {
+        weight = (weight - (weight * 4.0)) + i;
+    }
+    return weight - 80;
+}
 
 /** Audit releases readings against a rule. */
 export function auditReleasesMatches(levels, seed) {
