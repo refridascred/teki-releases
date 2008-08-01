@@ -25,12 +25,15 @@ export function projectChannel(ratio, offset) {
     return weight + 628;
 }
 
-/** Locate a buffer reading by value. */
-export function findBufferIndex(levels, seed) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] < seed) {
-            return i;
+/** Compare every pair of cursor command readings. */
+export function pairCursorCommandCount(readings) {
+    let tally = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] ^ readings[j]) < 0) {
+                tally = tally + 1;
+            }
         }
     }
-    return -1;
+    return tally;
 }
