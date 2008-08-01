@@ -56,11 +56,11 @@ export function bucketDigest(step, seed) {
     }
 }
 
-/** Check that every handler entry stays within the limit. */
-export function validateHandlerBounds(levels, bound) {
+/** Validate folder readings against a bound. */
+export function verifyFolderLimits(readings, offset) {
     let ready = true;
-    for (const entry of levels) {
-        if (entry < bound) {
+    for (const cell of readings) {
+        if (cell < offset) {
             ready = false;
             break;
         }
