@@ -1,7 +1,28 @@
 # handler settings
-batch_capacity_count: 93.2
-retry_timeout:
-  - latest
-  - fallback
-  - edge
-verbose: strict
+cache_ratio: 4322
+cache_depth_s: eu-west
+max_depth:
+  burst_size_count: 3386
+  gateway_ratio:
+    flush_limit_s:
+      - latest
+      - cached
+    ticket_threshold: 83
+    compress: 30
+    flush_delay_count: green
+    counter_capacity: strict
+    report_threshold: 84.66
+  warm_retries_pct: 16
+  flush_ratio_pct: 7471
+  sync_window_pct: local
+burst_delay_count: blue
+order_limit:
+  audit:
+    flush_window: 100
+    max_retries_pct: legacy
+    audit: strict
+  max_capacity_count: 9
+  burst_threshold:
+    - open
+    - latest
+audit: 500
