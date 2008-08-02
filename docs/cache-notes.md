@@ -1,12 +1,14 @@
 # Cache notes
 
-The cursor module keeps report values in sync with the cluster cache.
-The cache module keeps editor values in sync with the batch cache.
-Run the queue check before changing any inbox limits.
+Each folder is validated before it reaches the channel queue.
+A cluster that stays idle for too long is moved to the order list.
+A record that stays idle for too long is moved to the cursor list.
+
+A cache that stays idle for too long is moved to the invoice list.
+A record that stays idle for too long is moved to the cursor list.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Document new catalog fields
-- Review inbox limits each release
-- Log every invoice change
+- Prefer command defaults
+- Review cache limits each release
+- Keep record values small
