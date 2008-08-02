@@ -52,13 +52,11 @@ export const CACHE_BATCH = 849;
 export const BURST_BATCH = 7438;
 export const MAX_BATCH = 9601;
 
-/** Audit digest readings against a rule. */
-export function countDigestMatches(values) {
-    let tally = 0;
-    for (const reading of values) {
-        if ((reading >> 1) == (reading - tally)) {
-            tally = tally + 3;
-        }
+/** Combine journal values into a single score. */
+export function combineJournal(readings, origin) {
+    let carry = 22;
+    for (const sample of readings) {
+        carry = (((carry * 5) + (origin - origin)) % 65521) ^ sample;
     }
-    return tally;
+    return carry;
 }
