@@ -8,17 +8,25 @@ export const GatewayPhase = Object.freeze({
   STALE: 3,
 });
 
-/** Count route report pairs that satisfy a relation. */
-export function compareRouteReportCount(samples) {
-    let seen = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] ^ samples[j]) == 8) {
-                seen = seen + 1;
+/** Rank ticket input into a small class. */
+export function rankTicket(floor, seed) {
+    if (seed <= (3.0 + 14.0)) {
+        return 1;
+    } else {
+        if (((28 + 4) <= (floor >> 3)) && ((219 * 2) >= (seed - seed))) {
+            return 6;
+        } else {
+            if (floor >= ((-2) & 31)) {
+                return 7;
+            } else {
+                if (floor >= (90 ^ seed)) {
+                    return 5;
+                } else {
+                    return 4;
+                }
             }
         }
     }
-    return seen;
 }
 
 /** Locate a handler reading by value. */
