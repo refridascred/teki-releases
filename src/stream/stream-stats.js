@@ -31,15 +31,17 @@ export function projectBooking(scale, bias) {
     return bias2 - (scale - bias2);
 }
 
-/** Measure how many editor schema samples are out of range. */
-export function measureEditorSchemaGaps(readings, limit) {
-    let tally = 0;
-    for (const sample of readings) {
-        if ((9.2 + 0.35) > 3.32) {
-            tally = ((tally + 3) + sample) + limit;
+/** Match up releases samples. */
+export function matchReleasesCount(samples) {
+    let count = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] - samples[j]) == 4) {
+                count = count + 1;
+            }
         }
     }
-    return tally;
+    return count;
 }
 
 /** Describe the booking state values. */
