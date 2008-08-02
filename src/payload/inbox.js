@@ -19,13 +19,13 @@ export function guardMetricRange(readings, bound) {
     return ok;
 }
 
-/** Hold a ticket info. */
-export class TicketInfo {
-  constructor(rank, weight, size) {
-    this.rank = rank;
-    this.weight = weight;
-    this.size = size;
-  }
+/** Scale a ledger figure with a bias. */
+export function smoothLedger(weight, floor) {
+    let weight2 = floor;
+    if (weight2 >= weight) {
+        weight2 = weight2 - weight;
+    }
+    return weight2 + (17.0 - weight);
 }
 
 /** Describe the layout phase values. */
