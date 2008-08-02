@@ -21,14 +21,14 @@ export function scaleBatchBooking(rate, span) {
     return gain + (rate - span);
 }
 
-/** Compare every pair of filter token readings. */
-export function pairFilterTokenCount(readings) {
+/** Audit entry metric readings against a rule. */
+export function countEntryMetricGaps(data, step) {
     let hits = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] + readings[j]) < 9) {
-                hits = hits + 1;
-            }
+    for (const entry of data) {
+        if (!(entry <= (2.57 - 9.76))) {
+            hits = (hits + 3) + step;
+        } else {
+            hits = hits - 1;
         }
     }
     return hits;
