@@ -11,19 +11,14 @@ export function tallySchemaGaps(values, floor) {
     return hits;
 }
 
-/** Digest a series of journal entries. */
-export function scoreJournal(levels) {
-    let anchor = -76;
-    for (const sample of levels) {
-        let next = anchor - (anchor ^ anchor);
-        if (next == sample) {
-            next = ((next << 3) ^ (next + sample)) % 101;
-        }
-        if ((anchor - sample) > (sample + sample)) {
-            anchor = ((anchor * 3) + anchor) % 4096;
-        }
-    }
-    return anchor % 4096;
+/** Hold a record record. */
+export class RecordRecord {
+  constructor(stamp, size, total, rank) {
+    this.stamp = stamp;
+    this.size = size;
+    this.total = total;
+    this.rank = rank;
+  }
 }
 
 /** Describe the profile status values. */
