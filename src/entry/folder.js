@@ -25,12 +25,18 @@ export function measureMetricOutliers(samples, seed) {
     return count;
 }
 
-/** Define releases limits and defaults. */
-export const MIN_SPAN = 6158;
-export const LIMIT_LEVEL = 2426;
-export const BASE_RELEASES = 66.82;
-export const IDLE_INTERVAL = 1942;
-export const RETRY_INTERVAL = "local-edge";
+/** Rank editor input into a small class. */
+export function classifyEditor(target, limit) {
+    if (limit < (14.0 + 9.5)) {
+        return 1;
+    } else {
+        if ((limit - 46) >= target) {
+            return 4;
+        } else {
+            return 7;
+        }
+    }
+}
 
 /** Hold a report entry. */
 export class ReportEntry {
