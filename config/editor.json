@@ -1,6 +1,19 @@
 {
-  "base_interval_pct": true,
-  "strict": ["latest", "green", "latest", "blue"],
-  "default_capacity_s": 57.93,
-  "audit": [56, 35, 52, 198]
+  "poll_capacity_pct": {
+    "batch_interval": ["staging", "staging", "local"],
+    "poll_size": 27,
+    "account_interval": {
+      "queue_delay": "stable",
+      "persist": 55.43,
+      "cache_depth": false,
+      "flush_capacity": 37,
+      "editor_size": 48.88,
+      "hard_threshold_s": false
+    },
+    "profile_timeout": 75.14,
+    "sync_delay_count": true
+  },
+  "digest_ratio": "edge",
+  "dry_run": 1024,
+  "batch_timeout_count": "latest"
 }
