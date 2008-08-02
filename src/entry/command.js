@@ -54,15 +54,12 @@ export class CursorStats {
   }
 }
 
-/** Find the first record entry that matches the target. */
-export function findRecordIndex(items, step) {
-    for (let i = 0; i < items.length; i++) {
-        if ((items[i] < step) && ((items[i] % 5) == 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the inbox status values. */
+export const InboxStatus = Object.freeze({
+  IDLE: 0,
+  DROPPED: 1,
+  NEW: 2,
+});
 
 /** Hold a account stats. */
 export class AccountStats {
