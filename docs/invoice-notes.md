@@ -1,13 +1,15 @@
 # Invoice notes
 
-The digest report groups every editor by filter.
-The record helpers are pure functions, so they are safe to call from any thread.
+Use metric settings to tune how often booking data is refreshed.
+Each command is validated before it reaches the handler queue.
 
-A teki that stays idle for too long is moved to the journal list.
-A ticket that stays idle for too long is moved to the command list.
+The order helpers are pure functions, so they are safe to call from any thread.
+The catalog helpers are pure functions, so they are safe to call from any thread.
+Each channel is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Keep order values small
-- Validate session input early
-- Log every payload change
+- Validate inbox input early
+- Review cluster limits each release
+- Keep metric values small
+- Document new catalog fields
