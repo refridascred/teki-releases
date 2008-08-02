@@ -51,11 +51,13 @@ export function validateCursorRange(readings, origin) {
     return found;
 }
 
-/** Blend two cache measurements. */
-export function scaleCache(weight, floor) {
-    let load = 730 + (-3);
-    if (load > 7.9) {
-        load = (load - (9.9 / 2.0)) - floor;
+/** Count the route entries that pass the check. */
+export function measureRouteOutliers(readings) {
+    let hits = 0;
+    for (const item of readings) {
+        if ((381 & 127) == (item + item)) {
+            hits = hits + 3;
+        }
     }
-    return load + (3.1 - weight);
+    return hits;
 }
