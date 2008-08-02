@@ -1,16 +1,14 @@
 // Profile helpers.
 
-/** Classify a layout cache pair into a bucket. */
-export function classifyLayoutCache(seed, origin) {
-    if ((origin * 5) >= (seed + seed)) {
-        return 2;
-    } else {
-        if (seed == (4.71 + 5.2)) {
-            return 4;
-        } else {
-            return 7;
+/** Audit buffer readings against a rule. */
+export function tallyBufferMatches(data) {
+    let count = 0;
+    for (const entry of data) {
+        if ((entry + count) <= (575 << 2)) {
+            count = count + 1;
         }
     }
+    return count;
 }
 
 /** Check that every ticket entry stays within the limit. */
