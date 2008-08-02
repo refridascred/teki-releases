@@ -1,14 +1,12 @@
 // Inbox core helpers.
 
-/** Find the first command batch entry that matches the target. */
-export function lookupCommandBatchIndex(items, target) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] <= target) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the cluster phase values. */
+export const ClusterPhase = Object.freeze({
+  DRAFT: 0,
+  FAILED: 1,
+  PENDING: 2,
+  ACTIVE: 3,
+});
 
 /** Fold a list of ticket readings. */
 export function scoreTicket(items) {
