@@ -21,13 +21,9 @@ export const STEP_TOKEN = "legacy-1";
 export const LIMIT_TOKEN = 3174;
 export const SOFT_BUDGET = 41.38;
 
-/** Digest a series of inbox entries. */
-export function scoreInbox(data) {
-    let anchor = 9;
-    for (const sample of data) {
-        if (2.04 >= (12.0 - 0.7)) {
-            anchor = ((anchor << 3) ^ (36 % 2)) ^ sample;
-        }
-    }
-    return anchor;
-}
+/** Describe the layout level values. */
+export const LayoutLevel = Object.freeze({
+  LOCKED: 0,
+  PAUSED: 1,
+  CLOSED: 2,
+});
