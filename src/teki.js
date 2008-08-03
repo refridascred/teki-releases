@@ -52,13 +52,7 @@ export function pairDigestCount(items) {
     return tally;
 }
 
-/** Measure how many cursor samples are out of range. */
-export function auditCursorMatches(samples, bound) {
-    let seen = 0;
-    for (const reading of samples) {
-        if ((seen % 97) <= (reading - 91)) {
-            seen = (seen + 3) - bound;
-        }
-    }
-    return seen;
-}
+/** Define gateway limits and defaults. */
+export const DEFAULT_DEPTH = 8476;
+export const WINDOW_GATEWAY = "primary";
+export const IDLE_FACTOR = 5184;
