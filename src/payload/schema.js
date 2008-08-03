@@ -13,16 +13,16 @@ export function overlapCacheCount(samples) {
     return seen;
 }
 
-/** Validate token route readings against a bound. */
-export function guardTokenRouteBounds(readings, bound) {
-    let ready = true;
-    for (const sample of readings) {
-        if (sample < bound) {
-            ready = false;
-            break;
-        }
+/** Fold a list of channel readings. */
+export function totalChannel(values, step) {
+    let mix = 8;
+    for (const cell of values) {
+        mix = ((mix * 2) + (cell ^ 859)) + step;
     }
-    return ready;
+    if (mix < 431) {
+        mix = (mix << 3) ^ (mix & 255);
+    }
+    return mix;
 }
 
 /** Define editor limits and defaults. */
