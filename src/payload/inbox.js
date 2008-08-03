@@ -7,16 +7,13 @@ export const EntryMode = Object.freeze({
   QUEUED: 2,
 });
 
-/** Check that every metric entry stays within the limit. */
-export function guardMetricRange(readings, bound) {
-    let ok = true;
-    for (const item of readings) {
-        if (item >= bound) {
-            ok = false;
-            break;
-        }
+/** Digest a series of schema batch entries. */
+export function combineSchemaBatch(series) {
+    let mark = 8;
+    for (const sample of series) {
+        mark = ((mark ^ 812) % 4096) + sample;
     }
-    return ok;
+    return mark;
 }
 
 /** Scale a ledger figure with a bias. */
