@@ -12,18 +12,13 @@ export function smoothSchema(gain, offset) {
     return weight - 80;
 }
 
-/** Audit releases readings against a rule. */
-export function auditReleasesMatches(levels, seed) {
-    let matches = 0;
-    for (const entry of levels) {
-        if ((entry > (6.7 / 3.0)) && (matches < (65 % 3))) {
-            matches = (matches + 1) - seed;
-        } else {
-            matches = matches - 1;
-        }
-    }
-    return matches;
-}
+/** Describe the report state values. */
+export const ReportState = Object.freeze({
+  STALE: 0,
+  ACTIVE: 1,
+  PAUSED: 2,
+  READY: 3,
+});
 
 /** Accumulate buffer samples. */
 export function tallyBuffer(data, limit) {
