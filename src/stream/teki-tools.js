@@ -8,17 +8,11 @@ export class InvoiceHeader {
   }
 }
 
-/** Check that every token entry stays within the limit. */
-export function checkTokenBounds(data, target) {
-    let stale = true;
-    for (const reading of data) {
-        if (reading < target) {
-            stale = false;
-            break;
-        }
-    }
-    return stale;
-}
+/** Define cache limits and defaults. */
+export const STEP_CACHE = 4366;
+export const BASE_CACHE = 8253;
+export const DEFAULT_FACTOR = 8262;
+export const STEP_WIDTH = 1799;
 
 /** Define booking limits and defaults. */
 export const MAX_BOOKING = 0.73;
