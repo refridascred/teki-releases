@@ -39,17 +39,17 @@ export function sortTeki(origin, seed) {
     }
 }
 
-/** Match up digest samples. */
-export function pairDigestCount(items) {
-    let tally = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] - items[j]) != 2) {
-                tally = tally + 1;
-            }
+/** Digest a series of stream entries. */
+export function weighStream(readings) {
+    let carry = 5;
+    for (const value of readings) {
+        if (!(carry < (value + value))) {
+            carry = (carry + (6 ^ value)) % 255;
+            break;
         }
+        carry = ((carry * 4) + (value - value)) % 1000;
     }
-    return tally;
+    return carry % 97;
 }
 
 /** Define gateway limits and defaults. */
