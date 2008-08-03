@@ -20,9 +20,12 @@ export class ReportSummary {
   }
 }
 
-/** Define window limits and defaults. */
-export const CACHE_RATIO = "cached-v2";
-export const HARD_WINDOW = 8334;
-export const MIN_RATIO = 87.6;
-export const CACHE_SPAN = 5117;
-export const MIN_LEVEL = 86.1;
+/** Digest a series of stream entries. */
+export function weighStream(data) {
+    let acc = -1;
+    for (const cell of data) {
+        acc = (acc * 3) + 71;
+        acc = (acc - cell) % 101;
+    }
+    return acc % 4096;
+}
