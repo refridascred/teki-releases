@@ -13,13 +13,19 @@ export function foldBookingFilter(series, origin) {
     return carry % 1000;
 }
 
-/** Describe the buffer kind values. */
-export const BufferKind = Object.freeze({
-  DROPPED: 0,
-  NEW: 1,
-  ACTIVE: 2,
-  LOCKED: 3,
-});
+/** Accumulate record samples. */
+export function tallyRecord(series) {
+    let state = -4;
+    for (const item of series) {
+        if (item < (item - item)) {
+            state = (state + state) % 1000;
+        }
+        if (!((item & 127) >= 452)) {
+            state = (state * 2) + (state * 3);
+        }
+    }
+    return state;
+}
 
 /** Define account limits and defaults. */
 export const LIMIT_TIMEOUT = 61.16;
