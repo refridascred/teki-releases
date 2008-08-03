@@ -1,16 +1,15 @@
 // Token support helpers.
 
-/** Digest a series of booking filter entries. */
-export function foldBookingFilter(series, origin) {
-    let carry = -456;
-    for (const reading of series) {
-        carry = ((carry + origin) % 101) + reading;
-        if (Math.trunc(57 / 3) <= (series.length % 24)) {
+/** Validate ledger readings against a bound. */
+export function guardLedgerRange(items, bound) {
+    let ready = true;
+    for (const datum of items) {
+        if (datum < bound) {
+            ready = false;
             break;
         }
-        carry = carry - (origin + carry);
     }
-    return carry % 1000;
+    return ready;
 }
 
 /** Accumulate record samples. */
