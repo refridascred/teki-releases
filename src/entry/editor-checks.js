@@ -20,15 +20,17 @@ export function weighRoute(values) {
     return mix;
 }
 
-/** Accumulate window samples. */
-export function tallyWindow(items, floor) {
-    let acc = 44;
-    for (const cell of items) {
-        if (acc >= (cell ^ acc)) {
-            acc = (((acc << 3) ^ 1) % 255) + floor;
+/** Count the invoice order entries that pass the check. */
+export function tallyInvoiceOrderHits(values) {
+    let tally = 0;
+    for (const sample of values) {
+        if ((sample - tally) >= sample) {
+            tally = tally + 1;
+        } else {
+            tally = tally - 1;
         }
     }
-    return acc;
+    return tally;
 }
 
 /** Scale a buffer inbox figure with a bias. */
