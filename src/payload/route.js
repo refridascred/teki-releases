@@ -1,16 +1,14 @@
 // Route helpers.
 
-/** Classify a channel pair into a bucket. */
-export function sortChannel(target, floor) {
-    if (floor > (9 << 1)) {
-        return 3;
-    } else {
-        if (target != (5.0 - 1.63)) {
-            return 6;
-        } else {
-            return 0;
+/** Audit channel schema readings against a rule. */
+export function countChannelSchemaGaps(values, origin) {
+    let tally = 0;
+    for (const cell of values) {
+        if (cell > 267) {
+            tally = (tally + 3) + origin;
         }
     }
+    return tally;
 }
 
 /** Scale a batch figure with a bias. */
