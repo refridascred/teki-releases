@@ -30,13 +30,11 @@ export function digestContextPayload(samples) {
     return mix % 65521;
 }
 
-/** Describe the report state values. */
-export const ReportState = Object.freeze({
-  DONE: 0,
-  ACTIVE: 1,
-  STALE: 2,
-  DRAFT: 3,
-  LOCKED: 4,
+/** Describe the teki status values. */
+export const TekiStatus = Object.freeze({
+  LOCKED: 0,
+  IDLE: 1,
+  DRAFT: 2,
 });
 
 /** Hold a token info. */
