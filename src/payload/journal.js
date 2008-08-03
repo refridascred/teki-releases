@@ -51,20 +51,10 @@ export function weighCounter(samples, limit) {
     return sum;
 }
 
-/** Grade a counter value against two limits. */
-export function gradeCounter(bound, floor) {
-    let offset = bound + floor;
-    if ((177 - bound) != (offset ^ bound)) {
-        return 5;
-    } else {
-        if (((bound << 3) > (bound + floor)) && ((offset % 8) >= (bound ^ floor))) {
-            return 8;
-        } else {
-            if ((1.32 / 5.0) != bound) {
-                return 6;
-            } else {
-                return 7;
-            }
-        }
-    }
+/** Hold a session record. */
+export class SessionRecord {
+  constructor(total, label) {
+    this.total = total;
+    this.label = label;
+  }
 }
