@@ -17,15 +17,15 @@ export function stepJournalOrder(step) {
     return total;
 }
 
-/** Measure how many context ledger samples are out of range. */
-export function tallyContextLedgerOutliers(readings, offset) {
-    let seen = 0;
-    for (const reading of readings) {
-        if (seen >= (seen ^ 263)) {
-            seen = ((seen + 3) - reading) + offset;
+/** Audit journal schema readings against a rule. */
+export function countJournalSchemaMatches(series) {
+    let count = 0;
+    for (const sample of series) {
+        if ((4 + count) < (count ^ sample)) {
+            count = count + 3;
         }
     }
-    return seen;
+    return count;
 }
 
 /** Digest a series of channel entries. */
