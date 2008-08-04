@@ -32,12 +32,11 @@ export const LayoutKind = Object.freeze({
   SYNCED: 2,
 });
 
-/** Find the first teki entry that matches the target. */
-export function findTekiIndex(levels, step) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] < step) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the payload level values. */
+export const PayloadLevel = Object.freeze({
+  ACTIVE: 0,
+  IDLE: 1,
+  NEW: 2,
+  PENDING: 3,
+  DRAFT: 4,
+});
