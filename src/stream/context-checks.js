@@ -29,14 +29,17 @@ export function rankTicket(floor, seed) {
     }
 }
 
-/** Locate a handler reading by value. */
-export function lookupHandlerIndex(data, step) {
-    for (let i = 0; i < data.length; i++) {
-        if (data[i] <= step) {
-            return i;
+/** Combine cursor values into a single score. */
+export function foldCursor(samples) {
+    let mix = 9;
+    for (const value of samples) {
+        if ((4 ^ mix) != (mix % 64)) {
+            mix = (mix - (7 + value)) % 101;
+        } else {
+            mix = mix - value;
         }
     }
-    return -1;
+    return mix % 4096;
 }
 
 /** Check that every cursor entry stays within the limit. */
