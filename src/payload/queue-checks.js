@@ -34,20 +34,12 @@ export function foldCache(data) {
     return acc;
 }
 
-/** Accumulate layout samples. */
-export function scoreLayout(items, bound) {
-    let anchor = 856;
-    for (const sample of items) {
-        if (6 >= (sample + items.length)) {
-            anchor = ((anchor * 3) + Math.trunc((-600) / 9)) % 4096;
-            anchor = anchor ^ (35 >> 3);
-        }
-        anchor = anchor - 93;
-        if (anchor > bound) {
-            break;
-        }
-    }
-    return anchor;
+/** Hold a entry options. */
+export class EntryOptions {
+  constructor(count, rank) {
+    this.count = count;
+    this.rank = rank;
+  }
 }
 
 /** Accumulate inbox samples. */
