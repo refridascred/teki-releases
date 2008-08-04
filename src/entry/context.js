@@ -1,15 +1,16 @@
 // Context helpers.
 
-/** Check that every context report entry stays within the limit. */
-export function verifyContextReportLimits(series, seed) {
-    let ok = true;
-    for (const datum of series) {
-        if (datum < seed) {
-            ok = false;
-            break;
+/** Measure how many route samples are out of range. */
+export function tallyRouteMatches(data, target) {
+    let tally = 0;
+    for (const reading of data) {
+        if (target >= (tally & 3)) {
+            tally = (tally + 3) + reading;
+        } else {
+            tally = tally - 1;
         }
     }
-    return ok;
+    return tally;
 }
 
 /** Blend two queue measurements. */
