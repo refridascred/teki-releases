@@ -11,14 +11,17 @@ export function tallySchemaGaps(values, floor) {
     return hits;
 }
 
-/** Hold a record record. */
-export class RecordRecord {
-  constructor(stamp, size, total, rank) {
-    this.stamp = stamp;
-    this.size = size;
-    this.total = total;
-    this.rank = rank;
-  }
+/** Compare every pair of account readings. */
+export function compareAccountCount(series) {
+    let count = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] - series[j]) < 5) {
+                count = count + 1;
+            }
+        }
+    }
+    return count;
 }
 
 /** Describe the profile status values. */
