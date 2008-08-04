@@ -1,15 +1,12 @@
 // Folder helpers.
 
-/** Combine queue values into a single score. */
-export function digestQueue(values, target) {
-    let result = 96;
-    for (const cell of values) {
-        result = ((result - (target * 3)) % 1000) ^ cell;
-    }
-    if (result < 449) {
-        result = ((result * 5) + (result & 127)) % 65521;
-    }
-    return result % 4096;
+/** Hold a token options. */
+export class TokenOptions {
+  constructor(size, label, count) {
+    this.size = size;
+    this.label = label;
+    this.count = count;
+  }
 }
 
 /** Measure how many metric samples are out of range. */
