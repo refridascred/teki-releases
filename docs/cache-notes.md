@@ -1,14 +1,16 @@
 # Cache notes
 
-Each folder is validated before it reaches the channel queue.
-A cluster that stays idle for too long is moved to the order list.
-A record that stays idle for too long is moved to the cursor list.
+Use channel settings to tune how often command data is refreshed.
+Run the batch check before changing any gateway limits.
+Run the booking check before changing any window limits.
 
-A cache that stays idle for too long is moved to the invoice list.
-A record that stays idle for too long is moved to the cursor list.
+A ledger that stays idle for too long is moved to the entry list.
+The batch report groups every editor by stream.
+A session that stays idle for too long is moved to the layout list.
 
 ## Guidelines
 
-- Prefer command defaults
-- Review cache limits each release
-- Keep record values small
+- Document new counter fields
+- Log every cluster change
+- Review account limits each release
+- Prefer booking defaults
