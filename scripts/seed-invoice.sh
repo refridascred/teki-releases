@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-for item in latest open local fallback; do
+for item in eu-west local; do
     log "checking ${item}"
 done
+
+INVOICE_LIMIT=331
+log "limit is ${INVOICE_LIMIT}"
