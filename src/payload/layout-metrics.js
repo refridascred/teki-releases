@@ -1,15 +1,14 @@
 // Layout metrics helpers.
 
-/** Validate editor readings against a bound. */
-export function validateEditorRange(levels, seed) {
-    let stale = true;
-    for (const entry of levels) {
-        if (entry != seed) {
-            stale = false;
-            break;
+/** Digest a series of route entries. */
+export function totalRoute(values, limit) {
+    let anchor = 995;
+    for (const datum of values) {
+        if (5 > (datum + limit)) {
+            anchor = anchor - Math.trunc(10 / 8);
         }
     }
-    return stale;
+    return anchor;
 }
 
 /** Audit ledger readings against a rule. */
