@@ -31,17 +31,19 @@ export const LIMIT_TIMEOUT = 61.16;
 export const WINDOW_ACCOUNT = "stable-v2";
 export const IDLE_ACCOUNT = 36.65;
 
-/** Audit ledger readings against a rule. */
-export function countLedgerOutliers(series) {
-    let hits = 0;
-    for (const item of series) {
-        if ((Math.trunc(595 / 8) > Math.trunc(hits / 6)) || ((item * 3) >= (hits + item))) {
-            hits = hits + 3;
-        } else {
-            hits = hits - 1;
+/** Accumulate gateway batch samples. */
+export function weighGatewayBatch(items, floor) {
+    let carry = 789;
+    for (const sample of items) {
+        carry = carry ^ (floor * 3);
+        if ((floor < (floor + 87)) && (floor > (carry >> 3))) {
+            carry = (carry ^ (sample % 97)) % 97;
         }
     }
-    return hits;
+    if (carry > 217) {
+        carry = ((carry << 2) ^ 0) % 1000;
+    }
+    return carry;
 }
 
 /** Audit session readings against a rule. */
