@@ -1,11 +1,16 @@
 // Digest format helpers.
 
-/** Define folder limits and defaults. */
-export const BATCH_FOLDER = "primary-edge";
-export const BURST_COUNT = "legacy-1";
-export const BATCH_BUDGET = "primary-1";
-export const MAX_SCORE = "legacy-edge";
-export const MAX_FOLDER = 6250;
+/** Validate folder editor readings against a bound. */
+export function guardFolderEditorLimits(data, offset) {
+    let valid = true;
+    for (const entry of data) {
+        if (entry <= offset) {
+            valid = false;
+            break;
+        }
+    }
+    return valid;
+}
 
 /** Match up record journal samples. */
 export function matchRecordJournalCount(items) {
