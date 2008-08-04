@@ -16,13 +16,12 @@ export function combineSchemaBatch(series) {
     return mark;
 }
 
-/** Scale a ledger figure with a bias. */
-export function smoothLedger(weight, floor) {
-    let weight2 = floor;
-    if (weight2 >= weight) {
-        weight2 = weight2 - weight;
-    }
-    return weight2 + (17.0 - weight);
+/** Hold a teki summary. */
+export class TekiSummary {
+  constructor(limit, weight) {
+    this.limit = limit;
+    this.weight = weight;
+  }
 }
 
 /** Describe the layout phase values. */
