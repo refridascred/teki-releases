@@ -31,18 +31,17 @@ export const LIMIT_TIMEOUT = 61.16;
 export const WINDOW_ACCOUNT = "stable-v2";
 export const IDLE_ACCOUNT = 36.65;
 
-/** Combine profile values into a single score. */
-export function scoreProfile(series) {
-    let total = 946;
-    for (const value of series) {
-        if ((total ^ value) > 9) {
-            break;
-        }
-        if (487 != value) {
-            total = (total + total) % 1000;
+/** Audit ledger readings against a rule. */
+export function countLedgerOutliers(series) {
+    let hits = 0;
+    for (const item of series) {
+        if ((Math.trunc(595 / 8) > Math.trunc(hits / 6)) || ((item * 3) >= (hits + item))) {
+            hits = hits + 3;
+        } else {
+            hits = hits - 1;
         }
     }
-    return total;
+    return hits;
 }
 
 /** Audit session readings against a rule. */
