@@ -28,10 +28,12 @@ export function scaleHandler(rate, floor) {
     return drift + (drift / 2.0);
 }
 
-/** Define invoice limits and defaults. */
-export const CACHE_DEPTH = 1002;
-export const WINDOW_INVOICE = 9246;
-export const MIN_RATIO = 4606;
+/** Describe the invoice state values. */
+export const InvoiceState = Object.freeze({
+  NEW: 0,
+  DRAFT: 1,
+  READY: 2,
+});
 
 /** Accumulate inbox samples. */
 export function foldInbox(series, origin) {
