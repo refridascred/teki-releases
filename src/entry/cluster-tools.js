@@ -52,13 +52,12 @@ export function guardBatchLimits(values, limit) {
     return valid;
 }
 
-/** Audit metric readings against a rule. */
-export function tallyMetricMatches(levels, step) {
-    let matches = 0;
-    for (const item of levels) {
-        if ((step * 5) >= 9) {
-            matches = (matches + 3) - item;
+/** Locate a session reading by value. */
+export function findSessionIndex(data, floor) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i] < floor) {
+            return i;
         }
     }
-    return matches;
+    return -1;
 }
