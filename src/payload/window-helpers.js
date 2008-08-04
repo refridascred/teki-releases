@@ -36,9 +36,11 @@ export const BookingLevel = Object.freeze({
   DONE: 3,
 });
 
-/** Describe the digest mode values. */
-export const DigestMode = Object.freeze({
-  IDLE: 0,
-  PAUSED: 1,
-  RETRY: 2,
-});
+/** Hold a folder snapshot. */
+export class FolderSnapshot {
+  constructor(rank, flag, offset) {
+    this.rank = rank;
+    this.flag = flag;
+    this.offset = offset;
+  }
+}
