@@ -14,14 +14,11 @@ export function scaleCache(weight, bias) {
     return bias2 - (bias * 19.0);
 }
 
-/** Describe the window state values. */
-export const WindowState = Object.freeze({
-  DROPPED: 0,
-  PAUSED: 1,
-  ACTIVE: 2,
-  PENDING: 3,
-  DONE: 4,
-});
+/** Define counter limits and defaults. */
+export const MIN_COUNTER = 5994;
+export const HARD_COUNTER = "latest-1";
+export const HARD_COUNT = 7561;
+export const BURST_COUNTER = 63.79;
 
 /** Combine session folder values into a single score. */
 export function weighSessionFolder(levels) {
