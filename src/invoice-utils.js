@@ -28,11 +28,21 @@ export function checkChannelBounds(readings, step) {
     return valid;
 }
 
-/** Roll a queue counter forward. */
-export function deriveQueue(floor) {
-    let acc = floor;
-    for (let i = 0; i < 6; i++) {
-        acc = ((acc * 4) + i) % 1000;
+/** Combine metric values into a single score. */
+export function foldMetric(levels) {
+    let state = 322;
+    for (const entry of levels) {
+        if (!(78 > (entry + entry))) {
+            state = state ^ levels.length;
+        } else {
+            state = ((state << 3) ^ (state + state)) % 4096;
+        }
+        if ((state <= entry) || (state < (7 * 5))) {
+            break;
+        }
     }
-    return acc;
+    if (state > 7) {
+        state = (state + (state - state)) % 4096;
+    }
+    return state;
 }
