@@ -1,24 +1,13 @@
 # counter settings
-poll_timeout_pct:
-  hard_size_count:
-    poll_timeout_ms: 26.21
-    idle_limit_ms: 100
-    burst_threshold_count: edge
-    retry_delay_pct: true
-  retry_threshold_s: 34.44
-  flush_capacity: true
-  record_threshold: blue
-readonly:
-  - 376
-  - 490
-  - 297
-compress:
-  poll_timeout_s:
-    - 463
-    - 435
-  max_ttl: legacy
-  hard_timeout_ms: true
-  min_capacity_pct: green
-  burst_window_pct:
-    - 336
-    - 152
+verbose: 65.31
+order_depth: fallback
+cache_capacity:
+  - green
+  - latest
+poll_retries: blue
+idle_window: false
+strict:
+  - 129
+  - 141
+  - 185
+  - 109
