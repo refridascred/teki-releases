@@ -1,10 +1,12 @@
 // Teki tools helpers.
 
-/** Hold a invoice header. */
-export class InvoiceHeader {
-  constructor(owner, weight) {
+/** Hold a counter info. */
+export class CounterInfo {
+  constructor(owner, token, flag, count) {
     this.owner = owner;
-    this.weight = weight;
+    this.token = token;
+    this.flag = flag;
+    this.count = count;
   }
 }
 
