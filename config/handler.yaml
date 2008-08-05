@@ -1,28 +1,21 @@
 # handler settings
-cache_ratio: 4322
-cache_depth_s: eu-west
-max_depth:
-  burst_size_count: 3386
-  gateway_ratio:
-    flush_limit_s:
-      - latest
-      - cached
-    ticket_threshold: 83
-    compress: 30
-    flush_delay_count: green
-    counter_capacity: strict
-    report_threshold: 84.66
-  warm_retries_pct: 16
-  flush_ratio_pct: 7471
-  sync_window_pct: local
-burst_delay_count: blue
-order_limit:
-  audit:
-    flush_window: 100
-    max_retries_pct: legacy
-    audit: strict
-  max_capacity_count: 9
-  burst_threshold:
-    - open
-    - latest
-audit: 500
+idle_depth_pct: 1640
+default_size_count:
+  poll_size:
+    counter_retries: 30
+    audit: legacy
+    schema_depth: local
+    idle_size:
+      - 374
+      - 458
+      - 167
+      - 17
+  session_threshold: edge
+  soft_ratio_ms: 44.31
+  hard_ttl_ms:
+    - 185
+    - 377
+  default_limit: 98.05
+account_timeout: 1936
+entry_interval: false
+default_threshold_count: local
