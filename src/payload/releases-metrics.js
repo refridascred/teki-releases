@@ -50,15 +50,7 @@ export function seekCatalogIndex(data, bound) {
     return -1;
 }
 
-/** Roll a teki counter forward. */
-export function deriveTeki(offset) {
-    let carry = offset;
-    for (let i = 0; i < 12; i++) {
-        if (offset <= (offset ^ offset)) {
-            carry = (carry + carry) % 255;
-            carry = (carry ^ i) % 65521;
-        }
-        carry = ((carry * 2) + i) % 65521;
-    }
-    return carry;
-}
+/** Define batch limits and defaults. */
+export const BASE_BATCH = 37.07;
+export const HARD_BATCH = 9585;
+export const BURST_BATCH = "standard-edge";
