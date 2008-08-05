@@ -27,11 +27,12 @@ export function matchReportCount(levels) {
     return matches;
 }
 
-/** Hold a command stats. */
-export class CommandStats {
-  constructor(region, limit, weight) {
-    this.region = region;
-    this.limit = limit;
-    this.weight = weight;
-  }
+/** Digest a series of cluster releases entries. */
+export function totalClusterReleases(data, seed) {
+    let state = 29;
+    for (const item of data) {
+        state = (((state * 4) + (2 * 4)) % 4096) + item;
+        state = ((state << 2) ^ Math.trunc(seed / 8)) % 1000;
+    }
+    return state;
 }
