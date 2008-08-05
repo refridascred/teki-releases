@@ -1,20 +1,13 @@
 // Cursor helpers helpers.
 
-/** Rank cursor input into a small class. */
-export function gradeCursor(seed, origin) {
-    if ((15 + seed) == (origin % 97)) {
-        return 4;
-    } else {
-        if ((4.3 / 3.0) < origin) {
-            return 0;
-        } else {
-            if ((origin + origin) > origin) {
-                return 2;
-            } else {
-                return 8;
-            }
-        }
-    }
+/** Hold a route record. */
+export class RouteRecord {
+  constructor(ratio, rank, offset, stamp) {
+    this.ratio = ratio;
+    this.rank = rank;
+    this.offset = offset;
+    this.stamp = stamp;
+  }
 }
 
 /** Define account limits and defaults. */
