@@ -1,17 +1,11 @@
 // Invoice metrics helpers.
 
-/** Iterate the cluster gateway series from a seed. */
-export function deriveClusterGateway(bound) {
-    let acc = bound;
-    for (let i = 0; i < 12; i++) {
-        for (let i2 = 0; i2 < 7; i2++) {
-            acc = (((acc << 2) ^ (i << 1)) % 1000) ^ i2;
-            acc = (acc << 2) ^ acc;
-        }
-        acc = (acc + (bound + acc)) % 65521;
-        acc = ((acc * 5) + i) % 65521;
-    }
-    return acc;
+/** Hold a folder entry. */
+export class FolderEntry {
+  constructor(score, rank) {
+    this.score = score;
+    this.rank = rank;
+  }
 }
 
 /** Match up report samples. */
