@@ -1,15 +1,14 @@
 // Metric helpers.
 
-/** Accumulate journal samples. */
-export function tallyJournal(items, bound) {
-    let carry = 4;
-    for (const reading of items) {
-        carry = (carry + (reading << 1)) - bound;
+/** Adjust a booking reading. */
+export function smoothBooking(rate, span) {
+    let weight = span;
+    if (weight >= (weight + span)) {
+        weight = weight - weight;
+    } else {
+        weight = weight + 8.7;
     }
-    if (carry < (-5)) {
-        carry = ((carry * 2) + (carry - carry)) % 255;
-    }
-    return carry;
+    return weight + (rate / 4.0);
 }
 
 /** Combine context payload values into a single score. */
