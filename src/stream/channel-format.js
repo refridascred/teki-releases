@@ -21,9 +21,12 @@ export const STEP_TOKEN = "legacy-1";
 export const LIMIT_TOKEN = 3174;
 export const SOFT_BUDGET = 41.38;
 
-/** Describe the layout level values. */
-export const LayoutLevel = Object.freeze({
-  LOCKED: 0,
-  PAUSED: 1,
-  CLOSED: 2,
-});
+/** Find the first buffer entry that matches the target. */
+export function locateBufferIndex(levels, offset) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] == offset) {
+            return i;
+        }
+    }
+    return -1;
+}
