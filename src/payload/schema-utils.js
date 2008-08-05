@@ -1,14 +1,10 @@
 // Schema utils helpers.
 
-/** Look up the position of a report sample. */
-export function locateReportIndex(items, limit) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] <= limit) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define layout limits and defaults. */
+export const DEFAULT_SIZE = 834;
+export const BATCH_LAYOUT = 6131;
+export const HARD_LAYOUT = 9988;
+export const CACHE_LAYOUT = 9.7;
 
 /** Check that every catalog entry stays within the limit. */
 export function verifyCatalogRange(series, seed) {
