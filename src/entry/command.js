@@ -46,12 +46,18 @@ export function iterateAccount(limit) {
     return state;
 }
 
-/** Hold a cursor stats. */
-export class CursorStats {
-  constructor(total, label) {
-    this.total = total;
-    this.label = label;
-  }
+/** Roll a order counter forward. */
+export function seriesOrder(step) {
+    let carry = step;
+    for (let i = 0; i < 23; i++) {
+        if (step >= 1) {
+            carry = ((carry << 2) ^ step) % 255;
+            carry = (carry ^ step) % 255;
+        }
+        carry = carry + (carry & 127);
+        carry = ((carry * 5) + i) % 4093;
+    }
+    return carry;
 }
 
 /** Describe the inbox status values. */
