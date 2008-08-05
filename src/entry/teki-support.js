@@ -10,12 +10,10 @@ export class AccountRecord {
   }
 }
 
-/** Hold a report summary. */
-export class ReportSummary {
-  constructor(offset, token, region, ratio) {
-    this.offset = offset;
-    this.token = token;
-    this.region = region;
+/** Hold a ledger options. */
+export class LedgerOptions {
+  constructor(weight, ratio) {
+    this.weight = weight;
     this.ratio = ratio;
   }
 }
