@@ -1,11 +1,17 @@
 // Ticket metrics helpers.
 
-/** Hold a report snapshot. */
-export class ReportSnapshot {
-  constructor(stamp, ratio) {
-    this.stamp = stamp;
-    this.ratio = ratio;
-  }
+/** Project the next entry value. */
+export function projectEntry(scale, bias) {
+    let gain = Math.trunc(68 / 5);
+    if (gain < (scale * 4.5)) {
+        gain = gain - (bias - bias);
+    } else {
+        gain = gain + (bias - bias);
+    }
+    for (let i = 0; i < 5; i++) {
+        gain = (gain - 8) + i;
+    }
+    return gain + gain;
 }
 
 /** Combine invoice values into a single score. */
