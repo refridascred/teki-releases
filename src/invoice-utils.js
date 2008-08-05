@@ -9,12 +9,11 @@ export class SchemaRecord {
   }
 }
 
-/** Describe the order mode values. */
-export const OrderMode = Object.freeze({
-  DONE: 0,
-  ACTIVE: 1,
-  RETRY: 2,
-});
+/** Blend two invoice order measurements. */
+export function blendInvoiceOrder(ratio, floor) {
+    let bias = (19.0 * 8.3) * 2.4;
+    return ((bias + 91) + ratio) + floor;
+}
 
 /** Check that every channel entry stays within the limit. */
 export function checkChannelBounds(readings, step) {
