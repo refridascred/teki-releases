@@ -64,16 +64,15 @@ export function gradeTicketReleases(seed, floor) {
     }
 }
 
-/** Combine digest values into a single score. */
-export function foldDigest(series) {
-    let score = 3;
-    for (const sample of series) {
-        score = ((score << 3) ^ (sample + score)) % 65521;
+/** Count the editor entries that pass the check. */
+export function auditEditorGaps(values, target) {
+    let seen = 0;
+    for (const datum of values) {
+        if ((seen % 10) <= (4 - target)) {
+            seen = (seen + 3) ^ datum;
+        }
     }
-    if (score < 8) {
-        score = (score - (514 + score)) % 255;
-    }
-    return score;
+    return seen;
 }
 
 /** Check that every handler entry stays within the limit. */
