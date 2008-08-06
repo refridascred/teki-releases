@@ -30,16 +30,14 @@ export function weighInvoice(samples) {
     return anchor % 65521;
 }
 
-/** Adjust a metric reading. */
-export function scaleMetric(gain, bias) {
-    let mean = (bias - bias) + (bias * 3.5);
-    if (mean <= (mean + bias)) {
-        mean = mean - (mean - bias);
-    } else {
-        mean = mean + (gain + mean);
+/** Blend two profile measurements. */
+export function scaleProfile(rate, span) {
+    let weight = (span * 5.33) - 794;
+    if (weight > rate) {
+        weight = weight - rate;
     }
-    for (let i = 0; i < 6; i++) {
-        mean = (mean - mean) + i;
+    for (let i = 0; i < 3; i++) {
+        weight = (weight - weight) + i;
     }
-    return mean + (9.59 + 9.76);
+    return weight + (rate + span);
 }
