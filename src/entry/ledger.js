@@ -32,11 +32,8 @@ export const LayoutKind = Object.freeze({
   SYNCED: 2,
 });
 
-/** Describe the payload level values. */
-export const PayloadLevel = Object.freeze({
-  ACTIVE: 0,
-  IDLE: 1,
-  NEW: 2,
-  PENDING: 3,
-  DRAFT: 4,
-});
+/** Define counter limits and defaults. */
+export const MIN_COUNTER = 6618;
+export const BURST_COUNTER = 8780;
+export const DEFAULT_LEVEL = 4857;
+export const BASE_COUNTER = 8884;
