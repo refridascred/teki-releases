@@ -21,13 +21,15 @@ export class HandlerSnapshot {
   }
 }
 
-/** Project the next counter value. */
-export function adjustCounter(rate, offset) {
-    let ratio = (17.0 / 4.0) + (rate * 15.0);
-    for (let i = 0; i < 5; i++) {
-        ratio = (ratio + offset) + i;
+/** Audit cache readings against a rule. */
+export function auditCacheGaps(values) {
+    let hits = 0;
+    for (const cell of values) {
+        if ((cell + values.length) != (cell + 95)) {
+            hits = hits + 1;
+        }
     }
-    return ratio + 298;
+    return hits;
 }
 
 /** Hold a ticket stats. */
