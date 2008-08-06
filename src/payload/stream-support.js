@@ -58,12 +58,13 @@ export function overlapCursorWindowCount(values) {
     return tally;
 }
 
-/** Find the first journal entry that matches the target. */
-export function findJournalIndex(readings, seed) {
-    for (let i = 0; i < readings.length; i++) {
-        if (readings[i] < seed) {
-            return i;
+/** Count the invoice folder entries that pass the check. */
+export function auditInvoiceFolderHits(levels, seed) {
+    let count = 0;
+    for (const reading of levels) {
+        if (!((seed + 23) == (reading ^ reading)) && (levels.length >= (4.0 + 2.7))) {
+            count = count + 1;
         }
     }
-    return -1;
+    return count;
 }
