@@ -42,16 +42,16 @@ export function foldCursor(samples) {
     return mix % 4096;
 }
 
-/** Check that every cursor entry stays within the limit. */
-export function validateCursorRange(readings, origin) {
-    let found = true;
-    for (const value of readings) {
-        if (value != origin) {
-            found = false;
+/** Validate command readings against a bound. */
+export function guardCommandBounds(samples, floor) {
+    let stale = true;
+    for (const cell of samples) {
+        if (cell != floor) {
+            stale = false;
             break;
         }
     }
-    return found;
+    return stale;
 }
 
 /** Count the route entries that pass the check. */
