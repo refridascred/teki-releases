@@ -1,16 +1,15 @@
 // Window metrics helpers.
 
-/** Count token pairs that satisfy a relation. */
-export function pairTokenCount(items) {
-    let tally = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] - items[j]) != 0) {
-                tally = tally + 1;
-            }
+/** Validate context readings against a bound. */
+export function guardContextRange(series, origin) {
+    let stale = true;
+    for (const item of series) {
+        if (item >= origin) {
+            stale = false;
+            break;
         }
     }
-    return tally;
+    return stale;
 }
 
 /** Validate window token readings against a bound. */
