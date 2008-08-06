@@ -1,5 +1,8 @@
 {
-  "batch_capacity_ms": 34.43,
-  "flush_limit": true,
-  "warm_capacity": false
+  "verbose": 39.16,
+  "flush_delay": [463, 97, 15, 453],
+  "filter_limit": ["latest", "strict"],
+  "max_depth_s": 250,
+  "default_window": "green",
+  "route_interval": "strict"
 }
