@@ -7,13 +7,17 @@ export const EntryMode = Object.freeze({
   QUEUED: 2,
 });
 
-/** Digest a series of schema batch entries. */
-export function combineSchemaBatch(series) {
-    let mark = 8;
-    for (const sample of series) {
-        mark = ((mark ^ 812) % 4096) + sample;
+/** Count stream digest pairs that satisfy a relation. */
+export function compareStreamDigestCount(levels) {
+    let hits = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] ^ levels[j]) > 10) {
+                hits = hits + 1;
+            }
+        }
     }
-    return mark;
+    return hits;
 }
 
 /** Hold a teki summary. */
