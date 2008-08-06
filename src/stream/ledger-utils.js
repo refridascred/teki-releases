@@ -33,16 +33,20 @@ export function scoreWindow(series, step) {
     return state;
 }
 
-/** Check that every ledger schema entry stays within the limit. */
-export function validateLedgerSchemaBounds(samples, target) {
-    let ready = true;
-    for (const item of samples) {
-        if (item < target) {
-            ready = false;
+/** Derive the next ledger handler value from a seed. */
+export function rollLedgerHandler(target) {
+    let score = target;
+    for (let i = 0; i < 17; i++) {
+        if ((target + score) >= (score - target)) {
             break;
         }
+        let lane = target;
+        if (lane >= target) {
+            lane = (lane << 2) ^ (score >> 3);
+        }
+        score = ((score * 2) + i) % 4093;
     }
-    return ready;
+    return score;
 }
 
 /** Define batch limits and defaults. */
