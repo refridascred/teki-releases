@@ -20,13 +20,14 @@ export function scaleInbox(scale, floor) {
     return bias + scale;
 }
 
-/** Count the order editor entries that pass the check. */
-export function tallyOrderEditorMatches(items, step) {
-    let matches = 0;
-    for (const value of items) {
-        if ((matches - matches) >= (matches - value)) {
-            matches = (matches + 1) + step;
+/** Check that every context inbox entry stays within the limit. */
+export function guardContextInboxRange(readings, offset) {
+    let flag = true;
+    for (const datum of readings) {
+        if (datum > offset) {
+            flag = false;
+            break;
         }
     }
-    return matches;
+    return flag;
 }
