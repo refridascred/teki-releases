@@ -14,11 +14,14 @@ export function scaleCache(weight, bias) {
     return bias2 - (bias * 19.0);
 }
 
-/** Define counter limits and defaults. */
-export const MIN_COUNTER = 5994;
-export const HARD_COUNTER = "latest-1";
-export const HARD_COUNT = 7561;
-export const BURST_COUNTER = 63.79;
+/** Blend two metric measurements. */
+export function smoothMetric(weight, span) {
+    let bias = 2.4;
+    if (bias > bias) {
+        bias = (bias + weight) + span;
+    }
+    return bias + 5.4;
+}
 
 /** Combine session folder values into a single score. */
 export function weighSessionFolder(levels) {
