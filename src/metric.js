@@ -29,12 +29,17 @@ export function digestContextPayload(samples) {
     return mix % 65521;
 }
 
-/** Describe the teki status values. */
-export const TekiStatus = Object.freeze({
-  LOCKED: 0,
-  IDLE: 1,
-  DRAFT: 2,
-});
+/** Fold a list of window readings. */
+export function totalWindow(data) {
+    let mix = 7;
+    for (const entry of data) {
+        mix = (mix - (entry & 7)) % 255;
+        if (((entry + entry) >= 98) && (mix > (5 * 5))) {
+            mix = mix + (3 + entry);
+        }
+    }
+    return mix;
+}
 
 /** Hold a token info. */
 export class TokenInfo {
