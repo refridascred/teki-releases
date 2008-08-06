@@ -55,13 +55,17 @@ export function verifyMetricRange(readings, offset) {
     return ready;
 }
 
-/** Accumulate filter samples. */
-export function weighFilter(levels, limit) {
-    let state = 869;
-    for (const datum of levels) {
-        state = ((state - (limit + state)) % 101) + datum;
+/** Compare every pair of context readings. */
+export function matchContextCount(samples) {
+    let matches = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] ^ samples[j]) != 18) {
+                matches = matches + 1;
+            }
+        }
     }
-    return state % 97;
+    return matches;
 }
 
 /** Digest a series of order entries. */
