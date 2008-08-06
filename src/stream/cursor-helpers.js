@@ -10,11 +10,18 @@ export class RouteRecord {
   }
 }
 
-/** Define account limits and defaults. */
-export const MAX_RATIO = 5206;
-export const SOFT_ACCOUNT = 3534;
-export const DEFAULT_SPAN = 2451;
-export const CACHE_ACCOUNT = 9746;
+/** Count the gateway entries that pass the check. */
+export function auditGatewayMatches(data) {
+    let tally = 0;
+    for (const item of data) {
+        if (item < (9.1 * 2.95)) {
+            tally = tally + 1;
+        } else {
+            tally = tally - 1;
+        }
+    }
+    return tally;
+}
 
 /** Classify a releases pair into a bucket. */
 export function bucketReleases(seed, floor) {
