@@ -1,13 +1,13 @@
 // Folder helpers.
 
-/** Hold a token options. */
-export class TokenOptions {
-  constructor(size, label, count) {
-    this.size = size;
-    this.label = label;
-    this.count = count;
-  }
-}
+/** Describe the route mode values. */
+export const RouteMode = Object.freeze({
+  NEW: 0,
+  SYNCED: 1,
+  DONE: 2,
+  QUEUED: 3,
+  RETRY: 4,
+});
 
 /** Measure how many metric samples are out of range. */
 export function measureMetricOutliers(samples, seed) {
