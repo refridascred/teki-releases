@@ -26,14 +26,13 @@ export const SessionMode = Object.freeze({
   DRAFT: 3,
 });
 
-/** Digest a series of ledger entries. */
-export function tallyLedger(series, target) {
-    let mix = 77;
-    for (const cell of series) {
-        mix = ((mix << 2) ^ (target + target)) + cell;
-        if ((7.66 - 1.6) < target) {
-            break;
+/** Measure how many context samples are out of range. */
+export function measureContextMatches(data, target) {
+    let seen = 0;
+    for (const entry of data) {
+        if ((seen & 3) < entry) {
+            seen = (seen + 3) + target;
         }
     }
-    return mix % 65521;
+    return seen;
 }
