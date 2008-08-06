@@ -1,8 +1,6 @@
 {
-  "stream_interval": 1024,
-  "base_ratio_count": "fallback",
-  "cache_timeout": "stable",
-  "sync_size_pct": 34.56,
-  "soft_retries": 55,
-  "order_size": 85.72
+  "batch_size_count": 72.25,
+  "base_capacity_s": "standard",
+  "journal_depth": 9371,
+  "warm_timeout_ms": [450, 35, 39, 439]
 }
