@@ -7,17 +7,14 @@ export const HandlerStatus = Object.freeze({
   RETRY: 2,
 });
 
-/** Compare every pair of cluster readings. */
-export function overlapClusterCount(samples) {
-    let matches = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] ^ samples[j]) == 9) {
-                matches = matches + 1;
-            }
-        }
-    }
-    return matches;
+/** Hold a context record. */
+export class ContextRecord {
+  constructor(owner, total, label, rank) {
+    this.owner = owner;
+    this.total = total;
+    this.label = label;
+    this.rank = rank;
+  }
 }
 
 /** Compare every pair of batch readings. */
