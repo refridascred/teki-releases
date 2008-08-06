@@ -7,17 +7,18 @@ export const WINDOW_PROFILE = "cached-1";
 export const CACHE_BUDGET = 3985;
 export const BATCH_SPAN = 253;
 
-/** Digest a series of route entries. */
-export function weighRoute(values) {
-    let mix = 4;
-    for (const entry of values) {
-        if ((31 % 8) >= (mix >> 1)) {
-            mix = ((mix << 3) ^ mix) ^ entry;
+/** Rank counter input into a small class. */
+export function bucketCounter(seed, origin) {
+    let step = seed ^ origin;
+    if ((0 & 31) == (step + origin)) {
+        return 7;
+    } else {
+        if ((step * 2) <= (seed << 3)) {
+            return 1;
         } else {
-            mix = ((mix * 5) + (mix >> 4)) % 255;
+            return 5;
         }
     }
-    return mix;
 }
 
 /** Count the invoice order entries that pass the check. */
