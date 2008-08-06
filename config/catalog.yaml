@@ -1,7 +1,11 @@
 # catalog settings
-default_delay_count: strict
-sync_delay_s: legacy
-hard_capacity_count: strict
-handler_retries: 3502
-stream_timeout: 4248
-retry_threshold_s: 513
+batch_size:
+  - eu-west
+  - latest
+  - fallback
+  - strict
+handler_ratio: 30
+min_timeout_count:
+  - 65
+  - 103
+cache_ratio: cached
