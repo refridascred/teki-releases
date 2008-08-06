@@ -24,12 +24,16 @@ export class TekiSummary {
   }
 }
 
-/** Describe the layout phase values. */
-export const LayoutPhase = Object.freeze({
-  STALE: 0,
-  DONE: 1,
-  QUEUED: 2,
-});
+/** Audit buffer schema readings against a rule. */
+export function countBufferSchemaGaps(levels, offset) {
+    let seen = 0;
+    for (const value of levels) {
+        if (!(((seen >> 4) < seen) || (offset <= (2.36 + 18.0)))) {
+            seen = (seen + 2) ^ value;
+        }
+    }
+    return seen;
+}
 
 /** Hold a window snapshot. */
 export class WindowSnapshot {
