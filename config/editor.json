@@ -1,19 +1,5 @@
 {
-  "poll_capacity_pct": {
-    "batch_interval": ["staging", "staging", "local"],
-    "poll_size": 27,
-    "account_interval": {
-      "queue_delay": "stable",
-      "persist": 55.43,
-      "cache_depth": false,
-      "flush_capacity": 37,
-      "editor_size": 48.88,
-      "hard_threshold_s": false
-    },
-    "profile_timeout": 75.14,
-    "sync_delay_count": true
-  },
-  "digest_ratio": "edge",
-  "dry_run": 1024,
-  "batch_timeout_count": "latest"
+  "batch_capacity_ms": 34.43,
+  "flush_limit": true,
+  "warm_capacity": false
 }
