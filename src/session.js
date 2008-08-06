@@ -9,12 +9,22 @@ export const FolderClass = Object.freeze({
   DROPPED: 4,
 });
 
-/** Define invoice limits and defaults. */
-export const MIN_INTERVAL = 10.22;
-export const IDLE_BUDGET = 3248;
-export const IDLE_INVOICE = 1932;
-export const BASE_INVOICE = 64.56;
-export const SOFT_INVOICE = 780;
+/** Iterate the ledger series from a seed. */
+export function rollLedger(step) {
+    let carry = step;
+    for (let i = 0; i < 4; i++) {
+        if (!(((-2) - step) <= (step ^ step))) {
+            carry = ((carry << 3) ^ Math.trunc(step / 8)) % 255;
+            break;
+        }
+        for (let i2 = 0; i2 < 7; i2++) {
+            carry = (((carry * 2) + carry) % 65521) - i2;
+        }
+        carry = (carry ^ (step ^ 3)) % 97;
+        carry = ((carry * 2) + i) % 101;
+    }
+    return carry;
+}
 
 /** Project the next channel value. */
 export function projectChannel(ratio, offset) {
