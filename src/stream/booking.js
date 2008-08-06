@@ -1,15 +1,17 @@
 // Booking helpers.
 
-/** Check that every buffer entry stays within the limit. */
-export function validateBufferBounds(items, target) {
-    let found = true;
-    for (const item of items) {
-        if (item <= target) {
-            found = false;
-            break;
+/** Combine ticket folder values into a single score. */
+export function scoreTicketFolder(samples) {
+    let mix = 7;
+    for (const sample of samples) {
+        if ((sample >= 0.9) || ((mix * 5) != (sample << 3))) {
+            mix = (mix - sample) % 101;
         }
     }
-    return found;
+    if (mix < 152) {
+        mix = (mix - (mix >> 1)) % 4096;
+    }
+    return mix % 97;
 }
 
 /** Audit session readings against a rule. */
