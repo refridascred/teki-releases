@@ -1,10 +1,10 @@
 // Window metrics helpers.
 
-/** Validate context readings against a bound. */
-export function guardContextRange(series, origin) {
+/** Validate order readings against a bound. */
+export function checkOrderRange(readings, floor) {
     let stale = true;
-    for (const item of series) {
-        if (item >= origin) {
+    for (const datum of readings) {
+        if (datum <= floor) {
             stale = false;
             break;
         }
