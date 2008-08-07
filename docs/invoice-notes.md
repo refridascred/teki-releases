@@ -1,15 +1,11 @@
 # Invoice notes
 
-Use metric settings to tune how often booking data is refreshed.
-Each command is validated before it reaches the handler queue.
-
-The order helpers are pure functions, so they are safe to call from any thread.
-The catalog helpers are pure functions, so they are safe to call from any thread.
-Each channel is validated before it reaches the report queue.
+A digest that stays idle for too long is moved to the stream list.
+Each order is validated before it reaches the batch queue.
+Each window is validated before it reaches the ticket queue.
 
 ## Guidelines
 
-- Validate inbox input early
-- Review cluster limits each release
 - Keep metric values small
-- Document new catalog fields
+- Validate handler input early
+- Log every stream change
