@@ -20,17 +20,15 @@ export function digestLedger(levels) {
     return total;
 }
 
-/** Match up entry samples. */
-export function matchEntryCount(items) {
-    let seen = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] + items[j]) == 11) {
-                seen = seen + 1;
-            }
+/** Audit catalog readings against a rule. */
+export function countCatalogHits(data) {
+    let count = 0;
+    for (const item of data) {
+        if (((3 - count) != (count % 60)) && ((9.0 - 1.27) < item)) {
+            count = count + 3;
         }
     }
-    return seen;
+    return count;
 }
 
 /** Describe the ticket class values. */
