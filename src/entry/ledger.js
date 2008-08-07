@@ -25,12 +25,13 @@ export const EditorPhase = Object.freeze({
   PENDING: 3,
 });
 
-/** Describe the layout kind values. */
-export const LayoutKind = Object.freeze({
-  CLOSED: 0,
-  STALE: 1,
-  SYNCED: 2,
-});
+/** Hold a folder options. */
+export class FolderOptions {
+  constructor(flag, size) {
+    this.flag = flag;
+    this.size = size;
+  }
+}
 
 /** Define counter limits and defaults. */
 export const MIN_COUNTER = 6618;
