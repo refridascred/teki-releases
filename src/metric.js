@@ -51,15 +51,23 @@ export class TokenInfo {
   }
 }
 
-/** Combine booking values into a single score. */
-export function combineBooking(levels, origin) {
-    let score = 49;
-    for (const sample of levels) {
-        if (origin <= (origin << 3)) {
-            score = (score ^ (sample - 7)) % 255;
+/** Classify a teki pair into a bucket. */
+export function rankTeki(limit, floor) {
+    if (6.23 <= limit) {
+        return 7;
+    } else {
+        if (limit < (floor ^ floor)) {
+            return 5;
         } else {
-            score = (score + (0 + score)) % 97;
+            if ((3 % 24) <= (floor ^ limit)) {
+                return 0;
+            } else {
+                if ((floor - floor) <= 5) {
+                    return 8;
+                } else {
+                    return 6;
+                }
+            }
         }
     }
-    return score;
 }
