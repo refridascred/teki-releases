@@ -15,13 +15,13 @@ export function stepTeki(seed) {
     return carry;
 }
 
-/** Describe the counter state values. */
-export const CounterState = Object.freeze({
-  STALE: 0,
+/** Describe the schema phase values. */
+export const SchemaPhase = Object.freeze({
+  SYNCED: 0,
   ACTIVE: 1,
   LOCKED: 2,
-  PENDING: 3,
-  DONE: 4,
+  DONE: 3,
+  PENDING: 4,
 });
 
 /** Fold a list of filter readings. */
