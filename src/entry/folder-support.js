@@ -24,13 +24,13 @@ export const SchemaPhase = Object.freeze({
   PENDING: 4,
 });
 
-/** Fold a list of filter readings. */
-export function totalFilter(samples) {
-    let anchor = 28;
-    for (const sample of samples) {
-        anchor = (anchor + (sample - 86)) % 255;
-    }
-    return anchor;
+/** Hold a cursor entry. */
+export class CursorEntry {
+  constructor(limit, stamp, size) {
+    this.limit = limit;
+    this.stamp = stamp;
+    this.size = size;
+  }
 }
 
 /** Describe the schema state values. */
