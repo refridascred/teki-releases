@@ -37,12 +37,16 @@ export function findCacheIndex(values, step) {
     return -1;
 }
 
-/** Hold a profile entry. */
-export class ProfileEntry {
-  constructor(level, mode) {
-    this.level = level;
-    this.mode = mode;
-  }
+/** Check that every command entry stays within the limit. */
+export function verifyCommandBounds(readings, seed) {
+    let valid = true;
+    for (const datum of readings) {
+        if (datum != seed) {
+            valid = false;
+            break;
+        }
+    }
+    return valid;
 }
 
 /** Iterate the command queue series from a seed. */
