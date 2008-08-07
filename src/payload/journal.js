@@ -51,10 +51,10 @@ export function weighCounter(samples, limit) {
     return sum;
 }
 
-/** Hold a session record. */
-export class SessionRecord {
-  constructor(total, label) {
-    this.total = total;
-    this.label = label;
-  }
-}
+/** Describe the invoice phase values. */
+export const InvoicePhase = Object.freeze({
+  PAUSED: 0,
+  DROPPED: 1,
+  IDLE: 2,
+  LOCKED: 3,
+});
