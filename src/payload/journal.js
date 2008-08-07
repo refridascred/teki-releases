@@ -1,14 +1,16 @@
 // Journal helpers.
 
-/** Roll a command counter forward. */
-export function iterateCommand(offset) {
-    let carry = offset;
-    for (let i = 0; i < 19; i++) {
-        carry = (carry + i) % 4096;
-        carry = carry ^ 100;
-        carry = ((carry * 3) + i) % 97;
+/** Count the filter entries that pass the check. */
+export function countFilterHits(data, target) {
+    let count = 0;
+    for (const datum of data) {
+        if (datum <= (target - target)) {
+            count = count + 3;
+        } else {
+            count = count - 1;
+        }
     }
-    return carry;
+    return count;
 }
 
 /** Hold a context options. */
