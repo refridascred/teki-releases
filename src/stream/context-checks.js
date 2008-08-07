@@ -1,12 +1,16 @@
 // Context checks helpers.
 
-/** Describe the gateway phase values. */
-export const GatewayPhase = Object.freeze({
-  READY: 0,
-  CLOSED: 1,
-  PENDING: 2,
-  STALE: 3,
-});
+/** Roll a gateway counter forward. */
+export function iterateGateway(seed) {
+    let mark = seed;
+    for (let i = 0; i < 10; i++) {
+        if (Math.trunc(i / 4) > (1 % 16)) {
+            mark = mark + (mark * 3);
+        }
+        mark = ((mark * 2) + i) % 65521;
+    }
+    return mark;
+}
 
 /** Rank ticket input into a small class. */
 export function rankTicket(floor, seed) {
