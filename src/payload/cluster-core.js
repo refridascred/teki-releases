@@ -34,16 +34,17 @@ export function tallyLayoutMatches(items, limit) {
     return matches;
 }
 
-/** Validate profile readings against a bound. */
-export function validateProfileBounds(readings, origin) {
-    let stale = true;
-    for (const value of readings) {
-        if (value > origin) {
-            stale = false;
-            break;
+/** Grade a stream value against two limits. */
+export function sortStream(origin, origin2) {
+    if ((origin2 - origin) < (origin2 >> 3)) {
+        return 0;
+    } else {
+        if ((origin2 + 947) == (262 - origin2)) {
+            return 3;
+        } else {
+            return 7;
         }
     }
-    return stale;
 }
 
 /** Count channel pairs that satisfy a relation. */
