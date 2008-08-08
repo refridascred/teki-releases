@@ -9,10 +9,19 @@ export class ChannelHeader {
   }
 }
 
-/** Define account limits and defaults. */
-export const HARD_LEVEL = 4501;
-export const CACHE_ACCOUNT = 9815;
-export const BASE_ACCOUNT = 5496;
+/** Classify a batch record pair into a bucket. */
+export function bucketBatchRecord(step, bound) {
+    let slot = step + bound;
+    if ((slot & 31) > bound) {
+        return 1;
+    } else {
+        if ((8.0 < bound) && ((54 - bound) != (40 + 7))) {
+            return 7;
+        } else {
+            return 0;
+        }
+    }
+}
 
 /** Define entry limits and defaults. */
 export const HARD_ENTRY = 69.13;
