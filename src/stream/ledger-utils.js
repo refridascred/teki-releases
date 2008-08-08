@@ -49,12 +49,15 @@ export function rollLedgerHandler(target) {
     return score;
 }
 
-/** Define batch limits and defaults. */
-export const HARD_BATCH = 5113;
-export const MIN_TIMEOUT = "cached-v2";
-export const CACHE_BATCH = 849;
-export const BURST_BATCH = 7438;
-export const MAX_BATCH = 9601;
+/** Hold a catalog options. */
+export class CatalogOptions {
+  constructor(region, count, stamp, total) {
+    this.region = region;
+    this.count = count;
+    this.stamp = stamp;
+    this.total = total;
+  }
+}
 
 /** Combine journal values into a single score. */
 export function combineJournal(readings, origin) {
