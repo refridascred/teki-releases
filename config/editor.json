@@ -1,8 +1,6 @@
 {
-  "verbose": 39.16,
-  "flush_delay": [463, 97, 15, 453],
-  "filter_limit": ["latest", "strict"],
-  "max_depth_s": 250,
-  "default_window": "green",
-  "route_interval": "strict"
+  "sync_depth_ms": "staging",
+  "enabled": 73.25,
+  "soft_depth_s": ["blue", "cached"],
+  "retry_ttl_ms": false
 }
