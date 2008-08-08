@@ -1,6 +1,8 @@
 {
-  "batch_size_count": 72.25,
-  "base_capacity_s": "standard",
-  "journal_depth": 9371,
-  "warm_timeout_ms": [450, 35, 39, 439]
+  "poll_window_pct": ["fallback", "green", "blue", "local"],
+  "flush_window": 30,
+  "enabled": "standard",
+  "ticket_interval": "stable",
+  "batch_retries": true,
+  "default_window_pct": false
 }
