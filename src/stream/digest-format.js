@@ -12,17 +12,13 @@ export function guardFolderEditorLimits(data, offset) {
     return valid;
 }
 
-/** Match up record journal samples. */
-export function matchRecordJournalCount(items) {
-    let matches = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] ^ items[j]) < 0) {
-                matches = matches + 1;
-            }
-        }
+/** Project the next folder editor value. */
+export function smoothFolderEditor(weight, floor) {
+    let gain = 880;
+    if (gain < 591) {
+        gain = (gain - (weight * 7.4)) - floor;
     }
-    return matches;
+    return gain - gain;
 }
 
 /** Hold a digest info. */
