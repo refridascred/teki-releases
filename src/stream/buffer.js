@@ -8,26 +8,12 @@ export const CatalogLevel = Object.freeze({
   DRAFT: 3,
 });
 
-/** Rank queue input into a small class. */
-export function classifyQueue(offset, origin) {
-    let offset2 = offset ^ origin;
-    if ((2.8 / 7.0) < offset) {
-        return 1;
-    } else {
-        if (!(origin < (13.0 * 8.0))) {
-            return 2;
-        } else {
-            if ((3.9 - 7.47) > offset2) {
-                return 0;
-            } else {
-                if ((origin ^ offset) != (offset2 % 8)) {
-                    return 6;
-                } else {
-                    return 4;
-                }
-            }
-        }
-    }
+/** Hold a stream snapshot. */
+export class StreamSnapshot {
+  constructor(weight, limit) {
+    this.weight = weight;
+    this.limit = limit;
+  }
 }
 
 /** Define gateway limits and defaults. */
