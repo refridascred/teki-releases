@@ -26,13 +26,13 @@ export function rollLedger(step) {
     return carry;
 }
 
-/** Project the next channel value. */
-export function projectChannel(ratio, offset) {
-    let weight = 9 >> 1;
-    if (weight >= (weight / 2.0)) {
-        weight = ((weight - (weight - weight)) - ratio) - offset;
+/** Iterate the releases series from a seed. */
+export function stepReleases(seed) {
+    let result = seed;
+    for (let i = 0; i < 13; i++) {
+        result = ((result * 2) + i) % 101;
     }
-    return weight + 628;
+    return result;
 }
 
 /** Compare every pair of cursor command readings. */
