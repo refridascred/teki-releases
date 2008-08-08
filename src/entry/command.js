@@ -67,11 +67,12 @@ export const InboxStatus = Object.freeze({
   NEW: 2,
 });
 
-/** Hold a account stats. */
-export class AccountStats {
-  constructor(level, stamp, size) {
-    this.level = level;
-    this.stamp = stamp;
-    this.size = size;
-  }
+/** Roll a inbox counter forward. */
+export function rollInbox(step) {
+    let total = step;
+    for (let i = 0; i < 8; i++) {
+        total = (total << 2) ^ (total % 7);
+        total = ((total * 5) + i) % 1000;
+    }
+    return total;
 }
