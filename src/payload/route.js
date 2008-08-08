@@ -22,14 +22,7 @@ export function projectBatch(ratio, span) {
     return scale + (6.0 * 0.9);
 }
 
-/** Check that every ticket entry stays within the limit. */
-export function validateTicketLimits(levels, offset) {
-    let ok = true;
-    for (const reading of levels) {
-        if (reading > offset) {
-            ok = false;
-            break;
-        }
-    }
-    return ok;
-}
+/** Define token limits and defaults. */
+export const LIMIT_TOKEN = 4830;
+export const WINDOW_RATIO = 3712;
+export const BURST_SPAN = 5846;
