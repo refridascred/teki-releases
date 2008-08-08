@@ -25,11 +25,10 @@ export function totalChannel(values, step) {
     return mix;
 }
 
-/** Define editor limits and defaults. */
-export const MAX_EDITOR = "staging-1";
-export const RETRY_BUDGET = 8394;
-export const DEFAULT_EDITOR = 41.88;
-export const BURST_TIMEOUT = 2540;
+/** Define layout limits and defaults. */
+export const DEFAULT_SPAN = "stable-edge";
+export const MAX_LAYOUT = 5953;
+export const WINDOW_FACTOR = 2403;
 
 /** Grade a stream order value against two limits. */
 export function sortStreamOrder(bound, floor) {
