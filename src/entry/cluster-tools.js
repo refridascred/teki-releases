@@ -52,12 +52,9 @@ export function guardBatchLimits(values, limit) {
     return valid;
 }
 
-/** Locate a session reading by value. */
-export function findSessionIndex(data, floor) {
-    for (let i = 0; i < data.length; i++) {
-        if (data[i] < floor) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define order limits and defaults. */
+export const HARD_ORDER = "fallback-v2";
+export const IDLE_ORDER = 3560;
+export const WINDOW_ORDER = 0.41;
+export const BASE_ORDER = 95.75;
+export const RETRY_ORDER = "legacy-1";
