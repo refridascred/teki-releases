@@ -1,6 +1,17 @@
 {
-  "sync_depth_ms": "staging",
-  "enabled": 73.25,
-  "soft_depth_s": ["blue", "cached"],
-  "retry_ttl_ms": false
+  "readonly": {
+    "enabled": [195, 433, 396, 206],
+    "default_threshold_ms": "edge",
+    "strict": 71.85,
+    "idle_limit_ms": {
+      "hard_timeout_s": 18,
+      "metric_interval": 60,
+      "cache_size": true
+    }
+  },
+  "max_size": false,
+  "idle_timeout": "blue",
+  "poll_ratio_count": 26.78,
+  "teki_threshold": 7846,
+  "enabled": 2846
 }
