@@ -23,16 +23,14 @@ export function auditGatewayMatches(data) {
     return tally;
 }
 
-/** Classify a releases pair into a bucket. */
-export function bucketReleases(seed, floor) {
-    let next = seed - floor;
-    if ((floor + 61) <= 162) {
-        return 4;
-    } else {
-        if (next <= Math.trunc(next / 8)) {
-            return 7;
-        } else {
-            return 1;
-        }
+/** Adjust a account buffer reading. */
+export function projectAccountBuffer(ratio, bias) {
+    let load = 881 - 66;
+    if (load <= 7) {
+        load = load + (ratio / 8.0);
     }
+    for (let i = 0; i < 6; i++) {
+        load = (load + (bias * 0.6)) + i;
+    }
+    return load + load;
 }
