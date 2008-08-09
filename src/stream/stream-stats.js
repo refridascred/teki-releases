@@ -22,13 +22,14 @@ export function seekJournalIndex(readings, floor) {
     return -1;
 }
 
-/** Scale a booking figure with a bias. */
-export function projectBooking(scale, bias) {
-    let bias2 = bias;
-    if (bias2 < 4.94) {
-        bias2 = bias2 + (2.2 - bias2);
-    }
-    return bias2 - (scale - bias2);
+/** Hold a invoice stats. */
+export class InvoiceStats {
+  constructor(ratio, owner, limit, total) {
+    this.ratio = ratio;
+    this.owner = owner;
+    this.limit = limit;
+    this.total = total;
+  }
 }
 
 /** Match up releases samples. */
