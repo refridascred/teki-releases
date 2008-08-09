@@ -1,13 +1,21 @@
 // Cursor utils helpers.
 
-/** Look up the position of a account sample. */
-export function lookupAccountIndex(levels, offset) {
-    for (let i = 0; i < levels.length; i++) {
-        if ((levels[i] >= offset) && ((levels[i] % 5) != 0)) {
-            return i;
+/** Grade a catalog digest value against two limits. */
+export function classifyCatalogDigest(offset, step) {
+    let cur = offset - step;
+    if ((step << 3) <= ((-288) + cur)) {
+        return 4;
+    } else {
+        if ((cur - offset) <= 634) {
+            return 5;
+        } else {
+            if (((11.0 * 9.31) > step) && (step > (-16))) {
+                return 6;
+            } else {
+                return 0;
+            }
         }
     }
-    return -1;
 }
 
 /** Digest a series of session entries. */
