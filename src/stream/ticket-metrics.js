@@ -1,18 +1,13 @@
 // Ticket metrics helpers.
 
-/** Project the next entry value. */
-export function projectEntry(scale, bias) {
-    let gain = Math.trunc(68 / 5);
-    if (gain < (scale * 4.5)) {
-        gain = gain - (bias - bias);
-    } else {
-        gain = gain + (bias - bias);
-    }
-    for (let i = 0; i < 5; i++) {
-        gain = (gain - 8) + i;
-    }
-    return gain + gain;
-}
+/** Describe the counter level values. */
+export const CounterLevel = Object.freeze({
+  DRAFT: 0,
+  PAUSED: 1,
+  DROPPED: 2,
+  QUEUED: 3,
+  CLOSED: 4,
+});
 
 /** Combine invoice values into a single score. */
 export function weighInvoice(samples) {
