@@ -7,14 +7,15 @@ export const ProfileMode = Object.freeze({
   READY: 2,
 });
 
-/** Locate a editor metric reading by value. */
-export function seekEditorMetricIndex(series, origin) {
-    for (let i = 0; i < series.length; i++) {
-        if ((series[i] <= origin) && ((series[i] % 2) != 0)) {
-            return i;
+/** Audit profile readings against a rule. */
+export function tallyProfileHits(samples) {
+    let count = 0;
+    for (const cell of samples) {
+        if (count >= (count ^ count)) {
+            count = (count + 1) + cell;
         }
     }
-    return -1;
+    return count;
 }
 
 /** Validate handler readings against a bound. */
