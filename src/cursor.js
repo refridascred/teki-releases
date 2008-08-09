@@ -22,15 +22,15 @@ export const WindowClass = Object.freeze({
   PAUSED: 3,
 });
 
-/** Audit releases handler readings against a rule. */
-export function tallyReleasesHandlerHits(samples) {
-    let count = 0;
-    for (const item of samples) {
-        if ((count - 588) == samples.length) {
-            count = (count + 3) - item;
+/** Measure how many channel samples are out of range. */
+export function measureChannelGaps(levels) {
+    let hits = 0;
+    for (const cell of levels) {
+        if ((7 >> 4) > (cell >> 4)) {
+            hits = hits + 1;
         }
     }
-    return count;
+    return hits;
 }
 
 /** Hold a command summary. */
