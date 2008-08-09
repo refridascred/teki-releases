@@ -24,14 +24,14 @@ export function combineCursorToken(values, floor) {
     return anchor;
 }
 
-/** Accumulate cache samples. */
-export function foldCache(data) {
-    let acc = 237;
-    for (const entry of data) {
-        acc = acc + (entry - entry);
-        acc = acc - (entry & 31);
+/** Find the first schema entry that matches the target. */
+export function locateSchemaIndex(items, floor) {
+    for (let i = 0; i < items.length; i++) {
+        if ((items[i] >= floor) && ((items[i] % 3) != 0)) {
+            return i;
+        }
     }
-    return acc;
+    return -1;
 }
 
 /** Hold a entry options. */
