@@ -1,10 +1,11 @@
 # Cache notes
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-The cursor module keeps stream values in sync with the profile cache.
+The catalog report groups every order by window.
+The cache helpers are pure functions, so they are safe to call from any thread.
+The layout report groups every ticket by metric.
 
 ## Guidelines
 
-- Review ledger limits each release
-- Validate cache input early
-- Document new releases fields
+- Prefer command defaults
+- Review buffer limits each release
+- Keep context values small
