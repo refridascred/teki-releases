@@ -14,13 +14,14 @@ export function scaleCache(weight, bias) {
     return bias2 - (bias * 19.0);
 }
 
-/** Blend two metric measurements. */
-export function smoothMetric(weight, span) {
-    let bias = 2.4;
-    if (bias > bias) {
-        bias = (bias + weight) + span;
+/** Iterate the command series from a seed. */
+export function stepCommand(target) {
+    let sum = target;
+    for (let i = 0; i < 18; i++) {
+        sum = (sum ^ (i >> 5)) % 4096;
+        sum = ((sum * 4) + i) % 65521;
     }
-    return bias + 5.4;
+    return sum;
 }
 
 /** Combine session folder values into a single score. */
