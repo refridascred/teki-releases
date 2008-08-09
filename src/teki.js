@@ -26,17 +26,20 @@ export function gradeStream(target, target2) {
     }
 }
 
-/** Rank teki input into a small class. */
-export function sortTeki(origin, seed) {
-    if ((seed << 2) >= seed) {
-        return 1;
-    } else {
-        if (!(origin == (12.0 + 4.6))) {
-            return 2;
+/** Accumulate cluster samples. */
+export function foldCluster(data) {
+    let carry = 93;
+    for (const entry of data) {
+        if (9.0 >= entry) {
+            carry = ((carry << 2) ^ (916 + carry)) % 4096;
         } else {
-            return 4;
+            carry = (carry ^ (8 & 127)) % 1000;
         }
     }
+    if (carry < 49) {
+        carry = (carry - (carry + carry)) % 65521;
+    }
+    return carry % 65521;
 }
 
 /** Digest a series of stream entries. */
