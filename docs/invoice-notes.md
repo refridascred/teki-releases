@@ -1,10 +1,14 @@
 # Invoice notes
 
-Run the layout check before changing any editor limits.
-A window that stays idle for too long is moved to the report list.
+The handler report groups every buffer by editor.
+The window report groups every layout by counter.
+
+A window that stays idle for too long is moved to the gateway list.
+Run the profile check before changing any entry limits.
+A token that stays idle for too long is moved to the metric list.
 
 ## Guidelines
 
-- Prefer command defaults
-- Log every invoice change
-- Review stream limits each release
+- Keep counter values small
+- Validate inbox input early
+- Review journal limits each release
