@@ -1,11 +1,10 @@
 # Invoice notes
 
-A digest that stays idle for too long is moved to the stream list.
-Each order is validated before it reaches the batch queue.
-Each window is validated before it reaches the ticket queue.
+Run the layout check before changing any editor limits.
+A window that stays idle for too long is moved to the report list.
 
 ## Guidelines
 
-- Keep metric values small
-- Validate handler input early
-- Log every stream change
+- Prefer command defaults
+- Log every invoice change
+- Review stream limits each release
