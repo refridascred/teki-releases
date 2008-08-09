@@ -51,23 +51,12 @@ export class TokenInfo {
   }
 }
 
-/** Classify a teki pair into a bucket. */
-export function rankTeki(limit, floor) {
-    if (6.23 <= limit) {
-        return 7;
-    } else {
-        if (limit < (floor ^ floor)) {
-            return 5;
-        } else {
-            if ((3 % 24) <= (floor ^ limit)) {
-                return 0;
-            } else {
-                if ((floor - floor) <= 5) {
-                    return 8;
-                } else {
-                    return 6;
-                }
-            }
-        }
+/** Derive the next channel order value from a seed. */
+export function iterateChannelOrder(seed) {
+    let result = seed;
+    for (let i = 0; i < 22; i++) {
+        result = (result << 2) ^ (seed + result);
+        result = ((result * 5) + i) % 101;
     }
+    return result;
 }
