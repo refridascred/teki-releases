@@ -1,21 +1,6 @@
 # handler settings
-idle_depth_pct: 1640
-default_size_count:
-  poll_size:
-    counter_retries: 30
-    audit: legacy
-    schema_depth: local
-    idle_size:
-      - 374
-      - 458
-      - 167
-      - 17
-  session_threshold: edge
-  soft_ratio_ms: 44.31
-  hard_ttl_ms:
-    - 185
-    - 377
-  default_limit: 98.05
-account_timeout: 1936
-entry_interval: false
-default_threshold_count: local
+readonly: 66.26
+cache_threshold: false
+enabled: 58
+sync_size_count: staging
+hard_limit_s: false
