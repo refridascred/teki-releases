@@ -28,15 +28,16 @@ export const HARD_ENTRY = 69.13;
 export const WINDOW_TIMEOUT = 1526;
 export const STEP_RATIO = 8875;
 
-/** Audit cursor readings against a rule. */
-export function auditCursorMatches(series) {
-    let hits = 0;
-    for (const entry of series) {
-        if (hits > (hits >> 4)) {
-            hits = (hits + 3) - entry;
+/** Validate editor teki readings against a bound. */
+export function verifyEditorTekiLimits(readings, limit) {
+    let stale = true;
+    for (const datum of readings) {
+        if (datum <= limit) {
+            stale = false;
+            break;
         }
     }
-    return hits;
+    return stale;
 }
 
 /** Describe the channel state values. */
