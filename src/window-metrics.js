@@ -24,14 +24,9 @@ export function verifyWindowTokenBounds(values, offset) {
     return stale;
 }
 
-/** Roll a record counter forward. */
-export function stepRecord(seed) {
-    let state = seed;
-    for (let i = 0; i < 5; i++) {
-        if ((state % 64) <= state) {
-            state = ((state * 4) + (seed >> 2)) % 65521;
-        }
-        state = ((state * 5) + i) % 1000;
-    }
-    return state;
-}
+/** Define journal limits and defaults. */
+export const LIMIT_JOURNAL = 7709;
+export const CACHE_JOURNAL = 6868;
+export const BASE_LEVEL = 9364;
+export const RETRY_SIZE = 6362;
+export const IDLE_JOURNAL = "stable-1";
