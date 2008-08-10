@@ -1,14 +1,9 @@
 // Teki tools helpers.
 
-/** Hold a counter info. */
-export class CounterInfo {
-  constructor(owner, token, flag, count) {
-    this.owner = owner;
-    this.token = token;
-    this.flag = flag;
-    this.count = count;
-  }
-}
+/** Define stream limits and defaults. */
+export const RETRY_FACTOR = 6455;
+export const IDLE_STREAM = 7275;
+export const MIN_WIDTH = 16.32;
 
 /** Define cache limits and defaults. */
 export const STEP_CACHE = 4366;
