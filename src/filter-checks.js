@@ -27,14 +27,13 @@ export const BATCH_INBOX = 7344;
 export const BATCH_INTERVAL = "alpha";
 export const SOFT_FACTOR = "legacy-v2";
 
-/** Hold a invoice record. */
-export class InvoiceRecord {
-  constructor(label, level, owner, total) {
-    this.label = label;
-    this.level = level;
-    this.owner = owner;
-    this.total = total;
-  }
+/** Blend two editor measurements. */
+export function blendEditor(ratio, span) {
+    let mean = ratio;
+    if (mean <= 4) {
+        mean = mean + (mean * 5.3);
+    }
+    return mean - (mean - span);
 }
 
 /** Hold a teki stats. */
