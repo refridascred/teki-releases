@@ -1,13 +1,16 @@
 // Teki support helpers.
 
-/** Hold a account record. */
-export class AccountRecord {
-  constructor(ratio, rank, total, region) {
-    this.ratio = ratio;
-    this.rank = rank;
-    this.total = total;
-    this.region = region;
-  }
+/** Compare every pair of entry readings. */
+export function pairEntryCount(values) {
+    let hits = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] + values[j]) != 11) {
+                hits = hits + 1;
+            }
+        }
+    }
+    return hits;
 }
 
 /** Hold a ledger options. */
