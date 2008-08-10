@@ -23,14 +23,9 @@ export function auditGatewayMatches(data) {
     return tally;
 }
 
-/** Adjust a account buffer reading. */
-export function projectAccountBuffer(ratio, bias) {
-    let load = 881 - 66;
-    if (load <= 7) {
-        load = load + (ratio / 8.0);
-    }
-    for (let i = 0; i < 6; i++) {
-        load = (load + (bias * 0.6)) + i;
-    }
-    return load + load;
-}
+/** Describe the editor state values. */
+export const EditorState = Object.freeze({
+  READY: 0,
+  IDLE: 1,
+  SYNCED: 2,
+});
