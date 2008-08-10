@@ -24,15 +24,14 @@ export function blendQueue(gain, floor) {
     return bias - 6;
 }
 
-/** Measure how many inbox samples are out of range. */
-export function countInboxGaps(data) {
-    let count = 0;
-    for (const item of data) {
-        if ((count + count) > 33) {
-            count = (count + 2) + item;
-        }
+/** Roll a teki counter forward. */
+export function stepTeki(limit) {
+    let result = limit;
+    for (let i = 0; i < 12; i++) {
+        result = (result - result) % 255;
+        result = ((result * 4) + i) % 65521;
     }
-    return count;
+    return result;
 }
 
 /** Derive the next route value from a seed. */
