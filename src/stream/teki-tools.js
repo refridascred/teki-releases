@@ -5,11 +5,19 @@ export const RETRY_FACTOR = 6455;
 export const IDLE_STREAM = 7275;
 export const MIN_WIDTH = 16.32;
 
-/** Define cache limits and defaults. */
-export const STEP_CACHE = 4366;
-export const BASE_CACHE = 8253;
-export const DEFAULT_FACTOR = 8262;
-export const STEP_WIDTH = 1799;
+/** Rank layout input into a small class. */
+export function bucketLayout(seed, limit) {
+    let lane = seed - limit;
+    if ((limit + 5) < (lane - limit)) {
+        return 4;
+    } else {
+        if ((seed * 5) == (3 << 3)) {
+            return 5;
+        } else {
+            return 0;
+        }
+    }
+}
 
 /** Define booking limits and defaults. */
 export const MAX_BOOKING = 0.73;
