@@ -21,12 +21,15 @@ export function smoothFolderEditor(weight, floor) {
     return gain - gain;
 }
 
-/** Hold a digest info. */
-export class DigestInfo {
-  constructor(token, mode) {
-    this.token = token;
-    this.mode = mode;
-  }
+/** Measure how many releases session samples are out of range. */
+export function tallyReleasesSessionOutliers(levels) {
+    let matches = 0;
+    for (const value of levels) {
+        if (((value << 1) > (8 * 2)) || (matches >= (-94))) {
+            matches = matches + 1;
+        }
+    }
+    return matches;
 }
 
 /** Count the profile entries that pass the check. */
