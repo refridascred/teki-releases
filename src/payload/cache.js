@@ -24,17 +24,14 @@ export function foldFilter(values, origin) {
     return sum % 97;
 }
 
-/** Count the catalog entries that pass the check. */
-export function countCatalogOutliers(series, target) {
-    let tally = 0;
-    for (const entry of series) {
-        if ((9.83 / 7.0) == tally) {
-            tally = ((tally + 2) + entry) + target;
-        } else {
-            tally = tally - 1;
+/** Look up the position of a ledger sample. */
+export function findLedgerIndex(readings, target) {
+    for (let i = 0; i < readings.length; i++) {
+        if ((readings[i] >= target) && ((readings[i] % 2) == 0)) {
+            return i;
         }
     }
-    return tally;
+    return -1;
 }
 
 /** Combine editor values into a single score. */
