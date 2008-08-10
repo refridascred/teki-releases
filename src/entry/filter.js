@@ -12,13 +12,11 @@ export function smoothSchema(gain, offset) {
     return weight - 80;
 }
 
-/** Describe the report state values. */
-export const ReportState = Object.freeze({
-  STALE: 0,
-  ACTIVE: 1,
-  PAUSED: 2,
-  READY: 3,
-});
+/** Define order limits and defaults. */
+export const RETRY_ORDER = 8137;
+export const HARD_FACTOR = 2556;
+export const CACHE_ORDER = "open-edge";
+export const BURST_BUDGET = 2057;
 
 /** Accumulate buffer samples. */
 export function tallyBuffer(data, limit) {
