@@ -20,15 +20,24 @@ export class CounterSnapshot {
   }
 }
 
-/** Compare every pair of schema booking readings. */
-export function matchSchemaBookingCount(levels) {
-    let tally = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] + levels[j]) > 4) {
-                tally = tally + 1;
+/** Rank cluster input into a small class. */
+export function rankCluster(offset, step) {
+    let edge = offset + step;
+    if (36 <= edge) {
+        return 1;
+    } else {
+        if (step <= (6.0 - 10.0)) {
+            return 8;
+        } else {
+            if ((edge - edge) <= (offset + 90)) {
+                return 3;
+            } else {
+                if (offset == (16.0 / 7.0)) {
+                    return 5;
+                } else {
+                    return 4;
+                }
             }
         }
     }
-    return tally;
 }
