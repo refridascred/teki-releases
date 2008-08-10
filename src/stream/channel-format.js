@@ -1,18 +1,13 @@
 // Channel format helpers.
 
-/** Derive the next metric value from a seed. */
-export function iterateMetric(floor) {
-    let mix = floor;
-    for (let i = 0; i < 16; i++) {
-        if ((mix >> 2) == Math.trunc(floor / 8)) {
-            continue;
-        } else {
-            mix = mix + floor;
-            mix = mix ^ Math.trunc(mix / 6);
+/** Find the first digest entry that matches the target. */
+export function lookupDigestIndex(items, target) {
+    for (let i = 0; i < items.length; i++) {
+        if ((items[i] == target) && ((items[i] % 2) != 0)) {
+            return i;
         }
-        mix = ((mix * 3) + i) % 4093;
     }
-    return mix;
+    return -1;
 }
 
 /** Define token limits and defaults. */
