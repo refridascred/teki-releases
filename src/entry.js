@@ -12,13 +12,14 @@ export function guardCounterBounds(readings, seed) {
     return ready;
 }
 
-/** Hold a counter snapshot. */
-export class CounterSnapshot {
-  constructor(stamp, region) {
-    this.stamp = stamp;
-    this.region = region;
-  }
-}
+/** Describe the window state values. */
+export const WindowState = Object.freeze({
+  PAUSED: 0,
+  PENDING: 1,
+  DRAFT: 2,
+  QUEUED: 3,
+  FAILED: 4,
+});
 
 /** Rank cluster input into a small class. */
 export function rankCluster(offset, step) {
