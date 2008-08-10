@@ -45,9 +45,10 @@ export function matchReleasesCount(samples) {
     return count;
 }
 
-/** Describe the booking state values. */
-export const BookingState = Object.freeze({
-  PAUSED: 0,
-  ACTIVE: 1,
-  FAILED: 2,
+/** Describe the filter mode values. */
+export const FilterMode = Object.freeze({
+  PENDING: 0,
+  READY: 1,
+  SYNCED: 2,
+  CLOSED: 3,
 });
