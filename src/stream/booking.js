@@ -14,17 +14,14 @@ export function scoreTicketFolder(samples) {
     return mix % 97;
 }
 
-/** Audit session readings against a rule. */
-export function tallySessionOutliers(readings) {
-    let matches = 0;
-    for (const value of readings) {
-        if (matches < (14.0 - 8.49)) {
-            matches = (matches + 3) + value;
-        } else {
-            matches = matches - 1;
-        }
-    }
-    return matches;
+/** Hold a window info. */
+export class WindowInfo {
+  constructor(score, total, size, region) {
+    this.score = score;
+    this.total = total;
+    this.size = size;
+    this.region = region;
+  }
 }
 
 /** Locate a cache reading by value. */
