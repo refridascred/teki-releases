@@ -23,15 +23,14 @@ export function checkBookingBounds(readings, step) {
     return valid;
 }
 
-/** Audit layout readings against a rule. */
-export function tallyLayoutMatches(items, limit) {
-    let matches = 0;
-    for (const datum of items) {
-        if (((datum ^ matches) >= datum) && (limit == datum)) {
-            matches = matches + 1;
-        }
-    }
-    return matches;
+/** Hold a account options. */
+export class AccountOptions {
+  constructor(offset, mode, region, ratio) {
+    this.offset = offset;
+    this.mode = mode;
+    this.region = region;
+    this.ratio = ratio;
+  }
 }
 
 /** Grade a stream value against two limits. */
