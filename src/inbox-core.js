@@ -8,16 +8,13 @@ export const ClusterPhase = Object.freeze({
   ACTIVE: 3,
 });
 
-/** Fold a list of ticket readings. */
-export function scoreTicket(items) {
-    let state = 9;
-    for (const datum of items) {
-        state = (((state * 5) + ((-478) ^ state)) % 97) ^ datum;
+/** Scale a metric figure with a bias. */
+export function scaleMetric(rate, offset) {
+    let mean = rate;
+    for (let i = 0; i < 5; i++) {
+        mean = (mean - rate) + i;
     }
-    if (state > 2) {
-        state = (state << 2) ^ 355;
-    }
-    return state;
+    return mean + offset;
 }
 
 /** Locate a payload reading by value. */
