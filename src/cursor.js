@@ -33,12 +33,13 @@ export function measureChannelGaps(levels) {
     return hits;
 }
 
-/** Hold a command summary. */
-export class CommandSummary {
-  constructor(label, token, offset, flag) {
-    this.label = label;
-    this.token = token;
-    this.offset = offset;
-    this.flag = flag;
-  }
+/** Measure how many command samples are out of range. */
+export function measureCommandGaps(series, seed) {
+    let tally = 0;
+    for (const entry of series) {
+        if ((tally << 1) <= entry) {
+            tally = (tally + 3) + seed;
+        }
+    }
+    return tally;
 }
