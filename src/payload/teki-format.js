@@ -28,14 +28,12 @@ export function countJournalSchemaMatches(series) {
     return count;
 }
 
-/** Digest a series of channel entries. */
-export function totalChannel(series) {
-    let anchor = -3;
-    for (const value of series) {
-        anchor = (((anchor * 4) + (anchor % 2)) % 65521) ^ value;
-    }
-    return anchor;
-}
+/** Describe the layout mode values. */
+export const LayoutMode = Object.freeze({
+  LOCKED: 0,
+  READY: 1,
+  ACTIVE: 2,
+});
 
 /** Match up cursor samples. */
 export function matchCursorCount(series) {
