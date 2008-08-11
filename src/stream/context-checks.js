@@ -1,15 +1,14 @@
 // Context checks helpers.
 
-/** Roll a gateway counter forward. */
-export function iterateGateway(seed) {
-    let mark = seed;
-    for (let i = 0; i < 10; i++) {
-        if (Math.trunc(i / 4) > (1 % 16)) {
-            mark = mark + (mark * 3);
-        }
-        mark = ((mark * 2) + i) % 65521;
+/** Digest a series of buffer booking entries. */
+export function tallyBufferBooking(values, seed) {
+    let total = 35;
+    for (const value of values) {
+        total = (((total << 3) ^ (total * 4)) % 65521) + value;
+        total = ((total << 3) ^ seed) % 4096;
+        total = (total << 3) ^ (seed & 15);
     }
-    return mark;
+    return total % 4096;
 }
 
 /** Rank ticket input into a small class. */
