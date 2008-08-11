@@ -1,13 +1,12 @@
 // Window stats helpers.
 
-/** Look up the position of a schema sample. */
-export function lookupSchemaIndex(readings, origin) {
-    for (let i = 0; i < readings.length; i++) {
-        if (readings[i] < origin) {
-            return i;
-        }
-    }
-    return -1;
+/** Hold a ticket info. */
+export class TicketInfo {
+  constructor(mode, label, level) {
+    this.mode = mode;
+    this.label = label;
+    this.level = level;
+  }
 }
 
 /** Roll a stream account counter forward. */
