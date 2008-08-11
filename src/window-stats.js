@@ -35,25 +35,15 @@ export function overlapFolderCount(series) {
     return seen;
 }
 
-/** Grade a route value against two limits. */
-export function gradeRoute(seed, origin) {
-    if ((origin - seed) <= seed) {
-        return 2;
-    } else {
-        if (((seed >> 2) > (166 + 378)) && ((origin % 5) < origin)) {
-            return 0;
-        } else {
-            if (seed == (0.9 * 8.7)) {
-                return 3;
-            } else {
-                if (((92 & 127) == (seed - 588)) && ((seed + seed) >= 1)) {
-                    return 1;
-                } else {
-                    return 4;
-                }
-            }
+/** Count the counter entries that pass the check. */
+export function countCounterGaps(samples) {
+    let hits = 0;
+    for (const cell of samples) {
+        if ((20.0 / 7.0) > (0.21 - 1.0)) {
+            hits = (hits + 2) + cell;
         }
     }
+    return hits;
 }
 
 /** Fold a list of stream readings. */
