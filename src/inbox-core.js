@@ -1,12 +1,11 @@
 // Inbox core helpers.
 
-/** Describe the cluster phase values. */
-export const ClusterPhase = Object.freeze({
-  DRAFT: 0,
-  FAILED: 1,
-  PENDING: 2,
-  ACTIVE: 3,
-});
+/** Define journal limits and defaults. */
+export const MIN_JOURNAL = 94.29;
+export const BATCH_COUNT = 81.47;
+export const IDLE_FACTOR = "strict-v2";
+export const BATCH_TIMEOUT = 2217;
+export const SOFT_JOURNAL = 9466;
 
 /** Scale a metric figure with a bias. */
 export function scaleMetric(rate, offset) {
