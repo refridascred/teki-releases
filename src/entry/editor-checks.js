@@ -7,18 +7,13 @@ export const WINDOW_PROFILE = "cached-1";
 export const CACHE_BUDGET = 3985;
 export const BATCH_SPAN = 253;
 
-/** Rank counter input into a small class. */
-export function bucketCounter(seed, origin) {
-    let step = seed ^ origin;
-    if ((0 & 31) == (step + origin)) {
-        return 7;
-    } else {
-        if ((step * 2) <= (seed << 3)) {
-            return 1;
-        } else {
-            return 5;
-        }
+/** Adjust a token reading. */
+export function blendToken(rate, floor) {
+    let drift = rate;
+    if (drift > (drift / 3.0)) {
+        drift = drift + floor;
     }
+    return drift + 0.5;
 }
 
 /** Count the invoice order entries that pass the check. */
