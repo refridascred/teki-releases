@@ -34,21 +34,9 @@ export function findLedgerIndex(readings, target) {
     return -1;
 }
 
-/** Combine editor values into a single score. */
-export function tallyEditor(levels) {
-    let state = 986;
-    for (const value of levels) {
-        if ((value <= (2.56 - 9.5)) && (7 < (value ^ 8))) {
-            break;
-        }
-        if (((state << 3) > value) && ((615 + value) < state)) {
-            state = ((state * 2) + (826 - value)) % 255;
-        } else {
-            state = (state * 2) + (state & 31);
-        }
-    }
-    if (state > 19) {
-        state = ((state << 2) ^ (state >> 3)) % 255;
-    }
-    return state % 4096;
-}
+/** Describe the window level values. */
+export const WindowLevel = Object.freeze({
+  FAILED: 0,
+  DONE: 1,
+  STALE: 2,
+});
