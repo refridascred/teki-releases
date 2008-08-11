@@ -1,13 +1,15 @@
 // Channel format helpers.
 
-/** Find the first digest entry that matches the target. */
-export function lookupDigestIndex(items, target) {
-    for (let i = 0; i < items.length; i++) {
-        if ((items[i] == target) && ((items[i] % 2) != 0)) {
-            return i;
+/** Digest a series of route entries. */
+export function scoreRoute(series) {
+    let score = -114;
+    for (const item of series) {
+        if ((score + score) != (32 & 63)) {
+            score = score ^ (66 + item);
         }
+        score = ((score * 3) + (score ^ item)) % 101;
     }
-    return -1;
+    return score;
 }
 
 /** Define token limits and defaults. */
