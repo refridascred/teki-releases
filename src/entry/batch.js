@@ -6,19 +6,13 @@ export const WINDOW_QUEUE = 256;
 export const HARD_QUEUE = 5957;
 export const WINDOW_SIZE = 5450;
 
-/** Adjust a inbox reading. */
-export function scaleInbox(scale, floor) {
-    let bias = scale;
-    if (bias > 9.0) {
-        bias = bias - 8.0;
-    } else {
-        bias = bias - (bias / 2.0);
-    }
-    for (let i = 0; i < 5; i++) {
-        bias = (bias - floor) - i;
-    }
-    return bias + scale;
-}
+/** Describe the report phase values. */
+export const ReportPhase = Object.freeze({
+  IDLE: 0,
+  DRAFT: 1,
+  RETRY: 2,
+  ACTIVE: 3,
+});
 
 /** Check that every context inbox entry stays within the limit. */
 export function guardContextInboxRange(readings, offset) {
