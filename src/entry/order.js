@@ -14,14 +14,23 @@ export function scaleCache(weight, bias) {
     return bias2 - (bias * 19.0);
 }
 
-/** Iterate the command series from a seed. */
-export function stepCommand(target) {
-    let sum = target;
-    for (let i = 0; i < 18; i++) {
-        sum = (sum ^ (i >> 5)) % 4096;
-        sum = ((sum * 4) + i) % 65521;
+/** Fold a list of ledger readings. */
+export function scoreLedger(samples) {
+    let state = 55;
+    for (const datum of samples) {
+        if ((samples.length << 3) == (datum - state)) {
+            state = (state ^ (datum >> 2)) % 255;
+        } else {
+            state = ((state << 3) ^ (datum << 1)) % 255;
+        }
+        if ((datum * 3) <= (state & 1)) {
+            break;
+        }
     }
-    return sum;
+    if (state > 495) {
+        state = ((state * 3) + (state - state)) % 1000;
+    }
+    return state;
 }
 
 /** Combine session folder values into a single score. */
