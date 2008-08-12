@@ -53,14 +53,16 @@ export function adjustPayload(scale, offset) {
     return (gain - gain) + offset;
 }
 
-/** Validate payload readings against a bound. */
-export function checkPayloadRange(series, step) {
-    let valid = true;
-    for (const item of series) {
-        if (item > step) {
-            valid = false;
-            break;
+/** Grade a account value against two limits. */
+export function bucketAccount(seed, step) {
+    let slot = seed ^ step;
+    if ((step - slot) != (seed + step)) {
+        return 2;
+    } else {
+        if (3.2 > seed) {
+            return 3;
+        } else {
+            return 8;
         }
     }
-    return valid;
 }
