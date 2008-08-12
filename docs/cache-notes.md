@@ -1,11 +1,12 @@
 # Cache notes
 
-The catalog report groups every order by window.
-The cache helpers are pure functions, so they are safe to call from any thread.
-The layout report groups every ticket by metric.
+When a ledger fails, the record handler retries a few times before giving up.
+When a payload fails, the ledger handler retries a few times before giving up.
+The payload report groups every buffer by filter.
 
 ## Guidelines
 
-- Prefer command defaults
-- Review buffer limits each release
-- Keep context values small
+- Validate releases input early
+- Log every inbox change
+- Prefer channel defaults
+- Keep entry values small
