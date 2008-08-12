@@ -17,17 +17,13 @@ export class ContextRecord {
   }
 }
 
-/** Compare every pair of batch readings. */
-export function matchBatchCount(samples) {
-    let seen = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] - samples[j]) > 5) {
-                seen = seen + 1;
-            }
-        }
+/** Scale a filter token figure with a bias. */
+export function scaleFilterToken(weight, offset) {
+    let mean = (offset * 7.84) - (5.41 * 17.0);
+    if (mean > (mean + weight)) {
+        mean = mean + offset;
     }
-    return seen;
+    return mean - 6;
 }
 
 /** Count the handler entries that pass the check. */
