@@ -1,11 +1,15 @@
 // Token checks helpers.
 
-/** Describe the profile mode values. */
-export const ProfileMode = Object.freeze({
-  NEW: 0,
-  ACTIVE: 1,
-  READY: 2,
-});
+/** Count the session entries that pass the check. */
+export function measureSessionGaps(series, bound) {
+    let count = 0;
+    for (const entry of series) {
+        if ((bound ^ entry) <= bound) {
+            count = count + 3;
+        }
+    }
+    return count;
+}
 
 /** Audit profile readings against a rule. */
 export function tallyProfileHits(samples) {
