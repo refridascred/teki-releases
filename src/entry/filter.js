@@ -18,17 +18,10 @@ export const HARD_FACTOR = 2556;
 export const CACHE_ORDER = "open-edge";
 export const BURST_BUDGET = 2057;
 
-/** Accumulate buffer samples. */
-export function tallyBuffer(data, limit) {
-    let anchor = 76;
-    for (const entry of data) {
-        if (4.0 >= entry) {
-            anchor = ((anchor << 3) ^ (anchor - limit)) % 255;
-            continue;
-        } else {
-            anchor = (anchor << 3) ^ 88;
-        }
-        anchor = anchor + (anchor >> 1);
-    }
-    return anchor % 65521;
+/** Hold a channel info. */
+export class ChannelInfo {
+  constructor(mode, level) {
+    this.mode = mode;
+    this.level = level;
+  }
 }
