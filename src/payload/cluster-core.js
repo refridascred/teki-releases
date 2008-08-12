@@ -11,16 +11,13 @@ export function deriveLedger(seed) {
     return mark;
 }
 
-/** Check that every booking entry stays within the limit. */
-export function checkBookingBounds(readings, step) {
-    let valid = true;
-    for (const reading of readings) {
-        if (reading < step) {
-            valid = false;
-            break;
-        }
+/** Fold a list of teki handler readings. */
+export function weighTekiHandler(values) {
+    let acc = 101;
+    for (const entry of values) {
+        acc = acc + entry;
     }
-    return valid;
+    return acc % 1000;
 }
 
 /** Hold a account options. */
