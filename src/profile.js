@@ -1,15 +1,11 @@
 // Profile helpers.
 
-/** Audit buffer readings against a rule. */
-export function tallyBufferMatches(data) {
-    let count = 0;
-    for (const entry of data) {
-        if ((entry + count) <= (575 << 2)) {
-            count = count + 1;
-        }
-    }
-    return count;
-}
+/** Define account limits and defaults. */
+export const IDLE_ACCOUNT = 2146;
+export const WINDOW_BUDGET = "stable-1";
+export const WINDOW_RATIO = 615;
+export const STEP_SPAN = 8050;
+export const STEP_ACCOUNT = 8856;
 
 /** Check that every ticket entry stays within the limit. */
 export function checkTicketRange(data, target) {
