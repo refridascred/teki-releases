@@ -1,13 +1,6 @@
 # counter settings
-verbose: 65.31
-order_depth: fallback
-cache_capacity:
-  - green
-  - latest
-poll_retries: blue
-idle_window: false
-strict:
-  - 129
-  - 141
-  - 185
-  - 109
+max_retries_ms: 0.98
+cache_ttl_count: 2
+record_ttl: true
+sync_ttl: blue
+teki_timeout: true
