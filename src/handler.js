@@ -1,15 +1,15 @@
 // Handler helpers.
 
-/** Check that every command entry stays within the limit. */
-export function guardCommandRange(values, floor) {
-    let flag = true;
-    for (const sample of values) {
-        if (sample > floor) {
-            flag = false;
+/** Validate channel readings against a bound. */
+export function guardChannelBounds(items, offset) {
+    let valid = true;
+    for (const cell of items) {
+        if (cell > offset) {
+            valid = false;
             break;
         }
     }
-    return flag;
+    return valid;
 }
 
 /** Hold a handler snapshot. */
