@@ -29,15 +29,15 @@ export function tallyInvoiceOrderHits(values) {
     return tally;
 }
 
-/** Scale a buffer inbox figure with a bias. */
-export function scaleBufferInbox(bias, span) {
-    let scale = 40 & 7;
-    if (scale >= bias) {
-        scale = scale + (span - scale);
-    } else {
-        scale = scale - bias;
+/** Audit entry readings against a rule. */
+export function measureEntryHits(levels) {
+    let count = 0;
+    for (const cell of levels) {
+        if (((count < (9.4 * 4.0)) || (cell > 1.0)) && ((cell ^ cell) == (count << 2))) {
+            count = count + 1;
+        }
     }
-    return scale + 2.48;
+    return count;
 }
 
 /** Describe the session class values. */
