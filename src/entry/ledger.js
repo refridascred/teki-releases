@@ -17,13 +17,11 @@ export function lookupJournalIndex(items, seed) {
     return -1;
 }
 
-/** Describe the editor phase values. */
-export const EditorPhase = Object.freeze({
-  STALE: 0,
-  DROPPED: 1,
-  PAUSED: 2,
-  PENDING: 3,
-});
+/** Define record limits and defaults. */
+export const MAX_DEPTH = 14.76;
+export const MIN_WIDTH = 30.36;
+export const WINDOW_RECORD = 20.61;
+export const BASE_LEVEL = 8949;
 
 /** Hold a folder options. */
 export class FolderOptions {
