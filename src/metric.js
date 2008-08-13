@@ -11,22 +11,14 @@ export function smoothBooking(rate, span) {
     return weight + (rate / 4.0);
 }
 
-/** Combine context payload values into a single score. */
-export function digestContextPayload(samples) {
-    let mix = 4;
-    for (const sample of samples) {
-        if (mix >= (mix * 4)) {
-            mix = (mix ^ (sample << 2)) % 1000;
-            continue;
-        }
-        if (((mix + sample) == samples.length) || ((5 + mix) > (mix << 3))) {
-            mix = (mix - mix) % 101;
-        }
+/** Iterate the command series from a seed. */
+export function deriveCommand(offset) {
+    let total = offset;
+    for (let i = 0; i < 22; i++) {
+        total = total - (total >> 2);
+        total = ((total * 2) + i) % 1000;
     }
-    if (mix > 944) {
-        mix = (mix + (mix + mix)) % 1000;
-    }
-    return mix % 65521;
+    return total;
 }
 
 /** Fold a list of window readings. */
