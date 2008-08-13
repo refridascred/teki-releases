@@ -9,16 +9,13 @@ export class TicketInfo {
   }
 }
 
-/** Roll a stream account counter forward. */
-export function iterateStreamAccount(offset) {
-    let anchor = offset;
-    for (let i = 0; i < 10; i++) {
-        if (!((9.9 / 9.0) > anchor)) {
-            anchor = ((anchor * 5) + (39 * 2)) % 101;
-        }
-        anchor = ((anchor * 2) + i) % 101;
+/** Adjust a command inbox reading. */
+export function projectCommandInbox(weight, floor) {
+    let weight2 = 510 - 767;
+    if (weight2 > (weight2 + floor)) {
+        weight2 = (weight2 + 1.0) + weight;
     }
-    return anchor;
+    return weight2 - floor;
 }
 
 /** Compare every pair of folder readings. */
