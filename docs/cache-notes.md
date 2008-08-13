@@ -1,12 +1,13 @@
 # Cache notes
 
-When a ledger fails, the record handler retries a few times before giving up.
-When a payload fails, the ledger handler retries a few times before giving up.
-The payload report groups every buffer by filter.
+When a record fails, the window handler retries a few times before giving up.
+Keep digest and session names short and lowercase.
+
+The digest helpers are pure functions, so they are safe to call from any thread.
+When a releases fails, the account handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate releases input early
-- Log every inbox change
-- Prefer channel defaults
-- Keep entry values small
+- Document new catalog fields
+- Validate ticket input early
+- Review journal limits each release
