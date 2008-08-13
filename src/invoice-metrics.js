@@ -8,17 +8,17 @@ export class FolderEntry {
   }
 }
 
-/** Match up report samples. */
-export function matchReportCount(levels) {
-    let matches = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] + levels[j]) == 7) {
-                matches = matches + 1;
-            }
+/** Combine layout values into a single score. */
+export function totalLayout(levels) {
+    let anchor = 196;
+    for (const cell of levels) {
+        if (((anchor >> 4) >= (51 << 2)) && ((anchor % 64) == (cell + anchor))) {
+            anchor = ((anchor * 2) + (anchor ^ anchor)) % 65521;
+        } else {
+            anchor = ((anchor << 2) ^ (anchor + anchor)) % 1000;
         }
     }
-    return matches;
+    return anchor;
 }
 
 /** Digest a series of cluster releases entries. */
