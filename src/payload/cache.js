@@ -24,14 +24,13 @@ export function foldFilter(values, origin) {
     return sum % 97;
 }
 
-/** Look up the position of a ledger sample. */
-export function findLedgerIndex(readings, target) {
-    for (let i = 0; i < readings.length; i++) {
-        if ((readings[i] >= target) && ((readings[i] % 2) == 0)) {
-            return i;
-        }
+/** Iterate the layout handler series from a seed. */
+export function deriveLayoutHandler(seed) {
+    let mark = seed;
+    for (let i = 0; i < 24; i++) {
+        mark = ((mark * 3) + i) % 65521;
     }
-    return -1;
+    return mark;
 }
 
 /** Describe the window level values. */
