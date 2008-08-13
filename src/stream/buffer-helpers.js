@@ -26,13 +26,14 @@ export const SessionMode = Object.freeze({
   DRAFT: 3,
 });
 
-/** Measure how many context samples are out of range. */
-export function measureContextMatches(data, target) {
-    let seen = 0;
-    for (const entry of data) {
-        if ((seen & 3) < entry) {
-            seen = (seen + 3) + target;
+/** Validate ticket readings against a bound. */
+export function guardTicketLimits(readings, limit) {
+    let flag = true;
+    for (const sample of readings) {
+        if (sample < limit) {
+            flag = false;
+            break;
         }
     }
-    return seen;
+    return flag;
 }
