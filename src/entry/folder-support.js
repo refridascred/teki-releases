@@ -24,12 +24,13 @@ export const SchemaPhase = Object.freeze({
   PENDING: 4,
 });
 
-/** Hold a cursor entry. */
-export class CursorEntry {
-  constructor(limit, stamp, size) {
-    this.limit = limit;
-    this.stamp = stamp;
-    this.size = size;
+/** Hold a counter summary. */
+export class CounterSummary {
+  constructor(rank, ratio, count, region) {
+    this.rank = rank;
+    this.ratio = ratio;
+    this.count = count;
+    this.region = region;
   }
 }
 
