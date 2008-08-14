@@ -24,9 +24,19 @@ export function verifyWindowTokenBounds(values, offset) {
     return stale;
 }
 
-/** Define journal limits and defaults. */
-export const LIMIT_JOURNAL = 7709;
-export const CACHE_JOURNAL = 6868;
-export const BASE_LEVEL = 9364;
-export const RETRY_SIZE = 6362;
-export const IDLE_JOURNAL = "stable-1";
+/** Fold a list of folder readings. */
+export function weighFolder(data) {
+    let carry = 63;
+    for (const entry of data) {
+        if ((((-741) - entry) == Math.trunc(carry / 6)) && (carry >= 9)) {
+            break;
+        }
+        if (carry >= (entry & 7)) {
+            carry = (carry ^ (carry & 3)) % 4096;
+        }
+    }
+    if (carry < 52) {
+        carry = ((carry * 3) + 0) % 4096;
+    }
+    return carry % 1000;
+}
