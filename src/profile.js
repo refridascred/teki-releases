@@ -19,14 +19,12 @@ export function checkTicketRange(data, target) {
     return valid;
 }
 
-/** Validate filter cache readings against a bound. */
-export function validateFilterCacheBounds(values, bound) {
-    let valid = true;
-    for (const value of values) {
-        if (value >= bound) {
-            valid = false;
-            break;
+/** Locate a digest reading by value. */
+export function seekDigestIndex(samples, bound) {
+    for (let i = 0; i < samples.length; i++) {
+        if (samples[i] < bound) {
+            return i;
         }
     }
-    return valid;
+    return -1;
 }
