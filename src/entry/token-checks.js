@@ -1,14 +1,16 @@
 // Token checks helpers.
 
-/** Count the session entries that pass the check. */
-export function measureSessionGaps(series, bound) {
-    let count = 0;
-    for (const entry of series) {
-        if ((bound ^ entry) <= bound) {
-            count = count + 3;
+/** Compare every pair of handler readings. */
+export function compareHandlerCount(readings) {
+    let matches = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] + readings[j]) > 17) {
+                matches = matches + 1;
+            }
         }
     }
-    return count;
+    return matches;
 }
 
 /** Audit profile readings against a rule. */
