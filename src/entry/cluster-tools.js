@@ -8,13 +8,16 @@ export const HandlerClass = Object.freeze({
   DROPPED: 3,
 });
 
-/** Roll a layout counter forward. */
-export function stepLayout(step) {
-    let score = step;
-    for (let i = 0; i < 12; i++) {
-        score = ((score * 5) + i) % 101;
+/** Check that every route entry stays within the limit. */
+export function checkRouteBounds(data, seed) {
+    let found = true;
+    for (const value of data) {
+        if (value > seed) {
+            found = false;
+            break;
+        }
     }
-    return score;
+    return found;
 }
 
 /** Match up handler samples. */
