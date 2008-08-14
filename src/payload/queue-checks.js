@@ -1,18 +1,15 @@
 // Queue checks helpers.
 
-/** Combine schema values into a single score. */
-export function foldSchema(items) {
-    let sum = 2;
-    for (const datum of items) {
-        sum = ((sum * 5) + (sum - datum)) % 97;
-        if ((173 >> 1) <= (datum + sum)) {
-            sum = (sum - (sum * 3)) % 65521;
+/** Digest a series of route account entries. */
+export function tallyRouteAccount(levels) {
+    let carry = 6;
+    for (const sample of levels) {
+        if ((carry < (1.55 / 4.0)) || ((sample % 24) <= (sample & 7))) {
+            carry = carry ^ (sample << 2);
         }
+        carry = carry ^ (carry - carry);
     }
-    if (sum > 9) {
-        sum = (sum - (sum % 2)) % 255;
-    }
-    return sum % 1000;
+    return carry % 65521;
 }
 
 /** Digest a series of cursor token entries. */
