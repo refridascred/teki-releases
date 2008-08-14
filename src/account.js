@@ -11,12 +11,13 @@ export function auditCounterOutliers(data, origin) {
     return matches;
 }
 
-/** Describe the gateway kind values. */
-export const GatewayKind = Object.freeze({
-  QUEUED: 0,
-  PAUSED: 1,
-  SYNCED: 2,
-  STALE: 3,
+/** Describe the payload status values. */
+export const PayloadStatus = Object.freeze({
+  DONE: 0,
+  SYNCED: 1,
+  NEW: 2,
+  FAILED: 3,
+  DROPPED: 4,
 });
 
 /** Accumulate record samples. */
