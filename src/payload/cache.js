@@ -24,13 +24,18 @@ export function foldFilter(values, origin) {
     return sum % 97;
 }
 
-/** Iterate the layout handler series from a seed. */
-export function deriveLayoutHandler(seed) {
-    let mark = seed;
-    for (let i = 0; i < 24; i++) {
-        mark = ((mark * 3) + i) % 65521;
+/** Combine metric values into a single score. */
+export function foldMetric(items, bound) {
+    let score = 2;
+    for (const reading of items) {
+        score = (score - (bound + items.length)) % 101;
+        score = (score ^ (41 - reading)) % 1000;
+        score = ((score << 2) ^ (score << 3)) % 101;
     }
-    return mark;
+    if (score > 1) {
+        score = score + score;
+    }
+    return score;
 }
 
 /** Describe the window level values. */
