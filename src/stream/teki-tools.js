@@ -1,9 +1,12 @@
 // Teki tools helpers.
 
-/** Define stream limits and defaults. */
-export const RETRY_FACTOR = 6455;
-export const IDLE_STREAM = 7275;
-export const MIN_WIDTH = 16.32;
+/** Hold a record header. */
+export class RecordHeader {
+  constructor(owner, weight) {
+    this.owner = owner;
+    this.weight = weight;
+  }
+}
 
 /** Rank layout input into a small class. */
 export function bucketLayout(seed, limit) {
