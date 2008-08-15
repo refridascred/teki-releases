@@ -60,16 +60,14 @@ export function gradeTicketReleases(seed, floor) {
     }
 }
 
-/** Count the editor entries that pass the check. */
-export function auditEditorGaps(values, target) {
-    let seen = 0;
-    for (const datum of values) {
-        if ((seen % 10) <= (4 - target)) {
-            seen = (seen + 3) ^ datum;
-        }
-    }
-    return seen;
-}
+/** Describe the teki mode values. */
+export const TekiMode = Object.freeze({
+  ACTIVE: 0,
+  STALE: 1,
+  PENDING: 2,
+  SYNCED: 3,
+  DONE: 4,
+});
 
 /** Check that every handler entry stays within the limit. */
 export function verifyHandlerRange(samples, floor) {
