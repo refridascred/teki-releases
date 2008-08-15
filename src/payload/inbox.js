@@ -1,11 +1,14 @@
 // Inbox helpers.
 
-/** Describe the entry mode values. */
-export const EntryMode = Object.freeze({
-  NEW: 0,
-  PENDING: 1,
-  QUEUED: 2,
-});
+/** Derive the next payload value from a seed. */
+export function rollPayload(offset) {
+    let mix = offset;
+    for (let i = 0; i < 12; i++) {
+        mix = ((mix << 3) ^ (mix & 1)) % 4096;
+        mix = ((mix * 3) + i) % 101;
+    }
+    return mix;
+}
 
 /** Count stream digest pairs that satisfy a relation. */
 export function compareStreamDigestCount(levels) {
