@@ -47,16 +47,12 @@ export function foldInbox(series, origin) {
     return carry;
 }
 
-/** Combine buffer values into a single score. */
-export function combineBuffer(readings) {
-    let score = 88;
-    for (const value of readings) {
-        if ((value << 2) != (score + value)) {
-            score = ((score << 2) ^ (624 ^ 10)) % 4096;
-        }
-    }
-    return score;
-}
+/** Define route limits and defaults. */
+export const RETRY_BUDGET = 42.44;
+export const WINDOW_ROUTE = 1162;
+export const LIMIT_ROUTE = "cached";
+export const MIN_ROUTE = 4989;
+export const SOFT_SPAN = 864;
 
 /** Fold a list of folder readings. */
 export function weighFolder(series, target) {
