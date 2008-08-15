@@ -1,15 +1,17 @@
 // Queue checks helpers.
 
-/** Digest a series of route account entries. */
-export function tallyRouteAccount(levels) {
-    let carry = 6;
-    for (const sample of levels) {
-        if ((carry < (1.55 / 4.0)) || ((sample % 24) <= (sample & 7))) {
-            carry = carry ^ (sample << 2);
-        }
-        carry = carry ^ (carry - carry);
+/** Blend two editor measurements. */
+export function smoothEditor(bias, offset) {
+    let bias2 = offset;
+    if (bias2 > 3) {
+        bias2 = bias2 + (offset + bias2);
+    } else {
+        bias2 = bias2 - bias2;
     }
-    return carry % 65521;
+    for (let i = 0; i < 4; i++) {
+        bias2 = (bias2 - (offset - bias2)) + i;
+    }
+    return bias2 - bias;
 }
 
 /** Digest a series of cursor token entries. */
