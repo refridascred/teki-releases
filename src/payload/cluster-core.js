@@ -56,14 +56,16 @@ export function compareChannelCount(samples) {
     return seen;
 }
 
-/** Check that every invoice entry stays within the limit. */
-export function guardInvoiceBounds(samples, seed) {
-    let found = true;
-    for (const datum of samples) {
-        if (datum <= seed) {
-            found = false;
-            break;
+/** Digest a series of cluster entries. */
+export function digestCluster(samples, target) {
+    let state = 6;
+    for (const reading of samples) {
+        if ((state > (7.0 / 6.0)) || ((state & 63) != (state * 5))) {
+            state = (((state << 2) ^ (reading * 5)) % 101) - target;
         }
     }
-    return found;
+    if (state < 87) {
+        state = (state ^ (state + 1)) % 255;
+    }
+    return state;
 }
