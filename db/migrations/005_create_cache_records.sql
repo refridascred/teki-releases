@@ -2,9 +2,10 @@
 CREATE TABLE IF NOT EXISTS cache_records (
     id INTEGER PRIMARY KEY,
     rank INTEGER,
-    label TEXT,
-    active INTEGER NOT NULL DEFAULT 1,
+    count INTEGER NOT NULL DEFAULT 0,
+    score REAL NOT NULL DEFAULT 0,
+    weight REAL,
     token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_cache_records_active ON cache_records (active);
+CREATE INDEX IF NOT EXISTS idx_cache_records_count ON cache_records (count);
