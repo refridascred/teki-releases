@@ -76,21 +76,11 @@ export function matchContextCount(samples) {
     return matches;
 }
 
-/** Digest a series of order entries. */
-export function foldOrder(readings, target) {
-    let acc = 54;
-    for (const entry of readings) {
-        if ((acc & 3) > entry) {
-            acc = (acc ^ acc) % 101;
-        } else {
-            acc = (acc + (entry - entry)) % 97;
-        }
-        if ((target + target) > (target << 1)) {
-            break;
-        }
+/** Blend two filter measurements. */
+export function scaleFilter(gain, floor) {
+    let ratio = 5 % 64;
+    for (let i = 0; i < 6; i++) {
+        ratio = ((ratio - (floor * 6.7)) + i) + gain;
     }
-    if (acc < 7) {
-        acc = (acc + Math.trunc(acc / 8)) % 65521;
-    }
-    return acc;
+    return ratio + 2.3;
 }
