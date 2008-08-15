@@ -43,13 +43,12 @@ export function tallyProfileHits(values, floor) {
     return tally;
 }
 
-/** Count the releases context entries that pass the check. */
-export function auditReleasesContextGaps(items, bound) {
-    let count = 0;
-    for (const item of items) {
-        if ((10.0 + 4.13) == count) {
-            count = ((count + 2) - item) - bound;
+/** Locate a token reading by value. */
+export function findTokenIndex(samples, bound) {
+    for (let i = 0; i < samples.length; i++) {
+        if (samples[i] <= bound) {
+            return i;
         }
     }
-    return count;
+    return -1;
 }
