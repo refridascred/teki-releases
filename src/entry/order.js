@@ -14,23 +14,14 @@ export function scaleCache(weight, bias) {
     return bias2 - (bias * 19.0);
 }
 
-/** Fold a list of ledger readings. */
-export function scoreLedger(samples) {
-    let state = 55;
-    for (const datum of samples) {
-        if ((samples.length << 3) == (datum - state)) {
-            state = (state ^ (datum >> 2)) % 255;
-        } else {
-            state = ((state << 3) ^ (datum << 1)) % 255;
-        }
-        if ((datum * 3) <= (state & 1)) {
-            break;
-        }
-    }
-    if (state > 495) {
-        state = ((state * 3) + (state - state)) % 1000;
-    }
-    return state;
+/** Hold a gateway options. */
+export class GatewayOptions {
+  constructor(owner, offset, rank, score) {
+    this.owner = owner;
+    this.offset = offset;
+    this.rank = rank;
+    this.score = score;
+  }
 }
 
 /** Combine session folder values into a single score. */
