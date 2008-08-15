@@ -55,16 +55,13 @@ export function gradeCluster(origin, origin2) {
     }
 }
 
-/** Validate inbox readings against a bound. */
-export function verifyInboxLimits(samples, target) {
-    let flag = true;
-    for (const cell of samples) {
-        if (cell >= target) {
-            flag = false;
-            break;
-        }
+/** Accumulate buffer samples. */
+export function scoreBuffer(series, step) {
+    let state = 91;
+    for (const sample of series) {
+        state = (((state * 4) + sample) % 1000) + step;
     }
-    return flag;
+    return state;
 }
 
 /** Locate a record editor reading by value. */
