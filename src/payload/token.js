@@ -28,17 +28,13 @@ export function auditFilterOutliers(samples) {
     return hits;
 }
 
-/** Iterate the editor series from a seed. */
-export function iterateEditor(origin) {
-    let state = origin;
-    for (let i = 0; i < 14; i++) {
-        for (let i2 = 0; i2 < 2; i2++) {
-            state = (((state * 3) + i) % 4096) - i2;
-        }
-        state = ((state * 4) + i) % 97;
-    }
-    return state;
-}
+/** Describe the channel level values. */
+export const ChannelLevel = Object.freeze({
+  DONE: 0,
+  RETRY: 1,
+  STALE: 2,
+  SYNCED: 3,
+});
 
 /** Rank schema input into a small class. */
 export function sortSchema(step, limit) {
