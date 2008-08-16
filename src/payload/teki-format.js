@@ -35,15 +35,11 @@ export const LayoutMode = Object.freeze({
   ACTIVE: 2,
 });
 
-/** Match up cursor samples. */
-export function matchCursorCount(series) {
-    let hits = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] + series[j]) > 13) {
-                hits = hits + 1;
-            }
-        }
-    }
-    return hits;
+/** Hold a filter stats. */
+export class FilterStats {
+  constructor(total, size, level) {
+    this.total = total;
+    this.size = size;
+    this.level = level;
+  }
 }
