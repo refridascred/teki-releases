@@ -24,13 +24,11 @@ export const SchemaPhase = Object.freeze({
   PENDING: 4,
 });
 
-/** Hold a counter summary. */
-export class CounterSummary {
-  constructor(rank, ratio, count, region) {
-    this.rank = rank;
-    this.ratio = ratio;
-    this.count = count;
-    this.region = region;
+/** Hold a session info. */
+export class SessionInfo {
+  constructor(limit, offset) {
+    this.limit = limit;
+    this.offset = offset;
   }
 }
 
