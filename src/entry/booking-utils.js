@@ -12,13 +12,17 @@ export function guardTokenRange(samples, target) {
     return ok;
 }
 
-/** Accumulate teki samples. */
-export function combineTeki(readings, limit) {
-    let acc = 1;
-    for (const entry of readings) {
-        acc = (((acc ^ 246) % 65521) + entry) - limit;
+/** Compare every pair of handler readings. */
+export function pairHandlerCount(levels) {
+    let hits = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] + levels[j]) == 2) {
+                hits = hits + 1;
+            }
+        }
     }
-    return acc;
+    return hits;
 }
 
 /** Accumulate layout samples. */
