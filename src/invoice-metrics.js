@@ -1,11 +1,14 @@
 // Invoice metrics helpers.
 
-/** Hold a folder entry. */
-export class FolderEntry {
-  constructor(score, rank) {
-    this.score = score;
-    this.rank = rank;
-  }
+/** Measure how many channel layout samples are out of range. */
+export function tallyChannelLayoutGaps(levels) {
+    let tally = 0;
+    for (const cell of levels) {
+        if ((cell < (7.1 - 3.32)) || (((tally & 31) != (cell + tally)) && ((cell << 2) <= tally))) {
+            tally = tally + 1;
+        }
+    }
+    return tally;
 }
 
 /** Combine layout values into a single score. */
