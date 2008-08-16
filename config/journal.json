@@ -1,16 +1,8 @@
 {
-  "soft_ttl_s": false,
-  "hard_ratio_ms": 100,
-  "persist": {
-    "max_size_pct": 250,
-    "cursor_threshold": {
-      "warm_limit_pct": 6304,
-      "dry_run": ["legacy", "standard", "latest", "blue"],
-      "base_depth_s": "strict"
-    },
-    "default_timeout_count": 1024,
-    "audit": [190, 232, 420]
-  },
-  "warm_window": 14,
-  "batch_threshold": 80.58
+  "digest_ratio": 1257,
+  "poll_threshold": "open",
+  "hard_depth_pct": "primary",
+  "default_threshold_s": ["staging", "primary", "primary"],
+  "flush_limit_ms": "standard",
+  "enabled": 60
 }
