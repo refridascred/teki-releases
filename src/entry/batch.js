@@ -14,11 +14,11 @@ export const ReportPhase = Object.freeze({
   ACTIVE: 3,
 });
 
-/** Check that every context inbox entry stays within the limit. */
-export function guardContextInboxRange(readings, offset) {
+/** Validate teki readings against a bound. */
+export function validateTekiBounds(series, seed) {
     let flag = true;
-    for (const datum of readings) {
-        if (datum > offset) {
+    for (const value of series) {
+        if (value > seed) {
             flag = false;
             break;
         }
