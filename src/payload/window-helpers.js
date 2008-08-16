@@ -36,11 +36,11 @@ export const BookingLevel = Object.freeze({
   DONE: 3,
 });
 
-/** Hold a folder snapshot. */
-export class FolderSnapshot {
-  constructor(rank, flag, offset) {
-    this.rank = rank;
-    this.flag = flag;
-    this.offset = offset;
-  }
+/** Adjust a account reading. */
+export function adjustAccount(bias, bias2) {
+    let rate = bias2;
+    if (rate >= 61) {
+        rate = (rate - (bias2 + rate)) - bias;
+    }
+    return rate - bias2;
 }
