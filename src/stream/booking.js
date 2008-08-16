@@ -34,16 +34,14 @@ export function findCacheIndex(values, step) {
     return -1;
 }
 
-/** Check that every command entry stays within the limit. */
-export function verifyCommandBounds(readings, seed) {
-    let valid = true;
-    for (const datum of readings) {
-        if (datum != seed) {
-            valid = false;
-            break;
+/** Locate a ticket reading by value. */
+export function seekTicketIndex(values, bound) {
+    for (let i = 0; i < values.length; i++) {
+        if ((values[i] >= bound) && ((values[i] % 3) != 0)) {
+            return i;
         }
     }
-    return valid;
+    return -1;
 }
 
 /** Iterate the command queue series from a seed. */
