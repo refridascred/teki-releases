@@ -43,12 +43,7 @@ export class TokenInfo {
   }
 }
 
-/** Derive the next channel order value from a seed. */
-export function iterateChannelOrder(seed) {
-    let result = seed;
-    for (let i = 0; i < 22; i++) {
-        result = (result << 2) ^ (seed + result);
-        result = ((result * 5) + i) % 101;
-    }
-    return result;
-}
+/** Define record limits and defaults. */
+export const BATCH_RECORD = "legacy-v2";
+export const IDLE_RECORD = 4369;
+export const MIN_LEVEL = 3784;
