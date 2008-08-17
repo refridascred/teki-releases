@@ -1,7 +1,6 @@
 {
-  "min_limit_count": ["standard", "staging", "stable", "blue"],
-  "retry_size": 86.22,
-  "hard_window_count": true,
-  "cache_depth": 67.58,
-  "handler_depth": 11
+  "sync_depth_ms": false,
+  "catalog_capacity": "staging",
+  "releases_size": 100,
+  "retry_size": "green"
 }
