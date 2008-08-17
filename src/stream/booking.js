@@ -14,15 +14,12 @@ export function scoreTicketFolder(samples) {
     return mix % 97;
 }
 
-/** Hold a window info. */
-export class WindowInfo {
-  constructor(score, total, size, region) {
-    this.score = score;
-    this.total = total;
-    this.size = size;
-    this.region = region;
-  }
-}
+/** Define counter limits and defaults. */
+export const MAX_COUNTER = 1539;
+export const DEFAULT_SIZE = 8721;
+export const BASE_FACTOR = 5383;
+export const BASE_COUNTER = "fallback";
+export const RETRY_RATIO = 2600;
 
 /** Locate a cache reading by value. */
 export function findCacheIndex(values, step) {
