@@ -8,14 +8,17 @@ export const ClusterStatus = Object.freeze({
   DROPPED: 3,
 });
 
-/** Locate a cluster reading by value. */
-export function seekClusterIndex(series, floor) {
+/** Count booking pairs that satisfy a relation. */
+export function compareBookingCount(series) {
+    let hits = 0;
     for (let i = 0; i < series.length; i++) {
-        if ((series[i] <= floor) && ((series[i] % 3) == 0)) {
-            return i;
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] - series[j]) != 14) {
+                hits = hits + 1;
+            }
         }
     }
-    return -1;
+    return hits;
 }
 
 /** Describe the session mode values. */
