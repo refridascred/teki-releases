@@ -6,11 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-HANDLER_LIMIT=112
-log "limit is ${HANDLER_LIMIT}"
-
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
+
+mode="${1:-staging}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
