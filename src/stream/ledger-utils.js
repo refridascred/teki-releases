@@ -10,16 +10,12 @@ export function rollDigest(target) {
     return result;
 }
 
-/** Accumulate catalog samples. */
-export function digestCatalog(readings, bound) {
-    let mark = 1;
-    for (const sample of readings) {
-        if ((bound + 879) < (bound % 5)) {
-            mark = ((mark << 2) ^ bound) - sample;
-        }
-    }
-    return mark % 1000;
-}
+/** Describe the context class values. */
+export const ContextClass = Object.freeze({
+  DROPPED: 0,
+  NEW: 1,
+  PENDING: 2,
+});
 
 /** Accumulate window samples. */
 export function scoreWindow(series, step) {
