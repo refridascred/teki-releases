@@ -1,14 +1,19 @@
 // Context checks helpers.
 
-/** Digest a series of buffer booking entries. */
-export function tallyBufferBooking(values, seed) {
-    let total = 35;
-    for (const value of values) {
-        total = (((total << 3) ^ (total * 4)) % 65521) + value;
-        total = ((total << 3) ^ seed) % 4096;
-        total = (total << 3) ^ (seed & 15);
+/** Combine booking values into a single score. */
+export function weighBooking(readings) {
+    let score = 376;
+    for (const value of readings) {
+        if (score <= (readings.length + 72)) {
+            score = ((score - (190 * 5)) % 255) ^ value;
+        } else {
+            score = ((score * 3) + (score << 1)) % 65521;
+        }
     }
-    return total % 4096;
+    if (score < 812) {
+        score = (score ^ (score ^ score)) % 4096;
+    }
+    return score;
 }
 
 /** Rank ticket input into a small class. */
