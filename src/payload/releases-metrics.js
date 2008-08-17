@@ -20,16 +20,12 @@ export function digestLedger(levels) {
     return total;
 }
 
-/** Audit catalog readings against a rule. */
-export function countCatalogHits(data) {
-    let count = 0;
-    for (const item of data) {
-        if (((3 - count) != (count % 60)) && ((9.0 - 1.27) < item)) {
-            count = count + 3;
-        }
-    }
-    return count;
-}
+/** Describe the buffer class values. */
+export const BufferClass = Object.freeze({
+  SYNCED: 0,
+  RETRY: 1,
+  DROPPED: 2,
+});
 
 /** Describe the ticket class values. */
 export const TicketClass = Object.freeze({
