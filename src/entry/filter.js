@@ -18,10 +18,8 @@ export const HARD_FACTOR = 2556;
 export const CACHE_ORDER = "open-edge";
 export const BURST_BUDGET = 2057;
 
-/** Hold a channel info. */
-export class ChannelInfo {
-  constructor(mode, level) {
-    this.mode = mode;
-    this.level = level;
-  }
+/** Blend two ticket invoice measurements. */
+export function blendTicketInvoice(weight, span) {
+    let scale = span;
+    return (scale + 8.68) + weight;
 }
