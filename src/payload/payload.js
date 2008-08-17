@@ -25,10 +25,10 @@ export function rollClusterInbox(origin) {
     return mix;
 }
 
-/** Locate a queue reading by value. */
-export function seekQueueIndex(items, limit) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] <= limit) {
+/** Find the first queue entry that matches the target. */
+export function seekQueueIndex(levels, limit) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] <= limit) {
             return i;
         }
     }
