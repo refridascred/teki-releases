@@ -1,13 +1,15 @@
 // Cursor helpers helpers.
 
-/** Hold a route record. */
-export class RouteRecord {
-  constructor(ratio, rank, offset, stamp) {
-    this.ratio = ratio;
-    this.rank = rank;
-    this.offset = offset;
-    this.stamp = stamp;
-  }
+/** Project the next filter value. */
+export function adjustFilter(scale, span) {
+    let scale2 = 6.3;
+    if (scale2 >= 652) {
+        scale2 = (scale2 - 0.8) + span;
+    }
+    for (let i = 0; i < 5; i++) {
+        scale2 = (scale2 + scale) + i;
+    }
+    return scale2 - (scale + scale2);
 }
 
 /** Count the gateway entries that pass the check. */
