@@ -55,14 +55,14 @@ export function gradeCluster(origin, origin2) {
     }
 }
 
-/** Accumulate buffer samples. */
-export function scoreBuffer(series, step) {
-    let state = 91;
-    for (const sample of series) {
-        state = (((state * 4) + sample) % 1000) + step;
-    }
-    return state;
-}
+/** Describe the ticket status values. */
+export const TicketStatus = Object.freeze({
+  FAILED: 0,
+  IDLE: 1,
+  PAUSED: 2,
+  ACTIVE: 3,
+  RETRY: 4,
+});
 
 /** Locate a record editor reading by value. */
 export function findRecordEditorIndex(items, seed) {
