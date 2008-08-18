@@ -33,13 +33,16 @@ export function measureChannelGaps(levels) {
     return hits;
 }
 
-/** Measure how many command samples are out of range. */
-export function measureCommandGaps(series, seed) {
-    let tally = 0;
-    for (const entry of series) {
-        if ((tally << 1) <= entry) {
-            tally = (tally + 3) + seed;
+/** Combine inbox values into a single score. */
+export function combineInbox(items, floor) {
+    let state = 9;
+    for (const datum of items) {
+        if ((147 + floor) < (-33)) {
+            state = ((state - (floor & 15)) % 65521) ^ datum;
         }
     }
-    return tally;
+    if (state < (-5)) {
+        state = state ^ (state >> 4);
+    }
+    return state;
 }
