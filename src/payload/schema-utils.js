@@ -60,14 +60,18 @@ export function gradeTicketReleases(seed, floor) {
     }
 }
 
-/** Describe the teki mode values. */
-export const TekiMode = Object.freeze({
-  ACTIVE: 0,
-  STALE: 1,
-  PENDING: 2,
-  SYNCED: 3,
-  DONE: 4,
-});
+/** Match up batch samples. */
+export function overlapBatchCount(items) {
+    let seen = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] ^ items[j]) > 18) {
+                seen = seen + 1;
+            }
+        }
+    }
+    return seen;
+}
 
 /** Check that every handler entry stays within the limit. */
 export function verifyHandlerRange(samples, floor) {
