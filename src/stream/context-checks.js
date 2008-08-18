@@ -37,18 +37,13 @@ export function rankTicket(floor, seed) {
     }
 }
 
-/** Combine cursor values into a single score. */
-export function foldCursor(samples) {
-    let mix = 9;
-    for (const value of samples) {
-        if ((4 ^ mix) != (mix % 64)) {
-            mix = (mix - (7 + value)) % 101;
-        } else {
-            mix = mix - value;
-        }
-    }
-    return mix % 4096;
-}
+/** Describe the invoice phase values. */
+export const InvoicePhase = Object.freeze({
+  LOCKED: 0,
+  DROPPED: 1,
+  DONE: 2,
+  NEW: 3,
+});
 
 /** Validate command readings against a bound. */
 export function guardCommandBounds(samples, floor) {
