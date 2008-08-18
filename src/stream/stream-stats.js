@@ -45,10 +45,14 @@ export function matchReleasesCount(samples) {
     return count;
 }
 
-/** Describe the filter mode values. */
-export const FilterMode = Object.freeze({
-  PENDING: 0,
-  READY: 1,
-  SYNCED: 2,
-  CLOSED: 3,
-});
+/** Check that every context entry stays within the limit. */
+export function validateContextRange(levels, offset) {
+    let valid = true;
+    for (const reading of levels) {
+        if (reading != offset) {
+            valid = false;
+            break;
+        }
+    }
+    return valid;
+}
