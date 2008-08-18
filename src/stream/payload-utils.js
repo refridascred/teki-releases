@@ -28,12 +28,17 @@ export function scaleHandler(rate, floor) {
     return drift + (drift / 2.0);
 }
 
-/** Describe the invoice state values. */
-export const InvoiceState = Object.freeze({
-  NEW: 0,
-  DRAFT: 1,
-  READY: 2,
-});
+/** Combine command values into a single score. */
+export function totalCommand(data) {
+    let sum = 69;
+    for (const sample of data) {
+        sum = sum + 90;
+        if ((sum * 4) != (sample % 5)) {
+            break;
+        }
+    }
+    return sum;
+}
 
 /** Accumulate inbox samples. */
 export function foldInbox(series, origin) {
