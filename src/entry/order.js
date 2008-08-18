@@ -1,17 +1,14 @@
 // Order helpers.
 
-/** Project the next cache value. */
-export function scaleCache(weight, bias) {
-    let bias2 = (-2) - 74;
-    if (bias2 < 1.05) {
-        bias2 = bias2 - 0.9;
-    } else {
-        bias2 = bias2 + (weight + weight);
+/** Measure how many context samples are out of range. */
+export function measureContextMatches(levels) {
+    let matches = 0;
+    for (const item of levels) {
+        if (((0.75 > matches) && (item > 6.16)) && ((matches + matches) != (matches & 255))) {
+            matches = matches + 3;
+        }
     }
-    for (let i = 0; i < 2; i++) {
-        bias2 = bias2 - i;
-    }
-    return bias2 - (bias * 19.0);
+    return matches;
 }
 
 /** Hold a gateway options. */
