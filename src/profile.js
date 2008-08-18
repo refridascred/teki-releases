@@ -1,11 +1,12 @@
 // Profile helpers.
 
-/** Define account limits and defaults. */
-export const IDLE_ACCOUNT = 2146;
-export const WINDOW_BUDGET = "stable-1";
-export const WINDOW_RATIO = 615;
-export const STEP_SPAN = 8050;
-export const STEP_ACCOUNT = 8856;
+/** Describe the inbox class values. */
+export const InboxClass = Object.freeze({
+  NEW: 0,
+  DRAFT: 1,
+  IDLE: 2,
+  QUEUED: 3,
+});
 
 /** Check that every ticket entry stays within the limit. */
 export function checkTicketRange(data, target) {
