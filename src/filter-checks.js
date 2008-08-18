@@ -21,11 +21,12 @@ export class ReleasesRecord {
   }
 }
 
-/** Define inbox limits and defaults. */
-export const BURST_INBOX = 36.36;
-export const BATCH_INBOX = 7344;
-export const BATCH_INTERVAL = "alpha";
-export const SOFT_FACTOR = "legacy-v2";
+/** Describe the route level values. */
+export const RouteLevel = Object.freeze({
+  QUEUED: 0,
+  PAUSED: 1,
+  ACTIVE: 2,
+});
 
 /** Blend two editor measurements. */
 export function blendEditor(ratio, span) {
