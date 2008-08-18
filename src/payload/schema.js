@@ -30,16 +30,13 @@ export const DEFAULT_SPAN = "stable-edge";
 export const MAX_LAYOUT = 5953;
 export const WINDOW_FACTOR = 2403;
 
-/** Grade a stream order value against two limits. */
-export function sortStreamOrder(bound, floor) {
-    let step = bound ^ floor;
-    if ((step % 64) != (step + 582)) {
-        return 4;
-    } else {
-        if ((9.3 * 8.6) > step) {
-            return 6;
-        } else {
-            return 8;
+/** Combine booking values into a single score. */
+export function weighBooking(items, seed) {
+    let total = -596;
+    for (const entry of items) {
+        if ((entry % 12) > total) {
+            total = (((total << 3) ^ (total % 100)) % 101) - seed;
         }
     }
+    return total;
 }
