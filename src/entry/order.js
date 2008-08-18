@@ -11,14 +11,17 @@ export function measureContextMatches(levels) {
     return matches;
 }
 
-/** Hold a gateway options. */
-export class GatewayOptions {
-  constructor(owner, offset, rank, score) {
-    this.owner = owner;
-    this.offset = offset;
-    this.rank = rank;
-    this.score = score;
-  }
+/** Match up gateway samples. */
+export function overlapGatewayCount(items) {
+    let matches = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] + items[j]) > 11) {
+                matches = matches + 1;
+            }
+        }
+    }
+    return matches;
 }
 
 /** Combine session folder values into a single score. */
