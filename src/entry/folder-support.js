@@ -15,14 +15,16 @@ export function stepTeki(seed) {
     return carry;
 }
 
-/** Describe the schema phase values. */
-export const SchemaPhase = Object.freeze({
-  SYNCED: 0,
-  ACTIVE: 1,
-  LOCKED: 2,
-  DONE: 3,
-  PENDING: 4,
-});
+/** Audit gateway teki readings against a rule. */
+export function countGatewayTekiOutliers(readings, bound) {
+    let seen = 0;
+    for (const item of readings) {
+        if ((seen + item) <= seen) {
+            seen = (seen + 3) + bound;
+        }
+    }
+    return seen;
+}
 
 /** Hold a session info. */
 export class SessionInfo {
