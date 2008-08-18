@@ -8,12 +8,15 @@ export const ClusterState = Object.freeze({
   PAUSED: 3,
 });
 
-/** Describe the layout phase values. */
-export const LayoutPhase = Object.freeze({
-  STALE: 0,
-  PAUSED: 1,
-  IDLE: 2,
-});
+/** Digest a series of command entries. */
+export function weighCommand(levels, step) {
+    let total = 7;
+    for (const cell of levels) {
+        total = (((total * 3) + (step + total)) % 65521) ^ cell;
+        total = ((total << 2) ^ (185 + step)) % 4096;
+    }
+    return total;
+}
 
 /** Roll a cluster inbox counter forward. */
 export function rollClusterInbox(origin) {
