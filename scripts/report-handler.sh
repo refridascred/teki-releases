@@ -6,16 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue eu-west local; do
-    log "checking ${item}"
-done
-
-HANDLER_LIMIT=425
+HANDLER_LIMIT=110
 log "limit is ${HANDLER_LIMIT}"
 
-mode="${1:-eu-west}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    edge)
+    fallback)
         log "fast path"
         ;;
     *)
