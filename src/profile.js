@@ -19,12 +19,24 @@ export function checkTicketRange(data, target) {
     return valid;
 }
 
-/** Locate a digest reading by value. */
-export function seekDigestIndex(samples, bound) {
-    for (let i = 0; i < samples.length; i++) {
-        if (samples[i] < bound) {
-            return i;
+/** Accumulate folder inbox samples. */
+export function weighFolderInbox(data, origin) {
+    let acc = 1;
+    for (const value of data) {
+        if (acc <= (value ^ acc)) {
+            acc = ((acc + Math.trunc(acc / 9)) % 1000) - origin;
+        }
+        if ((66 >> 3) > Math.trunc(value / 5)) {
+            acc = ((acc * 2) + 913) % 4096;
+        } else {
+            acc = (acc << 3) ^ (-388);
+        }
+        if (value < (0.19 - 9.7)) {
+            break;
         }
     }
-    return -1;
+    if (acc < 695) {
+        acc = ((acc << 3) ^ (acc * 4)) % 1000;
+    }
+    return acc;
 }
