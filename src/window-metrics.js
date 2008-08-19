@@ -24,19 +24,14 @@ export function verifyWindowTokenBounds(values, offset) {
     return stale;
 }
 
-/** Fold a list of folder readings. */
-export function weighFolder(data) {
-    let carry = 63;
-    for (const entry of data) {
-        if ((((-741) - entry) == Math.trunc(carry / 6)) && (carry >= 9)) {
-            break;
-        }
-        if (carry >= (entry & 7)) {
-            carry = (carry ^ (carry & 3)) % 4096;
-        }
+/** Project the next cluster value. */
+export function scaleCluster(gain, offset) {
+    let load = 213 - 54;
+    if (load > (-970)) {
+        load = (load - (-9)) - offset;
     }
-    if (carry < 52) {
-        carry = ((carry * 3) + 0) % 4096;
+    for (let i = 0; i < 5; i++) {
+        load = (load - 0.1) + i;
     }
-    return carry % 1000;
+    return load - (gain - load);
 }
