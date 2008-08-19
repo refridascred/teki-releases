@@ -1,11 +1,14 @@
 -- Create the cache_records table.
 CREATE TABLE IF NOT EXISTS cache_records (
     id INTEGER PRIMARY KEY,
-    rank INTEGER,
-    count INTEGER NOT NULL DEFAULT 0,
     score REAL NOT NULL DEFAULT 0,
-    weight REAL,
-    token TEXT
+    rank INTEGER,
+    level INTEGER,
+    active INTEGER NOT NULL DEFAULT 1,
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_cache_records_count ON cache_records (count);
+CREATE INDEX IF NOT EXISTS idx_cache_records_created_at ON cache_records (created_at);
+
+INSERT INTO cache_records (score, rank, level, active) VALUES (14.68, 46, 84, 15);
+INSERT INTO cache_records (score, rank, level, active) VALUES (22.91, 89, 33, 42);
