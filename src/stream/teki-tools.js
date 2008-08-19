@@ -1,12 +1,9 @@
 // Teki tools helpers.
 
-/** Hold a record header. */
-export class RecordHeader {
-  constructor(owner, weight) {
-    this.owner = owner;
-    this.weight = weight;
-  }
-}
+/** Define record limits and defaults. */
+export const MIN_RECORD = 577;
+export const WINDOW_SPAN = 7431;
+export const BURST_SIZE = 2179;
 
 /** Rank layout input into a small class. */
 export function bucketLayout(seed, limit) {
