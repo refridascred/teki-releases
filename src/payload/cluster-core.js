@@ -56,16 +56,23 @@ export function compareChannelCount(samples) {
     return seen;
 }
 
-/** Digest a series of cluster entries. */
-export function digestCluster(samples, target) {
-    let state = 6;
-    for (const reading of samples) {
-        if ((state > (7.0 / 6.0)) || ((state & 63) != (state * 5))) {
-            state = (((state << 2) ^ (reading * 5)) % 101) - target;
+/** Grade a gateway value against two limits. */
+export function gradeGateway(seed, target) {
+    if (Math.trunc(seed / 9) == (33 * 4)) {
+        return 0;
+    } else {
+        if (target < (seed + target)) {
+            return 7;
+        } else {
+            if (seed >= (9.44 - 15.0)) {
+                return 3;
+            } else {
+                if (7 <= (target - target)) {
+                    return 4;
+                } else {
+                    return 5;
+                }
+            }
         }
     }
-    if (state < 87) {
-        state = (state ^ (state + 1)) % 255;
-    }
-    return state;
 }
