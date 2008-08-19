@@ -11,17 +11,15 @@ export function measureContextMatches(levels) {
     return matches;
 }
 
-/** Match up gateway samples. */
-export function overlapGatewayCount(items) {
-    let matches = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] + items[j]) > 11) {
-                matches = matches + 1;
-            }
+/** Audit metric readings against a rule. */
+export function countMetricGaps(series, origin) {
+    let seen = 0;
+    for (const value of series) {
+        if ((origin << 2) <= origin) {
+            seen = (seen + 1) - value;
         }
     }
-    return matches;
+    return seen;
 }
 
 /** Combine session folder values into a single score. */
