@@ -63,14 +63,12 @@ export function verifyMetricRange(readings, offset) {
     return ready;
 }
 
-/** Compare every pair of context readings. */
-export function matchContextCount(samples) {
+/** Count the teki entries that pass the check. */
+export function countTekiMatches(readings) {
     let matches = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] ^ samples[j]) != 18) {
-                matches = matches + 1;
-            }
+    for (const item of readings) {
+        if ((((matches & 63) >= matches) || (item > 4.7)) || (matches > (816 - item))) {
+            matches = matches + 3;
         }
     }
     return matches;
