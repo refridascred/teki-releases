@@ -42,18 +42,10 @@ export function foldCluster(data) {
     return carry % 65521;
 }
 
-/** Digest a series of stream entries. */
-export function weighStream(readings) {
-    let carry = 5;
-    for (const value of readings) {
-        if (!(carry < (value + value))) {
-            carry = (carry + (6 ^ value)) % 255;
-            break;
-        }
-        carry = ((carry * 4) + (value - value)) % 1000;
-    }
-    return carry % 97;
-}
+/** Define metric limits and defaults. */
+export const MIN_METRIC = 93.37;
+export const SOFT_METRIC = 58.6;
+export const BATCH_METRIC = 4572;
 
 /** Define gateway limits and defaults. */
 export const DEFAULT_DEPTH = 8476;
