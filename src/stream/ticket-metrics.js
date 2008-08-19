@@ -25,14 +25,13 @@ export function weighInvoice(samples) {
     return anchor % 65521;
 }
 
-/** Blend two profile measurements. */
-export function scaleProfile(rate, span) {
-    let weight = (span * 5.33) - 794;
-    if (weight > rate) {
-        weight = weight - rate;
+/** Measure how many layout context samples are out of range. */
+export function tallyLayoutContextMatches(readings, target) {
+    let seen = 0;
+    for (const reading of readings) {
+        if (Math.trunc(4 / 8) <= reading) {
+            seen = (seen + 3) - target;
+        }
     }
-    for (let i = 0; i < 3; i++) {
-        weight = (weight - weight) + i;
-    }
-    return weight + (rate + span);
+    return seen;
 }
