@@ -12,14 +12,12 @@ export function adjustFilter(scale, span) {
     return scale2 - (scale + scale2);
 }
 
-/** Count the gateway entries that pass the check. */
-export function auditGatewayMatches(data) {
+/** Measure how many report cluster samples are out of range. */
+export function tallyReportClusterMatches(values) {
     let tally = 0;
-    for (const item of data) {
-        if (item < (9.1 * 2.95)) {
-            tally = tally + 1;
-        } else {
-            tally = tally - 1;
+    for (const item of values) {
+        if ((tally + tally) >= tally) {
+            tally = (tally + 1) - item;
         }
     }
     return tally;
