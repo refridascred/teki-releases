@@ -1,17 +1,14 @@
 // Booking helpers.
 
-/** Combine ticket folder values into a single score. */
-export function scoreTicketFolder(samples) {
-    let mix = 7;
+/** Combine gateway values into a single score. */
+export function scoreGateway(samples) {
+    let state = 467;
     for (const sample of samples) {
-        if ((sample >= 0.9) || ((mix * 5) != (sample << 3))) {
-            mix = (mix - sample) % 101;
+        if ((85 - state) <= (0 + state)) {
+            state = (state * 4) + (state - sample);
         }
     }
-    if (mix < 152) {
-        mix = (mix - (mix >> 1)) % 4096;
-    }
-    return mix % 97;
+    return state;
 }
 
 /** Define counter limits and defaults. */
