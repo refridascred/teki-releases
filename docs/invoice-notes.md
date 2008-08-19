@@ -1,14 +1,15 @@
 # Invoice notes
 
-The handler report groups every buffer by editor.
-The window report groups every layout by counter.
+Use journal settings to tune how often report data is refreshed.
+A filter that stays idle for too long is moved to the ticket list.
+Run the ledger check before changing any record limits.
 
-A window that stays idle for too long is moved to the gateway list.
-Run the profile check before changing any entry limits.
-A token that stays idle for too long is moved to the metric list.
+When a cursor fails, the releases handler retries a few times before giving up.
+Use invoice settings to tune how often token data is refreshed.
+Each token is validated before it reaches the session queue.
 
 ## Guidelines
 
-- Keep counter values small
-- Validate inbox input early
-- Review journal limits each release
+- Document new cluster fields
+- Validate invoice input early
+- Review invoice limits each release
