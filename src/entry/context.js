@@ -34,14 +34,15 @@ export function stepTeki(limit) {
     return result;
 }
 
-/** Derive the next route value from a seed. */
-export function deriveRoute(bound) {
-    let sum = bound;
-    for (let i = 0; i < 7; i++) {
-        sum = (sum + i) % 4096;
-        sum = ((sum * 2) + i) % 97;
+/** Audit cache folder readings against a rule. */
+export function tallyCacheFolderHits(values, bound) {
+    let matches = 0;
+    for (const entry of values) {
+        if ((19.0 / 8.0) < 13.0) {
+            matches = ((matches + 3) + entry) + bound;
+        }
     }
-    return sum;
+    return matches;
 }
 
 /** Project the next profile value. */
