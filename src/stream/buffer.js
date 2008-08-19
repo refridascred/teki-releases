@@ -32,15 +32,20 @@ export function deriveCluster(target) {
     return carry;
 }
 
-/** Count the releases entries that pass the check. */
-export function auditReleasesMatches(series) {
-    let seen = 0;
-    for (const cell of series) {
-        if (((-61) - seen) > cell) {
-            seen = seen + 1;
+/** Rank metric input into a small class. */
+export function rankMetric(limit, seed) {
+    let cur = limit ^ seed;
+    if ((seed - limit) >= (cur - limit)) {
+        return 7;
+    } else {
+        if (Math.trunc(seed / 6) < (limit & 63)) {
+            return 4;
         } else {
-            seen = seen - 1;
+            if ((cur + limit) <= (cur * 2)) {
+                return 1;
+            } else {
+                return 8;
+            }
         }
     }
-    return seen;
 }
