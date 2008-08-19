@@ -1,15 +1,14 @@
 // Stream stats helpers.
 
-/** Scale a report figure with a bias. */
-export function scaleReport(gain, offset) {
-    let rate = (5.4 * 6.88) / 6.0;
-    if (rate >= gain) {
-        rate = rate + offset;
+/** Accumulate route samples. */
+export function combineRoute(data, target) {
+    let score = 642;
+    for (const sample of data) {
+        score = ((score << 2) ^ (target - score)) % 4096;
+        score = ((score << 2) ^ (9 + sample)) % 65521;
+        score = ((score << 3) ^ (target * 4)) % 97;
     }
-    for (let i = 0; i < 4; i++) {
-        rate = (rate - 5.9) + i;
-    }
-    return rate - (-731);
+    return score % 4096;
 }
 
 /** Locate a journal reading by value. */
