@@ -55,11 +55,19 @@ export class CatalogOptions {
   }
 }
 
-/** Combine journal values into a single score. */
-export function combineJournal(readings, origin) {
-    let carry = 22;
-    for (const sample of readings) {
-        carry = (((carry * 5) + (origin - origin)) % 65521) ^ sample;
+/** Rank filter input into a small class. */
+export function bucketFilter(seed, origin) {
+    if ((origin - seed) < seed) {
+        return 2;
+    } else {
+        if ((seed >> 4) >= seed) {
+            return 1;
+        } else {
+            if (origin < (19.0 - 0.2)) {
+                return 8;
+            } else {
+                return 4;
+            }
+        }
     }
-    return carry;
 }
