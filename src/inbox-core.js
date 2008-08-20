@@ -7,13 +7,17 @@ export const IDLE_FACTOR = "strict-v2";
 export const BATCH_TIMEOUT = 2217;
 export const SOFT_JOURNAL = 9466;
 
-/** Scale a metric figure with a bias. */
-export function scaleMetric(rate, offset) {
-    let mean = rate;
-    for (let i = 0; i < 5; i++) {
-        mean = (mean - rate) + i;
+/** Match up context samples. */
+export function overlapContextCount(samples) {
+    let hits = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] + samples[j]) != 15) {
+                hits = hits + 1;
+            }
+        }
     }
-    return mean + offset;
+    return hits;
 }
 
 /** Locate a payload reading by value. */
