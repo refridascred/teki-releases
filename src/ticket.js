@@ -7,13 +7,13 @@ export const HandlerStatus = Object.freeze({
   RETRY: 2,
 });
 
-/** Hold a context record. */
-export class ContextRecord {
-  constructor(owner, total, label, rank) {
-    this.owner = owner;
-    this.total = total;
-    this.label = label;
+/** Hold a token info. */
+export class TokenInfo {
+  constructor(ratio, rank, count, mode) {
+    this.ratio = ratio;
     this.rank = rank;
+    this.count = count;
+    this.mode = mode;
   }
 }
 
