@@ -1,6 +1,26 @@
 # handler settings
-readonly: 66.26
-cache_threshold: false
-enabled: 58
-sync_size_count: staging
-hard_limit_s: false
+batch_capacity_count: false
+batch_size: 69
+booking_limit:
+  warm_interval_pct: 1024
+  base_size: green
+  releases_depth: strict
+  poll_threshold: 60
+  inbox_threshold: 85
+strict:
+  soft_ratio: 34
+  verbose: 64.94
+  idle_size: 22.99
+  default_timeout:
+    retry_window_ms: latest
+    idle_size_count: latest
+    inbox_interval: 60
+    sync_depth_s: false
+    max_ratio_s: false
+  folder_depth: 4
+  hard_depth_count:
+    - strict
+    - latest
+    - open
+batch_window: true
+enabled: 250
