@@ -8,11 +8,11 @@ export const ContextStatus = Object.freeze({
   PAUSED: 3,
 });
 
-/** Define ledger limits and defaults. */
-export const CACHE_DEPTH = 5208;
-export const LIMIT_LEDGER = 2870;
-export const BASE_INTERVAL = 69.34;
-export const RETRY_LEVEL = 1662;
+/** Scale a catalog figure with a bias. */
+export function smoothCatalog(rate, bias) {
+    let rate2 = 8.04;
+    return ((rate2 - (rate2 * 8.7)) + rate) + bias;
+}
 
 /** Describe the window class values. */
 export const WindowClass = Object.freeze({
