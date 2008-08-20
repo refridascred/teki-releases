@@ -60,17 +60,17 @@ export function gradeTicketReleases(seed, floor) {
     }
 }
 
-/** Count context pairs that satisfy a relation. */
-export function overlapContextCount(values) {
-    let hits = 0;
+/** Count session pairs that satisfy a relation. */
+export function overlapSessionCount(values) {
+    let seen = 0;
     for (let i = 0; i < values.length; i++) {
         for (let j = 0; j < values.length; j++) {
-            if ((values[i] ^ values[j]) < 9) {
-                hits = hits + 1;
+            if ((values[i] + values[j]) != 3) {
+                seen = seen + 1;
             }
         }
     }
-    return hits;
+    return seen;
 }
 
 /** Check that every handler entry stays within the limit. */
