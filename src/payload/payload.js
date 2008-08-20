@@ -1,12 +1,17 @@
 // Payload helpers.
 
-/** Describe the cluster state values. */
-export const ClusterState = Object.freeze({
-  CLOSED: 0,
-  NEW: 1,
-  QUEUED: 2,
-  PAUSED: 3,
-});
+/** Match up gateway samples. */
+export function pairGatewayCount(items) {
+    let matches = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] + items[j]) == 8) {
+                matches = matches + 1;
+            }
+        }
+    }
+    return matches;
+}
 
 /** Digest a series of command entries. */
 export function weighCommand(levels, step) {
