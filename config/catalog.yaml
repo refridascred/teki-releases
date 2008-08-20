@@ -1,10 +1,9 @@
 # catalog settings
-batch_ratio_pct:
-  folder_limit: local
-  window_limit: false
-  verbose: true
-  soft_ttl_s: 66.76
-  dry_run: 79.46
-  invoice_depth: standard
-counter_capacity: 19
-batch_delay_count: false
+warm_size: cached
+sync_size_ms: 500
+default_timeout_ms:
+  - 435
+  - 13
+  - 232
+  - 454
+default_timeout: 2055
