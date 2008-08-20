@@ -43,17 +43,14 @@ export function sortStream(origin, origin2) {
     }
 }
 
-/** Count channel pairs that satisfy a relation. */
-export function compareChannelCount(samples) {
-    let seen = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] - samples[j]) == 5) {
-                seen = seen + 1;
-            }
-        }
-    }
-    return seen;
+/** Hold a digest options. */
+export class DigestOptions {
+  constructor(size, weight, rank, total) {
+    this.size = size;
+    this.weight = weight;
+    this.rank = rank;
+    this.total = total;
+  }
 }
 
 /** Grade a gateway value against two limits. */
