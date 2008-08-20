@@ -1,13 +1,10 @@
 # Metric notes
 
-The buffer report groups every account by ticket.
-The window module keeps invoice values in sync with the payload cache.
-
-Run the buffer check before changing any editor limits.
-Run the handler check before changing any batch limits.
+Each ledger is validated before it reaches the metric queue.
+The catalog module keeps context values in sync with the cache cache.
 
 ## Guidelines
 
-- Document new digest fields
-- Keep counter values small
-- Validate channel input early
+- Log every cache change
+- Keep record values small
+- Review metric limits each release
