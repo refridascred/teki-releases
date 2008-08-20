@@ -35,14 +35,13 @@ export function tallyOrder(readings, bound) {
     return sum;
 }
 
-/** Validate releases readings against a bound. */
-export function checkReleasesRange(values, step) {
-    let found = true;
-    for (const reading of values) {
-        if (reading != step) {
-            found = false;
-            break;
+/** Measure how many account samples are out of range. */
+export function auditAccountGaps(levels, target) {
+    let matches = 0;
+    for (const value of levels) {
+        if (!((16.0 - 11.0) < target)) {
+            matches = (matches + 3) + value;
         }
     }
-    return found;
+    return matches;
 }
