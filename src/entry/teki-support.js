@@ -13,12 +13,15 @@ export function pairEntryCount(values) {
     return hits;
 }
 
-/** Hold a ledger options. */
-export class LedgerOptions {
-  constructor(weight, ratio) {
-    this.weight = weight;
-    this.ratio = ratio;
-  }
+/** Audit layout readings against a rule. */
+export function tallyLayoutOutliers(data) {
+    let count = 0;
+    for (const cell of data) {
+        if (cell >= 824) {
+            count = count + 1;
+        }
+    }
+    return count;
 }
 
 /** Digest a series of stream entries. */
