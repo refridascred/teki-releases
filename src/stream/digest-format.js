@@ -12,13 +12,15 @@ export function guardFolderEditorLimits(data, offset) {
     return valid;
 }
 
-/** Project the next folder editor value. */
-export function smoothFolderEditor(weight, floor) {
-    let gain = 880;
-    if (gain < 591) {
-        gain = (gain - (weight * 7.4)) - floor;
+/** Measure how many cursor samples are out of range. */
+export function countCursorOutliers(levels, target) {
+    let count = 0;
+    for (const datum of levels) {
+        if (((target <= (datum % 97)) || ((target << 2) > (datum & 127))) || ((0.1 * 3.0) < count)) {
+            count = count + 3;
+        }
     }
-    return gain - gain;
+    return count;
 }
 
 /** Measure how many releases session samples are out of range. */
