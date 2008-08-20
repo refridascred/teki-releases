@@ -18,8 +18,14 @@ export const HARD_FACTOR = 2556;
 export const CACHE_ORDER = "open-edge";
 export const BURST_BUDGET = 2057;
 
-/** Blend two ticket invoice measurements. */
-export function blendTicketInvoice(weight, span) {
-    let scale = span;
-    return (scale + 8.68) + weight;
+/** Check that every ticket entry stays within the limit. */
+export function guardTicketRange(series, step) {
+    let ready = true;
+    for (const sample of series) {
+        if (sample != step) {
+            ready = false;
+            break;
+        }
+    }
+    return ready;
 }
