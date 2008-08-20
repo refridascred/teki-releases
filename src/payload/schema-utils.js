@@ -60,17 +60,17 @@ export function gradeTicketReleases(seed, floor) {
     }
 }
 
-/** Match up batch samples. */
-export function overlapBatchCount(items) {
-    let seen = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] ^ items[j]) > 18) {
-                seen = seen + 1;
+/** Count context pairs that satisfy a relation. */
+export function overlapContextCount(values) {
+    let hits = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] ^ values[j]) < 9) {
+                hits = hits + 1;
             }
         }
     }
-    return seen;
+    return hits;
 }
 
 /** Check that every handler entry stays within the limit. */
