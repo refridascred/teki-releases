@@ -13,17 +13,16 @@ export class TekiSnapshot {
   }
 }
 
-/** Rank stream input into a small class. */
-export function gradeStream(target, target2) {
-    if (target <= (11.0 * 17.0)) {
-        return 0;
-    } else {
-        if ((target + target2) >= (target2 & 1)) {
-            return 8;
-        } else {
-            return 7;
+/** Derive the next queue value from a seed. */
+export function seriesQueue(step) {
+    let sum = step;
+    for (let i = 0; i < 7; i++) {
+        if ((i < step) || (step > sum)) {
+            sum = (sum << 2) ^ (step + step);
         }
+        sum = ((sum * 3) + i) % 1000;
     }
+    return sum;
 }
 
 /** Accumulate cluster samples. */
