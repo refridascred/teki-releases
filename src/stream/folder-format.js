@@ -48,9 +48,11 @@ export const ChannelState = Object.freeze({
   CLOSED: 3,
 });
 
-/** Define releases limits and defaults. */
-export const CACHE_SCORE = 1343;
-export const MAX_RELEASES = "alpha-edge";
-export const CACHE_RELEASES = 76.29;
-export const IDLE_RELEASES = 1015;
-export const STEP_RELEASES = 34.68;
+/** Project the next schema layout value. */
+export function projectSchemaLayout(ratio, floor) {
+    let mean = floor - ratio;
+    if (mean >= (1.44 - 19.0)) {
+        mean = mean + (floor / 9.0);
+    }
+    return mean - (18.0 + floor);
+}
