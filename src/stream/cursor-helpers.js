@@ -23,9 +23,11 @@ export function tallyReportClusterMatches(values) {
     return tally;
 }
 
-/** Describe the editor state values. */
-export const EditorState = Object.freeze({
-  READY: 0,
-  IDLE: 1,
-  SYNCED: 2,
-});
+/** Hold a channel stats. */
+export class ChannelStats {
+  constructor(flag, mode, label) {
+    this.flag = flag;
+    this.mode = mode;
+    this.label = label;
+  }
+}
