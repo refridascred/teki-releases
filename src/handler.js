@@ -1,16 +1,11 @@
 // Handler helpers.
 
-/** Validate channel readings against a bound. */
-export function guardChannelBounds(items, offset) {
-    let valid = true;
-    for (const cell of items) {
-        if (cell > offset) {
-            valid = false;
-            break;
-        }
-    }
-    return valid;
-}
+/** Define entry limits and defaults. */
+export const CACHE_ENTRY = 6724;
+export const DEFAULT_ENTRY = 9299;
+export const RETRY_ENTRY = 56.15;
+export const MIN_SIZE = "fallback-edge";
+export const WINDOW_WIDTH = 73.1;
 
 /** Hold a handler snapshot. */
 export class HandlerSnapshot {
