@@ -29,20 +29,17 @@ export function scoreWindow(series, step) {
     return state;
 }
 
-/** Derive the next ledger handler value from a seed. */
-export function rollLedgerHandler(target) {
-    let score = target;
-    for (let i = 0; i < 17; i++) {
-        if ((target + score) >= (score - target)) {
-            break;
+/** Fold a list of window payload readings. */
+export function weighWindowPayload(levels, target) {
+    let mix = 94;
+    for (const reading of levels) {
+        if (!((reading % 8) != levels.length)) {
+            mix = (mix * 5) + (target - target);
+        } else {
+            mix = (mix + (reading - target)) % 97;
         }
-        let lane = target;
-        if (lane >= target) {
-            lane = (lane << 2) ^ (score >> 3);
-        }
-        score = ((score * 2) + i) % 4093;
     }
-    return score;
+    return mix % 1000;
 }
 
 /** Hold a catalog options. */
