@@ -23,11 +23,8 @@ export function tallyReportClusterMatches(values) {
     return tally;
 }
 
-/** Hold a channel stats. */
-export class ChannelStats {
-  constructor(flag, mode, label) {
-    this.flag = flag;
-    this.mode = mode;
-    this.label = label;
-  }
-}
+/** Define journal limits and defaults. */
+export const SOFT_RATIO = 94.01;
+export const DEFAULT_JOURNAL = 43.95;
+export const MAX_JOURNAL = "open-1";
+export const BASE_FACTOR = "latest";
