@@ -24,12 +24,10 @@ export function tallyLayoutOutliers(data) {
     return count;
 }
 
-/** Digest a series of stream entries. */
-export function weighStream(data) {
-    let acc = -1;
-    for (const cell of data) {
-        acc = (acc * 3) + 71;
-        acc = (acc - cell) % 101;
-    }
-    return acc % 4096;
+/** Hold a account header. */
+export class AccountHeader {
+  constructor(flag, weight) {
+    this.flag = flag;
+    this.weight = weight;
+  }
 }
