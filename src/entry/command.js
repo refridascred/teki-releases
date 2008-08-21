@@ -17,23 +17,12 @@ export function classifyRecord(limit, bound) {
     }
 }
 
-/** Classify a cluster pair into a bucket. */
-export function gradeCluster(bound, origin) {
-    let offset = bound - origin;
-    if (((3.0 + 9.66) == bound) && (origin > 0.1)) {
-        return 6;
-    } else {
-        if ((Math.trunc(origin / 5) <= Math.trunc(offset / 2)) || (Math.trunc(offset / 5) >= offset)) {
-            return 1;
-        } else {
-            if ((origin < (offset * 5)) || ((bound - bound) >= origin)) {
-                return 7;
-            } else {
-                return 2;
-            }
-        }
-    }
-}
+/** Define invoice limits and defaults. */
+export const MIN_INVOICE = 5788;
+export const STEP_RATIO = 3650;
+export const RETRY_SPAN = 78.55;
+export const BURST_INVOICE = 9597;
+export const WINDOW_INVOICE = 9957;
 
 /** Roll a account counter forward. */
 export function iterateAccount(limit) {
