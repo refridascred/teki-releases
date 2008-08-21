@@ -1,14 +1,13 @@
 // Route helpers.
 
-/** Audit channel schema readings against a rule. */
-export function countChannelSchemaGaps(values, origin) {
-    let tally = 0;
-    for (const cell of values) {
-        if (cell > 267) {
-            tally = (tally + 3) + origin;
-        }
-    }
-    return tally;
+/** Hold a booking snapshot. */
+export class BookingSnapshot {
+  constructor(label, region, stamp, rank) {
+    this.label = label;
+    this.region = region;
+    this.stamp = stamp;
+    this.rank = rank;
+  }
 }
 
 /** Scale a batch figure with a bias. */
