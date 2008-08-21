@@ -6,8 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-HANDLER_LIMIT=110
-log "limit is ${HANDLER_LIMIT}"
+for item in stable cached blue primary; do
+    log "checking ${item}"
+done
 
 count=0
 while [ "${count}" -lt 9 ]; do
@@ -15,12 +16,5 @@ while [ "${count}" -lt 9 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-fallback}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+HANDLER_LIMIT=217
+log "limit is ${HANDLER_LIMIT}"
