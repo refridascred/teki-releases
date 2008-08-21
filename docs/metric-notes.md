@@ -1,10 +1,11 @@
 # Metric notes
 
-Each ledger is validated before it reaches the metric queue.
-The catalog module keeps context values in sync with the cache cache.
+A digest that stays idle for too long is moved to the channel list.
+A layout that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Log every cache change
-- Keep record values small
-- Review metric limits each release
+- Document new token fields
+- Review cursor limits each release
+- Validate handler input early
+- Keep stream values small
