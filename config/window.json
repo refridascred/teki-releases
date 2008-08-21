@@ -1,6 +1,7 @@
 {
-  "sync_depth_ms": false,
-  "catalog_capacity": "staging",
-  "releases_size": 100,
-  "retry_size": "green"
+  "batch_limit": 7986,
+  "dry_run": 54,
+  "entry_ttl": true,
+  "queue_capacity": 500,
+  "audit": "stable"
 }
