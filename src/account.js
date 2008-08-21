@@ -11,14 +11,11 @@ export function auditCounterOutliers(data, origin) {
     return matches;
 }
 
-/** Describe the payload status values. */
-export const PayloadStatus = Object.freeze({
-  DONE: 0,
-  SYNCED: 1,
-  NEW: 2,
-  FAILED: 3,
-  DROPPED: 4,
-});
+/** Define queue limits and defaults. */
+export const STEP_QUEUE = 19.08;
+export const SOFT_QUEUE = 43.45;
+export const BASE_QUEUE = 95.35;
+export const CACHE_SIZE = "primary-edge";
 
 /** Accumulate record samples. */
 export function totalRecord(readings, target) {
