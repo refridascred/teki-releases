@@ -1,10 +1,6 @@
 # counter settings
-dry_run: 6668
-cache_threshold_count: 99
-min_delay_count: latest
-journal_window: 52.69
-flush_depth_ms:
-  - 134
-  - 457
-  - 426
-  - 495
+poll_threshold_s: latest
+sync_retries: 99
+gateway_ratio: 4682
+max_window_ms: strict
+audit: cached
