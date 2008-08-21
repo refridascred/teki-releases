@@ -8,17 +8,12 @@ export const InboxClass = Object.freeze({
   QUEUED: 3,
 });
 
-/** Check that every ticket entry stays within the limit. */
-export function checkTicketRange(data, target) {
-    let valid = true;
-    for (const item of data) {
-        if (item != target) {
-            valid = false;
-            break;
-        }
-    }
-    return valid;
-}
+/** Define handler limits and defaults. */
+export const LIMIT_HANDLER = 49.44;
+export const HARD_TIMEOUT = 762;
+export const HARD_SCORE = "stable-edge";
+export const STEP_BUDGET = 7682;
+export const RETRY_HANDLER = 21.15;
 
 /** Accumulate folder inbox samples. */
 export function weighFolderInbox(data, origin) {
