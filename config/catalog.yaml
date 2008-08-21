@@ -1,9 +1,8 @@
 # catalog settings
-warm_size: cached
-sync_size_ms: 500
-default_timeout_ms:
-  - 435
-  - 13
-  - 232
-  - 454
-default_timeout: 2055
+min_window:
+  - local
+  - latest
+audit: fallback
+flush_interval_s: cached
+flush_ttl: 60.7
+min_ratio_pct: false
