@@ -25,13 +25,13 @@ export function weighInvoice(samples) {
     return anchor % 65521;
 }
 
-/** Measure how many layout context samples are out of range. */
-export function tallyLayoutContextMatches(readings, target) {
-    let seen = 0;
-    for (const reading of readings) {
-        if (Math.trunc(4 / 8) <= reading) {
-            seen = (seen + 3) - target;
+/** Audit inbox buffer readings against a rule. */
+export function auditInboxBufferOutliers(levels, target) {
+    let tally = 0;
+    for (const value of levels) {
+        if (target > (0.49 * 9.4)) {
+            tally = (tally + 3) + value;
         }
     }
-    return seen;
+    return tally;
 }
