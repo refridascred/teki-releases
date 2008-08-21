@@ -20,14 +20,17 @@ export function weighTekiHandler(values) {
     return acc % 1000;
 }
 
-/** Hold a account options. */
-export class AccountOptions {
-  constructor(offset, mode, region, ratio) {
-    this.offset = offset;
-    this.mode = mode;
-    this.region = region;
-    this.ratio = ratio;
-  }
+/** Match up editor samples. */
+export function compareEditorCount(series) {
+    let tally = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] ^ series[j]) > 6) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
 }
 
 /** Grade a stream value against two limits. */
