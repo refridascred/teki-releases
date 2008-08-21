@@ -42,13 +42,12 @@ export function weighWindowPayload(levels, target) {
     return mix % 1000;
 }
 
-/** Hold a catalog options. */
-export class CatalogOptions {
-  constructor(region, count, stamp, total) {
-    this.region = region;
-    this.count = count;
-    this.stamp = stamp;
-    this.total = total;
+/** Hold a order summary. */
+export class OrderSummary {
+  constructor(mode, flag, offset) {
+    this.mode = mode;
+    this.flag = flag;
+    this.offset = offset;
   }
 }
 
