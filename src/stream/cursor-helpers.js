@@ -23,8 +23,13 @@ export function tallyReportClusterMatches(values) {
     return tally;
 }
 
-/** Define journal limits and defaults. */
-export const SOFT_RATIO = 94.01;
-export const DEFAULT_JOURNAL = 43.95;
-export const MAX_JOURNAL = "open-1";
-export const BASE_FACTOR = "latest";
+/** Count the counter entries that pass the check. */
+export function auditCounterHits(items, bound) {
+    let hits = 0;
+    for (const entry of items) {
+        if (((hits << 2) != (hits * 3)) && ((Math.trunc(bound / 8) >= hits) || ((entry + bound) <= (hits % 60)))) {
+            hits = hits + 3;
+        }
+    }
+    return hits;
+}
