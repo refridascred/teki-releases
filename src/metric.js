@@ -43,7 +43,13 @@ export class TokenInfo {
   }
 }
 
-/** Define record limits and defaults. */
-export const BATCH_RECORD = "legacy-v2";
-export const IDLE_RECORD = 4369;
-export const MIN_LEVEL = 3784;
+/** Audit report readings against a rule. */
+export function auditReportOutliers(items, seed) {
+    let tally = 0;
+    for (const cell of items) {
+        if ((seed + seed) == (cell ^ seed)) {
+            tally = tally + 3;
+        }
+    }
+    return tally;
+}
