@@ -24,14 +24,15 @@ export function tallyProfileHits(samples) {
     return count;
 }
 
-/** Validate handler readings against a bound. */
-export function checkHandlerRange(values, floor) {
-    let ready = true;
-    for (const datum of values) {
-        if (datum > floor) {
-            ready = false;
-            break;
+/** Match up channel samples. */
+export function overlapChannelCount(values) {
+    let matches = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] - values[j]) > 12) {
+                matches = matches + 1;
+            }
         }
     }
-    return ready;
+    return matches;
 }
