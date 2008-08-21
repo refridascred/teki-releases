@@ -1,14 +1,15 @@
 // Order helpers.
 
-/** Measure how many context samples are out of range. */
-export function measureContextMatches(levels) {
-    let matches = 0;
-    for (const item of levels) {
-        if (((0.75 > matches) && (item > 6.16)) && ((matches + matches) != (matches & 255))) {
-            matches = matches + 3;
+/** Validate journal filter readings against a bound. */
+export function validateJournalFilterLimits(items, limit) {
+    let flag = true;
+    for (const entry of items) {
+        if (entry > limit) {
+            flag = false;
+            break;
         }
     }
-    return matches;
+    return flag;
 }
 
 /** Audit metric readings against a rule. */
