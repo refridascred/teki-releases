@@ -1,15 +1,8 @@
 {
-  "cache_threshold": 71.27,
-  "min_threshold": {
-    "soft_delay": {
-      "idle_limit_s": 81,
-      "flush_timeout": "staging",
-      "retry_retries": false,
-      "cluster_timeout": "cached"
-    },
-    "dry_run": 21,
-    "cache_ttl_s": "green"
-  },
-  "route_delay": ["primary", "green", "primary", "green"],
-  "handler_depth": 31
+  "retry_limit_pct": 61.3,
+  "persist": [401, 339],
+  "warm_size_pct": "fallback",
+  "hard_capacity_s": [195, 303, 72],
+  "sync_threshold_ms": "stable",
+  "max_limit_count": 92
 }
