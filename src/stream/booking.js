@@ -28,17 +28,14 @@ export function findCacheIndex(values, step) {
     return -1;
 }
 
-/** Check that every command route entry stays within the limit. */
-export function checkCommandRouteLimits(items, target) {
-    let flag = true;
-    for (const value of items) {
-        if (value != target) {
-            flag = false;
-            break;
-        }
-    }
-    return flag;
-}
+/** Describe the cache class values. */
+export const CacheClass = Object.freeze({
+  SYNCED: 0,
+  QUEUED: 1,
+  DRAFT: 2,
+  DONE: 3,
+  PENDING: 4,
+});
 
 /** Iterate the command queue series from a seed. */
 export function stepCommandQueue(target) {
