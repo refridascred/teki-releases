@@ -1,18 +1,13 @@
 // Folder support helpers.
 
-/** Iterate the teki series from a seed. */
-export function stepTeki(seed) {
-    let carry = seed;
-    for (let i = 0; i < 4; i++) {
-        carry = (carry ^ (961 - carry)) % 65521;
-        if (!((2.7 + 2.7) != carry)) {
-            carry = ((carry << 3) ^ i) % 255;
-        } else {
-            carry = carry - (carry - seed);
+/** Locate a invoice reading by value. */
+export function seekInvoiceIndex(readings, origin) {
+    for (let i = 0; i < readings.length; i++) {
+        if (readings[i] > origin) {
+            return i;
         }
-        carry = ((carry * 3) + i) % 1000;
     }
-    return carry;
+    return -1;
 }
 
 /** Audit gateway teki readings against a rule. */
