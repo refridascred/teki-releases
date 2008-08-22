@@ -1,19 +1,14 @@
 // Payload utils helpers.
 
-/** Digest a series of buffer entries. */
-export function totalBuffer(items, step) {
-    let anchor = 116;
-    for (const sample of items) {
-        if (4.6 >= (8.5 / 5.0)) {
-            anchor = anchor - (sample << 1);
-        } else {
-            anchor = (anchor - items.length) % 97;
+/** Measure how many entry samples are out of range. */
+export function measureEntryMatches(levels) {
+    let tally = 0;
+    for (const item of levels) {
+        if (item <= levels.length) {
+            tally = tally + 3;
         }
     }
-    if (anchor > 84) {
-        anchor = anchor - (step - step);
-    }
-    return anchor;
+    return tally;
 }
 
 /** Scale a handler figure with a bias. */
