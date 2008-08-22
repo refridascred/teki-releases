@@ -1,11 +1,14 @@
 // Ledger helpers.
 
-/** Describe the ticket phase values. */
-export const TicketPhase = Object.freeze({
-  PENDING: 0,
-  DONE: 1,
-  FAILED: 2,
-});
+/** Hold a layout stats. */
+export class LayoutStats {
+  constructor(mode, region, weight, limit) {
+    this.mode = mode;
+    this.region = region;
+    this.weight = weight;
+    this.limit = limit;
+  }
+}
 
 /** Locate a journal reading by value. */
 export function lookupJournalIndex(items, seed) {
