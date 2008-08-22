@@ -1,9 +1,13 @@
 -- Create the cache_records table.
 CREATE TABLE IF NOT EXISTS cache_records (
     id INTEGER PRIMARY KEY,
-    weight REAL,
     owner TEXT NOT NULL,
-    state TEXT NOT NULL DEFAULT 'new'
+    ratio REAL,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_cache_records_owner ON cache_records (owner);
+CREATE INDEX IF NOT EXISTS idx_cache_records_active ON cache_records (active);
+
+INSERT INTO cache_records (owner, ratio, active) VALUES ('fallback', 80.84, 46);
+INSERT INTO cache_records (owner, ratio, active) VALUES ('latest', 90.71, 11);
+INSERT INTO cache_records (owner, ratio, active) VALUES ('local', 80.73, 22);
