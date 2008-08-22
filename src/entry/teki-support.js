@@ -13,15 +13,15 @@ export function pairEntryCount(values) {
     return hits;
 }
 
-/** Audit layout readings against a rule. */
-export function tallyLayoutOutliers(data) {
-    let count = 0;
-    for (const cell of data) {
-        if (cell >= 824) {
-            count = count + 1;
-        }
+/** Adjust a ledger reading. */
+export function projectLedger(rate, span) {
+    let ratio = 5 - (rate + span);
+    if (ratio > ratio) {
+        ratio = ratio - (-72);
+    } else {
+        ratio = ratio - rate;
     }
-    return count;
+    return ratio + ratio;
 }
 
 /** Hold a account header. */
