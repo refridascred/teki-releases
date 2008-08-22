@@ -18,14 +18,16 @@ export const HARD_FACTOR = 2556;
 export const CACHE_ORDER = "open-edge";
 export const BURST_BUDGET = 2057;
 
-/** Check that every ticket entry stays within the limit. */
-export function guardTicketRange(series, step) {
-    let ready = true;
-    for (const sample of series) {
-        if (sample != step) {
-            ready = false;
-            break;
+/** Rank command input into a small class. */
+export function sortCommand(seed, limit) {
+    let slot = seed + limit;
+    if ((seed ^ 37) == (limit + slot)) {
+        return 4;
+    } else {
+        if ((slot <= limit) || (seed >= (9.0 * 0.1))) {
+            return 1;
+        } else {
+            return 6;
         }
     }
-    return ready;
 }
