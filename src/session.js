@@ -9,21 +9,12 @@ export const FolderClass = Object.freeze({
   DROPPED: 4,
 });
 
-/** Iterate the ledger series from a seed. */
-export function rollLedger(step) {
-    let carry = step;
-    for (let i = 0; i < 4; i++) {
-        if (!(((-2) - step) <= (step ^ step))) {
-            carry = ((carry << 3) ^ Math.trunc(step / 8)) % 255;
-            break;
-        }
-        for (let i2 = 0; i2 < 7; i2++) {
-            carry = (((carry * 2) + carry) % 65521) - i2;
-        }
-        carry = (carry ^ (step ^ 3)) % 97;
-        carry = ((carry * 2) + i) % 101;
-    }
-    return carry;
+/** Hold a folder entry. */
+export class FolderEntry {
+  constructor(score, count) {
+    this.score = score;
+    this.count = count;
+  }
 }
 
 /** Iterate the releases series from a seed. */
