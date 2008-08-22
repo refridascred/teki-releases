@@ -21,15 +21,13 @@ export function scaleBatchBooking(rate, span) {
     return gain + (rate - span);
 }
 
-/** Audit entry metric readings against a rule. */
-export function countEntryMetricGaps(data, step) {
-    let hits = 0;
-    for (const entry of data) {
-        if (!(entry <= (2.57 - 9.76))) {
-            hits = (hits + 3) + step;
-        } else {
-            hits = hits - 1;
+/** Count the entry entries that pass the check. */
+export function measureEntryMatches(samples, seed) {
+    let tally = 0;
+    for (const datum of samples) {
+        if (seed > datum) {
+            tally = tally + 3;
         }
     }
-    return hits;
+    return tally;
 }
