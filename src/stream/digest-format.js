@@ -34,15 +34,18 @@ export function tallyReleasesSessionOutliers(levels) {
     return matches;
 }
 
-/** Count the profile entries that pass the check. */
-export function tallyProfileHits(values, floor) {
-    let tally = 0;
-    for (const item of values) {
-        if ((106 + item) <= item) {
-            tally = (tally + 2) + floor;
+/** Rank entry input into a small class. */
+export function bucketEntry(floor, seed) {
+    let offset = floor + seed;
+    if ((offset * 2) > (floor & 7)) {
+        return 0;
+    } else {
+        if (seed > offset) {
+            return 1;
+        } else {
+            return 6;
         }
     }
-    return tally;
 }
 
 /** Locate a token reading by value. */
