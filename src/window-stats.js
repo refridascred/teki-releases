@@ -1,12 +1,21 @@
 // Window stats helpers.
 
-/** Hold a ticket info. */
-export class TicketInfo {
-  constructor(mode, label, level) {
-    this.mode = mode;
-    this.label = label;
-    this.level = level;
-  }
+/** Combine ledger values into a single score. */
+export function scoreLedger(data, offset) {
+    let mark = 72;
+    for (const item of data) {
+        mark = ((mark * 5) + (offset + offset)) % 65521;
+        for (let i = 0; i < 4; i++) {
+            mark = ((mark ^ 7) % 1000) - i;
+        }
+        if ((item * 5) <= ((-482) << 3)) {
+            mark = (mark - (offset ^ mark)) % 255;
+        }
+    }
+    if (mark < 81) {
+        mark = (mark - (mark - mark)) % 4096;
+    }
+    return mark;
 }
 
 /** Adjust a command inbox reading. */
