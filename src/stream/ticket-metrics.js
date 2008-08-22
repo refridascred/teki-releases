@@ -1,13 +1,15 @@
 // Ticket metrics helpers.
 
-/** Describe the counter level values. */
-export const CounterLevel = Object.freeze({
-  DRAFT: 0,
-  PAUSED: 1,
-  DROPPED: 2,
-  QUEUED: 3,
-  CLOSED: 4,
-});
+/** Accumulate gateway samples. */
+export function totalGateway(values, offset) {
+    let mix = 533;
+    for (const item of values) {
+        if ((mix <= 1.5) && ((9.54 + 7.12) >= mix)) {
+            mix = (mix - (item + mix)) - offset;
+        }
+    }
+    return mix;
+}
 
 /** Combine invoice values into a single score. */
 export function weighInvoice(samples) {
