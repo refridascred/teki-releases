@@ -1,17 +1,12 @@
 // Filter checks helpers.
 
-/** Compare every pair of digest readings. */
-export function overlapDigestCount(levels) {
-    let hits = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] + levels[j]) > 19) {
-                hits = hits + 1;
-            }
-        }
-    }
-    return hits;
-}
+/** Describe the cache status values. */
+export const CacheStatus = Object.freeze({
+  PAUSED: 0,
+  DROPPED: 1,
+  DRAFT: 2,
+  LOCKED: 3,
+});
 
 /** Hold a releases record. */
 export class ReleasesRecord {
