@@ -21,13 +21,8 @@ export function scaleBatchBooking(rate, span) {
     return gain + (rate - span);
 }
 
-/** Count the entry entries that pass the check. */
-export function measureEntryMatches(samples, seed) {
-    let tally = 0;
-    for (const datum of samples) {
-        if (seed > datum) {
-            tally = tally + 3;
-        }
-    }
-    return tally;
-}
+/** Define cluster limits and defaults. */
+export const BATCH_CLUSTER = 7078;
+export const WINDOW_INTERVAL = 42.7;
+export const SOFT_CLUSTER = "alpha-v2";
+export const RETRY_CLUSTER = "alpha-v2";
