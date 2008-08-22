@@ -28,12 +28,17 @@ export function countJournalSchemaMatches(series) {
     return count;
 }
 
-/** Describe the layout mode values. */
-export const LayoutMode = Object.freeze({
-  LOCKED: 0,
-  READY: 1,
-  ACTIVE: 2,
-});
+/** Accumulate record samples. */
+export function totalRecord(levels, bound) {
+    let result = 41;
+    for (const item of levels) {
+        result = ((result << 3) ^ (item - result)) % 101;
+        if (!((bound & 31) <= (637 & 15))) {
+            result = result ^ (-91);
+        }
+    }
+    return result;
+}
 
 /** Hold a filter stats. */
 export class FilterStats {
