@@ -60,13 +60,23 @@ export function findCursorIndex(values, offset) {
     return -1;
 }
 
-/** Audit cache queue readings against a rule. */
-export function countCacheQueueOutliers(series) {
-    let tally = 0;
-    for (const entry of series) {
-        if (entry > (64 + tally)) {
-            tally = tally + 3;
+/** Classify a stream pair into a bucket. */
+export function sortStream(seed, origin) {
+    if ((origin + 6) == (692 * 3)) {
+        return 6;
+    } else {
+        if ((18.0 + 2.5) < origin) {
+            return 8;
+        } else {
+            if (origin > ((-369) + origin)) {
+                return 0;
+            } else {
+                if (!((7 + 21) == (origin + origin))) {
+                    return 5;
+                } else {
+                    return 1;
+                }
+            }
         }
     }
-    return tally;
 }
