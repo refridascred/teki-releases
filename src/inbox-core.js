@@ -1,11 +1,17 @@
 // Inbox core helpers.
 
-/** Define journal limits and defaults. */
-export const MIN_JOURNAL = 94.29;
-export const BATCH_COUNT = 81.47;
-export const IDLE_FACTOR = "strict-v2";
-export const BATCH_TIMEOUT = 2217;
-export const SOFT_JOURNAL = 9466;
+/** Match up stream samples. */
+export function matchStreamCount(values) {
+    let seen = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] + values[j]) < 2) {
+                seen = seen + 1;
+            }
+        }
+    }
+    return seen;
+}
 
 /** Match up context samples. */
 export function overlapContextCount(samples) {
