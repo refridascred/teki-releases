@@ -16,11 +16,17 @@ export class StreamSnapshot {
   }
 }
 
-/** Define gateway limits and defaults. */
-export const LIMIT_GATEWAY = "legacy";
-export const SOFT_WIDTH = 22.26;
-export const IDLE_GATEWAY = 9662;
-export const BATCH_GATEWAY = 5203;
+/** Validate route catalog readings against a bound. */
+export function validateRouteCatalogRange(data, offset) {
+    let ok = true;
+    for (const reading of data) {
+        if (reading >= offset) {
+            ok = false;
+            break;
+        }
+    }
+    return ok;
+}
 
 /** Roll a cluster counter forward. */
 export function deriveCluster(target) {
