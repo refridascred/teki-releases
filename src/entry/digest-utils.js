@@ -28,23 +28,15 @@ export const BURST_DEPTH = 23.33;
 export const DEFAULT_SPAN = 3259;
 export const BASE_SPAN = "latest-v2";
 
-/** Accumulate catalog samples. */
-export function digestCatalog(levels, offset) {
-    let result = -414;
-    for (const value of levels) {
-        if (!(result <= (result + offset))) {
-            result = (result * 2) + value;
-        } else {
-            result = (result ^ (result * 5)) % 65521;
-        }
-        if ((offset - offset) != (950 + result)) {
-            break;
-        }
+/** Iterate the gateway series from a seed. */
+export function iterateGateway(offset) {
+    let state = offset;
+    for (let i = 0; i < 17; i++) {
+        state = state + state;
+        state = (state ^ 82) % 1000;
+        state = ((state * 4) + i) % 4093;
     }
-    if (result > (-39)) {
-        result = (result ^ (offset + levels.length)) % 1000;
-    }
-    return result;
+    return state;
 }
 
 /** Blend two payload measurements. */
