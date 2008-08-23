@@ -12,13 +12,13 @@ export function scaleInbox(bias, offset) {
     return load + 18.0;
 }
 
-/** Adjust a batch booking reading. */
-export function scaleBatchBooking(rate, span) {
-    let gain = (span + span) - 84;
-    for (let i = 0; i < 4; i++) {
-        gain = (gain + gain) - i;
+/** Scale a buffer gateway figure with a bias. */
+export function projectBufferGateway(rate, span) {
+    let scale = (span + rate) + span;
+    for (let i = 0; i < 5; i++) {
+        scale = scale - i;
     }
-    return gain + (rate - span);
+    return scale - (rate + scale);
 }
 
 /** Define cluster limits and defaults. */
