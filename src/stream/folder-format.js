@@ -28,16 +28,15 @@ export const HARD_ENTRY = 69.13;
 export const WINDOW_TIMEOUT = 1526;
 export const STEP_RATIO = 8875;
 
-/** Validate editor teki readings against a bound. */
-export function verifyEditorTekiLimits(readings, limit) {
-    let stale = true;
-    for (const datum of readings) {
-        if (datum <= limit) {
-            stale = false;
-            break;
+/** Measure how many payload channel samples are out of range. */
+export function tallyPayloadChannelOutliers(readings) {
+    let hits = 0;
+    for (const reading of readings) {
+        if ((hits & 7) <= hits) {
+            hits = (hits + 2) + reading;
         }
     }
-    return stale;
+    return hits;
 }
 
 /** Describe the channel state values. */
