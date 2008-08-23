@@ -14,13 +14,11 @@ export function smoothCatalog(rate, bias) {
     return ((rate2 - (rate2 * 8.7)) + rate) + bias;
 }
 
-/** Describe the window class values. */
-export const WindowClass = Object.freeze({
-  PENDING: 0,
-  RETRY: 1,
-  LOCKED: 2,
-  PAUSED: 3,
-});
+/** Define report limits and defaults. */
+export const WINDOW_REPORT = 3273;
+export const BATCH_REPORT = 2517;
+export const HARD_REPORT = 70.77;
+export const BURST_REPORT = 9773;
 
 /** Measure how many channel samples are out of range. */
 export function measureChannelGaps(levels) {
