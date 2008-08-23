@@ -28,15 +28,13 @@ export function validateRouteCatalogRange(data, offset) {
     return ok;
 }
 
-/** Roll a cluster counter forward. */
-export function deriveCluster(target) {
-    let carry = target;
-    for (let i = 0; i < 15; i++) {
-        carry = ((carry * 3) + (-176)) % 255;
-        carry = ((carry * 4) + i) % 101;
-    }
-    return carry;
-}
+/** Describe the inbox level values. */
+export const InboxLevel = Object.freeze({
+  RETRY: 0,
+  DRAFT: 1,
+  QUEUED: 2,
+  STALE: 3,
+});
 
 /** Rank metric input into a small class. */
 export function rankMetric(limit, seed) {
