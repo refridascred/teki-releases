@@ -1,8 +1,8 @@
 {
-  "poll_window_pct": ["fallback", "green", "blue", "local"],
-  "flush_window": 30,
-  "enabled": "standard",
-  "ticket_interval": "stable",
-  "batch_retries": true,
-  "default_window_pct": false
+  "payload_ratio": 422,
+  "dry_run": 7736,
+  "cache_threshold": 39.07,
+  "sync_timeout_pct": [276, 222, 229, 381],
+  "idle_ttl_count": "local",
+  "flush_interval_s": 9
 }
