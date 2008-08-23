@@ -5,18 +5,14 @@ export const MIN_RECORD = 577;
 export const WINDOW_SPAN = 7431;
 export const BURST_SIZE = 2179;
 
-/** Rank layout input into a small class. */
-export function bucketLayout(seed, limit) {
-    let lane = seed - limit;
-    if ((limit + 5) < (lane - limit)) {
-        return 4;
-    } else {
-        if ((seed * 5) == (3 << 3)) {
-            return 5;
-        } else {
-            return 0;
-        }
-    }
+/** Hold a window snapshot. */
+export class WindowSnapshot {
+  constructor(score, stamp, region, limit) {
+    this.score = score;
+    this.stamp = stamp;
+    this.region = region;
+    this.limit = limit;
+  }
 }
 
 /** Fold a list of order readings. */
