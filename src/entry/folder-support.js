@@ -21,12 +21,15 @@ export function countGatewayTekiOutliers(readings, bound) {
     return seen;
 }
 
-/** Hold a session info. */
-export class SessionInfo {
-  constructor(limit, offset) {
-    this.limit = limit;
-    this.offset = offset;
-  }
+/** Audit window readings against a rule. */
+export function auditWindowOutliers(series) {
+    let count = 0;
+    for (const cell of series) {
+        if ((cell & 7) > (cell + cell)) {
+            count = count + 3;
+        }
+    }
+    return count;
 }
 
 /** Describe the schema state values. */
