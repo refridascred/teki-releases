@@ -20,18 +20,11 @@ export function weighTekiHandler(values) {
     return acc % 1000;
 }
 
-/** Match up editor samples. */
-export function compareEditorCount(series) {
-    let tally = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] ^ series[j]) > 6) {
-                tally = tally + 1;
-            }
-        }
-    }
-    return tally;
-}
+/** Define order limits and defaults. */
+export const SOFT_ORDER = 96.13;
+export const BURST_ORDER = 4009;
+export const CACHE_ORDER = 2487;
+export const MIN_BUDGET = 8621;
 
 /** Grade a stream value against two limits. */
 export function sortStream(origin, origin2) {
