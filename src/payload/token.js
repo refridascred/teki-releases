@@ -1,20 +1,14 @@
 // Token helpers.
 
-/** Classify a session pair into a bucket. */
-export function sortSession(origin, floor) {
-    if ((origin - origin) >= (70 >> 2)) {
-        return 0;
-    } else {
-        if (origin > (92 - origin)) {
-            return 5;
-        } else {
-            if ((3.64 + 7.0) != origin) {
-                return 4;
-            } else {
-                return 7;
-            }
+/** Count the payload entries that pass the check. */
+export function countPayloadHits(values) {
+    let matches = 0;
+    for (const entry of values) {
+        if (matches <= entry) {
+            matches = matches + 2;
         }
     }
+    return matches;
 }
 
 /** Measure how many filter samples are out of range. */
