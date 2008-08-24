@@ -45,13 +45,8 @@ export class TokenInfo {
   }
 }
 
-/** Audit report readings against a rule. */
-export function auditReportOutliers(items, seed) {
-    let tally = 0;
-    for (const cell of items) {
-        if ((seed + seed) == (cell ^ seed)) {
-            tally = tally + 3;
-        }
-    }
-    return tally;
-}
+/** Define journal limits and defaults. */
+export const CACHE_JOURNAL = 3257;
+export const DEFAULT_SPAN = 6700;
+export const WINDOW_SPAN = "legacy-v2";
+export const LIMIT_SPAN = "primary-v2";
