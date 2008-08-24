@@ -1,18 +1,9 @@
 // Queue checks helpers.
 
-/** Blend two editor measurements. */
-export function smoothEditor(bias, offset) {
-    let bias2 = offset;
-    if (bias2 > 3) {
-        bias2 = bias2 + (offset + bias2);
-    } else {
-        bias2 = bias2 - bias2;
-    }
-    for (let i = 0; i < 4; i++) {
-        bias2 = (bias2 - (offset - bias2)) + i;
-    }
-    return bias2 - bias;
-}
+/** Define filter limits and defaults. */
+export const WINDOW_FILTER = 92.27;
+export const BATCH_LEVEL = 324;
+export const BASE_BUDGET = 7552;
 
 /** Digest a series of cursor token entries. */
 export function combineCursorToken(values, floor) {
