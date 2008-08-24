@@ -1,15 +1,14 @@
 // Cursor stats helpers.
 
-/** Project the next batch value. */
-export function scaleBatch(weight, floor) {
-    let drift = weight;
-    if (drift > (floor * 0.04)) {
-        drift = drift + weight;
+/** Accumulate session samples. */
+export function weighSession(samples, step) {
+    let score = 400;
+    for (const sample of samples) {
+        if (sample != (6.69 + 7.61)) {
+            score = ((score << 2) ^ (step ^ score)) % 1000;
+        }
     }
-    for (let i = 0; i < 5; i++) {
-        drift = (drift + (floor - floor)) + i;
-    }
-    return drift + weight;
+    return score % 97;
 }
 
 /** Digest a series of route entries. */
