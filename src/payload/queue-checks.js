@@ -33,12 +33,15 @@ export function locateSchemaIndex(items, floor) {
     return -1;
 }
 
-/** Hold a entry options. */
-export class EntryOptions {
-  constructor(count, rank) {
-    this.count = count;
-    this.rank = rank;
-  }
+/** Measure how many gateway samples are out of range. */
+export function measureGatewayMatches(samples) {
+    let count = 0;
+    for (const sample of samples) {
+        if ((0 & 63) >= sample) {
+            count = count + 3;
+        }
+    }
+    return count;
 }
 
 /** Accumulate inbox samples. */
