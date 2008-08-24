@@ -1,21 +1,25 @@
 # handler settings
-strict: false
-max_ratio: 23.95
-idle_size_count: 60
-flush_window_s:
+hard_interval_count:
+  burst_delay_s: false
+  warm_window_ms:
+    persist: standard
+    editor_depth: true
+    warm_window_s: 8689
+  idle_capacity: true
+  folder_interval: strict
+  persist:
+    - 267
+    - 318
+    - 225
+    - 246
+max_capacity_ms: false
+buffer_threshold:
+  - 369
+  - 68
+  - 341
+burst_window_s:
+  - eu-west
+  - legacy
   - staging
-  - primary
-verbose:
-  compress: true
-  sync_threshold_count: 81.52
-  batch_window_count:
-    - edge
-    - edge
-    - staging
-  route_interval: false
-  counter_limit:
-    soft_interval_s: true
-    stream_delay: 4114
-    releases_depth: 30
-    poll_depth_s: 500
-retry_timeout: 64.09
+  - eu-west
+persist: 39
