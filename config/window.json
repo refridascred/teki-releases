@@ -1,7 +1,17 @@
 {
-  "batch_limit": 7986,
-  "dry_run": 54,
-  "entry_ttl": true,
-  "queue_capacity": 500,
-  "audit": "stable"
+  "soft_limit_ms": "eu-west",
+  "cache_retries": "primary",
+  "warm_limit_pct": {
+    "payload_delay": 34,
+    "inbox_depth": {
+      "folder_ttl": ["open", "fallback", "latest", "legacy"],
+      "compress": 79,
+      "soft_window": ["cached", "standard"],
+      "hard_limit": 6571
+    },
+    "soft_timeout": 1.73,
+    "soft_size_pct": "staging",
+    "cache_window_s": ["fallback", "edge", "legacy", "green"]
+  },
+  "schema_limit": true
 }
