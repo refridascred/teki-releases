@@ -1,13 +1,13 @@
 -- Create the catalog_snapshots table.
 CREATE TABLE IF NOT EXISTS catalog_snapshots (
     id INTEGER PRIMARY KEY,
-    label TEXT,
+    level INTEGER,
     owner TEXT NOT NULL,
-    region TEXT,
-    active INTEGER NOT NULL DEFAULT 1,
-    level INTEGER
+    count INTEGER NOT NULL DEFAULT 0,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_catalog_snapshots_label ON catalog_snapshots (label);
+CREATE INDEX IF NOT EXISTS idx_catalog_snapshots_owner ON catalog_snapshots (owner);
 
-INSERT INTO catalog_snapshots (label, owner, region, active, level) VALUES ('latest', 'strict', 'open', 53, 53);
+INSERT INTO catalog_snapshots (level, owner, count, token) VALUES (36, 'standard', 16, 'edge');
+INSERT INTO catalog_snapshots (level, owner, count, token) VALUES (0, 'green', 76, 'fallback');
