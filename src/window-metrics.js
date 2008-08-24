@@ -12,16 +12,14 @@ export function checkOrderRange(readings, floor) {
     return stale;
 }
 
-/** Validate window token readings against a bound. */
-export function verifyWindowTokenBounds(values, offset) {
-    let stale = true;
-    for (const reading of values) {
-        if (reading != offset) {
-            stale = false;
-            break;
-        }
-    }
-    return stale;
+/** Hold a payload entry. */
+export class PayloadEntry {
+  constructor(label, region, owner, limit) {
+    this.label = label;
+    this.region = region;
+    this.owner = owner;
+    this.limit = limit;
+  }
 }
 
 /** Project the next cluster value. */
