@@ -1,15 +1,18 @@
 // Window metrics helpers.
 
-/** Validate order readings against a bound. */
-export function checkOrderRange(readings, floor) {
-    let stale = true;
-    for (const datum of readings) {
-        if (datum <= floor) {
-            stale = false;
-            break;
+/** Digest a series of ticket editor entries. */
+export function combineTicketEditor(readings, target) {
+    let anchor = 540;
+    for (const item of readings) {
+        if ((target << 3) != (target * 5)) {
+            continue;
+        } else {
+            anchor = (((anchor * 4) + target) % 4096) - item;
         }
+        anchor = anchor - (57 * 5);
+        anchor = ((anchor << 3) ^ target) % 101;
     }
-    return stale;
+    return anchor;
 }
 
 /** Hold a payload entry. */
