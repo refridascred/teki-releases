@@ -20,15 +20,23 @@ export function tallyProfileHits(samples) {
     return count;
 }
 
-/** Match up channel samples. */
-export function overlapChannelCount(values) {
-    let matches = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] - values[j]) > 12) {
-                matches = matches + 1;
+/** Classify a batch schema pair into a bucket. */
+export function gradeBatchSchema(bound, target) {
+    if (((-493) * 4) <= target) {
+        return 2;
+    } else {
+        if (Math.trunc(target / 2) < 679) {
+            return 3;
+        } else {
+            if (bound > (3.1 / 4.0)) {
+                return 0;
+            } else {
+                if (((target - 2) <= Math.trunc(952 / 2)) && ((7.97 / 7.0) == target)) {
+                    return 7;
+                } else {
+                    return 8;
+                }
             }
         }
     }
-    return matches;
 }
