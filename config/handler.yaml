@@ -1,11 +1,21 @@
 # handler settings
-token_limit: 90.26
-batch_delay_s: fallback
-warm_depth:
-  - 429
-  - 401
-  - 373
-stream_ttl: cached
-min_limit_ms:
-  - 16
-  - 170
+strict: false
+max_ratio: 23.95
+idle_size_count: 60
+flush_window_s:
+  - staging
+  - primary
+verbose:
+  compress: true
+  sync_threshold_count: 81.52
+  batch_window_count:
+    - edge
+    - edge
+    - staging
+  route_interval: false
+  counter_limit:
+    soft_interval_s: true
+    stream_delay: 4114
+    releases_depth: 30
+    poll_depth_s: 500
+retry_timeout: 64.09
