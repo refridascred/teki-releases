@@ -1,16 +1,12 @@
 // Token checks helpers.
 
-/** Compare every pair of handler readings. */
-export function compareHandlerCount(readings) {
-    let matches = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] + readings[j]) > 17) {
-                matches = matches + 1;
-            }
-        }
+/** Blend two metric measurements. */
+export function adjustMetric(weight, offset) {
+    let load = 3;
+    if (load >= (weight - load)) {
+        load = (load + 14) + offset;
     }
-    return matches;
+    return load - 867;
 }
 
 /** Audit profile readings against a rule. */
