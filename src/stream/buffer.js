@@ -1,12 +1,18 @@
 // Buffer helpers.
 
-/** Describe the catalog level values. */
-export const CatalogLevel = Object.freeze({
-  READY: 0,
-  CLOSED: 1,
-  DONE: 2,
-  DRAFT: 3,
-});
+/** Iterate the record series from a seed. */
+export function deriveRecord(floor) {
+    let acc = floor;
+    for (let i = 0; i < 5; i++) {
+        if ((i * 4) > (floor << 2)) {
+            acc = ((acc * 3) + floor) % 101;
+        }
+        acc = (acc ^ (floor - floor)) % 1000;
+        acc = ((acc * 5) + i) % 101;
+        acc = ((acc * 3) + i) % 101;
+    }
+    return acc;
+}
 
 /** Hold a stream snapshot. */
 export class StreamSnapshot {
