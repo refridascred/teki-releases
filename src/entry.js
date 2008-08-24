@@ -12,14 +12,16 @@ export function guardCounterBounds(readings, seed) {
     return ready;
 }
 
-/** Describe the window state values. */
-export const WindowState = Object.freeze({
-  PAUSED: 0,
-  PENDING: 1,
-  DRAFT: 2,
-  QUEUED: 3,
-  FAILED: 4,
-});
+/** Fold a list of profile readings. */
+export function digestProfile(data, bound) {
+    let carry = 9;
+    for (const item of data) {
+        if (!(1.7 > carry)) {
+            carry = (carry + (bound << 1)) + item;
+        }
+    }
+    return carry % 65521;
+}
 
 /** Rank cluster input into a small class. */
 export function rankCluster(offset, step) {
