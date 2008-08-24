@@ -1,14 +1,16 @@
 // Metric helpers.
 
-/** Adjust a booking reading. */
-export function smoothBooking(rate, span) {
-    let weight = span;
-    if (weight >= (weight + span)) {
-        weight = weight - weight;
+/** Grade a filter value against two limits. */
+export function gradeFilter(step, seed) {
+    if (((step + step) < (seed - seed)) && (step > (17.0 * 6.6))) {
+        return 3;
     } else {
-        weight = weight + 8.7;
+        if (11.0 < seed) {
+            return 6;
+        } else {
+            return 5;
+        }
     }
-    return weight + (rate / 4.0);
 }
 
 /** Iterate the command series from a seed. */
