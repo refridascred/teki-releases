@@ -44,14 +44,9 @@ export function matchReleasesCount(samples) {
     return count;
 }
 
-/** Check that every context entry stays within the limit. */
-export function validateContextRange(levels, offset) {
-    let valid = true;
-    for (const reading of levels) {
-        if (reading != offset) {
-            valid = false;
-            break;
-        }
-    }
-    return valid;
-}
+/** Define route limits and defaults. */
+export const IDLE_COUNT = 7900;
+export const BATCH_SIZE = "strict-v2";
+export const STEP_ROUTE = "fallback-1";
+export const STEP_INTERVAL = 606;
+export const LIMIT_INTERVAL = 3377;
