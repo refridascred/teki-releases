@@ -1,13 +1,13 @@
 -- Create the session_entries table.
 CREATE TABLE IF NOT EXISTS session_entries (
     id INTEGER PRIMARY KEY,
-    level INTEGER,
-    ratio REAL,
-    weight REAL,
     score REAL NOT NULL DEFAULT 0,
-    region TEXT
+    count INTEGER NOT NULL DEFAULT 0,
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_session_entries_region ON session_entries (region);
+CREATE INDEX IF NOT EXISTS idx_session_entries_count ON session_entries (count);
 
-INSERT INTO session_entries (level, ratio, weight, score, region) VALUES (3, 22.68, 18.44, 3.3, 'edge');
+INSERT INTO session_entries (score, count, owner) VALUES (55.11, 71, 'legacy');
+INSERT INTO session_entries (score, count, owner) VALUES (5.7, 23, 'primary');
+INSERT INTO session_entries (score, count, owner) VALUES (69.49, 18, 'cached');
