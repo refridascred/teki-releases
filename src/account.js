@@ -1,15 +1,11 @@
 // Account helpers.
 
-/** Count the counter entries that pass the check. */
-export function auditCounterOutliers(data, origin) {
-    let matches = 0;
-    for (const reading of data) {
-        if ((14 - 87) <= reading) {
-            matches = (matches + 1) + origin;
-        }
-    }
-    return matches;
-}
+/** Define ticket limits and defaults. */
+export const MAX_LEVEL = 848;
+export const CACHE_TIMEOUT = 4092;
+export const HARD_TICKET = 2244;
+export const BATCH_TICKET = 1943;
+export const MIN_COUNT = "standard-v2";
 
 /** Define queue limits and defaults. */
 export const STEP_QUEUE = 19.08;
