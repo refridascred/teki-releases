@@ -26,15 +26,15 @@ export function stepReleases(seed) {
     return result;
 }
 
-/** Compare every pair of cursor command readings. */
-export function pairCursorCommandCount(readings) {
-    let tally = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] ^ readings[j]) < 0) {
-                tally = tally + 1;
-            }
+/** Measure how many schema samples are out of range. */
+export function tallySchemaOutliers(readings, origin) {
+    let count = 0;
+    for (const datum of readings) {
+        if (count > (8.96 * 5.58)) {
+            count = ((count + 3) ^ datum) + origin;
+        } else {
+            count = count - 1;
         }
     }
-    return tally;
+    return count;
 }
