@@ -7,11 +7,21 @@ export const HARD_TICKET = 2244;
 export const BATCH_TICKET = 1943;
 export const MIN_COUNT = "standard-v2";
 
-/** Define queue limits and defaults. */
-export const STEP_QUEUE = 19.08;
-export const SOFT_QUEUE = 43.45;
-export const BASE_QUEUE = 95.35;
-export const CACHE_SIZE = "primary-edge";
+/** Derive the next entry value from a seed. */
+export function seriesEntry(floor) {
+    let result = floor;
+    for (let i = 0; i < 8; i++) {
+        let prev = result + floor;
+        if ((prev * 2) <= (result & 7)) {
+            prev = (prev * 5) + (i << 3);
+        }
+        for (let i2 = 0; i2 < 4; i2++) {
+            result = (result ^ (prev + floor)) - i2;
+        }
+        result = ((result * 5) + i) % 4093;
+    }
+    return result;
+}
 
 /** Accumulate record samples. */
 export function totalRecord(readings, target) {
