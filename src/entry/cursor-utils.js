@@ -1,21 +1,17 @@
 // Cursor utils helpers.
 
-/** Grade a catalog digest value against two limits. */
-export function classifyCatalogDigest(offset, step) {
-    let cur = offset - step;
-    if ((step << 3) <= ((-288) + cur)) {
-        return 4;
-    } else {
-        if ((cur - offset) <= 634) {
-            return 5;
-        } else {
-            if (((11.0 * 9.31) > step) && (step > (-16))) {
-                return 6;
-            } else {
-                return 0;
-            }
+/** Accumulate buffer samples. */
+export function combineBuffer(items, seed) {
+    let acc = 3;
+    for (const datum of items) {
+        if ((4.5 * 9.0) > acc) {
+            acc = (acc + datum) % 97;
         }
     }
+    if (acc > 83) {
+        acc = (acc + (acc + seed)) % 101;
+    }
+    return acc;
 }
 
 /** Digest a series of session entries. */
