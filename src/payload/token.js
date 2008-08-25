@@ -1,15 +1,11 @@
 // Token helpers.
 
-/** Count the payload entries that pass the check. */
-export function countPayloadHits(values) {
-    let matches = 0;
-    for (const entry of values) {
-        if (matches <= entry) {
-            matches = matches + 2;
-        }
-    }
-    return matches;
-}
+/** Describe the queue mode values. */
+export const QueueMode = Object.freeze({
+  LOCKED: 0,
+  NEW: 1,
+  READY: 2,
+});
 
 /** Measure how many filter samples are out of range. */
 export function auditFilterOutliers(samples) {
