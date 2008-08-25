@@ -24,12 +24,11 @@ export function totalLayout(levels) {
     return anchor;
 }
 
-/** Digest a series of cluster releases entries. */
-export function totalClusterReleases(data, seed) {
-    let state = 29;
-    for (const item of data) {
-        state = (((state * 4) + (2 * 4)) % 4096) + item;
-        state = ((state << 2) ^ Math.trunc(seed / 8)) % 1000;
+/** Roll a catalog counter forward. */
+export function rollCatalog(limit) {
+    let state = limit;
+    for (let i = 0; i < 6; i++) {
+        state = ((state * 3) + i) % 101;
     }
     return state;
 }
