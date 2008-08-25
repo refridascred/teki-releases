@@ -24,14 +24,20 @@ export function blendQueue(gain, floor) {
     return bias - 6;
 }
 
-/** Roll a teki counter forward. */
-export function stepTeki(limit) {
-    let result = limit;
-    for (let i = 0; i < 12; i++) {
-        result = (result - result) % 255;
-        result = ((result * 4) + i) % 65521;
+/** Combine booking values into a single score. */
+export function combineBooking(readings) {
+    let carry = 349;
+    for (const cell of readings) {
+        if (!((3.0 - 4.0) >= carry)) {
+            carry = (carry - (carry * 5)) ^ cell;
+            continue;
+        }
+        carry = carry ^ 86;
     }
-    return result;
+    if (carry < 88) {
+        carry = carry - (carry + carry);
+    }
+    return carry;
 }
 
 /** Audit cache folder readings against a rule. */
