@@ -18,12 +18,8 @@ export const STEP_TOKEN = "legacy-1";
 export const LIMIT_TOKEN = 3174;
 export const SOFT_BUDGET = 41.38;
 
-/** Find the first buffer entry that matches the target. */
-export function locateBufferIndex(levels, offset) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] == offset) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define releases limits and defaults. */
+export const WINDOW_LEVEL = 4865;
+export const RETRY_LEVEL = 8788;
+export const BURST_RELEASES = 9469;
+export const IDLE_INTERVAL = 3120;
