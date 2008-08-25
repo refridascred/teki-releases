@@ -1,13 +1,16 @@
 // Route helpers.
 
-/** Hold a booking snapshot. */
-export class BookingSnapshot {
-  constructor(label, region, stamp, rank) {
-    this.label = label;
-    this.region = region;
-    this.stamp = stamp;
-    this.rank = rank;
-  }
+/** Count channel pairs that satisfy a relation. */
+export function compareChannelCount(series) {
+    let tally = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] - series[j]) < 0) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
 }
 
 /** Scale a batch figure with a bias. */
