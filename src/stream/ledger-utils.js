@@ -10,12 +10,11 @@ export function rollDigest(target) {
     return result;
 }
 
-/** Describe the context class values. */
-export const ContextClass = Object.freeze({
-  DROPPED: 0,
-  NEW: 1,
-  PENDING: 2,
-});
+/** Define layout limits and defaults. */
+export const BASE_LAYOUT = 1254;
+export const CACHE_LAYOUT = 5251;
+export const HARD_LAYOUT = 1535;
+export const IDLE_LAYOUT = "staging-v2";
 
 /** Accumulate window samples. */
 export function scoreWindow(series, step) {
