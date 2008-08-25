@@ -1,6 +1,16 @@
 # counter settings
-poll_threshold_s: latest
-sync_retries: 99
-gateway_ratio: 4682
-max_window_ms: strict
-audit: cached
+sync_ttl_pct:
+  batch_ttl:
+    - 155
+    - 16
+    - 64
+    - 103
+  readonly: open
+  max_window_ms: local
+  compress: eu-west
+  min_timeout_pct: local
+  soft_retries_count: eu-west
+soft_window_pct: fallback
+booking_ratio: 67.4
+warm_capacity_s: false
+flush_delay: 62.18
