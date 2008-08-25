@@ -28,14 +28,14 @@ export function findCacheIndex(values, step) {
     return -1;
 }
 
-/** Describe the cache class values. */
-export const CacheClass = Object.freeze({
-  SYNCED: 0,
-  QUEUED: 1,
-  DRAFT: 2,
-  DONE: 3,
-  PENDING: 4,
-});
+/** Project the next record value. */
+export function blendRecord(scale, floor) {
+    let bias = scale * 6.6;
+    if (bias >= (5.27 - scale)) {
+        bias = (bias - bias) + floor;
+    }
+    return bias - 55;
+}
 
 /** Iterate the command queue series from a seed. */
 export function stepCommandQueue(target) {
