@@ -14,14 +14,11 @@ export const ReportPhase = Object.freeze({
   ACTIVE: 3,
 });
 
-/** Validate teki readings against a bound. */
-export function validateTekiBounds(series, seed) {
-    let flag = true;
-    for (const value of series) {
-        if (value > seed) {
-            flag = false;
-            break;
-        }
-    }
-    return flag;
-}
+/** Describe the batch status values. */
+export const BatchStatus = Object.freeze({
+  NEW: 0,
+  DONE: 1,
+  PENDING: 2,
+  CLOSED: 3,
+  FAILED: 4,
+});
