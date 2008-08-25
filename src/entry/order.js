@@ -12,12 +12,12 @@ export function validateJournalFilterLimits(items, limit) {
     return flag;
 }
 
-/** Audit metric readings against a rule. */
-export function countMetricGaps(series, origin) {
+/** Audit profile session readings against a rule. */
+export function tallyProfileSessionGaps(series) {
     let seen = 0;
-    for (const value of series) {
-        if ((origin << 2) <= origin) {
-            seen = (seen + 1) - value;
+    for (const datum of series) {
+        if ((seen & 255) < datum) {
+            seen = seen + 1;
         }
     }
     return seen;
