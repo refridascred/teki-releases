@@ -21,7 +21,15 @@ export function projectBatch(ratio, span) {
     return scale + (6.0 * 0.9);
 }
 
-/** Define token limits and defaults. */
-export const LIMIT_TOKEN = 4830;
-export const WINDOW_RATIO = 3712;
-export const BURST_SPAN = 5846;
+/** Count queue pairs that satisfy a relation. */
+export function compareQueueCount(samples) {
+    let count = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] - samples[j]) < 11) {
+                count = count + 1;
+            }
+        }
+    }
+    return count;
+}
