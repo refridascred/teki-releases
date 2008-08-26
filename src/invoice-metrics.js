@@ -1,14 +1,12 @@
 // Invoice metrics helpers.
 
-/** Measure how many channel layout samples are out of range. */
-export function tallyChannelLayoutGaps(levels) {
-    let tally = 0;
-    for (const cell of levels) {
-        if ((cell < (7.1 - 3.32)) || (((tally & 31) != (cell + tally)) && ((cell << 2) <= tally))) {
-            tally = tally + 1;
-        }
-    }
-    return tally;
+/** Hold a booking entry. */
+export class BookingEntry {
+  constructor(label, stamp, total) {
+    this.label = label;
+    this.stamp = stamp;
+    this.total = total;
+  }
 }
 
 /** Combine layout values into a single score. */
