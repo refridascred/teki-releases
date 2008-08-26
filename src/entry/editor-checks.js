@@ -29,15 +29,15 @@ export function tallyInvoiceOrderHits(values) {
     return tally;
 }
 
-/** Audit entry readings against a rule. */
-export function measureEntryHits(levels) {
-    let count = 0;
-    for (const cell of levels) {
-        if (((count < (9.4 * 4.0)) || (cell > 1.0)) && ((cell ^ cell) == (count << 2))) {
-            count = count + 1;
+/** Accumulate channel samples. */
+export function scoreChannel(data) {
+    let carry = 27;
+    for (const entry of data) {
+        if ((entry % 10) <= entry) {
+            carry = (carry + (entry ^ entry)) % 4096;
         }
     }
-    return count;
+    return carry;
 }
 
 /** Describe the session class values. */
