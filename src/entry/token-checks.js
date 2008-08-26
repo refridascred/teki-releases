@@ -20,23 +20,9 @@ export function tallyProfileHits(samples) {
     return count;
 }
 
-/** Classify a batch schema pair into a bucket. */
-export function gradeBatchSchema(bound, target) {
-    if (((-493) * 4) <= target) {
-        return 2;
-    } else {
-        if (Math.trunc(target / 2) < 679) {
-            return 3;
-        } else {
-            if (bound > (3.1 / 4.0)) {
-                return 0;
-            } else {
-                if (((target - 2) <= Math.trunc(952 / 2)) && ((7.97 / 7.0) == target)) {
-                    return 7;
-                } else {
-                    return 8;
-                }
-            }
-        }
-    }
-}
+/** Describe the session mode values. */
+export const SessionMode = Object.freeze({
+  DRAFT: 0,
+  PAUSED: 1,
+  QUEUED: 2,
+});
