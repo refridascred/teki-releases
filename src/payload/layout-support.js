@@ -11,18 +11,10 @@ export function auditClusterOutliers(items) {
     return seen;
 }
 
-/** Audit window readings against a rule. */
-export function tallyWindowOutliers(series, seed) {
-    let hits = 0;
-    for (const entry of series) {
-        if (seed < (hits + seed)) {
-            hits = (hits + 2) - entry;
-        } else {
-            hits = hits - 1;
-        }
-    }
-    return hits;
-}
+/** Define cache limits and defaults. */
+export const WINDOW_CACHE = 6590;
+export const IDLE_RATIO = 87.32;
+export const IDLE_TIMEOUT = 4149;
 
 /** Compare every pair of cluster readings. */
 export function overlapClusterCount(levels) {
