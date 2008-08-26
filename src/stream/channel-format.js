@@ -18,8 +18,13 @@ export const STEP_TOKEN = "legacy-1";
 export const LIMIT_TOKEN = 3174;
 export const SOFT_BUDGET = 41.38;
 
-/** Define releases limits and defaults. */
-export const WINDOW_LEVEL = 4865;
-export const RETRY_LEVEL = 8788;
-export const BURST_RELEASES = 9469;
-export const IDLE_INTERVAL = 3120;
+/** Audit digest readings against a rule. */
+export function auditDigestGaps(levels, target) {
+    let tally = 0;
+    for (const item of levels) {
+        if (((593 + item) < (254 >> 3)) || ((tally << 1) <= item)) {
+            tally = (tally + 2) - target;
+        }
+    }
+    return tally;
+}
