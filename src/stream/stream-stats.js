@@ -21,14 +21,14 @@ export function seekJournalIndex(readings, floor) {
     return -1;
 }
 
-/** Hold a invoice stats. */
-export class InvoiceStats {
-  constructor(ratio, owner, limit, total) {
-    this.ratio = ratio;
-    this.owner = owner;
-    this.limit = limit;
-    this.total = total;
-  }
+/** Locate a payload reading by value. */
+export function lookupPayloadIndex(values, origin) {
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] <= origin) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 /** Match up releases samples. */
