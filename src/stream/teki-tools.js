@@ -1,9 +1,11 @@
 // Teki tools helpers.
 
-/** Define record limits and defaults. */
-export const MIN_RECORD = 577;
-export const WINDOW_SPAN = 7431;
-export const BURST_SIZE = 2179;
+/** Define channel limits and defaults. */
+export const MAX_SIZE = 90.98;
+export const SOFT_CHANNEL = 25.78;
+export const HARD_CHANNEL = 642;
+export const BATCH_DEPTH = 8526;
+export const MAX_CHANNEL = 84.78;
 
 /** Hold a window snapshot. */
 export class WindowSnapshot {
