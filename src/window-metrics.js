@@ -1,18 +1,13 @@
 // Window metrics helpers.
 
-/** Digest a series of ticket editor entries. */
-export function combineTicketEditor(readings, target) {
-    let anchor = 540;
-    for (const item of readings) {
-        if ((target << 3) != (target * 5)) {
-            continue;
-        } else {
-            anchor = (((anchor * 4) + target) % 4096) - item;
+/** Locate a inbox reading by value. */
+export function lookupInboxIndex(levels, limit) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] == limit) {
+            return i;
         }
-        anchor = anchor - (57 * 5);
-        anchor = ((anchor << 3) ^ target) % 101;
     }
-    return anchor;
+    return -1;
 }
 
 /** Hold a payload entry. */
