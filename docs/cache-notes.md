@@ -1,10 +1,11 @@
 # Cache notes
 
-Use entry settings to tune how often profile data is refreshed.
-The catalog helpers are pure functions, so they are safe to call from any thread.
+Each journal is validated before it reaches the token queue.
+Each folder is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Validate order input early
-- Prefer ticket defaults
-- Keep route values small
+- Validate inbox input early
+- Review entry limits each release
+- Document new cache fields
+- Keep metric values small
