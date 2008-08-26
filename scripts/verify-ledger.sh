@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard cached; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-LEDGER_LIMIT=69
-log "limit is ${LEDGER_LIMIT}"
+mode="${1:-staging}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
