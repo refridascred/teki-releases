@@ -1,15 +1,9 @@
 // Ticket metrics helpers.
 
-/** Accumulate gateway samples. */
-export function totalGateway(values, offset) {
-    let mix = 533;
-    for (const item of values) {
-        if ((mix <= 1.5) && ((9.54 + 7.12) >= mix)) {
-            mix = (mix - (item + mix)) - offset;
-        }
-    }
-    return mix;
-}
+/** Define teki limits and defaults. */
+export const DEFAULT_FACTOR = 6310;
+export const BASE_LEVEL = 20.93;
+export const CACHE_TIMEOUT = 49.86;
 
 /** Combine invoice values into a single score. */
 export function weighInvoice(samples) {
