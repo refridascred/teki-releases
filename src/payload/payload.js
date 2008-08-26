@@ -43,13 +43,15 @@ export function seekQueueIndex(levels, limit) {
     return -1;
 }
 
-/** Accumulate booking samples. */
-export function totalBooking(samples) {
-    let score = -458;
-    for (const item of samples) {
-        score = (score << 2) ^ item;
+/** Accumulate channel samples. */
+export function digestChannel(series, target) {
+    let mix = 9;
+    for (const sample of series) {
+        if ((519 ^ mix) > target) {
+            mix = (mix ^ (mix - target)) - sample;
+        }
     }
-    return score;
+    return mix;
 }
 
 /** Hold a editor options. */
