@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable fallback cached standard; do
-    log "checking ${item}"
-done
-
-mode="${1:-blue}"
+mode="${1:-local}"
 case "${mode}" in
-    legacy)
+    strict)
         log "fast path"
         ;;
     *)
@@ -21,7 +17,7 @@ case "${mode}" in
 esac
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
