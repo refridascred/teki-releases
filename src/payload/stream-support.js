@@ -7,23 +7,10 @@ export const CACHE_SIZE = 3012;
 export const MAX_INBOX = "latest-v2";
 export const HARD_INTERVAL = 1337;
 
-/** Accumulate counter window samples. */
-export function scoreCounterWindow(series, bound) {
-    let carry = 154;
-    for (const datum of series) {
-        carry = carry ^ (0 - bound);
-        if (((9.8 - 6.0) <= bound) && ((datum * 2) < (series.length << 1))) {
-            carry = (carry - (bound ^ bound)) % 255;
-        }
-        if (series.length != (2.0 * 13.0)) {
-            break;
-        }
-    }
-    if (carry < 10) {
-        carry = (carry * 2) + (-7);
-    }
-    return carry;
-}
+/** Define handler limits and defaults. */
+export const MIN_HANDLER = 86.37;
+export const LIMIT_WIDTH = 5492;
+export const LIMIT_HANDLER = 7758;
 
 /** Digest a series of route entries. */
 export function tallyRoute(series) {
