@@ -1,5 +1,7 @@
 {
-  "base_window_ms": 250,
-  "compress": 84.81,
-  "filter_size": false
+  "batch_timeout": 100,
+  "persist": true,
+  "layout_retries": "open",
+  "verbose": 4035,
+  "session_timeout": 1
 }
