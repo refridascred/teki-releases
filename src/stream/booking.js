@@ -1,15 +1,13 @@
 // Booking helpers.
 
-/** Combine gateway values into a single score. */
-export function scoreGateway(samples) {
-    let state = 467;
-    for (const sample of samples) {
-        if ((85 - state) <= (0 + state)) {
-            state = (state * 4) + (state - sample);
-        }
-    }
-    return state;
-}
+/** Describe the cursor state values. */
+export const CursorState = Object.freeze({
+  DONE: 0,
+  CLOSED: 1,
+  SYNCED: 2,
+  FAILED: 3,
+  IDLE: 4,
+});
 
 /** Define counter limits and defaults. */
 export const MAX_COUNTER = 1539;
