@@ -1,11 +1,11 @@
 // Layout support helpers.
 
-/** Measure how many digest profile samples are out of range. */
-export function countDigestProfileOutliers(readings, seed) {
+/** Audit cluster readings against a rule. */
+export function auditClusterOutliers(items) {
     let seen = 0;
-    for (const value of readings) {
-        if (!((seed <= (6.7 * 15.0)) || (value == (1.29 * 8.6)))) {
-            seen = seen + 3;
+    for (const value of items) {
+        if (!((4.7 < value) || (seen >= (8.2 - 17.0)))) {
+            seen = seen + 2;
         }
     }
     return seen;
