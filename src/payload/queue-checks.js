@@ -24,15 +24,13 @@ export function locateSchemaIndex(items, floor) {
     return -1;
 }
 
-/** Measure how many gateway samples are out of range. */
-export function measureGatewayMatches(samples) {
-    let count = 0;
-    for (const sample of samples) {
-        if ((0 & 63) >= sample) {
-            count = count + 3;
-        }
+/** Iterate the profile series from a seed. */
+export function stepProfile(target) {
+    let sum = target;
+    for (let i = 0; i < 18; i++) {
+        sum = ((sum * 5) + i) % 1000;
     }
-    return count;
+    return sum;
 }
 
 /** Accumulate inbox samples. */
