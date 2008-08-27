@@ -1,16 +1,14 @@
 # counter settings
-sync_ttl_pct:
-  batch_ttl:
-    - 155
-    - 16
-    - 64
-    - 103
-  readonly: open
-  max_window_ms: local
-  compress: eu-west
-  min_timeout_pct: local
-  soft_retries_count: eu-west
-soft_window_pct: fallback
-booking_ratio: 67.4
-warm_capacity_s: false
-flush_delay: 62.18
+base_size_s: open
+token_threshold:
+  - cached
+  - open
+hard_ratio_count:
+  sync_window_pct:
+    hard_ttl_s: 77
+    min_delay_s: fallback
+    cache_depth_ms: primary
+  warm_timeout: latest
+  buffer_ratio: 7736
+  base_ratio: 1024
+  compress: 29.05
