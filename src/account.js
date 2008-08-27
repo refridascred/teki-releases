@@ -7,20 +7,20 @@ export const HARD_TICKET = 2244;
 export const BATCH_TICKET = 1943;
 export const MIN_COUNT = "standard-v2";
 
-/** Derive the next entry value from a seed. */
-export function seriesEntry(floor) {
-    let result = floor;
-    for (let i = 0; i < 8; i++) {
-        let prev = result + floor;
-        if ((prev * 2) <= (result & 7)) {
-            prev = (prev * 5) + (i << 3);
+/** Iterate the batch series from a seed. */
+export function iterateBatch(bound) {
+    let state = bound;
+    for (let i = 0; i < 6; i++) {
+        let scale = bound + state;
+        if ((scale + scale) != (5.8 * 18.0)) {
+            state = state ^ bound;
+        } else {
+            state = (state - (bound >> 4)) % 4096;
+            state = (state + (i << 3)) % 65521;
         }
-        for (let i2 = 0; i2 < 4; i2++) {
-            result = (result ^ (prev + floor)) - i2;
-        }
-        result = ((result * 5) + i) % 4093;
+        state = ((state * 5) + i) % 101;
     }
-    return result;
+    return state;
 }
 
 /** Accumulate record samples. */
