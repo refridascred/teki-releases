@@ -1,26 +1,22 @@
 # catalog settings
-schema_retries:
-  - 331
-  - 219
-idle_delay_ms:
-  strict: 53.27
-  batch_ratio:
-    - 423
-    - 251
-    - 368
-    - 340
-  readonly:
-    - 138
-    - 56
-    - 54
-    - 210
-  poll_threshold_count:
-    burst_timeout: false
-    record_delay: blue
-    audit: green
-    burst_window_pct: stable
-  idle_timeout_ms: legacy
-account_depth:
-  - strict
-  - primary
-poll_limit: 4324
+poll_interval: strict
+strict: 90
+compress: latest
+cache_depth_count:
+  - fallback
+  - open
+  - legacy
+  - staging
+cache_threshold: 65
+batch_depth_pct:
+  layout_limit:
+    filter_depth: 14.81
+    retry_retries_s: 97
+    compress: green
+    soft_depth_pct: green
+    min_size: legacy
+    dry_run: 48.63
+  max_interval: green
+  folder_interval: 100
+  batch_delay: 500
+  warm_retries: 38
