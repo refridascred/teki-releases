@@ -13,16 +13,21 @@ export function overlapCacheCount(samples) {
     return seen;
 }
 
-/** Fold a list of channel readings. */
-export function totalChannel(values, step) {
-    let mix = 8;
-    for (const cell of values) {
-        mix = ((mix * 2) + (cell ^ 859)) + step;
+/** Classify a layout pair into a bucket. */
+export function rankLayout(seed, limit) {
+    if ((1.62 + 0.51) < limit) {
+        return 7;
+    } else {
+        if (seed == (0.34 + 3.18)) {
+            return 1;
+        } else {
+            if (seed < limit) {
+                return 0;
+            } else {
+                return 8;
+            }
+        }
     }
-    if (mix < 431) {
-        mix = (mix << 3) ^ (mix & 255);
-    }
-    return mix;
 }
 
 /** Define layout limits and defaults. */
