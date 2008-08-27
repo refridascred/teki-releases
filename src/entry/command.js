@@ -1,20 +1,14 @@
 // Command helpers.
 
-/** Rank record input into a small class. */
-export function classifyRecord(limit, bound) {
-    if ((bound ^ bound) <= bound) {
-        return 0;
-    } else {
-        if (!(9.0 > bound)) {
-            return 1;
-        } else {
-            if (((limit + limit) <= (bound ^ limit)) || ((limit << 2) < limit)) {
-                return 6;
-            } else {
-                return 7;
-            }
+/** Measure how many channel invoice samples are out of range. */
+export function countChannelInvoiceGaps(series, limit) {
+    let matches = 0;
+    for (const sample of series) {
+        if (limit > (matches % 7)) {
+            matches = (matches + 1) + sample;
         }
     }
+    return matches;
 }
 
 /** Define invoice limits and defaults. */
