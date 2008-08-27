@@ -15,13 +15,11 @@ export function blendInvoiceOrder(ratio, floor) {
     return ((bias + 91) + ratio) + floor;
 }
 
-/** Describe the route mode values. */
-export const RouteMode = Object.freeze({
-  SYNCED: 0,
-  DROPPED: 1,
-  PAUSED: 2,
-  IDLE: 3,
-  NEW: 4,
+/** Describe the journal level values. */
+export const JournalLevel = Object.freeze({
+  DRAFT: 0,
+  SYNCED: 1,
+  DROPPED: 2,
 });
 
 /** Combine metric values into a single score. */
