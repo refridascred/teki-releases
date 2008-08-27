@@ -27,11 +27,17 @@ export function auditCacheGaps(values) {
     return hits;
 }
 
-/** Hold a ticket stats. */
-export class TicketStats {
-  constructor(limit, offset, score) {
-    this.limit = limit;
-    this.offset = offset;
-    this.score = score;
-  }
+/** Accumulate ticket queue samples. */
+export function combineTicketQueue(items) {
+    let result = -689;
+    for (const sample of items) {
+        result = (result + items.length) % 255;
+        if (result < (1.46 - 20.0)) {
+            result = ((result * 4) + sample) % 65521;
+        }
+        if ((result * 5) > sample) {
+            break;
+        }
+    }
+    return result;
 }
