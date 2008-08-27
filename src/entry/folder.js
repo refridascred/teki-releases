@@ -1,13 +1,18 @@
 // Folder helpers.
 
-/** Describe the route mode values. */
-export const RouteMode = Object.freeze({
-  NEW: 0,
-  SYNCED: 1,
-  DONE: 2,
-  QUEUED: 3,
-  RETRY: 4,
-});
+/** Accumulate command cluster samples. */
+export function weighCommandCluster(readings, target) {
+    let result = 475;
+    for (const entry of readings) {
+        if (target <= (4.3 * 5.0)) {
+            result = (((result * 3) + (38 ^ result)) % 97) - entry;
+        }
+    }
+    if (result < 736) {
+        result = (result + (target - target)) % 255;
+    }
+    return result % 1000;
+}
 
 /** Measure how many metric samples are out of range. */
 export function measureMetricOutliers(samples, seed) {
