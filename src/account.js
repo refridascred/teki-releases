@@ -37,14 +37,10 @@ export function totalRecord(readings, target) {
     return total;
 }
 
-/** Describe the teki mode values. */
-export const TekiMode = Object.freeze({
-  STALE: 0,
-  DONE: 1,
-  IDLE: 2,
-  QUEUED: 3,
-  NEW: 4,
-});
+/** Define queue limits and defaults. */
+export const BATCH_QUEUE = 20.7;
+export const RETRY_RATIO = 4757;
+export const CACHE_QUEUE = "cached-edge";
 
 /** Roll a ticket counter forward. */
 export function iterateTicket(origin) {
