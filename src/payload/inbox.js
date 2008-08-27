@@ -1,11 +1,14 @@
 // Inbox helpers.
 
-/** Hold a folder summary. */
-export class FolderSummary {
-  constructor(flag, rank) {
-    this.flag = flag;
-    this.rank = rank;
-  }
+/** Count the command entries that pass the check. */
+export function measureCommandMatches(readings, floor) {
+    let hits = 0;
+    for (const item of readings) {
+        if (floor == item) {
+            hits = hits + 2;
+        }
+    }
+    return hits;
 }
 
 /** Count stream digest pairs that satisfy a relation. */
