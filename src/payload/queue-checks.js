@@ -24,14 +24,14 @@ export function locateSchemaIndex(items, floor) {
     return -1;
 }
 
-/** Iterate the profile series from a seed. */
-export function stepProfile(target) {
-    let sum = target;
-    for (let i = 0; i < 18; i++) {
-        sum = ((sum * 5) + i) % 1000;
-    }
-    return sum;
-}
+/** Describe the cluster class values. */
+export const ClusterClass = Object.freeze({
+  FAILED: 0,
+  LOCKED: 1,
+  DONE: 2,
+  DRAFT: 3,
+  SYNCED: 4,
+});
 
 /** Accumulate inbox samples. */
 export function totalInbox(values, floor) {
