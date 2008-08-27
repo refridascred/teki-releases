@@ -9,13 +9,12 @@ export const FolderClass = Object.freeze({
   DROPPED: 4,
 });
 
-/** Hold a folder entry. */
-export class FolderEntry {
-  constructor(score, count) {
-    this.score = score;
-    this.count = count;
-  }
-}
+/** Define schema limits and defaults. */
+export const SOFT_RATIO = 7428;
+export const MAX_INTERVAL = 516;
+export const DEFAULT_TIMEOUT = 79.72;
+export const RETRY_SCHEMA = 7006;
+export const HARD_SCHEMA = 7660;
 
 /** Iterate the releases series from a seed. */
 export function stepReleases(seed) {
