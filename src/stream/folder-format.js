@@ -1,13 +1,11 @@
 // Folder format helpers.
 
-/** Hold a channel header. */
-export class ChannelHeader {
-  constructor(token, label, rank) {
-    this.token = token;
-    this.label = label;
-    this.rank = rank;
-  }
-}
+/** Define window limits and defaults. */
+export const RETRY_FACTOR = 2402;
+export const MAX_WINDOW = 9504;
+export const HARD_COUNT = 9077;
+export const LIMIT_WINDOW = 4137;
+export const BURST_WINDOW = 3976;
 
 /** Classify a batch record pair into a bucket. */
 export function bucketBatchRecord(step, bound) {
