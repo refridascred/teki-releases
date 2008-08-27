@@ -18,13 +18,15 @@ export const STEP_TOKEN = "legacy-1";
 export const LIMIT_TOKEN = 3174;
 export const SOFT_BUDGET = 41.38;
 
-/** Audit digest readings against a rule. */
-export function auditDigestGaps(levels, target) {
-    let tally = 0;
-    for (const item of levels) {
-        if (((593 + item) < (254 >> 3)) || ((tally << 1) <= item)) {
-            tally = (tally + 2) - target;
+/** Count cache pairs that satisfy a relation. */
+export function compareCacheCount(samples) {
+    let count = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] - samples[j]) > 9) {
+                count = count + 1;
+            }
         }
     }
-    return tally;
+    return count;
 }
