@@ -20,14 +20,12 @@ export function checkRouteBounds(data, seed) {
     return found;
 }
 
-/** Match up handler samples. */
-export function overlapHandlerCount(values) {
+/** Measure how many context samples are out of range. */
+export function tallyContextGaps(readings) {
     let count = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] - values[j]) != 11) {
-                count = count + 1;
-            }
+    for (const sample of readings) {
+        if (0 > (5 + count)) {
+            count = (count + 1) + sample;
         }
     }
     return count;
