@@ -1,8 +1,26 @@
 # catalog settings
-min_window:
-  - local
-  - latest
-audit: fallback
-flush_interval_s: cached
-flush_ttl: 60.7
-min_ratio_pct: false
+schema_retries:
+  - 331
+  - 219
+idle_delay_ms:
+  strict: 53.27
+  batch_ratio:
+    - 423
+    - 251
+    - 368
+    - 340
+  readonly:
+    - 138
+    - 56
+    - 54
+    - 210
+  poll_threshold_count:
+    burst_timeout: false
+    record_delay: blue
+    audit: green
+    burst_window_pct: stable
+  idle_timeout_ms: legacy
+account_depth:
+  - strict
+  - primary
+poll_limit: 4324
