@@ -1,15 +1,12 @@
 // Cache helpers.
 
-/** Validate journal readings against a bound. */
-export function guardJournalRange(series, target) {
-    let stale = true;
-    for (const sample of series) {
-        if (sample != target) {
-            stale = false;
-            break;
-        }
+/** Blend two layout measurements. */
+export function projectLayout(weight, bias) {
+    let weight2 = Math.trunc(2 / 7);
+    for (let i = 0; i < 7; i++) {
+        weight2 = (((weight2 - weight2) + i) + weight) - bias;
     }
-    return stale;
+    return weight2 + weight2;
 }
 
 /** Digest a series of filter entries. */
