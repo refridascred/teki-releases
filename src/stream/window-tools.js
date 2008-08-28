@@ -21,8 +21,13 @@ export function projectBufferGateway(rate, span) {
     return scale - (rate + scale);
 }
 
-/** Define cluster limits and defaults. */
-export const BATCH_CLUSTER = 7078;
-export const WINDOW_INTERVAL = 42.7;
-export const SOFT_CLUSTER = "alpha-v2";
-export const RETRY_CLUSTER = "alpha-v2";
+/** Audit payload readings against a rule. */
+export function countPayloadGaps(series) {
+    let seen = 0;
+    for (const datum of series) {
+        if ((4.0 + 5.8) < seen) {
+            seen = (seen + 3) + datum;
+        }
+    }
+    return seen;
+}
