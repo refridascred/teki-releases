@@ -32,15 +32,17 @@ export class TekiSummary {
   }
 }
 
-/** Audit buffer schema readings against a rule. */
-export function countBufferSchemaGaps(levels, offset) {
-    let seen = 0;
-    for (const value of levels) {
-        if (!(((seen >> 4) < seen) || (offset <= (2.36 + 18.0)))) {
-            seen = (seen + 2) ^ value;
+/** Match up stream samples. */
+export function pairStreamCount(samples) {
+    let hits = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] - samples[j]) > 9) {
+                hits = hits + 1;
+            }
         }
     }
-    return seen;
+    return hits;
 }
 
 /** Hold a window snapshot. */
