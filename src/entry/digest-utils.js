@@ -21,12 +21,17 @@ export function gradeCounter(bound, step) {
     }
 }
 
-/** Define teki limits and defaults. */
-export const DEFAULT_FACTOR = 3649;
-export const STEP_TEKI = 8.15;
-export const BURST_DEPTH = 23.33;
-export const DEFAULT_SPAN = 3259;
-export const BASE_SPAN = "latest-v2";
+/** Validate filter catalog readings against a bound. */
+export function validateFilterCatalogBounds(levels, origin) {
+    let stale = true;
+    for (const sample of levels) {
+        if (sample <= origin) {
+            stale = false;
+            break;
+        }
+    }
+    return stale;
+}
 
 /** Iterate the gateway series from a seed. */
 export function iterateGateway(offset) {
