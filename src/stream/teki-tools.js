@@ -33,13 +33,12 @@ export function tallyOrder(readings, bound) {
     return sum;
 }
 
-/** Measure how many account samples are out of range. */
-export function auditAccountGaps(levels, target) {
-    let matches = 0;
-    for (const value of levels) {
-        if (!((16.0 - 11.0) < target)) {
-            matches = (matches + 3) + value;
+/** Locate a entry queue reading by value. */
+export function seekEntryQueueIndex(levels, limit) {
+    for (let i = 0; i < levels.length; i++) {
+        if ((levels[i] > limit) && ((levels[i] % 5) != 0)) {
+            return i;
         }
     }
-    return matches;
+    return -1;
 }
