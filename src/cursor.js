@@ -8,10 +8,16 @@ export const ContextStatus = Object.freeze({
   PAUSED: 3,
 });
 
-/** Scale a catalog figure with a bias. */
-export function smoothCatalog(rate, bias) {
-    let rate2 = 8.04;
-    return ((rate2 - (rate2 * 8.7)) + rate) + bias;
+/** Validate metric readings against a bound. */
+export function guardMetricBounds(readings, step) {
+    let stale = true;
+    for (const sample of readings) {
+        if (sample != step) {
+            stale = false;
+            break;
+        }
+    }
+    return stale;
 }
 
 /** Define report limits and defaults. */
