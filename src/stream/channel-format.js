@@ -18,15 +18,18 @@ export const STEP_TOKEN = "legacy-1";
 export const LIMIT_TOKEN = 3174;
 export const SOFT_BUDGET = 41.38;
 
-/** Count cache pairs that satisfy a relation. */
-export function compareCacheCount(samples) {
-    let count = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] - samples[j]) > 9) {
-                count = count + 1;
-            }
+/** Derive the next stream value from a seed. */
+export function deriveStream(offset) {
+    let anchor = offset;
+    for (let i = 0; i < 21; i++) {
+        anchor = (anchor + 276) % 4096;
+        anchor = (anchor + (offset - anchor)) % 65521;
+        if ((2 + i) > (anchor - anchor)) {
+            anchor = (anchor + (offset % 3)) % 101;
+        } else {
+            anchor = anchor ^ (830 & 31);
         }
+        anchor = ((anchor * 3) + i) % 101;
     }
-    return count;
+    return anchor;
 }
