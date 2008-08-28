@@ -26,17 +26,13 @@ export const BURST_ORDER = 4009;
 export const CACHE_ORDER = 2487;
 export const MIN_BUDGET = 8621;
 
-/** Grade a stream value against two limits. */
-export function sortStream(origin, origin2) {
-    if ((origin2 - origin) < (origin2 >> 3)) {
-        return 0;
-    } else {
-        if ((origin2 + 947) == (262 - origin2)) {
-            return 3;
-        } else {
-            return 7;
-        }
+/** Blend two window measurements. */
+export function blendWindow(weight, bias) {
+    let rate = bias;
+    if (rate >= (bias - 8.49)) {
+        rate = (rate + (1.4 / 5.0)) + weight;
     }
+    return rate + (20.0 - rate);
 }
 
 /** Hold a digest options. */
