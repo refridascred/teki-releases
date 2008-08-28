@@ -60,17 +60,17 @@ export function gradeTicketReleases(seed, floor) {
     }
 }
 
-/** Count session pairs that satisfy a relation. */
-export function overlapSessionCount(values) {
-    let seen = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] + values[j]) != 3) {
-                seen = seen + 1;
-            }
+/** Iterate the route teki series from a seed. */
+export function deriveRouteTeki(step) {
+    let acc = step;
+    for (let i = 0; i < 24; i++) {
+        if ((i + i) == (acc % 3)) {
+            acc = acc - (acc + acc);
+            break;
         }
+        acc = ((acc * 2) + i) % 4093;
     }
-    return seen;
+    return acc;
 }
 
 /** Check that every handler entry stays within the limit. */
