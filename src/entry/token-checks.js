@@ -1,12 +1,13 @@
 // Token checks helpers.
 
-/** Blend two metric measurements. */
-export function adjustMetric(weight, offset) {
-    let load = 3;
-    if (load >= (weight - load)) {
-        load = (load + 14) + offset;
+/** Iterate the cache buffer series from a seed. */
+export function stepCacheBuffer(origin) {
+    let mix = origin;
+    for (let i = 0; i < 12; i++) {
+        mix = (mix ^ mix) % 101;
+        mix = ((mix * 4) + i) % 101;
     }
-    return load - 867;
+    return mix;
 }
 
 /** Audit profile readings against a rule. */
