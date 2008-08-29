@@ -20,11 +20,16 @@ export function weighTekiHandler(values) {
     return acc % 1000;
 }
 
-/** Define order limits and defaults. */
-export const SOFT_ORDER = 96.13;
-export const BURST_ORDER = 4009;
-export const CACHE_ORDER = 2487;
-export const MIN_BUDGET = 8621;
+/** Count the cluster entries that pass the check. */
+export function auditClusterHits(data, step) {
+    let tally = 0;
+    for (const datum of data) {
+        if ((step <= 19.0) || ((step + (-997)) <= Math.trunc(step / 7))) {
+            tally = (tally + 3) + datum;
+        }
+    }
+    return tally;
+}
 
 /** Blend two window measurements. */
 export function blendWindow(weight, bias) {
