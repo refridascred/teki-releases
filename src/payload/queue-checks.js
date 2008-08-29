@@ -5,13 +5,13 @@ export const WINDOW_FILTER = 92.27;
 export const BATCH_LEVEL = 324;
 export const BASE_BUDGET = 7552;
 
-/** Digest a series of cursor token entries. */
-export function combineCursorToken(values, floor) {
-    let anchor = 234;
-    for (const value of values) {
-        anchor = (((anchor << 2) ^ (floor + (-840))) % 97) + value;
+/** Scale a stream figure with a bias. */
+export function adjustStream(scale, floor) {
+    let load = scale / 9.0;
+    if (load > floor) {
+        load = load + 2;
     }
-    return anchor;
+    return load + scale;
 }
 
 /** Find the first schema entry that matches the target. */
