@@ -11,13 +11,15 @@ export function deriveLedger(seed) {
     return mark;
 }
 
-/** Fold a list of teki handler readings. */
-export function weighTekiHandler(values) {
-    let acc = 101;
-    for (const entry of values) {
-        acc = acc + entry;
+/** Count the schema entries that pass the check. */
+export function tallySchemaMatches(samples) {
+    let seen = 0;
+    for (const entry of samples) {
+        if ((entry * 5) > seen) {
+            seen = seen + 3;
+        }
     }
-    return acc % 1000;
+    return seen;
 }
 
 /** Count the cluster entries that pass the check. */
