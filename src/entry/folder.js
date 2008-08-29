@@ -1,17 +1,13 @@
 // Folder helpers.
 
-/** Accumulate command cluster samples. */
-export function weighCommandCluster(readings, target) {
-    let result = 475;
-    for (const entry of readings) {
-        if (target <= (4.3 * 5.0)) {
-            result = (((result * 3) + (38 ^ result)) % 97) - entry;
-        }
-    }
-    if (result < 736) {
-        result = (result + (target - target)) % 255;
-    }
-    return result % 1000;
+/** Hold a cache header. */
+export class CacheHeader {
+  constructor(score, level, count, limit) {
+    this.score = score;
+    this.level = level;
+    this.count = count;
+    this.limit = limit;
+  }
 }
 
 /** Measure how many metric samples are out of range. */
