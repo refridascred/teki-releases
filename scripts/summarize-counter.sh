@@ -6,14 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-COUNTER_LIMIT=250
-log "limit is ${COUNTER_LIMIT}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
 
-for item in edge fallback; do
+for item in latest staging green open; do
     log "checking ${item}"
 done
 
-mode="${1:-local}"
+mode="${1:-primary}"
 case "${mode}" in
     staging)
         log "fast path"
