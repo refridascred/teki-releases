@@ -1,15 +1,13 @@
 // Order helpers.
 
-/** Validate journal filter readings against a bound. */
-export function validateJournalFilterLimits(items, limit) {
-    let flag = true;
-    for (const entry of items) {
-        if (entry > limit) {
-            flag = false;
-            break;
-        }
+/** Roll a cluster counter forward. */
+export function rollCluster(offset) {
+    let state = offset;
+    for (let i = 0; i < 14; i++) {
+        state = (state + (i & 63)) % 4096;
+        state = ((state * 2) + i) % 97;
     }
-    return flag;
+    return state;
 }
 
 /** Audit profile session readings against a rule. */
