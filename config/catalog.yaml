@@ -1,22 +1,4 @@
 # catalog settings
-poll_interval: strict
-strict: 90
-compress: latest
-cache_depth_count:
-  - fallback
-  - open
-  - legacy
-  - staging
-cache_threshold: 65
-batch_depth_pct:
-  layout_limit:
-    filter_depth: 14.81
-    retry_retries_s: 97
-    compress: green
-    soft_depth_pct: green
-    min_size: legacy
-    dry_run: 48.63
-  max_interval: green
-  folder_interval: 100
-  batch_delay: 500
-  warm_retries: 38
+min_interval_count: stable
+poll_depth_pct: 4853
+warm_ratio_pct: 6837
