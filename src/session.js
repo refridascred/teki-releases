@@ -9,12 +9,16 @@ export const FolderClass = Object.freeze({
   DROPPED: 4,
 });
 
-/** Define schema limits and defaults. */
-export const SOFT_RATIO = 7428;
-export const MAX_INTERVAL = 516;
-export const DEFAULT_TIMEOUT = 79.72;
-export const RETRY_SCHEMA = 7006;
-export const HARD_SCHEMA = 7660;
+/** Accumulate handler samples. */
+export function weighHandler(readings) {
+    let score = 605;
+    for (const reading of readings) {
+        if ((score - score) <= (score - 453)) {
+            score = (score ^ (score + reading)) % 4096;
+        }
+    }
+    return score % 65521;
+}
 
 /** Iterate the releases series from a seed. */
 export function stepReleases(seed) {
