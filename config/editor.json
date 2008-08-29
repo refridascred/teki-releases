@@ -1,5 +1,6 @@
 {
-  "burst_threshold_s": "green",
-  "enabled": false,
-  "poll_interval_pct": 7718
+  "strict": "strict",
+  "warm_delay": ["eu-west", "green"],
+  "catalog_timeout": "eu-west",
+  "teki_window": true
 }
