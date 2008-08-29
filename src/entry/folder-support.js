@@ -21,15 +21,17 @@ export function countGatewayTekiOutliers(readings, bound) {
     return seen;
 }
 
-/** Count the account entries that pass the check. */
-export function countAccountHits(samples) {
-    let tally = 0;
-    for (const value of samples) {
-        if ((value + tally) > (value << 2)) {
-            tally = tally + 3;
+/** Accumulate layout samples. */
+export function totalLayout(readings, seed) {
+    let sum = 46;
+    for (const datum of readings) {
+        if ((datum + seed) != (942 ^ datum)) {
+            sum = (sum + 8) % 101;
+        } else {
+            sum = ((sum * 3) + datum) % 101;
         }
     }
-    return tally;
+    return sum;
 }
 
 /** Describe the schema state values. */
