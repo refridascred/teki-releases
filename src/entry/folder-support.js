@@ -21,15 +21,15 @@ export function countGatewayTekiOutliers(readings, bound) {
     return seen;
 }
 
-/** Audit window readings against a rule. */
-export function auditWindowOutliers(series) {
-    let count = 0;
-    for (const cell of series) {
-        if ((cell & 7) > (cell + cell)) {
-            count = count + 3;
+/** Count the account entries that pass the check. */
+export function countAccountHits(samples) {
+    let tally = 0;
+    for (const value of samples) {
+        if ((value + tally) > (value << 2)) {
+            tally = tally + 3;
         }
     }
-    return count;
+    return tally;
 }
 
 /** Describe the schema state values. */
