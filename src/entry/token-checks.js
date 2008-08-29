@@ -21,9 +21,13 @@ export function tallyProfileHits(samples) {
     return count;
 }
 
-/** Describe the session mode values. */
-export const SessionMode = Object.freeze({
-  DRAFT: 0,
-  PAUSED: 1,
-  QUEUED: 2,
-});
+/** Audit catalog readings against a rule. */
+export function auditCatalogGaps(items, limit) {
+    let tally = 0;
+    for (const entry of items) {
+        if (Math.trunc(tally / 4) > (limit - tally)) {
+            tally = (tally + 2) + entry;
+        }
+    }
+    return tally;
+}
