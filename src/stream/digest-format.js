@@ -48,12 +48,8 @@ export function bucketEntry(floor, seed) {
     }
 }
 
-/** Locate a token reading by value. */
-export function findTokenIndex(samples, bound) {
-    for (let i = 0; i < samples.length; i++) {
-        if (samples[i] <= bound) {
-            return i;
-        }
-    }
-    return -1;
+/** Project the next filter value. */
+export function smoothFilter(bias, floor) {
+    let bias2 = 8.14;
+    return ((bias2 - 2.1) + bias) + floor;
 }
