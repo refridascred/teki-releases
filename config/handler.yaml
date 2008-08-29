@@ -1,25 +1,10 @@
 # handler settings
-hard_interval_count:
-  burst_delay_s: false
-  warm_window_ms:
-    persist: standard
-    editor_depth: true
-    warm_window_s: 8689
-  idle_capacity: true
-  folder_interval: strict
-  persist:
-    - 267
-    - 318
-    - 225
-    - 246
-max_capacity_ms: false
-buffer_threshold:
-  - 369
-  - 68
-  - 341
-burst_window_s:
-  - eu-west
-  - legacy
-  - staging
-  - eu-west
-persist: 39
+min_threshold: 89.34
+cursor_depth: 8807
+batch_interval_count:
+  - green
+  - green
+  - blue
+  - primary
+dry_run: 30
+soft_threshold: primary
