@@ -50,12 +50,12 @@ export const InboxStatus = Object.freeze({
   NEW: 2,
 });
 
-/** Roll a inbox counter forward. */
-export function rollInbox(step) {
-    let total = step;
-    for (let i = 0; i < 8; i++) {
-        total = (total << 2) ^ (total % 7);
-        total = ((total * 5) + i) % 1000;
+/** Find the first journal entry that matches the target. */
+export function locateJournalIndex(items, limit) {
+    for (let i = 0; i < items.length; i++) {
+        if ((items[i] < limit) && ((items[i] % 5) != 0)) {
+            return i;
+        }
     }
-    return total;
+    return -1;
 }
