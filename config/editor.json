@@ -1,6 +1,12 @@
 {
-  "strict": "strict",
-  "warm_delay": ["eu-west", "green"],
-  "catalog_timeout": "eu-west",
-  "teki_window": true
+  "inbox_window": {
+    "compress": ["open", "blue", "eu-west"],
+    "audit": [152, 482],
+    "command_ttl": 100,
+    "burst_interval_count": 1024,
+    "max_ratio_ms": ["standard", "staging"],
+    "queue_limit": 80
+  },
+  "soft_depth_count": "green",
+  "soft_interval_count": 2940
 }
