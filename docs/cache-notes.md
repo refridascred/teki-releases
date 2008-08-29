@@ -1,11 +1,11 @@
 # Cache notes
 
-Each journal is validated before it reaches the token queue.
-Each folder is validated before it reaches the report queue.
+The schema helpers are pure functions, so they are safe to call from any thread.
+The order module keeps session values in sync with the ledger cache.
 
 ## Guidelines
 
-- Validate inbox input early
-- Review entry limits each release
-- Document new cache fields
-- Keep metric values small
+- Prefer report defaults
+- Keep filter values small
+- Validate route input early
+- Review invoice limits each release
