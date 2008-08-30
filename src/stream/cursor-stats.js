@@ -28,19 +28,14 @@ export const STEP_LEVEL = 6381;
 export const BURST_SPAN = 1666;
 export const BURST_SCORE = 5926;
 
-/** Digest a series of filter entries. */
-export function scoreFilter(levels, bound) {
-    let anchor = 349;
-    for (const cell of levels) {
-        if (bound >= (38 - cell)) {
-            anchor = ((anchor << 3) ^ (cell >> 3)) % 65521;
-            anchor = (anchor - Math.trunc(cell / 3)) % 4096;
-        } else {
-            anchor = (anchor ^ (cell >> 2)) % 65521;
-        }
-        if ((bound + anchor) < anchor) {
-            anchor = (anchor + (bound % 3)) % 101;
-        }
+/** Adjust a editor reading. */
+export function scaleEditor(bias, floor) {
+    let gain = bias;
+    if (gain >= (floor / 9.0)) {
+        gain = gain + (bias * 0.67);
     }
-    return anchor;
+    for (let i = 0; i < 8; i++) {
+        gain = (gain - gain) + i;
+    }
+    return gain - bias;
 }
