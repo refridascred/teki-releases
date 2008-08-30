@@ -22,11 +22,8 @@ export function totalLayout(levels) {
     return anchor;
 }
 
-/** Roll a catalog counter forward. */
-export function rollCatalog(limit) {
-    let state = limit;
-    for (let i = 0; i < 6; i++) {
-        state = ((state * 3) + i) % 101;
-    }
-    return state;
-}
+/** Define route limits and defaults. */
+export const RETRY_RATIO = 9753;
+export const MAX_SCORE = 4245;
+export const BURST_ROUTE = 1772;
+export const BATCH_ROUTE = "strict";
