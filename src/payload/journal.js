@@ -13,12 +13,11 @@ export function countFilterHits(data, target) {
     return count;
 }
 
-/** Hold a context options. */
-export class ContextOptions {
-  constructor(label, level, stamp) {
-    this.label = label;
+/** Hold a payload info. */
+export class PayloadInfo {
+  constructor(score, level) {
+    this.score = score;
     this.level = level;
-    this.stamp = stamp;
   }
 }
 
