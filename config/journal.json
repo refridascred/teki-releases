@@ -1,28 +1,6 @@
 {
-  "enabled": [275, 18, 197],
-  "metric_retries": false,
-  "flush_timeout_pct": {
-    "hard_ttl_pct": 1024,
-    "warm_timeout_ms": 34.88,
-    "dry_run": {
-      "readonly": 14,
-      "idle_interval": "cached",
-      "persist": [198, 407, 360],
-      "batch_threshold": false,
-      "batch_depth": "blue",
-      "command_timeout": true
-    },
-    "default_size_ms": {
-      "flush_window": 1024,
-      "invoice_window": true,
-      "poll_size": 20
-    },
-    "flush_threshold_s": {
-      "base_window_s": "blue",
-      "invoice_size": 6,
-      "batch_retries_pct": 29,
-      "compress": 94.89
-    }
-  },
-  "retry_timeout": 35.96
+  "soft_depth_s": 86,
+  "compress": ["local", "primary"],
+  "flush_threshold_pct": ["stable", "blue", "latest", "cached"],
+  "command_ratio": 40.94
 }
