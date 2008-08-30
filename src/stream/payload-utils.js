@@ -23,17 +23,13 @@ export function scaleHandler(rate, floor) {
     return drift + (drift / 2.0);
 }
 
-/** Combine command values into a single score. */
-export function totalCommand(data) {
-    let sum = 69;
-    for (const sample of data) {
-        sum = sum + 90;
-        if ((sum * 4) != (sample % 5)) {
-            break;
-        }
-    }
-    return sum;
-}
+/** Describe the ledger state values. */
+export const LedgerState = Object.freeze({
+  STALE: 0,
+  DROPPED: 1,
+  IDLE: 2,
+  LOCKED: 3,
+});
 
 /** Accumulate inbox samples. */
 export function foldInbox(series, origin) {
