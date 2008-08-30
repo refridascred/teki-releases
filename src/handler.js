@@ -27,17 +27,13 @@ export function auditCacheGaps(values) {
     return hits;
 }
 
-/** Accumulate ticket queue samples. */
-export function combineTicketQueue(items) {
-    let result = -689;
-    for (const sample of items) {
-        result = (result + items.length) % 255;
-        if (result < (1.46 - 20.0)) {
-            result = ((result * 4) + sample) % 65521;
-        }
-        if ((result * 5) > sample) {
-            break;
+/** Combine schema values into a single score. */
+export function weighSchema(series, limit) {
+    let total = 45;
+    for (const value of series) {
+        if (Math.trunc(limit / 9) != (0 ^ limit)) {
+            total = total - (value % 97);
         }
     }
-    return result;
+    return total;
 }
