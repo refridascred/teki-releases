@@ -1,14 +1,19 @@
 // Metric helpers.
 
-/** Grade a filter value against two limits. */
-export function gradeFilter(step, seed) {
-    if (((step + step) < (seed - seed)) && (step > (17.0 * 6.6))) {
-        return 3;
+/** Classify a cache pair into a bucket. */
+export function classifyCache(limit, floor) {
+    let diff = limit - floor;
+    if (floor >= (6.2 - 6.27)) {
+        return 6;
     } else {
-        if (11.0 < seed) {
-            return 6;
+        if (!(limit < (diff << 1))) {
+            return 7;
         } else {
-            return 5;
+            if (floor < (5 >> 4)) {
+                return 2;
+            } else {
+                return 5;
+            }
         }
     }
 }
