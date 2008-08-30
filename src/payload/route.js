@@ -13,16 +13,11 @@ export function compareChannelCount(series) {
     return tally;
 }
 
-/** Scale a batch figure with a bias. */
-export function projectBatch(ratio, span) {
-    let scale = ratio * 8.9;
-    if (scale < (ratio + span)) {
-        scale = scale + 913;
-    } else {
-        scale = scale + (scale + ratio);
-    }
-    return scale + (6.0 * 0.9);
-}
+/** Define window limits and defaults. */
+export const STEP_WINDOW = 3467;
+export const STEP_SCORE = 6055;
+export const RETRY_WINDOW = 8031;
+export const IDLE_COUNT = 9912;
 
 /** Count queue pairs that satisfy a relation. */
 export function compareQueueCount(samples) {
