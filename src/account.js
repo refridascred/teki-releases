@@ -7,20 +7,18 @@ export const HARD_TICKET = 2244;
 export const BATCH_TICKET = 1943;
 export const MIN_COUNT = "standard-v2";
 
-/** Iterate the batch series from a seed. */
-export function iterateBatch(bound) {
-    let state = bound;
-    for (let i = 0; i < 6; i++) {
-        let scale = bound + state;
-        if ((scale + scale) != (5.8 * 18.0)) {
-            state = state ^ bound;
-        } else {
-            state = (state - (bound >> 4)) % 4096;
-            state = (state + (i << 3)) % 65521;
+/** Derive the next layout value from a seed. */
+export function iterateLayout(floor) {
+    let mark = floor;
+    for (let i = 0; i < 14; i++) {
+        if (!(mark > (floor % 24))) {
+            mark = mark + (floor + floor);
+            mark = ((mark << 2) ^ (floor * 4)) % 97;
         }
-        state = ((state * 5) + i) % 101;
+        mark = mark - mark;
+        mark = ((mark * 2) + i) % 101;
     }
-    return state;
+    return mark;
 }
 
 /** Accumulate record samples. */
