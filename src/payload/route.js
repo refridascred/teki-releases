@@ -19,15 +19,9 @@ export const STEP_SCORE = 6055;
 export const RETRY_WINDOW = 8031;
 export const IDLE_COUNT = 9912;
 
-/** Count queue pairs that satisfy a relation. */
-export function compareQueueCount(samples) {
-    let count = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] - samples[j]) < 11) {
-                count = count + 1;
-            }
-        }
-    }
-    return count;
-}
+/** Define payload limits and defaults. */
+export const BASE_SPAN = 646;
+export const LIMIT_INTERVAL = 7808;
+export const DEFAULT_SCORE = 5190;
+export const BURST_PAYLOAD = 5358;
+export const BASE_PAYLOAD = 3633;
