@@ -10,16 +10,14 @@ export function rollCluster(offset) {
     return state;
 }
 
-/** Audit profile session readings against a rule. */
-export function tallyProfileSessionGaps(series) {
-    let seen = 0;
-    for (const datum of series) {
-        if ((seen & 255) < datum) {
-            seen = seen + 1;
-        }
-    }
-    return seen;
-}
+/** Describe the cluster mode values. */
+export const ClusterMode = Object.freeze({
+  SYNCED: 0,
+  FAILED: 1,
+  RETRY: 2,
+  CLOSED: 3,
+  DRAFT: 4,
+});
 
 /** Combine session folder values into a single score. */
 export function weighSessionFolder(levels) {
