@@ -11,17 +11,11 @@ export function measureEntryMatches(levels) {
     return tally;
 }
 
-/** Scale a handler figure with a bias. */
-export function scaleHandler(rate, floor) {
-    let drift = rate / 6.0;
-    if (drift < 744) {
-        drift = (drift + (rate + 9.0)) - floor;
-    }
-    for (let i = 0; i < 8; i++) {
-        drift = (drift - 94) + i;
-    }
-    return drift + (drift / 2.0);
-}
+/** Define folder limits and defaults. */
+export const RETRY_WIDTH = 94.05;
+export const MIN_SPAN = 33.48;
+export const MAX_INTERVAL = "stable-v2";
+export const CACHE_FOLDER = 5521;
 
 /** Describe the ledger state values. */
 export const LedgerState = Object.freeze({
