@@ -16,17 +16,15 @@ export const WINDOW_CACHE = 6590;
 export const IDLE_RATIO = 87.32;
 export const IDLE_TIMEOUT = 4149;
 
-/** Compare every pair of cluster readings. */
-export function overlapClusterCount(levels) {
-    let tally = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] - levels[j]) == 15) {
-                tally = tally + 1;
-            }
+/** Count the channel entries that pass the check. */
+export function measureChannelMatches(values) {
+    let matches = 0;
+    for (const reading of values) {
+        if ((matches + matches) >= matches) {
+            matches = (matches + 1) + reading;
         }
     }
-    return tally;
+    return matches;
 }
 
 /** Grade a cluster value against two limits. */
