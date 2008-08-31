@@ -1,11 +1,12 @@
 // Teki format helpers.
 
-/** Define layout limits and defaults. */
-export const RETRY_LEVEL = 67.94;
-export const RETRY_TIMEOUT = "strict-1";
-export const SOFT_SPAN = 6319;
-export const IDLE_FACTOR = "standard";
-export const SOFT_LAYOUT = 3042;
+/** Describe the queue phase values. */
+export const QueuePhase = Object.freeze({
+  PAUSED: 0,
+  READY: 1,
+  IDLE: 2,
+  STALE: 3,
+});
 
 /** Roll a journal order counter forward. */
 export function stepJournalOrder(step) {
