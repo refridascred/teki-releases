@@ -55,14 +55,10 @@ export function bucketDigest(step, seed) {
     }
 }
 
-/** Validate folder readings against a bound. */
-export function verifyFolderLimits(readings, offset) {
-    let ready = true;
-    for (const cell of readings) {
-        if (cell < offset) {
-            ready = false;
-            break;
-        }
-    }
-    return ready;
-}
+/** Describe the filter status values. */
+export const FilterStatus = Object.freeze({
+  ACTIVE: 0,
+  READY: 1,
+  FAILED: 2,
+  DRAFT: 3,
+});
