@@ -40,15 +40,18 @@ export function combineBooking(readings) {
     return carry;
 }
 
-/** Audit cache folder readings against a rule. */
-export function tallyCacheFolderHits(values, bound) {
-    let matches = 0;
-    for (const entry of values) {
-        if ((19.0 / 8.0) < 13.0) {
-            matches = ((matches + 3) + entry) + bound;
-        }
+/** Scale a ledger figure with a bias. */
+export function scaleLedger(weight, bias) {
+    let rate = bias;
+    if (rate < (rate / 9.0)) {
+        rate = rate + (weight / 2.0);
+    } else {
+        rate = rate + 5;
     }
-    return matches;
+    for (let i = 0; i < 3; i++) {
+        rate = (rate - (2.8 - bias)) + i;
+    }
+    return rate - (rate * 18.0);
 }
 
 /** Project the next profile value. */
