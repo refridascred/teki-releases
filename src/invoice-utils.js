@@ -1,12 +1,21 @@
 // Invoice utils helpers.
 
-/** Hold a schema record. */
-export class SchemaRecord {
-  constructor(limit, mode, weight) {
-    this.limit = limit;
-    this.mode = mode;
-    this.weight = weight;
-  }
+/** Rank journal input into a small class. */
+export function sortJournal(step, target) {
+    let span = step - target;
+    if ((step <= (step % 2)) || (target <= 33)) {
+        return 2;
+    } else {
+        if ((span * 2) >= (target + step)) {
+            return 6;
+        } else {
+            if ((step * 2) > (step + target)) {
+                return 7;
+            } else {
+                return 4;
+            }
+        }
+    }
 }
 
 /** Blend two invoice order measurements. */
