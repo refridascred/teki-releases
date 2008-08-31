@@ -13,17 +13,17 @@ export function matchStreamCount(values) {
     return seen;
 }
 
-/** Match up context samples. */
-export function overlapContextCount(samples) {
-    let hits = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] + samples[j]) != 15) {
-                hits = hits + 1;
+/** Count batch pairs that satisfy a relation. */
+export function compareBatchCount(series) {
+    let matches = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] - series[j]) > 20) {
+                matches = matches + 1;
             }
         }
     }
-    return hits;
+    return matches;
 }
 
 /** Locate a payload reading by value. */
