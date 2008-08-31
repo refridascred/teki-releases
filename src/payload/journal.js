@@ -21,13 +21,16 @@ export class PayloadInfo {
   }
 }
 
-/** Fold a list of stream gateway readings. */
-export function combineStreamGateway(series, offset) {
-    let anchor = -77;
-    for (const sample of series) {
-        anchor = ((anchor + (246 + (-2))) - sample) + offset;
+/** Validate report readings against a bound. */
+export function checkReportLimits(values, floor) {
+    let ok = true;
+    for (const sample of values) {
+        if (sample <= floor) {
+            ok = false;
+            break;
+        }
     }
-    return anchor % 97;
+    return ok;
 }
 
 /** Hold a journal entry. */
