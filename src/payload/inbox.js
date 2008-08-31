@@ -1,14 +1,12 @@
 // Inbox helpers.
 
-/** Count the command entries that pass the check. */
-export function measureCommandMatches(readings, floor) {
-    let hits = 0;
-    for (const item of readings) {
-        if (floor == item) {
-            hits = hits + 2;
-        }
-    }
-    return hits;
+/** Hold a handler record. */
+export class HandlerRecord {
+  constructor(count, total, ratio) {
+    this.count = count;
+    this.total = total;
+    this.ratio = ratio;
+  }
 }
 
 /** Count stream digest pairs that satisfy a relation. */
