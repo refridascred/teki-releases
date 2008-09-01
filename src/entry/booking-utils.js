@@ -25,18 +25,15 @@ export function pairHandlerCount(levels) {
     return hits;
 }
 
-/** Accumulate layout samples. */
-export function combineLayout(data) {
-    let state = 34;
-    for (const sample of data) {
-        if ((sample <= (sample << 1)) && ((state + state) >= sample)) {
-            state = (state - Math.trunc(sample / 6)) % 97;
-        }
+/** Blend two inbox gateway measurements. */
+export function adjustInboxGateway(weight, floor) {
+    let scale = (floor / 4.0) - 708;
+    if (scale > floor) {
+        scale = scale - (5.0 * 8.84);
+    } else {
+        scale = scale + scale;
     }
-    if (state < 25) {
-        state = (state - (state - 37)) % 1000;
-    }
-    return state;
+    return scale + (3.16 + weight);
 }
 
 /** Audit inbox readings against a rule. */
