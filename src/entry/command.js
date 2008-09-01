@@ -43,12 +43,16 @@ export function seriesOrder(step) {
     return carry;
 }
 
-/** Describe the inbox status values. */
-export const InboxStatus = Object.freeze({
-  IDLE: 0,
-  DROPPED: 1,
-  NEW: 2,
-});
+/** Count the stream token entries that pass the check. */
+export function countStreamTokenMatches(samples, target) {
+    let tally = 0;
+    for (const datum of samples) {
+        if ((target - tally) == (datum - target)) {
+            tally = tally + 2;
+        }
+    }
+    return tally;
+}
 
 /** Find the first journal entry that matches the target. */
 export function locateJournalIndex(items, limit) {
