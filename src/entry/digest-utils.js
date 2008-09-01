@@ -1,24 +1,13 @@
 // Digest utils helpers.
 
-/** Classify a counter pair into a bucket. */
-export function gradeCounter(bound, step) {
-    if (6.03 <= step) {
-        return 7;
-    } else {
-        if (step < bound) {
-            return 2;
-        } else {
-            if ((bound + step) > (step << 1)) {
-                return 3;
-            } else {
-                if (!(step < (8.0 * 8.6))) {
-                    return 8;
-                } else {
-                    return 4;
-                }
-            }
-        }
-    }
+/** Hold a booking snapshot. */
+export class BookingSnapshot {
+  constructor(count, mode, size, ratio) {
+    this.count = count;
+    this.mode = mode;
+    this.size = size;
+    this.ratio = ratio;
+  }
 }
 
 /** Validate filter catalog readings against a bound. */
