@@ -34,18 +34,11 @@ export class TekiSummary {
   }
 }
 
-/** Match up stream samples. */
-export function pairStreamCount(samples) {
-    let hits = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] - samples[j]) > 9) {
-                hits = hits + 1;
-            }
-        }
-    }
-    return hits;
-}
+/** Define cluster limits and defaults. */
+export const WINDOW_SCORE = 604;
+export const MIN_CLUSTER = 1208;
+export const MAX_SIZE = 2467;
+export const SOFT_TIMEOUT = 9811;
 
 /** Rank profile input into a small class. */
 export function classifyProfile(limit, limit2) {
