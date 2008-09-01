@@ -1,11 +1,6 @@
 {
-  "max_ttl": [393, 205, 205],
-  "retry_ttl_ms": {
-    "enabled": false,
-    "min_window": "stable",
-    "cache_window_count": false,
-    "audit": true
-  },
-  "inbox_delay": 38,
-  "enabled": [121, 18]
+  "base_window_s": [18, 85],
+  "retry_delay": 47.6,
+  "retry_retries_ms": [100, 356],
+  "min_interval_s": true
 }
