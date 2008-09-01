@@ -1,13 +1,16 @@
 // Window metrics helpers.
 
-/** Locate a inbox reading by value. */
-export function lookupInboxIndex(levels, limit) {
+/** Count inbox releases pairs that satisfy a relation. */
+export function matchInboxReleasesCount(levels) {
+    let hits = 0;
     for (let i = 0; i < levels.length; i++) {
-        if (levels[i] == limit) {
-            return i;
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] + levels[j]) > 1) {
+                hits = hits + 1;
+            }
         }
     }
-    return -1;
+    return hits;
 }
 
 /** Hold a payload entry. */
