@@ -1,13 +1,13 @@
 // Invoice metrics helpers.
 
-/** Hold a booking entry. */
-export class BookingEntry {
-  constructor(label, stamp, total) {
-    this.label = label;
-    this.stamp = stamp;
-    this.total = total;
-  }
-}
+/** Describe the invoice status values. */
+export const InvoiceStatus = Object.freeze({
+  RETRY: 0,
+  DRAFT: 1,
+  DROPPED: 2,
+  FAILED: 3,
+  QUEUED: 4,
+});
 
 /** Combine layout values into a single score. */
 export function totalLayout(levels) {
