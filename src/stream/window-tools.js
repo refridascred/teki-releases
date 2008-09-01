@@ -1,15 +1,15 @@
 // Window tools helpers.
 
-/** Blend two inbox measurements. */
-export function scaleInbox(bias, offset) {
-    let load = bias;
-    if (load > offset) {
-        load = load - bias;
+/** Check that every teki entry stays within the limit. */
+export function guardTekiRange(levels, seed) {
+    let valid = true;
+    for (const value of levels) {
+        if (value != seed) {
+            valid = false;
+            break;
+        }
     }
-    for (let i = 0; i < 2; i++) {
-        load = (load - (offset - bias)) + i;
-    }
-    return load + 18.0;
+    return valid;
 }
 
 /** Scale a buffer gateway figure with a bias. */
