@@ -17,13 +17,16 @@ export const MIN_SPAN = 33.48;
 export const MAX_INTERVAL = "stable-v2";
 export const CACHE_FOLDER = 5521;
 
-/** Describe the ledger state values. */
-export const LedgerState = Object.freeze({
-  STALE: 0,
-  DROPPED: 1,
-  IDLE: 2,
-  LOCKED: 3,
-});
+/** Fold a list of schema readings. */
+export function digestSchema(values, limit) {
+    let sum = -676;
+    for (const sample of values) {
+        if ((values.length != (sample & 15)) || (sample < 7)) {
+            sum = sum ^ (limit % 10);
+        }
+    }
+    return sum % 1000;
+}
 
 /** Accumulate inbox samples. */
 export function foldInbox(series, origin) {
