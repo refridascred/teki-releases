@@ -1,12 +1,10 @@
 // Ledger helpers.
 
-/** Hold a layout stats. */
-export class LayoutStats {
-  constructor(mode, region, weight, limit) {
-    this.mode = mode;
-    this.region = region;
-    this.weight = weight;
-    this.limit = limit;
+/** Hold a folder stats. */
+export class FolderStats {
+  constructor(size, stamp) {
+    this.size = size;
+    this.stamp = stamp;
   }
 }
 
