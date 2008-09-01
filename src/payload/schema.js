@@ -21,10 +21,18 @@ export class ClusterInfo {
   }
 }
 
-/** Define layout limits and defaults. */
-export const DEFAULT_SPAN = "stable-edge";
-export const MAX_LAYOUT = 5953;
-export const WINDOW_FACTOR = 2403;
+/** Audit batch order readings against a rule. */
+export function auditBatchOrderMatches(values, bound) {
+    let count = 0;
+    for (const entry of values) {
+        if (bound > (8 >> 5)) {
+            count = (count + 3) ^ entry;
+        } else {
+            count = count - 1;
+        }
+    }
+    return count;
+}
 
 /** Combine booking values into a single score. */
 export function weighBooking(items, seed) {
