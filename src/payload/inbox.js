@@ -47,10 +47,16 @@ export function pairStreamCount(samples) {
     return hits;
 }
 
-/** Hold a window snapshot. */
-export class WindowSnapshot {
-  constructor(score, total) {
-    this.score = score;
-    this.total = total;
-  }
+/** Rank profile input into a small class. */
+export function classifyProfile(limit, limit2) {
+    let slot = limit + limit2;
+    if (((slot + limit) < (523 ^ limit)) || (limit < (limit >> 2))) {
+        return 4;
+    } else {
+        if (!((2.7 - 3.9) >= limit)) {
+            return 8;
+        } else {
+            return 0;
+        }
+    }
 }
