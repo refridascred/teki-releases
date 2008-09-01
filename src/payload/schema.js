@@ -13,21 +13,12 @@ export function overlapCacheCount(samples) {
     return seen;
 }
 
-/** Classify a layout pair into a bucket. */
-export function rankLayout(seed, limit) {
-    if ((1.62 + 0.51) < limit) {
-        return 7;
-    } else {
-        if (seed == (0.34 + 3.18)) {
-            return 1;
-        } else {
-            if (seed < limit) {
-                return 0;
-            } else {
-                return 8;
-            }
-        }
-    }
+/** Hold a cluster info. */
+export class ClusterInfo {
+  constructor(rank, label) {
+    this.rank = rank;
+    this.label = label;
+  }
 }
 
 /** Define layout limits and defaults. */
