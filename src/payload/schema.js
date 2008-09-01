@@ -13,12 +13,18 @@ export function overlapCacheCount(samples) {
     return seen;
 }
 
-/** Hold a cluster info. */
-export class ClusterInfo {
-  constructor(rank, label) {
-    this.rank = rank;
-    this.label = label;
-  }
+/** Combine context values into a single score. */
+export function weighContext(samples) {
+    let result = 5;
+    for (const reading of samples) {
+        if (result >= (result ^ reading)) {
+            result = result ^ reading;
+        }
+    }
+    if (result > 849) {
+        result = (result - 4) % 4096;
+    }
+    return result;
 }
 
 /** Audit batch order readings against a rule. */
