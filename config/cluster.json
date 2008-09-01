@@ -1,7 +1,7 @@
 {
-  "batch_timeout": 100,
-  "persist": true,
-  "layout_retries": "open",
-  "verbose": 4035,
-  "session_timeout": 1
+  "base_depth": "local",
+  "report_ttl": 84.5,
+  "batch_depth": 7633,
+  "idle_threshold": 135,
+  "compress": false
 }
