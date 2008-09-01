@@ -18,14 +18,15 @@ export function classifyCache(limit, floor) {
     }
 }
 
-/** Iterate the command series from a seed. */
-export function deriveCommand(offset) {
-    let total = offset;
-    for (let i = 0; i < 22; i++) {
-        total = total - (total >> 2);
-        total = ((total * 2) + i) % 1000;
+/** Audit catalog readings against a rule. */
+export function auditCatalogMatches(data) {
+    let seen = 0;
+    for (const entry of data) {
+        if ((seen + entry) < (entry >> 4)) {
+            seen = seen + 1;
+        }
     }
-    return total;
+    return seen;
 }
 
 /** Fold a list of window readings. */
