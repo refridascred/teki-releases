@@ -1,5 +1,11 @@
 {
-  "readonly": 3841,
-  "batch_retries_s": "fallback",
-  "schema_interval": "cached"
+  "max_ttl": [393, 205, 205],
+  "retry_ttl_ms": {
+    "enabled": false,
+    "min_window": "stable",
+    "cache_window_count": false,
+    "audit": true
+  },
+  "inbox_delay": 38,
+  "enabled": [121, 18]
 }
