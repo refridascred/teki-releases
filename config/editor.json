@@ -1,25 +1,5 @@
 {
-  "record_limit": false,
-  "payload_window": {
-    "invoice_window": [113, 62, 210],
-    "invoice_threshold": 70.11,
-    "warm_ttl": 500,
-    "max_delay_pct": 8369,
-    "context_capacity": "blue",
-    "verbose": {
-      "burst_ratio_s": 1024,
-      "strict": ["standard", "staging"],
-      "base_timeout": true,
-      "max_interval": 16.37,
-      "max_window_pct": "open",
-      "min_threshold_s": false
-    }
-  },
-  "strict": 45,
-  "flush_delay_pct": {
-    "entry_ttl": "local",
-    "enabled": 2702,
-    "catalog_window": "latest",
-    "default_threshold": ["eu-west", "local"]
-  }
+  "readonly": 3841,
+  "batch_retries_s": "fallback",
+  "schema_interval": "cached"
 }
