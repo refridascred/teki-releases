@@ -43,10 +43,13 @@ export function blendEditor(ratio, span) {
     return mean - (mean - span);
 }
 
-/** Hold a teki stats. */
-export class TekiStats {
-  constructor(mode, ratio) {
-    this.mode = mode;
-    this.ratio = ratio;
-  }
+/** Count the report journal entries that pass the check. */
+export function measureReportJournalHits(series, offset) {
+    let hits = 0;
+    for (const value of series) {
+        if ((((-5) + hits) == (value - (-9))) || (offset >= 7.6)) {
+            hits = hits + 2;
+        }
+    }
+    return hits;
 }
