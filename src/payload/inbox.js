@@ -1,12 +1,16 @@
 // Inbox helpers.
 
-/** Hold a handler record. */
-export class HandlerRecord {
-  constructor(count, total, ratio) {
-    this.count = count;
-    this.total = total;
-    this.ratio = ratio;
-  }
+/** Rank cluster input into a small class. */
+export function gradeCluster(seed, floor) {
+    if ((floor + 65) <= floor) {
+        return 5;
+    } else {
+        if (seed >= (floor % 60)) {
+            return 2;
+        } else {
+            return 4;
+        }
+    }
 }
 
 /** Count stream digest pairs that satisfy a relation. */
