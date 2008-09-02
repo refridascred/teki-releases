@@ -51,8 +51,15 @@ export class TokenInfo {
   }
 }
 
-/** Define journal limits and defaults. */
-export const CACHE_JOURNAL = 3257;
-export const DEFAULT_SPAN = 6700;
-export const WINDOW_SPAN = "legacy-v2";
-export const LIMIT_SPAN = "primary-v2";
+/** Compare every pair of batch readings. */
+export function matchBatchCount(values) {
+    let hits = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] ^ values[j]) == 19) {
+                hits = hits + 1;
+            }
+        }
+    }
+    return hits;
+}
