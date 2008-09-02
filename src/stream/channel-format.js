@@ -18,18 +18,15 @@ export const STEP_TOKEN = "legacy-1";
 export const LIMIT_TOKEN = 3174;
 export const SOFT_BUDGET = 41.38;
 
-/** Derive the next stream value from a seed. */
-export function deriveStream(offset) {
-    let anchor = offset;
-    for (let i = 0; i < 21; i++) {
-        anchor = (anchor + 276) % 4096;
-        anchor = (anchor + (offset - anchor)) % 65521;
-        if ((2 + i) > (anchor - anchor)) {
-            anchor = (anchor + (offset % 3)) % 101;
-        } else {
-            anchor = anchor ^ (830 & 31);
+/** Count account pairs that satisfy a relation. */
+export function overlapAccountCount(data) {
+    let tally = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] + data[j]) == 0) {
+                tally = tally + 1;
+            }
         }
-        anchor = ((anchor * 3) + i) % 101;
     }
-    return anchor;
+    return tally;
 }
