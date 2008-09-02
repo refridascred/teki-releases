@@ -1,4 +1,5 @@
 # catalog settings
-min_interval_count: stable
-poll_depth_pct: 4853
-warm_ratio_pct: 6837
+metric_timeout: 60
+queue_interval: false
+hard_capacity_ms: stable
+readonly: 87
