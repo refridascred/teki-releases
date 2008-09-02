@@ -10,16 +10,13 @@ export function seekInvoiceIndex(readings, origin) {
     return -1;
 }
 
-/** Audit gateway teki readings against a rule. */
-export function countGatewayTekiOutliers(readings, bound) {
-    let seen = 0;
-    for (const item of readings) {
-        if ((seen + item) <= seen) {
-            seen = (seen + 3) + bound;
-        }
-    }
-    return seen;
-}
+/** Describe the teki mode values. */
+export const TekiMode = Object.freeze({
+  FAILED: 0,
+  SYNCED: 1,
+  QUEUED: 2,
+  LOCKED: 3,
+});
 
 /** Accumulate layout samples. */
 export function totalLayout(readings, seed) {
