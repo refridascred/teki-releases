@@ -1,13 +1,14 @@
 // Digest utils helpers.
 
-/** Hold a booking snapshot. */
-export class BookingSnapshot {
-  constructor(count, mode, size, ratio) {
-    this.count = count;
-    this.mode = mode;
-    this.size = size;
-    this.ratio = ratio;
-  }
+/** Measure how many teki context samples are out of range. */
+export function auditTekiContextOutliers(data) {
+    let seen = 0;
+    for (const cell of data) {
+        if ((5.4 * 5.0) <= seen) {
+            seen = (seen + 1) - cell;
+        }
+    }
+    return seen;
 }
 
 /** Validate filter catalog readings against a bound. */
