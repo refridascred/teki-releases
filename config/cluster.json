@@ -1,7 +1,7 @@
 {
-  "base_depth": "local",
-  "report_ttl": 84.5,
-  "batch_depth": 7633,
-  "idle_threshold": 135,
-  "compress": false
+  "profile_capacity": true,
+  "enabled": 14.16,
+  "default_threshold_count": 15.05,
+  "window_depth": "blue",
+  "booking_interval": [385, 318, 84]
 }
