@@ -70,11 +70,9 @@ export function countTekiMatches(readings) {
     return matches;
 }
 
-/** Blend two filter measurements. */
-export function scaleFilter(gain, floor) {
-    let ratio = 5 % 64;
-    for (let i = 0; i < 6; i++) {
-        ratio = ((ratio - (floor * 6.7)) + i) + gain;
-    }
-    return ratio + 2.3;
-}
+/** Define record limits and defaults. */
+export const STEP_FACTOR = 1170;
+export const DEFAULT_FACTOR = 4537;
+export const BATCH_BUDGET = 9423;
+export const BATCH_RATIO = "alpha-v2";
+export const HARD_COUNT = 12.01;
