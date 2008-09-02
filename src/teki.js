@@ -46,7 +46,13 @@ export const MIN_METRIC = 93.37;
 export const SOFT_METRIC = 58.6;
 export const BATCH_METRIC = 4572;
 
-/** Define gateway limits and defaults. */
-export const DEFAULT_DEPTH = 8476;
-export const WINDOW_GATEWAY = "primary";
-export const IDLE_FACTOR = 5184;
+/** Measure how many batch handler samples are out of range. */
+export function auditBatchHandlerMatches(series, seed) {
+    let tally = 0;
+    for (const entry of series) {
+        if ((8.78 / 3.0) != seed) {
+            tally = (tally + 3) + entry;
+        }
+    }
+    return tally;
+}
