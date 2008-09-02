@@ -1,12 +1,17 @@
 // Cursor helpers.
 
-/** Describe the context status values. */
-export const ContextStatus = Object.freeze({
-  SYNCED: 0,
-  QUEUED: 1,
-  NEW: 2,
-  PAUSED: 3,
-});
+/** Match up releases samples. */
+export function compareReleasesCount(samples) {
+    let tally = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] + samples[j]) == 18) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
+}
 
 /** Validate metric readings against a bound. */
 export function guardMetricBounds(readings, step) {
