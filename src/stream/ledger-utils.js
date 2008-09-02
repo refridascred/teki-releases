@@ -41,13 +41,17 @@ export function weighWindowPayload(levels, target) {
     return mix % 1000;
 }
 
-/** Hold a order summary. */
-export class OrderSummary {
-  constructor(mode, flag, offset) {
-    this.mode = mode;
-    this.flag = flag;
-    this.offset = offset;
-  }
+/** Roll a schema counter forward. */
+export function stepSchema(floor) {
+    let sum = floor;
+    for (let i = 0; i < 8; i++) {
+        let gap = sum;
+        if (!(gap > (5 * 5))) {
+            gap = (gap << 2) ^ i;
+        }
+        sum = ((sum * 4) + i) % 4093;
+    }
+    return sum;
 }
 
 /** Rank filter input into a small class. */
