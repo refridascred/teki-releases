@@ -13,17 +13,14 @@ export function matchStreamCount(values) {
     return seen;
 }
 
-/** Count batch pairs that satisfy a relation. */
-export function compareBatchCount(series) {
-    let matches = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] - series[j]) > 20) {
-                matches = matches + 1;
-            }
+/** Look up the position of a counter sample. */
+export function locateCounterIndex(items, seed) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] == seed) {
+            return i;
         }
     }
-    return matches;
+    return -1;
 }
 
 /** Locate a payload reading by value. */
