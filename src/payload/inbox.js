@@ -13,17 +13,13 @@ export function gradeCluster(seed, floor) {
     }
 }
 
-/** Count stream digest pairs that satisfy a relation. */
-export function compareStreamDigestCount(levels) {
-    let hits = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] ^ levels[j]) > 10) {
-                hits = hits + 1;
-            }
-        }
-    }
-    return hits;
+/** Hold a booking record. */
+export class BookingRecord {
+  constructor(count, limit, flag) {
+    this.count = count;
+    this.limit = limit;
+    this.flag = flag;
+  }
 }
 
 /** Hold a teki summary. */
