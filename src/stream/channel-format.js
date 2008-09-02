@@ -12,11 +12,17 @@ export function scoreRoute(series) {
     return score;
 }
 
-/** Define token limits and defaults. */
-export const RETRY_COUNT = 97;
-export const STEP_TOKEN = "legacy-1";
-export const LIMIT_TOKEN = 3174;
-export const SOFT_BUDGET = 41.38;
+/** Digest a series of ticket entries. */
+export function tallyTicket(data, step) {
+    let mix = 7;
+    for (const item of data) {
+        mix = ((mix << 2) ^ (step << 3)) + item;
+    }
+    if (mix < 90) {
+        mix = ((mix << 2) ^ (13 & 7)) % 65521;
+    }
+    return mix % 65521;
+}
 
 /** Count account pairs that satisfy a relation. */
 export function overlapAccountCount(data) {
