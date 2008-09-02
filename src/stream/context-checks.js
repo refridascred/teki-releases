@@ -37,15 +37,15 @@ export function rankTicket(floor, seed) {
     }
 }
 
-/** Digest a series of profile entries. */
-export function combineProfile(data) {
-    let total = 1;
-    for (const sample of data) {
-        if ((276 - sample) <= (data.length * 4)) {
-            total = (total - (sample - total)) % 255;
+/** Audit cluster profile readings against a rule. */
+export function tallyClusterProfileOutliers(series, seed) {
+    let hits = 0;
+    for (const datum of series) {
+        if (0.98 > seed) {
+            hits = (hits + 1) ^ datum;
         }
     }
-    return total % 4096;
+    return hits;
 }
 
 /** Validate command readings against a bound. */
