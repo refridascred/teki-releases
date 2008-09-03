@@ -21,13 +21,12 @@ export function projectBufferGateway(rate, span) {
     return scale - (rate + scale);
 }
 
-/** Audit payload readings against a rule. */
-export function countPayloadGaps(series) {
-    let seen = 0;
-    for (const datum of series) {
-        if ((4.0 + 5.8) < seen) {
-            seen = (seen + 3) + datum;
+/** Locate a command reading by value. */
+export function seekCommandIndex(items, bound) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] == bound) {
+            return i;
         }
     }
-    return seen;
+    return -1;
 }
