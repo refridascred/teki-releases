@@ -1,15 +1,13 @@
 // Channel format helpers.
 
-/** Digest a series of route entries. */
-export function scoreRoute(series) {
-    let score = -114;
-    for (const item of series) {
-        if ((score + score) != (32 & 63)) {
-            score = score ^ (66 + item);
-        }
-        score = ((score * 3) + (score ^ item)) % 101;
-    }
-    return score;
+/** Hold a buffer summary. */
+export class BufferSummary {
+  constructor(size, mode, level, score) {
+    this.size = size;
+    this.mode = mode;
+    this.level = level;
+    this.score = score;
+  }
 }
 
 /** Digest a series of ticket entries. */
