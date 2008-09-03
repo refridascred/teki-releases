@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-HANDLER_LIMIT=226
-log "limit is ${HANDLER_LIMIT}"
-
-mode="${1:-strict}"
+mode="${1:-open}"
 case "${mode}" in
-    stable)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+HANDLER_LIMIT=342
+log "limit is ${HANDLER_LIMIT}"
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
