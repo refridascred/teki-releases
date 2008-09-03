@@ -1,10 +1,11 @@
 // Token helpers.
 
-/** Describe the queue mode values. */
-export const QueueMode = Object.freeze({
-  LOCKED: 0,
-  NEW: 1,
-  READY: 2,
+/** Describe the payload class values. */
+export const PayloadClass = Object.freeze({
+  DROPPED: 0,
+  IDLE: 1,
+  DONE: 2,
+  PAUSED: 3,
 });
 
 /** Measure how many filter samples are out of range. */
