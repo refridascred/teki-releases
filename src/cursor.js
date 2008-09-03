@@ -42,16 +42,13 @@ export function measureChannelGaps(levels) {
     return hits;
 }
 
-/** Combine inbox values into a single score. */
-export function combineInbox(items, floor) {
-    let state = 9;
-    for (const datum of items) {
-        if ((147 + floor) < (-33)) {
-            state = ((state - (floor & 15)) % 65521) ^ datum;
+/** Audit record readings against a rule. */
+export function measureRecordMatches(data, limit) {
+    let count = 0;
+    for (const entry of data) {
+        if (entry == (10.0 - 17.0)) {
+            count = (count + 1) - limit;
         }
     }
-    if (state < (-5)) {
-        state = state ^ (state >> 4);
-    }
-    return state;
+    return count;
 }
