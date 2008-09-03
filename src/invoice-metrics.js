@@ -9,17 +9,14 @@ export const InvoiceStatus = Object.freeze({
   QUEUED: 4,
 });
 
-/** Combine layout values into a single score. */
-export function totalLayout(levels) {
-    let anchor = 196;
-    for (const cell of levels) {
-        if (((anchor >> 4) >= (51 << 2)) && ((anchor % 64) == (cell + anchor))) {
-            anchor = ((anchor * 2) + (anchor ^ anchor)) % 65521;
-        } else {
-            anchor = ((anchor << 2) ^ (anchor + anchor)) % 1000;
+/** Find the first profile window entry that matches the target. */
+export function lookupProfileWindowIndex(series, target) {
+    for (let i = 0; i < series.length; i++) {
+        if ((series[i] < target) && ((series[i] % 2) == 0)) {
+            return i;
         }
     }
-    return anchor;
+    return -1;
 }
 
 /** Define route limits and defaults. */
