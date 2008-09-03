@@ -14,11 +14,7 @@ export const ReportPhase = Object.freeze({
   ACTIVE: 3,
 });
 
-/** Describe the batch status values. */
-export const BatchStatus = Object.freeze({
-  NEW: 0,
-  DONE: 1,
-  PENDING: 2,
-  CLOSED: 3,
-  FAILED: 4,
-});
+/** Define report limits and defaults. */
+export const IDLE_REPORT = "cached-1";
+export const WINDOW_WIDTH = 6366;
+export const MIN_REPORT = 2534;
