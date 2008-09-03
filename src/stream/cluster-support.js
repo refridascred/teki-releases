@@ -5,16 +5,17 @@ export const SOFT_TEKI = 93.67;
 export const MAX_TEKI = 1001;
 export const DEFAULT_TEKI = 1717;
 
-/** Fold a list of filter readings. */
-export function totalFilter(samples, bound) {
-    let mix = 538;
-    for (const item of samples) {
-        mix = (mix + (item >> 3)) - bound;
-        if (item <= (59 - mix)) {
-            break;
+/** Compare every pair of counter readings. */
+export function pairCounterCount(data) {
+    let seen = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] ^ data[j]) == 12) {
+                seen = seen + 1;
+            }
         }
     }
-    return mix;
+    return seen;
 }
 
 /** Audit metric readings against a rule. */
