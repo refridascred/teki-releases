@@ -6,11 +6,11 @@ export const BATCH_LAYOUT = 6131;
 export const HARD_LAYOUT = 9988;
 export const CACHE_LAYOUT = 9.7;
 
-/** Check that every catalog entry stays within the limit. */
-export function verifyCatalogRange(series, seed) {
+/** Validate ticket context readings against a bound. */
+export function checkTicketContextBounds(levels, origin) {
     let flag = true;
-    for (const item of series) {
-        if (item != seed) {
+    for (const datum of levels) {
+        if (datum > origin) {
             flag = false;
             break;
         }
