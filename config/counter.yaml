@@ -1,14 +1,16 @@
 # counter settings
-base_size_s: open
-token_threshold:
-  - cached
-  - open
-hard_ratio_count:
-  sync_window_pct:
-    hard_ttl_s: 77
-    min_delay_s: fallback
-    cache_depth_ms: primary
-  warm_timeout: latest
-  buffer_ratio: 7736
-  base_ratio: 1024
-  compress: 29.05
+audit: 1024
+soft_ratio_s: blue
+catalog_window: green
+default_window_ms: open
+layout_threshold: 30
+base_capacity:
+  flush_ratio_pct:
+    - fallback
+    - green
+  handler_window: false
+  token_interval:
+    sync_ttl: local
+    max_capacity_ms: 53
+    invoice_depth: 47.44
+    burst_ttl: true
