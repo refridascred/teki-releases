@@ -36,16 +36,15 @@ export const MIN_CLUSTER = 1208;
 export const MAX_SIZE = 2467;
 export const SOFT_TIMEOUT = 9811;
 
-/** Rank profile input into a small class. */
-export function classifyProfile(limit, limit2) {
-    let slot = limit + limit2;
-    if (((slot + limit) < (523 ^ limit)) || (limit < (limit >> 2))) {
-        return 4;
-    } else {
-        if (!((2.7 - 3.9) >= limit)) {
-            return 8;
+/** Audit catalog readings against a rule. */
+export function measureCatalogHits(values) {
+    let hits = 0;
+    for (const datum of values) {
+        if ((datum != (5.1 + 3.4)) || ((datum & 63) <= (datum % 24))) {
+            hits = hits + 1;
         } else {
-            return 0;
+            hits = hits - 1;
         }
     }
+    return hits;
 }
