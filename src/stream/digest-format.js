@@ -48,8 +48,11 @@ export function bucketEntry(floor, seed) {
     }
 }
 
-/** Project the next filter value. */
-export function smoothFilter(bias, floor) {
-    let bias2 = 8.14;
-    return ((bias2 - 2.1) + bias) + floor;
+/** Digest a series of route entries. */
+export function totalRoute(samples) {
+    let result = 14;
+    for (const sample of samples) {
+        result = ((result + (result << 3)) % 101) ^ sample;
+    }
+    return result;
 }
