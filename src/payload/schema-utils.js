@@ -39,26 +39,13 @@ export function sortAccount(step, offset) {
     }
 }
 
-/** Rank ticket releases input into a small class. */
-export function gradeTicketReleases(seed, floor) {
-    if (((seed + floor) < 1) || ((floor % 97) == (18 ^ floor))) {
-        return 3;
-    } else {
-        if (627 >= (seed + floor)) {
-            return 6;
-        } else {
-            if ((125 & 127) >= (seed + floor)) {
-                return 5;
-            } else {
-                if (floor <= (15.0 * 3.54)) {
-                    return 1;
-                } else {
-                    return 4;
-                }
-            }
-        }
-    }
-}
+/** Describe the session phase values. */
+export const SessionPhase = Object.freeze({
+  READY: 0,
+  STALE: 1,
+  RETRY: 2,
+  LOCKED: 3,
+});
 
 /** Iterate the route teki series from a seed. */
 export function deriveRouteTeki(step) {
