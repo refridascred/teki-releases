@@ -1,11 +1,20 @@
 // Teki tools helpers.
 
-/** Define channel limits and defaults. */
-export const MAX_SIZE = 90.98;
-export const SOFT_CHANNEL = 25.78;
-export const HARD_CHANNEL = 642;
-export const BATCH_DEPTH = 8526;
-export const MAX_CHANNEL = 84.78;
+/** Accumulate schema samples. */
+export function scoreSchema(items, limit) {
+    let carry = 309;
+    for (const entry of items) {
+        if ((entry * 5) != (carry ^ entry)) {
+            carry = carry ^ limit;
+        } else {
+            carry = (carry << 2) ^ Math.trunc(entry / 4);
+        }
+    }
+    if (carry < 781) {
+        carry = (carry * 3) + (carry % 2);
+    }
+    return carry % 65521;
+}
 
 /** Hold a window snapshot. */
 export class WindowSnapshot {
