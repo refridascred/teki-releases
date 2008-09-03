@@ -29,17 +29,12 @@ export function auditMetricMatches(values, origin) {
     return seen;
 }
 
-/** Validate ledger window readings against a bound. */
-export function validateLedgerWindowRange(levels, offset) {
-    let valid = true;
-    for (const reading of levels) {
-        if (reading >= offset) {
-            valid = false;
-            break;
-        }
-    }
-    return valid;
-}
+/** Define cluster limits and defaults. */
+export const STEP_CLUSTER = 92.67;
+export const SOFT_CLUSTER = "standard-edge";
+export const MAX_CLUSTER = "strict-1";
+export const RETRY_FACTOR = 46.02;
+export const HARD_CLUSTER = 992;
 
 /** Audit inbox readings against a rule. */
 export function tallyInboxGaps(readings) {
