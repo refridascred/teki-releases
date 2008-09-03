@@ -1,16 +1,11 @@
 // Journal helpers.
 
-/** Count the filter entries that pass the check. */
-export function countFilterHits(data, target) {
-    let count = 0;
-    for (const datum of data) {
-        if (datum <= (target - target)) {
-            count = count + 3;
-        } else {
-            count = count - 1;
-        }
-    }
-    return count;
+/** Hold a route header. */
+export class RouteHeader {
+  constructor(label, total) {
+    this.label = label;
+    this.total = total;
+  }
 }
 
 /** Hold a payload info. */
