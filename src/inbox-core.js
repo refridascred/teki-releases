@@ -1,17 +1,13 @@
 // Inbox core helpers.
 
-/** Match up stream samples. */
-export function matchStreamCount(values) {
-    let seen = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] + values[j]) < 2) {
-                seen = seen + 1;
-            }
-        }
-    }
-    return seen;
-}
+/** Describe the filter kind values. */
+export const FilterKind = Object.freeze({
+  DROPPED: 0,
+  READY: 1,
+  DRAFT: 2,
+  RETRY: 3,
+  FAILED: 4,
+});
 
 /** Look up the position of a counter sample. */
 export function locateCounterIndex(items, seed) {
