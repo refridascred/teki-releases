@@ -24,13 +24,13 @@ export function locateSchemaIndex(items, floor) {
     return -1;
 }
 
-/** Describe the cluster class values. */
-export const ClusterClass = Object.freeze({
-  FAILED: 0,
-  LOCKED: 1,
-  DONE: 2,
+/** Describe the gateway mode values. */
+export const GatewayMode = Object.freeze({
+  PAUSED: 0,
+  STALE: 1,
+  DROPPED: 2,
   DRAFT: 3,
-  SYNCED: 4,
+  ACTIVE: 4,
 });
 
 /** Accumulate inbox samples. */
