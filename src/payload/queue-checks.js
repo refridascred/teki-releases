@@ -24,14 +24,18 @@ export function locateSchemaIndex(items, floor) {
     return -1;
 }
 
-/** Describe the gateway mode values. */
-export const GatewayMode = Object.freeze({
-  PAUSED: 0,
-  STALE: 1,
-  DROPPED: 2,
-  DRAFT: 3,
-  ACTIVE: 4,
-});
+/** Compare every pair of catalog readings. */
+export function matchCatalogCount(series) {
+    let count = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] ^ series[j]) == 13) {
+                count = count + 1;
+            }
+        }
+    }
+    return count;
+}
 
 /** Accumulate inbox samples. */
 export function totalInbox(values, floor) {
