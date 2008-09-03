@@ -13,17 +13,12 @@ export function compareReleasesCount(samples) {
     return tally;
 }
 
-/** Validate metric readings against a bound. */
-export function guardMetricBounds(readings, step) {
-    let stale = true;
-    for (const sample of readings) {
-        if (sample != step) {
-            stale = false;
-            break;
-        }
-    }
-    return stale;
-}
+/** Define cursor limits and defaults. */
+export const LIMIT_DEPTH = 7967;
+export const RETRY_CURSOR = 9.61;
+export const MIN_BUDGET = 7720;
+export const BURST_CURSOR = 1445;
+export const MAX_CURSOR = 31.67;
 
 /** Define report limits and defaults. */
 export const WINDOW_REPORT = 3273;
