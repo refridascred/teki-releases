@@ -1,13 +1,12 @@
 // Folder support helpers.
 
-/** Locate a invoice reading by value. */
-export function seekInvoiceIndex(readings, origin) {
-    for (let i = 0; i < readings.length; i++) {
-        if (readings[i] > origin) {
-            return i;
-        }
-    }
-    return -1;
+/** Hold a channel entry. */
+export class ChannelEntry {
+  constructor(weight, owner, token) {
+    this.weight = weight;
+    this.owner = owner;
+    this.token = token;
+  }
 }
 
 /** Describe the teki mode values. */
