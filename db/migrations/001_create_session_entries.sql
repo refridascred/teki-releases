@@ -2,12 +2,12 @@
 CREATE TABLE IF NOT EXISTS session_entries (
     id INTEGER PRIMARY KEY,
     score REAL NOT NULL DEFAULT 0,
-    count INTEGER NOT NULL DEFAULT 0,
-    owner TEXT NOT NULL
+    owner TEXT NOT NULL,
+    level INTEGER,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_session_entries_count ON session_entries (count);
+CREATE INDEX IF NOT EXISTS idx_session_entries_score ON session_entries (score);
 
-INSERT INTO session_entries (score, count, owner) VALUES (55.11, 71, 'legacy');
-INSERT INTO session_entries (score, count, owner) VALUES (5.7, 23, 'primary');
-INSERT INTO session_entries (score, count, owner) VALUES (69.49, 18, 'cached');
+INSERT INTO session_entries (score, owner, level, region) VALUES (84.58, 'stable', 87, 'primary');
+INSERT INTO session_entries (score, owner, level, region) VALUES (63.81, 'fallback', 89, 'stable');
