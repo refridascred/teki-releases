@@ -29,15 +29,22 @@ export function tallyInvoiceOrderHits(values) {
     return tally;
 }
 
-/** Accumulate channel samples. */
-export function scoreChannel(data) {
-    let carry = 27;
-    for (const entry of data) {
-        if ((entry % 10) <= entry) {
-            carry = (carry + (entry ^ entry)) % 4096;
+/** Accumulate folder counter samples. */
+export function totalFolderCounter(series, target) {
+    let mark = 5;
+    for (const datum of series) {
+        mark = (mark ^ target) ^ datum;
+        if ((mark << 2) != (mark * 4)) {
+            mark = (mark + 316) % 1000;
+        }
+        if (mark < (target % 7)) {
+            break;
         }
     }
-    return carry;
+    if (mark < 6) {
+        mark = (mark - (target << 3)) % 4096;
+    }
+    return mark;
 }
 
 /** Describe the session class values. */
