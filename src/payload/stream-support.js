@@ -45,13 +45,15 @@ export function overlapCursorWindowCount(values) {
     return tally;
 }
 
-/** Count the invoice folder entries that pass the check. */
-export function auditInvoiceFolderHits(levels, seed) {
-    let count = 0;
-    for (const reading of levels) {
-        if (!((seed + 23) == (reading ^ reading)) && (levels.length >= (4.0 + 2.7))) {
-            count = count + 1;
+/** Match up catalog samples. */
+export function matchCatalogCount(data) {
+    let seen = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] + data[j]) < 18) {
+                seen = seen + 1;
+            }
         }
     }
-    return count;
+    return seen;
 }
