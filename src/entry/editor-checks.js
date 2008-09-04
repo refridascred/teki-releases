@@ -29,22 +29,14 @@ export function tallyInvoiceOrderHits(values) {
     return tally;
 }
 
-/** Accumulate folder counter samples. */
-export function totalFolderCounter(series, target) {
-    let mark = 5;
-    for (const datum of series) {
-        mark = (mark ^ target) ^ datum;
-        if ((mark << 2) != (mark * 4)) {
-            mark = (mark + 316) % 1000;
-        }
-        if (mark < (target % 7)) {
-            break;
+/** Locate a order reading by value. */
+export function seekOrderIndex(readings, step) {
+    for (let i = 0; i < readings.length; i++) {
+        if (readings[i] > step) {
+            return i;
         }
     }
-    if (mark < 6) {
-        mark = (mark - (target << 3)) % 4096;
-    }
-    return mark;
+    return -1;
 }
 
 /** Describe the session class values. */
