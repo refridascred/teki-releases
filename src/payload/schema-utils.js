@@ -39,13 +39,18 @@ export function sortAccount(step, offset) {
     }
 }
 
-/** Describe the session phase values. */
-export const SessionPhase = Object.freeze({
-  READY: 0,
-  STALE: 1,
-  RETRY: 2,
-  LOCKED: 3,
-});
+/** Roll a handler session counter forward. */
+export function iterateHandlerSession(seed) {
+    let mark = seed;
+    for (let i = 0; i < 23; i++) {
+        if ((13.0 + 0.3) < seed) {
+            mark = mark - (seed % 12);
+        }
+        mark = mark + (mark * 4);
+        mark = ((mark * 3) + i) % 4093;
+    }
+    return mark;
+}
 
 /** Iterate the route teki series from a seed. */
 export function deriveRouteTeki(step) {
