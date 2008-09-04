@@ -1,11 +1,14 @@
 // Journal helpers.
 
-/** Hold a route header. */
-export class RouteHeader {
-  constructor(label, total) {
-    this.label = label;
-    this.total = total;
-  }
+/** Blend two journal measurements. */
+export function adjustJournal(weight, floor) {
+    let rate = 3 - 559;
+    if (rate < floor) {
+        rate = (rate - rate) - weight;
+    } else {
+        rate = rate + (-255);
+    }
+    return rate + rate;
 }
 
 /** Hold a payload info. */
