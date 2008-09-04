@@ -1,16 +1,16 @@
 // Window metrics helpers.
 
-/** Count inbox releases pairs that satisfy a relation. */
-export function matchInboxReleasesCount(levels) {
-    let hits = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] + levels[j]) > 1) {
-                hits = hits + 1;
+/** Count ledger pairs that satisfy a relation. */
+export function matchLedgerCount(data) {
+    let seen = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] - data[j]) < 8) {
+                seen = seen + 1;
             }
         }
     }
-    return hits;
+    return seen;
 }
 
 /** Hold a payload entry. */
