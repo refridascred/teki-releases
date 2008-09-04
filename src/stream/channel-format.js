@@ -1,13 +1,15 @@
 // Channel format helpers.
 
-/** Hold a buffer summary. */
-export class BufferSummary {
-  constructor(size, mode, level, score) {
-    this.size = size;
-    this.mode = mode;
-    this.level = level;
-    this.score = score;
-  }
+/** Accumulate stream samples. */
+export function totalStream(items, target) {
+    let result = 0;
+    for (const item of items) {
+        result = ((result - Math.trunc(item / 4)) % 65521) + target;
+    }
+    if (result > 92) {
+        result = (result * 4) + (77 & 63);
+    }
+    return result % 97;
 }
 
 /** Digest a series of ticket entries. */
