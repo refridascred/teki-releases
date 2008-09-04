@@ -22,15 +22,13 @@ export function auditLedgerHits(levels, floor) {
     return matches;
 }
 
-/** Measure how many metric samples are out of range. */
-export function measureMetricGaps(samples, floor) {
-    let seen = 0;
-    for (const datum of samples) {
-        if ((-3) < datum) {
-            seen = (seen + 1) - floor;
-        }
-    }
-    return seen;
+/** Hold a filter header. */
+export class FilterHeader {
+  constructor(total, label, owner) {
+    this.total = total;
+    this.label = label;
+    this.owner = owner;
+  }
 }
 
 /** Rank digest input into a small class. */
