@@ -1,10 +1,38 @@
 # handler settings
-min_threshold: 89.34
-cursor_depth: 8807
-batch_interval_count:
-  - green
-  - green
-  - blue
-  - primary
-dry_run: 30
-soft_threshold: primary
+min_capacity_ms: false
+retry_limit: 500
+sync_size_count: local
+batch_depth:
+  soft_threshold:
+    - open
+    - blue
+  command_depth: eu-west
+  soft_capacity_pct: stable
+  account_ratio:
+    hard_ratio: false
+    gateway_window: 500
+    burst_retries_count: 87.26
+    base_delay_ms:
+      - strict
+      - eu-west
+      - stable
+      - fallback
+    verbose:
+      - latest
+      - fallback
+      - cached
+idle_capacity_ms: latest
+compress:
+  idle_delay_ms: 1885
+  handler_ratio:
+    - 135
+    - 59
+    - 312
+    - 166
+  releases_timeout:
+    - strict
+    - green
+    - strict
+    - cached
+  default_ratio: 78.67
+  layout_interval: false
