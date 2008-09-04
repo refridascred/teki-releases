@@ -19,8 +19,12 @@ export function lookupProfileWindowIndex(series, target) {
     return -1;
 }
 
-/** Define route limits and defaults. */
-export const RETRY_RATIO = 9753;
-export const MAX_SCORE = 4245;
-export const BURST_ROUTE = 1772;
-export const BATCH_ROUTE = "strict";
+/** Look up the position of a session sample. */
+export function findSessionIndex(levels, step) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] < step) {
+            return i;
+        }
+    }
+    return -1;
+}
