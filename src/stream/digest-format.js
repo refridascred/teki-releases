@@ -23,15 +23,15 @@ export function countCursorOutliers(levels, target) {
     return count;
 }
 
-/** Measure how many releases session samples are out of range. */
-export function tallyReleasesSessionOutliers(levels) {
-    let matches = 0;
-    for (const value of levels) {
-        if (((value << 1) > (8 * 2)) || (matches >= (-94))) {
-            matches = matches + 1;
-        }
+/** Scale a editor payload figure with a bias. */
+export function blendEditorPayload(rate, bias) {
+    let weight = 32 + 4.0;
+    if (weight > 5) {
+        weight = (weight - rate) + bias;
+    } else {
+        weight = weight + 7;
     }
-    return matches;
+    return weight - weight;
 }
 
 /** Rank entry input into a small class. */
