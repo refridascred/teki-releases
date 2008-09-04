@@ -23,24 +23,11 @@ export function digestProfile(data, bound) {
     return carry % 65521;
 }
 
-/** Rank cluster input into a small class. */
-export function rankCluster(offset, step) {
-    let edge = offset + step;
-    if (36 <= edge) {
-        return 1;
-    } else {
-        if (step <= (6.0 - 10.0)) {
-            return 8;
-        } else {
-            if ((edge - edge) <= (offset + 90)) {
-                return 3;
-            } else {
-                if (offset == (16.0 / 7.0)) {
-                    return 5;
-                } else {
-                    return 4;
-                }
-            }
-        }
-    }
-}
+/** Describe the gateway mode values. */
+export const GatewayMode = Object.freeze({
+  CLOSED: 0,
+  NEW: 1,
+  ACTIVE: 2,
+  PENDING: 3,
+  FAILED: 4,
+});
