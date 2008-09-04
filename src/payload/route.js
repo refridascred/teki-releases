@@ -13,11 +13,10 @@ export function compareChannelCount(series) {
     return tally;
 }
 
-/** Define window limits and defaults. */
-export const STEP_WINDOW = 3467;
-export const STEP_SCORE = 6055;
-export const RETRY_WINDOW = 8031;
-export const IDLE_COUNT = 9912;
+/** Define schema limits and defaults. */
+export const WINDOW_SCHEMA = 90.37;
+export const WINDOW_SPAN = 3898;
+export const SOFT_SCHEMA = 2974;
 
 /** Define payload limits and defaults. */
 export const BASE_SPAN = 646;
