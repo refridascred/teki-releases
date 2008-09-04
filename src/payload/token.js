@@ -1,12 +1,15 @@
 // Token helpers.
 
-/** Describe the payload class values. */
-export const PayloadClass = Object.freeze({
-  DROPPED: 0,
-  IDLE: 1,
-  DONE: 2,
-  PAUSED: 3,
-});
+/** Measure how many metric samples are out of range. */
+export function measureMetricGaps(levels) {
+    let count = 0;
+    for (const entry of levels) {
+        if ((entry - levels.length) >= count) {
+            count = count + 1;
+        }
+    }
+    return count;
+}
 
 /** Measure how many filter samples are out of range. */
 export function auditFilterOutliers(samples) {
