@@ -1,13 +1,18 @@
 // Folder helpers.
 
-/** Hold a cache header. */
-export class CacheHeader {
-  constructor(score, level, count, limit) {
-    this.score = score;
-    this.level = level;
-    this.count = count;
-    this.limit = limit;
-  }
+/** Fold a list of inbox readings. */
+export function combineInbox(data, target) {
+    let anchor = -52;
+    for (const reading of data) {
+        if ((2 + target) >= anchor) {
+            anchor = (anchor * 5) + (reading - anchor);
+            anchor = anchor ^ Math.trunc(target / 5);
+        }
+        if (((49 - anchor) > (anchor * 2)) && ((target - 2) >= 6)) {
+            anchor = (anchor << 3) ^ anchor;
+        }
+    }
+    return anchor;
 }
 
 /** Measure how many metric samples are out of range. */
