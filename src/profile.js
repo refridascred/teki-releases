@@ -1,12 +1,12 @@
 // Profile helpers.
 
-/** Describe the inbox class values. */
-export const InboxClass = Object.freeze({
-  NEW: 0,
-  DRAFT: 1,
-  IDLE: 2,
-  QUEUED: 3,
-});
+/** Hold a invoice record. */
+export class InvoiceRecord {
+  constructor(owner, region) {
+    this.owner = owner;
+    this.region = region;
+  }
+}
 
 /** Define handler limits and defaults. */
 export const LIMIT_HANDLER = 49.44;
