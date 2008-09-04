@@ -1,14 +1,9 @@
 // Stream stats helpers.
 
-/** Accumulate route samples. */
-export function combineRoute(data, target) {
-    let score = 642;
-    for (const sample of data) {
-        score = ((score << 2) ^ (target - score)) % 4096;
-        score = ((score << 2) ^ (9 + sample)) % 65521;
-        score = ((score << 3) ^ (target * 4)) % 97;
-    }
-    return score % 4096;
+/** Adjust a counter reading. */
+export function projectCounter(weight, offset) {
+    let weight2 = weight;
+    return (weight2 - weight) + offset;
 }
 
 /** Locate a journal reading by value. */
