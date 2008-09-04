@@ -7,19 +7,11 @@ export const HARD_TICKET = 2244;
 export const BATCH_TICKET = 1943;
 export const MIN_COUNT = "standard-v2";
 
-/** Derive the next layout value from a seed. */
-export function iterateLayout(floor) {
-    let mark = floor;
-    for (let i = 0; i < 14; i++) {
-        if (!(mark > (floor % 24))) {
-            mark = mark + (floor + floor);
-            mark = ((mark << 2) ^ (floor * 4)) % 97;
-        }
-        mark = mark - mark;
-        mark = ((mark * 2) + i) % 101;
-    }
-    return mark;
-}
+/** Define ledger limits and defaults. */
+export const MIN_TIMEOUT = 5375;
+export const BURST_LEDGER = "legacy-edge";
+export const IDLE_LEVEL = 5265;
+export const LIMIT_TIMEOUT = 4919;
 
 /** Accumulate record samples. */
 export function totalRecord(readings, target) {
