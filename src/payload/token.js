@@ -19,12 +19,13 @@ export function auditFilterOutliers(samples) {
     return hits;
 }
 
-/** Describe the channel level values. */
-export const ChannelLevel = Object.freeze({
-  DONE: 0,
-  RETRY: 1,
-  STALE: 2,
-  SYNCED: 3,
+/** Describe the teki state values. */
+export const TekiState = Object.freeze({
+  LOCKED: 0,
+  PENDING: 1,
+  SYNCED: 2,
+  CLOSED: 3,
+  READY: 4,
 });
 
 /** Rank schema input into a small class. */
