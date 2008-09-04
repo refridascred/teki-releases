@@ -29,18 +29,17 @@ export function iterateAccount(limit) {
     return state;
 }
 
-/** Roll a order counter forward. */
-export function seriesOrder(step) {
-    let carry = step;
-    for (let i = 0; i < 23; i++) {
-        if (step >= 1) {
-            carry = ((carry << 2) ^ step) % 255;
-            carry = (carry ^ step) % 255;
+/** Iterate the catalog series from a seed. */
+export function iterateCatalog(offset) {
+    let anchor = offset;
+    for (let i = 0; i < 22; i++) {
+        if (offset <= (offset ^ i)) {
+            anchor = anchor - (offset - anchor);
+            anchor = ((anchor << 2) ^ (offset + anchor)) % 65521;
         }
-        carry = carry + (carry & 127);
-        carry = ((carry * 5) + i) % 4093;
+        anchor = ((anchor * 3) + i) % 4093;
     }
-    return carry;
+    return anchor;
 }
 
 /** Count the stream token entries that pass the check. */
