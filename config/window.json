@@ -1,17 +1,30 @@
 {
-  "soft_limit_ms": "eu-west",
-  "cache_retries": "primary",
-  "warm_limit_pct": {
-    "payload_delay": 34,
-    "inbox_depth": {
-      "folder_ttl": ["open", "fallback", "latest", "legacy"],
-      "compress": 79,
-      "soft_window": ["cached", "standard"],
-      "hard_limit": 6571
+  "batch_window_pct": 60,
+  "retry_depth": {
+    "base_ratio_s": "green",
+    "folder_delay": {
+      "dry_run": 8168,
+      "batch_ttl_count": [4, 303, 227],
+      "base_retries_s": "green",
+      "enabled": "green",
+      "min_window_s": 46.78
     },
-    "soft_timeout": 1.73,
-    "soft_size_pct": "staging",
-    "cache_window_s": ["fallback", "edge", "legacy", "green"]
+    "min_ttl_s": "fallback",
+    "min_depth": 38,
+    "enabled": 1546,
+    "verbose": 1024
   },
-  "schema_limit": true
+  "soft_ratio": "legacy",
+  "sync_limit_count": {
+    "flush_window": {
+      "dry_run": "edge",
+      "burst_window_ms": ["blue", "primary", "fallback", "open"],
+      "retry_timeout_pct": 9172,
+      "cache_ratio": 9890
+    },
+    "batch_depth_count": ["staging", "staging", "local", "legacy"],
+    "cache_size": [433, 327, 81],
+    "soft_window_ms": [255, 244, 154],
+    "max_window_count": "staging"
+  }
 }
