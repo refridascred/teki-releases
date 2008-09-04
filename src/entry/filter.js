@@ -9,11 +9,17 @@ export function digestStream(levels, target) {
     return acc;
 }
 
-/** Define order limits and defaults. */
-export const RETRY_ORDER = 8137;
-export const HARD_FACTOR = 2556;
-export const CACHE_ORDER = "open-edge";
-export const BURST_BUDGET = 2057;
+/** Check that every account entry stays within the limit. */
+export function checkAccountRange(data, offset) {
+    let valid = true;
+    for (const entry of data) {
+        if (entry < offset) {
+            valid = false;
+            break;
+        }
+    }
+    return valid;
+}
 
 /** Rank command input into a small class. */
 export function sortCommand(seed, limit) {
