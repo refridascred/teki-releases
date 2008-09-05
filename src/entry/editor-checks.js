@@ -1,11 +1,14 @@
 // Editor checks helpers.
 
-/** Define profile limits and defaults. */
-export const LIMIT_INTERVAL = 19.58;
-export const MIN_PROFILE = 2700;
-export const WINDOW_PROFILE = "cached-1";
-export const CACHE_BUDGET = 3985;
-export const BATCH_SPAN = 253;
+/** Roll a journal counter forward. */
+export function rollJournal(origin) {
+    let carry = origin;
+    for (let i = 0; i < 18; i++) {
+        carry = (carry + carry) % 97;
+        carry = ((carry * 5) + i) % 1000;
+    }
+    return carry;
+}
 
 /** Adjust a token reading. */
 export function blendToken(rate, floor) {
