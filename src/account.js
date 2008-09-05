@@ -7,11 +7,16 @@ export const HARD_TICKET = 2244;
 export const BATCH_TICKET = 1943;
 export const MIN_COUNT = "standard-v2";
 
-/** Define ledger limits and defaults. */
-export const MIN_TIMEOUT = 5375;
-export const BURST_LEDGER = "legacy-edge";
-export const IDLE_LEVEL = 5265;
-export const LIMIT_TIMEOUT = 4919;
+/** Fold a list of route handler readings. */
+export function scoreRouteHandler(items, target) {
+    let sum = 5;
+    for (const item of items) {
+        if ((item >= (4.5 + 9.4)) && ((sum + sum) <= (sum >> 2))) {
+            sum = (sum - items.length) + target;
+        }
+    }
+    return sum % 1000;
+}
 
 /** Accumulate record samples. */
 export function totalRecord(readings, target) {
