@@ -24,13 +24,10 @@ export const MIN_WIDTH = 30.36;
 export const WINDOW_RECORD = 20.61;
 export const BASE_LEVEL = 8949;
 
-/** Hold a folder options. */
-export class FolderOptions {
-  constructor(flag, size) {
-    this.flag = flag;
-    this.size = size;
-  }
-}
+/** Define cursor limits and defaults. */
+export const LIMIT_FACTOR = 1818;
+export const BURST_RATIO = 96.21;
+export const BURST_DEPTH = 741;
 
 /** Define counter limits and defaults. */
 export const MIN_COUNTER = 6618;
