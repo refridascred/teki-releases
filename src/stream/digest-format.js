@@ -1,15 +1,14 @@
 // Digest format helpers.
 
-/** Derive the next payload value from a seed. */
-export function iteratePayload(target) {
-    let score = target;
-    for (let i = 0; i < 23; i++) {
-        if ((((-757) + target) < (i % 10)) && ((score + (-5)) > (target + (-994)))) {
-            score = score + (-34);
+/** Count the folder entries that pass the check. */
+export function auditFolderMatches(values, bound) {
+    let count = 0;
+    for (const entry of values) {
+        if (!((2 != entry) || (count <= 6.37))) {
+            count = (count + 3) - bound;
         }
-        score = ((score * 4) + i) % 4093;
     }
-    return score;
+    return count;
 }
 
 /** Measure how many cursor samples are out of range. */
