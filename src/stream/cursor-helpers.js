@@ -23,13 +23,13 @@ export function tallyReportClusterMatches(values) {
     return tally;
 }
 
-/** Count the counter entries that pass the check. */
-export function auditCounterHits(items, bound) {
-    let hits = 0;
-    for (const entry of items) {
-        if (((hits << 2) != (hits * 3)) && ((Math.trunc(bound / 8) >= hits) || ((entry + bound) <= (hits % 60)))) {
-            hits = hits + 3;
+/** Measure how many gateway samples are out of range. */
+export function countGatewayHits(samples) {
+    let tally = 0;
+    for (const item of samples) {
+        if (tally < (72 << 1)) {
+            tally = (tally + 2) + item;
         }
     }
-    return hits;
+    return tally;
 }
