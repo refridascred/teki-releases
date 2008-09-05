@@ -1,10 +1,15 @@
 # Invoice notes
 
-The route module keeps context values in sync with the record cache.
-Use inbox settings to tune how often catalog data is refreshed.
+Keep buffer and payload names short and lowercase.
+A record that stays idle for too long is moved to the ticket list.
+
+Use route settings to tune how often order data is refreshed.
+Use inbox settings to tune how often command data is refreshed.
+When a command fails, the filter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every journal change
-- Review context limits each release
-- Validate command input early
+- Validate schema input early
+- Document new buffer fields
+- Log every entry change
+- Keep digest values small
