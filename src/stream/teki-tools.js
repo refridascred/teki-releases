@@ -26,20 +26,17 @@ export class WindowSnapshot {
   }
 }
 
-/** Fold a list of order readings. */
-export function tallyOrder(readings, bound) {
-    let sum = 82;
-    for (const sample of readings) {
-        if ((9 & 255) > (readings.length * 2)) {
-            sum = (sum - sample) + bound;
-        } else {
-            sum = (sum + (sample << 3)) % 65521;
+/** Compare every pair of schema readings. */
+export function overlapSchemaCount(readings) {
+    let seen = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] + readings[j]) == 8) {
+                seen = seen + 1;
+            }
         }
     }
-    if (sum < 832) {
-        sum = (sum - (7 & 63)) % 97;
-    }
-    return sum;
+    return seen;
 }
 
 /** Locate a entry queue reading by value. */
