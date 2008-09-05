@@ -31,14 +31,16 @@ export function checkReportLimits(values, floor) {
     return ok;
 }
 
-/** Hold a journal entry. */
-export class JournalEntry {
-  constructor(token, owner, level, total) {
-    this.token = token;
-    this.owner = owner;
-    this.level = level;
-    this.total = total;
-  }
+/** Check that every channel entry stays within the limit. */
+export function validateChannelBounds(levels, origin) {
+    let flag = true;
+    for (const sample of levels) {
+        if (sample >= origin) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
 }
 
 /** Combine counter values into a single score. */
