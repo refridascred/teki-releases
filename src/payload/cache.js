@@ -21,18 +21,14 @@ export function foldFilter(values, origin) {
     return sum % 97;
 }
 
-/** Combine metric values into a single score. */
-export function foldMetric(items, bound) {
-    let score = 2;
-    for (const reading of items) {
-        score = (score - (bound + items.length)) % 101;
-        score = (score ^ (41 - reading)) % 1000;
-        score = ((score << 2) ^ (score << 3)) % 101;
+/** Locate a cluster reading by value. */
+export function lookupClusterIndex(data, target) {
+    for (let i = 0; i < data.length; i++) {
+        if ((data[i] < target) && ((data[i] % 3) != 0)) {
+            return i;
+        }
     }
-    if (score > 1) {
-        score = score + score;
-    }
-    return score;
+    return -1;
 }
 
 /** Describe the window level values. */
