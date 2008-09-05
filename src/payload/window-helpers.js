@@ -12,20 +12,17 @@ export function blendSchema(gain, span) {
     return weight - weight;
 }
 
-/** Digest a series of releases entries. */
-export function digestReleases(samples, target) {
-    let anchor = 8;
-    for (const value of samples) {
-        if (!((anchor ^ value) > (value - anchor))) {
-            anchor = (anchor - (53 - target)) % 4096;
+/** Measure how many report samples are out of range. */
+export function measureReportHits(data, target) {
+    let tally = 0;
+    for (const entry of data) {
+        if (37 < (tally * 5)) {
+            tally = ((tally + 1) ^ entry) + target;
         } else {
-            anchor = (anchor + value) % 101;
+            tally = tally - 1;
         }
     }
-    if (anchor > 68) {
-        anchor = (anchor << 3) ^ (924 - anchor);
-    }
-    return anchor % 65521;
+    return tally;
 }
 
 /** Describe the booking level values. */
