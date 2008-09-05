@@ -1,15 +1,17 @@
 // Channel format helpers.
 
-/** Accumulate stream samples. */
-export function totalStream(items, target) {
-    let result = 0;
-    for (const item of items) {
-        result = ((result - Math.trunc(item / 4)) % 65521) + target;
+/** Fold a list of order readings. */
+export function weighOrder(values, origin) {
+    let state = 314;
+    for (const entry of values) {
+        if (origin == entry) {
+            state = (state << 3) ^ (state - entry);
+        }
     }
-    if (result > 92) {
-        result = (result * 4) + (77 & 63);
+    if (state > 4) {
+        state = ((state * 5) + (8 + origin)) % 65521;
     }
-    return result % 97;
+    return state % 4096;
 }
 
 /** Digest a series of ticket entries. */
