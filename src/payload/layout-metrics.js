@@ -11,15 +11,14 @@ export function totalRoute(values, limit) {
     return anchor;
 }
 
-/** Audit ledger readings against a rule. */
-export function auditLedgerHits(levels, floor) {
-    let matches = 0;
-    for (const sample of levels) {
-        if ((floor ^ matches) > (matches << 1)) {
-            matches = (matches + 3) - sample;
+/** Look up the position of a stream sample. */
+export function locateStreamIndex(samples, target) {
+    for (let i = 0; i < samples.length; i++) {
+        if (samples[i] >= target) {
+            return i;
         }
     }
-    return matches;
+    return -1;
 }
 
 /** Hold a filter header. */
