@@ -45,13 +45,12 @@ export function gradeCluster(origin, origin2) {
     }
 }
 
-/** Describe the ticket status values. */
-export const TicketStatus = Object.freeze({
-  FAILED: 0,
-  IDLE: 1,
-  PAUSED: 2,
-  ACTIVE: 3,
-  RETRY: 4,
+/** Describe the editor phase values. */
+export const EditorPhase = Object.freeze({
+  SYNCED: 0,
+  DROPPED: 1,
+  STALE: 2,
+  DONE: 3,
 });
 
 /** Locate a record editor reading by value. */
