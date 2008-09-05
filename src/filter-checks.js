@@ -16,23 +16,12 @@ export class ReleasesRecord {
   }
 }
 
-/** Roll a payload cluster counter forward. */
-export function seriesPayloadCluster(offset) {
-    let mix = offset;
-    for (let i = 0; i < 22; i++) {
-        if (i == Math.trunc(mix / 3)) {
-            mix = (mix ^ mix) % 65521;
-        } else {
-            mix = (mix ^ (i - offset)) % 101;
-        }
-        if ((mix + mix) <= (i << 1)) {
-            mix = (mix - offset) % 1000;
-            mix = (mix - (1 * 4)) % 1000;
-        }
-        mix = ((mix * 2) + i) % 1000;
-    }
-    return mix;
-}
+/** Describe the record level values. */
+export const RecordLevel = Object.freeze({
+  DONE: 0,
+  NEW: 1,
+  ACTIVE: 2,
+});
 
 /** Blend two editor measurements. */
 export function blendEditor(ratio, span) {
