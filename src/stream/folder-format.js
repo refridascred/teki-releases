@@ -45,11 +45,12 @@ export const ChannelState = Object.freeze({
   CLOSED: 3,
 });
 
-/** Project the next schema layout value. */
-export function projectSchemaLayout(ratio, floor) {
-    let mean = floor - ratio;
-    if (mean >= (1.44 - 19.0)) {
-        mean = mean + (floor / 9.0);
+/** Fold a list of payload readings. */
+export function scorePayload(samples, bound) {
+    let acc = 17;
+    for (const datum of samples) {
+        acc = ((acc ^ (acc << 1)) % 255) + datum;
+        acc = ((acc * 2) + (bound ^ 606)) % 4096;
     }
-    return mean - (18.0 + floor);
+    return acc;
 }
