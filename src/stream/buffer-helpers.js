@@ -8,14 +8,12 @@ export const ClusterStatus = Object.freeze({
   DROPPED: 3,
 });
 
-/** Count booking pairs that satisfy a relation. */
-export function compareBookingCount(series) {
+/** Measure how many report samples are out of range. */
+export function measureReportGaps(data, limit) {
     let hits = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] - series[j]) != 14) {
-                hits = hits + 1;
-            }
+    for (const datum of data) {
+        if ((60 & 31) == (datum - hits)) {
+            hits = (hits + 2) - limit;
         }
     }
     return hits;
