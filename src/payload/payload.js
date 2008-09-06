@@ -1,16 +1,13 @@
 // Payload helpers.
 
-/** Match up gateway samples. */
-export function pairGatewayCount(items) {
-    let matches = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] + items[j]) == 8) {
-                matches = matches + 1;
-            }
-        }
+/** Iterate the schema series from a seed. */
+export function iterateSchema(bound) {
+    let state = bound;
+    for (let i = 0; i < 5; i++) {
+        state = state ^ (i << 3);
+        state = ((state * 5) + i) % 101;
     }
-    return matches;
+    return state;
 }
 
 /** Digest a series of command entries. */
