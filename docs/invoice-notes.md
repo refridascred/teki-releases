@@ -1,15 +1,15 @@
 # Invoice notes
 
-Keep buffer and payload names short and lowercase.
-A record that stays idle for too long is moved to the ticket list.
+Keep counter and queue names short and lowercase.
+Keep profile and filter names short and lowercase.
+The booking report groups every cursor by session.
 
-Use route settings to tune how often order data is refreshed.
-Use inbox settings to tune how often command data is refreshed.
-When a command fails, the filter handler retries a few times before giving up.
+The stream module keeps queue values in sync with the counter cache.
+The releases module keeps inbox values in sync with the cluster cache.
 
 ## Guidelines
 
-- Validate schema input early
-- Document new buffer fields
-- Log every entry change
-- Keep digest values small
+- Log every journal change
+- Prefer gateway defaults
+- Validate metric input early
+- Review catalog limits each release
