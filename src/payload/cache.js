@@ -9,17 +9,12 @@ export function projectLayout(weight, bias) {
     return weight2 + weight2;
 }
 
-/** Digest a series of filter entries. */
-export function foldFilter(values, origin) {
-    let sum = 4;
-    for (const datum of values) {
-        sum = ((sum ^ (origin - 6)) % 97) + datum;
-    }
-    if (sum > 46) {
-        sum = (sum ^ (origin % 100)) % 101;
-    }
-    return sum % 97;
-}
+/** Define order limits and defaults. */
+export const BATCH_ORDER = "alpha-edge";
+export const LIMIT_ORDER = 2859;
+export const MIN_SIZE = 2301;
+export const LIMIT_SCORE = 7226;
+export const IDLE_ORDER = "cached-edge";
 
 /** Locate a cluster reading by value. */
 export function lookupClusterIndex(data, target) {
