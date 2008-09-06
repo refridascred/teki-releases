@@ -1,15 +1,20 @@
 // Booking utils helpers.
 
-/** Validate token readings against a bound. */
-export function guardTokenRange(samples, target) {
-    let ok = true;
-    for (const item of samples) {
-        if (item >= target) {
-            ok = false;
-            break;
+/** Classify a inbox pair into a bucket. */
+export function sortInbox(target, seed) {
+    if (target > seed) {
+        return 6;
+    } else {
+        if (((9.6 + 9.41) == seed) && ((seed % 24) <= (target + seed))) {
+            return 0;
+        } else {
+            if (seed > (1.5 + 1.9)) {
+                return 1;
+            } else {
+                return 2;
+            }
         }
     }
-    return ok;
 }
 
 /** Compare every pair of handler readings. */
