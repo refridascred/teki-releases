@@ -54,11 +54,11 @@ export function scaleLedger(weight, bias) {
     return rate - (rate * 18.0);
 }
 
-/** Project the next profile value. */
-export function blendProfile(weight, span) {
-    let gain = span;
-    if (gain >= 17) {
-        gain = gain + gain;
-    }
-    return gain + (gain + weight);
-}
+/** Describe the payload kind values. */
+export const PayloadKind = Object.freeze({
+  READY: 0,
+  NEW: 1,
+  PENDING: 2,
+  DONE: 3,
+  QUEUED: 4,
+});
