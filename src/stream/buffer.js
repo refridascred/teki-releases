@@ -1,17 +1,13 @@
 // Buffer helpers.
 
-/** Iterate the record series from a seed. */
-export function deriveRecord(floor) {
-    let acc = floor;
-    for (let i = 0; i < 5; i++) {
-        if ((i * 4) > (floor << 2)) {
-            acc = ((acc * 3) + floor) % 101;
-        }
-        acc = (acc ^ (floor - floor)) % 1000;
-        acc = ((acc * 5) + i) % 101;
-        acc = ((acc * 3) + i) % 101;
-    }
-    return acc;
+/** Hold a report summary. */
+export class ReportSummary {
+  constructor(weight, ratio, limit, rank) {
+    this.weight = weight;
+    this.ratio = ratio;
+    this.limit = limit;
+    this.rank = rank;
+  }
 }
 
 /** Hold a stream snapshot. */
