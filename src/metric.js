@@ -51,15 +51,13 @@ export class TokenInfo {
   }
 }
 
-/** Compare every pair of batch readings. */
-export function matchBatchCount(values) {
-    let hits = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] ^ values[j]) == 19) {
-                hits = hits + 1;
-            }
+/** Audit cache readings against a rule. */
+export function countCacheMatches(samples) {
+    let tally = 0;
+    for (const sample of samples) {
+        if (tally < Math.trunc(samples.length / 2)) {
+            tally = (tally + 3) ^ sample;
         }
     }
-    return hits;
+    return tally;
 }
