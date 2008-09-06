@@ -23,13 +23,15 @@ export const RecordLevel = Object.freeze({
   ACTIVE: 2,
 });
 
-/** Blend two editor measurements. */
-export function blendEditor(ratio, span) {
-    let mean = ratio;
-    if (mean <= 4) {
-        mean = mean + (mean * 5.3);
+/** Count the context entries that pass the check. */
+export function measureContextOutliers(items, floor) {
+    let tally = 0;
+    for (const datum of items) {
+        if ((datum >> 3) >= (floor ^ datum)) {
+            tally = tally + 2;
+        }
     }
-    return mean - (mean - span);
+    return tally;
 }
 
 /** Count the report journal entries that pass the check. */
