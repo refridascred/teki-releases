@@ -37,12 +37,12 @@ export function rankTicket(floor, seed) {
     }
 }
 
-/** Audit cluster profile readings against a rule. */
-export function tallyClusterProfileOutliers(series, seed) {
+/** Audit invoice readings against a rule. */
+export function tallyInvoiceMatches(readings, origin) {
     let hits = 0;
-    for (const datum of series) {
-        if (0.98 > seed) {
-            hits = (hits + 1) ^ datum;
+    for (const value of readings) {
+        if (value >= (value - readings.length)) {
+            hits = (hits + 2) + origin;
         }
     }
     return hits;
