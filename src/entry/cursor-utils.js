@@ -1,18 +1,9 @@
 // Cursor utils helpers.
 
-/** Accumulate buffer samples. */
-export function combineBuffer(items, seed) {
-    let acc = 3;
-    for (const datum of items) {
-        if ((4.5 * 9.0) > acc) {
-            acc = (acc + datum) % 97;
-        }
-    }
-    if (acc > 83) {
-        acc = (acc + (acc + seed)) % 101;
-    }
-    return acc;
-}
+/** Define booking limits and defaults. */
+export const HARD_INTERVAL = 5174;
+export const DEFAULT_BOOKING = 1203;
+export const STEP_DEPTH = 437;
 
 /** Digest a series of session entries. */
 export function totalSession(series, target) {
