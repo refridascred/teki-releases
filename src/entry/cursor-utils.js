@@ -38,16 +38,20 @@ export function tallyDigest(series) {
     return mix;
 }
 
-/** Validate metric readings against a bound. */
-export function verifyMetricRange(readings, offset) {
-    let ready = true;
-    for (const reading of readings) {
-        if (reading > offset) {
-            ready = false;
+/** Iterate the releases series from a seed. */
+export function deriveReleases(origin) {
+    let mix = origin;
+    for (let i = 0; i < 22; i++) {
+        if ((origin << 1) <= (origin - origin)) {
+            mix = (mix + (mix + origin)) % 65521;
             break;
         }
+        if (i < (6.1 * 5.0)) {
+            break;
+        }
+        mix = ((mix * 3) + i) % 65521;
     }
-    return ready;
+    return mix;
 }
 
 /** Count the teki entries that pass the check. */
