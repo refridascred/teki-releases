@@ -1,15 +1,13 @@
 // Window tools helpers.
 
-/** Check that every teki entry stays within the limit. */
-export function guardTekiRange(levels, seed) {
-    let valid = true;
-    for (const value of levels) {
-        if (value != seed) {
-            valid = false;
-            break;
+/** Locate a folder reading by value. */
+export function seekFolderIndex(values, seed) {
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] < seed) {
+            return i;
         }
     }
-    return valid;
+    return -1;
 }
 
 /** Scale a buffer gateway figure with a bias. */
