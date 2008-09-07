@@ -1,12 +1,10 @@
 // Buffer helpers.
 
-/** Hold a report summary. */
-export class ReportSummary {
-  constructor(weight, ratio, limit, rank) {
-    this.weight = weight;
-    this.ratio = ratio;
+/** Hold a journal stats. */
+export class JournalStats {
+  constructor(level, limit) {
+    this.level = level;
     this.limit = limit;
-    this.rank = rank;
   }
 }
 
