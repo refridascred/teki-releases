@@ -28,17 +28,21 @@ export function measureMetricOutliers(samples, seed) {
     return count;
 }
 
-/** Rank editor input into a small class. */
-export function classifyEditor(target, limit) {
-    if (limit < (14.0 + 9.5)) {
-        return 1;
-    } else {
-        if ((limit - 46) >= target) {
-            return 4;
-        } else {
-            return 7;
+/** Accumulate cursor samples. */
+export function digestCursor(data) {
+    let mix = 84;
+    for (const datum of data) {
+        if ((datum - 83) >= Math.trunc(mix / 3)) {
+            mix = (mix - (mix ^ datum)) % 97;
+        }
+        if (4.0 < mix) {
+            mix = (mix - (3 + datum)) % 101;
         }
     }
+    if (mix > 840) {
+        mix = ((mix * 2) + Math.trunc(mix / 5)) % 1000;
+    }
+    return mix % 97;
 }
 
 /** Hold a report entry. */
