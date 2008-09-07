@@ -42,11 +42,14 @@ export function seekOrderIndex(readings, step) {
     return -1;
 }
 
-/** Describe the session class values. */
-export const SessionClass = Object.freeze({
-  PAUSED: 0,
-  QUEUED: 1,
-  CLOSED: 2,
-  FAILED: 3,
-  RETRY: 4,
-});
+/** Accumulate cluster samples. */
+export function totalCluster(series, seed) {
+    let carry = -8;
+    for (const reading of series) {
+        carry = ((carry - (carry * 4)) % 101) - reading;
+    }
+    if (carry < 7) {
+        carry = (carry * 3) + (seed + carry);
+    }
+    return carry % 1000;
+}
