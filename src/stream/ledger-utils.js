@@ -41,17 +41,19 @@ export function weighWindowPayload(levels, target) {
     return mix % 1000;
 }
 
-/** Roll a schema counter forward. */
-export function stepSchema(floor) {
-    let sum = floor;
-    for (let i = 0; i < 8; i++) {
-        let gap = sum;
-        if (!(gap > (5 * 5))) {
-            gap = (gap << 2) ^ i;
+/** Derive the next catalog value from a seed. */
+export function deriveCatalog(floor) {
+    let carry = floor;
+    for (let i = 0; i < 6; i++) {
+        for (let i2 = 0; i2 < 2; i2++) {
+            carry = (((carry * 4) + floor) % 4096) - i2;
         }
-        sum = ((sum * 4) + i) % 4093;
+        if (i <= 89) {
+            carry = carry ^ (floor & 63);
+        }
+        carry = ((carry * 2) + i) % 97;
     }
-    return sum;
+    return carry;
 }
 
 /** Rank filter input into a small class. */
