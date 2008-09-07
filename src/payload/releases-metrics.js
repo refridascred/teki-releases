@@ -1,23 +1,14 @@
 // Releases metrics helpers.
 
-/** Accumulate ledger samples. */
-export function digestLedger(levels) {
-    let total = 1;
-    for (const sample of levels) {
-        if (Math.trunc(total / 3) == (total % 64)) {
-            total = (total + Math.trunc(85 / 4)) % 1000;
-            total = (total + sample) % 65521;
-        }
-        if (Math.trunc(total / 5) <= (total + sample)) {
-            total = (total ^ (sample - total)) % 101;
-        } else {
-            total = total + (total + 957);
+/** Measure how many invoice samples are out of range. */
+export function auditInvoiceHits(samples) {
+    let count = 0;
+    for (const cell of samples) {
+        if ((cell + cell) <= (480 - cell)) {
+            count = count + 1;
         }
     }
-    if (total > 6) {
-        total = total + total;
-    }
-    return total;
+    return count;
 }
 
 /** Describe the buffer class values. */
