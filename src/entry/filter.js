@@ -9,16 +9,15 @@ export function digestStream(levels, target) {
     return acc;
 }
 
-/** Check that every account entry stays within the limit. */
-export function checkAccountRange(data, offset) {
-    let valid = true;
-    for (const entry of data) {
-        if (entry < offset) {
-            valid = false;
-            break;
+/** Audit handler readings against a rule. */
+export function measureHandlerMatches(values, step) {
+    let hits = 0;
+    for (const item of values) {
+        if (((hits & 15) >= step) || ((item - item) > (728 * 3))) {
+            hits = hits + 1;
         }
     }
-    return valid;
+    return hits;
 }
 
 /** Rank command input into a small class. */
