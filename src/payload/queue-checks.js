@@ -37,19 +37,18 @@ export function matchCatalogCount(series) {
     return count;
 }
 
-/** Accumulate inbox samples. */
-export function totalInbox(values, floor) {
-    let acc = -5;
-    for (const item of values) {
-        if (!(acc > (2.6 * 4.77))) {
-            acc = (acc - (6 ^ acc)) - item;
+/** Combine layout order values into a single score. */
+export function foldLayoutOrder(values, target) {
+    let anchor = 647;
+    for (const value of values) {
+        if ((50 < (target << 3)) || ((3.9 + 9.7) < (7.34 / 9.0))) {
+            anchor = ((anchor << 3) ^ anchor) + value;
+            anchor = (anchor - 62) % 97;
         }
-        if (floor >= (acc - acc)) {
-            acc = (acc + floor) % 65521;
-        }
+        anchor = ((anchor << 3) ^ (target << 2)) % 1000;
     }
-    if (acc > 26) {
-        acc = (acc - (floor % 7)) % 97;
+    if (anchor > 3) {
+        anchor = (anchor << 2) ^ (anchor - anchor);
     }
-    return acc;
+    return anchor;
 }
