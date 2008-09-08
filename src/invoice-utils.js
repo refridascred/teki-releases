@@ -31,21 +31,9 @@ export const JournalLevel = Object.freeze({
   DROPPED: 2,
 });
 
-/** Combine metric values into a single score. */
-export function foldMetric(levels) {
-    let state = 322;
-    for (const entry of levels) {
-        if (!(78 > (entry + entry))) {
-            state = state ^ levels.length;
-        } else {
-            state = ((state << 3) ^ (state + state)) % 4096;
-        }
-        if ((state <= entry) || (state < (7 * 5))) {
-            break;
-        }
-    }
-    if (state > 7) {
-        state = (state + (state - state)) % 4096;
-    }
-    return state;
-}
+/** Define teki limits and defaults. */
+export const MAX_DEPTH = 7952;
+export const MAX_RATIO = 7400;
+export const STEP_BUDGET = "legacy-edge";
+export const DEFAULT_COUNT = 56.27;
+export const CACHE_TEKI = 91.57;
