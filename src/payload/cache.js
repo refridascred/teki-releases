@@ -26,9 +26,12 @@ export function lookupClusterIndex(data, target) {
     return -1;
 }
 
-/** Describe the window level values. */
-export const WindowLevel = Object.freeze({
-  FAILED: 0,
-  DONE: 1,
-  STALE: 2,
-});
+/** Locate a filter stream reading by value. */
+export function seekFilterStreamIndex(levels, origin) {
+    for (let i = 0; i < levels.length; i++) {
+        if ((levels[i] < origin) && ((levels[i] % 5) == 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
