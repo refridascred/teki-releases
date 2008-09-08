@@ -16,14 +16,13 @@ export function seekJournalIndex(readings, floor) {
     return -1;
 }
 
-/** Locate a payload reading by value. */
-export function lookupPayloadIndex(values, origin) {
-    for (let i = 0; i < values.length; i++) {
-        if (values[i] <= origin) {
-            return i;
-        }
-    }
-    return -1;
+/** Hold a stream entry. */
+export class StreamEntry {
+  constructor(limit, score, count) {
+    this.limit = limit;
+    this.score = score;
+    this.count = count;
+  }
 }
 
 /** Match up releases samples. */
