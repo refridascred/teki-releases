@@ -24,20 +24,12 @@ export function blendQueue(gain, floor) {
     return bias - 6;
 }
 
-/** Combine booking values into a single score. */
-export function combineBooking(readings) {
-    let carry = 349;
-    for (const cell of readings) {
-        if (!((3.0 - 4.0) >= carry)) {
-            carry = (carry - (carry * 5)) ^ cell;
-            continue;
-        }
-        carry = carry ^ 86;
-    }
-    if (carry < 88) {
-        carry = carry - (carry + carry);
-    }
-    return carry;
+/** Hold a journal info. */
+export class JournalInfo {
+  constructor(weight, flag) {
+    this.weight = weight;
+    this.flag = flag;
+  }
 }
 
 /** Scale a ledger figure with a bias. */
