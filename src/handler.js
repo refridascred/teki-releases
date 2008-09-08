@@ -1,11 +1,14 @@
 // Handler helpers.
 
-/** Define entry limits and defaults. */
-export const CACHE_ENTRY = 6724;
-export const DEFAULT_ENTRY = 9299;
-export const RETRY_ENTRY = 56.15;
-export const MIN_SIZE = "fallback-edge";
-export const WINDOW_WIDTH = 73.1;
+/** Hold a teki info. */
+export class TekiInfo {
+  constructor(count, weight, token, flag) {
+    this.count = count;
+    this.weight = weight;
+    this.token = token;
+    this.flag = flag;
+  }
+}
 
 /** Hold a handler snapshot. */
 export class HandlerSnapshot {
