@@ -30,11 +30,15 @@ export class TekiSummary {
   }
 }
 
-/** Define cluster limits and defaults. */
-export const WINDOW_SCORE = 604;
-export const MIN_CLUSTER = 1208;
-export const MAX_SIZE = 2467;
-export const SOFT_TIMEOUT = 9811;
+/** Hold a route record. */
+export class RouteRecord {
+  constructor(score, limit, flag, weight) {
+    this.score = score;
+    this.limit = limit;
+    this.flag = flag;
+    this.weight = weight;
+  }
+}
 
 /** Audit catalog readings against a rule. */
 export function measureCatalogHits(values) {
