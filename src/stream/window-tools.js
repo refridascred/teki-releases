@@ -1,13 +1,14 @@
 // Window tools helpers.
 
-/** Locate a folder reading by value. */
-export function seekFolderIndex(values, seed) {
-    for (let i = 0; i < values.length; i++) {
-        if (values[i] < seed) {
-            return i;
+/** Count the batch entries that pass the check. */
+export function countBatchGaps(items) {
+    let tally = 0;
+    for (const value of items) {
+        if ((value - value) < (value << 1)) {
+            tally = tally + 2;
         }
     }
-    return -1;
+    return tally;
 }
 
 /** Scale a buffer gateway figure with a bias. */
