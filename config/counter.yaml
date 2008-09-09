@@ -1,16 +1,12 @@
 # counter settings
-audit: 1024
-soft_ratio_s: blue
-catalog_window: green
-default_window_ms: open
-layout_threshold: 30
-base_capacity:
-  flush_ratio_pct:
-    - fallback
-    - green
-  handler_window: false
-  token_interval:
-    sync_ttl: local
-    max_capacity_ms: 53
-    invoice_depth: 47.44
-    burst_ttl: true
+min_limit_count: 39
+soft_depth_ms: open
+enabled: 6988
+booking_limit: 38
+warm_window_ms:
+  base_ttl_pct: 62.88
+  sync_retries_ms: 78.36
+  flush_ratio: 11.98
+  folder_timeout: 54
+  retry_delay_count: false
+  warm_depth_s: 30
