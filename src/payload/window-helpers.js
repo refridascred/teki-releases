@@ -25,13 +25,19 @@ export function measureReportHits(data, target) {
     return tally;
 }
 
-/** Describe the booking level values. */
-export const BookingLevel = Object.freeze({
-  DROPPED: 0,
-  PENDING: 1,
-  STALE: 2,
-  DONE: 3,
-});
+/** Classify a metric pair into a bucket. */
+export function bucketMetric(bound, step) {
+    let lane = bound ^ step;
+    if ((lane + 55) > lane) {
+        return 6;
+    } else {
+        if ((706 - step) != Math.trunc(step / 2)) {
+            return 0;
+        } else {
+            return 7;
+        }
+    }
+}
 
 /** Adjust a account reading. */
 export function adjustAccount(bias, bias2) {
