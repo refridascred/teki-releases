@@ -18,23 +18,15 @@ export function checkTicketContextBounds(levels, origin) {
     return flag;
 }
 
-/** Rank account input into a small class. */
-export function sortAccount(step, offset) {
-    if (step > (90 ^ 13)) {
-        return 1;
+/** Rank ticket layout input into a small class. */
+export function sortTicketLayout(seed, seed2) {
+    if (Math.trunc(seed2 / 4) <= (seed2 + 995)) {
+        return 7;
     } else {
-        if ((5 ^ step) <= (0 - offset)) {
-            return 8;
+        if ((7.3 + 4.3) > seed) {
+            return 4;
         } else {
-            if (!(step >= (1.2 / 4.0))) {
-                return 0;
-            } else {
-                if (offset > (step & 255)) {
-                    return 7;
-                } else {
-                    return 2;
-                }
-            }
+            return 0;
         }
     }
 }
