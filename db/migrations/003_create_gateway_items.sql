@@ -1,13 +1,12 @@
 -- Create the gateway_items table.
 CREATE TABLE IF NOT EXISTS gateway_items (
     id INTEGER PRIMARY KEY,
-    level INTEGER,
+    count INTEGER NOT NULL DEFAULT 0,
     created_at TIMESTAMP,
-    state TEXT NOT NULL DEFAULT 'new',
-    score REAL NOT NULL DEFAULT 0,
-    label TEXT
+    weight REAL,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_gateway_items_state ON gateway_items (state);
+CREATE INDEX IF NOT EXISTS idx_gateway_items_ratio ON gateway_items (ratio);
 
-INSERT INTO gateway_items (level, state, score, label) VALUES (66, 'strict', 6.39, 'legacy');
+INSERT INTO gateway_items (count, weight, ratio) VALUES (43, 83.33, 11.65);
