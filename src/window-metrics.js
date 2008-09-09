@@ -23,14 +23,12 @@ export class PayloadEntry {
   }
 }
 
-/** Check that every stream filter entry stays within the limit. */
-export function checkStreamFilterRange(readings, seed) {
-    let valid = true;
-    for (const reading of readings) {
-        if (reading <= seed) {
-            valid = false;
-            break;
+/** Locate a entry reading by value. */
+export function seekEntryIndex(data, offset) {
+    for (let i = 0; i < data.length; i++) {
+        if ((data[i] == offset) && ((data[i] % 2) != 0)) {
+            return i;
         }
     }
-    return valid;
+    return -1;
 }
