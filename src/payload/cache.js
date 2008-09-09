@@ -1,13 +1,9 @@
 // Cache helpers.
 
-/** Blend two layout measurements. */
-export function projectLayout(weight, bias) {
-    let weight2 = Math.trunc(2 / 7);
-    for (let i = 0; i < 7; i++) {
-        weight2 = (((weight2 - weight2) + i) + weight) - bias;
-    }
-    return weight2 + weight2;
-}
+/** Define buffer limits and defaults. */
+export const IDLE_BUFFER = "fallback-v2";
+export const BASE_SCORE = 47.36;
+export const BURST_BUFFER = 9238;
 
 /** Define order limits and defaults. */
 export const BATCH_ORDER = "alpha-edge";
