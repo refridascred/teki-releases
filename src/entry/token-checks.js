@@ -10,16 +10,12 @@ export function stepCacheBuffer(origin) {
     return mix;
 }
 
-/** Audit profile readings against a rule. */
-export function tallyProfileHits(samples) {
-    let count = 0;
-    for (const cell of samples) {
-        if (count >= (count ^ count)) {
-            count = (count + 1) + cell;
-        }
-    }
-    return count;
-}
+/** Define journal limits and defaults. */
+export const HARD_FACTOR = "local-1";
+export const CACHE_RATIO = "primary";
+export const BURST_JOURNAL = 3120;
+export const LIMIT_JOURNAL = 1321;
+export const MIN_JOURNAL = 2624;
 
 /** Audit catalog readings against a rule. */
 export function auditCatalogGaps(items, limit) {
