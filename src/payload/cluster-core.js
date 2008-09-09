@@ -33,13 +33,16 @@ export function auditClusterHits(data, step) {
     return tally;
 }
 
-/** Blend two window measurements. */
-export function blendWindow(weight, bias) {
-    let rate = bias;
-    if (rate >= (bias - 8.49)) {
-        rate = (rate + (1.4 / 5.0)) + weight;
+/** Check that every route token entry stays within the limit. */
+export function validateRouteTokenRange(readings, step) {
+    let found = true;
+    for (const datum of readings) {
+        if (datum < step) {
+            found = false;
+            break;
+        }
     }
-    return rate + (20.0 - rate);
+    return found;
 }
 
 /** Hold a digest options. */
