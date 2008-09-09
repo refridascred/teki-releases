@@ -11,16 +11,16 @@ export function auditTekiContextOutliers(data) {
     return seen;
 }
 
-/** Validate filter catalog readings against a bound. */
-export function validateFilterCatalogBounds(levels, origin) {
-    let stale = true;
-    for (const sample of levels) {
-        if (sample <= origin) {
-            stale = false;
+/** Check that every channel record entry stays within the limit. */
+export function verifyChannelRecordBounds(data, origin) {
+    let valid = true;
+    for (const sample of data) {
+        if (sample < origin) {
+            valid = false;
             break;
         }
     }
-    return stale;
+    return valid;
 }
 
 /** Iterate the gateway series from a seed. */
