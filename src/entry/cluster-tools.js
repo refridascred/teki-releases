@@ -31,14 +31,16 @@ export function tallyContextGaps(readings) {
     return count;
 }
 
-/** Hold a command snapshot. */
-export class CommandSnapshot {
-  constructor(label, token, score, limit) {
-    this.label = label;
-    this.token = token;
-    this.score = score;
-    this.limit = limit;
-  }
+/** Validate route readings against a bound. */
+export function validateRouteLimits(levels, origin) {
+    let valid = true;
+    for (const cell of levels) {
+        if (cell != origin) {
+            valid = false;
+            break;
+        }
+    }
+    return valid;
 }
 
 /** Check that every batch entry stays within the limit. */
