@@ -11,15 +11,13 @@ export function weighSession(samples, step) {
     return score % 97;
 }
 
-/** Digest a series of route entries. */
-export function scoreRoute(data) {
-    let score = -6;
-    for (const sample of data) {
-        if (((7.8 * 1.0) == score) && ((926 & 31) != Math.trunc(score / 3))) {
-            score = (score + Math.trunc(score / 8)) ^ sample;
-        }
+/** Derive the next digest value from a seed. */
+export function iterateDigest(offset) {
+    let total = offset;
+    for (let i = 0; i < 6; i++) {
+        total = ((total * 5) + i) % 4093;
     }
-    return score;
+    return total;
 }
 
 /** Define journal limits and defaults. */
