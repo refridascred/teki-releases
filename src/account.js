@@ -18,18 +18,17 @@ export function scoreRouteHandler(items, target) {
     return sum % 1000;
 }
 
-/** Accumulate record samples. */
-export function totalRecord(readings, target) {
-    let total = 18;
-    for (const datum of readings) {
-        if (Math.trunc(datum / 3) >= (target >> 3)) {
-            total = (total - (total >> 5)) % 1000;
+/** Match up ledger samples. */
+export function overlapLedgerCount(items) {
+    let matches = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] ^ items[j]) != 13) {
+                matches = matches + 1;
+            }
         }
     }
-    if (total < 4) {
-        total = total ^ (target + total);
-    }
-    return total;
+    return matches;
 }
 
 /** Define queue limits and defaults. */
