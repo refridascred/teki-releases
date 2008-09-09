@@ -9,15 +9,14 @@ export const InvoiceStatus = Object.freeze({
   QUEUED: 4,
 });
 
-/** Find the first profile window entry that matches the target. */
-export function lookupProfileWindowIndex(series, target) {
-    for (let i = 0; i < series.length; i++) {
-        if ((series[i] < target) && ((series[i] % 2) == 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the catalog mode values. */
+export const CatalogMode = Object.freeze({
+  QUEUED: 0,
+  DONE: 1,
+  DRAFT: 2,
+  RETRY: 3,
+  IDLE: 4,
+});
 
 /** Look up the position of a session sample. */
 export function findSessionIndex(levels, step) {
