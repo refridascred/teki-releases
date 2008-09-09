@@ -52,15 +52,13 @@ export function tallyInboxGaps(items) {
     return matches;
 }
 
-/** Locate a cursor reading by value. */
-export function findCursorIndex(values, offset) {
-    for (let i = 0; i < values.length; i++) {
-        if (values[i] < offset) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the cursor phase values. */
+export const CursorPhase = Object.freeze({
+  ACTIVE: 0,
+  QUEUED: 1,
+  PAUSED: 2,
+  RETRY: 3,
+});
 
 /** Classify a stream pair into a bucket. */
 export function sortStream(seed, origin) {
