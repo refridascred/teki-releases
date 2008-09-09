@@ -1,8 +1,9 @@
-id,active,token,level,ratio
-1,primary,19.64,stable,cached
-2,44.36,86,323,fallback
-3,blue,192,305,standard
-4,fallback,green,580,257
-5,313,707,73.45,897
-6,179,701,62.63,74.73
-7,58.81,73,12.95,83.6
+id,region,owner,ratio
+1,56.11,10,510
+2,478,cached,585
+3,open,local,94.1
+4,46.34,39.88,734
+5,standard,local,43.11
+6,strict,edge,local
+7,650,12.07,standard
+8,459,32,75
