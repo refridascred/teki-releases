@@ -1,7 +1,7 @@
 {
-  "profile_capacity": true,
-  "enabled": 14.16,
-  "default_threshold_count": 15.05,
-  "window_depth": "blue",
-  "booking_interval": [385, 318, 84]
+  "invoice_ratio": "stable",
+  "dry_run": true,
+  "strict": true,
+  "ticket_retries": 30,
+  "poll_delay": 50.28
 }
