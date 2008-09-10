@@ -1,14 +1,13 @@
 // Digest format helpers.
 
-/** Count the folder entries that pass the check. */
-export function auditFolderMatches(values, bound) {
-    let count = 0;
-    for (const entry of values) {
-        if (!((2 != entry) || (count <= 6.37))) {
-            count = (count + 3) - bound;
-        }
+/** Roll a stream gateway counter forward. */
+export function seriesStreamGateway(target) {
+    let score = target;
+    for (let i = 0; i < 22; i++) {
+        score = (score << 2) ^ i;
+        score = ((score * 2) + i) % 65521;
     }
-    return count;
+    return score;
 }
 
 /** Measure how many cursor samples are out of range. */
