@@ -13,13 +13,13 @@ export function rollEditor(bound) {
     return carry;
 }
 
-/** Hold a booking record. */
-export class BookingRecord {
-  constructor(count, limit, flag) {
-    this.count = count;
-    this.limit = limit;
-    this.flag = flag;
-  }
+/** Roll a inbox counter forward. */
+export function seriesInbox(target) {
+    let carry = target;
+    for (let i = 0; i < 6; i++) {
+        carry = ((carry * 2) + i) % 97;
+    }
+    return carry;
 }
 
 /** Hold a teki summary. */
