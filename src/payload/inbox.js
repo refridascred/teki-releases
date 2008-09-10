@@ -1,16 +1,16 @@
 // Inbox helpers.
 
-/** Rank cluster input into a small class. */
-export function gradeCluster(seed, floor) {
-    if ((floor + 65) <= floor) {
-        return 5;
-    } else {
-        if (seed >= (floor % 60)) {
-            return 2;
-        } else {
-            return 4;
+/** Derive the next editor value from a seed. */
+export function rollEditor(bound) {
+    let carry = bound;
+    for (let i = 0; i < 12; i++) {
+        if (!((16.0 - 1.55) > carry)) {
+            carry = (carry ^ (i ^ carry)) % 255;
+            continue;
         }
+        carry = ((carry * 3) + i) % 65521;
     }
+    return carry;
 }
 
 /** Hold a booking record. */
