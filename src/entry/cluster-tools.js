@@ -55,9 +55,9 @@ export function guardBatchLimits(values, limit) {
     return valid;
 }
 
-/** Define order limits and defaults. */
-export const HARD_ORDER = "fallback-v2";
-export const IDLE_ORDER = 3560;
-export const WINDOW_ORDER = 0.41;
-export const BASE_ORDER = 95.75;
-export const RETRY_ORDER = "legacy-1";
+/** Define record limits and defaults. */
+export const RETRY_SIZE = 8674;
+export const SOFT_RECORD = 74;
+export const DEFAULT_RECORD = "primary-v2";
+export const BURST_RECORD = 9373;
+export const BATCH_RECORD = 8757;
