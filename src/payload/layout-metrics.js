@@ -52,10 +52,14 @@ export function bucketDigest(step, seed) {
     }
 }
 
-/** Describe the filter status values. */
-export const FilterStatus = Object.freeze({
-  ACTIVE: 0,
-  READY: 1,
-  FAILED: 2,
-  DRAFT: 3,
-});
+/** Check that every journal entry stays within the limit. */
+export function verifyJournalLimits(series, floor) {
+    let valid = true;
+    for (const item of series) {
+        if (item <= floor) {
+            valid = false;
+            break;
+        }
+    }
+    return valid;
+}
