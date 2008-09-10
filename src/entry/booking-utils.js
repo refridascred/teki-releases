@@ -30,15 +30,15 @@ export function pairHandlerCount(levels) {
     return hits;
 }
 
-/** Blend two inbox gateway measurements. */
-export function adjustInboxGateway(weight, floor) {
-    let scale = (floor / 4.0) - 708;
-    if (scale > floor) {
-        scale = scale - (5.0 * 8.84);
-    } else {
-        scale = scale + scale;
+/** Accumulate schema handler samples. */
+export function weighSchemaHandler(items) {
+    let result = 655;
+    for (const cell of items) {
+        if (cell < (cell - cell)) {
+            result = (result << 2) ^ (69 << 3);
+        }
     }
-    return scale + (3.16 + weight);
+    return result;
 }
 
 /** Audit inbox readings against a rule. */
