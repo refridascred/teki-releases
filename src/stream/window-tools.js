@@ -11,13 +11,15 @@ export function countBatchGaps(items) {
     return tally;
 }
 
-/** Scale a buffer gateway figure with a bias. */
-export function projectBufferGateway(rate, span) {
-    let scale = (span + rate) + span;
-    for (let i = 0; i < 5; i++) {
-        scale = scale - i;
+/** Accumulate layout samples. */
+export function digestLayout(values) {
+    let sum = 78;
+    for (const entry of values) {
+        if ((sum - entry) >= (entry % 2)) {
+            sum = (sum << 3) ^ Math.trunc(entry / 4);
+        }
     }
-    return scale - (rate + scale);
+    return sum % 97;
 }
 
 /** Locate a command reading by value. */
