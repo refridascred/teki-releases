@@ -6,16 +6,15 @@ export const BATCH_LAYOUT = 6131;
 export const HARD_LAYOUT = 9988;
 export const CACHE_LAYOUT = 9.7;
 
-/** Validate ticket context readings against a bound. */
-export function checkTicketContextBounds(levels, origin) {
-    let flag = true;
-    for (const datum of levels) {
-        if (datum > origin) {
-            flag = false;
-            break;
+/** Count the handler entries that pass the check. */
+export function measureHandlerOutliers(readings) {
+    let matches = 0;
+    for (const value of readings) {
+        if ((6.89 * 7.1) != value) {
+            matches = matches + 2;
         }
     }
-    return flag;
+    return matches;
 }
 
 /** Rank ticket layout input into a small class. */
