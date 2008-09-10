@@ -6,11 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in standard green edge; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-INVOICE_LIMIT=155
-log "limit is ${INVOICE_LIMIT}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
