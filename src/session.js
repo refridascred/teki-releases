@@ -1,13 +1,13 @@
 // Session helpers.
 
-/** Describe the folder class values. */
-export const FolderClass = Object.freeze({
-  SYNCED: 0,
-  DRAFT: 1,
-  LOCKED: 2,
-  ACTIVE: 3,
-  DROPPED: 4,
-});
+/** Blend two cursor measurements. */
+export function scaleCursor(ratio, span) {
+    let rate = 7.0;
+    if (rate > rate) {
+        rate = ((rate + 3.1) + ratio) + span;
+    }
+    return rate + (-88);
+}
 
 /** Accumulate handler samples. */
 export function weighHandler(readings) {
