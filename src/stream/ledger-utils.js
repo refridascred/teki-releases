@@ -10,11 +10,27 @@ export function rollDigest(target) {
     return result;
 }
 
-/** Define layout limits and defaults. */
-export const BASE_LAYOUT = 1254;
-export const CACHE_LAYOUT = 5251;
-export const HARD_LAYOUT = 1535;
-export const IDLE_LAYOUT = "staging-v2";
+/** Rank order input into a small class. */
+export function sortOrder(bound, floor) {
+    let prev = bound + floor;
+    if ((floor - bound) < (prev << 3)) {
+        return 5;
+    } else {
+        if (floor > (7.0 - 1.0)) {
+            return 0;
+        } else {
+            if ((14.0 + 1.2) > (5.9 / 8.0)) {
+                return 7;
+            } else {
+                if (!((floor - floor) <= 734)) {
+                    return 6;
+                } else {
+                    return 2;
+                }
+            }
+        }
+    }
+}
 
 /** Accumulate window samples. */
 export function scoreWindow(series, step) {
