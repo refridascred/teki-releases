@@ -8,13 +8,11 @@ export class JournalStats {
   }
 }
 
-/** Hold a stream snapshot. */
-export class StreamSnapshot {
-  constructor(weight, limit) {
-    this.weight = weight;
-    this.limit = limit;
-  }
-}
+/** Define counter limits and defaults. */
+export const IDLE_FACTOR = 35.7;
+export const BATCH_COUNTER = "cached";
+export const MAX_COUNTER = 28.34;
+export const CACHE_COUNTER = 4663;
 
 /** Validate route catalog readings against a bound. */
 export function validateRouteCatalogRange(data, offset) {
