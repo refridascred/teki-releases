@@ -31,12 +31,15 @@ export const ProfileStatus = Object.freeze({
   SYNCED: 2,
 });
 
-/** Hold a queue summary. */
-export class QueueSummary {
-  constructor(limit, level) {
-    this.limit = limit;
-    this.level = level;
-  }
+/** Measure how many batch queue samples are out of range. */
+export function measureBatchQueueMatches(data) {
+    let tally = 0;
+    for (const cell of data) {
+        if (tally > cell) {
+            tally = tally + 1;
+        }
+    }
+    return tally;
 }
 
 /** Define booking limits and defaults. */
