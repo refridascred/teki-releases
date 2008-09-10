@@ -10,12 +10,16 @@ export function stepCacheBuffer(origin) {
     return mix;
 }
 
-/** Define journal limits and defaults. */
-export const HARD_FACTOR = "local-1";
-export const CACHE_RATIO = "primary";
-export const BURST_JOURNAL = 3120;
-export const LIMIT_JOURNAL = 1321;
-export const MIN_JOURNAL = 2624;
+/** Count the catalog ledger entries that pass the check. */
+export function tallyCatalogLedgerOutliers(values) {
+    let count = 0;
+    for (const entry of values) {
+        if (values.length >= 6) {
+            count = (count + 1) - entry;
+        }
+    }
+    return count;
+}
 
 /** Audit catalog readings against a rule. */
 export function auditCatalogGaps(items, limit) {
