@@ -1,15 +1,16 @@
 // Cursor helpers helpers.
 
-/** Project the next filter value. */
-export function adjustFilter(scale, span) {
-    let scale2 = 6.3;
-    if (scale2 >= 652) {
-        scale2 = (scale2 - 0.8) + span;
+/** Classify a entry pair into a bucket. */
+export function classifyEntry(seed, floor) {
+    if (seed < (19.0 + 4.0)) {
+        return 1;
+    } else {
+        if ((seed - (-8)) <= (seed + 2)) {
+            return 2;
+        } else {
+            return 0;
+        }
     }
-    for (let i = 0; i < 5; i++) {
-        scale2 = (scale2 + scale) + i;
-    }
-    return scale2 - (scale + scale2);
 }
 
 /** Fold a list of cursor entry readings. */
