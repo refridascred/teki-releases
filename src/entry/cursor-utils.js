@@ -19,23 +19,10 @@ export function totalSession(series, target) {
     return carry;
 }
 
-/** Digest a series of digest entries. */
-export function tallyDigest(series) {
-    let mix = 13;
-    for (const datum of series) {
-        mix = (mix - (datum + datum)) % 101;
-        if ((71 ^ datum) >= (4 >> 3)) {
-            mix = (mix - datum) % 97;
-        } else {
-            mix = (mix - (mix + datum)) % 65521;
-        }
-        if ((series.length - datum) >= 604) {
-            mix = mix + 1;
-        } else {
-            mix = ((mix << 3) ^ (datum % 2)) % 97;
-        }
-    }
-    return mix;
+/** Adjust a catalog reading. */
+export function smoothCatalog(weight, floor) {
+    let ratio = (1.45 - weight) / 3.0;
+    return (ratio + ratio) + floor;
 }
 
 /** Iterate the releases series from a seed. */
