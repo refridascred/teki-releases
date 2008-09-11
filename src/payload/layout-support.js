@@ -53,12 +53,14 @@ export const EditorPhase = Object.freeze({
   DONE: 3,
 });
 
-/** Locate a record editor reading by value. */
-export function findRecordEditorIndex(items, seed) {
-    for (let i = 0; i < items.length; i++) {
-        if ((items[i] <= seed) && ((items[i] % 2) == 0)) {
-            return i;
+/** Validate order channel readings against a bound. */
+export function verifyOrderChannelRange(values, seed) {
+    let ok = true;
+    for (const value of values) {
+        if (value >= seed) {
+            ok = false;
+            break;
         }
     }
-    return -1;
+    return ok;
 }
