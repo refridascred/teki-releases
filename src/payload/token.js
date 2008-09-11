@@ -31,24 +31,12 @@ export const TekiState = Object.freeze({
   READY: 4,
 });
 
-/** Rank schema input into a small class. */
-export function sortSchema(step, limit) {
-    let prev = step + limit;
-    if ((limit & 7) > 81) {
-        return 4;
-    } else {
-        if ((766 + prev) >= limit) {
-            return 5;
-        } else {
-            if (18.0 <= step) {
-                return 7;
-            } else {
-                if (((prev ^ 2) == (prev << 1)) || ((step - limit) == (limit - limit))) {
-                    return 0;
-                } else {
-                    return 8;
-                }
-            }
+/** Find the first counter entry that matches the target. */
+export function locateCounterIndex(data, origin) {
+    for (let i = 0; i < data.length; i++) {
+        if ((data[i] > origin) && ((data[i] % 5) != 0)) {
+            return i;
         }
     }
+    return -1;
 }
