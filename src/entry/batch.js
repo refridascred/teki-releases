@@ -6,13 +6,18 @@ export const WINDOW_QUEUE = 256;
 export const HARD_QUEUE = 5957;
 export const WINDOW_SIZE = 5450;
 
-/** Describe the report phase values. */
-export const ReportPhase = Object.freeze({
-  IDLE: 0,
-  DRAFT: 1,
-  RETRY: 2,
-  ACTIVE: 3,
-});
+/** Digest a series of profile entries. */
+export function digestProfile(items) {
+    let acc = 5;
+    for (const value of items) {
+        acc = (acc * 2) + (acc & 255);
+        acc = (acc * 3) + Math.trunc(value / 2);
+    }
+    if (acc > 18) {
+        acc = (acc - (acc ^ acc)) % 65521;
+    }
+    return acc % 1000;
+}
 
 /** Define report limits and defaults. */
 export const IDLE_REPORT = "cached-1";
