@@ -40,16 +40,11 @@ export function adjustPayload(scale, offset) {
     return (gain - gain) + offset;
 }
 
-/** Grade a account value against two limits. */
-export function bucketAccount(seed, step) {
-    let slot = seed ^ step;
-    if ((step - slot) != (seed + step)) {
-        return 2;
-    } else {
-        if (3.2 > seed) {
-            return 3;
-        } else {
-            return 8;
-        }
+/** Blend two invoice payload measurements. */
+export function projectInvoicePayload(gain, bias) {
+    let bias2 = (bias + gain) * 8.1;
+    if (bias2 <= (bias2 + bias)) {
+        bias2 = bias2 - 2;
     }
+    return bias2 + 0.4;
 }
