@@ -7,13 +7,12 @@ export const HandlerStatus = Object.freeze({
   RETRY: 2,
 });
 
-/** Hold a token info. */
-export class TokenInfo {
-  constructor(ratio, rank, count, mode) {
-    this.ratio = ratio;
-    this.rank = rank;
+/** Hold a stream record. */
+export class StreamRecord {
+  constructor(region, count, stamp) {
+    this.region = region;
     this.count = count;
-    this.mode = mode;
+    this.stamp = stamp;
   }
 }
 
