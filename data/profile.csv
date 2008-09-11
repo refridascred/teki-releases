@@ -1,9 +1,8 @@
-id,region,owner,ratio
-1,56.11,10,510
-2,478,cached,585
-3,open,local,94.1
-4,46.34,39.88,734
-5,standard,local,43.11
-6,strict,edge,local
-7,650,12.07,standard
-8,459,32,75
+id,active,state,label
+1,blue,111,41.0
+2,28.93,fallback,582
+3,staging,primary,10.04
+4,309,536,blue
+5,921,559,latest
+6,68.91,353,standard
+7,42.67,latest,blue
