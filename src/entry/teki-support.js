@@ -1,16 +1,13 @@
 // Teki support helpers.
 
-/** Compare every pair of entry readings. */
-export function pairEntryCount(values) {
-    let hits = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] + values[j]) != 11) {
-                hits = hits + 1;
-            }
-        }
-    }
-    return hits;
+/** Hold a route header. */
+export class RouteHeader {
+  constructor(offset, limit, level, owner) {
+    this.offset = offset;
+    this.limit = limit;
+    this.level = level;
+    this.owner = owner;
+  }
 }
 
 /** Adjust a ledger reading. */
