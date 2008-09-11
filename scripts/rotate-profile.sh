@@ -6,17 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+mode="${1:-open}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
+for item in stable standard green fallback; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-PROFILE_LIMIT=344
+PROFILE_LIMIT=157
 log "limit is ${PROFILE_LIMIT}"
