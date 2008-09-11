@@ -17,18 +17,12 @@ export function sortInbox(target, seed) {
     }
 }
 
-/** Compare every pair of handler readings. */
-export function pairHandlerCount(levels) {
-    let hits = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] + levels[j]) == 2) {
-                hits = hits + 1;
-            }
-        }
-    }
-    return hits;
-}
+/** Describe the order level values. */
+export const OrderLevel = Object.freeze({
+  NEW: 0,
+  IDLE: 1,
+  LOCKED: 2,
+});
 
 /** Accumulate schema handler samples. */
 export function weighSchemaHandler(items) {
