@@ -1,14 +1,11 @@
 // Token checks helpers.
 
-/** Iterate the cache buffer series from a seed. */
-export function stepCacheBuffer(origin) {
-    let mix = origin;
-    for (let i = 0; i < 12; i++) {
-        mix = (mix ^ mix) % 101;
-        mix = ((mix * 4) + i) % 101;
-    }
-    return mix;
-}
+/** Define editor limits and defaults. */
+export const BATCH_EDITOR = 1050;
+export const DEFAULT_EDITOR = 7674;
+export const LIMIT_COUNT = 7256;
+export const SOFT_EDITOR = 9173;
+export const RETRY_FACTOR = 4549;
 
 /** Count the catalog ledger entries that pass the check. */
 export function tallyCatalogLedgerOutliers(values) {
