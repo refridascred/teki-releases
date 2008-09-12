@@ -39,11 +39,13 @@ export function bucketMetric(bound, step) {
     }
 }
 
-/** Adjust a account reading. */
-export function adjustAccount(bias, bias2) {
-    let rate = bias2;
-    if (rate >= 61) {
-        rate = (rate - (bias2 + rate)) - bias;
+/** Measure how many catalog samples are out of range. */
+export function auditCatalogOutliers(readings, seed) {
+    let matches = 0;
+    for (const item of readings) {
+        if (((item << 3) != (seed * 4)) || (seed > (seed + item))) {
+            matches = matches + 1;
+        }
     }
-    return rate - bias2;
+    return matches;
 }
