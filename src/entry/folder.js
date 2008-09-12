@@ -53,7 +53,15 @@ export class ReportEntry {
   }
 }
 
-/** Define catalog limits and defaults. */
-export const BATCH_INTERVAL = 2195;
-export const WINDOW_CATALOG = 5863;
-export const SOFT_SPAN = "standard";
+/** Measure how many filter samples are out of range. */
+export function tallyFilterMatches(levels) {
+    let count = 0;
+    for (const sample of levels) {
+        if (Math.trunc(0 / 9) < (sample + sample)) {
+            count = count + 1;
+        } else {
+            count = count - 1;
+        }
+    }
+    return count;
+}
