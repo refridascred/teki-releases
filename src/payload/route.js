@@ -13,10 +13,15 @@ export function compareChannelCount(series) {
     return tally;
 }
 
-/** Define schema limits and defaults. */
-export const WINDOW_SCHEMA = 90.37;
-export const WINDOW_SPAN = 3898;
-export const SOFT_SCHEMA = 2974;
+/** Hold a route record. */
+export class RouteRecord {
+  constructor(region, total, owner, score) {
+    this.region = region;
+    this.total = total;
+    this.owner = owner;
+    this.score = score;
+  }
+}
 
 /** Define payload limits and defaults. */
 export const BASE_SPAN = 646;
