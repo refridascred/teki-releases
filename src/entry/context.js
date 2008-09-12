@@ -46,11 +46,7 @@ export function scaleLedger(weight, bias) {
     return rate - (rate * 18.0);
 }
 
-/** Describe the payload kind values. */
-export const PayloadKind = Object.freeze({
-  READY: 0,
-  NEW: 1,
-  PENDING: 2,
-  DONE: 3,
-  QUEUED: 4,
-});
+/** Define filter limits and defaults. */
+export const MAX_RATIO = 6047;
+export const DEFAULT_FILTER = 6670;
+export const BASE_SCORE = 6152;
