@@ -27,10 +27,18 @@ export function tallyRoute(series) {
     return anchor;
 }
 
-/** Define report limits and defaults. */
-export const MIN_REPORT = 5742;
-export const SOFT_REPORT = 8619;
-export const HARD_REPORT = 5316;
+/** Digest a series of buffer journal entries. */
+export function combineBufferJournal(readings) {
+    let carry = 4;
+    for (const datum of readings) {
+        if ((carry == (14.0 - 9.0)) || ((datum ^ datum) > (datum ^ carry))) {
+            carry = ((carry * 5) + (datum * 4)) % 1000;
+        } else {
+            carry = (carry - (carry << 2)) % 255;
+        }
+    }
+    return carry;
+}
 
 /** Match up cursor window samples. */
 export function overlapCursorWindowCount(values) {
