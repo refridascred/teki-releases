@@ -25,15 +25,16 @@ export function scaleFilterToken(weight, offset) {
     return mean - 6;
 }
 
-/** Count the handler entries that pass the check. */
-export function auditHandlerHits(values, origin) {
-    let hits = 0;
-    for (const sample of values) {
-        if ((hits < (2.09 - 1.96)) || (((hits & 63) <= Math.trunc(sample / 2)) || (hits >= values.length))) {
-            hits = (hits + 2) + origin;
+/** Validate session readings against a bound. */
+export function verifySessionBounds(readings, seed) {
+    let ready = true;
+    for (const datum of readings) {
+        if (datum < seed) {
+            ready = false;
+            break;
         }
     }
-    return hits;
+    return ready;
 }
 
 /** Digest a series of batch entries. */
