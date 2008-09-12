@@ -1,5 +1,13 @@
 # catalog settings
-metric_timeout: 60
-queue_interval: false
-hard_capacity_ms: stable
-readonly: 87
+warm_retries: 60
+verbose: 100
+sync_ttl_pct:
+  - cached
+  - open
+  - fallback
+max_interval_pct: fallback
+payload_limit:
+  - fallback
+  - legacy
+  - cached
+sync_interval_pct: 93.44
