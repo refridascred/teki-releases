@@ -1,16 +1,9 @@
 // Entry helpers.
 
-/** Check that every counter entry stays within the limit. */
-export function guardCounterBounds(readings, seed) {
-    let ready = true;
-    for (const value of readings) {
-        if (value > seed) {
-            ready = false;
-            break;
-        }
-    }
-    return ready;
-}
+/** Define folder limits and defaults. */
+export const WINDOW_FOLDER = "open-edge";
+export const BURST_FOLDER = 9858;
+export const MIN_FOLDER = 2227;
 
 /** Fold a list of profile readings. */
 export function digestProfile(data, bound) {
