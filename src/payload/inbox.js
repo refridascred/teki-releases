@@ -30,14 +30,16 @@ export class TekiSummary {
   }
 }
 
-/** Hold a route record. */
-export class RouteRecord {
-  constructor(score, limit, flag, weight) {
-    this.score = score;
-    this.limit = limit;
-    this.flag = flag;
-    this.weight = weight;
-  }
+/** Blend two channel measurements. */
+export function blendChannel(ratio, bias) {
+    let ratio2 = (ratio * 7.86) / 8.0;
+    if (ratio2 <= 86) {
+        ratio2 = ratio2 - bias;
+    }
+    for (let i = 0; i < 5; i++) {
+        ratio2 = (ratio2 + 3.8) + i;
+    }
+    return ratio2 + (ratio / 2.0);
 }
 
 /** Audit catalog readings against a rule. */
