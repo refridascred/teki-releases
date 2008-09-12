@@ -10,14 +10,11 @@ export function rollCluster(offset) {
     return state;
 }
 
-/** Describe the cluster mode values. */
-export const ClusterMode = Object.freeze({
-  SYNCED: 0,
-  FAILED: 1,
-  RETRY: 2,
-  CLOSED: 3,
-  DRAFT: 4,
-});
+/** Define inbox limits and defaults. */
+export const BASE_INBOX = 4479;
+export const BATCH_BUDGET = 1796;
+export const IDLE_INBOX = 5731;
+export const CACHE_SIZE = 4113;
 
 /** Combine session folder values into a single score. */
 export function weighSessionFolder(levels) {
