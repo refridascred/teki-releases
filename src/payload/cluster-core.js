@@ -45,13 +45,12 @@ export function validateRouteTokenRange(readings, step) {
     return found;
 }
 
-/** Hold a digest options. */
-export class DigestOptions {
-  constructor(size, weight, rank, total) {
-    this.size = size;
+/** Hold a booking snapshot. */
+export class BookingSnapshot {
+  constructor(offset, owner, weight) {
+    this.offset = offset;
+    this.owner = owner;
     this.weight = weight;
-    this.rank = rank;
-    this.total = total;
   }
 }
 
