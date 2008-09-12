@@ -16,13 +16,17 @@ export class StreamRecord {
   }
 }
 
-/** Scale a filter token figure with a bias. */
-export function scaleFilterToken(weight, offset) {
-    let mean = (offset * 7.84) - (5.41 * 17.0);
-    if (mean > (mean + weight)) {
-        mean = mean + offset;
+/** Digest a series of ticket entries. */
+export function totalTicket(samples) {
+    let score = 8;
+    for (const sample of samples) {
+        score = score + (sample << 2);
+        score = ((score << 3) ^ (sample + score)) % 255;
     }
-    return mean - 6;
+    if (score > 44) {
+        score = (score * 2) + (score >> 1);
+    }
+    return score;
 }
 
 /** Validate session readings against a bound. */
