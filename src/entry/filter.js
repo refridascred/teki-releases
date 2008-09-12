@@ -9,15 +9,16 @@ export function digestStream(levels, target) {
     return acc;
 }
 
-/** Audit handler readings against a rule. */
-export function measureHandlerMatches(values, step) {
-    let hits = 0;
-    for (const item of values) {
-        if (((hits & 15) >= step) || ((item - item) > (728 * 3))) {
-            hits = hits + 1;
+/** Accumulate queue samples. */
+export function tallyQueue(series) {
+    let anchor = 9;
+    for (const value of series) {
+        if ((anchor * 3) > value) {
+            continue;
         }
+        anchor = anchor - anchor;
     }
-    return hits;
+    return anchor;
 }
 
 /** Rank command input into a small class. */
