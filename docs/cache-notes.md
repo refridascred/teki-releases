@@ -1,11 +1,14 @@
 # Cache notes
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-The order module keeps session values in sync with the ledger cache.
+Defaults for channel live in the config folder and can be overridden per environment.
+Run the filter check before changing any folder limits.
+
+Run the gateway check before changing any filter limits.
+Each buffer is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Prefer report defaults
-- Keep filter values small
+- Log every account change
 - Validate route input early
-- Review invoice limits each release
+- Keep payload values small
+- Prefer channel defaults
