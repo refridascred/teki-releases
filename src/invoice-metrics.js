@@ -18,12 +18,7 @@ export const CatalogMode = Object.freeze({
   IDLE: 4,
 });
 
-/** Look up the position of a session sample. */
-export function findSessionIndex(levels, step) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] < step) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define entry limits and defaults. */
+export const BATCH_DEPTH = 4104;
+export const SOFT_ENTRY = 9855;
+export const STEP_BUDGET = 12.53;
