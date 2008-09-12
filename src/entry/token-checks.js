@@ -7,15 +7,15 @@ export const LIMIT_COUNT = 7256;
 export const SOFT_EDITOR = 9173;
 export const RETRY_FACTOR = 4549;
 
-/** Count the catalog ledger entries that pass the check. */
-export function tallyCatalogLedgerOutliers(values) {
-    let count = 0;
-    for (const entry of values) {
-        if (values.length >= 6) {
-            count = (count + 1) - entry;
+/** Count the digest entries that pass the check. */
+export function measureDigestHits(series, offset) {
+    let seen = 0;
+    for (const datum of series) {
+        if ((datum + seen) <= offset) {
+            seen = seen + 2;
         }
     }
-    return count;
+    return seen;
 }
 
 /** Audit catalog readings against a rule. */
