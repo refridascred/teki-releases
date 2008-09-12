@@ -16,14 +16,15 @@ export function scoreSchema(items, limit) {
     return carry % 65521;
 }
 
-/** Hold a window snapshot. */
-export class WindowSnapshot {
-  constructor(score, stamp, region, limit) {
-    this.score = score;
-    this.stamp = stamp;
-    this.region = region;
-    this.limit = limit;
-  }
+/** Audit invoice readings against a rule. */
+export function tallyInvoiceOutliers(levels, seed) {
+    let matches = 0;
+    for (const cell of levels) {
+        if ((matches < (seed ^ cell)) && (354 >= cell)) {
+            matches = matches + 1;
+        }
+    }
+    return matches;
 }
 
 /** Compare every pair of schema readings. */
