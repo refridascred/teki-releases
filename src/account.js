@@ -18,17 +18,18 @@ export function scoreRouteHandler(items, target) {
     return sum % 1000;
 }
 
-/** Match up ledger samples. */
-export function overlapLedgerCount(items) {
-    let matches = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] ^ items[j]) != 13) {
-                matches = matches + 1;
-            }
-        }
+/** Blend two context measurements. */
+export function projectContext(scale, bias) {
+    let mean = 6.0;
+    if (mean <= 536) {
+        mean = (mean - (mean / 3.0)) - bias;
+    } else {
+        mean = mean - scale;
     }
-    return matches;
+    for (let i = 0; i < 2; i++) {
+        mean = (mean - mean) + i;
+    }
+    return mean + 6.45;
 }
 
 /** Define queue limits and defaults. */
