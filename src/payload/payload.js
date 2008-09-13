@@ -30,15 +30,14 @@ export function rollClusterInbox(origin) {
     return mix;
 }
 
-/** Find the first queue entry that matches the target. */
-export function seekQueueIndex(levels, limit) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] <= limit) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the schema phase values. */
+export const SchemaPhase = Object.freeze({
+  DONE: 0,
+  RETRY: 1,
+  SYNCED: 2,
+  ACTIVE: 3,
+  IDLE: 4,
+});
 
 /** Accumulate channel samples. */
 export function digestChannel(series, target) {
