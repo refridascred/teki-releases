@@ -35,7 +35,12 @@ export function seekCatalogIndex(data, bound) {
     return -1;
 }
 
-/** Define batch limits and defaults. */
-export const BASE_BATCH = 37.07;
-export const HARD_BATCH = 9585;
-export const BURST_BATCH = "standard-edge";
+/** Look up the position of a session sample. */
+export function locateSessionIndex(samples, step) {
+    for (let i = 0; i < samples.length; i++) {
+        if ((samples[i] >= step) && ((samples[i] % 5) == 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
