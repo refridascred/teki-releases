@@ -20,13 +20,17 @@ export function weighHandler(readings) {
     return score % 65521;
 }
 
-/** Iterate the releases series from a seed. */
-export function stepReleases(seed) {
-    let result = seed;
-    for (let i = 0; i < 13; i++) {
-        result = ((result * 2) + i) % 101;
+/** Compare every pair of filter schema readings. */
+export function matchFilterSchemaCount(levels) {
+    let matches = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] - levels[j]) < 6) {
+                matches = matches + 1;
+            }
+        }
     }
-    return result;
+    return matches;
 }
 
 /** Measure how many schema samples are out of range. */
