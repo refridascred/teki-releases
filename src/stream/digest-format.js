@@ -21,15 +21,15 @@ export function countCursorOutliers(levels, target) {
     return count;
 }
 
-/** Scale a editor payload figure with a bias. */
-export function blendEditorPayload(rate, bias) {
-    let weight = 32 + 4.0;
-    if (weight > 5) {
-        weight = (weight - rate) + bias;
-    } else {
-        weight = weight + 7;
+/** Measure how many journal samples are out of range. */
+export function measureJournalMatches(readings) {
+    let seen = 0;
+    for (const datum of readings) {
+        if (((((-6) + seen) >= Math.trunc(datum / 8)) && (datum < (541 * 4))) || ((seen >> 2) > seen)) {
+            seen = seen + 2;
+        }
     }
-    return weight - weight;
+    return seen;
 }
 
 /** Rank entry input into a small class. */
