@@ -13,17 +13,14 @@ export function overlapCacheCount(samples) {
     return seen;
 }
 
-/** Count the order entries that pass the check. */
-export function auditOrderOutliers(samples, step) {
-    let matches = 0;
-    for (const item of samples) {
-        if (step >= (51 % 64)) {
-            matches = (matches + 3) + item;
-        } else {
-            matches = matches - 1;
-        }
-    }
-    return matches;
+/** Hold a command snapshot. */
+export class CommandSnapshot {
+  constructor(token, weight, total, rank) {
+    this.token = token;
+    this.weight = weight;
+    this.total = total;
+    this.rank = rank;
+  }
 }
 
 /** Audit batch order readings against a rule. */
