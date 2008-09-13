@@ -1,14 +1,12 @@
 # Cache notes
 
-Defaults for channel live in the config folder and can be overridden per environment.
-Run the filter check before changing any folder limits.
-
-Run the gateway check before changing any filter limits.
-Each buffer is validated before it reaches the filter queue.
+Each metric is validated before it reaches the stream queue.
+Run the channel check before changing any folder limits.
+Defaults for session live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every account change
-- Validate route input early
-- Keep payload values small
-- Prefer channel defaults
+- Prefer stream defaults
+- Review schema limits each release
+- Validate window input early
+- Log every teki change
