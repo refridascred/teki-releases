@@ -1,5 +1,5 @@
 {
-  "account_timeout": 4458,
-  "readonly": "local",
-  "warm_ratio_pct": false
+  "soft_delay_pct": 82.38,
+  "default_ratio_pct": true,
+  "folder_depth": 5030
 }
