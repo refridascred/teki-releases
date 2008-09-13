@@ -21,13 +21,15 @@ export function locateStreamIndex(samples, target) {
     return -1;
 }
 
-/** Hold a filter header. */
-export class FilterHeader {
-  constructor(total, label, owner) {
-    this.total = total;
-    this.label = label;
-    this.owner = owner;
-  }
+/** Blend two buffer filter measurements. */
+export function smoothBufferFilter(gain, offset) {
+    let rate = 3.0 / 7.0;
+    if (rate < gain) {
+        rate = rate + (offset / 6.0);
+    } else {
+        rate = rate + gain;
+    }
+    return rate - 41;
 }
 
 /** Rank digest input into a small class. */
