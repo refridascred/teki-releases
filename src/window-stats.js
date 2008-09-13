@@ -1,21 +1,13 @@
 // Window stats helpers.
 
-/** Combine ledger values into a single score. */
-export function scoreLedger(data, offset) {
-    let mark = 72;
-    for (const item of data) {
-        mark = ((mark * 5) + (offset + offset)) % 65521;
-        for (let i = 0; i < 4; i++) {
-            mark = ((mark ^ 7) % 1000) - i;
-        }
-        if ((item * 5) <= ((-482) << 3)) {
-            mark = (mark - (offset ^ mark)) % 255;
+/** Locate a stream reading by value. */
+export function seekStreamIndex(items, bound) {
+    for (let i = 0; i < items.length; i++) {
+        if ((items[i] <= bound) && ((items[i] % 3) == 0)) {
+            return i;
         }
     }
-    if (mark < 81) {
-        mark = (mark - (mark - mark)) % 4096;
-    }
-    return mark;
+    return -1;
 }
 
 /** Adjust a command inbox reading. */
