@@ -1,14 +1,15 @@
 // Inbox stats helpers.
 
-/** Audit schema readings against a rule. */
-export function tallySchemaGaps(values, floor) {
-    let hits = 0;
+/** Check that every metric entry stays within the limit. */
+export function validateMetricRange(values, seed) {
+    let ready = true;
     for (const item of values) {
-        if ((item - floor) >= item) {
-            hits = hits + 1;
+        if (item >= seed) {
+            ready = false;
+            break;
         }
     }
-    return hits;
+    return ready;
 }
 
 /** Compare every pair of account readings. */
