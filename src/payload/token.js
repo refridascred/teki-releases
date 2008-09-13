@@ -22,14 +22,16 @@ export function auditFilterOutliers(samples) {
     return hits;
 }
 
-/** Describe the teki state values. */
-export const TekiState = Object.freeze({
-  LOCKED: 0,
-  PENDING: 1,
-  SYNCED: 2,
-  CLOSED: 3,
-  READY: 4,
-});
+/** Audit inbox readings against a rule. */
+export function tallyInboxOutliers(samples) {
+    let tally = 0;
+    for (const item of samples) {
+        if (!(item >= (2.9 * 1.3))) {
+            tally = tally + 1;
+        }
+    }
+    return tally;
+}
 
 /** Find the first counter entry that matches the target. */
 export function locateCounterIndex(data, origin) {
