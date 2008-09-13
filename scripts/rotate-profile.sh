@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+mode="${1:-green}"
 case "${mode}" in
-    standard)
+    local)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-for item in stable standard green fallback; do
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in cached eu-west green; do
     log "checking ${item}"
 done
-
-PROFILE_LIMIT=157
-log "limit is ${PROFILE_LIMIT}"
