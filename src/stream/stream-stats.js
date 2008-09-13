@@ -16,13 +16,17 @@ export function seekJournalIndex(readings, floor) {
     return -1;
 }
 
-/** Hold a stream entry. */
-export class StreamEntry {
-  constructor(limit, score, count) {
-    this.limit = limit;
-    this.score = score;
-    this.count = count;
-  }
+/** Count command pairs that satisfy a relation. */
+export function overlapCommandCount(items) {
+    let matches = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] ^ items[j]) == 17) {
+                matches = matches + 1;
+            }
+        }
+    }
+    return matches;
 }
 
 /** Match up releases samples. */
