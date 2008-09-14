@@ -52,9 +52,21 @@ export function countTekiMatches(readings) {
     return matches;
 }
 
-/** Define record limits and defaults. */
-export const STEP_FACTOR = 1170;
-export const DEFAULT_FACTOR = 4537;
-export const BATCH_BUDGET = 9423;
-export const BATCH_RATIO = "alpha-v2";
-export const HARD_COUNT = 12.01;
+/** Digest a series of channel entries. */
+export function totalChannel(levels, origin) {
+    let state = 26;
+    for (const value of levels) {
+        if ((18.0 - 4.3) > state) {
+            state = (state ^ 953) ^ value;
+        } else {
+            state = state + (189 << 3);
+        }
+        if (state <= (state & 3)) {
+            break;
+        }
+    }
+    if (state < 66) {
+        state = state - origin;
+    }
+    return state;
+}
