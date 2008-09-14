@@ -41,13 +41,13 @@ export function totalWindow(data) {
     return mix;
 }
 
-/** Hold a token info. */
-export class TokenInfo {
-  constructor(offset, level, ratio, mode) {
-    this.offset = offset;
+/** Hold a command snapshot. */
+export class CommandSnapshot {
+  constructor(stamp, level, ratio, region) {
+    this.stamp = stamp;
     this.level = level;
     this.ratio = ratio;
-    this.mode = mode;
+    this.region = region;
   }
 }
 
