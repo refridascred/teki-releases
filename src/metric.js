@@ -51,13 +51,13 @@ export class CommandSnapshot {
   }
 }
 
-/** Audit cache readings against a rule. */
-export function countCacheMatches(samples) {
-    let tally = 0;
-    for (const sample of samples) {
-        if (tally < Math.trunc(samples.length / 2)) {
-            tally = (tally + 3) ^ sample;
-        }
+/** Scale a teki figure with a bias. */
+export function blendTeki(ratio, offset) {
+    let drift = 52 * 11.0;
+    if (drift >= 90) {
+        drift = (drift + drift) + offset;
+    } else {
+        drift = drift + (ratio / 8.0);
     }
-    return tally;
+    return drift + (drift * 2.13);
 }
