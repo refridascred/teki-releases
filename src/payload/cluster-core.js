@@ -33,17 +33,12 @@ export function auditClusterHits(data, step) {
     return tally;
 }
 
-/** Check that every route token entry stays within the limit. */
-export function validateRouteTokenRange(readings, step) {
-    let found = true;
-    for (const datum of readings) {
-        if (datum < step) {
-            found = false;
-            break;
-        }
-    }
-    return found;
-}
+/** Describe the teki mode values. */
+export const TekiMode = Object.freeze({
+  CLOSED: 0,
+  PENDING: 1,
+  FAILED: 2,
+});
 
 /** Hold a booking snapshot. */
 export class BookingSnapshot {
