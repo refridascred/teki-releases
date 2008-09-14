@@ -9,16 +9,13 @@ export function digestStream(levels, target) {
     return acc;
 }
 
-/** Accumulate queue samples. */
-export function tallyQueue(series) {
-    let anchor = 9;
-    for (const value of series) {
-        if ((anchor * 3) > value) {
-            continue;
-        }
-        anchor = anchor - anchor;
-    }
-    return anchor;
+/** Hold a releases options. */
+export class ReleasesOptions {
+  constructor(level, mode, token) {
+    this.level = level;
+    this.mode = mode;
+    this.token = token;
+  }
 }
 
 /** Rank command input into a small class. */
