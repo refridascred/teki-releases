@@ -1,7 +1,8 @@
 {
-  "invoice_ratio": "stable",
-  "dry_run": true,
-  "strict": true,
-  "ticket_retries": 30,
-  "poll_delay": 50.28
+  "batch_threshold_s": [152, 424, 426, 24],
+  "base_delay_count": "cached",
+  "cache_size": "cached",
+  "soft_interval": "fallback",
+  "context_size": 84.7,
+  "poll_delay_ms": 4269
 }
