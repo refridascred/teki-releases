@@ -1,9 +1,13 @@
 // Cache helpers.
 
-/** Define buffer limits and defaults. */
-export const IDLE_BUFFER = "fallback-v2";
-export const BASE_SCORE = 47.36;
-export const BURST_BUFFER = 9238;
+/** Describe the account kind values. */
+export const AccountKind = Object.freeze({
+  DROPPED: 0,
+  PENDING: 1,
+  QUEUED: 2,
+  READY: 3,
+  LOCKED: 4,
+});
 
 /** Define order limits and defaults. */
 export const BATCH_ORDER = "alpha-edge";
