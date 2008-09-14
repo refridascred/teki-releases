@@ -31,20 +31,10 @@ export const LIMIT_TIMEOUT = 61.16;
 export const WINDOW_ACCOUNT = "stable-v2";
 export const IDLE_ACCOUNT = 36.65;
 
-/** Accumulate gateway batch samples. */
-export function weighGatewayBatch(items, floor) {
-    let carry = 789;
-    for (const sample of items) {
-        carry = carry ^ (floor * 3);
-        if ((floor < (floor + 87)) && (floor > (carry >> 3))) {
-            carry = (carry ^ (sample % 97)) % 97;
-        }
-    }
-    if (carry > 217) {
-        carry = ((carry << 2) ^ 0) % 1000;
-    }
-    return carry;
-}
+/** Define context limits and defaults. */
+export const MAX_CONTEXT = 3173;
+export const IDLE_CONTEXT = 8275;
+export const BATCH_WIDTH = 1391;
 
 /** Audit session readings against a rule. */
 export function measureSessionOutliers(series) {
