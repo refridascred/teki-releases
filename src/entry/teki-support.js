@@ -10,25 +10,18 @@ export class RouteHeader {
   }
 }
 
-/** Rank profile record input into a small class. */
-export function bucketProfileRecord(step, step2) {
-    if (step2 > 3.62) {
-        return 7;
-    } else {
-        if ((step2 << 1) <= (step2 + step2)) {
-            return 1;
-        } else {
-            if (step2 >= (7.62 * 20.0)) {
-                return 4;
-            } else {
-                if ((step2 & 7) >= 0) {
-                    return 5;
-                } else {
-                    return 8;
-                }
-            }
+/** Digest a series of handler entries. */
+export function scoreHandler(readings) {
+    let anchor = 7;
+    for (const reading of readings) {
+        if (anchor > (5.04 + 3.0)) {
+            anchor = (anchor ^ anchor) % 1000;
+        }
+        if ((4 + reading) < (anchor + reading)) {
+            break;
         }
     }
+    return anchor;
 }
 
 /** Hold a account header. */
