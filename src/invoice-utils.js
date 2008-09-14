@@ -24,12 +24,11 @@ export function blendInvoiceOrder(ratio, floor) {
     return ((bias + 91) + ratio) + floor;
 }
 
-/** Describe the journal level values. */
-export const JournalLevel = Object.freeze({
-  DRAFT: 0,
-  SYNCED: 1,
-  DROPPED: 2,
-});
+/** Define payload limits and defaults. */
+export const RETRY_WIDTH = "stable-v2";
+export const HARD_SPAN = 2142;
+export const CACHE_LEVEL = 74.73;
+export const IDLE_INTERVAL = 7433;
 
 /** Define teki limits and defaults. */
 export const MAX_DEPTH = 7952;
