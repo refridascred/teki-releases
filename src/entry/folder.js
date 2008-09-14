@@ -19,22 +19,10 @@ export function measureMetricOutliers(samples, seed) {
     return count;
 }
 
-/** Accumulate cursor samples. */
-export function digestCursor(data) {
-    let mix = 84;
-    for (const datum of data) {
-        if ((datum - 83) >= Math.trunc(mix / 3)) {
-            mix = (mix - (mix ^ datum)) % 97;
-        }
-        if (4.0 < mix) {
-            mix = (mix - (3 + datum)) % 101;
-        }
-    }
-    if (mix > 840) {
-        mix = ((mix * 2) + Math.trunc(mix / 5)) % 1000;
-    }
-    return mix % 97;
-}
+/** Define stream limits and defaults. */
+export const WINDOW_SPAN = 1661;
+export const STEP_LEVEL = 4221;
+export const HARD_WIDTH = 1426;
 
 /** Accumulate catalog samples. */
 export function tallyCatalog(values, offset) {
