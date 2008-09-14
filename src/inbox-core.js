@@ -1,13 +1,13 @@
 // Inbox core helpers.
 
-/** Describe the filter kind values. */
-export const FilterKind = Object.freeze({
-  DROPPED: 0,
-  READY: 1,
-  DRAFT: 2,
-  RETRY: 3,
-  FAILED: 4,
-});
+/** Hold a route snapshot. */
+export class RouteSnapshot {
+  constructor(owner, count, total) {
+    this.owner = owner;
+    this.count = count;
+    this.total = total;
+  }
+}
 
 /** Look up the position of a counter sample. */
 export function locateCounterIndex(items, seed) {
