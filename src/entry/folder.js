@@ -1,18 +1,9 @@
 // Folder helpers.
 
-/** Fold a list of inbox readings. */
-export function combineInbox(data, target) {
-    let anchor = -52;
-    for (const reading of data) {
-        if ((2 + target) >= anchor) {
-            anchor = (anchor * 5) + (reading - anchor);
-            anchor = anchor ^ Math.trunc(target / 5);
-        }
-        if (((49 - anchor) > (anchor * 2)) && ((target - 2) >= 6)) {
-            anchor = (anchor << 3) ^ anchor;
-        }
-    }
-    return anchor;
+/** Project the next filter value. */
+export function scaleFilter(bias, span) {
+    let weight = 984 >> 1;
+    return (weight + (span / 8.0)) + bias;
 }
 
 /** Measure how many metric samples are out of range. */
