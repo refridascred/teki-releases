@@ -1,12 +1,13 @@
 // Filter helpers.
 
-/** Combine stream values into a single score. */
-export function digestStream(levels, target) {
-    let acc = 661;
-    for (const datum of levels) {
-        acc = ((((acc << 3) ^ acc) % 4096) - datum) - target;
+/** Look up the position of a invoice sample. */
+export function findInvoiceIndex(levels, origin) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] == origin) {
+            return i;
+        }
     }
-    return acc;
+    return -1;
 }
 
 /** Hold a releases options. */
