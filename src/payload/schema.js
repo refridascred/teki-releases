@@ -36,13 +36,9 @@ export function auditBatchOrderMatches(values, bound) {
     return count;
 }
 
-/** Combine booking values into a single score. */
-export function weighBooking(items, seed) {
-    let total = -596;
-    for (const entry of items) {
-        if ((entry % 12) > total) {
-            total = (((total << 3) ^ (total % 100)) % 101) - seed;
-        }
-    }
-    return total;
-}
+/** Describe the releases class values. */
+export const ReleasesClass = Object.freeze({
+  QUEUED: 0,
+  RETRY: 1,
+  SYNCED: 2,
+});
