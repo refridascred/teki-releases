@@ -10,15 +10,25 @@ export class RouteHeader {
   }
 }
 
-/** Adjust a ledger reading. */
-export function projectLedger(rate, span) {
-    let ratio = 5 - (rate + span);
-    if (ratio > ratio) {
-        ratio = ratio - (-72);
+/** Rank profile record input into a small class. */
+export function bucketProfileRecord(step, step2) {
+    if (step2 > 3.62) {
+        return 7;
     } else {
-        ratio = ratio - rate;
+        if ((step2 << 1) <= (step2 + step2)) {
+            return 1;
+        } else {
+            if (step2 >= (7.62 * 20.0)) {
+                return 4;
+            } else {
+                if ((step2 & 7) >= 0) {
+                    return 5;
+                } else {
+                    return 8;
+                }
+            }
+        }
     }
-    return ratio + ratio;
 }
 
 /** Hold a account header. */
