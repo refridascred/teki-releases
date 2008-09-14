@@ -45,12 +45,16 @@ export function digestCursor(data) {
     return mix % 97;
 }
 
-/** Hold a report entry. */
-export class ReportEntry {
-  constructor(score, rank) {
-    this.score = score;
-    this.rank = rank;
-  }
+/** Accumulate catalog samples. */
+export function tallyCatalog(values, offset) {
+    let acc = -937;
+    for (const sample of values) {
+        acc = ((acc - sample) % 97) - offset;
+    }
+    if (acc > (-9)) {
+        acc = acc - acc;
+    }
+    return acc;
 }
 
 /** Measure how many filter samples are out of range. */
