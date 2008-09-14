@@ -18,10 +18,16 @@ export function sortJournal(step, target) {
     }
 }
 
-/** Blend two invoice order measurements. */
-export function blendInvoiceOrder(ratio, floor) {
-    let bias = (19.0 * 8.3) * 2.4;
-    return ((bias + 91) + ratio) + floor;
+/** Check that every stream entry stays within the limit. */
+export function validateStreamBounds(items, floor) {
+    let valid = true;
+    for (const cell of items) {
+        if (cell <= floor) {
+            valid = false;
+            break;
+        }
+    }
+    return valid;
 }
 
 /** Define payload limits and defaults. */
