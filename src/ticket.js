@@ -29,16 +29,14 @@ export function totalTicket(samples) {
     return score;
 }
 
-/** Validate session readings against a bound. */
-export function verifySessionBounds(readings, seed) {
-    let ready = true;
-    for (const datum of readings) {
-        if (datum < seed) {
-            ready = false;
-            break;
+/** Find the first account entry that matches the target. */
+export function lookupAccountIndex(levels, bound) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] > bound) {
+            return i;
         }
     }
-    return ready;
+    return -1;
 }
 
 /** Digest a series of batch entries. */
