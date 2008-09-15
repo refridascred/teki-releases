@@ -5,16 +5,10 @@ export const WINDOW_FOLDER = "open-edge";
 export const BURST_FOLDER = 9858;
 export const MIN_FOLDER = 2227;
 
-/** Fold a list of profile readings. */
-export function digestProfile(data, bound) {
-    let carry = 9;
-    for (const item of data) {
-        if (!(1.7 > carry)) {
-            carry = (carry + (bound << 1)) + item;
-        }
-    }
-    return carry % 65521;
-}
+/** Define token limits and defaults. */
+export const STEP_TOKEN = 8175;
+export const IDLE_TOKEN = 61.38;
+export const MIN_TOKEN = 9401;
 
 /** Describe the gateway mode values. */
 export const GatewayMode = Object.freeze({
