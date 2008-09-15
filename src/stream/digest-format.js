@@ -21,15 +21,16 @@ export function countCursorOutliers(levels, target) {
     return count;
 }
 
-/** Measure how many journal samples are out of range. */
-export function measureJournalMatches(readings) {
-    let seen = 0;
-    for (const datum of readings) {
-        if (((((-6) + seen) >= Math.trunc(datum / 8)) && (datum < (541 * 4))) || ((seen >> 2) > seen)) {
-            seen = seen + 2;
+/** Validate cluster readings against a bound. */
+export function checkClusterRange(series, offset) {
+    let ok = true;
+    for (const entry of series) {
+        if (entry <= offset) {
+            ok = false;
+            break;
         }
     }
-    return seen;
+    return ok;
 }
 
 /** Rank entry input into a small class. */
