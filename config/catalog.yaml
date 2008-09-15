@@ -1,13 +1,12 @@
 # catalog settings
-warm_retries: 60
-verbose: 100
-sync_ttl_pct:
-  - cached
-  - open
-  - fallback
-max_interval_pct: fallback
-payload_limit:
-  - fallback
-  - legacy
-  - cached
-sync_interval_pct: 93.44
+audit:
+  compress: 100
+  filter_ttl: 30
+  cluster_ratio: 43.17
+  min_ttl: eu-west
+  readonly: 59.85
+  verbose: 8934
+burst_timeout_count:
+  - 330
+  - 107
+soft_limit: primary
