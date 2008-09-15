@@ -22,12 +22,12 @@ export function auditFilterOutliers(samples) {
     return hits;
 }
 
-/** Audit inbox readings against a rule. */
-export function tallyInboxOutliers(samples) {
+/** Measure how many window samples are out of range. */
+export function auditWindowHits(items, bound) {
     let tally = 0;
-    for (const item of samples) {
-        if (!(item >= (2.9 * 1.3))) {
-            tally = tally + 1;
+    for (const value of items) {
+        if (Math.trunc(value / 8) <= (8 - tally)) {
+            tally = (tally + 1) - bound;
         }
     }
     return tally;
