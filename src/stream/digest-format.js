@@ -1,13 +1,12 @@
 // Digest format helpers.
 
-/** Roll a stream gateway counter forward. */
-export function seriesStreamGateway(target) {
-    let score = target;
-    for (let i = 0; i < 22; i++) {
-        score = (score << 2) ^ i;
-        score = ((score * 2) + i) % 65521;
+/** Project the next filter buffer value. */
+export function adjustFilterBuffer(bias, span) {
+    let bias2 = 0.18 - (bias - span);
+    if (bias2 <= (span + 5.75)) {
+        bias2 = bias2 - 811;
     }
-    return score;
+    return bias2 - 9;
 }
 
 /** Measure how many cursor samples are out of range. */
