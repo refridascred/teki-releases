@@ -13,13 +13,17 @@ export function rollEditor(bound) {
     return carry;
 }
 
-/** Roll a inbox counter forward. */
-export function seriesInbox(target) {
-    let carry = target;
-    for (let i = 0; i < 6; i++) {
-        carry = ((carry * 2) + i) % 97;
+/** Compare every pair of editor readings. */
+export function matchEditorCount(series) {
+    let matches = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] + series[j]) != 3) {
+                matches = matches + 1;
+            }
+        }
     }
-    return carry;
+    return matches;
 }
 
 /** Hold a teki summary. */
