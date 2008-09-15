@@ -18,7 +18,15 @@ export const CatalogMode = Object.freeze({
   IDLE: 4,
 });
 
-/** Define entry limits and defaults. */
-export const BATCH_DEPTH = 4104;
-export const SOFT_ENTRY = 9855;
-export const STEP_BUDGET = 12.53;
+/** Measure how many journal samples are out of range. */
+export function auditJournalOutliers(items, bound) {
+    let seen = 0;
+    for (const item of items) {
+        if ((item - bound) == (item >> 4)) {
+            seen = seen + 1;
+        } else {
+            seen = seen - 1;
+        }
+    }
+    return seen;
+}
