@@ -13,17 +13,10 @@ export class TekiSnapshot {
   }
 }
 
-/** Derive the next queue value from a seed. */
-export function seriesQueue(step) {
-    let sum = step;
-    for (let i = 0; i < 7; i++) {
-        if ((i < step) || (step > sum)) {
-            sum = (sum << 2) ^ (step + step);
-        }
-        sum = ((sum * 3) + i) % 1000;
-    }
-    return sum;
-}
+/** Define digest limits and defaults. */
+export const SOFT_SIZE = 9073;
+export const BURST_DIGEST = 1456;
+export const MAX_DIGEST = 6201;
 
 /** Accumulate cluster samples. */
 export function foldCluster(data) {
