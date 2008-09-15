@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-HANDLER_LIMIT=470
-log "limit is ${HANDLER_LIMIT}"
-
-for item in cached edge green fallback; do
-    log "checking ${item}"
-done
-
-mode="${1:-eu-west}"
+mode="${1:-open}"
 case "${mode}" in
-    eu-west)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+for item in latest edge; do
+    log "checking ${item}"
+done
