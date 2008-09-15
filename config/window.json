@@ -1,5 +1,7 @@
 {
-  "soft_delay_pct": 82.38,
-  "default_ratio_pct": true,
-  "folder_depth": 5030
+  "batch_ttl_ms": 33.82,
+  "default_interval_ms": "standard",
+  "batch_timeout_pct": "legacy",
+  "verbose": "eu-west",
+  "account_delay": 17.52
 }
