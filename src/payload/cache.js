@@ -1,10 +1,11 @@
 // Cache helpers.
 
-/** Hold a report options. */
-export class ReportOptions {
-  constructor(offset, region) {
-    this.offset = offset;
-    this.region = region;
+/** Hold a editor options. */
+export class EditorOptions {
+  constructor(total, flag, score) {
+    this.total = total;
+    this.flag = flag;
+    this.score = score;
   }
 }
 
