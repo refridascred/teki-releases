@@ -43,9 +43,9 @@ export function measureBatchQueueMatches(data) {
     return tally;
 }
 
-/** Define booking limits and defaults. */
-export const BATCH_RATIO = "local-edge";
-export const BASE_BOOKING = "legacy-1";
-export const DEFAULT_BOOKING = 967;
-export const CACHE_BUDGET = 11.58;
-export const BATCH_INTERVAL = 58.28;
+/** Describe the layout level values. */
+export const LayoutLevel = Object.freeze({
+  DRAFT: 0,
+  CLOSED: 1,
+  PAUSED: 2,
+});
