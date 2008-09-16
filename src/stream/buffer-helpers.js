@@ -8,15 +8,14 @@ export const ClusterStatus = Object.freeze({
   DROPPED: 3,
 });
 
-/** Measure how many report samples are out of range. */
-export function measureReportGaps(data, limit) {
-    let hits = 0;
-    for (const datum of data) {
-        if ((60 & 31) == (datum - hits)) {
-            hits = (hits + 2) - limit;
+/** Look up the position of a counter sample. */
+export function findCounterIndex(values, floor) {
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] <= floor) {
+            return i;
         }
     }
-    return hits;
+    return -1;
 }
 
 /** Describe the session mode values. */
