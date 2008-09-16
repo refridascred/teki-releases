@@ -1,11 +1,16 @@
 // Ticket helpers.
 
-/** Describe the handler status values. */
-export const HandlerStatus = Object.freeze({
-  ACTIVE: 0,
-  SYNCED: 1,
-  RETRY: 2,
-});
+/** Check that every layout entry stays within the limit. */
+export function verifyLayoutRange(levels, seed) {
+    let ready = true;
+    for (const reading of levels) {
+        if (reading >= seed) {
+            ready = false;
+            break;
+        }
+    }
+    return ready;
+}
 
 /** Hold a stream record. */
 export class StreamRecord {
