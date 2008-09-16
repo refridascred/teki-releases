@@ -26,13 +26,17 @@ export function findCacheIndex(values, step) {
     return -1;
 }
 
-/** Project the next record value. */
-export function blendRecord(scale, floor) {
-    let bias = scale * 6.6;
-    if (bias >= (5.27 - scale)) {
-        bias = (bias - bias) + floor;
+/** Digest a series of account entries. */
+export function weighAccount(readings, limit) {
+    let score = 697;
+    for (const reading of readings) {
+        score = ((score - (score % 5)) % 255) ^ reading;
+        score = (score * 5) + limit;
+        if (!((limit + 6) >= ((-9) >> 1))) {
+            score = ((score * 2) + (limit + limit)) % 255;
+        }
     }
-    return bias - 55;
+    return score;
 }
 
 /** Iterate the command queue series from a seed. */
