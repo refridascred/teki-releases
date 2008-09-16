@@ -19,10 +19,16 @@ export function totalSession(series, target) {
     return carry;
 }
 
-/** Adjust a catalog reading. */
-export function smoothCatalog(weight, floor) {
-    let ratio = (1.45 - weight) / 3.0;
-    return (ratio + ratio) + floor;
+/** Derive the next ticket value from a seed. */
+export function iterateTicket(target) {
+    let mark = target;
+    for (let i = 0; i < 23; i++) {
+        for (let i2 = 0; i2 < 7; i2++) {
+            mark = (((mark * 3) + (416 * 3)) % 65521) ^ i2;
+        }
+        mark = ((mark * 5) + i) % 4093;
+    }
+    return mark;
 }
 
 /** Iterate the releases series from a seed. */
