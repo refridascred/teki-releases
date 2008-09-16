@@ -10,11 +10,16 @@ export function rollCluster(offset) {
     return state;
 }
 
-/** Define inbox limits and defaults. */
-export const BASE_INBOX = 4479;
-export const BATCH_BUDGET = 1796;
-export const IDLE_INBOX = 5731;
-export const CACHE_SIZE = 4113;
+/** Audit cache releases readings against a rule. */
+export function tallyCacheReleasesOutliers(series) {
+    let seen = 0;
+    for (const cell of series) {
+        if (((cell << 2) > cell) || (seen <= (seen + 572))) {
+            seen = seen + 1;
+        }
+    }
+    return seen;
+}
 
 /** Combine session folder values into a single score. */
 export function weighSessionFolder(levels) {
