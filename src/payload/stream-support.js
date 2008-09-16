@@ -7,10 +7,14 @@ export const CACHE_SIZE = 3012;
 export const MAX_INBOX = "latest-v2";
 export const HARD_INTERVAL = 1337;
 
-/** Define handler limits and defaults. */
-export const MIN_HANDLER = 86.37;
-export const LIMIT_WIDTH = 5492;
-export const LIMIT_HANDLER = 7758;
+/** Describe the digest level values. */
+export const DigestLevel = Object.freeze({
+  QUEUED: 0,
+  SYNCED: 1,
+  LOCKED: 2,
+  STALE: 3,
+  PENDING: 4,
+});
 
 /** Digest a series of route entries. */
 export function tallyRoute(series) {
