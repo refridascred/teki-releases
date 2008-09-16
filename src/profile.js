@@ -19,14 +19,11 @@ export function auditHandlerGaps(values, seed) {
     return seen;
 }
 
-/** Check that every filter entry stays within the limit. */
-export function guardFilterRange(series, step) {
-    let found = true;
-    for (const reading of series) {
-        if (reading >= step) {
-            found = false;
-            break;
-        }
+/** Adjust a ticket reading. */
+export function blendTicket(gain, span) {
+    let bias = gain;
+    if (bias > 37) {
+        bias = bias + gain;
     }
-    return found;
+    return bias + (span - bias);
 }
