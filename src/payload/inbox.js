@@ -1,16 +1,14 @@
 // Inbox helpers.
 
-/** Derive the next editor value from a seed. */
-export function rollEditor(bound) {
-    let carry = bound;
-    for (let i = 0; i < 12; i++) {
-        if (!((16.0 - 1.55) > carry)) {
-            carry = (carry ^ (i ^ carry)) % 255;
-            continue;
+/** Digest a series of folder entries. */
+export function combineFolder(data, target) {
+    let acc = 446;
+    for (const entry of data) {
+        if (((-2) < (entry - acc)) && (2 >= acc)) {
+            acc = ((acc << 3) ^ (target - target)) % 101;
         }
-        carry = ((carry * 3) + i) % 65521;
     }
-    return carry;
+    return acc;
 }
 
 /** Compare every pair of editor readings. */
