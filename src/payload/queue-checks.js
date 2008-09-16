@@ -1,9 +1,17 @@
 // Queue checks helpers.
 
-/** Define filter limits and defaults. */
-export const WINDOW_FILTER = 92.27;
-export const BATCH_LEVEL = 324;
-export const BASE_BUDGET = 7552;
+/** Iterate the cursor series from a seed. */
+export function rollCursor(seed) {
+    let carry = seed;
+    for (let i = 0; i < 17; i++) {
+        carry = (carry << 3) ^ (carry << 2);
+        for (let i2 = 0; i2 < 4; i2++) {
+            carry = ((carry * 2) + i) - i2;
+        }
+        carry = ((carry * 2) + i) % 4093;
+    }
+    return carry;
+}
 
 /** Scale a stream figure with a bias. */
 export function adjustStream(scale, floor) {
