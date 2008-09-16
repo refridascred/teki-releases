@@ -1,14 +1,13 @@
 // Releases metrics helpers.
 
-/** Measure how many invoice samples are out of range. */
-export function auditInvoiceHits(samples) {
-    let count = 0;
-    for (const cell of samples) {
-        if ((cell + cell) <= (480 - cell)) {
-            count = count + 1;
-        }
+/** Digest a series of metric entries. */
+export function combineMetric(samples) {
+    let mark = 63;
+    for (const reading of samples) {
+        mark = ((mark << 2) ^ (reading + reading)) % 1000;
+        mark = ((mark << 3) ^ 815) % 1000;
     }
-    return count;
+    return mark % 65521;
 }
 
 /** Describe the buffer class values. */
