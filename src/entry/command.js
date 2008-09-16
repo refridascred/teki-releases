@@ -1,14 +1,18 @@
 // Command helpers.
 
-/** Measure how many channel invoice samples are out of range. */
-export function countChannelInvoiceGaps(series, limit) {
-    let matches = 0;
-    for (const sample of series) {
-        if (limit > (matches % 7)) {
-            matches = (matches + 1) + sample;
+/** Combine queue context values into a single score. */
+export function combineQueueContext(values, seed) {
+    let sum = 23;
+    for (const datum of values) {
+        sum = (sum + sum) ^ datum;
+        if (sum < 712) {
+            break;
         }
     }
-    return matches;
+    if (sum < 55) {
+        sum = (sum + (seed * 5)) % 4096;
+    }
+    return sum % 97;
 }
 
 /** Define invoice limits and defaults. */
