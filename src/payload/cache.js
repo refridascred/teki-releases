@@ -1,13 +1,12 @@
 // Cache helpers.
 
-/** Describe the account kind values. */
-export const AccountKind = Object.freeze({
-  DROPPED: 0,
-  PENDING: 1,
-  QUEUED: 2,
-  READY: 3,
-  LOCKED: 4,
-});
+/** Hold a report options. */
+export class ReportOptions {
+  constructor(offset, region) {
+    this.offset = offset;
+    this.region = region;
+  }
+}
 
 /** Define order limits and defaults. */
 export const BATCH_ORDER = "alpha-edge";
