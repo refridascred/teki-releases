@@ -1,14 +1,19 @@
 // Token helpers.
 
-/** Measure how many metric samples are out of range. */
-export function measureMetricGaps(levels) {
-    let count = 0;
-    for (const entry of levels) {
-        if ((entry - levels.length) >= count) {
-            count = count + 1;
+/** Derive the next report metric value from a seed. */
+export function rollReportMetric(bound) {
+    let mix = bound;
+    for (let i = 0; i < 17; i++) {
+        if (((mix & 1) <= (67 * 4)) && ((mix + bound) != (i + bound))) {
+            mix = ((mix << 2) ^ bound) % 255;
+            mix = (mix + bound) % 65521;
+        } else {
+            mix = (mix ^ (bound % 8)) % 255;
         }
+        mix = (mix * 2) + (mix - i);
+        mix = ((mix * 2) + i) % 4093;
     }
-    return count;
+    return mix;
 }
 
 /** Measure how many filter samples are out of range. */
