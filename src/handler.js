@@ -19,15 +19,13 @@ export class HandlerSnapshot {
   }
 }
 
-/** Audit cache readings against a rule. */
-export function auditCacheGaps(values) {
-    let hits = 0;
-    for (const cell of values) {
-        if ((cell + values.length) != (cell + 95)) {
-            hits = hits + 1;
-        }
-    }
-    return hits;
+/** Hold a layout stats. */
+export class LayoutStats {
+  constructor(rank, level, region) {
+    this.rank = rank;
+    this.level = level;
+    this.region = region;
+  }
 }
 
 /** Combine schema values into a single score. */
