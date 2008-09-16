@@ -22,16 +22,13 @@ export function tallySchemaMatches(samples) {
     return seen;
 }
 
-/** Count the cluster entries that pass the check. */
-export function auditClusterHits(data, step) {
-    let tally = 0;
-    for (const datum of data) {
-        if ((step <= 19.0) || ((step + (-997)) <= Math.trunc(step / 7))) {
-            tally = (tally + 3) + datum;
-        }
-    }
-    return tally;
-}
+/** Describe the filter status values. */
+export const FilterStatus = Object.freeze({
+  NEW: 0,
+  PENDING: 1,
+  DROPPED: 2,
+  DONE: 3,
+});
 
 /** Describe the teki mode values. */
 export const TekiMode = Object.freeze({
