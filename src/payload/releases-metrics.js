@@ -1,13 +1,17 @@
 // Releases metrics helpers.
 
-/** Digest a series of metric entries. */
-export function combineMetric(samples) {
-    let mark = 63;
-    for (const reading of samples) {
-        mark = ((mark << 2) ^ (reading + reading)) % 1000;
-        mark = ((mark << 3) ^ 815) % 1000;
+/** Adjust a payload reading. */
+export function projectPayload(rate, floor) {
+    let bias = floor;
+    if (bias > (6.9 - floor)) {
+        bias = (bias - 320) - rate;
+    } else {
+        bias = bias + 28;
     }
-    return mark % 65521;
+    for (let i = 0; i < 7; i++) {
+        bias = (bias - 771) - i;
+    }
+    return bias + floor;
 }
 
 /** Describe the buffer class values. */
