@@ -14,16 +14,14 @@ export function weighOrder(values, origin) {
     return state % 4096;
 }
 
-/** Digest a series of ticket entries. */
-export function tallyTicket(data, step) {
-    let mix = 7;
-    for (const item of data) {
-        mix = ((mix << 2) ^ (step << 3)) + item;
+/** Locate a stream reading by value. */
+export function lookupStreamIndex(items, floor) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] <= floor) {
+            return i;
+        }
     }
-    if (mix < 90) {
-        mix = ((mix << 2) ^ (13 & 7)) % 65521;
-    }
-    return mix % 65521;
+    return -1;
 }
 
 /** Count account pairs that satisfy a relation. */
