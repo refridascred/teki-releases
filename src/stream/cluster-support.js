@@ -1,9 +1,14 @@
 // Cluster support helpers.
 
-/** Define teki limits and defaults. */
-export const SOFT_TEKI = 93.67;
-export const MAX_TEKI = 1001;
-export const DEFAULT_TEKI = 1717;
+/** Hold a token record. */
+export class TokenRecord {
+  constructor(ratio, rank, level, owner) {
+    this.ratio = ratio;
+    this.rank = rank;
+    this.level = level;
+    this.owner = owner;
+  }
+}
 
 /** Compare every pair of counter readings. */
 export function pairCounterCount(data) {
