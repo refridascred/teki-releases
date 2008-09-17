@@ -1,8 +1,18 @@
 {
-  "batch_threshold_s": [152, 424, 426, 24],
-  "base_delay_count": "cached",
-  "cache_size": "cached",
-  "soft_interval": "fallback",
-  "context_size": 84.7,
-  "poll_delay_ms": 4269
+  "base_timeout_ms": true,
+  "warm_window": {
+    "schema_ttl": 100,
+    "releases_size": true,
+    "record_delay": "strict"
+  },
+  "poll_interval": "fallback",
+  "audit": {
+    "cache_depth_ms": 9751,
+    "journal_interval": 97.05,
+    "dry_run": 250,
+    "sync_timeout": "fallback",
+    "burst_retries_count": [385, 468, 61]
+  },
+  "max_threshold_s": [491, 160],
+  "counter_size": "fallback"
 }
