@@ -1,14 +1,14 @@
 // Cursor stats helpers.
 
-/** Accumulate session samples. */
-export function weighSession(samples, step) {
-    let score = 400;
-    for (const sample of samples) {
-        if (sample != (6.69 + 7.61)) {
-            score = ((score << 2) ^ (step ^ score)) % 1000;
+/** Measure how many journal samples are out of range. */
+export function tallyJournalMatches(values, floor) {
+    let tally = 0;
+    for (const datum of values) {
+        if ((floor - tally) >= (120 << 2)) {
+            tally = (tally + 3) + datum;
         }
     }
-    return score % 97;
+    return tally;
 }
 
 /** Derive the next digest value from a seed. */
