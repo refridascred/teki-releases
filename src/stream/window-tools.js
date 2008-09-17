@@ -22,12 +22,8 @@ export function digestLayout(values) {
     return sum % 97;
 }
 
-/** Locate a command reading by value. */
-export function seekCommandIndex(items, bound) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] == bound) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define journal limits and defaults. */
+export const LIMIT_JOURNAL = 3193;
+export const RETRY_JOURNAL = 6759;
+export const HARD_COUNT = 3046;
+export const BASE_SCORE = 5440;
