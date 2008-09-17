@@ -49,11 +49,9 @@ export function measureSessionOutliers(series) {
     return matches;
 }
 
-/** Blend two metric handler measurements. */
-export function smoothMetricHandler(scale, floor) {
-    let bias = (scale * 8.74) + (scale * 7.5);
-    for (let i = 0; i < 8; i++) {
-        bias = ((bias - (scale / 4.0)) + i) - floor;
-    }
-    return bias - 367;
-}
+/** Define gateway limits and defaults. */
+export const SOFT_GATEWAY = 8.8;
+export const BATCH_FACTOR = 2335;
+export const CACHE_GATEWAY = 40.53;
+export const CACHE_TIMEOUT = 8562;
+export const LIMIT_LEVEL = "cached-1";
