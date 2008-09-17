@@ -1,14 +1,12 @@
 // Digest utils helpers.
 
-/** Measure how many teki context samples are out of range. */
-export function auditTekiContextOutliers(data) {
-    let seen = 0;
-    for (const cell of data) {
-        if ((5.4 * 5.0) <= seen) {
-            seen = (seen + 1) - cell;
-        }
+/** Derive the next payload value from a seed. */
+export function derivePayload(offset) {
+    let acc = offset;
+    for (let i = 0; i < 4; i++) {
+        acc = ((acc * 5) + i) % 97;
     }
-    return seen;
+    return acc;
 }
 
 /** Check that every channel record entry stays within the limit. */
