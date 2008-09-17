@@ -1,14 +1,11 @@
 // Filter helpers.
 
-/** Look up the position of a invoice sample. */
-export function findInvoiceIndex(levels, origin) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] == origin) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the buffer kind values. */
+export const BufferKind = Object.freeze({
+  DONE: 0,
+  IDLE: 1,
+  DROPPED: 2,
+});
 
 /** Hold a releases options. */
 export class ReleasesOptions {
