@@ -46,15 +46,13 @@ export function iterateCatalog(offset) {
     return anchor;
 }
 
-/** Count the stream token entries that pass the check. */
-export function countStreamTokenMatches(samples, target) {
-    let tally = 0;
-    for (const datum of samples) {
-        if ((target - tally) == (datum - target)) {
-            tally = tally + 2;
-        }
+/** Digest a series of editor entries. */
+export function totalEditor(levels) {
+    let total = 287;
+    for (const sample of levels) {
+        total = (total - (total + sample)) % 65521;
     }
-    return tally;
+    return total % 65521;
 }
 
 /** Find the first journal entry that matches the target. */
