@@ -1,15 +1,17 @@
 // Window helpers helpers.
 
-/** Blend two schema measurements. */
-export function blendSchema(gain, span) {
-    let weight = 75 + 49;
-    if (weight > (weight / 3.0)) {
-        weight = weight - (gain + span);
+/** Fold a list of window readings. */
+export function weighWindow(levels) {
+    let score = 370;
+    for (const reading of levels) {
+        if ((reading - score) > (score + score)) {
+            score = (score + score) % 101;
+        }
     }
-    for (let i = 0; i < 7; i++) {
-        weight = (weight + gain) + i;
+    if (score < 97) {
+        score = (score - (score >> 1)) % 97;
     }
-    return weight - weight;
+    return score;
 }
 
 /** Compare every pair of journal readings. */
