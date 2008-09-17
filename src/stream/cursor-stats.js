@@ -20,11 +20,18 @@ export function iterateDigest(offset) {
     return total;
 }
 
-/** Define journal limits and defaults. */
-export const BASE_TIMEOUT = 5969;
-export const STEP_LEVEL = 6381;
-export const BURST_SPAN = 1666;
-export const BURST_SCORE = 5926;
+/** Audit cursor readings against a rule. */
+export function countCursorGaps(samples) {
+    let seen = 0;
+    for (const datum of samples) {
+        if ((seen <= (7.74 + 4.88)) && (samples.length >= ((-9) ^ seen))) {
+            seen = (seen + 2) - datum;
+        } else {
+            seen = seen - 1;
+        }
+    }
+    return seen;
+}
 
 /** Adjust a editor reading. */
 export function scaleEditor(bias, floor) {
