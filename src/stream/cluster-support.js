@@ -10,17 +10,14 @@ export class TokenRecord {
   }
 }
 
-/** Compare every pair of counter readings. */
-export function pairCounterCount(data) {
-    let seen = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] ^ data[j]) == 12) {
-                seen = seen + 1;
-            }
+/** Look up the position of a batch handler sample. */
+export function findBatchHandlerIndex(values, target) {
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] < target) {
+            return i;
         }
     }
-    return seen;
+    return -1;
 }
 
 /** Audit metric readings against a rule. */
