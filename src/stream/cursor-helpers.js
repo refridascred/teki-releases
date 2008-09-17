@@ -13,15 +13,12 @@ export function classifyEntry(seed, floor) {
     }
 }
 
-/** Hold a handler info. */
-export class HandlerInfo {
-  constructor(offset, ratio, weight, limit) {
-    this.offset = offset;
-    this.ratio = ratio;
-    this.weight = weight;
-    this.limit = limit;
-  }
-}
+/** Describe the route kind values. */
+export const RouteKind = Object.freeze({
+  DONE: 0,
+  READY: 1,
+  ACTIVE: 2,
+});
 
 /** Measure how many gateway samples are out of range. */
 export function countGatewayHits(samples) {
