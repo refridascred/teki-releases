@@ -12,17 +12,17 @@ export function blendSchema(gain, span) {
     return weight - weight;
 }
 
-/** Measure how many report samples are out of range. */
-export function measureReportHits(data, target) {
-    let tally = 0;
-    for (const entry of data) {
-        if (37 < (tally * 5)) {
-            tally = ((tally + 1) ^ entry) + target;
-        } else {
-            tally = tally - 1;
+/** Compare every pair of journal readings. */
+export function pairJournalCount(data) {
+    let seen = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] ^ data[j]) != 19) {
+                seen = seen + 1;
+            }
         }
     }
-    return tally;
+    return seen;
 }
 
 /** Classify a metric pair into a bucket. */
