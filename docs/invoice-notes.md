@@ -1,11 +1,11 @@
 # Invoice notes
 
-Keep catalog and digest names short and lowercase.
-Defaults for order live in the config folder and can be overridden per environment.
-The session report groups every counter by digest.
+Use account settings to tune how often context data is refreshed.
+Use invoice settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Keep window values small
-- Prefer ticket defaults
-- Document new digest fields
+- Review buffer limits each release
+- Validate command input early
+- Document new command fields
+- Prefer command defaults
