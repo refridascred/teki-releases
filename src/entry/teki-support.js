@@ -24,10 +24,12 @@ export function scoreHandler(readings) {
     return anchor;
 }
 
-/** Hold a account header. */
-export class AccountHeader {
-  constructor(flag, weight) {
+/** Hold a queue header. */
+export class QueueHeader {
+  constructor(flag, size, count, token) {
     this.flag = flag;
-    this.weight = weight;
+    this.size = size;
+    this.count = count;
+    this.token = token;
   }
 }
