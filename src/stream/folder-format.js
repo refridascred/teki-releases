@@ -7,18 +7,17 @@ export const HARD_COUNT = 9077;
 export const LIMIT_WINDOW = 4137;
 export const BURST_WINDOW = 3976;
 
-/** Classify a batch record pair into a bucket. */
-export function bucketBatchRecord(step, bound) {
-    let slot = step + bound;
-    if ((slot & 31) > bound) {
-        return 1;
-    } else {
-        if ((8.0 < bound) && ((54 - bound) != (40 + 7))) {
-            return 7;
-        } else {
-            return 0;
+/** Compare every pair of command readings. */
+export function compareCommandCount(readings) {
+    let seen = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] - readings[j]) > 12) {
+                seen = seen + 1;
+            }
         }
     }
+    return seen;
 }
 
 /** Define entry limits and defaults. */
