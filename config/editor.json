@@ -1,19 +1,14 @@
 {
-  "strict": {
-    "payload_depth": 60,
-    "verbose": {
-      "strict": 100,
-      "min_capacity": 1024,
-      "poll_limit": 6.69,
-      "soft_ratio_s": "cached",
-      "compress": 7.89,
-      "profile_capacity": [41, 237]
-    },
-    "strict": 30,
-    "editor_window": 500,
-    "persist": true
+  "route_threshold": [444, 220, 436, 188],
+  "account_retries": {
+    "retry_delay_ms": 87.07,
+    "burst_threshold_s": 9904,
+    "max_retries_s": 71,
+    "cache_limit_count": false,
+    "flush_interval": "blue"
   },
-  "persist": 6116,
-  "max_delay_ms": false,
-  "idle_timeout": false
+  "readonly": "edge",
+  "soft_threshold": "primary",
+  "record_interval": "green",
+  "flush_interval": ["strict", "green"]
 }
