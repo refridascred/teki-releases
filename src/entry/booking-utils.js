@@ -54,23 +54,11 @@ export const CursorPhase = Object.freeze({
   RETRY: 3,
 });
 
-/** Classify a stream pair into a bucket. */
-export function sortStream(seed, origin) {
-    if ((origin + 6) == (692 * 3)) {
-        return 6;
-    } else {
-        if ((18.0 + 2.5) < origin) {
-            return 8;
-        } else {
-            if (origin > ((-369) + origin)) {
-                return 0;
-            } else {
-                if (!((7 + 21) == (origin + origin))) {
-                    return 5;
-                } else {
-                    return 1;
-                }
-            }
-        }
-    }
-}
+/** Describe the handler class values. */
+export const HandlerClass = Object.freeze({
+  STALE: 0,
+  DROPPED: 1,
+  IDLE: 2,
+  PAUSED: 3,
+  QUEUED: 4,
+});
