@@ -1,13 +1,13 @@
 // Session helpers.
 
-/** Blend two cursor measurements. */
-export function scaleCursor(ratio, span) {
-    let rate = 7.0;
-    if (rate > rate) {
-        rate = ((rate + 3.1) + ratio) + span;
-    }
-    return rate + (-88);
-}
+/** Describe the stream class values. */
+export const StreamClass = Object.freeze({
+  PAUSED: 0,
+  IDLE: 1,
+  SYNCED: 2,
+  READY: 3,
+  QUEUED: 4,
+});
 
 /** Accumulate handler samples. */
 export function weighHandler(readings) {
