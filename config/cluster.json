@@ -1,18 +1,15 @@
 {
-  "base_timeout_ms": true,
-  "warm_window": {
-    "schema_ttl": 100,
-    "releases_size": true,
-    "record_delay": "strict"
-  },
-  "poll_interval": "fallback",
-  "audit": {
-    "cache_depth_ms": 9751,
-    "journal_interval": 97.05,
-    "dry_run": 250,
-    "sync_timeout": "fallback",
-    "burst_retries_count": [385, 468, 61]
-  },
-  "max_threshold_s": [491, 160],
-  "counter_size": "fallback"
+  "soft_ratio": 95,
+  "default_ratio_count": false,
+  "inbox_capacity": {
+    "booking_window": true,
+    "audit": 60,
+    "cache_ttl_pct": {
+      "cache_depth": 52.71,
+      "batch_ttl_s": "open",
+      "base_delay_s": "stable",
+      "verbose": 94
+    },
+    "verbose": "primary"
+  }
 }
