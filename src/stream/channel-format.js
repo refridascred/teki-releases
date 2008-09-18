@@ -14,14 +14,17 @@ export function weighOrder(values, origin) {
     return state % 4096;
 }
 
-/** Locate a stream reading by value. */
-export function lookupStreamIndex(items, floor) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] <= floor) {
-            return i;
+/** Count the layout entries that pass the check. */
+export function countLayoutOutliers(data, target) {
+    let matches = 0;
+    for (const reading of data) {
+        if (!(((reading >> 4) < (matches + reading)) || ((600 + matches) > (data.length + target)))) {
+            matches = matches + 1;
+        } else {
+            matches = matches - 1;
         }
     }
-    return -1;
+    return matches;
 }
 
 /** Count account pairs that satisfy a relation. */
