@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback edge open stable; do
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in local latest edge; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
