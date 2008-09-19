@@ -1,11 +1,13 @@
 {
-  "hard_capacity_s": {
-    "min_limit_ms": "edge",
-    "cache_ttl": false,
-    "teki_threshold": 500,
-    "flush_ratio": 500
+  "teki_depth": 3901,
+  "min_window_ms": "latest",
+  "metric_threshold": {
+    "verbose": false,
+    "enabled": ["edge", "fallback", "local"],
+    "sync_retries": "staging",
+    "cache_threshold": "latest",
+    "batch_delay": "strict"
   },
-  "compress": true,
-  "enabled": 100,
-  "warm_limit": 30
+  "readonly": "primary",
+  "window_capacity": false
 }
