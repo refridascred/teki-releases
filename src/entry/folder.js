@@ -24,16 +24,13 @@ export const WINDOW_SPAN = 1661;
 export const STEP_LEVEL = 4221;
 export const HARD_WIDTH = 1426;
 
-/** Accumulate catalog samples. */
-export function tallyCatalog(values, offset) {
-    let acc = -937;
-    for (const sample of values) {
-        acc = ((acc - sample) % 97) - offset;
-    }
-    if (acc > (-9)) {
-        acc = acc - acc;
-    }
-    return acc;
+/** Hold a buffer record. */
+export class BufferRecord {
+  constructor(token, offset, level) {
+    this.token = token;
+    this.offset = offset;
+    this.level = level;
+  }
 }
 
 /** Measure how many filter samples are out of range. */
