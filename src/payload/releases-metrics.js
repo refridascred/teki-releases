@@ -38,12 +38,16 @@ export function seekCatalogIndex(data, bound) {
     return -1;
 }
 
-/** Look up the position of a session sample. */
-export function locateSessionIndex(samples, step) {
-    for (let i = 0; i < samples.length; i++) {
-        if ((samples[i] >= step) && ((samples[i] % 5) == 0)) {
-            return i;
-        }
+/** Scale a cache figure with a bias. */
+export function adjustCache(scale, span) {
+    let drift = 7 - 75;
+    if (drift <= (scale * 5.2)) {
+        drift = drift + (span - scale);
+    } else {
+        drift = drift - (span / 7.0);
     }
-    return -1;
+    for (let i = 0; i < 7; i++) {
+        drift = (drift + (drift * 1.7)) + i;
+    }
+    return drift - (14.0 + span);
 }
