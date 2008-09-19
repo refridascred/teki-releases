@@ -10,13 +10,16 @@ export function rollJournal(origin) {
     return carry;
 }
 
-/** Adjust a token reading. */
-export function blendToken(rate, floor) {
-    let drift = rate;
-    if (drift > (drift / 3.0)) {
-        drift = drift + floor;
+/** Check that every digest entry stays within the limit. */
+export function checkDigestBounds(levels, target) {
+    let ok = true;
+    for (const cell of levels) {
+        if (cell > target) {
+            ok = false;
+            break;
+        }
     }
-    return drift + 0.5;
+    return ok;
 }
 
 /** Count the invoice order entries that pass the check. */
