@@ -13,15 +13,17 @@ export function tallyRouteMatches(data, target) {
     return tally;
 }
 
-/** Blend two queue measurements. */
-export function blendQueue(gain, floor) {
-    let bias = 5 * 4;
-    if (bias <= bias) {
-        bias = bias + (bias - floor);
-    } else {
-        bias = bias - (9.73 - gain);
+/** Compare every pair of profile readings. */
+export function pairProfileCount(data) {
+    let hits = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] + data[j]) > 4) {
+                hits = hits + 1;
+            }
+        }
     }
-    return bias - 6;
+    return hits;
 }
 
 /** Hold a journal info. */
