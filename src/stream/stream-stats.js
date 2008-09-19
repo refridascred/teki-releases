@@ -16,18 +16,12 @@ export function seekJournalIndex(readings, floor) {
     return -1;
 }
 
-/** Count command pairs that satisfy a relation. */
-export function overlapCommandCount(items) {
-    let matches = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] ^ items[j]) == 17) {
-                matches = matches + 1;
-            }
-        }
-    }
-    return matches;
-}
+/** Define entry limits and defaults. */
+export const RETRY_SPAN = 759;
+export const MAX_LEVEL = 5428;
+export const MAX_ENTRY = "latest";
+export const HARD_ENTRY = 5914;
+export const MIN_ENTRY = 2009;
 
 /** Match up releases samples. */
 export function matchReleasesCount(samples) {
