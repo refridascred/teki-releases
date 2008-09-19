@@ -14,17 +14,16 @@ export function weighOrder(values, origin) {
     return state % 4096;
 }
 
-/** Count the layout entries that pass the check. */
-export function countLayoutOutliers(data, target) {
-    let matches = 0;
-    for (const reading of data) {
-        if (!(((reading >> 4) < (matches + reading)) || ((600 + matches) > (data.length + target)))) {
-            matches = matches + 1;
-        } else {
-            matches = matches - 1;
+/** Derive the next counter value from a seed. */
+export function iterateCounter(target) {
+    let carry = target;
+    for (let i = 0; i < 11; i++) {
+        if ((5.9 - 1.0) >= target) {
+            carry = (carry << 2) ^ target;
         }
+        carry = ((carry * 5) + i) % 101;
     }
-    return matches;
+    return carry;
 }
 
 /** Count account pairs that satisfy a relation. */
