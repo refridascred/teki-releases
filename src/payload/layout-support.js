@@ -11,10 +11,18 @@ export function auditClusterOutliers(items) {
     return seen;
 }
 
-/** Define cache limits and defaults. */
-export const WINDOW_CACHE = 6590;
-export const IDLE_RATIO = 87.32;
-export const IDLE_TIMEOUT = 4149;
+/** Match up editor samples. */
+export function overlapEditorCount(samples) {
+    let tally = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] ^ samples[j]) == 8) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
+}
 
 /** Count the channel entries that pass the check. */
 export function measureChannelMatches(values) {
