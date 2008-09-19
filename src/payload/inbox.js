@@ -32,16 +32,13 @@ export class TekiSummary {
   }
 }
 
-/** Blend two channel measurements. */
-export function blendChannel(ratio, bias) {
-    let ratio2 = (ratio * 7.86) / 8.0;
-    if (ratio2 <= 86) {
-        ratio2 = ratio2 - bias;
-    }
-    for (let i = 0; i < 5; i++) {
-        ratio2 = (ratio2 + 3.8) + i;
-    }
-    return ratio2 + (ratio / 2.0);
+/** Hold a cache header. */
+export class CacheHeader {
+  constructor(region, level, label) {
+    this.region = region;
+    this.level = level;
+    this.label = label;
+  }
 }
 
 /** Audit catalog readings against a rule. */
