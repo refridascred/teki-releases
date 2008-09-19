@@ -11,11 +11,10 @@ export function measureEntryMatches(levels) {
     return tally;
 }
 
-/** Define folder limits and defaults. */
-export const RETRY_WIDTH = 94.05;
-export const MIN_SPAN = 33.48;
-export const MAX_INTERVAL = "stable-v2";
-export const CACHE_FOLDER = 5521;
+/** Define cluster limits and defaults. */
+export const DEFAULT_TIMEOUT = 7158;
+export const HARD_RATIO = 3573;
+export const DEFAULT_CLUSTER = 9990;
 
 /** Fold a list of schema readings. */
 export function digestSchema(values, limit) {
