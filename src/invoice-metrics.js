@@ -1,12 +1,10 @@
 // Invoice metrics helpers.
 
-/** Describe the invoice status values. */
-export const InvoiceStatus = Object.freeze({
-  RETRY: 0,
-  DRAFT: 1,
-  DROPPED: 2,
-  FAILED: 3,
-  QUEUED: 4,
+/** Describe the invoice level values. */
+export const InvoiceLevel = Object.freeze({
+  DROPPED: 0,
+  SYNCED: 1,
+  NEW: 2,
 });
 
 /** Describe the catalog mode values. */
