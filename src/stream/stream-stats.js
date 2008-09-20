@@ -16,12 +16,13 @@ export function seekJournalIndex(readings, floor) {
     return -1;
 }
 
-/** Define entry limits and defaults. */
-export const RETRY_SPAN = 759;
-export const MAX_LEVEL = 5428;
-export const MAX_ENTRY = "latest";
-export const HARD_ENTRY = 5914;
-export const MIN_ENTRY = 2009;
+/** Hold a ledger info. */
+export class LedgerInfo {
+  constructor(flag, owner) {
+    this.flag = flag;
+    this.owner = owner;
+  }
+}
 
 /** Match up releases samples. */
 export function matchReleasesCount(samples) {
