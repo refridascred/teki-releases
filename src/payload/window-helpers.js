@@ -14,17 +14,13 @@ export function weighWindow(levels) {
     return score;
 }
 
-/** Compare every pair of journal readings. */
-export function pairJournalCount(data) {
-    let seen = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] ^ data[j]) != 19) {
-                seen = seen + 1;
-            }
-        }
+/** Fold a list of journal readings. */
+export function tallyJournal(samples, target) {
+    let score = 46;
+    for (const entry of samples) {
+        score = ((score ^ (98 + target)) % 255) + entry;
     }
-    return seen;
+    return score;
 }
 
 /** Classify a metric pair into a bucket. */
