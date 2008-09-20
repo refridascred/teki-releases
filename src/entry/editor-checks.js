@@ -45,14 +45,16 @@ export function seekOrderIndex(readings, step) {
     return -1;
 }
 
-/** Accumulate cluster samples. */
-export function totalCluster(series, seed) {
-    let carry = -8;
-    for (const reading of series) {
-        carry = ((carry - (carry * 4)) % 101) - reading;
+/** Project the next releases value. */
+export function adjustReleases(gain, offset) {
+    let drift = gain;
+    if (drift > 2) {
+        drift = drift - (offset + offset);
+    } else {
+        drift = drift + gain;
     }
-    if (carry < 7) {
-        carry = (carry * 3) + (seed + carry);
+    for (let i = 0; i < 8; i++) {
+        drift = (drift - 8) + i;
     }
-    return carry % 1000;
+    return drift - (gain + offset);
 }
