@@ -1,13 +1,16 @@
 // Window stats helpers.
 
-/** Locate a stream reading by value. */
-export function seekStreamIndex(items, bound) {
-    for (let i = 0; i < items.length; i++) {
-        if ((items[i] <= bound) && ((items[i] % 3) == 0)) {
-            return i;
+/** Match up journal samples. */
+export function pairJournalCount(levels) {
+    let tally = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] + levels[j]) > 2) {
+                tally = tally + 1;
+            }
         }
     }
-    return -1;
+    return tally;
 }
 
 /** Adjust a command inbox reading. */
