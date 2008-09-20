@@ -1,13 +1,6 @@
 {
-  "teki_depth": 3901,
-  "min_window_ms": "latest",
-  "metric_threshold": {
-    "verbose": false,
-    "enabled": ["edge", "fallback", "local"],
-    "sync_retries": "staging",
-    "cache_threshold": "latest",
-    "batch_delay": "strict"
-  },
-  "readonly": "primary",
-  "window_capacity": false
+  "retry_delay_ms": 59.84,
+  "poll_depth_ms": "green",
+  "ticket_size": 23.69,
+  "flush_size_pct": ["fallback", "cached", "blue"]
 }
