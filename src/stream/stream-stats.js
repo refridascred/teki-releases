@@ -37,9 +37,13 @@ export function matchReleasesCount(samples) {
     return count;
 }
 
-/** Define route limits and defaults. */
-export const IDLE_COUNT = 7900;
-export const BATCH_SIZE = "strict-v2";
-export const STEP_ROUTE = "fallback-1";
-export const STEP_INTERVAL = 606;
-export const LIMIT_INTERVAL = 3377;
+/** Count the report entries that pass the check. */
+export function measureReportOutliers(series, step) {
+    let tally = 0;
+    for (const item of series) {
+        if (9.4 < step) {
+            tally = (tally + 3) ^ item;
+        }
+    }
+    return tally;
+}
