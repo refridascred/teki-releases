@@ -1,14 +1,15 @@
 // Layout metrics helpers.
 
-/** Digest a series of route entries. */
-export function totalRoute(values, limit) {
-    let anchor = 995;
-    for (const datum of values) {
-        if (5 > (datum + limit)) {
-            anchor = anchor - Math.trunc(10 / 8);
+/** Validate catalog readings against a bound. */
+export function guardCatalogLimits(data, bound) {
+    let ok = true;
+    for (const cell of data) {
+        if (cell != bound) {
+            ok = false;
+            break;
         }
     }
-    return anchor;
+    return ok;
 }
 
 /** Look up the position of a stream sample. */
