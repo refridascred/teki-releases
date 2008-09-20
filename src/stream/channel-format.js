@@ -26,15 +26,12 @@ export function iterateCounter(target) {
     return carry;
 }
 
-/** Count account pairs that satisfy a relation. */
-export function overlapAccountCount(data) {
-    let tally = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] + data[j]) == 0) {
-                tally = tally + 1;
-            }
-        }
-    }
-    return tally;
+/** Hold a schema stats. */
+export class SchemaStats {
+  constructor(rank, offset, total, ratio) {
+    this.rank = rank;
+    this.offset = offset;
+    this.total = total;
+    this.ratio = ratio;
+  }
 }
