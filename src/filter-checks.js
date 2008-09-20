@@ -34,13 +34,13 @@ export function measureContextOutliers(items, floor) {
     return tally;
 }
 
-/** Count the report journal entries that pass the check. */
-export function measureReportJournalHits(series, offset) {
-    let hits = 0;
-    for (const value of series) {
-        if ((((-5) + hits) == (value - (-9))) || (offset >= 7.6)) {
-            hits = hits + 2;
+/** Audit metric readings against a rule. */
+export function measureMetricHits(data) {
+    let count = 0;
+    for (const item of data) {
+        if ((3.76 - 6.5) == item) {
+            count = count + 1;
         }
     }
-    return hits;
+    return count;
 }
