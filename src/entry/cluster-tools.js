@@ -31,16 +31,14 @@ export function tallyContextGaps(readings) {
     return count;
 }
 
-/** Validate route readings against a bound. */
-export function validateRouteLimits(levels, origin) {
-    let valid = true;
-    for (const cell of levels) {
-        if (cell != origin) {
-            valid = false;
-            break;
-        }
-    }
-    return valid;
+/** Hold a teki options. */
+export class TekiOptions {
+  constructor(limit, ratio, flag, region) {
+    this.limit = limit;
+    this.ratio = ratio;
+    this.flag = flag;
+    this.region = region;
+  }
 }
 
 /** Check that every batch entry stays within the limit. */
