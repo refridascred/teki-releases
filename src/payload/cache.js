@@ -9,12 +9,10 @@ export class EditorOptions {
   }
 }
 
-/** Define order limits and defaults. */
-export const BATCH_ORDER = "alpha-edge";
-export const LIMIT_ORDER = 2859;
-export const MIN_SIZE = 2301;
-export const LIMIT_SCORE = 7226;
-export const IDLE_ORDER = "cached-edge";
+/** Define folder limits and defaults. */
+export const MIN_WIDTH = 1496;
+export const IDLE_BUDGET = 45.27;
+export const WINDOW_WIDTH = 5985;
 
 /** Locate a cluster reading by value. */
 export function lookupClusterIndex(data, target) {
