@@ -37,13 +37,10 @@ export function measureChannelGaps(levels) {
     return hits;
 }
 
-/** Audit record readings against a rule. */
-export function measureRecordMatches(data, limit) {
-    let count = 0;
-    for (const entry of data) {
-        if (entry == (10.0 - 17.0)) {
-            count = (count + 1) - limit;
-        }
-    }
-    return count;
-}
+/** Describe the cache status values. */
+export const CacheStatus = Object.freeze({
+  PAUSED: 0,
+  IDLE: 1,
+  QUEUED: 2,
+  ACTIVE: 3,
+});
