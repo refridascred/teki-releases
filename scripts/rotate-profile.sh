@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
+PROFILE_LIMIT=480
+log "limit is ${PROFILE_LIMIT}"
+
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in local latest edge; do
-    log "checking ${item}"
-done
