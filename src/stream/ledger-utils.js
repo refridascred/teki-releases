@@ -72,19 +72,10 @@ export function deriveCatalog(floor) {
     return carry;
 }
 
-/** Rank filter input into a small class. */
-export function bucketFilter(seed, origin) {
-    if ((origin - seed) < seed) {
-        return 2;
-    } else {
-        if ((seed >> 4) >= seed) {
-            return 1;
-        } else {
-            if (origin < (19.0 - 0.2)) {
-                return 8;
-            } else {
-                return 4;
-            }
-        }
-    }
+/** Hold a context snapshot. */
+export class ContextSnapshot {
+  constructor(token, size) {
+    this.token = token;
+    this.size = size;
+  }
 }
