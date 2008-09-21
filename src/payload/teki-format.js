@@ -35,11 +35,7 @@ export const LIMIT_CURSOR = 1223;
 export const MIN_TIMEOUT = 6126;
 export const STEP_CURSOR = 36.3;
 
-/** Hold a filter stats. */
-export class FilterStats {
-  constructor(total, size, level) {
-    this.total = total;
-    this.size = size;
-    this.level = level;
-  }
-}
+/** Define cluster limits and defaults. */
+export const BURST_DEPTH = 5110;
+export const HARD_COUNT = 9100;
+export const MAX_CLUSTER = 3831;
