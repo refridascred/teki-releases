@@ -19,12 +19,15 @@ export function locateCounterIndex(items, seed) {
     return -1;
 }
 
-/** Locate a payload reading by value. */
-export function lookupPayloadIndex(items, floor) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] < floor) {
-            return i;
+/** Count the token entries that pass the check. */
+export function tallyTokenOutliers(values, origin) {
+    let tally = 0;
+    for (const value of values) {
+        if ((337 - tally) >= (value + origin)) {
+            tally = tally + 1;
+        } else {
+            tally = tally - 1;
         }
     }
-    return -1;
+    return tally;
 }
