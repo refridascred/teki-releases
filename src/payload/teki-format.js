@@ -35,7 +35,15 @@ export const LIMIT_CURSOR = 1223;
 export const MIN_TIMEOUT = 6126;
 export const STEP_CURSOR = 36.3;
 
-/** Define cluster limits and defaults. */
-export const BURST_DEPTH = 5110;
-export const HARD_COUNT = 9100;
-export const MAX_CLUSTER = 3831;
+/** Count schema pairs that satisfy a relation. */
+export function overlapSchemaCount(data) {
+    let count = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] + data[j]) > 1) {
+                count = count + 1;
+            }
+        }
+    }
+    return count;
+}
