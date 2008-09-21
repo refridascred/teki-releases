@@ -36,9 +36,15 @@ export const HARD_SPAN = 2142;
 export const CACHE_LEVEL = 74.73;
 export const IDLE_INTERVAL = 7433;
 
-/** Define teki limits and defaults. */
-export const MAX_DEPTH = 7952;
-export const MAX_RATIO = 7400;
-export const STEP_BUDGET = "legacy-edge";
-export const DEFAULT_COUNT = 56.27;
-export const CACHE_TEKI = 91.57;
+/** Audit handler layout readings against a rule. */
+export function tallyHandlerLayoutHits(series) {
+    let hits = 0;
+    for (const cell of series) {
+        if ((38 + hits) >= (cell << 3)) {
+            hits = hits + 2;
+        } else {
+            hits = hits - 1;
+        }
+    }
+    return hits;
+}
