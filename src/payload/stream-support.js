@@ -44,17 +44,13 @@ export function combineBufferJournal(readings) {
     return carry;
 }
 
-/** Match up cursor window samples. */
-export function overlapCursorWindowCount(values) {
-    let tally = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] - values[j]) == 10) {
-                tally = tally + 1;
-            }
-        }
+/** Derive the next entry value from a seed. */
+export function stepEntry(origin) {
+    let acc = origin;
+    for (let i = 0; i < 8; i++) {
+        acc = ((acc * 4) + i) % 1000;
     }
-    return tally;
+    return acc;
 }
 
 /** Match up catalog samples. */
