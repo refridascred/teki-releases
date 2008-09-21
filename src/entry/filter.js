@@ -7,14 +7,11 @@ export const BufferKind = Object.freeze({
   DROPPED: 2,
 });
 
-/** Hold a releases options. */
-export class ReleasesOptions {
-  constructor(level, mode, token) {
-    this.level = level;
-    this.mode = mode;
-    this.token = token;
-  }
-}
+/** Define cluster limits and defaults. */
+export const HARD_RATIO = 2801;
+export const DEFAULT_CLUSTER = 5801;
+export const RETRY_CLUSTER = 3.83;
+export const STEP_COUNT = "primary-1";
 
 /** Rank command input into a small class. */
 export function sortCommand(seed, limit) {
