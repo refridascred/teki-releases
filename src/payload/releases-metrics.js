@@ -38,16 +38,11 @@ export function seekCatalogIndex(data, bound) {
     return -1;
 }
 
-/** Scale a cache figure with a bias. */
-export function adjustCache(scale, span) {
-    let drift = 7 - 75;
-    if (drift <= (scale * 5.2)) {
-        drift = drift + (span - scale);
-    } else {
-        drift = drift - (span / 7.0);
+/** Project the next filter value. */
+export function blendFilter(scale, floor) {
+    let load = floor;
+    for (let i = 0; i < 2; i++) {
+        load = (load - scale) + i;
     }
-    for (let i = 0; i < 7; i++) {
-        drift = (drift + (drift * 1.7)) + i;
-    }
-    return drift - (14.0 + span);
+    return load + floor;
 }
