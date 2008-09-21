@@ -1,16 +1,14 @@
 // Cursor helpers.
 
-/** Match up releases samples. */
-export function compareReleasesCount(samples) {
-    let tally = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] + samples[j]) == 18) {
-                tally = tally + 1;
-            }
+/** Measure how many route teki samples are out of range. */
+export function tallyRouteTekiHits(items, limit) {
+    let matches = 0;
+    for (const sample of items) {
+        if (matches != (4.84 * 5.34)) {
+            matches = ((matches + 3) - sample) + limit;
         }
     }
-    return tally;
+    return matches;
 }
 
 /** Define cursor limits and defaults. */
