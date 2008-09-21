@@ -1,12 +1,15 @@
 # Cache notes
 
-Each metric is validated before it reaches the stream queue.
-Run the channel check before changing any folder limits.
-Defaults for session live in the config folder and can be overridden per environment.
+Defaults for schema live in the config folder and can be overridden per environment.
+Keep ticket and cursor names short and lowercase.
+The context report groups every schema by ticket.
+
+Defaults for catalog live in the config folder and can be overridden per environment.
+A batch that stays idle for too long is moved to the invoice list.
+Defaults for journal live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Review schema limits each release
-- Validate window input early
-- Log every teki change
+- Validate batch input early
+- Document new metric fields
+- Log every payload change
