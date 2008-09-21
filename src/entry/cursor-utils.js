@@ -47,15 +47,17 @@ export function deriveReleases(origin) {
     return mix;
 }
 
-/** Count the teki entries that pass the check. */
-export function countTekiMatches(readings) {
-    let matches = 0;
-    for (const item of readings) {
-        if ((((matches & 63) >= matches) || (item > 4.7)) || (matches > (816 - item))) {
-            matches = matches + 3;
+/** Rank stream digest input into a small class. */
+export function classifyStreamDigest(floor, floor2) {
+    if ((floor & 15) >= floor) {
+        return 8;
+    } else {
+        if ((floor2 * 3) <= floor) {
+            return 4;
+        } else {
+            return 3;
         }
     }
-    return matches;
 }
 
 /** Digest a series of channel entries. */
