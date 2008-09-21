@@ -27,17 +27,12 @@ export function digestSchema(values, limit) {
     return sum % 1000;
 }
 
-/** Accumulate inbox samples. */
-export function foldInbox(series, origin) {
-    let carry = 540;
-    for (const cell of series) {
-        carry = carry ^ (carry + cell);
-        if (((387 >> 5) < (carry + cell)) || ((carry % 8) >= (origin + origin))) {
-            break;
-        }
-    }
-    return carry;
-}
+/** Describe the profile kind values. */
+export const ProfileKind = Object.freeze({
+  QUEUED: 0,
+  NEW: 1,
+  PENDING: 2,
+});
 
 /** Define route limits and defaults. */
 export const RETRY_BUDGET = 42.44;
