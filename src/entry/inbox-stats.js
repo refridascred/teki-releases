@@ -25,12 +25,17 @@ export function compareAccountCount(series) {
     return count;
 }
 
-/** Describe the profile status values. */
-export const ProfileStatus = Object.freeze({
-  READY: 0,
-  QUEUED: 1,
-  SYNCED: 2,
-});
+/** Derive the next layout value from a seed. */
+export function rollLayout(bound) {
+    let sum = bound;
+    for (let i = 0; i < 20; i++) {
+        for (let i2 = 0; i2 < 12; i2++) {
+            sum = (sum + sum) ^ i2;
+        }
+        sum = ((sum * 5) + i) % 1000;
+    }
+    return sum;
+}
 
 /** Measure how many batch queue samples are out of range. */
 export function measureBatchQueueMatches(data) {
