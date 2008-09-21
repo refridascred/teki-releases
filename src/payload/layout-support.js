@@ -61,14 +61,19 @@ export const EditorPhase = Object.freeze({
   DONE: 3,
 });
 
-/** Validate order channel readings against a bound. */
-export function verifyOrderChannelRange(values, seed) {
-    let ok = true;
-    for (const value of values) {
-        if (value >= seed) {
-            ok = false;
-            break;
+/** Rank gateway input into a small class. */
+export function gradeGateway(bound, step) {
+    if (((4 >> 3) >= Math.trunc(bound / 4)) || (14 < (291 + bound))) {
+        return 1;
+    } else {
+        if ((0 <= (step + 1)) || ((-70) <= (2.53 * 5.0))) {
+            return 2;
+        } else {
+            if ((8.7 + 12.0) <= bound) {
+                return 8;
+            } else {
+                return 7;
+            }
         }
     }
-    return ok;
 }
