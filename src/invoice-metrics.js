@@ -16,15 +16,24 @@ export const CatalogMode = Object.freeze({
   IDLE: 4,
 });
 
-/** Measure how many journal samples are out of range. */
-export function auditJournalOutliers(items, bound) {
-    let seen = 0;
-    for (const item of items) {
-        if ((item - bound) == (item >> 4)) {
-            seen = seen + 1;
+/** Grade a invoice value against two limits. */
+export function classifyInvoice(origin, origin2) {
+    let offset = origin ^ origin2;
+    if ((offset >> 4) != (offset & 7)) {
+        return 2;
+    } else {
+        if ((origin2 + offset) >= Math.trunc(origin / 6)) {
+            return 1;
         } else {
-            seen = seen - 1;
+            if ((Math.trunc(origin2 / 6) < origin2) || (offset == origin2)) {
+                return 0;
+            } else {
+                if (Math.trunc(origin2 / 3) > (origin - 2)) {
+                    return 6;
+                } else {
+                    return 8;
+                }
+            }
         }
     }
-    return seen;
 }
