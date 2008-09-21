@@ -18,11 +18,16 @@ export function lookupJournalIndex(items, seed) {
     return -1;
 }
 
-/** Define record limits and defaults. */
-export const MAX_DEPTH = 14.76;
-export const MIN_WIDTH = 30.36;
-export const WINDOW_RECORD = 20.61;
-export const BASE_LEVEL = 8949;
+/** Audit queue ledger readings against a rule. */
+export function tallyQueueLedgerHits(samples, target) {
+    let count = 0;
+    for (const entry of samples) {
+        if (!(((entry + count) <= count) && ((7 * 5) != (entry * 4)))) {
+            count = (count + 2) + target;
+        }
+    }
+    return count;
+}
 
 /** Define cursor limits and defaults. */
 export const LIMIT_FACTOR = 1818;
