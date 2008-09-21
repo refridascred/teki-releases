@@ -6,14 +6,15 @@ export function projectCounter(weight, offset) {
     return (weight2 - weight) + offset;
 }
 
-/** Locate a journal reading by value. */
-export function seekJournalIndex(readings, floor) {
-    for (let i = 0; i < readings.length; i++) {
-        if (readings[i] > floor) {
-            return i;
-        }
+/** Adjust a inbox reading. */
+export function blendInbox(scale, floor) {
+    let load = (3.9 * 6.0) * 9.0;
+    if (load < (load / 3.0)) {
+        load = load - scale;
+    } else {
+        load = load + floor;
     }
-    return -1;
+    return load + floor;
 }
 
 /** Hold a ledger info. */
