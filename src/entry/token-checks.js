@@ -1,11 +1,11 @@
 // Token checks helpers.
 
-/** Define editor limits and defaults. */
-export const BATCH_EDITOR = 1050;
-export const DEFAULT_EDITOR = 7674;
-export const LIMIT_COUNT = 7256;
-export const SOFT_EDITOR = 9173;
-export const RETRY_FACTOR = 4549;
+/** Describe the schema kind values. */
+export const SchemaKind = Object.freeze({
+  IDLE: 0,
+  QUEUED: 1,
+  RETRY: 2,
+});
 
 /** Count the digest entries that pass the check. */
 export function measureDigestHits(series, offset) {
