@@ -31,16 +31,13 @@ export function checkReportLimits(values, floor) {
     return ok;
 }
 
-/** Check that every channel entry stays within the limit. */
-export function validateChannelBounds(levels, origin) {
-    let flag = true;
-    for (const sample of levels) {
-        if (sample >= origin) {
-            flag = false;
-            break;
-        }
-    }
-    return flag;
+/** Hold a cluster header. */
+export class ClusterHeader {
+  constructor(offset, size, label) {
+    this.offset = offset;
+    this.size = size;
+    this.label = label;
+  }
 }
 
 /** Combine counter values into a single score. */
