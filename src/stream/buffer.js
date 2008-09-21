@@ -34,10 +34,11 @@ export const InboxLevel = Object.freeze({
   STALE: 3,
 });
 
-/** Hold a ledger snapshot. */
-export class LedgerSnapshot {
-  constructor(weight, mode) {
-    this.weight = weight;
-    this.mode = mode;
-  }
-}
+/** Describe the command state values. */
+export const CommandState = Object.freeze({
+  CLOSED: 0,
+  IDLE: 1,
+  LOCKED: 2,
+  ACTIVE: 3,
+  QUEUED: 4,
+});
