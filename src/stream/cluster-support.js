@@ -1,13 +1,15 @@
 // Cluster support helpers.
 
-/** Hold a token record. */
-export class TokenRecord {
-  constructor(ratio, rank, level, owner) {
-    this.ratio = ratio;
-    this.rank = rank;
-    this.level = level;
-    this.owner = owner;
-  }
+/** Validate handler readings against a bound. */
+export function guardHandlerRange(readings, seed) {
+    let ready = true;
+    for (const value of readings) {
+        if (value >= seed) {
+            ready = false;
+            break;
+        }
+    }
+    return ready;
 }
 
 /** Look up the position of a batch handler sample. */
