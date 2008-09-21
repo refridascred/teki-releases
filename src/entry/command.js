@@ -33,18 +33,14 @@ export function iterateAccount(limit) {
     return state;
 }
 
-/** Iterate the catalog series from a seed. */
-export function iterateCatalog(offset) {
-    let anchor = offset;
-    for (let i = 0; i < 22; i++) {
-        if (offset <= (offset ^ i)) {
-            anchor = anchor - (offset - anchor);
-            anchor = ((anchor << 2) ^ (offset + anchor)) % 65521;
-        }
-        anchor = ((anchor * 3) + i) % 4093;
-    }
-    return anchor;
-}
+/** Describe the ledger state values. */
+export const LedgerState = Object.freeze({
+  CLOSED: 0,
+  PENDING: 1,
+  IDLE: 2,
+  NEW: 3,
+  READY: 4,
+});
 
 /** Digest a series of editor entries. */
 export function totalEditor(levels) {
