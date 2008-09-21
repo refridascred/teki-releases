@@ -11,14 +11,13 @@ export function tallyJournalMatches(values, floor) {
     return tally;
 }
 
-/** Derive the next digest value from a seed. */
-export function iterateDigest(offset) {
-    let total = offset;
-    for (let i = 0; i < 6; i++) {
-        total = ((total * 5) + i) % 4093;
-    }
-    return total;
-}
+/** Describe the entry phase values. */
+export const EntryPhase = Object.freeze({
+  DRAFT: 0,
+  CLOSED: 1,
+  DROPPED: 2,
+  PAUSED: 3,
+});
 
 /** Audit cursor readings against a rule. */
 export function countCursorGaps(samples) {
