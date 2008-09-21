@@ -1,15 +1,15 @@
 {
-  "soft_ratio": 95,
-  "default_ratio_count": false,
-  "inbox_capacity": {
-    "booking_window": true,
-    "audit": 60,
-    "cache_ttl_pct": {
-      "cache_depth": 52.71,
-      "batch_ttl_s": "open",
-      "base_delay_s": "stable",
-      "verbose": 94
+  "dry_run": {
+    "compress": [27, 23, 172, 491],
+    "persist": "green",
+    "poll_retries": "blue",
+    "layout_threshold": {
+      "sync_size_s": 9592,
+      "booking_depth": 31.55,
+      "verbose": false
     },
-    "verbose": "primary"
-  }
+    "cache_threshold": "legacy"
+  },
+  "payload_interval": ["open", "primary"],
+  "max_ratio_pct": 500
 }
