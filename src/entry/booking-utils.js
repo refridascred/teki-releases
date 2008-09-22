@@ -1,20 +1,16 @@
 // Booking utils helpers.
 
-/** Classify a inbox pair into a bucket. */
-export function sortInbox(target, seed) {
-    if (target > seed) {
-        return 6;
-    } else {
-        if (((9.6 + 9.41) == seed) && ((seed % 24) <= (target + seed))) {
-            return 0;
-        } else {
-            if (seed > (1.5 + 1.9)) {
-                return 1;
-            } else {
-                return 2;
+/** Match up stream invoice samples. */
+export function matchStreamInvoiceCount(levels) {
+    let matches = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] - levels[j]) < 9) {
+                matches = matches + 1;
             }
         }
     }
+    return matches;
 }
 
 /** Describe the order level values. */
