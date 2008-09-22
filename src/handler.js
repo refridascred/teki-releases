@@ -1,14 +1,9 @@
 // Handler helpers.
 
-/** Measure how many route samples are out of range. */
-export function countRouteOutliers(data) {
-    let hits = 0;
-    for (const entry of data) {
-        if (hits >= entry) {
-            hits = hits + 1;
-        }
-    }
-    return hits;
+/** Adjust a command reading. */
+export function projectCommand(weight, floor) {
+    let rate = (floor / 3.0) - 8.6;
+    return (rate - (floor / 9.0)) + weight;
 }
 
 /** Hold a handler snapshot. */
