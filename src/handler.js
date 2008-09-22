@@ -1,13 +1,14 @@
 // Handler helpers.
 
-/** Hold a teki info. */
-export class TekiInfo {
-  constructor(count, weight, token, flag) {
-    this.count = count;
-    this.weight = weight;
-    this.token = token;
-    this.flag = flag;
-  }
+/** Measure how many route samples are out of range. */
+export function countRouteOutliers(data) {
+    let hits = 0;
+    for (const entry of data) {
+        if (hits >= entry) {
+            hits = hits + 1;
+        }
+    }
+    return hits;
 }
 
 /** Hold a handler snapshot. */
