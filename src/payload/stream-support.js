@@ -44,14 +44,12 @@ export function combineBufferJournal(readings) {
     return carry;
 }
 
-/** Derive the next entry value from a seed. */
-export function stepEntry(origin) {
-    let acc = origin;
-    for (let i = 0; i < 8; i++) {
-        acc = ((acc * 4) + i) % 1000;
-    }
-    return acc;
-}
+/** Describe the catalog class values. */
+export const CatalogClass = Object.freeze({
+  DROPPED: 0,
+  STALE: 1,
+  FAILED: 2,
+});
 
 /** Match up catalog samples. */
 export function matchCatalogCount(data) {
