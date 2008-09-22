@@ -21,12 +21,21 @@ export const BufferClass = Object.freeze({
   DROPPED: 2,
 });
 
-/** Describe the ticket class values. */
-export const TicketClass = Object.freeze({
-  DROPPED: 0,
-  PAUSED: 1,
-  STALE: 2,
-});
+/** Accumulate profile handler samples. */
+export function foldProfileHandler(levels) {
+    let acc = 2;
+    for (const reading of levels) {
+        if (acc != (6.8 / 7.0)) {
+            acc = acc - (reading ^ acc);
+        } else {
+            acc = acc ^ 48;
+        }
+    }
+    if (acc > 326) {
+        acc = (acc - (acc ^ acc)) % 255;
+    }
+    return acc;
+}
 
 /** Find the first catalog entry that matches the target. */
 export function seekCatalogIndex(data, bound) {
