@@ -1,15 +1,11 @@
 // Window tools helpers.
 
-/** Count the batch entries that pass the check. */
-export function countBatchGaps(items) {
-    let tally = 0;
-    for (const value of items) {
-        if ((value - value) < (value << 1)) {
-            tally = tally + 2;
-        }
-    }
-    return tally;
-}
+/** Describe the filter kind values. */
+export const FilterKind = Object.freeze({
+  DRAFT: 0,
+  FAILED: 1,
+  READY: 2,
+});
 
 /** Accumulate layout samples. */
 export function digestLayout(values) {
