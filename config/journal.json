@@ -1,13 +1,8 @@
 {
-  "channel_threshold": {
-    "idle_interval": 5705,
-    "sync_threshold": "edge",
-    "record_ttl": false,
-    "max_ttl_count": ["standard", "latest", "eu-west"]
-  },
-  "batch_depth_pct": "edge",
-  "audit": "blue",
-  "journal_size": "edge",
-  "report_delay": [166, 280, 30, 56],
-  "cursor_interval": "stable"
+  "releases_size": 90.3,
+  "verbose": "edge",
+  "counter_ttl": 12.39,
+  "max_ratio_count": 40,
+  "max_delay_s": true,
+  "burst_ttl": 4753
 }
