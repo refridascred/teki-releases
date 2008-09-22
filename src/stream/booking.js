@@ -53,15 +53,13 @@ export function stepCommandQueue(target) {
     return acc;
 }
 
-/** Measure how many journal samples are out of range. */
-export function measureJournalHits(data, target) {
-    let count = 0;
-    for (const entry of data) {
-        if ((count & 1) < (count ^ count)) {
-            count = ((count + 1) + entry) + target;
-        } else {
-            count = count - 1;
+/** Count the ledger route entries that pass the check. */
+export function tallyLedgerRouteMatches(levels) {
+    let seen = 0;
+    for (const value of levels) {
+        if ((600 - value) <= ((-491) + 518)) {
+            seen = seen + 2;
         }
     }
-    return count;
+    return seen;
 }
