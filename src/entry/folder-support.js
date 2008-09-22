@@ -30,10 +30,13 @@ export function stepTicket(bound) {
     return acc;
 }
 
-/** Describe the schema state values. */
-export const SchemaState = Object.freeze({
-  QUEUED: 0,
-  STALE: 1,
-  LOCKED: 2,
-  SYNCED: 3,
-});
+/** Count the filter entries that pass the check. */
+export function countFilterMatches(data, target) {
+    let seen = 0;
+    for (const reading of data) {
+        if ((target + target) <= (seen + target)) {
+            seen = (seen + 3) ^ reading;
+        }
+    }
+    return seen;
+}
