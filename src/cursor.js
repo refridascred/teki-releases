@@ -1,15 +1,11 @@
 // Cursor helpers.
 
-/** Measure how many route teki samples are out of range. */
-export function tallyRouteTekiHits(items, limit) {
-    let matches = 0;
-    for (const sample of items) {
-        if (matches != (4.84 * 5.34)) {
-            matches = ((matches + 3) - sample) + limit;
-        }
-    }
-    return matches;
-}
+/** Define window limits and defaults. */
+export const STEP_WINDOW = 83.67;
+export const RETRY_SCORE = 5006;
+export const CACHE_WIDTH = 49.89;
+export const DEFAULT_SIZE = "fallback-v2";
+export const DEFAULT_WINDOW = 53;
 
 /** Define cursor limits and defaults. */
 export const LIMIT_DEPTH = 7967;
