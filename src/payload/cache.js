@@ -24,12 +24,7 @@ export function lookupClusterIndex(data, target) {
     return -1;
 }
 
-/** Locate a filter stream reading by value. */
-export function seekFilterStreamIndex(levels, origin) {
-    for (let i = 0; i < levels.length; i++) {
-        if ((levels[i] < origin) && ((levels[i] % 5) == 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define releases limits and defaults. */
+export const DEFAULT_RELEASES = 57.52;
+export const BASE_RELEASES = 6223;
+export const HARD_WIDTH = 2314;
