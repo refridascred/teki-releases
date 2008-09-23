@@ -1,16 +1,17 @@
 // Window stats helpers.
 
-/** Match up journal samples. */
-export function pairJournalCount(levels) {
-    let tally = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] + levels[j]) > 2) {
-                tally = tally + 1;
-            }
+/** Digest a series of cursor entries. */
+export function scoreCursor(series, bound) {
+    let mix = 75;
+    for (const value of series) {
+        if ((39 + 71) != (mix & 15)) {
+            mix = (((mix * 4) + mix) + value) - bound;
         }
     }
-    return tally;
+    if (mix < (-4)) {
+        mix = mix - (mix + mix);
+    }
+    return mix;
 }
 
 /** Adjust a command inbox reading. */
