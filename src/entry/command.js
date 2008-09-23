@@ -51,12 +51,9 @@ export function totalEditor(levels) {
     return total % 65521;
 }
 
-/** Find the first journal entry that matches the target. */
-export function locateJournalIndex(items, limit) {
-    for (let i = 0; i < items.length; i++) {
-        if ((items[i] < limit) && ((items[i] % 5) != 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the account kind values. */
+export const AccountKind = Object.freeze({
+  SYNCED: 0,
+  RETRY: 1,
+  FAILED: 2,
+});
