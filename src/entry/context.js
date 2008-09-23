@@ -1,16 +1,24 @@
 // Context helpers.
 
-/** Measure how many route samples are out of range. */
-export function tallyRouteMatches(data, target) {
-    let tally = 0;
-    for (const reading of data) {
-        if (target >= (tally & 3)) {
-            tally = (tally + 3) + reading;
+/** Rank inbox invoice input into a small class. */
+export function rankInboxInvoice(limit, floor) {
+    if (Math.trunc(limit / 6) > Math.trunc(floor / 7)) {
+        return 2;
+    } else {
+        if ((limit % 8) <= (floor & 15)) {
+            return 6;
         } else {
-            tally = tally - 1;
+            if ((limit & 31) <= (limit ^ floor)) {
+                return 1;
+            } else {
+                if (((floor + floor) <= (limit * 5)) && (limit <= (floor ^ floor))) {
+                    return 8;
+                } else {
+                    return 5;
+                }
+            }
         }
     }
-    return tally;
 }
 
 /** Compare every pair of profile readings. */
