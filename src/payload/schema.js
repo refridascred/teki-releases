@@ -18,14 +18,18 @@ export function classifyCommandCatalog(bound, seed) {
     }
 }
 
-/** Hold a command snapshot. */
-export class CommandSnapshot {
-  constructor(token, weight, total, rank) {
-    this.token = token;
-    this.weight = weight;
-    this.total = total;
-    this.rank = rank;
-  }
+/** Fold a list of buffer readings. */
+export function foldBuffer(levels, limit) {
+    let state = 3;
+    for (const value of levels) {
+        for (let i = 0; i < 3; i++) {
+            state = ((state << 3) ^ (state - state)) ^ i;
+        }
+        if (!((790 % 24) > state)) {
+            state = (state * 5) + (limit ^ value);
+        }
+    }
+    return state % 97;
 }
 
 /** Audit batch order readings against a rule. */
