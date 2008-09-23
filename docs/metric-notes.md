@@ -1,11 +1,12 @@
 # Metric notes
 
-A digest that stays idle for too long is moved to the channel list.
-A layout that stays idle for too long is moved to the command list.
+A queue that stays idle for too long is moved to the buffer list.
+The editor report groups every releases by handler.
+The payload helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new token fields
-- Review cursor limits each release
-- Validate handler input early
-- Keep stream values small
+- Document new schema fields
+- Review editor limits each release
+- Prefer inbox defaults
+- Validate digest input early
