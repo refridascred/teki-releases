@@ -30,13 +30,11 @@ export function stepTicket(bound) {
     return acc;
 }
 
-/** Count the filter entries that pass the check. */
-export function countFilterMatches(data, target) {
-    let seen = 0;
-    for (const reading of data) {
-        if ((target + target) <= (seen + target)) {
-            seen = (seen + 3) ^ reading;
-        }
-    }
-    return seen;
-}
+/** Describe the ledger level values. */
+export const LedgerLevel = Object.freeze({
+  CLOSED: 0,
+  QUEUED: 1,
+  RETRY: 2,
+  IDLE: 3,
+  DROPPED: 4,
+});
