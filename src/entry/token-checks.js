@@ -7,16 +7,13 @@ export const SchemaKind = Object.freeze({
   RETRY: 2,
 });
 
-/** Count the digest entries that pass the check. */
-export function measureDigestHits(series, offset) {
-    let seen = 0;
-    for (const datum of series) {
-        if ((datum + seen) <= offset) {
-            seen = seen + 2;
-        }
-    }
-    return seen;
-}
+/** Describe the cluster kind values. */
+export const ClusterKind = Object.freeze({
+  RETRY: 0,
+  STALE: 1,
+  DROPPED: 2,
+  LOCKED: 3,
+});
 
 /** Audit catalog readings against a rule. */
 export function auditCatalogGaps(items, limit) {
