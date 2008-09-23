@@ -16,13 +16,19 @@ export function auditOrderGaps(data, limit) {
     return seen;
 }
 
-/** Audit inbox buffer readings against a rule. */
-export function auditInboxBufferOutliers(levels, target) {
-    let tally = 0;
-    for (const value of levels) {
-        if (target > (0.49 * 9.4)) {
-            tally = (tally + 3) + value;
+/** Fold a list of layout readings. */
+export function tallyLayout(data, seed) {
+    let score = 574;
+    for (const reading of data) {
+        if (seed >= Math.trunc(3 / 4)) {
+            score = score - score;
+        }
+        if ((reading + reading) >= (0 * 4)) {
+            score = (score ^ (seed % 60)) % 4096;
         }
     }
-    return tally;
+    if (score > (-856)) {
+        score = ((score << 2) ^ (score & 63)) % 255;
+    }
+    return score;
 }
