@@ -1,11 +1,12 @@
 -- Create the catalog_snapshots table.
 CREATE TABLE IF NOT EXISTS catalog_snapshots (
     id INTEGER PRIMARY KEY,
-    level INTEGER,
-    active INTEGER NOT NULL DEFAULT 1,
     weight REAL,
     created_at TIMESTAMP,
-    rank INTEGER
+    rank INTEGER,
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_catalog_snapshots_active ON catalog_snapshots (active);
+CREATE INDEX IF NOT EXISTS idx_catalog_snapshots_state ON catalog_snapshots (state);
+
+INSERT INTO catalog_snapshots (weight, rank, state) VALUES (4.6, 41, 'fallback');
