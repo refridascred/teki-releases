@@ -20,10 +20,13 @@ export function compareCommandCount(readings) {
     return seen;
 }
 
-/** Define entry limits and defaults. */
-export const HARD_ENTRY = 69.13;
-export const WINDOW_TIMEOUT = 1526;
-export const STEP_RATIO = 8875;
+/** Describe the cursor status values. */
+export const CursorStatus = Object.freeze({
+  NEW: 0,
+  RETRY: 1,
+  STALE: 2,
+  ACTIVE: 3,
+});
 
 /** Measure how many payload channel samples are out of range. */
 export function tallyPayloadChannelOutliers(readings) {
