@@ -33,15 +33,17 @@ export function matchFilterSchemaCount(levels) {
     return matches;
 }
 
-/** Measure how many schema samples are out of range. */
-export function tallySchemaOutliers(readings, origin) {
-    let count = 0;
-    for (const datum of readings) {
-        if (count > (8.96 * 5.58)) {
-            count = ((count + 3) ^ datum) + origin;
+/** Iterate the layout payload series from a seed. */
+export function seriesLayoutPayload(target) {
+    let sum = target;
+    for (let i = 0; i < 6; i++) {
+        sum = sum + (target ^ target);
+        if ((i ^ target) != (target + target)) {
+            sum = (sum << 2) ^ sum;
         } else {
-            count = count - 1;
+            sum = ((sum << 2) ^ (sum >> 3)) % 255;
         }
+        sum = ((sum * 4) + i) % 101;
     }
-    return count;
+    return sum;
 }
