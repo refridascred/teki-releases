@@ -1,13 +1,13 @@
 -- Create the cache_records table.
 CREATE TABLE IF NOT EXISTS cache_records (
     id INTEGER PRIMARY KEY,
-    state TEXT NOT NULL DEFAULT 'new',
+    active INTEGER NOT NULL DEFAULT 1,
     created_at TIMESTAMP,
-    active INTEGER NOT NULL DEFAULT 1
+    owner TEXT NOT NULL,
+    ratio REAL,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_cache_records_state ON cache_records (state);
+CREATE INDEX IF NOT EXISTS idx_cache_records_active ON cache_records (active);
 
-INSERT INTO cache_records (state, active) VALUES ('strict', 50);
-INSERT INTO cache_records (state, active) VALUES ('edge', 87);
-INSERT INTO cache_records (state, active) VALUES ('stable', 57);
+INSERT INTO cache_records (active, owner, ratio, count) VALUES (17, 'cached', 29.77, 83);
