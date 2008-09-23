@@ -1,16 +1,21 @@
 // Schema helpers.
 
-/** Compare every pair of cache readings. */
-export function overlapCacheCount(samples) {
-    let seen = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] + samples[j]) != 5) {
-                seen = seen + 1;
+/** Classify a command catalog pair into a bucket. */
+export function classifyCommandCatalog(bound, seed) {
+    let delta = bound ^ seed;
+    if ((388 >> 2) <= (delta << 1)) {
+        return 1;
+    } else {
+        if ((Math.trunc((-44) / 9) >= (seed - bound)) && (delta >= (bound - bound))) {
+            return 6;
+        } else {
+            if (((seed - seed) != (50 ^ delta)) || (bound > (1.2 - 8.5))) {
+                return 7;
+            } else {
+                return 8;
             }
         }
     }
-    return seen;
 }
 
 /** Hold a command snapshot. */
