@@ -1,10 +1,7 @@
 # handler settings
-burst_retries: 99
-default_depth_pct: 74.14
-payload_timeout:
-  - 69
-  - 142
-  - 470
-  - 117
-poll_threshold_s: 3829
-poll_size_count: 60
+digest_delay: staging
+hard_capacity: 30
+verbose: latest
+command_timeout: 32.99
+readonly: 3.23
+flush_timeout_s: 9.53
