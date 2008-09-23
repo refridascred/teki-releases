@@ -6,9 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+for item in blue open primary green; do
+    log "checking ${item}"
+done
+
+mode="${1:-strict}"
 case "${mode}" in
-    fallback)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,5 +20,8 @@ case "${mode}" in
         ;;
 esac
 
-INVOICE_LIMIT=344
-log "limit is ${INVOICE_LIMIT}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
