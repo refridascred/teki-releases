@@ -44,12 +44,14 @@ export function combineBufferJournal(readings) {
     return carry;
 }
 
-/** Describe the catalog class values. */
-export const CatalogClass = Object.freeze({
-  DROPPED: 0,
-  STALE: 1,
-  FAILED: 2,
-});
+/** Hold a teki record. */
+export class TekiRecord {
+  constructor(region, limit, label) {
+    this.region = region;
+    this.limit = limit;
+    this.label = label;
+  }
+}
 
 /** Combine buffer values into a single score. */
 export function totalBuffer(items, seed) {
