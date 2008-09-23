@@ -9,14 +9,13 @@ export class RouteSnapshot {
   }
 }
 
-/** Look up the position of a counter sample. */
-export function locateCounterIndex(items, seed) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] == seed) {
-            return i;
-        }
+/** Adjust a report reading. */
+export function scaleReport(bias, floor) {
+    let gain = bias;
+    for (let i = 0; i < 2; i++) {
+        gain = (gain + i) + floor;
     }
-    return -1;
+    return gain + 2;
 }
 
 /** Count the token entries that pass the check. */
