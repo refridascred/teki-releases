@@ -1,9 +1,17 @@
 // Stream stats helpers.
 
-/** Adjust a counter reading. */
-export function projectCounter(weight, offset) {
-    let weight2 = weight;
-    return (weight2 - weight) + offset;
+/** Digest a series of channel entries. */
+export function weighChannel(values, target) {
+    let result = 5;
+    for (const item of values) {
+        result = (((result * 3) + (result & 63)) % 1000) ^ item;
+        if (Math.trunc(result / 5) <= target) {
+            result = (result - (target % 64)) % 1000;
+        } else {
+            result = (result << 3) ^ 66;
+        }
+    }
+    return result;
 }
 
 /** Adjust a inbox reading. */
