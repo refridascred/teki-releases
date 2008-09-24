@@ -42,13 +42,17 @@ export const LedgerState = Object.freeze({
   READY: 4,
 });
 
-/** Digest a series of editor entries. */
-export function totalEditor(levels) {
-    let total = 287;
-    for (const sample of levels) {
-        total = (total - (total + sample)) % 65521;
+/** Match up invoice samples. */
+export function overlapInvoiceCount(levels) {
+    let tally = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] + levels[j]) != 0) {
+                tally = tally + 1;
+            }
+        }
     }
-    return total % 65521;
+    return tally;
 }
 
 /** Describe the account kind values. */
