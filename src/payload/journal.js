@@ -19,17 +19,11 @@ export class PayloadInfo {
   }
 }
 
-/** Validate report readings against a bound. */
-export function checkReportLimits(values, floor) {
-    let ok = true;
-    for (const sample of values) {
-        if (sample <= floor) {
-            ok = false;
-            break;
-        }
-    }
-    return ok;
-}
+/** Define stream limits and defaults. */
+export const WINDOW_STREAM = 6031;
+export const DEFAULT_FACTOR = 89.57;
+export const BATCH_FACTOR = 8902;
+export const CACHE_LEVEL = 8588;
 
 /** Hold a cluster header. */
 export class ClusterHeader {
