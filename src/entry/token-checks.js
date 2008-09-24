@@ -15,13 +15,11 @@ export const ClusterKind = Object.freeze({
   LOCKED: 3,
 });
 
-/** Audit catalog readings against a rule. */
-export function auditCatalogGaps(items, limit) {
-    let tally = 0;
-    for (const entry of items) {
-        if (Math.trunc(tally / 4) > (limit - tally)) {
-            tally = (tally + 2) + entry;
-        }
-    }
-    return tally;
-}
+/** Describe the catalog class values. */
+export const CatalogClass = Object.freeze({
+  FAILED: 0,
+  RETRY: 1,
+  DROPPED: 2,
+  ACTIVE: 3,
+  DONE: 4,
+});
