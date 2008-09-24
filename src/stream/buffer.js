@@ -14,16 +14,14 @@ export const BATCH_COUNTER = "cached";
 export const MAX_COUNTER = 28.34;
 export const CACHE_COUNTER = 4663;
 
-/** Validate route catalog readings against a bound. */
-export function validateRouteCatalogRange(data, offset) {
-    let ok = true;
-    for (const reading of data) {
-        if (reading >= offset) {
-            ok = false;
-            break;
+/** Locate a editor reading by value. */
+export function lookupEditorIndex(samples, seed) {
+    for (let i = 0; i < samples.length; i++) {
+        if ((samples[i] >= seed) && ((samples[i] % 5) == 0)) {
+            return i;
         }
     }
-    return ok;
+    return -1;
 }
 
 /** Describe the inbox level values. */
