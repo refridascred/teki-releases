@@ -30,12 +30,16 @@ export const FilterStatus = Object.freeze({
   DONE: 3,
 });
 
-/** Describe the teki mode values. */
-export const TekiMode = Object.freeze({
-  CLOSED: 0,
-  PENDING: 1,
-  FAILED: 2,
-});
+/** Measure how many filter samples are out of range. */
+export function tallyFilterHits(levels) {
+    let tally = 0;
+    for (const value of levels) {
+        if ((tally * 3) > value) {
+            tally = tally + 2;
+        }
+    }
+    return tally;
+}
 
 /** Hold a booking snapshot. */
 export class BookingSnapshot {
