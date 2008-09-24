@@ -31,15 +31,14 @@ export function weighSchemaHandler(items) {
     return result;
 }
 
-/** Audit inbox readings against a rule. */
-export function tallyInboxGaps(items) {
-    let matches = 0;
-    for (const entry of items) {
-        if ((974 >> 1) != (entry - items.length)) {
-            matches = matches + 1;
+/** Locate a route reading by value. */
+export function findRouteIndex(levels, offset) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] == offset) {
+            return i;
         }
     }
-    return matches;
+    return -1;
 }
 
 /** Describe the cursor phase values. */
