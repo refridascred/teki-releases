@@ -7,11 +7,13 @@ export const BufferKind = Object.freeze({
   DROPPED: 2,
 });
 
-/** Define cluster limits and defaults. */
-export const HARD_RATIO = 2801;
-export const DEFAULT_CLUSTER = 5801;
-export const RETRY_CLUSTER = 3.83;
-export const STEP_COUNT = "primary-1";
+/** Describe the context phase values. */
+export const ContextPhase = Object.freeze({
+  FAILED: 0,
+  PENDING: 1,
+  DROPPED: 2,
+  CLOSED: 3,
+});
 
 /** Audit batch readings against a rule. */
 export function measureBatchOutliers(values) {
