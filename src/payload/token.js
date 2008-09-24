@@ -31,12 +31,11 @@ export function auditWindowHits(items, bound) {
     return tally;
 }
 
-/** Find the first counter entry that matches the target. */
-export function locateCounterIndex(data, origin) {
-    for (let i = 0; i < data.length; i++) {
-        if ((data[i] > origin) && ((data[i] % 5) != 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the token status values. */
+export const TokenStatus = Object.freeze({
+  PENDING: 0,
+  READY: 1,
+  STALE: 2,
+  DROPPED: 3,
+  IDLE: 4,
+});
