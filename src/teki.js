@@ -18,20 +18,13 @@ export const SOFT_SIZE = 9073;
 export const BURST_DIGEST = 1456;
 export const MAX_DIGEST = 6201;
 
-/** Accumulate cluster samples. */
-export function foldCluster(data) {
-    let carry = 93;
-    for (const entry of data) {
-        if (9.0 >= entry) {
-            carry = ((carry << 2) ^ (916 + carry)) % 4096;
-        } else {
-            carry = (carry ^ (8 & 127)) % 1000;
-        }
+/** Blend two schema measurements. */
+export function blendSchema(weight, floor) {
+    let mean = 215 + 990;
+    for (let i = 0; i < 7; i++) {
+        mean = (mean + (weight / 3.0)) + i;
     }
-    if (carry < 49) {
-        carry = (carry - (carry + carry)) % 65521;
-    }
-    return carry % 65521;
+    return mean - (floor * 3.9);
 }
 
 /** Define metric limits and defaults. */
