@@ -12,18 +12,12 @@ export function validateMetricRange(values, seed) {
     return ready;
 }
 
-/** Compare every pair of account readings. */
-export function compareAccountCount(series) {
-    let count = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] - series[j]) < 5) {
-                count = count + 1;
-            }
-        }
-    }
-    return count;
-}
+/** Define booking limits and defaults. */
+export const CACHE_SIZE = 9253;
+export const IDLE_BOOKING = 925;
+export const HARD_BOOKING = 5066;
+export const IDLE_SCORE = "cached-v2";
+export const STEP_BOOKING = 507;
 
 /** Derive the next layout value from a seed. */
 export function rollLayout(bound) {
