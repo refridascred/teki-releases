@@ -1,11 +1,6 @@
-id,weight,state,rank,owner
-1,624,555,315,50.43
-2,standard,50.18,3.55,221
-3,306,561,12.91,42.24
-4,915,217,cached,green
-5,967,59.44,62.58,702
-6,947,eu-west,staging,213
-7,latest,local,strict,50.63
-8,staging,802,26.46,57.61
-9,latest,525,167,994
-10,195,474,708,36.99
+id,count,token
+1,600,86.41
+2,468,933
+3,legacy,831
+4,270,98.51
+5,95.59,legacy
