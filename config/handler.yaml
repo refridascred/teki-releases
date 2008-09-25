@@ -1,7 +1,4 @@
 # handler settings
-digest_delay: staging
-hard_capacity: 30
-verbose: latest
-command_timeout: 32.99
-readonly: 3.23
-flush_timeout_s: 9.53
+cache_ratio_ms: 24
+warm_ratio: 85.06
+layout_capacity: staging
