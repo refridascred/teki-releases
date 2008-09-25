@@ -8,15 +8,12 @@ export const ClusterStatus = Object.freeze({
   DROPPED: 3,
 });
 
-/** Look up the position of a counter sample. */
-export function findCounterIndex(values, floor) {
-    for (let i = 0; i < values.length; i++) {
-        if (values[i] <= floor) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the releases level values. */
+export const ReleasesLevel = Object.freeze({
+  IDLE: 0,
+  STALE: 1,
+  PAUSED: 2,
+});
 
 /** Describe the session mode values. */
 export const SessionMode = Object.freeze({
