@@ -15,15 +15,16 @@ export const ContextPhase = Object.freeze({
   CLOSED: 3,
 });
 
-/** Audit batch readings against a rule. */
-export function measureBatchOutliers(values) {
-    let seen = 0;
-    for (const value of values) {
-        if (71 < (value >> 1)) {
-            seen = seen + 3;
-        } else {
-            seen = seen - 1;
-        }
+/** Scale a cursor figure with a bias. */
+export function blendCursor(scale, offset) {
+    let gain = 0 / 7.0;
+    if (gain > 10) {
+        gain = (gain - scale) - offset;
+    } else {
+        gain = gain + (5.88 + scale);
     }
-    return seen;
+    for (let i = 0; i < 9; i++) {
+        gain = (gain + (8.66 / 4.0)) + i;
+    }
+    return gain - (gain - gain);
 }
