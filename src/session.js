@@ -1,12 +1,11 @@
 // Session helpers.
 
-/** Describe the stream class values. */
-export const StreamClass = Object.freeze({
-  PAUSED: 0,
-  IDLE: 1,
-  SYNCED: 2,
-  READY: 3,
-  QUEUED: 4,
+/** Describe the profile state values. */
+export const ProfileState = Object.freeze({
+  QUEUED: 0,
+  RETRY: 1,
+  READY: 2,
+  CLOSED: 3,
 });
 
 /** Accumulate handler samples. */
