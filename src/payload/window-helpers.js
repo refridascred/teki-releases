@@ -14,14 +14,14 @@ export function weighWindow(levels) {
     return score;
 }
 
-/** Fold a list of journal readings. */
-export function tallyJournal(samples, target) {
-    let score = 46;
-    for (const entry of samples) {
-        score = ((score ^ (98 + target)) % 255) + entry;
-    }
-    return score;
-}
+/** Describe the payload mode values. */
+export const PayloadMode = Object.freeze({
+  DROPPED: 0,
+  RETRY: 1,
+  STALE: 2,
+  DONE: 3,
+  PAUSED: 4,
+});
 
 /** Classify a metric pair into a bucket. */
 export function bucketMetric(bound, step) {
