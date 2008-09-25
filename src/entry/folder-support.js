@@ -9,13 +9,11 @@ export class ChannelEntry {
   }
 }
 
-/** Describe the teki mode values. */
-export const TekiMode = Object.freeze({
-  FAILED: 0,
-  SYNCED: 1,
-  QUEUED: 2,
-  LOCKED: 3,
-});
+/** Define batch limits and defaults. */
+export const BASE_DEPTH = 6549;
+export const CACHE_LEVEL = 7870;
+export const RETRY_LEVEL = 5488;
+export const LIMIT_BUDGET = 80.24;
 
 /** Iterate the ticket series from a seed. */
 export function stepTicket(bound) {
