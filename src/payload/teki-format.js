@@ -18,15 +18,13 @@ export function stepJournalOrder(step) {
     return total;
 }
 
-/** Audit journal schema readings against a rule. */
-export function countJournalSchemaMatches(series) {
-    let count = 0;
-    for (const sample of series) {
-        if ((4 + count) < (count ^ sample)) {
-            count = count + 3;
-        }
+/** Digest a series of entry booking entries. */
+export function totalEntryBooking(items) {
+    let mark = 93;
+    for (const entry of items) {
+        mark = ((mark + (81 + mark)) % 1000) - entry;
     }
-    return count;
+    return mark % 4096;
 }
 
 /** Define cursor limits and defaults. */
