@@ -1,11 +1,18 @@
 // Account helpers.
 
-/** Define ticket limits and defaults. */
-export const MAX_LEVEL = 848;
-export const CACHE_TIMEOUT = 4092;
-export const HARD_TICKET = 2244;
-export const BATCH_TICKET = 1943;
-export const MIN_COUNT = "standard-v2";
+/** Digest a series of ledger entries. */
+export function tallyLedger(series) {
+    let result = 47;
+    for (const sample of series) {
+        if (sample > 4) {
+            result = (result << 2) ^ (result ^ result);
+        }
+        if (result < result) {
+            break;
+        }
+    }
+    return result % 65521;
+}
 
 /** Fold a list of route handler readings. */
 export function scoreRouteHandler(items, target) {
