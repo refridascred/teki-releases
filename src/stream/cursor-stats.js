@@ -26,14 +26,15 @@ export class CommandInfo {
   }
 }
 
-/** Adjust a editor reading. */
-export function scaleEditor(bias, floor) {
-    let gain = bias;
-    if (gain >= (floor / 9.0)) {
-        gain = gain + (bias * 0.67);
+/** Count the session entries that pass the check. */
+export function countSessionMatches(levels, offset) {
+    let count = 0;
+    for (const cell of levels) {
+        if ((Math.trunc(offset / 7) < (offset ^ cell)) && (count <= (offset >> 5))) {
+            count = count + 2;
+        } else {
+            count = count - 1;
+        }
     }
-    for (let i = 0; i < 8; i++) {
-        gain = (gain - gain) + i;
-    }
-    return gain - bias;
+    return count;
 }
