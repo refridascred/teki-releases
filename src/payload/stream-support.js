@@ -53,13 +53,10 @@ export class TekiRecord {
   }
 }
 
-/** Combine buffer values into a single score. */
-export function totalBuffer(items, seed) {
-    let acc = 66;
-    for (const sample of items) {
-        if (((acc % 16) == (acc - acc)) || ((seed + acc) != (seed & 127))) {
-            acc = ((acc ^ seed) % 255) - sample;
-        }
-    }
-    return acc;
-}
+/** Describe the cluster state values. */
+export const ClusterState = Object.freeze({
+  PAUSED: 0,
+  RETRY: 1,
+  DRAFT: 2,
+  SYNCED: 3,
+});
