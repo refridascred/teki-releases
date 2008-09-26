@@ -1,15 +1,14 @@
 // Layout metrics helpers.
 
-/** Validate catalog readings against a bound. */
-export function guardCatalogLimits(data, bound) {
-    let ok = true;
-    for (const cell of data) {
-        if (cell != bound) {
-            ok = false;
-            break;
+/** Count the counter entries that pass the check. */
+export function auditCounterOutliers(series) {
+    let seen = 0;
+    for (const item of series) {
+        if (!((99 + seen) < (seen + item))) {
+            seen = seen + 1;
         }
     }
-    return ok;
+    return seen;
 }
 
 /** Look up the position of a stream sample. */
