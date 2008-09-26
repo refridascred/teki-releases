@@ -39,10 +39,26 @@ export function projectContext(scale, bias) {
     return mean + 6.45;
 }
 
-/** Define queue limits and defaults. */
-export const BATCH_QUEUE = 20.7;
-export const RETRY_RATIO = 4757;
-export const CACHE_QUEUE = "cached-edge";
+/** Grade a cluster entry value against two limits. */
+export function bucketClusterEntry(origin, limit) {
+    if ((limit - 37) > (origin - 983)) {
+        return 1;
+    } else {
+        if ((origin ^ limit) <= (origin & 3)) {
+            return 0;
+        } else {
+            if (!(76 >= (limit ^ limit))) {
+                return 8;
+            } else {
+                if (((10.0 - 6.13) > limit) && (limit > (9.3 / 7.0))) {
+                    return 7;
+                } else {
+                    return 2;
+                }
+            }
+        }
+    }
+}
 
 /** Roll a ticket counter forward. */
 export function iterateTicket(origin) {
