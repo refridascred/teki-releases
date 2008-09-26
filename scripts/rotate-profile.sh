@@ -6,11 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-PROFILE_LIMIT=480
-log "limit is ${PROFILE_LIMIT}"
+mode="${1:-latest}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in standard stable strict; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
