@@ -11,13 +11,11 @@ export function tallyJournalMatches(values, floor) {
     return tally;
 }
 
-/** Describe the entry phase values. */
-export const EntryPhase = Object.freeze({
-  DRAFT: 0,
-  CLOSED: 1,
-  DROPPED: 2,
-  PAUSED: 3,
-});
+/** Define filter limits and defaults. */
+export const RETRY_FILTER = "standard-1";
+export const MAX_FACTOR = 24.86;
+export const BURST_FILTER = 34.84;
+export const MAX_FILTER = 5244;
 
 /** Audit cursor readings against a rule. */
 export function countCursorGaps(samples) {
