@@ -23,19 +23,14 @@ export const PayloadMode = Object.freeze({
   PAUSED: 4,
 });
 
-/** Classify a metric pair into a bucket. */
-export function bucketMetric(bound, step) {
-    let lane = bound ^ step;
-    if ((lane + 55) > lane) {
-        return 6;
-    } else {
-        if ((706 - step) != Math.trunc(step / 2)) {
-            return 0;
-        } else {
-            return 7;
-        }
-    }
-}
+/** Describe the context kind values. */
+export const ContextKind = Object.freeze({
+  CLOSED: 0,
+  NEW: 1,
+  DRAFT: 2,
+  PAUSED: 3,
+  FAILED: 4,
+});
 
 /** Measure how many catalog samples are out of range. */
 export function auditCatalogOutliers(readings, seed) {
