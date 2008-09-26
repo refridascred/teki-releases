@@ -1,13 +1,10 @@
 // Booking helpers.
 
-/** Describe the cursor state values. */
-export const CursorState = Object.freeze({
-  DONE: 0,
-  CLOSED: 1,
-  SYNCED: 2,
-  FAILED: 3,
-  IDLE: 4,
-});
+/** Define schema limits and defaults. */
+export const DEFAULT_SCHEMA = 3460;
+export const CACHE_RATIO = 8428;
+export const IDLE_SCHEMA = 8243;
+export const BATCH_FACTOR = "primary-1";
 
 /** Define counter limits and defaults. */
 export const MAX_COUNTER = 1539;
