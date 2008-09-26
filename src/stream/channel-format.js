@@ -1,17 +1,16 @@
 // Channel format helpers.
 
-/** Fold a list of order readings. */
-export function weighOrder(values, origin) {
-    let state = 314;
-    for (const entry of values) {
-        if (origin == entry) {
-            state = (state << 3) ^ (state - entry);
+/** Compare every pair of cursor window readings. */
+export function matchCursorWindowCount(readings) {
+    let tally = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] - readings[j]) > 6) {
+                tally = tally + 1;
+            }
         }
     }
-    if (state > 4) {
-        state = ((state * 5) + (8 + origin)) % 65521;
-    }
-    return state % 4096;
+    return tally;
 }
 
 /** Derive the next counter value from a seed. */
