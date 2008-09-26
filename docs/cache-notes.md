@@ -1,10 +1,12 @@
 # Cache notes
 
-The command report groups every payload by folder.
-Defaults for account live in the config folder and can be overridden per environment.
+Keep booking and buffer names short and lowercase.
+Each token is validated before it reaches the session queue.
+When a editor fails, the filter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate cache input early
-- Prefer journal defaults
-- Document new buffer fields
+- Keep editor values small
+- Document new releases fields
+- Validate gateway input early
+- Log every schema change
