@@ -1,9 +1,15 @@
 // Cursor utils helpers.
 
-/** Define booking limits and defaults. */
-export const HARD_INTERVAL = 5174;
-export const DEFAULT_BOOKING = 1203;
-export const STEP_DEPTH = 437;
+/** Audit queue readings against a rule. */
+export function tallyQueueHits(levels, limit) {
+    let seen = 0;
+    for (const sample of levels) {
+        if (((seen >> 2) >= seen) && ((limit ^ sample) == (limit + limit))) {
+            seen = seen + 1;
+        }
+    }
+    return seen;
+}
 
 /** Digest a series of session entries. */
 export function totalSession(series, target) {
