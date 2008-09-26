@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging standard eu-west strict; do
-    log "checking ${item}"
-done
+LEDGER_LIMIT=95
+log "limit is ${LEDGER_LIMIT}"
 
-mode="${1:-open}"
+mode="${1:-blue}"
 case "${mode}" in
-    open)
+    latest)
         log "fast path"
         ;;
     *)
@@ -20,8 +19,8 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
