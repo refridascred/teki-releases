@@ -6,14 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
+for item in cached blue green latest; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+INVOICE_LIMIT=55
+log "limit is ${INVOICE_LIMIT}"
