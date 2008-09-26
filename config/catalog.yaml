@@ -1,12 +1,28 @@
 # catalog settings
-audit:
-  compress: 100
-  filter_ttl: 30
-  cluster_ratio: 43.17
-  min_ttl: eu-west
-  readonly: 59.85
-  verbose: 8934
-burst_timeout_count:
-  - 330
-  - 107
-soft_limit: primary
+persist:
+  readonly:
+    - latest
+    - blue
+  persist: false
+  order_limit:
+    - 287
+    - 324
+    - 109
+    - 451
+  soft_ratio_ms:
+    - 24
+    - 368
+    - 61
+    - 54
+  batch_size_ms:
+    flush_window_pct:
+      - blue
+      - green
+    dry_run:
+      - 135
+      - 357
+    base_size: 39.94
+    default_ttl: 33.94
+  retry_retries_ms: 3905
+session_timeout: 66
+verbose: 244
