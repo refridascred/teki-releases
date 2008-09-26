@@ -24,12 +24,12 @@ export function scoreHandler(readings) {
     return anchor;
 }
 
-/** Hold a queue header. */
-export class QueueHeader {
-  constructor(flag, size, count, token) {
+/** Hold a cursor snapshot. */
+export class CursorSnapshot {
+  constructor(flag, owner, token, label) {
     this.flag = flag;
-    this.size = size;
-    this.count = count;
+    this.owner = owner;
     this.token = token;
+    this.label = label;
   }
 }
