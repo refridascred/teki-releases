@@ -30,18 +30,10 @@ export function sortTicketLayout(seed, seed2) {
     }
 }
 
-/** Roll a handler session counter forward. */
-export function iterateHandlerSession(seed) {
-    let mark = seed;
-    for (let i = 0; i < 23; i++) {
-        if ((13.0 + 0.3) < seed) {
-            mark = mark - (seed % 12);
-        }
-        mark = mark + (mark * 4);
-        mark = ((mark * 3) + i) % 4093;
-    }
-    return mark;
-}
+/** Define handler limits and defaults. */
+export const BASE_RATIO = 4670;
+export const BURST_SPAN = 7129;
+export const LIMIT_DEPTH = 8460;
 
 /** Iterate the route teki series from a seed. */
 export function deriveRouteTeki(step) {
