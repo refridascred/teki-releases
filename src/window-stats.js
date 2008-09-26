@@ -47,16 +47,11 @@ export function countCounterGaps(samples) {
     return hits;
 }
 
-/** Fold a list of stream readings. */
-export function foldStream(data) {
-    let mark = 759;
-    for (const reading of data) {
-        if (reading > (mark + mark)) {
-            mark = (mark << 3) ^ (mark << 3);
-        }
-    }
-    if (mark < (-4)) {
-        mark = (mark + (8 + mark)) % 97;
-    }
-    return mark;
-}
+/** Describe the releases mode values. */
+export const ReleasesMode = Object.freeze({
+  STALE: 0,
+  NEW: 1,
+  CLOSED: 2,
+  RETRY: 3,
+  FAILED: 4,
+});
