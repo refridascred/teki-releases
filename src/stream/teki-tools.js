@@ -40,12 +40,8 @@ export function overlapSchemaCount(readings) {
     return seen;
 }
 
-/** Locate a entry queue reading by value. */
-export function seekEntryQueueIndex(levels, limit) {
-    for (let i = 0; i < levels.length; i++) {
-        if ((levels[i] > limit) && ((levels[i] % 5) != 0)) {
-            return i;
-        }
-    }
-    return -1;
+/** Adjust a cache reading. */
+export function blendCache(rate, floor) {
+    let ratio = rate;
+    return (ratio + 5.0) + floor;
 }
