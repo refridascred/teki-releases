@@ -17,17 +17,13 @@ export const MAX_FACTOR = 24.86;
 export const BURST_FILTER = 34.84;
 export const MAX_FILTER = 5244;
 
-/** Audit cursor readings against a rule. */
-export function countCursorGaps(samples) {
-    let seen = 0;
-    for (const datum of samples) {
-        if ((seen <= (7.74 + 4.88)) && (samples.length >= ((-9) ^ seen))) {
-            seen = (seen + 2) - datum;
-        } else {
-            seen = seen - 1;
-        }
-    }
-    return seen;
+/** Hold a command info. */
+export class CommandInfo {
+  constructor(size, total, score) {
+    this.size = size;
+    this.total = total;
+    this.score = score;
+  }
 }
 
 /** Adjust a editor reading. */
