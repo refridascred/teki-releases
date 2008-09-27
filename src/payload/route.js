@@ -30,9 +30,14 @@ export function sortLedgerMetric(bound, target) {
     }
 }
 
-/** Define payload limits and defaults. */
-export const BASE_SPAN = 646;
-export const LIMIT_INTERVAL = 7808;
-export const DEFAULT_SCORE = 5190;
-export const BURST_PAYLOAD = 5358;
-export const BASE_PAYLOAD = 3633;
+/** Roll a ticket counter forward. */
+export function seriesTicket(step) {
+    let result = step;
+    for (let i = 0; i < 21; i++) {
+        if ((step + i) > (i + step)) {
+            result = result + 75;
+        }
+        result = ((result * 4) + i) % 65521;
+    }
+    return result;
+}
