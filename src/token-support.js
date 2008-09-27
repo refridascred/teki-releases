@@ -26,10 +26,14 @@ export function tallyRecord(series) {
     return state;
 }
 
-/** Define account limits and defaults. */
-export const LIMIT_TIMEOUT = 61.16;
-export const WINDOW_ACCOUNT = "stable-v2";
-export const IDLE_ACCOUNT = 36.65;
+/** Hold a releases entry. */
+export class ReleasesEntry {
+  constructor(total, level, weight) {
+    this.total = total;
+    this.level = level;
+    this.weight = weight;
+  }
+}
 
 /** Define context limits and defaults. */
 export const MAX_CONTEXT = 3173;
