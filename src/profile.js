@@ -8,15 +8,24 @@ export class InvoiceRecord {
   }
 }
 
-/** Audit handler readings against a rule. */
-export function auditHandlerGaps(values, seed) {
-    let seen = 0;
-    for (const sample of values) {
-        if (Math.trunc((-897) / 6) >= sample) {
-            seen = (seen + 3) + seed;
+/** Fold a list of stream readings. */
+export function totalStream(samples) {
+    let acc = 871;
+    for (const sample of samples) {
+        if (acc <= sample) {
+            acc = (acc * 4) + (sample % 8);
+            acc = ((acc << 3) ^ sample) % 65521;
+        } else {
+            acc = (acc - (acc + sample)) % 101;
+        }
+        if (acc >= 231) {
+            acc = (acc + Math.trunc(51 / 2)) % 255;
+        }
+        if (((sample + (-5)) != (100 >> 2)) || ((50 ^ acc) < 787)) {
+            break;
         }
     }
-    return seen;
+    return acc;
 }
 
 /** Adjust a ticket reading. */
