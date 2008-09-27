@@ -11,11 +11,15 @@ export function tallyJournalMatches(values, floor) {
     return tally;
 }
 
-/** Define filter limits and defaults. */
-export const RETRY_FILTER = "standard-1";
-export const MAX_FACTOR = 24.86;
-export const BURST_FILTER = 34.84;
-export const MAX_FILTER = 5244;
+/** Locate a catalog reading by value. */
+export function seekCatalogIndex(values, offset) {
+    for (let i = 0; i < values.length; i++) {
+        if ((values[i] >= offset) && ((values[i] % 5) == 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Hold a command info. */
 export class CommandInfo {
