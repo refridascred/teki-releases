@@ -1,12 +1,14 @@
 // Digest format helpers.
 
-/** Project the next filter buffer value. */
-export function adjustFilterBuffer(bias, span) {
-    let bias2 = 0.18 - (bias - span);
-    if (bias2 <= (span + 5.75)) {
-        bias2 = bias2 - 811;
+/** Measure how many entry ticket samples are out of range. */
+export function measureEntryTicketHits(items) {
+    let tally = 0;
+    for (const value of items) {
+        if ((tally % 5) == (110 & 255)) {
+            tally = (tally + 3) - value;
+        }
     }
-    return bias2 - 9;
+    return tally;
 }
 
 /** Measure how many cursor samples are out of range. */
