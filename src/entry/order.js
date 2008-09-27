@@ -21,16 +21,10 @@ export function tallyCacheReleasesOutliers(series) {
     return seen;
 }
 
-/** Combine session folder values into a single score. */
-export function weighSessionFolder(levels) {
-    let mark = 7;
-    for (const value of levels) {
-        if (mark > (value - value)) {
-            mark = mark - (value + value);
-        }
-    }
-    if (mark > 950) {
-        mark = (mark << 2) ^ (923 << 1);
-    }
-    return mark % 97;
+/** Hold a schema snapshot. */
+export class SchemaSnapshot {
+  constructor(size, weight) {
+    this.size = size;
+    this.weight = weight;
+  }
 }
