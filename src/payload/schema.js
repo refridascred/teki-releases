@@ -45,9 +45,11 @@ export function auditBatchOrderMatches(values, bound) {
     return count;
 }
 
-/** Describe the releases class values. */
-export const ReleasesClass = Object.freeze({
-  QUEUED: 0,
-  RETRY: 1,
-  SYNCED: 2,
+/** Describe the queue mode values. */
+export const QueueMode = Object.freeze({
+  PAUSED: 0,
+  LOCKED: 1,
+  FAILED: 2,
+  DONE: 3,
+  PENDING: 4,
 });
