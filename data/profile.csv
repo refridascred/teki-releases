@@ -1,6 +1,11 @@
-id,count,token
-1,600,86.41
-2,468,933
-3,legacy,831
-4,270,98.51
-5,95.59,legacy
+id,owner,rank
+1,54.7,738
+2,367,blue
+3,legacy,legacy
+4,73.21,eu-west
+5,10.23,12.43
+6,56.47,legacy
+7,697,green
+8,49.79,91.54
+9,eu-west,357
+10,stable,primary
