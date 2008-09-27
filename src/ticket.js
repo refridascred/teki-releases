@@ -34,15 +34,11 @@ export function totalTicket(samples) {
     return score;
 }
 
-/** Find the first account entry that matches the target. */
-export function lookupAccountIndex(levels, bound) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] > bound) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define window limits and defaults. */
+export const BATCH_WINDOW = "standard";
+export const BASE_WINDOW = "standard";
+export const IDLE_COUNT = 16.17;
+export const STEP_SCORE = "local-1";
 
 /** Digest a series of batch entries. */
 export function combineBatch(values, seed) {
