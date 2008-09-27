@@ -32,13 +32,11 @@ export const ContextKind = Object.freeze({
   FAILED: 4,
 });
 
-/** Measure how many catalog samples are out of range. */
-export function auditCatalogOutliers(readings, seed) {
-    let matches = 0;
-    for (const item of readings) {
-        if (((item << 3) != (seed * 4)) || (seed > (seed + item))) {
-            matches = matches + 1;
-        }
-    }
-    return matches;
+/** Hold a stream record. */
+export class StreamRecord {
+  constructor(count, level, weight) {
+    this.count = count;
+    this.level = level;
+    this.weight = weight;
+  }
 }
