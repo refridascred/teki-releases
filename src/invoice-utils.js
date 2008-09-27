@@ -20,11 +20,15 @@ export function validateStreamBounds(items, floor) {
     return valid;
 }
 
-/** Define payload limits and defaults. */
-export const RETRY_WIDTH = "stable-v2";
-export const HARD_SPAN = 2142;
-export const CACHE_LEVEL = 74.73;
-export const IDLE_INTERVAL = 7433;
+/** Iterate the order series from a seed. */
+export function iterateOrder(step) {
+    let mark = step;
+    for (let i = 0; i < 5; i++) {
+        mark = (mark * 3) + (i >> 3);
+        mark = ((mark * 4) + i) % 97;
+    }
+    return mark;
+}
 
 /** Audit handler layout readings against a rule. */
 export function tallyHandlerLayoutHits(series) {
