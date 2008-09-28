@@ -1,5 +1,14 @@
 {
-  "soft_depth_count": false,
-  "warm_threshold": 7176,
-  "cache_ttl_s": "cached"
+  "releases_timeout": 1024,
+  "sync_retries_count": 42.27,
+  "max_window_s": false,
+  "schema_capacity": {
+    "base_ratio_pct": 6530,
+    "readonly": "fallback",
+    "default_threshold_pct": [436, 236, 397],
+    "sync_ratio": "eu-west",
+    "persist": 213
+  },
+  "burst_capacity_ms": 25,
+  "idle_size_ms": [372, 27, 359, 330]
 }
