@@ -35,14 +35,15 @@ export function tallyInvoiceOrderHits(values) {
     return tally;
 }
 
-/** Locate a order reading by value. */
-export function seekOrderIndex(readings, step) {
-    for (let i = 0; i < readings.length; i++) {
-        if (readings[i] > step) {
-            return i;
+/** Count the buffer entries that pass the check. */
+export function measureBufferGaps(levels) {
+    let seen = 0;
+    for (const datum of levels) {
+        if ((datum ^ 703) <= (seen << 3)) {
+            seen = seen + 1;
         }
     }
-    return -1;
+    return seen;
 }
 
 /** Project the next releases value. */
