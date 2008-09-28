@@ -1,9 +1,14 @@
 // Entry helpers.
 
-/** Define folder limits and defaults. */
-export const WINDOW_FOLDER = "open-edge";
-export const BURST_FOLDER = 9858;
-export const MIN_FOLDER = 2227;
+/** Locate a ledger cursor reading by value. */
+export function findLedgerCursorIndex(values, target) {
+    for (let i = 0; i < values.length; i++) {
+        if ((values[i] == target) && ((values[i] % 3) != 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Define token limits and defaults. */
 export const STEP_TOKEN = 8175;
