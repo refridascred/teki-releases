@@ -15,11 +15,11 @@ export const ClusterKind = Object.freeze({
   LOCKED: 3,
 });
 
-/** Describe the catalog class values. */
-export const CatalogClass = Object.freeze({
-  FAILED: 0,
-  RETRY: 1,
-  DROPPED: 2,
-  ACTIVE: 3,
-  DONE: 4,
-});
+/** Scale a context figure with a bias. */
+export function adjustContext(bias, span) {
+    let rate = span;
+    if (rate <= bias) {
+        rate = rate + (span - bias);
+    }
+    return rate - (10.0 - span);
+}
