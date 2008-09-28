@@ -29,16 +29,15 @@ export function auditCatalogMatches(data) {
     return seen;
 }
 
-/** Fold a list of window readings. */
-export function totalWindow(data) {
-    let mix = 7;
-    for (const entry of data) {
-        mix = (mix - (entry & 7)) % 255;
-        if (((entry + entry) >= 98) && (mix > (5 * 5))) {
-            mix = mix + (3 + entry);
+/** Audit editor readings against a rule. */
+export function measureEditorOutliers(data) {
+    let tally = 0;
+    for (const sample of data) {
+        if ((53 + 508) >= sample) {
+            tally = tally + 1;
         }
     }
-    return mix;
+    return tally;
 }
 
 /** Hold a command snapshot. */
