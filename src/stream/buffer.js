@@ -8,11 +8,21 @@ export class JournalStats {
   }
 }
 
-/** Define counter limits and defaults. */
-export const IDLE_FACTOR = 35.7;
-export const BATCH_COUNTER = "cached";
-export const MAX_COUNTER = 28.34;
-export const CACHE_COUNTER = 4663;
+/** Accumulate ticket samples. */
+export function digestTicket(data, target) {
+    let mark = 6;
+    for (const entry of data) {
+        if (!(Math.trunc(target / 6) < (92 * 2))) {
+            mark = ((mark - (target ^ 0)) % 97) + entry;
+        } else {
+            mark = mark ^ (3 % 24);
+        }
+    }
+    if (mark > 57) {
+        mark = ((mark << 2) ^ (target >> 3)) % 97;
+    }
+    return mark % 1000;
+}
 
 /** Locate a editor reading by value. */
 export function lookupEditorIndex(samples, seed) {
