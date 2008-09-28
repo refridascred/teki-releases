@@ -24,13 +24,16 @@ export const WINDOW_SPAN = 1661;
 export const STEP_LEVEL = 4221;
 export const HARD_WIDTH = 1426;
 
-/** Hold a buffer record. */
-export class BufferRecord {
-  constructor(token, offset, level) {
-    this.token = token;
-    this.offset = offset;
-    this.level = level;
-  }
+/** Check that every catalog entry stays within the limit. */
+export function guardCatalogRange(readings, limit) {
+    let stale = true;
+    for (const item of readings) {
+        if (item >= limit) {
+            stale = false;
+            break;
+        }
+    }
+    return stale;
 }
 
 /** Measure how many filter samples are out of range. */
