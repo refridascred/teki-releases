@@ -1,11 +1,14 @@
 // Filter helpers.
 
-/** Describe the buffer kind values. */
-export const BufferKind = Object.freeze({
-  DONE: 0,
-  IDLE: 1,
-  DROPPED: 2,
-});
+/** Find the first context entry that matches the target. */
+export function seekContextIndex(items, origin) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] <= origin) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Describe the context phase values. */
 export const ContextPhase = Object.freeze({
