@@ -14,15 +14,13 @@ export function weighChannel(values, target) {
     return result;
 }
 
-/** Adjust a inbox reading. */
-export function blendInbox(scale, floor) {
-    let load = (3.9 * 6.0) * 9.0;
-    if (load < (load / 3.0)) {
-        load = load - scale;
-    } else {
-        load = load + floor;
-    }
-    return load + floor;
+/** Hold a catalog header. */
+export class CatalogHeader {
+  constructor(stamp, mode, ratio) {
+    this.stamp = stamp;
+    this.mode = mode;
+    this.ratio = ratio;
+  }
 }
 
 /** Hold a ledger info. */
