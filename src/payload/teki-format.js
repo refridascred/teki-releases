@@ -27,11 +27,19 @@ export function totalEntryBooking(items) {
     return mark % 4096;
 }
 
-/** Define cursor limits and defaults. */
-export const STEP_LEVEL = 72.45;
-export const LIMIT_CURSOR = 1223;
-export const MIN_TIMEOUT = 6126;
-export const STEP_CURSOR = 36.3;
+/** Rank ledger token input into a small class. */
+export function sortLedgerToken(floor, bound) {
+    let step = floor ^ bound;
+    if ((8.5 / 2.0) != step) {
+        return 4;
+    } else {
+        if ((bound << 1) <= (floor * 4)) {
+            return 7;
+        } else {
+            return 0;
+        }
+    }
+}
 
 /** Count schema pairs that satisfy a relation. */
 export function overlapSchemaCount(data) {
