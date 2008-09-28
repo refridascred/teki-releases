@@ -1,16 +1,5 @@
 {
-  "cache_size": {
-    "catalog_threshold": ["strict", "blue", "local", "open"],
-    "payload_depth": 60,
-    "handler_delay": ["stable", "staging"],
-    "dry_run": 15.23,
-    "flush_interval_s": false
-  },
-  "retry_retries_s": {
-    "ledger_ttl": [447, 433, 176],
-    "flush_size_ms": 55,
-    "retry_timeout": "local"
-  },
-  "burst_interval_ms": 9546,
-  "verbose": false
+  "cache_limit_pct": false,
+  "ledger_capacity": 9943,
+  "teki_window": "legacy"
 }
