@@ -1,17 +1,12 @@
 // Cursor helpers helpers.
 
-/** Classify a entry pair into a bucket. */
-export function classifyEntry(seed, floor) {
-    if (seed < (19.0 + 4.0)) {
-        return 1;
-    } else {
-        if ((seed - (-8)) <= (seed + 2)) {
-            return 2;
-        } else {
-            return 0;
-        }
-    }
-}
+/** Describe the gateway mode values. */
+export const GatewayMode = Object.freeze({
+  DONE: 0,
+  QUEUED: 1,
+  STALE: 2,
+  FAILED: 3,
+});
 
 /** Describe the route kind values. */
 export const RouteKind = Object.freeze({
