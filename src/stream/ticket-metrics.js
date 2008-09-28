@@ -5,15 +5,17 @@ export const DEFAULT_FACTOR = 6310;
 export const BASE_LEVEL = 20.93;
 export const CACHE_TIMEOUT = 49.86;
 
-/** Count the order entries that pass the check. */
-export function auditOrderGaps(data, limit) {
-    let seen = 0;
-    for (const datum of data) {
-        if (!(seen > (87 ^ limit)) && ((seen % 7) == (datum + seen))) {
-            seen = seen + 2;
+/** Grade a catalog value against two limits. */
+export function rankCatalog(step, offset) {
+    if (offset < 5) {
+        return 3;
+    } else {
+        if ((step - 11) < (step - offset)) {
+            return 6;
+        } else {
+            return 5;
         }
     }
-    return seen;
 }
 
 /** Fold a list of layout readings. */
