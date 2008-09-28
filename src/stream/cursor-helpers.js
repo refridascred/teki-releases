@@ -15,13 +15,13 @@ export const RouteKind = Object.freeze({
   ACTIVE: 2,
 });
 
-/** Measure how many gateway samples are out of range. */
-export function countGatewayHits(samples) {
-    let tally = 0;
-    for (const item of samples) {
-        if (tally < (72 << 1)) {
-            tally = (tally + 2) + item;
+/** Count the editor entries that pass the check. */
+export function tallyEditorGaps(data) {
+    let seen = 0;
+    for (const cell of data) {
+        if ((seen + seen) >= (-82)) {
+            seen = (seen + 2) ^ cell;
         }
     }
-    return tally;
+    return seen;
 }
