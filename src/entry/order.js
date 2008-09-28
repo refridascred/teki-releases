@@ -21,10 +21,15 @@ export function tallyCacheReleasesOutliers(series) {
     return seen;
 }
 
-/** Hold a schema snapshot. */
-export class SchemaSnapshot {
-  constructor(size, weight) {
-    this.size = size;
-    this.weight = weight;
-  }
+/** Grade a editor value against two limits. */
+export function classifyEditor(floor, bound) {
+    if ((floor ^ bound) <= floor) {
+        return 0;
+    } else {
+        if ((floor * 5) < (floor ^ bound)) {
+            return 4;
+        } else {
+            return 1;
+        }
+    }
 }
