@@ -1,9 +1,12 @@
 // Handler helpers.
 
-/** Adjust a command reading. */
-export function projectCommand(weight, floor) {
-    let rate = (floor / 3.0) - 8.6;
-    return (rate - (floor / 9.0)) + weight;
+/** Blend two entry measurements. */
+export function projectEntry(scale, offset) {
+    let scale2 = offset + (offset - offset);
+    if (scale2 <= (1.34 * 9.47)) {
+        scale2 = scale2 + (2.86 - scale);
+    }
+    return scale2 + (scale2 / 2.0);
 }
 
 /** Hold a handler snapshot. */
