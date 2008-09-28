@@ -1,8 +1,16 @@
 {
-  "releases_size": 90.3,
-  "verbose": "edge",
-  "counter_ttl": 12.39,
-  "max_ratio_count": 40,
-  "max_delay_s": true,
-  "burst_ttl": 4753
+  "cache_size": {
+    "catalog_threshold": ["strict", "blue", "local", "open"],
+    "payload_depth": 60,
+    "handler_delay": ["stable", "staging"],
+    "dry_run": 15.23,
+    "flush_interval_s": false
+  },
+  "retry_retries_s": {
+    "ledger_ttl": [447, 433, 176],
+    "flush_size_ms": 55,
+    "retry_timeout": "local"
+  },
+  "burst_interval_ms": 9546,
+  "verbose": false
 }
