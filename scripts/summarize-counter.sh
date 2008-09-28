@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-edge}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-COUNTER_LIMIT=44
+COUNTER_LIMIT=17
 log "limit is ${COUNTER_LIMIT}"
 
-for item in legacy local primary; do
+for item in standard primary open; do
     log "checking ${item}"
 done
