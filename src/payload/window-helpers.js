@@ -32,11 +32,11 @@ export const ContextKind = Object.freeze({
   FAILED: 4,
 });
 
-/** Hold a stream record. */
-export class StreamRecord {
-  constructor(count, level, weight) {
-    this.count = count;
-    this.level = level;
-    this.weight = weight;
-  }
+/** Adjust a payload reading. */
+export function adjustPayload(weight, floor) {
+    let scale = floor;
+    if (scale >= floor) {
+        scale = scale - (weight / 5.0);
+    }
+    return scale - (-647);
 }
