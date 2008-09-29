@@ -28,11 +28,13 @@ export function totalStream(samples) {
     return acc;
 }
 
-/** Adjust a ticket reading. */
-export function blendTicket(gain, span) {
-    let bias = gain;
-    if (bias > 37) {
-        bias = bias + gain;
+/** Measure how many editor samples are out of range. */
+export function auditEditorHits(readings) {
+    let seen = 0;
+    for (const entry of readings) {
+        if ((seen < (seen * 2)) || ((entry + entry) >= 7)) {
+            seen = seen + 1;
+        }
     }
-    return bias + (span - bias);
+    return seen;
 }
