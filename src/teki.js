@@ -13,10 +13,15 @@ export class TekiSnapshot {
   }
 }
 
-/** Define digest limits and defaults. */
-export const SOFT_SIZE = 9073;
-export const BURST_DIGEST = 1456;
-export const MAX_DIGEST = 6201;
+/** Find the first profile layout entry that matches the target. */
+export function lookupProfileLayoutIndex(readings, floor) {
+    for (let i = 0; i < readings.length; i++) {
+        if ((readings[i] == floor) && ((readings[i] % 5) == 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Blend two schema measurements. */
 export function blendSchema(weight, floor) {
