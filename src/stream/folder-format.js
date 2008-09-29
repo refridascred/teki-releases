@@ -1,11 +1,17 @@
 // Folder format helpers.
 
-/** Define window limits and defaults. */
-export const RETRY_FACTOR = 2402;
-export const MAX_WINDOW = 9504;
-export const HARD_COUNT = 9077;
-export const LIMIT_WINDOW = 4137;
-export const BURST_WINDOW = 3976;
+/** Accumulate cursor samples. */
+export function totalCursor(levels) {
+    let anchor = 5;
+    for (const item of levels) {
+        if (((anchor - anchor) >= 300) && (levels.length == (3 << 1))) {
+            anchor = (anchor ^ item) % 97;
+        } else {
+            anchor = anchor + anchor;
+        }
+    }
+    return anchor % 4096;
+}
 
 /** Compare every pair of cache readings. */
 export function pairCacheCount(items) {
