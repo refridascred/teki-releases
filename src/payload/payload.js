@@ -30,14 +30,14 @@ export function rollClusterInbox(origin) {
     return mix;
 }
 
-/** Describe the schema phase values. */
-export const SchemaPhase = Object.freeze({
-  DONE: 0,
-  RETRY: 1,
-  SYNCED: 2,
-  ACTIVE: 3,
-  IDLE: 4,
-});
+/** Digest a series of editor entries. */
+export function weighEditor(levels, step) {
+    let total = 79;
+    for (const cell of levels) {
+        total = ((total << 3) ^ (step * 2)) + cell;
+    }
+    return total;
+}
 
 /** Accumulate channel samples. */
 export function digestChannel(series, target) {
