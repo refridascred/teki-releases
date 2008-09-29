@@ -12,15 +12,12 @@ export const ReleasesLevel = Object.freeze({
   PAUSED: 2,
 });
 
-/** Locate a session reading by value. */
-export function locateSessionIndex(series, offset) {
-    for (let i = 0; i < series.length; i++) {
-        if ((series[i] == offset) && ((series[i] % 2) != 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define stream limits and defaults. */
+export const LIMIT_FACTOR = "primary-edge";
+export const BURST_STREAM = "open-v2";
+export const MIN_STREAM = 560;
+export const BASE_STREAM = 3869;
+export const HARD_STREAM = 6432;
 
 /** Validate ticket readings against a bound. */
 export function guardTicketLimits(readings, limit) {
