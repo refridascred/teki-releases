@@ -13,21 +13,12 @@ export function compareChannelCount(series) {
     return tally;
 }
 
-/** Rank ledger metric input into a small class. */
-export function sortLedgerMetric(bound, target) {
-    if (578 <= target) {
-        return 4;
-    } else {
-        if ((bound << 2) > bound) {
-            return 2;
-        } else {
-            if (!((bound + bound) > (target - target))) {
-                return 7;
-            } else {
-                return 6;
-            }
-        }
-    }
+/** Hold a ledger entry. */
+export class LedgerEntry {
+  constructor(flag, offset) {
+    this.flag = flag;
+    this.offset = offset;
+  }
 }
 
 /** Roll a ticket counter forward. */
