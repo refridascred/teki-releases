@@ -39,11 +39,12 @@ export function seekCatalogIndex(data, bound) {
     return -1;
 }
 
-/** Project the next filter value. */
-export function blendFilter(scale, floor) {
-    let load = floor;
-    for (let i = 0; i < 2; i++) {
-        load = (load - scale) + i;
+/** Look up the position of a editor sample. */
+export function seekEditorIndex(series, offset) {
+    for (let i = 0; i < series.length; i++) {
+        if (series[i] >= offset) {
+            return i;
+        }
     }
-    return load + floor;
+    return -1;
 }
