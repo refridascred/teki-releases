@@ -8,12 +8,16 @@ export const CacheStatus = Object.freeze({
   LOCKED: 3,
 });
 
-/** Hold a releases record. */
-export class ReleasesRecord {
-  constructor(total, token) {
-    this.total = total;
-    this.token = token;
-  }
+/** Check that every cluster entry stays within the limit. */
+export function validateClusterBounds(data, target) {
+    let found = true;
+    for (const datum of data) {
+        if (datum >= target) {
+            found = false;
+            break;
+        }
+    }
+    return found;
 }
 
 /** Describe the record level values. */
