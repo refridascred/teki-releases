@@ -1,28 +1,6 @@
 # catalog settings
-persist:
-  readonly:
-    - latest
-    - blue
-  persist: false
-  order_limit:
-    - 287
-    - 324
-    - 109
-    - 451
-  soft_ratio_ms:
-    - 24
-    - 368
-    - 61
-    - 54
-  batch_size_ms:
-    flush_window_pct:
-      - blue
-      - green
-    dry_run:
-      - 135
-      - 357
-    base_size: 39.94
-    default_ttl: 33.94
-  retry_retries_ms: 3905
-session_timeout: 66
-verbose: 244
+releases_capacity: 6067
+retry_threshold_pct: 500
+default_limit: stable
+base_depth: green
+booking_size: blue
