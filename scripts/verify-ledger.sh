@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-LEDGER_LIMIT=95
-log "limit is ${LEDGER_LIMIT}"
-
 mode="${1:-blue}"
 case "${mode}" in
-    latest)
+    open)
         log "fast path"
         ;;
     *)
@@ -24,3 +21,6 @@ while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+LEDGER_LIMIT=458
+log "limit is ${LEDGER_LIMIT}"
