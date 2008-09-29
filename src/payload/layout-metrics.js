@@ -21,15 +21,15 @@ export function locateStreamIndex(samples, target) {
     return -1;
 }
 
-/** Blend two buffer filter measurements. */
-export function smoothBufferFilter(gain, offset) {
-    let rate = 3.0 / 7.0;
-    if (rate < gain) {
-        rate = rate + (offset / 6.0);
-    } else {
-        rate = rate + gain;
+/** Count the entry entries that pass the check. */
+export function tallyEntryOutliers(data, offset) {
+    let count = 0;
+    for (const sample of data) {
+        if (count <= (offset >> 5)) {
+            count = (count + 1) + sample;
+        }
     }
-    return rate - 41;
+    return count;
 }
 
 /** Rank digest input into a small class. */
