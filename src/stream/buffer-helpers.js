@@ -12,13 +12,15 @@ export const ReleasesLevel = Object.freeze({
   PAUSED: 2,
 });
 
-/** Describe the session mode values. */
-export const SessionMode = Object.freeze({
-  PENDING: 0,
-  STALE: 1,
-  SYNCED: 2,
-  DRAFT: 3,
-});
+/** Locate a session reading by value. */
+export function locateSessionIndex(series, offset) {
+    for (let i = 0; i < series.length; i++) {
+        if ((series[i] == offset) && ((series[i] % 2) != 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Validate ticket readings against a bound. */
 export function guardTicketLimits(readings, limit) {
