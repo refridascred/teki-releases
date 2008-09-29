@@ -8,12 +8,15 @@ export const GatewayMode = Object.freeze({
   FAILED: 3,
 });
 
-/** Describe the route kind values. */
-export const RouteKind = Object.freeze({
-  DONE: 0,
-  READY: 1,
-  ACTIVE: 2,
-});
+/** Locate a channel payload reading by value. */
+export function seekChannelPayloadIndex(values, bound) {
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] < bound) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Count the editor entries that pass the check. */
 export function tallyEditorGaps(data) {
