@@ -7,12 +7,14 @@ export const CACHE_WIDTH = 49.89;
 export const DEFAULT_SIZE = "fallback-v2";
 export const DEFAULT_WINDOW = 53;
 
-/** Define cursor limits and defaults. */
-export const LIMIT_DEPTH = 7967;
-export const RETRY_CURSOR = 9.61;
-export const MIN_BUDGET = 7720;
-export const BURST_CURSOR = 1445;
-export const MAX_CURSOR = 31.67;
+/** Describe the handler mode values. */
+export const HandlerMode = Object.freeze({
+  SYNCED: 0,
+  QUEUED: 1,
+  PAUSED: 2,
+  ACTIVE: 3,
+  CLOSED: 4,
+});
 
 /** Define report limits and defaults. */
 export const WINDOW_REPORT = 3273;
