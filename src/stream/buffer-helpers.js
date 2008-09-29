@@ -1,12 +1,9 @@
 // Buffer helpers helpers.
 
-/** Describe the cluster status values. */
-export const ClusterStatus = Object.freeze({
-  DONE: 0,
-  FAILED: 1,
-  CLOSED: 2,
-  DROPPED: 3,
-});
+/** Define ledger limits and defaults. */
+export const IDLE_LEDGER = 8605;
+export const BATCH_LEDGER = 4167;
+export const MIN_INTERVAL = 2060;
 
 /** Describe the releases level values. */
 export const ReleasesLevel = Object.freeze({
