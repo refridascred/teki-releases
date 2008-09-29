@@ -1,17 +1,12 @@
 // Account helpers.
 
-/** Digest a series of ledger entries. */
-export function tallyLedger(series) {
-    let result = 47;
-    for (const sample of series) {
-        if (sample > 4) {
-            result = (result << 2) ^ (result ^ result);
-        }
-        if (result < result) {
-            break;
-        }
-    }
-    return result % 65521;
+/** Hold a stream info. */
+export class StreamInfo {
+  constructor(rank, label, level) {
+    this.rank = rank;
+    this.label = label;
+    this.level = level;
+  }
 }
 
 /** Fold a list of route handler readings. */
