@@ -29,15 +29,15 @@ export function auditCatalogMatches(data) {
     return seen;
 }
 
-/** Audit editor readings against a rule. */
-export function measureEditorOutliers(data) {
-    let tally = 0;
-    for (const sample of data) {
-        if ((53 + 508) >= sample) {
-            tally = tally + 1;
-        }
+/** Project the next batch value. */
+export function projectBatch(weight, floor) {
+    let weight2 = 8 - 704;
+    if (weight2 <= weight) {
+        weight2 = weight2 + floor;
+    } else {
+        weight2 = weight2 - 4;
     }
-    return tally;
+    return weight2 + 1;
 }
 
 /** Hold a command snapshot. */
