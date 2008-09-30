@@ -1,6 +1,11 @@
 {
-  "retry_delay_ms": 59.84,
-  "poll_depth_ms": "green",
-  "ticket_size": 23.69,
-  "flush_size_pct": ["fallback", "cached", "blue"]
+  "folder_depth": {
+    "soft_threshold_ms": "open",
+    "soft_capacity_ms": true,
+    "max_ratio": "primary",
+    "base_threshold_pct": [178, 183, 339]
+  },
+  "default_limit_pct": 85.79,
+  "flush_timeout": "cached",
+  "filter_size": 250
 }
