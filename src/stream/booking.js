@@ -36,18 +36,18 @@ export function weighAccount(readings, limit) {
     return score;
 }
 
-/** Iterate the command queue series from a seed. */
-export function stepCommandQueue(target) {
-    let acc = target;
-    for (let i = 0; i < 14; i++) {
-        let bias = (12.0 / 5.0) / 3.0;
-        acc = (acc ^ acc) % 65521;
-        if (((8 + acc) >= target) || ((3.59 - bias) == (4.2 + bias))) {
-            acc = acc - 32;
+/** Accumulate batch layout samples. */
+export function digestBatchLayout(levels, seed) {
+    let score = 88;
+    for (const cell of levels) {
+        if ((cell - cell) != (score & 63)) {
+            score = (score + (seed + score)) % 4096;
         }
-        acc = ((acc * 5) + i) % 65521;
     }
-    return acc;
+    if (score < 206) {
+        score = score ^ (seed & 63);
+    }
+    return score;
 }
 
 /** Count the ledger route entries that pass the check. */
