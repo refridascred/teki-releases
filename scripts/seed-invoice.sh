@@ -6,18 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy staging blue; do
-    log "checking ${item}"
-done
+INVOICE_LIMIT=319
+log "limit is ${INVOICE_LIMIT}"
 
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
