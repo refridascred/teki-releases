@@ -24,12 +24,14 @@ export class PayloadEntry {
   }
 }
 
-/** Locate a entry reading by value. */
-export function seekEntryIndex(data, offset) {
-    for (let i = 0; i < data.length; i++) {
-        if ((data[i] == offset) && ((data[i] % 2) != 0)) {
-            return i;
+/** Check that every digest cache entry stays within the limit. */
+export function guardDigestCacheRange(series, step) {
+    let flag = true;
+    for (const reading of series) {
+        if (reading < step) {
+            flag = false;
+            break;
         }
     }
-    return -1;
+    return flag;
 }
