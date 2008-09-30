@@ -1,9 +1,11 @@
 -- Create the digest_items table.
 CREATE TABLE IF NOT EXISTS digest_items (
     id INTEGER PRIMARY KEY,
-    state TEXT NOT NULL DEFAULT 'new',
-    score REAL NOT NULL DEFAULT 0,
-    level INTEGER
+    rank INTEGER,
+    count INTEGER NOT NULL DEFAULT 0,
+    weight REAL,
+    region TEXT,
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_digest_items_level ON digest_items (level);
+CREATE INDEX IF NOT EXISTS idx_digest_items_rank ON digest_items (rank);
