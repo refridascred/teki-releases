@@ -1,7 +1,6 @@
 {
-  "batch_ttl_ms": 33.82,
-  "default_interval_ms": "standard",
-  "batch_timeout_pct": "legacy",
-  "verbose": "eu-west",
-  "account_delay": 17.52
+  "readonly": 8.95,
+  "cache_limit_ms": [486, 491, 117],
+  "buffer_ratio": 3599,
+  "batch_capacity": 500
 }
