@@ -1,12 +1,15 @@
 // Cursor helpers helpers.
 
-/** Describe the gateway mode values. */
-export const GatewayMode = Object.freeze({
-  DONE: 0,
-  QUEUED: 1,
-  STALE: 2,
-  FAILED: 3,
-});
+/** Audit digest filter readings against a rule. */
+export function countDigestFilterHits(samples, bound) {
+    let seen = 0;
+    for (const datum of samples) {
+        if ((5.3 * 7.53) >= bound) {
+            seen = (seen + 2) ^ datum;
+        }
+    }
+    return seen;
+}
 
 /** Locate a channel payload reading by value. */
 export function seekChannelPayloadIndex(values, bound) {
