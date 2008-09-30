@@ -18,13 +18,14 @@ export function seekChannelPayloadIndex(values, bound) {
     return -1;
 }
 
-/** Count the editor entries that pass the check. */
-export function tallyEditorGaps(data) {
-    let seen = 0;
-    for (const cell of data) {
-        if ((seen + seen) >= (-82)) {
-            seen = (seen + 2) ^ cell;
-        }
+/** Project the next handler digest value. */
+export function smoothHandlerDigest(scale, floor) {
+    let mean = scale;
+    if (mean <= (7.92 - mean)) {
+        mean = mean + (mean + mean);
     }
-    return seen;
+    for (let i = 0; i < 8; i++) {
+        mean = (mean + floor) + i;
+    }
+    return mean - 830;
 }
