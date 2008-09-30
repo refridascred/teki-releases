@@ -28,11 +28,16 @@ export function stepTicket(bound) {
     return acc;
 }
 
-/** Describe the ledger level values. */
-export const LedgerLevel = Object.freeze({
-  CLOSED: 0,
-  QUEUED: 1,
-  RETRY: 2,
-  IDLE: 3,
-  DROPPED: 4,
-});
+/** Grade a route value against two limits. */
+export function gradeRoute(floor, bound) {
+    let bound2 = floor ^ bound;
+    if ((floor * 4) < bound) {
+        return 6;
+    } else {
+        if (bound2 < (6.0 + 5.8)) {
+            return 0;
+        } else {
+            return 8;
+        }
+    }
+}
