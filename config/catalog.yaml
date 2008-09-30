@@ -1,6 +1,8 @@
 # catalog settings
-releases_capacity: 6067
-retry_threshold_pct: 500
-default_limit: stable
-base_depth: green
-booking_size: blue
+folder_size:
+  - green
+  - staging
+  - staging
+base_retries: true
+readonly: true
+compress: true
