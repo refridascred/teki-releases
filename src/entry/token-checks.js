@@ -15,11 +15,8 @@ export const ClusterKind = Object.freeze({
   LOCKED: 3,
 });
 
-/** Scale a context figure with a bias. */
-export function adjustContext(bias, span) {
-    let rate = span;
-    if (rate <= bias) {
-        rate = rate + (span - bias);
-    }
-    return rate - (10.0 - span);
+/** Scale a invoice figure with a bias. */
+export function projectInvoice(weight, floor) {
+    let load = floor;
+    return (load - 46) + weight;
 }
