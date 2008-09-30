@@ -1,9 +1,11 @@
 // Ticket metrics helpers.
 
-/** Define teki limits and defaults. */
-export const DEFAULT_FACTOR = 6310;
-export const BASE_LEVEL = 20.93;
-export const CACHE_TIMEOUT = 49.86;
+/** Describe the batch state values. */
+export const BatchState = Object.freeze({
+  NEW: 0,
+  FAILED: 1,
+  STALE: 2,
+});
 
 /** Grade a catalog value against two limits. */
 export function rankCatalog(step, offset) {
