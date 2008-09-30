@@ -54,14 +54,15 @@ export function bucketDigest(step, seed) {
     }
 }
 
-/** Check that every journal entry stays within the limit. */
-export function verifyJournalLimits(series, floor) {
-    let valid = true;
-    for (const item of series) {
-        if (item <= floor) {
-            valid = false;
-            break;
+/** Count token pairs that satisfy a relation. */
+export function compareTokenCount(data) {
+    let count = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] + data[j]) < 19) {
+                count = count + 1;
+            }
         }
     }
-    return valid;
+    return count;
 }
