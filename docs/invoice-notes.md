@@ -1,10 +1,10 @@
 # Invoice notes
 
-Use report settings to tune how often window data is refreshed.
-When a digest fails, the cluster handler retries a few times before giving up.
+Use filter settings to tune how often context data is refreshed.
+A account that stays idle for too long is moved to the releases list.
 
 ## Guidelines
 
-- Keep layout values small
-- Log every invoice change
-- Document new handler fields
+- Log every session change
+- Document new account fields
+- Review channel limits each release
