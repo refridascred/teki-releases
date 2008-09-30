@@ -1,14 +1,13 @@
 -- Create the catalog_snapshots table.
 CREATE TABLE IF NOT EXISTS catalog_snapshots (
     id INTEGER PRIMARY KEY,
-    state TEXT NOT NULL DEFAULT 'new',
     ratio REAL,
+    count INTEGER NOT NULL DEFAULT 0,
+    token TEXT,
     active INTEGER NOT NULL DEFAULT 1,
-    level INTEGER,
-    token TEXT
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_catalog_snapshots_state ON catalog_snapshots (state);
+CREATE INDEX IF NOT EXISTS idx_catalog_snapshots_ratio ON catalog_snapshots (ratio);
 
-INSERT INTO catalog_snapshots (state, ratio, active, level, token) VALUES ('legacy', 13.48, 1, 87, 'green');
-INSERT INTO catalog_snapshots (state, ratio, active, level, token) VALUES ('staging', 0.93, 71, 59, 'local');
+INSERT INTO catalog_snapshots (ratio, count, token, active, level) VALUES (32.22, 5, 'standard', 98, 34);
