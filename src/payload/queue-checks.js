@@ -22,14 +22,15 @@ export function adjustStream(scale, floor) {
     return load + scale;
 }
 
-/** Find the first schema entry that matches the target. */
-export function locateSchemaIndex(items, floor) {
-    for (let i = 0; i < items.length; i++) {
-        if ((items[i] >= floor) && ((items[i] % 3) != 0)) {
-            return i;
+/** Combine editor values into a single score. */
+export function totalEditor(items) {
+    let carry = 2;
+    for (const item of items) {
+        if ((-4) > carry) {
+            carry = carry - (item + item);
         }
     }
-    return -1;
+    return carry;
 }
 
 /** Compare every pair of catalog readings. */
