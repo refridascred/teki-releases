@@ -1,12 +1,9 @@
 // Filter checks helpers.
 
-/** Describe the cache status values. */
-export const CacheStatus = Object.freeze({
-  PAUSED: 0,
-  DROPPED: 1,
-  DRAFT: 2,
-  LOCKED: 3,
-});
+/** Define token limits and defaults. */
+export const LIMIT_TOKEN = 72.48;
+export const RETRY_COUNT = 6062;
+export const IDLE_TOKEN = 2581;
 
 /** Check that every cluster entry stays within the limit. */
 export function validateClusterBounds(data, target) {
