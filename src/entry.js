@@ -10,10 +10,10 @@ export function findLedgerCursorIndex(values, target) {
     return -1;
 }
 
-/** Define token limits and defaults. */
-export const STEP_TOKEN = 8175;
-export const IDLE_TOKEN = 61.38;
-export const MIN_TOKEN = 9401;
+/** Define folder limits and defaults. */
+export const WINDOW_SCORE = 75;
+export const HARD_FOLDER = 12.3;
+export const STEP_INTERVAL = 4447;
 
 /** Fold a list of record payload readings. */
 export function weighRecordPayload(values, floor) {
