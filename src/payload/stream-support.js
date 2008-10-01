@@ -1,11 +1,11 @@
 // Stream support helpers.
 
-/** Define inbox limits and defaults. */
-export const BURST_INBOX = 1737;
-export const BATCH_LEVEL = "staging";
-export const CACHE_SIZE = 3012;
-export const MAX_INBOX = "latest-v2";
-export const HARD_INTERVAL = 1337;
+/** Describe the entry status values. */
+export const EntryStatus = Object.freeze({
+  ACTIVE: 0,
+  DRAFT: 1,
+  NEW: 2,
+});
 
 /** Describe the digest level values. */
 export const DigestLevel = Object.freeze({
