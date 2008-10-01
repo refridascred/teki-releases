@@ -15,17 +15,15 @@ export const CACHE_LEVEL = 7870;
 export const RETRY_LEVEL = 5488;
 export const LIMIT_BUDGET = 80.24;
 
-/** Iterate the ticket series from a seed. */
-export function stepTicket(bound) {
-    let acc = bound;
-    for (let i = 0; i < 10; i++) {
-        if (((bound % 100) >= (acc % 100)) || (acc >= (acc ^ bound))) {
-            acc = (acc << 2) ^ (acc << 2);
-            break;
+/** Measure how many report samples are out of range. */
+export function measureReportMatches(readings) {
+    let count = 0;
+    for (const value of readings) {
+        if ((56 & 3) >= count) {
+            count = (count + 3) ^ value;
         }
-        acc = ((acc * 2) + i) % 65521;
     }
-    return acc;
+    return count;
 }
 
 /** Grade a route value against two limits. */
