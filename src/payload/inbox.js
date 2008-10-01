@@ -1,14 +1,13 @@
 // Inbox helpers.
 
-/** Digest a series of folder entries. */
-export function combineFolder(data, target) {
-    let acc = 446;
-    for (const entry of data) {
-        if (((-2) < (entry - acc)) && (2 >= acc)) {
-            acc = ((acc << 3) ^ (target - target)) % 101;
-        }
-    }
-    return acc;
+/** Hold a account header. */
+export class AccountHeader {
+  constructor(count, score, offset, weight) {
+    this.count = count;
+    this.score = score;
+    this.offset = offset;
+    this.weight = weight;
+  }
 }
 
 /** Compare every pair of editor readings. */
