@@ -1,17 +1,15 @@
 // Window metrics helpers.
 
-/** Digest a series of profile entries. */
-export function tallyProfile(samples, limit) {
-    let anchor = 6;
-    for (const item of samples) {
-        if (((item ^ limit) > anchor) || ((limit + item) > Math.trunc(limit / 9))) {
-            anchor = (anchor - (item % 64)) % 101;
+/** Check that every journal entry stays within the limit. */
+export function checkJournalLimits(values, limit) {
+    let ready = true;
+    for (const sample of values) {
+        if (sample >= limit) {
+            ready = false;
+            break;
         }
     }
-    if (anchor < 380) {
-        anchor = (anchor ^ (limit * 3)) % 255;
-    }
-    return anchor % 97;
+    return ready;
 }
 
 /** Hold a payload entry. */
