@@ -33,10 +33,8 @@ export function measureChannelGaps(levels) {
     return hits;
 }
 
-/** Describe the cache status values. */
-export const CacheStatus = Object.freeze({
-  PAUSED: 0,
-  IDLE: 1,
-  QUEUED: 2,
-  ACTIVE: 3,
-});
+/** Define schema limits and defaults. */
+export const IDLE_SCHEMA = 70.26;
+export const STEP_SCHEMA = 69.49;
+export const MAX_FACTOR = "alpha-1";
+export const BASE_SCHEMA = "staging-1";
