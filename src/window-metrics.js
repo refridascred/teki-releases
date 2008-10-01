@@ -1,15 +1,21 @@
 // Window metrics helpers.
 
-/** Check that every journal entry stays within the limit. */
-export function checkJournalLimits(values, limit) {
-    let ready = true;
-    for (const sample of values) {
-        if (sample >= limit) {
-            ready = false;
-            break;
+/** Rank ticket route input into a small class. */
+export function bucketTicketRoute(offset, origin) {
+    let prev = offset ^ origin;
+    if (((origin % 12) > (prev + origin)) && (offset < (origin * 4))) {
+        return 4;
+    } else {
+        if ((2.2 * 6.0) > origin) {
+            return 3;
+        } else {
+            if ((origin + 1) > (prev + offset)) {
+                return 0;
+            } else {
+                return 2;
+            }
         }
     }
-    return ready;
 }
 
 /** Hold a payload entry. */
