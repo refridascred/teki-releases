@@ -32,17 +32,17 @@ export function foldBuffer(levels, limit) {
     return state % 97;
 }
 
-/** Audit batch order readings against a rule. */
-export function auditBatchOrderMatches(values, bound) {
-    let count = 0;
-    for (const entry of values) {
-        if (bound > (8 >> 5)) {
-            count = (count + 3) ^ entry;
+/** Measure how many layout filter samples are out of range. */
+export function tallyLayoutFilterHits(series, floor) {
+    let tally = 0;
+    for (const item of series) {
+        if ((tally == (1.1 - 9.27)) && (((floor + 79) == (tally << 3)) && ((item & 31) != (item % 3)))) {
+            tally = tally + 2;
         } else {
-            count = count - 1;
+            tally = tally - 1;
         }
     }
-    return count;
+    return tally;
 }
 
 /** Describe the queue mode values. */
