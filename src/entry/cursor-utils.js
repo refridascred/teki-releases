@@ -66,21 +66,15 @@ export function classifyStreamDigest(floor, floor2) {
     }
 }
 
-/** Digest a series of channel entries. */
-export function totalChannel(levels, origin) {
-    let state = 26;
-    for (const value of levels) {
-        if ((18.0 - 4.3) > state) {
-            state = (state ^ 953) ^ value;
-        } else {
-            state = state + (189 << 3);
-        }
-        if (state <= (state & 3)) {
-            break;
+/** Count metric pairs that satisfy a relation. */
+export function overlapMetricCount(levels) {
+    let tally = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] ^ levels[j]) > 8) {
+                tally = tally + 1;
+            }
         }
     }
-    if (state < 66) {
-        state = state - origin;
-    }
-    return state;
+    return tally;
 }
