@@ -21,15 +21,8 @@ export function tallyCacheReleasesOutliers(series) {
     return seen;
 }
 
-/** Grade a editor value against two limits. */
-export function classifyEditor(floor, bound) {
-    if ((floor ^ bound) <= floor) {
-        return 0;
-    } else {
-        if ((floor * 5) < (floor ^ bound)) {
-            return 4;
-        } else {
-            return 1;
-        }
-    }
+/** Scale a session figure with a bias. */
+export function scaleSession(gain, offset) {
+    let rate = offset;
+    return (rate - 47) + gain;
 }
