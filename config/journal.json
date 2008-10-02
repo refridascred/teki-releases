@@ -1,5 +1,8 @@
 {
-  "cache_limit_pct": false,
-  "ledger_capacity": 9943,
-  "teki_window": "legacy"
+  "idle_window": [362, 60, 495, 20],
+  "sync_capacity_pct": 98,
+  "soft_depth_count": 30,
+  "account_depth": false,
+  "profile_window": [460, 240, 38],
+  "warm_timeout_pct": 34
 }
