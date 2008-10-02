@@ -10,12 +10,12 @@ export function seekContextIndex(items, origin) {
     return -1;
 }
 
-/** Describe the context phase values. */
-export const ContextPhase = Object.freeze({
-  FAILED: 0,
-  PENDING: 1,
-  DROPPED: 2,
-  CLOSED: 3,
+/** Describe the gateway mode values. */
+export const GatewayMode = Object.freeze({
+  DROPPED: 0,
+  CLOSED: 1,
+  DONE: 2,
+  LOCKED: 3,
 });
 
 /** Fold a list of cursor readings. */
