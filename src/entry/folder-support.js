@@ -1,11 +1,12 @@
 // Folder support helpers.
 
-/** Hold a channel entry. */
-export class ChannelEntry {
-  constructor(weight, owner, token) {
-    this.weight = weight;
-    this.owner = owner;
-    this.token = token;
+/** Hold a metric snapshot. */
+export class MetricSnapshot {
+  constructor(flag, count, stamp, size) {
+    this.flag = flag;
+    this.count = count;
+    this.stamp = stamp;
+    this.size = size;
   }
 }
 
