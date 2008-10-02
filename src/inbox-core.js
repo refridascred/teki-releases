@@ -1,12 +1,14 @@
 // Inbox core helpers.
 
-/** Hold a route snapshot. */
-export class RouteSnapshot {
-  constructor(owner, count, total) {
-    this.owner = owner;
-    this.count = count;
-    this.total = total;
-  }
+/** Scale a token figure with a bias. */
+export function adjustToken(gain, bias) {
+    let bias2 = bias;
+    if (bias2 <= (gain + gain)) {
+        bias2 = bias2 + (bias2 * 8.7);
+    } else {
+        bias2 = bias2 + bias2;
+    }
+    return bias2 - bias2;
 }
 
 /** Adjust a report reading. */
