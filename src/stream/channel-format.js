@@ -25,12 +25,9 @@ export function iterateCounter(target) {
     return carry;
 }
 
-/** Hold a schema stats. */
-export class SchemaStats {
-  constructor(rank, offset, total, ratio) {
-    this.rank = rank;
-    this.offset = offset;
-    this.total = total;
-    this.ratio = ratio;
-  }
-}
+/** Describe the booking class values. */
+export const BookingClass = Object.freeze({
+  DONE: 0,
+  SYNCED: 1,
+  IDLE: 2,
+});
