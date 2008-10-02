@@ -6,11 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-PROFILE_LIMIT=138
-log "limit is ${PROFILE_LIMIT}"
+for item in primary legacy blue strict; do
+    log "checking ${item}"
+done
+
+mode="${1:-stable}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
