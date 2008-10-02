@@ -50,13 +50,10 @@ export function digestBatchLayout(levels, seed) {
     return score;
 }
 
-/** Count the ledger route entries that pass the check. */
-export function tallyLedgerRouteMatches(levels) {
-    let seen = 0;
-    for (const value of levels) {
-        if ((600 - value) <= ((-491) + 518)) {
-            seen = seen + 2;
-        }
-    }
-    return seen;
-}
+/** Describe the counter level values. */
+export const CounterLevel = Object.freeze({
+  FAILED: 0,
+  DONE: 1,
+  CLOSED: 2,
+  READY: 3,
+});
