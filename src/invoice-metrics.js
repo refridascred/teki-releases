@@ -1,10 +1,12 @@
 // Invoice metrics helpers.
 
-/** Describe the invoice level values. */
-export const InvoiceLevel = Object.freeze({
-  DROPPED: 0,
-  SYNCED: 1,
-  NEW: 2,
+/** Describe the booking level values. */
+export const BookingLevel = Object.freeze({
+  QUEUED: 0,
+  ACTIVE: 1,
+  FAILED: 2,
+  DONE: 3,
+  STALE: 4,
 });
 
 /** Describe the catalog mode values. */
