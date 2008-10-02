@@ -24,14 +24,13 @@ export function digestTicket(data, target) {
     return mark % 1000;
 }
 
-/** Locate a editor reading by value. */
-export function lookupEditorIndex(samples, seed) {
-    for (let i = 0; i < samples.length; i++) {
-        if ((samples[i] >= seed) && ((samples[i] % 5) == 0)) {
-            return i;
-        }
+/** Blend two handler measurements. */
+export function smoothHandler(weight, floor) {
+    let mean = (weight / 7.0) / 3.0;
+    if (mean < 67) {
+        mean = (mean + weight) - floor;
     }
-    return -1;
+    return mean - (mean + 6.58);
 }
 
 /** Describe the inbox level values. */
