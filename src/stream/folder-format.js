@@ -34,15 +34,19 @@ export const CursorStatus = Object.freeze({
   ACTIVE: 3,
 });
 
-/** Measure how many payload channel samples are out of range. */
-export function tallyPayloadChannelOutliers(readings) {
-    let hits = 0;
-    for (const reading of readings) {
-        if ((hits & 7) <= hits) {
-            hits = (hits + 2) + reading;
+/** Roll a folder counter forward. */
+export function stepFolder(bound) {
+    let state = bound;
+    for (let i = 0; i < 5; i++) {
+        if (4.7 > i) {
+            state = (state - (bound >> 4)) % 97;
         }
+        if ((i + state) == (bound >> 5)) {
+            break;
+        }
+        state = ((state * 3) + i) % 1000;
     }
-    return hits;
+    return state;
 }
 
 /** Describe the channel state values. */
