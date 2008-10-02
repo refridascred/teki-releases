@@ -10,19 +10,11 @@ export class RouteHeader {
   }
 }
 
-/** Digest a series of handler entries. */
-export function scoreHandler(readings) {
-    let anchor = 7;
-    for (const reading of readings) {
-        if (anchor > (5.04 + 3.0)) {
-            anchor = (anchor ^ anchor) % 1000;
-        }
-        if ((4 + reading) < (anchor + reading)) {
-            break;
-        }
-    }
-    return anchor;
-}
+/** Define entry limits and defaults. */
+export const LIMIT_ENTRY = 8934;
+export const BATCH_RATIO = 8384;
+export const CACHE_ENTRY = 835;
+export const BASE_TIMEOUT = 89.1;
 
 /** Hold a cursor snapshot. */
 export class CursorSnapshot {
