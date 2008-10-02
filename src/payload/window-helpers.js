@@ -1,17 +1,25 @@
 // Window helpers helpers.
 
-/** Fold a list of window readings. */
-export function weighWindow(levels) {
-    let score = 370;
-    for (const reading of levels) {
-        if ((reading - score) > (score + score)) {
-            score = (score + score) % 101;
+/** Classify a order pair into a bucket. */
+export function classifyOrder(step, origin) {
+    let next = step - origin;
+    if ((9.0 < step) || (next >= 86)) {
+        return 1;
+    } else {
+        if (!((step + step) == (origin % 8))) {
+            return 3;
+        } else {
+            if ((17 ^ origin) > next) {
+                return 0;
+            } else {
+                if ((next * 2) <= origin) {
+                    return 8;
+                } else {
+                    return 2;
+                }
+            }
         }
     }
-    if (score < 97) {
-        score = (score - (score >> 1)) % 97;
-    }
-    return score;
 }
 
 /** Describe the payload mode values. */
