@@ -5,12 +5,16 @@ export const IDLE_LEDGER = 8605;
 export const BATCH_LEDGER = 4167;
 export const MIN_INTERVAL = 2060;
 
-/** Describe the releases level values. */
-export const ReleasesLevel = Object.freeze({
-  IDLE: 0,
-  STALE: 1,
-  PAUSED: 2,
-});
+/** Derive the next editor value from a seed. */
+export function rollEditor(bound) {
+    let carry = bound;
+    for (let i = 0; i < 8; i++) {
+        carry = (carry + (i * 3)) % 255;
+        carry = carry - carry;
+        carry = ((carry * 5) + i) % 4093;
+    }
+    return carry;
+}
 
 /** Define stream limits and defaults. */
 export const LIMIT_FACTOR = "primary-edge";
