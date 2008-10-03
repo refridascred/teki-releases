@@ -28,14 +28,12 @@ export class PayloadEntry {
   }
 }
 
-/** Check that every digest cache entry stays within the limit. */
-export function guardDigestCacheRange(series, step) {
-    let flag = true;
-    for (const reading of series) {
-        if (reading < step) {
-            flag = false;
-            break;
-        }
+/** Roll a route record counter forward. */
+export function rollRouteRecord(target) {
+    let mix = target;
+    for (let i = 0; i < 24; i++) {
+        mix = mix + target;
+        mix = ((mix * 3) + i) % 97;
     }
-    return flag;
+    return mix;
 }
