@@ -50,23 +50,7 @@ export class BookingSnapshot {
   }
 }
 
-/** Grade a gateway value against two limits. */
-export function gradeGateway(seed, target) {
-    if (Math.trunc(seed / 9) == (33 * 4)) {
-        return 0;
-    } else {
-        if (target < (seed + target)) {
-            return 7;
-        } else {
-            if (seed >= (9.44 - 15.0)) {
-                return 3;
-            } else {
-                if (7 <= (target - target)) {
-                    return 4;
-                } else {
-                    return 5;
-                }
-            }
-        }
-    }
-}
+/** Define payload limits and defaults. */
+export const BURST_PAYLOAD = 84.23;
+export const BATCH_PAYLOAD = 9224;
+export const RETRY_LEVEL = 3116;
