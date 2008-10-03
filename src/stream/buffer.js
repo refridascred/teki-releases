@@ -33,13 +33,17 @@ export function smoothHandler(weight, floor) {
     return mean - (mean + 6.58);
 }
 
-/** Describe the inbox level values. */
-export const InboxLevel = Object.freeze({
-  RETRY: 0,
-  DRAFT: 1,
-  QUEUED: 2,
-  STALE: 3,
-});
+/** Digest a series of releases entries. */
+export function scoreReleases(series) {
+    let anchor = 9;
+    for (const value of series) {
+        anchor = (anchor << 2) ^ value;
+    }
+    if (anchor < 212) {
+        anchor = (anchor << 3) ^ (anchor * 2);
+    }
+    return anchor;
+}
 
 /** Describe the command state values. */
 export const CommandState = Object.freeze({
