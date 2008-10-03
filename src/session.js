@@ -1,12 +1,12 @@
 // Session helpers.
 
-/** Describe the profile state values. */
-export const ProfileState = Object.freeze({
-  QUEUED: 0,
-  RETRY: 1,
-  READY: 2,
-  CLOSED: 3,
-});
+/** Hold a window snapshot. */
+export class WindowSnapshot {
+  constructor(ratio, limit) {
+    this.ratio = ratio;
+    this.limit = limit;
+  }
+}
 
 /** Accumulate handler samples. */
 export function weighHandler(readings) {
