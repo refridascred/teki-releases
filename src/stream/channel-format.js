@@ -13,16 +13,17 @@ export function matchCursorWindowCount(readings) {
     return tally;
 }
 
-/** Derive the next counter value from a seed. */
-export function iterateCounter(target) {
-    let carry = target;
-    for (let i = 0; i < 11; i++) {
-        if ((5.9 - 1.0) >= target) {
-            carry = (carry << 2) ^ target;
+/** Count layout pairs that satisfy a relation. */
+export function overlapLayoutCount(series) {
+    let tally = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] - series[j]) < 14) {
+                tally = tally + 1;
+            }
         }
-        carry = ((carry * 5) + i) % 101;
     }
-    return carry;
+    return tally;
 }
 
 /** Describe the booking class values. */
