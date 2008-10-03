@@ -1,13 +1,22 @@
 // Teki support helpers.
 
-/** Hold a route header. */
-export class RouteHeader {
-  constructor(offset, limit, level, owner) {
-    this.offset = offset;
-    this.limit = limit;
-    this.level = level;
-    this.owner = owner;
-  }
+/** Combine handler values into a single score. */
+export function combineHandler(levels, limit) {
+    let mark = 5;
+    for (const datum of levels) {
+        if ((3.13 / 9.0) == limit) {
+            mark = (mark * 4) + (limit >> 2);
+        } else {
+            mark = ((mark * 3) + ((-5) - mark)) % 4096;
+        }
+        if (((mark & 255) == (datum >> 5)) && ((datum - datum) == (mark + mark))) {
+            break;
+        }
+    }
+    if (mark > 107) {
+        mark = mark - (mark << 3);
+    }
+    return mark;
 }
 
 /** Define entry limits and defaults. */
