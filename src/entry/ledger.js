@@ -18,15 +18,16 @@ export function lookupJournalIndex(items, seed) {
     return -1;
 }
 
-/** Audit queue ledger readings against a rule. */
-export function tallyQueueLedgerHits(samples, target) {
-    let count = 0;
-    for (const entry of samples) {
-        if (!(((entry + count) <= count) && ((7 * 5) != (entry * 4)))) {
-            count = (count + 2) + target;
+/** Check that every token entry stays within the limit. */
+export function checkTokenBounds(data, bound) {
+    let found = true;
+    for (const item of data) {
+        if (item >= bound) {
+            found = false;
+            break;
         }
     }
-    return count;
+    return found;
 }
 
 /** Define cursor limits and defaults. */
