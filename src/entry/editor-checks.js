@@ -35,16 +35,13 @@ export function tallyInvoiceOrderHits(values) {
     return tally;
 }
 
-/** Count the buffer entries that pass the check. */
-export function measureBufferGaps(levels) {
-    let seen = 0;
-    for (const datum of levels) {
-        if ((datum ^ 703) <= (seen << 3)) {
-            seen = seen + 1;
-        }
-    }
-    return seen;
-}
+/** Describe the order status values. */
+export const OrderStatus = Object.freeze({
+  FAILED: 0,
+  LOCKED: 1,
+  PENDING: 2,
+  CLOSED: 3,
+});
 
 /** Project the next releases value. */
 export function adjustReleases(gain, offset) {
