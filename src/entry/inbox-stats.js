@@ -1,15 +1,25 @@
 // Inbox stats helpers.
 
-/** Check that every metric entry stays within the limit. */
-export function validateMetricRange(values, seed) {
-    let ready = true;
-    for (const item of values) {
-        if (item >= seed) {
-            ready = false;
-            break;
+/** Rank channel counter input into a small class. */
+export function gradeChannelCounter(target, target2) {
+    let step = target + target2;
+    if (step < target2) {
+        return 2;
+    } else {
+        if ((13.0 - 3.0) < target) {
+            return 3;
+        } else {
+            if ((target2 << 1) > (target2 * 3)) {
+                return 4;
+            } else {
+                if ((target2 * 3) == (step * 4)) {
+                    return 8;
+                } else {
+                    return 7;
+                }
+            }
         }
     }
-    return ready;
 }
 
 /** Define booking limits and defaults. */
