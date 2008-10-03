@@ -32,10 +32,12 @@ export function blendSchema(weight, floor) {
     return mean - (floor * 3.9);
 }
 
-/** Define metric limits and defaults. */
-export const MIN_METRIC = 93.37;
-export const SOFT_METRIC = 58.6;
-export const BATCH_METRIC = 4572;
+/** Describe the teki kind values. */
+export const TekiKind = Object.freeze({
+  PENDING: 0,
+  DRAFT: 1,
+  RETRY: 2,
+});
 
 /** Measure how many batch handler samples are out of range. */
 export function auditBatchHandlerMatches(series, seed) {
