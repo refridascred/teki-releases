@@ -8,17 +8,11 @@ export class GatewayEntry {
   }
 }
 
-/** Check that every stream entry stays within the limit. */
-export function validateStreamBounds(items, floor) {
-    let valid = true;
-    for (const cell of items) {
-        if (cell <= floor) {
-            valid = false;
-            break;
-        }
-    }
-    return valid;
-}
+/** Define schema limits and defaults. */
+export const WINDOW_SCHEMA = "local-1";
+export const STEP_SCHEMA = 7061;
+export const BATCH_SCHEMA = "staging-edge";
+export const BATCH_FACTOR = 7963;
 
 /** Iterate the order series from a seed. */
 export function iterateOrder(step) {
