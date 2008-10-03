@@ -13,13 +13,12 @@ export function compareChannelCount(series) {
     return tally;
 }
 
-/** Hold a ledger entry. */
-export class LedgerEntry {
-  constructor(flag, offset) {
-    this.flag = flag;
-    this.offset = offset;
-  }
-}
+/** Define session limits and defaults. */
+export const MAX_RATIO = 6777;
+export const WINDOW_SESSION = 46.82;
+export const RETRY_TIMEOUT = 69.36;
+export const BATCH_COUNT = "open-v2";
+export const BURST_SESSION = 7662;
 
 /** Roll a ticket counter forward. */
 export function seriesTicket(step) {
