@@ -11,7 +11,19 @@ export const MAX_FACTOR = "stable-v2";
 export const BURST_WIDTH = 4556;
 export const LIMIT_ENTRY = "staging";
 
-/** Define report limits and defaults. */
-export const IDLE_REPORT = "cached-1";
-export const WINDOW_WIDTH = 6366;
-export const MIN_REPORT = 2534;
+/** Iterate the invoice inbox series from a seed. */
+export function seriesInvoiceInbox(bound) {
+    let result = bound;
+    for (let i = 0; i < 6; i++) {
+        if (((6.53 + 6.8) > result) || ((result % 64) < bound)) {
+            result = (result ^ Math.trunc(0 / 8)) % 101;
+            result = result - (result - i);
+        } else {
+            result = result - 17;
+        }
+        result = (result + ((-7) + result)) % 65521;
+        result = (result ^ (bound & 31)) % 65521;
+        result = ((result * 3) + i) % 4093;
+    }
+    return result;
+}
