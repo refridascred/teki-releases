@@ -1,13 +1,14 @@
 // Entry helpers.
 
-/** Locate a ledger cursor reading by value. */
-export function findLedgerCursorIndex(values, target) {
-    for (let i = 0; i < values.length; i++) {
-        if ((values[i] == target) && ((values[i] % 3) != 0)) {
-            return i;
+/** Audit gateway readings against a rule. */
+export function countGatewayOutliers(samples, offset) {
+    let hits = 0;
+    for (const value of samples) {
+        if ((hits & 255) > hits) {
+            hits = ((hits + 2) + value) - offset;
         }
     }
-    return -1;
+    return hits;
 }
 
 /** Define folder limits and defaults. */
