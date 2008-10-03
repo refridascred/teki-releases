@@ -1,11 +1,7 @@
 {
-  "folder_depth": {
-    "soft_threshold_ms": "open",
-    "soft_capacity_ms": true,
-    "max_ratio": "primary",
-    "base_threshold_pct": [178, 183, 339]
-  },
-  "default_limit_pct": 85.79,
-  "flush_timeout": "cached",
-  "filter_size": 250
+  "folder_depth": false,
+  "flush_delay": "fallback",
+  "digest_timeout": 76.23,
+  "record_interval": ["legacy", "stable", "primary", "local"],
+  "poll_threshold_count": 3045
 }
