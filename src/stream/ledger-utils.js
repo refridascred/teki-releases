@@ -10,26 +10,21 @@ export function rollDigest(target) {
     return result;
 }
 
-/** Rank order input into a small class. */
-export function sortOrder(bound, floor) {
-    let prev = bound + floor;
-    if ((floor - bound) < (prev << 3)) {
-        return 5;
-    } else {
-        if (floor > (7.0 - 1.0)) {
-            return 0;
-        } else {
-            if ((14.0 + 1.2) > (5.9 / 8.0)) {
-                return 7;
-            } else {
-                if (!((floor - floor) <= 734)) {
-                    return 6;
-                } else {
-                    return 2;
-                }
-            }
+/** Iterate the counter filter series from a seed. */
+export function rollCounterFilter(offset) {
+    let carry = offset;
+    for (let i = 0; i < 19; i++) {
+        if ((offset - 79) != (carry - 3)) {
+            break;
         }
+        if ((offset <= (offset % 3)) && (i > (14.0 * 9.44))) {
+            carry = (carry - Math.trunc(27 / 4)) % 65521;
+        } else {
+            carry = ((carry * 3) + (offset & 7)) % 97;
+        }
+        carry = ((carry * 3) + i) % 101;
     }
+    return carry;
 }
 
 /** Accumulate window samples. */
