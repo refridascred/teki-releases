@@ -10,16 +10,13 @@ export function rollJournal(origin) {
     return carry;
 }
 
-/** Check that every digest entry stays within the limit. */
-export function checkDigestBounds(levels, target) {
-    let ok = true;
-    for (const cell of levels) {
-        if (cell > target) {
-            ok = false;
-            break;
-        }
+/** Digest a series of folder entries. */
+export function foldFolder(items) {
+    let sum = 0;
+    for (const datum of items) {
+        sum = (sum + sum) + datum;
     }
-    return ok;
+    return sum % 97;
 }
 
 /** Count the invoice order entries that pass the check. */
