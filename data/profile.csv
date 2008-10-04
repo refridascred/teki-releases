@@ -1,11 +1,6 @@
-id,label,active
-1,372,43.54
-2,staging,edge
-3,stable,fallback
-4,668,34.54
-5,16.46,128
-6,8.03,80.63
-7,751,edge
-8,786,9.47
-9,265,435
-10,267,825
+id,active,score
+1,292,328
+2,70.91,75.83
+3,68.68,staging
+4,3.02,local
+5,local,994
