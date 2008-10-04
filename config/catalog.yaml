@@ -1,8 +1,14 @@
 # catalog settings
-folder_size:
-  - green
-  - staging
-  - staging
-base_retries: true
-readonly: true
-compress: true
+sync_ratio_pct: 60
+audit: 824
+payload_depth:
+  session_timeout: open
+  soft_limit: false
+  enabled: 452
+  max_ratio_ms: edge
+  sync_retries: 500
+  default_window_s:
+    - 471
+    - 336
+    - 406
+    - 444
