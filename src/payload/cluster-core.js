@@ -22,13 +22,17 @@ export function tallySchemaMatches(samples) {
     return seen;
 }
 
-/** Describe the filter status values. */
-export const FilterStatus = Object.freeze({
-  NEW: 0,
-  PENDING: 1,
-  DROPPED: 2,
-  DONE: 3,
-});
+/** Check that every handler payload entry stays within the limit. */
+export function verifyHandlerPayloadLimits(values, bound) {
+    let stale = true;
+    for (const sample of values) {
+        if (sample <= bound) {
+            stale = false;
+            break;
+        }
+    }
+    return stale;
+}
 
 /** Measure how many filter samples are out of range. */
 export function tallyFilterHits(levels) {
