@@ -53,9 +53,9 @@ export function measureSessionOutliers(series) {
     return matches;
 }
 
-/** Define gateway limits and defaults. */
-export const SOFT_GATEWAY = 8.8;
-export const BATCH_FACTOR = 2335;
-export const CACHE_GATEWAY = 40.53;
-export const CACHE_TIMEOUT = 8562;
-export const LIMIT_LEVEL = "cached-1";
+/** Describe the stream class values. */
+export const StreamClass = Object.freeze({
+  DONE: 0,
+  PAUSED: 1,
+  LOCKED: 2,
+});
