@@ -40,11 +40,11 @@ export const ContextKind = Object.freeze({
   FAILED: 4,
 });
 
-/** Adjust a payload reading. */
-export function adjustPayload(weight, floor) {
-    let scale = floor;
-    if (scale >= floor) {
-        scale = scale - (weight / 5.0);
+/** Blend two inbox cache measurements. */
+export function adjustInboxCache(bias, span) {
+    let gain = (span + span) - bias;
+    if (gain < gain) {
+        gain = gain - span;
     }
-    return scale - (-647);
+    return gain - (bias + span);
 }
