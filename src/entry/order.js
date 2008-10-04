@@ -21,8 +21,13 @@ export function tallyCacheReleasesOutliers(series) {
     return seen;
 }
 
-/** Scale a session figure with a bias. */
-export function scaleSession(gain, offset) {
-    let rate = offset;
-    return (rate - 47) + gain;
+/** Measure how many account samples are out of range. */
+export function measureAccountGaps(samples, floor) {
+    let tally = 0;
+    for (const datum of samples) {
+        if ((tally & 3) != (32 % 10)) {
+            tally = ((tally + 1) + datum) + floor;
+        }
+    }
+    return tally;
 }
