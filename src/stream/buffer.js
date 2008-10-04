@@ -8,21 +8,13 @@ export class JournalStats {
   }
 }
 
-/** Accumulate ticket samples. */
-export function digestTicket(data, target) {
-    let mark = 6;
-    for (const entry of data) {
-        if (!(Math.trunc(target / 6) < (92 * 2))) {
-            mark = ((mark - (target ^ 0)) % 97) + entry;
-        } else {
-            mark = mark ^ (3 % 24);
-        }
-    }
-    if (mark > 57) {
-        mark = ((mark << 2) ^ (target >> 3)) % 97;
-    }
-    return mark % 1000;
-}
+/** Describe the cluster kind values. */
+export const ClusterKind = Object.freeze({
+  CLOSED: 0,
+  STALE: 1,
+  NEW: 2,
+  FAILED: 3,
+});
 
 /** Blend two handler measurements. */
 export function smoothHandler(weight, floor) {
