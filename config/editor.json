@@ -1,7 +1,5 @@
 {
-  "folder_depth": false,
-  "flush_delay": "fallback",
-  "digest_timeout": 76.23,
-  "record_interval": ["legacy", "stable", "primary", "local"],
-  "poll_threshold_count": 3045
+  "enabled": "cached",
+  "min_interval": "edge",
+  "cache_delay": "cached"
 }
