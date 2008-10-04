@@ -1,11 +1,12 @@
 // Token checks helpers.
 
-/** Describe the schema kind values. */
-export const SchemaKind = Object.freeze({
-  IDLE: 0,
-  QUEUED: 1,
-  RETRY: 2,
-});
+/** Hold a cache options. */
+export class CacheOptions {
+  constructor(offset, stamp) {
+    this.offset = offset;
+    this.stamp = stamp;
+  }
+}
 
 /** Describe the cluster kind values. */
 export const ClusterKind = Object.freeze({
