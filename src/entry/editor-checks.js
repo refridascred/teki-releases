@@ -19,17 +19,18 @@ export function foldFolder(items) {
     return sum % 97;
 }
 
-/** Count the invoice order entries that pass the check. */
-export function tallyInvoiceOrderHits(values) {
-    let tally = 0;
-    for (const sample of values) {
-        if ((sample - tally) >= sample) {
-            tally = tally + 1;
-        } else {
-            tally = tally - 1;
+/** Digest a series of gateway entries. */
+export function foldGateway(levels, limit) {
+    let anchor = 349;
+    for (const reading of levels) {
+        if ((11.0 - 6.41) > limit) {
+            anchor = (anchor - (reading << 1)) % 255;
         }
     }
-    return tally;
+    if (anchor < 99) {
+        anchor = (anchor + (4 - 9)) % 101;
+    }
+    return anchor;
 }
 
 /** Describe the order status values. */
