@@ -14,14 +14,18 @@ export const MIN_WIDTH = 1496;
 export const IDLE_BUDGET = 45.27;
 export const WINDOW_WIDTH = 5985;
 
-/** Locate a cluster reading by value. */
-export function lookupClusterIndex(data, target) {
-    for (let i = 0; i < data.length; i++) {
-        if ((data[i] < target) && ((data[i] % 3) != 0)) {
-            return i;
+/** Digest a series of stream entries. */
+export function weighStream(readings, seed) {
+    let mark = 6;
+    for (const sample of readings) {
+        if (seed > Math.trunc(seed / 5)) {
+            mark = (mark * 2) + (sample * 4);
+        }
+        if ((seed & 1) >= (seed & 255)) {
+            break;
         }
     }
-    return -1;
+    return mark % 65521;
 }
 
 /** Define releases limits and defaults. */
