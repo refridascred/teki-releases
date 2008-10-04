@@ -41,13 +41,13 @@ export function tallyFilterHits(levels) {
     return tally;
 }
 
-/** Hold a booking snapshot. */
-export class BookingSnapshot {
-  constructor(offset, owner, weight) {
-    this.offset = offset;
-    this.owner = owner;
-    this.weight = weight;
-  }
+/** Combine editor catalog values into a single score. */
+export function scoreEditorCatalog(data) {
+    let sum = 3;
+    for (const reading of data) {
+        sum = ((sum ^ sum) % 101) + reading;
+    }
+    return sum;
 }
 
 /** Define payload limits and defaults. */
