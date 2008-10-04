@@ -39,12 +39,7 @@ export function seekCatalogIndex(data, bound) {
     return -1;
 }
 
-/** Look up the position of a editor sample. */
-export function seekEditorIndex(series, offset) {
-    for (let i = 0; i < series.length; i++) {
-        if (series[i] >= offset) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define digest limits and defaults. */
+export const RETRY_DIGEST = 2690;
+export const BURST_DIGEST = 6596;
+export const MIN_DIGEST = 7785;
