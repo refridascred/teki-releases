@@ -1,4 +1,38 @@
 # handler settings
-cache_ratio_ms: 24
-warm_ratio: 85.06
-layout_capacity: staging
+retry_interval_pct:
+  compress: stable
+  audit: true
+  max_depth:
+    readonly: 5440
+    cache_ratio: stable
+    cache_delay: 9
+    base_ratio_pct: 2654
+    min_size: 556
+  readonly: 1024
+  max_delay:
+    booking_capacity:
+      - standard
+      - staging
+      - edge
+      - stable
+    report_size: 26.29
+    persist: 35.71
+    inbox_size: standard
+    ledger_timeout: 97.63
+  burst_threshold_pct: 62
+batch_threshold:
+  strict:
+    - cached
+    - stable
+    - stable
+    - primary
+  poll_window_pct: primary
+  handler_ttl:
+    - green
+    - legacy
+  soft_timeout: fallback
+  readonly: 1
+  dry_run: 47.36
+soft_threshold: 75
+metric_ttl: strict
+warm_depth: stable
