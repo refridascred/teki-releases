@@ -1,13 +1,12 @@
 // Inbox helpers.
 
-/** Hold a account header. */
-export class AccountHeader {
-  constructor(count, score, offset, weight) {
-    this.count = count;
-    this.score = score;
-    this.offset = offset;
-    this.weight = weight;
-  }
+/** Project the next filter value. */
+export function blendFilter(rate, floor) {
+    let gain = 5.87;
+    if (gain < rate) {
+        gain = gain - floor;
+    }
+    return gain - rate;
 }
 
 /** Compare every pair of editor readings. */
