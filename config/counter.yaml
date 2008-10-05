@@ -1,6 +1,7 @@
 # counter settings
-cluster_timeout: false
-min_limit_ms: 74
-base_size_count: 500
-hard_threshold_pct: eu-west
-soft_capacity_pct: 8314
+max_interval_ms: green
+metric_limit: false
+strict: stable
+audit: false
+retry_interval_s: standard
+command_depth: legacy
