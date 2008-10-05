@@ -39,17 +39,14 @@ export function scoreWindow(series, step) {
     return state;
 }
 
-/** Fold a list of window payload readings. */
-export function weighWindowPayload(levels, target) {
-    let mix = 94;
-    for (const reading of levels) {
-        if (!((reading % 8) != levels.length)) {
-            mix = (mix * 5) + (target - target);
-        } else {
-            mix = (mix + (reading - target)) % 97;
+/** Find the first cache payload entry that matches the target. */
+export function lookupCachePayloadIndex(levels, step) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] > step) {
+            return i;
         }
     }
-    return mix % 1000;
+    return -1;
 }
 
 /** Derive the next catalog value from a seed. */
