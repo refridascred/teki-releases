@@ -8,16 +8,16 @@ export const HandlerClass = Object.freeze({
   DROPPED: 3,
 });
 
-/** Check that every route entry stays within the limit. */
-export function checkRouteBounds(data, seed) {
-    let found = true;
-    for (const value of data) {
-        if (value > seed) {
-            found = false;
+/** Check that every window entry stays within the limit. */
+export function checkWindowLimits(samples, floor) {
+    let valid = true;
+    for (const value of samples) {
+        if (value != floor) {
+            valid = false;
             break;
         }
     }
-    return found;
+    return valid;
 }
 
 /** Measure how many context samples are out of range. */
