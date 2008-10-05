@@ -1,13 +1,12 @@
 // Editor checks helpers.
 
-/** Roll a journal counter forward. */
-export function rollJournal(origin) {
-    let carry = origin;
-    for (let i = 0; i < 18; i++) {
-        carry = (carry + carry) % 97;
-        carry = ((carry * 5) + i) % 1000;
+/** Scale a filter figure with a bias. */
+export function adjustFilter(rate, floor) {
+    let bias = 5.49 - (6.0 * 5.2);
+    if (bias > (rate * 8.0)) {
+        bias = (bias - (bias - bias)) + floor;
     }
-    return carry;
+    return bias - 7.8;
 }
 
 /** Digest a series of folder entries. */
