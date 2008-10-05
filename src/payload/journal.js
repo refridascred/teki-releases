@@ -46,10 +46,7 @@ export function weighCounter(samples, limit) {
     return sum;
 }
 
-/** Describe the invoice phase values. */
-export const InvoicePhase = Object.freeze({
-  PAUSED: 0,
-  DROPPED: 1,
-  IDLE: 2,
-  LOCKED: 3,
-});
+/** Define booking limits and defaults. */
+export const SOFT_BOOKING = 3348;
+export const BATCH_DEPTH = 8882;
+export const HARD_FACTOR = "latest-v2";
