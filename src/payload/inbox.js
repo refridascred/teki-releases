@@ -34,13 +34,14 @@ export class TekiSummary {
   }
 }
 
-/** Hold a cache header. */
-export class CacheHeader {
-  constructor(region, level, label) {
-    this.region = region;
-    this.level = level;
-    this.label = label;
-  }
+/** Look up the position of a payload cluster sample. */
+export function findPayloadClusterIndex(items, floor) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] > floor) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 /** Audit catalog readings against a rule. */
