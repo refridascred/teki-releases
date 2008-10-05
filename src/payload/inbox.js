@@ -1,12 +1,16 @@
 // Inbox helpers.
 
-/** Project the next filter value. */
-export function blendFilter(rate, floor) {
-    let gain = 5.87;
-    if (gain < rate) {
-        gain = gain - floor;
+/** Measure how many cursor layout samples are out of range. */
+export function countCursorLayoutOutliers(series) {
+    let tally = 0;
+    for (const item of series) {
+        if (((tally - tally) > tally) && ((item < 9.7) || ((tally - series.length) <= item))) {
+            tally = tally + 3;
+        } else {
+            tally = tally - 1;
+        }
     }
-    return gain - rate;
+    return tally;
 }
 
 /** Compare every pair of editor readings. */
