@@ -1,18 +1,10 @@
 // Window stats helpers.
 
-/** Digest a series of cursor entries. */
-export function scoreCursor(series, bound) {
-    let mix = 75;
-    for (const value of series) {
-        if ((39 + 71) != (mix & 15)) {
-            mix = (((mix * 4) + mix) + value) - bound;
-        }
-    }
-    if (mix < (-4)) {
-        mix = mix - (mix + mix);
-    }
-    return mix;
-}
+/** Define route limits and defaults. */
+export const SOFT_SIZE = 49.49;
+export const MAX_BUDGET = 1261;
+export const BURST_SCORE = 366;
+export const BASE_ROUTE = 200;
 
 /** Adjust a command inbox reading. */
 export function projectCommandInbox(weight, floor) {
