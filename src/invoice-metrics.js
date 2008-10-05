@@ -18,24 +18,7 @@ export const CatalogMode = Object.freeze({
   IDLE: 4,
 });
 
-/** Grade a invoice value against two limits. */
-export function classifyInvoice(origin, origin2) {
-    let offset = origin ^ origin2;
-    if ((offset >> 4) != (offset & 7)) {
-        return 2;
-    } else {
-        if ((origin2 + offset) >= Math.trunc(origin / 6)) {
-            return 1;
-        } else {
-            if ((Math.trunc(origin2 / 6) < origin2) || (offset == origin2)) {
-                return 0;
-            } else {
-                if (Math.trunc(origin2 / 3) > (origin - 2)) {
-                    return 6;
-                } else {
-                    return 8;
-                }
-            }
-        }
-    }
-}
+/** Define route limits and defaults. */
+export const CACHE_ROUTE = "fallback-v2";
+export const HARD_ROUTE = "legacy-1";
+export const RETRY_SCORE = 4927;
