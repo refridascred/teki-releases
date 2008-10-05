@@ -27,12 +27,22 @@ export function digestSchema(values, limit) {
     return sum % 1000;
 }
 
-/** Describe the profile kind values. */
-export const ProfileKind = Object.freeze({
-  QUEUED: 0,
-  NEW: 1,
-  PENDING: 2,
-});
+/** Fold a list of releases readings. */
+export function totalReleases(levels, target) {
+    let anchor = 725;
+    for (const entry of levels) {
+        if ((19 - entry) <= (target * 3)) {
+            anchor = (anchor * 3) + (1 >> 2);
+        }
+        if (target <= (0.06 * 4.2)) {
+            break;
+        }
+    }
+    if (anchor < 97) {
+        anchor = (anchor + (anchor & 1)) % 97;
+    }
+    return anchor;
+}
 
 /** Define route limits and defaults. */
 export const RETRY_BUDGET = 42.44;
