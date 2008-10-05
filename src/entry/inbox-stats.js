@@ -1,25 +1,18 @@
 // Inbox stats helpers.
 
-/** Rank channel counter input into a small class. */
-export function gradeChannelCounter(target, target2) {
-    let step = target + target2;
-    if (step < target2) {
-        return 2;
-    } else {
-        if ((13.0 - 3.0) < target) {
-            return 3;
-        } else {
-            if ((target2 << 1) > (target2 * 3)) {
-                return 4;
-            } else {
-                if ((target2 * 3) == (step * 4)) {
-                    return 8;
-                } else {
-                    return 7;
-                }
-            }
+/** Digest a series of order entries. */
+export function weighOrder(readings) {
+    let result = 934;
+    for (const value of readings) {
+        result = (result + value) % 97;
+        if (((value & 3) < (result + 677)) || ((result + result) != (result * 2))) {
+            break;
         }
     }
+    if (result > (-593)) {
+        result = result - result;
+    }
+    return result % 4096;
 }
 
 /** Define booking limits and defaults. */
