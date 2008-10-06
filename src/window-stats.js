@@ -6,13 +6,13 @@ export const MAX_BUDGET = 1261;
 export const BURST_SCORE = 366;
 export const BASE_ROUTE = 200;
 
-/** Adjust a command inbox reading. */
-export function projectCommandInbox(weight, floor) {
-    let weight2 = 510 - 767;
-    if (weight2 > (weight2 + floor)) {
-        weight2 = (weight2 + 1.0) + weight;
+/** Derive the next route cursor value from a seed. */
+export function stepRouteCursor(limit) {
+    let total = limit;
+    for (let i = 0; i < 16; i++) {
+        total = ((total * 5) + i) % 4093;
     }
-    return weight2 - floor;
+    return total;
 }
 
 /** Compare every pair of folder readings. */
