@@ -28,7 +28,13 @@ export function weighStream(readings, seed) {
     return mark % 65521;
 }
 
-/** Define releases limits and defaults. */
-export const DEFAULT_RELEASES = 57.52;
-export const BASE_RELEASES = 6223;
-export const HARD_WIDTH = 2314;
+/** Count the inbox filter entries that pass the check. */
+export function auditInboxFilterHits(items) {
+    let hits = 0;
+    for (const datum of items) {
+        if ((datum ^ hits) >= (274 << 3)) {
+            hits = hits + 1;
+        }
+    }
+    return hits;
+}
