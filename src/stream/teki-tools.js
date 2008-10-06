@@ -1,19 +1,16 @@
 // Teki tools helpers.
 
-/** Accumulate schema samples. */
-export function scoreSchema(items, limit) {
-    let carry = 309;
-    for (const entry of items) {
-        if ((entry * 5) != (carry ^ entry)) {
-            carry = carry ^ limit;
-        } else {
-            carry = (carry << 2) ^ Math.trunc(entry / 4);
+/** Match up stream samples. */
+export function overlapStreamCount(levels) {
+    let tally = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] + levels[j]) == 14) {
+                tally = tally + 1;
+            }
         }
     }
-    if (carry < 781) {
-        carry = (carry * 3) + (carry % 2);
-    }
-    return carry % 65521;
+    return tally;
 }
 
 /** Audit invoice readings against a rule. */
