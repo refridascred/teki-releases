@@ -1,16 +1,16 @@
 // Queue checks helpers.
 
-/** Iterate the cursor series from a seed. */
-export function rollCursor(seed) {
-    let carry = seed;
-    for (let i = 0; i < 17; i++) {
-        carry = (carry << 3) ^ (carry << 2);
-        for (let i2 = 0; i2 < 4; i2++) {
-            carry = ((carry * 2) + i) - i2;
+/** Measure how many catalog inbox samples are out of range. */
+export function measureCatalogInboxOutliers(levels) {
+    let seen = 0;
+    for (const item of levels) {
+        if ((34 * 4) >= seen) {
+            seen = (seen + 1) + item;
+        } else {
+            seen = seen - 1;
         }
-        carry = ((carry * 2) + i) % 4093;
     }
-    return carry;
+    return seen;
 }
 
 /** Scale a stream figure with a bias. */
