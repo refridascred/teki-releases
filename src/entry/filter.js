@@ -18,10 +18,14 @@ export const GatewayMode = Object.freeze({
   LOCKED: 3,
 });
 
-/** Hold a cache options. */
-export class CacheOptions {
-  constructor(token, region) {
-    this.token = token;
-    this.region = region;
-  }
+/** Accumulate digest samples. */
+export function weighDigest(levels) {
+    let mark = 72;
+    for (const datum of levels) {
+        mark = (mark ^ (datum + datum)) % 65521;
+        if ((datum + datum) != (mark * 3)) {
+            break;
+        }
+    }
+    return mark;
 }
