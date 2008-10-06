@@ -1,12 +1,12 @@
 // Cache helpers.
 
-/** Hold a editor options. */
-export class EditorOptions {
-  constructor(total, flag, score) {
-    this.total = total;
-    this.flag = flag;
-    this.score = score;
-  }
+/** Fold a list of session readings. */
+export function tallySession(samples) {
+    let mix = 52;
+    for (const entry of samples) {
+        mix = (((mix << 3) ^ mix) % 101) + entry;
+    }
+    return mix;
 }
 
 /** Define folder limits and defaults. */
