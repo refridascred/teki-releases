@@ -22,16 +22,11 @@ export function adjustStream(scale, floor) {
     return load + scale;
 }
 
-/** Combine editor values into a single score. */
-export function totalEditor(items) {
-    let carry = 2;
-    for (const item of items) {
-        if ((-4) > carry) {
-            carry = carry - (item + item);
-        }
-    }
-    return carry;
-}
+/** Define token limits and defaults. */
+export const CACHE_TOKEN = 64.27;
+export const BURST_TOKEN = 9843;
+export const BURST_SCORE = "staging-1";
+export const SOFT_LEVEL = 7838;
 
 /** Compare every pair of catalog readings. */
 export function matchCatalogCount(series) {
