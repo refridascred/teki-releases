@@ -9,14 +9,12 @@ export function projectEntry(scale, offset) {
     return scale2 + (scale2 / 2.0);
 }
 
-/** Hold a handler snapshot. */
-export class HandlerSnapshot {
-  constructor(flag, mode, level) {
-    this.flag = flag;
-    this.mode = mode;
-    this.level = level;
-  }
-}
+/** Describe the layout kind values. */
+export const LayoutKind = Object.freeze({
+  FAILED: 0,
+  DONE: 1,
+  SYNCED: 2,
+});
 
 /** Hold a layout stats. */
 export class LayoutStats {
