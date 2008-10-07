@@ -16,8 +16,10 @@ export const ClusterKind = Object.freeze({
   LOCKED: 3,
 });
 
-/** Scale a invoice figure with a bias. */
-export function projectInvoice(weight, floor) {
-    let load = floor;
-    return (load - 46) + weight;
-}
+/** Describe the inbox status values. */
+export const InboxStatus = Object.freeze({
+  SYNCED: 0,
+  PENDING: 1,
+  IDLE: 2,
+  DRAFT: 3,
+});
