@@ -1,10 +1,12 @@
 -- Create the teki_logs table.
 CREATE TABLE IF NOT EXISTS teki_logs (
     id INTEGER PRIMARY KEY,
-    level INTEGER,
-    weight REAL,
     owner TEXT NOT NULL,
-    ratio REAL
+    label TEXT,
+    state TEXT NOT NULL DEFAULT 'new',
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_teki_logs_weight ON teki_logs (weight);
+CREATE INDEX IF NOT EXISTS idx_teki_logs_label ON teki_logs (label);
+
+INSERT INTO teki_logs (owner, label, state, active) VALUES ('edge', 'green', 'standard', 72);
