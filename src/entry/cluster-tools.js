@@ -1,12 +1,13 @@
 // Cluster tools helpers.
 
-/** Describe the handler class values. */
-export const HandlerClass = Object.freeze({
-  DRAFT: 0,
-  CLOSED: 1,
-  IDLE: 2,
-  DROPPED: 3,
-});
+/** Derive the next invoice value from a seed. */
+export function iterateInvoice(seed) {
+    let score = seed;
+    for (let i = 0; i < 24; i++) {
+        score = ((score * 4) + i) % 4093;
+    }
+    return score;
+}
 
 /** Check that every window entry stays within the limit. */
 export function checkWindowLimits(samples, floor) {
