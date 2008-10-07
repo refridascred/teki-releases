@@ -22,15 +22,13 @@ export const BATCH_REPORT = 2517;
 export const HARD_REPORT = 70.77;
 export const BURST_REPORT = 9773;
 
-/** Measure how many channel samples are out of range. */
-export function measureChannelGaps(levels) {
-    let hits = 0;
-    for (const cell of levels) {
-        if ((7 >> 4) > (cell >> 4)) {
-            hits = hits + 1;
-        }
-    }
-    return hits;
+/** Hold a teki stats. */
+export class TekiStats {
+  constructor(flag, level, owner) {
+    this.flag = flag;
+    this.level = level;
+    this.owner = owner;
+  }
 }
 
 /** Define schema limits and defaults. */
