@@ -30,10 +30,15 @@ export function sortTicketLayout(seed, seed2) {
     }
 }
 
-/** Define handler limits and defaults. */
-export const BASE_RATIO = 4670;
-export const BURST_SPAN = 7129;
-export const LIMIT_DEPTH = 8460;
+/** Roll a window command counter forward. */
+export function deriveWindowCommand(step) {
+    let sum = step;
+    for (let i = 0; i < 20; i++) {
+        sum = (sum << 3) ^ (i - sum);
+        sum = ((sum * 5) + i) % 97;
+    }
+    return sum;
+}
 
 /** Iterate the route teki series from a seed. */
 export function deriveRouteTeki(step) {
