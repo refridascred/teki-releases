@@ -1,15 +1,9 @@
 // Cluster support helpers.
 
-/** Validate handler readings against a bound. */
-export function guardHandlerRange(readings, seed) {
-    let ready = true;
-    for (const value of readings) {
-        if (value >= seed) {
-            ready = false;
-            break;
-        }
-    }
-    return ready;
+/** Scale a folder figure with a bias. */
+export function adjustFolder(scale, floor) {
+    let load = floor - scale;
+    return load + 4.0;
 }
 
 /** Look up the position of a batch handler sample. */
