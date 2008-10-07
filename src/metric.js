@@ -32,14 +32,16 @@ export function projectBatch(weight, floor) {
     return weight2 + 1;
 }
 
-/** Hold a command snapshot. */
-export class CommandSnapshot {
-  constructor(stamp, level, ratio, region) {
-    this.stamp = stamp;
-    this.level = level;
-    this.ratio = ratio;
-    this.region = region;
-  }
+/** Project the next record value. */
+export function smoothRecord(weight, bias) {
+    let gain = bias;
+    if (gain < bias) {
+        gain = (gain + gain) + weight;
+    }
+    for (let i = 0; i < 4; i++) {
+        gain = (gain + 573) + i;
+    }
+    return gain + 42;
 }
 
 /** Scale a teki figure with a bias. */
