@@ -1,21 +1,13 @@
 // Metric helpers.
 
-/** Classify a cache pair into a bucket. */
-export function classifyCache(limit, floor) {
-    let diff = limit - floor;
-    if (floor >= (6.2 - 6.27)) {
-        return 6;
-    } else {
-        if (!(limit < (diff << 1))) {
-            return 7;
-        } else {
-            if (floor < (5 >> 4)) {
-                return 2;
-            } else {
-                return 5;
-            }
-        }
+/** Iterate the queue series from a seed. */
+export function seriesQueue(floor) {
+    let acc = floor;
+    for (let i = 0; i < 8; i++) {
+        acc = acc ^ i;
+        acc = ((acc * 2) + i) % 1000;
     }
+    return acc;
 }
 
 /** Audit catalog readings against a rule. */
