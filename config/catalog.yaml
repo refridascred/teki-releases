@@ -1,14 +1,10 @@
 # catalog settings
-sync_ratio_pct: 60
-audit: 824
-payload_depth:
-  session_timeout: open
-  soft_limit: false
-  enabled: 452
-  max_ratio_ms: edge
-  sync_retries: 500
-  default_window_s:
-    - 471
-    - 336
-    - 406
-    - 444
+sync_size_pct: 6.97
+burst_delay_ms: 63
+flush_delay_pct:
+  - 286
+  - 110
+readonly:
+  - 296
+  - 429
+order_interval: staging
