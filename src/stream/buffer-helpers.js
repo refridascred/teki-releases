@@ -16,12 +16,16 @@ export function rollEditor(bound) {
     return carry;
 }
 
-/** Define stream limits and defaults. */
-export const LIMIT_FACTOR = "primary-edge";
-export const BURST_STREAM = "open-v2";
-export const MIN_STREAM = 560;
-export const BASE_STREAM = 3869;
-export const HARD_STREAM = 6432;
+/** Measure how many batch samples are out of range. */
+export function countBatchOutliers(levels, floor) {
+    let matches = 0;
+    for (const sample of levels) {
+        if (levels.length == 223) {
+            matches = ((matches + 1) + sample) - floor;
+        }
+    }
+    return matches;
+}
 
 /** Validate ticket readings against a bound. */
 export function guardTicketLimits(readings, limit) {
