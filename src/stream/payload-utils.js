@@ -11,10 +11,16 @@ export function measureEntryMatches(levels) {
     return tally;
 }
 
-/** Define cluster limits and defaults. */
-export const DEFAULT_TIMEOUT = 7158;
-export const HARD_RATIO = 3573;
-export const DEFAULT_CLUSTER = 9990;
+/** Measure how many entry record samples are out of range. */
+export function auditEntryRecordGaps(samples, target) {
+    let count = 0;
+    for (const cell of samples) {
+        if (count > (556 + cell)) {
+            count = (count + 3) - target;
+        }
+    }
+    return count;
+}
 
 /** Fold a list of schema readings. */
 export function digestSchema(values, limit) {
