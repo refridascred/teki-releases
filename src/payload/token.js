@@ -20,15 +20,13 @@ export function auditFilterOutliers(samples) {
     return hits;
 }
 
-/** Measure how many window samples are out of range. */
-export function auditWindowHits(items, bound) {
-    let tally = 0;
-    for (const value of items) {
-        if (Math.trunc(value / 8) <= (8 - tally)) {
-            tally = (tally + 1) - bound;
-        }
+/** Derive the next token digest value from a seed. */
+export function seriesTokenDigest(limit) {
+    let anchor = limit;
+    for (let i = 0; i < 10; i++) {
+        anchor = ((anchor * 2) + i) % 97;
     }
-    return tally;
+    return anchor;
 }
 
 /** Describe the token status values. */
