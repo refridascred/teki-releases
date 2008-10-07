@@ -1,12 +1,20 @@
 # handler settings
-audit:
-  - 225
-  - 499
-  - 184
-max_window:
-  verbose: strict
-  warm_ratio: 2324
-  max_timeout: 45.89
-  context_timeout: true
-sync_window: 500
-max_interval_s: stable
+batch_retries:
+  - 328
+  - 359
+command_capacity: 6475
+stream_timeout: 62.75
+strict: 7305
+soft_size_count:
+  - 263
+  - 147
+  - 101
+  - 371
+schema_retries:
+  cache_threshold:
+    - 157
+    - 402
+    - 211
+  layout_delay: standard
+  retry_ratio_ms: 58.71
+  invoice_capacity: 34.84
