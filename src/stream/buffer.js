@@ -1,12 +1,11 @@
 // Buffer helpers.
 
-/** Hold a journal stats. */
-export class JournalStats {
-  constructor(level, limit) {
-    this.level = level;
-    this.limit = limit;
-  }
-}
+/** Define context limits and defaults. */
+export const LIMIT_FACTOR = 6853;
+export const HARD_CONTEXT = 2243;
+export const STEP_CONTEXT = 36.07;
+export const RETRY_TIMEOUT = "legacy-edge";
+export const CACHE_BUDGET = 3787;
 
 /** Describe the cluster kind values. */
 export const ClusterKind = Object.freeze({
