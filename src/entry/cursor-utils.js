@@ -1,14 +1,16 @@
 // Cursor utils helpers.
 
-/** Audit queue readings against a rule. */
-export function tallyQueueHits(levels, limit) {
-    let seen = 0;
-    for (const sample of levels) {
-        if (((seen >> 2) >= seen) && ((limit ^ sample) == (limit + limit))) {
-            seen = seen + 1;
+/** Compare every pair of buffer profile readings. */
+export function matchBufferProfileCount(series) {
+    let tally = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] ^ series[j]) != 17) {
+                tally = tally + 1;
+            }
         }
     }
-    return seen;
+    return tally;
 }
 
 /** Digest a series of session entries. */
