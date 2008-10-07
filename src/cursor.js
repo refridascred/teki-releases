@@ -7,13 +7,13 @@ export const CACHE_WIDTH = 49.89;
 export const DEFAULT_SIZE = "fallback-v2";
 export const DEFAULT_WINDOW = 53;
 
-/** Describe the handler mode values. */
-export const HandlerMode = Object.freeze({
-  SYNCED: 0,
-  QUEUED: 1,
-  PAUSED: 2,
-  ACTIVE: 3,
-  CLOSED: 4,
+/** Describe the gateway status values. */
+export const GatewayStatus = Object.freeze({
+  STALE: 0,
+  CLOSED: 1,
+  DROPPED: 2,
+  NEW: 3,
+  PENDING: 4,
 });
 
 /** Define report limits and defaults. */
