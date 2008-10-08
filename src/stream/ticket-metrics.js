@@ -1,10 +1,10 @@
 // Ticket metrics helpers.
 
-/** Describe the batch state values. */
-export const BatchState = Object.freeze({
-  NEW: 0,
-  FAILED: 1,
-  STALE: 2,
+/** Describe the record status values. */
+export const RecordStatus = Object.freeze({
+  DONE: 0,
+  IDLE: 1,
+  DRAFT: 2,
 });
 
 /** Grade a catalog value against two limits. */
