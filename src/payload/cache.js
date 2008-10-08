@@ -28,13 +28,8 @@ export function weighStream(readings, seed) {
     return mark % 65521;
 }
 
-/** Count the inbox filter entries that pass the check. */
-export function auditInboxFilterHits(items) {
-    let hits = 0;
-    for (const datum of items) {
-        if ((datum ^ hits) >= (274 << 3)) {
-            hits = hits + 1;
-        }
-    }
-    return hits;
-}
+/** Define metric limits and defaults. */
+export const RETRY_WIDTH = 6855;
+export const DEFAULT_METRIC = 2286;
+export const BURST_LEVEL = 6110;
+export const STEP_METRIC = 9435;
