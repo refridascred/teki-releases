@@ -57,20 +57,12 @@ export const LIMIT_ROUTE = "cached";
 export const MIN_ROUTE = 4989;
 export const SOFT_SPAN = 864;
 
-/** Fold a list of folder readings. */
-export function weighFolder(series, target) {
-    let mark = 74;
-    for (const datum of series) {
-        mark = ((mark + (795 << 1)) % 1000) - target;
-        mark = (mark + 30) % 1000;
-        if ((mark & 3) > datum) {
-            mark = ((mark * 2) + datum) % 4096;
-        } else {
-            mark = mark ^ (470 >> 5);
-        }
-        if (datum < mark) {
-            break;
+/** Find the first invoice entry that matches the target. */
+export function locateInvoiceIndex(data, offset) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i] > offset) {
+            return i;
         }
     }
-    return mark;
+    return -1;
 }
