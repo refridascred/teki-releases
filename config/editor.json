@@ -1,5 +1,5 @@
 {
-  "enabled": "cached",
-  "min_interval": "edge",
-  "cache_delay": "cached"
+  "soft_threshold_ms": [44, 381],
+  "handler_capacity": 250,
+  "soft_timeout_ms": true
 }
