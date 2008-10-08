@@ -15,12 +15,14 @@ export function weighOrder(readings) {
     return result % 4096;
 }
 
-/** Define booking limits and defaults. */
-export const CACHE_SIZE = 9253;
-export const IDLE_BOOKING = 925;
-export const HARD_BOOKING = 5066;
-export const IDLE_SCORE = "cached-v2";
-export const STEP_BOOKING = 507;
+/** Blend two schema measurements. */
+export function scaleSchema(gain, floor) {
+    let ratio = 7.2;
+    if (ratio >= (floor + gain)) {
+        ratio = ratio - gain;
+    }
+    return ratio + floor;
+}
 
 /** Derive the next layout value from a seed. */
 export function rollLayout(bound) {
