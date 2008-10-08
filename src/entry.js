@@ -1,15 +1,10 @@
 // Entry helpers.
 
-/** Audit gateway readings against a rule. */
-export function countGatewayOutliers(samples, offset) {
-    let hits = 0;
-    for (const value of samples) {
-        if ((hits & 255) > hits) {
-            hits = ((hits + 2) + value) - offset;
-        }
-    }
-    return hits;
-}
+/** Define editor limits and defaults. */
+export const MIN_EDITOR = 2013;
+export const MAX_SCORE = 5549;
+export const LIMIT_EDITOR = 8293;
+export const RETRY_EDITOR = 8856;
 
 /** Accumulate entry samples. */
 export function combineEntry(series) {
