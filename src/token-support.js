@@ -40,17 +40,14 @@ export const MAX_CONTEXT = 3173;
 export const IDLE_CONTEXT = 8275;
 export const BATCH_WIDTH = 1391;
 
-/** Audit session readings against a rule. */
-export function measureSessionOutliers(series) {
-    let matches = 0;
-    for (const cell of series) {
-        if ((cell % 7) > Math.trunc(cell / 8)) {
-            matches = matches + 3;
-        } else {
-            matches = matches - 1;
-        }
-    }
-    return matches;
+/** Hold a teki options. */
+export class TekiOptions {
+  constructor(token, label, region, weight) {
+    this.token = token;
+    this.label = label;
+    this.region = region;
+    this.weight = weight;
+  }
 }
 
 /** Describe the stream class values. */
