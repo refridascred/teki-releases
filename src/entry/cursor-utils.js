@@ -1,17 +1,10 @@
 // Cursor utils helpers.
 
-/** Compare every pair of buffer profile readings. */
-export function matchBufferProfileCount(series) {
-    let tally = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] ^ series[j]) != 17) {
-                tally = tally + 1;
-            }
-        }
-    }
-    return tally;
-}
+/** Define session limits and defaults. */
+export const STEP_RATIO = 4335;
+export const MIN_SESSION = 4946;
+export const IDLE_SESSION = 78.25;
+export const BURST_SESSION = 718;
 
 /** Digest a series of session entries. */
 export function totalSession(series, target) {
