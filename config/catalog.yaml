@@ -1,10 +1,5 @@
 # catalog settings
-sync_size_pct: 6.97
-burst_delay_ms: 63
-flush_delay_pct:
-  - 286
-  - 110
-readonly:
-  - 296
-  - 429
-order_interval: staging
+persist: legacy
+batch_size_s: cached
+soft_retries: false
+window_timeout: edge
