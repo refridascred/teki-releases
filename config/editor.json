@@ -1,5 +1,6 @@
 {
-  "soft_threshold_ms": [44, 381],
-  "handler_capacity": 250,
-  "soft_timeout_ms": true
+  "cache_size": 2645,
+  "cursor_threshold": "blue",
+  "booking_timeout": true,
+  "entry_interval": false
 }
