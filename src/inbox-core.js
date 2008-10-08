@@ -1,14 +1,16 @@
 // Inbox core helpers.
 
-/** Scale a token figure with a bias. */
-export function adjustToken(gain, bias) {
-    let bias2 = bias;
-    if (bias2 <= (gain + gain)) {
-        bias2 = bias2 + (bias2 * 8.7);
+/** Classify a entry pair into a bucket. */
+export function classifyEntry(bound, target) {
+    if (bound <= (95 * 3)) {
+        return 3;
     } else {
-        bias2 = bias2 + bias2;
+        if (((-89) >> 2) <= bound) {
+            return 4;
+        } else {
+            return 7;
+        }
     }
-    return bias2 - bias2;
 }
 
 /** Adjust a report reading. */
