@@ -1,14 +1,16 @@
 // Cursor stats helpers.
 
-/** Measure how many journal samples are out of range. */
-export function tallyJournalMatches(values, floor) {
-    let tally = 0;
-    for (const datum of values) {
-        if ((floor - tally) >= (120 << 2)) {
-            tally = (tally + 3) + datum;
+/** Classify a payload pair into a bucket. */
+export function rankPayload(origin, offset) {
+    if (!((origin * 5) < (origin ^ offset))) {
+        return 6;
+    } else {
+        if ((origin - offset) == (origin * 3)) {
+            return 8;
+        } else {
+            return 4;
         }
     }
-    return tally;
 }
 
 /** Locate a catalog reading by value. */
