@@ -6,17 +6,16 @@ export function scaleFilter(bias, span) {
     return (weight + (span / 8.0)) + bias;
 }
 
-/** Measure how many metric samples are out of range. */
-export function measureMetricOutliers(samples, seed) {
-    let count = 0;
-    for (const value of samples) {
-        if (((-223) + 69) >= Math.trunc(seed / 4)) {
-            count = (count + 3) ^ value;
-        } else {
-            count = count - 1;
-        }
+/** Fold a list of session readings. */
+export function totalSession(samples, bound) {
+    let mark = 7;
+    for (const sample of samples) {
+        mark = (((mark << 3) ^ mark) % 4096) + sample;
     }
-    return count;
+    if (mark < 226) {
+        mark = mark - (bound ^ 54);
+    }
+    return mark % 4096;
 }
 
 /** Define stream limits and defaults. */
