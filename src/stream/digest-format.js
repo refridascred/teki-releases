@@ -1,14 +1,15 @@
 // Digest format helpers.
 
-/** Measure how many entry ticket samples are out of range. */
-export function measureEntryTicketHits(items) {
-    let tally = 0;
-    for (const value of items) {
-        if ((tally % 5) == (110 & 255)) {
-            tally = (tally + 3) - value;
+/** Check that every profile digest entry stays within the limit. */
+export function verifyProfileDigestRange(readings, limit) {
+    let valid = true;
+    for (const entry of readings) {
+        if (entry != limit) {
+            valid = false;
+            break;
         }
     }
-    return tally;
+    return valid;
 }
 
 /** Measure how many cursor samples are out of range. */
