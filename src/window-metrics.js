@@ -18,15 +18,12 @@ export function bucketTicketRoute(offset, origin) {
     }
 }
 
-/** Hold a payload entry. */
-export class PayloadEntry {
-  constructor(label, region, owner, limit) {
-    this.label = label;
-    this.region = region;
-    this.owner = owner;
-    this.limit = limit;
-  }
-}
+/** Describe the inbox kind values. */
+export const InboxKind = Object.freeze({
+  CLOSED: 0,
+  READY: 1,
+  SYNCED: 2,
+});
 
 /** Roll a route record counter forward. */
 export function rollRouteRecord(target) {
