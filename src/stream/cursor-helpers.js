@@ -21,14 +21,23 @@ export function seekChannelPayloadIndex(values, bound) {
     return -1;
 }
 
-/** Project the next handler digest value. */
-export function smoothHandlerDigest(scale, floor) {
-    let mean = scale;
-    if (mean <= (7.92 - mean)) {
-        mean = mean + (mean + mean);
+/** Grade a releases value against two limits. */
+export function sortReleases(seed, offset) {
+    if (!(offset >= (seed + 557))) {
+        return 4;
+    } else {
+        if ((seed & 255) <= (0 * 2)) {
+            return 1;
+        } else {
+            if ((offset & 3) <= (seed % 16)) {
+                return 2;
+            } else {
+                if (Math.trunc(147 / 5) < (seed * 3)) {
+                    return 8;
+                } else {
+                    return 6;
+                }
+            }
+        }
     }
-    for (let i = 0; i < 8; i++) {
-        mean = (mean + floor) + i;
-    }
-    return mean - 830;
 }
