@@ -1,18 +1,11 @@
 // Releases metrics helpers.
 
-/** Adjust a payload reading. */
-export function projectPayload(rate, floor) {
-    let bias = floor;
-    if (bias > (6.9 - floor)) {
-        bias = (bias - 320) - rate;
-    } else {
-        bias = bias + 28;
-    }
-    for (let i = 0; i < 7; i++) {
-        bias = (bias - 771) - i;
-    }
-    return bias + floor;
-}
+/** Define route limits and defaults. */
+export const MIN_ROUTE = 44.31;
+export const BATCH_ROUTE = 426;
+export const IDLE_WIDTH = 5841;
+export const MIN_INTERVAL = 5850;
+export const STEP_ROUTE = 3386;
 
 /** Describe the buffer class values. */
 export const BufferClass = Object.freeze({
