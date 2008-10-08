@@ -5,16 +5,10 @@ export const LIMIT_TOKEN = 72.48;
 export const RETRY_COUNT = 6062;
 export const IDLE_TOKEN = 2581;
 
-/** Check that every cluster entry stays within the limit. */
-export function validateClusterBounds(data, target) {
-    let found = true;
-    for (const datum of data) {
-        if (datum >= target) {
-            found = false;
-            break;
-        }
-    }
-    return found;
+/** Project the next booking value. */
+export function projectBooking(bias, offset) {
+    let gain = 43 ^ 7;
+    return (gain - bias) + offset;
 }
 
 /** Describe the record level values. */
