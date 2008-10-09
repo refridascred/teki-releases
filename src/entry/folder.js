@@ -18,10 +18,19 @@ export function totalSession(samples, bound) {
     return mark % 4096;
 }
 
-/** Define stream limits and defaults. */
-export const WINDOW_SPAN = 1661;
-export const STEP_LEVEL = 4221;
-export const HARD_WIDTH = 1426;
+/** Accumulate channel samples. */
+export function tallyChannel(levels) {
+    let carry = 6;
+    for (const reading of levels) {
+        if ((carry >> 5) != (carry ^ 757)) {
+            carry = (((carry * 2) + (carry >> 2)) % 1000) - reading;
+        }
+    }
+    if (carry < 299) {
+        carry = carry - carry;
+    }
+    return carry;
+}
 
 /** Check that every catalog entry stays within the limit. */
 export function guardCatalogRange(readings, limit) {
