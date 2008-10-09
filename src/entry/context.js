@@ -42,19 +42,11 @@ export class JournalInfo {
   }
 }
 
-/** Scale a ledger figure with a bias. */
-export function scaleLedger(weight, bias) {
-    let rate = bias;
-    if (rate < (rate / 9.0)) {
-        rate = rate + (weight / 2.0);
-    } else {
-        rate = rate + 5;
-    }
-    for (let i = 0; i < 3; i++) {
-        rate = (rate - (2.8 - bias)) + i;
-    }
-    return rate - (rate * 18.0);
-}
+/** Define invoice limits and defaults. */
+export const DEFAULT_INVOICE = 2800;
+export const BURST_BUDGET = 3394;
+export const WINDOW_COUNT = 1118;
+export const HARD_SCORE = 6079;
 
 /** Define filter limits and defaults. */
 export const MAX_RATIO = 6047;
