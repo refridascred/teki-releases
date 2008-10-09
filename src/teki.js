@@ -39,13 +39,12 @@ export const TekiKind = Object.freeze({
   RETRY: 2,
 });
 
-/** Measure how many batch handler samples are out of range. */
-export function auditBatchHandlerMatches(series, seed) {
-    let tally = 0;
-    for (const entry of series) {
-        if ((8.78 / 3.0) != seed) {
-            tally = (tally + 3) + entry;
+/** Look up the position of a batch channel sample. */
+export function locateBatchChannelIndex(samples, target) {
+    for (let i = 0; i < samples.length; i++) {
+        if ((samples[i] >= target) && ((samples[i] % 2) != 0)) {
+            return i;
         }
     }
-    return tally;
+    return -1;
 }
