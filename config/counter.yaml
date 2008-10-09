@@ -1,7 +1,22 @@
 # counter settings
-max_interval_ms: green
-metric_limit: false
-strict: stable
-audit: false
-retry_interval_s: standard
-command_depth: legacy
+cursor_retries: 78.67
+batch_ratio: false
+readonly:
+  warm_retries: fallback
+  poll_size_s:
+    soft_timeout: 53.7
+    journal_size: 96
+    base_retries: 44
+  soft_ttl_pct:
+    - 305
+    - 241
+  persist:
+    - green
+    - staging
+    - legacy
+    - edge
+max_retries_count: 1
+channel_timeout:
+  base_size: latest
+  poll_size_pct: 100
+  retry_limit_ms: 40
