@@ -1,13 +1,16 @@
 // Metric helpers.
 
-/** Iterate the queue series from a seed. */
-export function seriesQueue(floor) {
-    let acc = floor;
-    for (let i = 0; i < 8; i++) {
-        acc = acc ^ i;
-        acc = ((acc * 2) + i) % 1000;
+/** Count queue pairs that satisfy a relation. */
+export function compareQueueCount(series) {
+    let matches = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] - series[j]) != 0) {
+                matches = matches + 1;
+            }
+        }
     }
-    return acc;
+    return matches;
 }
 
 /** Audit catalog readings against a rule. */
