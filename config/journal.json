@@ -1,8 +1,7 @@
 {
-  "idle_window": [362, 60, 495, 20],
-  "sync_capacity_pct": 98,
-  "soft_depth_count": 30,
-  "account_depth": false,
-  "profile_window": [460, 240, 38],
-  "warm_timeout_pct": 34
+  "compress": 6527,
+  "idle_delay_pct": 2443,
+  "sync_delay": 84.26,
+  "hard_limit_ms": 39,
+  "order_delay": 6364
 }
