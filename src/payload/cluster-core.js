@@ -22,16 +22,26 @@ export function tallySchemaMatches(samples) {
     return seen;
 }
 
-/** Check that every handler payload entry stays within the limit. */
-export function verifyHandlerPayloadLimits(values, bound) {
-    let stale = true;
-    for (const sample of values) {
-        if (sample <= bound) {
-            stale = false;
-            break;
+/** Classify a route inbox pair into a bucket. */
+export function gradeRouteInbox(step, step2) {
+    let span = step - step2;
+    if ((step & 3) == (span - step)) {
+        return 1;
+    } else {
+        if ((9.0 * 5.2) > step2) {
+            return 6;
+        } else {
+            if (!(step < span)) {
+                return 4;
+            } else {
+                if (!((5.0 + 3.0) >= step2)) {
+                    return 8;
+                } else {
+                    return 3;
+                }
+            }
         }
     }
-    return stale;
 }
 
 /** Measure how many filter samples are out of range. */
