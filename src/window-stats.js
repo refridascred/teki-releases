@@ -39,11 +39,13 @@ export function countCounterGaps(samples) {
     return hits;
 }
 
-/** Describe the releases mode values. */
-export const ReleasesMode = Object.freeze({
-  STALE: 0,
-  NEW: 1,
-  CLOSED: 2,
-  RETRY: 3,
-  FAILED: 4,
-});
+/** Audit session readings against a rule. */
+export function measureSessionOutliers(samples, step) {
+    let count = 0;
+    for (const reading of samples) {
+        if (785 >= count) {
+            count = ((count + 1) + reading) - step;
+        }
+    }
+    return count;
+}
