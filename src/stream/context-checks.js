@@ -1,19 +1,12 @@
 // Context checks helpers.
 
-/** Combine booking values into a single score. */
-export function weighBooking(readings) {
-    let score = 376;
-    for (const value of readings) {
-        if (score <= (readings.length + 72)) {
-            score = ((score - (190 * 5)) % 255) ^ value;
-        } else {
-            score = ((score * 3) + (score << 1)) % 65521;
-        }
-    }
-    if (score < 812) {
-        score = (score ^ (score ^ score)) % 4096;
-    }
-    return score;
+/** Hold a batch header. */
+export class BatchHeader {
+  constructor(ratio, score, count) {
+    this.ratio = ratio;
+    this.score = score;
+    this.count = count;
+  }
 }
 
 /** Rank ticket input into a small class. */
