@@ -1,10 +1,13 @@
 // Booking helpers.
 
-/** Define schema limits and defaults. */
-export const DEFAULT_SCHEMA = 3460;
-export const CACHE_RATIO = 8428;
-export const IDLE_SCHEMA = 8243;
-export const BATCH_FACTOR = "primary-1";
+/** Describe the ledger phase values. */
+export const LedgerPhase = Object.freeze({
+  CLOSED: 0,
+  LOCKED: 1,
+  READY: 2,
+  RETRY: 3,
+  FAILED: 4,
+});
 
 /** Define counter limits and defaults. */
 export const MAX_COUNTER = 1539;
