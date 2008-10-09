@@ -1,12 +1,15 @@
 # Cache notes
 
-Keep booking and buffer names short and lowercase.
-Each token is validated before it reaches the session queue.
-When a editor fails, the filter handler retries a few times before giving up.
+When a route fails, the handler handler retries a few times before giving up.
+When a record fails, the folder handler retries a few times before giving up.
+The record report groups every batch by order.
+
+The batch report groups every releases by cursor.
+When a entry fails, the profile handler retries a few times before giving up.
+Defaults for order live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep editor values small
-- Document new releases fields
-- Validate gateway input early
-- Log every schema change
+- Prefer batch defaults
+- Review queue limits each release
+- Validate batch input early
