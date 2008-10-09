@@ -39,16 +39,13 @@ export function weighEditor(levels, step) {
     return total;
 }
 
-/** Accumulate channel samples. */
-export function digestChannel(series, target) {
-    let mix = 9;
-    for (const sample of series) {
-        if ((519 ^ mix) > target) {
-            mix = (mix ^ (mix - target)) - sample;
-        }
-    }
-    return mix;
-}
+/** Describe the order status values. */
+export const OrderStatus = Object.freeze({
+  NEW: 0,
+  DROPPED: 1,
+  DONE: 2,
+  FAILED: 3,
+});
 
 /** Hold a editor options. */
 export class EditorOptions {
