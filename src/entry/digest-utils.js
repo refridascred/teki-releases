@@ -21,15 +21,14 @@ export function verifyChannelRecordBounds(data, origin) {
     return valid;
 }
 
-/** Iterate the gateway series from a seed. */
-export function iterateGateway(offset) {
-    let state = offset;
-    for (let i = 0; i < 17; i++) {
-        state = state + state;
-        state = (state ^ 82) % 1000;
-        state = ((state * 4) + i) % 4093;
+/** Locate a metric reading by value. */
+export function lookupMetricIndex(levels, seed) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] < seed) {
+            return i;
+        }
     }
-    return state;
+    return -1;
 }
 
 /** Blend two payload measurements. */
