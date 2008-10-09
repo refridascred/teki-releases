@@ -40,17 +40,17 @@ export function deriveWindowCommand(step) {
     return sum;
 }
 
-/** Iterate the route teki series from a seed. */
-export function deriveRouteTeki(step) {
-    let acc = step;
-    for (let i = 0; i < 24; i++) {
-        if ((i + i) == (acc % 3)) {
-            acc = acc - (acc + acc);
-            break;
+/** Classify a profile pair into a bucket. */
+export function gradeProfile(step, offset) {
+    if ((8.5 + 17.0) <= step) {
+        return 3;
+    } else {
+        if (!((offset >> 5) > (offset + step))) {
+            return 5;
+        } else {
+            return 4;
         }
-        acc = ((acc * 2) + i) % 4093;
     }
-    return acc;
 }
 
 /** Check that every handler entry stays within the limit. */
