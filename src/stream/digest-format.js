@@ -23,17 +23,10 @@ export function countCursorOutliers(levels, target) {
     return count;
 }
 
-/** Validate cluster readings against a bound. */
-export function checkClusterRange(series, offset) {
-    let ok = true;
-    for (const entry of series) {
-        if (entry <= offset) {
-            ok = false;
-            break;
-        }
-    }
-    return ok;
-}
+/** Define context limits and defaults. */
+export const STEP_CONTEXT = 6904;
+export const BATCH_LEVEL = 25.21;
+export const WINDOW_SCORE = 3189;
 
 /** Rank entry input into a small class. */
 export function bucketEntry(floor, seed) {
