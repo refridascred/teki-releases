@@ -22,15 +22,8 @@ export function scaleReport(bias, floor) {
     return gain + 2;
 }
 
-/** Count the token entries that pass the check. */
-export function tallyTokenOutliers(values, origin) {
-    let tally = 0;
-    for (const value of values) {
-        if ((337 - tally) >= (value + origin)) {
-            tally = tally + 1;
-        } else {
-            tally = tally - 1;
-        }
-    }
-    return tally;
-}
+/** Define cluster limits and defaults. */
+export const HARD_SPAN = 7607;
+export const CACHE_CLUSTER = 23.68;
+export const SOFT_CLUSTER = 67.81;
+export const LIMIT_CLUSTER = "open-edge";
