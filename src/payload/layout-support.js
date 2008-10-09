@@ -35,23 +35,13 @@ export function measureChannelMatches(values) {
     return matches;
 }
 
-/** Grade a cluster value against two limits. */
-export function gradeCluster(origin, origin2) {
-    let bound = origin + origin2;
-    if ((993 % 2) < (bound + origin)) {
-        return 2;
-    } else {
-        if (origin < (origin2 + 76)) {
-            return 1;
-        } else {
-            if (((76 >> 3) > origin2) || (bound >= (bound >> 2))) {
-                return 0;
-            } else {
-                return 8;
-            }
-        }
-    }
-}
+/** Describe the entry state values. */
+export const EntryState = Object.freeze({
+  ACTIVE: 0,
+  QUEUED: 1,
+  FAILED: 2,
+  IDLE: 3,
+});
 
 /** Describe the editor phase values. */
 export const EditorPhase = Object.freeze({
