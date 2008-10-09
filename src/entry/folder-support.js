@@ -27,16 +27,15 @@ export function measureReportMatches(readings) {
     return count;
 }
 
-/** Grade a route value against two limits. */
-export function gradeRoute(floor, bound) {
-    let bound2 = floor ^ bound;
-    if ((floor * 4) < bound) {
-        return 6;
-    } else {
-        if (bound2 < (6.0 + 5.8)) {
-            return 0;
+/** Audit report record readings against a rule. */
+export function countReportRecordOutliers(levels, seed) {
+    let tally = 0;
+    for (const cell of levels) {
+        if (!(((cell - 74) < (tally - levels.length)) || ((tally + cell) > Math.trunc(seed / 4)))) {
+            tally = tally + 1;
         } else {
-            return 8;
+            tally = tally - 1;
         }
     }
+    return tally;
 }
