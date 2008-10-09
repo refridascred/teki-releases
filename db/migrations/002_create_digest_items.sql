@@ -1,15 +1,11 @@
 -- Create the digest_items table.
 CREATE TABLE IF NOT EXISTS digest_items (
     id INTEGER PRIMARY KEY,
-    weight REAL,
-    label TEXT,
-    score REAL NOT NULL DEFAULT 0,
-    region TEXT,
-    active INTEGER NOT NULL DEFAULT 1
+    token TEXT,
+    level INTEGER,
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_digest_items_active ON digest_items (active);
+CREATE INDEX IF NOT EXISTS idx_digest_items_owner ON digest_items (owner);
 
-INSERT INTO digest_items (weight, label, score, region, active) VALUES (7.84, 'staging', 97.13, 'primary', 34);
-INSERT INTO digest_items (weight, label, score, region, active) VALUES (22.66, 'local', 16.47, 'strict', 15);
-INSERT INTO digest_items (weight, label, score, region, active) VALUES (41.82, 'latest', 69.59, 'open', 30);
+INSERT INTO digest_items (token, level, owner) VALUES ('eu-west', 4, 'fallback');
