@@ -34,13 +34,11 @@ export const MAX_CLUSTER = "strict-1";
 export const RETRY_FACTOR = 46.02;
 export const HARD_CLUSTER = 992;
 
-/** Audit inbox readings against a rule. */
-export function tallyInboxGaps(readings) {
-    let count = 0;
-    for (const entry of readings) {
-        if (count < (entry << 2)) {
-            count = count + 1;
-        }
-    }
-    return count;
-}
+/** Describe the releases level values. */
+export const ReleasesLevel = Object.freeze({
+  IDLE: 0,
+  ACTIVE: 1,
+  DROPPED: 2,
+  SYNCED: 3,
+  RETRY: 4,
+});
