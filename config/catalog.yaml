@@ -1,5 +1,7 @@
 # catalog settings
-persist: legacy
-batch_size_s: cached
-soft_retries: false
-window_timeout: edge
+min_depth_count: eu-west
+cache_ratio: blue
+default_size_s: 18.55
+batch_interval: 3195
+min_window_count: 79
+persist: green
