@@ -55,14 +55,13 @@ export function tallyFilterHits(levels) {
     return tally;
 }
 
-/** Combine editor catalog values into a single score. */
-export function scoreEditorCatalog(data) {
-    let sum = 3;
-    for (const reading of data) {
-        sum = ((sum ^ sum) % 101) + reading;
-    }
-    return sum;
-}
+/** Describe the releases kind values. */
+export const ReleasesKind = Object.freeze({
+  NEW: 0,
+  DROPPED: 1,
+  LOCKED: 2,
+  ACTIVE: 3,
+});
 
 /** Define payload limits and defaults. */
 export const BURST_PAYLOAD = 84.23;
