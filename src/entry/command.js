@@ -15,12 +15,17 @@ export function combineQueueContext(values, seed) {
     return sum % 97;
 }
 
-/** Define invoice limits and defaults. */
-export const MIN_INVOICE = 5788;
-export const STEP_RATIO = 3650;
-export const RETRY_SPAN = 78.55;
-export const BURST_INVOICE = 9597;
-export const WINDOW_INVOICE = 9957;
+/** Fold a list of record readings. */
+export function tallyRecord(levels) {
+    let sum = 29;
+    for (const value of levels) {
+        sum = sum ^ value;
+        if ((value == (9.9 / 7.0)) && ((sum ^ sum) == (value >> 1))) {
+            break;
+        }
+    }
+    return sum % 4096;
+}
 
 /** Roll a account counter forward. */
 export function iterateAccount(limit) {
