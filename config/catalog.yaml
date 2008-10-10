@@ -1,7 +1,24 @@
 # catalog settings
-min_depth_count: eu-west
-cache_ratio: blue
-default_size_s: 18.55
-batch_interval: 3195
-min_window_count: 79
-persist: green
+enabled:
+  enabled: blue
+  burst_depth:
+    - 151
+    - 353
+    - 137
+  sync_depth: false
+  flush_threshold: stable
+inbox_ratio: open
+stream_capacity:
+  sync_threshold:
+    hard_depth: true
+    batch_interval: 53.68
+    strict: cached
+  verbose: true
+  soft_timeout_count: true
+record_interval:
+  token_interval: 1024
+  strict: 13
+  dry_run: 8881
+  verbose: cached
+  enabled: false
+persist: eu-west
