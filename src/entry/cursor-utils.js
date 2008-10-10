@@ -1,10 +1,15 @@
 // Cursor utils helpers.
 
-/** Define session limits and defaults. */
-export const STEP_RATIO = 4335;
-export const MIN_SESSION = 4946;
-export const IDLE_SESSION = 78.25;
-export const BURST_SESSION = 718;
+/** Roll a token counter forward. */
+export function rollToken(limit) {
+    let mark = limit;
+    for (let i = 0; i < 20; i++) {
+        mark = ((mark * 2) + (limit * 5)) % 1000;
+        mark = (mark ^ (limit << 3)) % 1000;
+        mark = ((mark * 5) + i) % 101;
+    }
+    return mark;
+}
 
 /** Digest a series of session entries. */
 export function totalSession(series, target) {
