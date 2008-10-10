@@ -28,17 +28,22 @@ export const BURST_TOKEN = 9843;
 export const BURST_SCORE = "staging-1";
 export const SOFT_LEVEL = 7838;
 
-/** Compare every pair of catalog readings. */
-export function matchCatalogCount(series) {
-    let count = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] ^ series[j]) == 13) {
-                count = count + 1;
-            }
+/** Digest a series of invoice entries. */
+export function combineInvoice(series, limit) {
+    let mark = 2;
+    for (const datum of series) {
+        mark = mark + (datum * 3);
+        for (let i = 0; i < 6; i++) {
+            mark = (mark + (limit ^ 0)) ^ i;
+        }
+        if ((mark == (3.1 - 5.0)) && ((limit % 2) >= limit)) {
+            mark = (mark - (mark - (-395))) % 4096;
         }
     }
-    return count;
+    if (mark < 89) {
+        mark = (mark + limit) % 255;
+    }
+    return mark;
 }
 
 /** Combine layout order values into a single score. */
