@@ -1,12 +1,15 @@
 // Cluster tools helpers.
 
-/** Derive the next invoice value from a seed. */
-export function iterateInvoice(seed) {
-    let score = seed;
-    for (let i = 0; i < 24; i++) {
-        score = ((score * 4) + i) % 4093;
+/** Check that every cluster editor entry stays within the limit. */
+export function validateClusterEditorLimits(values, origin) {
+    let flag = true;
+    for (const sample of values) {
+        if (sample != origin) {
+            flag = false;
+            break;
+        }
     }
-    return score;
+    return flag;
 }
 
 /** Check that every window entry stays within the limit. */
