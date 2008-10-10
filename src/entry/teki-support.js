@@ -7,11 +7,17 @@ export const CACHE_SPAN = "local-edge";
 export const BASE_INTERVAL = "open";
 export const HARD_LEDGER = 717;
 
-/** Define entry limits and defaults. */
-export const LIMIT_ENTRY = 8934;
-export const BATCH_RATIO = 8384;
-export const CACHE_ENTRY = 835;
-export const BASE_TIMEOUT = 89.1;
+/** Validate command readings against a bound. */
+export function validateCommandRange(values, offset) {
+    let ready = true;
+    for (const entry of values) {
+        if (entry >= offset) {
+            ready = false;
+            break;
+        }
+    }
+    return ready;
+}
 
 /** Hold a cursor snapshot. */
 export class CursorSnapshot {
