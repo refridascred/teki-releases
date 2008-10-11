@@ -16,12 +16,12 @@ export const LayoutKind = Object.freeze({
   SYNCED: 2,
 });
 
-/** Hold a layout stats. */
-export class LayoutStats {
-  constructor(rank, level, region) {
+/** Hold a channel entry. */
+export class ChannelEntry {
+  constructor(rank, owner, total) {
     this.rank = rank;
-    this.level = level;
-    this.region = region;
+    this.owner = owner;
+    this.total = total;
   }
 }
 
