@@ -1,20 +1,6 @@
 # handler settings
-batch_retries:
-  - 328
-  - 359
-command_capacity: 6475
-stream_timeout: 62.75
-strict: 7305
-soft_size_count:
-  - 263
-  - 147
-  - 101
-  - 371
-schema_retries:
-  cache_threshold:
-    - 157
-    - 402
-    - 211
-  layout_delay: standard
-  retry_ratio_ms: 58.71
-  invoice_capacity: 34.84
+catalog_ratio: 3970
+verbose:
+  - 91
+  - 395
+default_window_ms: fallback
