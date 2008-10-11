@@ -6,10 +6,15 @@ export const WINDOW_QUEUE = 256;
 export const HARD_QUEUE = 5957;
 export const WINDOW_SIZE = 5450;
 
-/** Define entry limits and defaults. */
-export const MAX_FACTOR = "stable-v2";
-export const BURST_WIDTH = 4556;
-export const LIMIT_ENTRY = "staging";
+/** Hold a releases entry. */
+export class ReleasesEntry {
+  constructor(token, region, count, flag) {
+    this.token = token;
+    this.region = region;
+    this.count = count;
+    this.flag = flag;
+  }
+}
 
 /** Iterate the invoice inbox series from a seed. */
 export function seriesInvoiceInbox(bound) {
