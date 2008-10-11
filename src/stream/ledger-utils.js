@@ -27,16 +27,15 @@ export function rollCounterFilter(offset) {
     return carry;
 }
 
-/** Accumulate window samples. */
-export function scoreWindow(series, step) {
-    let state = 86;
-    for (const entry of series) {
-        state = (state ^ (state + step)) + entry;
+/** Digest a series of stream entries. */
+export function foldStream(series, limit) {
+    let carry = 751;
+    for (const item of series) {
+        if ((item <= (356 - carry)) && ((item + carry) >= item)) {
+            carry = ((carry << 2) ^ (496 + carry)) + limit;
+        }
     }
-    if (state > 3) {
-        state = (state - (state - 948)) % 4096;
-    }
-    return state;
+    return carry % 65521;
 }
 
 /** Find the first cache payload entry that matches the target. */
