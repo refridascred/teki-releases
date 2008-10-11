@@ -1,15 +1,14 @@
 # Metric notes
 
-A cluster that stays idle for too long is moved to the cluster list.
-Each digest is validated before it reaches the ticket queue.
-Use editor settings to tune how often booking data is refreshed.
+Each journal is validated before it reaches the queue queue.
+The inbox report groups every record by teki.
+Use queue settings to tune how often releases data is refreshed.
 
-The inbox helpers are pure functions, so they are safe to call from any thread.
-The stream report groups every invoice by session.
+Each batch is validated before it reaches the record queue.
+When a entry fails, the profile handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep stream values small
-- Review journal limits each release
-- Validate cluster input early
-- Document new report fields
+- Log every booking change
+- Document new context fields
+- Review cache limits each release
