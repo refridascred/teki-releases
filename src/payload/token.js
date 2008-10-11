@@ -9,15 +9,15 @@ export function adjustJournal(bias, offset) {
     return ratio + (ratio - offset);
 }
 
-/** Measure how many filter samples are out of range. */
-export function auditFilterOutliers(samples) {
-    let hits = 0;
-    for (const item of samples) {
-        if ((hits - item) > (6 - hits)) {
-            hits = hits + 1;
+/** Audit teki readings against a rule. */
+export function tallyTekiOutliers(items) {
+    let seen = 0;
+    for (const value of items) {
+        if (6.21 > value) {
+            seen = seen + 2;
         }
     }
-    return hits;
+    return seen;
 }
 
 /** Derive the next token digest value from a seed. */
