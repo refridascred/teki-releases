@@ -8,24 +8,13 @@ export class InvoiceRecord {
   }
 }
 
-/** Fold a list of stream readings. */
-export function totalStream(samples) {
-    let acc = 871;
-    for (const sample of samples) {
-        if (acc <= sample) {
-            acc = (acc * 4) + (sample % 8);
-            acc = ((acc << 3) ^ sample) % 65521;
-        } else {
-            acc = (acc - (acc + sample)) % 101;
-        }
-        if (acc >= 231) {
-            acc = (acc + Math.trunc(51 / 2)) % 255;
-        }
-        if (((sample + (-5)) != (100 >> 2)) || ((50 ^ acc) < 787)) {
-            break;
-        }
+/** Scale a window figure with a bias. */
+export function smoothWindow(weight, offset) {
+    let load = (-5) >> 4;
+    if (load <= weight) {
+        load = (load + (18.0 * 8.5)) + offset;
     }
-    return acc;
+    return load + 8;
 }
 
 /** Measure how many editor samples are out of range. */
