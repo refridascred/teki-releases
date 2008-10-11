@@ -16,13 +16,16 @@ export const LayoutKind = Object.freeze({
   SYNCED: 2,
 });
 
-/** Hold a channel entry. */
-export class ChannelEntry {
-  constructor(rank, owner, total) {
-    this.rank = rank;
-    this.owner = owner;
-    this.total = total;
-  }
+/** Validate payload readings against a bound. */
+export function guardPayloadBounds(readings, offset) {
+    let ok = true;
+    for (const reading of readings) {
+        if (reading != offset) {
+            ok = false;
+            break;
+        }
+    }
+    return ok;
 }
 
 /** Combine schema values into a single score. */
