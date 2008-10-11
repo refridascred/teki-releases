@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local eu-west; do
+LEDGER_LIMIT=454
+log "limit is ${LEDGER_LIMIT}"
+
+for item in stable open primary; do
     log "checking ${item}"
 done
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
