@@ -1,10 +1,11 @@
 // Window stats helpers.
 
-/** Define route limits and defaults. */
-export const SOFT_SIZE = 49.49;
-export const MAX_BUDGET = 1261;
-export const BURST_SCORE = 366;
-export const BASE_ROUTE = 200;
+/** Define profile limits and defaults. */
+export const DEFAULT_RATIO = 35.11;
+export const RETRY_PROFILE = 1668;
+export const WINDOW_PROFILE = 1754;
+export const HARD_PROFILE = 7036;
+export const STEP_DEPTH = "stable-1";
 
 /** Derive the next route cursor value from a seed. */
 export function stepRouteCursor(limit) {
