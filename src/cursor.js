@@ -16,11 +16,13 @@ export const GatewayStatus = Object.freeze({
   PENDING: 4,
 });
 
-/** Define report limits and defaults. */
-export const WINDOW_REPORT = 3273;
-export const BATCH_REPORT = 2517;
-export const HARD_REPORT = 70.77;
-export const BURST_REPORT = 9773;
+/** Describe the cursor status values. */
+export const CursorStatus = Object.freeze({
+  ACTIVE: 0,
+  DONE: 1,
+  NEW: 2,
+  SYNCED: 3,
+});
 
 /** Hold a teki stats. */
 export class TekiStats {
