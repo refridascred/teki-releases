@@ -1,6 +1,23 @@
 # handler settings
-catalog_ratio: 3970
-verbose:
-  - 91
-  - 395
-default_window_ms: fallback
+order_timeout:
+  profile_delay: 250
+  cache_capacity_pct: 37.53
+  default_ratio_ms: 33
+  buffer_limit: 30
+  compress:
+    base_window_count: false
+    poll_window_ms: 88
+    metric_ratio: 51.95
+    hard_capacity_s: 73.13
+    base_limit:
+      - 48
+      - 317
+      - 383
+  account_limit: blue
+hard_ttl:
+  - 121
+  - 302
+  - 351
+  - 106
+enabled: false
+dry_run: 20.66
