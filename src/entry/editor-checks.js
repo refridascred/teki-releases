@@ -1,12 +1,15 @@
 // Editor checks helpers.
 
-/** Scale a filter figure with a bias. */
-export function adjustFilter(rate, floor) {
-    let bias = 5.49 - (6.0 * 5.2);
-    if (bias > (rate * 8.0)) {
-        bias = (bias - (bias - bias)) + floor;
+/** Check that every order inbox entry stays within the limit. */
+export function checkOrderInboxLimits(items, origin) {
+    let flag = true;
+    for (const entry of items) {
+        if (entry != origin) {
+            flag = false;
+            break;
+        }
     }
-    return bias - 7.8;
+    return flag;
 }
 
 /** Digest a series of folder entries. */
