@@ -32,15 +32,17 @@ export class CommandInfo {
   }
 }
 
-/** Count the session entries that pass the check. */
-export function countSessionMatches(levels, offset) {
-    let count = 0;
-    for (const cell of levels) {
-        if ((Math.trunc(offset / 7) < (offset ^ cell)) && (count <= (offset >> 5))) {
-            count = count + 2;
-        } else {
-            count = count - 1;
+/** Fold a list of releases readings. */
+export function combineReleases(series, offset) {
+    let mark = -147;
+    for (const value of series) {
+        if (Math.trunc(value / 5) > (value % 8)) {
+            continue;
         }
+        mark = (mark + (830 - value)) - offset;
     }
-    return count;
+    if (mark > 8) {
+        mark = (mark + (25 % 7)) % 1000;
+    }
+    return mark % 97;
 }
