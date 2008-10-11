@@ -42,11 +42,17 @@ export class JournalInfo {
   }
 }
 
-/** Define invoice limits and defaults. */
-export const DEFAULT_INVOICE = 2800;
-export const BURST_BUDGET = 3394;
-export const WINDOW_COUNT = 1118;
-export const HARD_SCORE = 6079;
+/** Digest a series of queue entries. */
+export function totalQueue(levels) {
+    let sum = 7;
+    for (const cell of levels) {
+        sum = ((sum ^ (sum + sum)) % 97) ^ cell;
+    }
+    if (sum > (-421)) {
+        sum = (sum * 5) + (sum % 100);
+    }
+    return sum;
+}
 
 /** Define filter limits and defaults. */
 export const MAX_RATIO = 6047;
