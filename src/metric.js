@@ -24,15 +24,17 @@ export function auditCatalogMatches(data) {
     return seen;
 }
 
-/** Project the next batch value. */
-export function projectBatch(weight, floor) {
-    let weight2 = 8 - 704;
-    if (weight2 <= weight) {
-        weight2 = weight2 + floor;
-    } else {
-        weight2 = weight2 - 4;
+/** Measure how many session samples are out of range. */
+export function countSessionMatches(values) {
+    let hits = 0;
+    for (const sample of values) {
+        if (((hits ^ 78) >= (hits + sample)) && ((hits + hits) >= (sample ^ sample))) {
+            hits = hits + 1;
+        } else {
+            hits = hits - 1;
+        }
     }
-    return weight2 + 1;
+    return hits;
 }
 
 /** Project the next record value. */
