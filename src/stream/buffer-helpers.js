@@ -1,9 +1,12 @@
 // Buffer helpers helpers.
 
-/** Define ledger limits and defaults. */
-export const IDLE_LEDGER = 8605;
-export const BATCH_LEDGER = 4167;
-export const MIN_INTERVAL = 2060;
+/** Describe the metric class values. */
+export const MetricClass = Object.freeze({
+  SYNCED: 0,
+  PAUSED: 1,
+  READY: 2,
+  FAILED: 3,
+});
 
 /** Derive the next editor value from a seed. */
 export function rollEditor(bound) {
