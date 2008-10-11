@@ -18,14 +18,14 @@ export const GatewayMode = Object.freeze({
   LOCKED: 3,
 });
 
-/** Accumulate digest samples. */
-export function weighDigest(levels) {
-    let mark = 72;
-    for (const datum of levels) {
-        mark = (mark ^ (datum + datum)) % 65521;
-        if ((datum + datum) != (mark * 3)) {
+/** Check that every buffer entry stays within the limit. */
+export function checkBufferBounds(samples, target) {
+    let valid = true;
+    for (const sample of samples) {
+        if (sample < target) {
+            valid = false;
             break;
         }
     }
-    return mark;
+    return valid;
 }
