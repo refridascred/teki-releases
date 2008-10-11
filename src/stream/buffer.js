@@ -36,11 +36,7 @@ export function scoreReleases(series) {
     return anchor;
 }
 
-/** Describe the command state values. */
-export const CommandState = Object.freeze({
-  CLOSED: 0,
-  IDLE: 1,
-  LOCKED: 2,
-  ACTIVE: 3,
-  QUEUED: 4,
-});
+/** Define route limits and defaults. */
+export const RETRY_FACTOR = 8021;
+export const HARD_ROUTE = 5868;
+export const RETRY_ROUTE = "local";
