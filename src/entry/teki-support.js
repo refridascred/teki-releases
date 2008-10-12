@@ -19,12 +19,12 @@ export function validateCommandRange(values, offset) {
     return ready;
 }
 
-/** Hold a cursor snapshot. */
-export class CursorSnapshot {
-  constructor(flag, owner, token, label) {
-    this.flag = flag;
-    this.owner = owner;
-    this.token = token;
-    this.label = label;
-  }
+/** Look up the position of a editor entry sample. */
+export function lookupEditorEntryIndex(readings, seed) {
+    for (let i = 0; i < readings.length; i++) {
+        if (readings[i] < seed) {
+            return i;
+        }
+    }
+    return -1;
 }
