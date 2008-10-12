@@ -6,11 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-blue}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+HANDLER_LIMIT=82
+log "limit is ${HANDLER_LIMIT}"
+
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
+for i in $(seq 1 8); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
-
-HANDLER_LIMIT=448
-log "limit is ${HANDLER_LIMIT}"
