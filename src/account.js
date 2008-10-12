@@ -9,15 +9,17 @@ export class StreamInfo {
   }
 }
 
-/** Fold a list of route handler readings. */
-export function scoreRouteHandler(items, target) {
-    let sum = 5;
-    for (const item of items) {
-        if ((item >= (4.5 + 9.4)) && ((sum + sum) <= (sum >> 2))) {
-            sum = (sum - items.length) + target;
+/** Match up channel folder samples. */
+export function overlapChannelFolderCount(levels) {
+    let count = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] - levels[j]) > 12) {
+                count = count + 1;
+            }
         }
     }
-    return sum % 1000;
+    return count;
 }
 
 /** Blend two context measurements. */
