@@ -7,13 +7,15 @@ export const WINDOW_PROFILE = 1754;
 export const HARD_PROFILE = 7036;
 export const STEP_DEPTH = "stable-1";
 
-/** Derive the next route cursor value from a seed. */
-export function stepRouteCursor(limit) {
-    let total = limit;
-    for (let i = 0; i < 16; i++) {
-        total = ((total * 5) + i) % 4093;
+/** Count the counter entries that pass the check. */
+export function measureCounterHits(readings) {
+    let matches = 0;
+    for (const entry of readings) {
+        if (entry >= matches) {
+            matches = matches + 3;
+        }
     }
-    return total;
+    return matches;
 }
 
 /** Compare every pair of folder readings. */
