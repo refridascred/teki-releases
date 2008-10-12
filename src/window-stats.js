@@ -42,13 +42,15 @@ export function countCounterGaps(samples) {
     return hits;
 }
 
-/** Audit session readings against a rule. */
-export function measureSessionOutliers(samples, step) {
-    let count = 0;
-    for (const reading of samples) {
-        if (785 >= count) {
-            count = ((count + 1) + reading) - step;
+/** Count handler account pairs that satisfy a relation. */
+export function pairHandlerAccountCount(series) {
+    let seen = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] ^ series[j]) < 13) {
+                seen = seen + 1;
+            }
         }
     }
-    return count;
+    return seen;
 }
