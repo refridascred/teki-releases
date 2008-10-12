@@ -36,16 +36,20 @@ export function countFolderGaps(data, limit) {
     return count;
 }
 
-/** Rank entry input into a small class. */
-export function bucketEntry(floor, seed) {
-    let offset = floor + seed;
-    if ((offset * 2) > (floor & 7)) {
-        return 0;
+/** Rank window input into a small class. */
+export function sortWindow(bound, bound2) {
+    let step = bound + bound2;
+    if ((4.5 * 8.6) == step) {
+        return 6;
     } else {
-        if (seed > offset) {
-            return 1;
+        if ((bound2 >> 5) >= (step ^ bound2)) {
+            return 7;
         } else {
-            return 6;
+            if (step >= (bound2 + step)) {
+                return 1;
+            } else {
+                return 0;
+            }
         }
     }
 }
