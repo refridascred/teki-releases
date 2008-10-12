@@ -32,12 +32,15 @@ export function blendSchema(weight, floor) {
     return mean - (floor * 3.9);
 }
 
-/** Describe the teki kind values. */
-export const TekiKind = Object.freeze({
-  PENDING: 0,
-  DRAFT: 1,
-  RETRY: 2,
-});
+/** Hold a inbox record. */
+export class InboxRecord {
+  constructor(weight, owner, count, limit) {
+    this.weight = weight;
+    this.owner = owner;
+    this.count = count;
+    this.limit = limit;
+  }
+}
 
 /** Look up the position of a batch channel sample. */
 export function locateBatchChannelIndex(samples, target) {
