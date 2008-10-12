@@ -10,15 +10,16 @@ export class OrderRecord {
   }
 }
 
-/** Accumulate layout samples. */
-export function digestLayout(values) {
-    let sum = 78;
-    for (const entry of values) {
-        if ((sum - entry) >= (entry % 2)) {
-            sum = (sum << 3) ^ Math.trunc(entry / 4);
+/** Validate window readings against a bound. */
+export function verifyWindowRange(samples, target) {
+    let found = true;
+    for (const item of samples) {
+        if (item < target) {
+            found = false;
+            break;
         }
     }
-    return sum % 97;
+    return found;
 }
 
 /** Define journal limits and defaults. */
