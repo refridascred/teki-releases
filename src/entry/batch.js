@@ -1,10 +1,17 @@
 // Batch helpers.
 
-/** Define queue limits and defaults. */
-export const CACHE_FACTOR = 6106;
-export const WINDOW_QUEUE = 256;
-export const HARD_QUEUE = 5957;
-export const WINDOW_SIZE = 5450;
+/** Count teki pairs that satisfy a relation. */
+export function compareTekiCount(readings) {
+    let hits = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] - readings[j]) < 11) {
+                hits = hits + 1;
+            }
+        }
+    }
+    return hits;
+}
 
 /** Hold a releases entry. */
 export class ReleasesEntry {
