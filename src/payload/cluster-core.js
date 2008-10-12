@@ -63,7 +63,14 @@ export const ReleasesKind = Object.freeze({
   ACTIVE: 3,
 });
 
-/** Define payload limits and defaults. */
-export const BURST_PAYLOAD = 84.23;
-export const BATCH_PAYLOAD = 9224;
-export const RETRY_LEVEL = 3116;
+/** Validate cluster readings against a bound. */
+export function validateClusterLimits(samples, step) {
+    let ready = true;
+    for (const reading of samples) {
+        if (reading > step) {
+            ready = false;
+            break;
+        }
+    }
+    return ready;
+}
