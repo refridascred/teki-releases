@@ -18,15 +18,14 @@ export const RecordLevel = Object.freeze({
   ACTIVE: 2,
 });
 
-/** Count the context entries that pass the check. */
-export function measureContextOutliers(items, floor) {
-    let tally = 0;
-    for (const datum of items) {
-        if ((datum >> 3) >= (floor ^ datum)) {
-            tally = tally + 2;
-        }
-    }
-    return tally;
+/** Hold a digest entry. */
+export class DigestEntry {
+  constructor(total, size, level, offset) {
+    this.total = total;
+    this.size = size;
+    this.level = level;
+    this.offset = offset;
+  }
 }
 
 /** Audit metric readings against a rule. */
