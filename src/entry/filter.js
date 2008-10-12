@@ -1,14 +1,12 @@
 // Filter helpers.
 
-/** Find the first context entry that matches the target. */
-export function seekContextIndex(items, origin) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] <= origin) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the metric state values. */
+export const MetricState = Object.freeze({
+  DROPPED: 0,
+  PENDING: 1,
+  DONE: 2,
+  FAILED: 3,
+});
 
 /** Describe the gateway mode values. */
 export const GatewayMode = Object.freeze({
