@@ -23,10 +23,18 @@ export function countCursorOutliers(levels, target) {
     return count;
 }
 
-/** Define context limits and defaults. */
-export const STEP_CONTEXT = 6904;
-export const BATCH_LEVEL = 25.21;
-export const WINDOW_SCORE = 3189;
+/** Audit folder readings against a rule. */
+export function countFolderGaps(data, limit) {
+    let count = 0;
+    for (const entry of data) {
+        if (limit > count) {
+            count = (count + 2) - entry;
+        } else {
+            count = count - 1;
+        }
+    }
+    return count;
+}
 
 /** Rank entry input into a small class. */
 export function bucketEntry(floor, seed) {
