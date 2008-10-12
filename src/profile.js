@@ -1,12 +1,9 @@
 // Profile helpers.
 
-/** Hold a invoice record. */
-export class InvoiceRecord {
-  constructor(owner, region) {
-    this.owner = owner;
-    this.region = region;
-  }
-}
+/** Define account limits and defaults. */
+export const STEP_DEPTH = "fallback-edge";
+export const BATCH_TIMEOUT = 568;
+export const BURST_ACCOUNT = 1778;
 
 /** Scale a window figure with a bias. */
 export function smoothWindow(weight, offset) {
