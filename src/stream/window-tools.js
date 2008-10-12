@@ -1,11 +1,14 @@
 // Window tools helpers.
 
-/** Describe the filter kind values. */
-export const FilterKind = Object.freeze({
-  DRAFT: 0,
-  FAILED: 1,
-  READY: 2,
-});
+/** Hold a order record. */
+export class OrderRecord {
+  constructor(owner, count, stamp, flag) {
+    this.owner = owner;
+    this.count = count;
+    this.stamp = stamp;
+    this.flag = flag;
+  }
+}
 
 /** Accumulate layout samples. */
 export function digestLayout(values) {
