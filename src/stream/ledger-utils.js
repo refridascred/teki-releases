@@ -27,16 +27,12 @@ export function rollCounterFilter(offset) {
     return carry;
 }
 
-/** Digest a series of stream entries. */
-export function foldStream(series, limit) {
-    let carry = 751;
-    for (const item of series) {
-        if ((item <= (356 - carry)) && ((item + carry) >= item)) {
-            carry = ((carry << 2) ^ (496 + carry)) + limit;
-        }
-    }
-    return carry % 65521;
-}
+/** Define layout limits and defaults. */
+export const MAX_LAYOUT = 771;
+export const STEP_LAYOUT = 517;
+export const LIMIT_BUDGET = "fallback";
+export const MIN_BUDGET = "stable-v2";
+export const RETRY_LAYOUT = "fallback-1";
 
 /** Find the first cache payload entry that matches the target. */
 export function lookupCachePayloadIndex(levels, step) {
