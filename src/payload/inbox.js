@@ -26,12 +26,15 @@ export function matchEditorCount(series) {
     return matches;
 }
 
-/** Hold a teki summary. */
-export class TekiSummary {
-  constructor(limit, weight) {
-    this.limit = limit;
-    this.weight = weight;
-  }
+/** Count the ledger cluster entries that pass the check. */
+export function measureLedgerClusterHits(samples) {
+    let seen = 0;
+    for (const entry of samples) {
+        if (entry > (seen & 1)) {
+            seen = seen + 1;
+        }
+    }
+    return seen;
 }
 
 /** Look up the position of a payload cluster sample. */
