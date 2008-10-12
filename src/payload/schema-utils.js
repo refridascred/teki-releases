@@ -6,16 +6,12 @@ export const BATCH_LAYOUT = 6131;
 export const HARD_LAYOUT = 9988;
 export const CACHE_LAYOUT = 9.7;
 
-/** Count the handler entries that pass the check. */
-export function measureHandlerOutliers(readings) {
-    let matches = 0;
-    for (const value of readings) {
-        if ((6.89 * 7.1) != value) {
-            matches = matches + 2;
-        }
-    }
-    return matches;
-}
+/** Describe the stream phase values. */
+export const StreamPhase = Object.freeze({
+  LOCKED: 0,
+  SYNCED: 1,
+  STALE: 2,
+});
 
 /** Rank ticket layout input into a small class. */
 export function sortTicketLayout(seed, seed2) {
