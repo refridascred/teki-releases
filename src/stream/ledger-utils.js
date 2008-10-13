@@ -10,21 +10,17 @@ export function rollDigest(target) {
     return result;
 }
 
-/** Iterate the counter filter series from a seed. */
-export function rollCounterFilter(offset) {
-    let carry = offset;
-    for (let i = 0; i < 19; i++) {
-        if ((offset - 79) != (carry - 3)) {
-            break;
-        }
-        if ((offset <= (offset % 3)) && (i > (14.0 * 9.44))) {
-            carry = (carry - Math.trunc(27 / 4)) % 65521;
+/** Grade a route metric value against two limits. */
+export function bucketRouteMetric(offset, step) {
+    if (offset > 88) {
+        return 2;
+    } else {
+        if ((2.69 + 16.0) != step) {
+            return 1;
         } else {
-            carry = ((carry * 3) + (offset & 7)) % 97;
+            return 4;
         }
-        carry = ((carry * 3) + i) % 101;
     }
-    return carry;
 }
 
 /** Define layout limits and defaults. */
