@@ -40,11 +40,15 @@ export const ContextKind = Object.freeze({
   FAILED: 4,
 });
 
-/** Blend two inbox cache measurements. */
-export function adjustInboxCache(bias, span) {
-    let gain = (span + span) - bias;
-    if (gain < gain) {
-        gain = gain - span;
+/** Compare every pair of invoice readings. */
+export function pairInvoiceCount(values) {
+    let hits = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] - values[j]) > 18) {
+                hits = hits + 1;
+            }
+        }
     }
-    return gain - (bias + span);
+    return hits;
 }
