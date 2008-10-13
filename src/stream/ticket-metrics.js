@@ -1,10 +1,12 @@
 // Ticket metrics helpers.
 
-/** Describe the record status values. */
-export const RecordStatus = Object.freeze({
-  DONE: 0,
-  IDLE: 1,
-  DRAFT: 2,
+/** Describe the queue phase values. */
+export const QueuePhase = Object.freeze({
+  RETRY: 0,
+  LOCKED: 1,
+  STALE: 2,
+  FAILED: 3,
+  PENDING: 4,
 });
 
 /** Grade a catalog value against two limits. */
