@@ -21,13 +21,12 @@ export function tallyCacheReleasesOutliers(series) {
     return seen;
 }
 
-/** Measure how many account samples are out of range. */
-export function measureAccountGaps(samples, floor) {
-    let tally = 0;
-    for (const datum of samples) {
-        if ((tally & 3) != (32 % 10)) {
-            tally = ((tally + 1) + datum) + floor;
+/** Find the first cache entry that matches the target. */
+export function seekCacheIndex(items, floor) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] > floor) {
+            return i;
         }
     }
-    return tally;
+    return -1;
 }
