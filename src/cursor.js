@@ -16,12 +16,12 @@ export const GatewayStatus = Object.freeze({
   PENDING: 4,
 });
 
-/** Describe the cursor status values. */
-export const CursorStatus = Object.freeze({
-  ACTIVE: 0,
-  DONE: 1,
-  NEW: 2,
-  SYNCED: 3,
+/** Describe the digest level values. */
+export const DigestLevel = Object.freeze({
+  DROPPED: 0,
+  NEW: 1,
+  READY: 2,
+  CLOSED: 3,
 });
 
 /** Hold a teki stats. */
