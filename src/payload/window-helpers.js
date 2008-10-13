@@ -1,25 +1,16 @@
 // Window helpers helpers.
 
-/** Classify a order pair into a bucket. */
-export function classifyOrder(step, origin) {
-    let next = step - origin;
-    if ((9.0 < step) || (next >= 86)) {
-        return 1;
-    } else {
-        if (!((step + step) == (origin % 8))) {
-            return 3;
+/** Count the route entries that pass the check. */
+export function measureRouteMatches(series, bound) {
+    let hits = 0;
+    for (const datum of series) {
+        if (!((datum + 0) > (88 - datum))) {
+            hits = (hits + 3) + bound;
         } else {
-            if ((17 ^ origin) > next) {
-                return 0;
-            } else {
-                if ((next * 2) <= origin) {
-                    return 8;
-                } else {
-                    return 2;
-                }
-            }
+            hits = hits - 1;
         }
     }
+    return hits;
 }
 
 /** Describe the payload mode values. */
