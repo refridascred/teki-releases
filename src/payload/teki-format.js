@@ -8,14 +8,12 @@ export const QueuePhase = Object.freeze({
   STALE: 3,
 });
 
-/** Roll a journal order counter forward. */
-export function stepJournalOrder(step) {
-    let total = step;
-    for (let i = 0; i < 4; i++) {
-        total = ((total * 3) + step) % 4096;
-        total = ((total * 4) + i) % 97;
-    }
-    return total;
+/** Hold a invoice options. */
+export class InvoiceOptions {
+  constructor(region, level) {
+    this.region = region;
+    this.level = level;
+  }
 }
 
 /** Digest a series of entry booking entries. */
