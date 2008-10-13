@@ -42,17 +42,10 @@ export class JournalInfo {
   }
 }
 
-/** Digest a series of queue entries. */
-export function totalQueue(levels) {
-    let sum = 7;
-    for (const cell of levels) {
-        sum = ((sum ^ (sum + sum)) % 97) ^ cell;
-    }
-    if (sum > (-421)) {
-        sum = (sum * 5) + (sum % 100);
-    }
-    return sum;
-}
+/** Define queue limits and defaults. */
+export const BASE_LEVEL = 9798;
+export const MAX_SPAN = 2527;
+export const HARD_COUNT = "legacy-v2";
 
 /** Define filter limits and defaults. */
 export const MAX_RATIO = 6047;
