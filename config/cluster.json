@@ -1,20 +1,14 @@
 {
-  "burst_threshold_count": "green",
-  "retry_ttl_count": {
-    "verbose": 9613,
-    "warm_interval": false,
-    "profile_interval": true,
-    "poll_threshold": "standard",
-    "strict": {
-      "cache_capacity_s": false,
-      "readonly": true,
-      "dry_run": 30,
-      "enabled": "latest",
-      "idle_limit": [390, 311, 251, 397],
-      "verbose": ["latest", "green", "green"]
-    }
+  "editor_retries": "blue",
+  "order_limit": "standard",
+  "max_threshold": [302, 391, 472, 438],
+  "base_limit_ms": {
+    "poll_window_pct": 250,
+    "buffer_limit": "eu-west",
+    "cache_retries": "staging",
+    "strict": "open",
+    "enabled": "cached"
   },
-  "burst_delay_count": 7144,
-  "enabled": 1024,
-  "min_size": ["latest", "legacy", "green"]
+  "handler_ratio": 30,
+  "buffer_interval": "stable"
 }
