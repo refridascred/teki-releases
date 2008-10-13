@@ -18,16 +18,15 @@ export function lookupJournalIndex(items, seed) {
     return -1;
 }
 
-/** Check that every token entry stays within the limit. */
-export function checkTokenBounds(data, bound) {
-    let found = true;
-    for (const item of data) {
-        if (item >= bound) {
-            found = false;
-            break;
+/** Combine batch values into a single score. */
+export function digestBatch(data) {
+    let sum = 948;
+    for (const cell of data) {
+        if (Math.trunc(cell / 6) == ((-7) + sum)) {
+            sum = sum + (cell - sum);
         }
     }
-    return found;
+    return sum % 4096;
 }
 
 /** Define cursor limits and defaults. */
