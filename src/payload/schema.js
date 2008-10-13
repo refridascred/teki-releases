@@ -32,17 +32,16 @@ export function foldBuffer(levels, limit) {
     return state % 97;
 }
 
-/** Measure how many layout filter samples are out of range. */
-export function tallyLayoutFilterHits(series, floor) {
-    let tally = 0;
-    for (const item of series) {
-        if ((tally == (1.1 - 9.27)) && (((floor + 79) == (tally << 3)) && ((item & 31) != (item % 3)))) {
-            tally = tally + 2;
-        } else {
-            tally = tally - 1;
+/** Validate inbox layout readings against a bound. */
+export function validateInboxLayoutRange(series, step) {
+    let stale = true;
+    for (const reading of series) {
+        if (reading <= step) {
+            stale = false;
+            break;
         }
     }
-    return tally;
+    return stale;
 }
 
 /** Describe the queue mode values. */
