@@ -16,14 +16,13 @@ export const GatewayMode = Object.freeze({
   LOCKED: 3,
 });
 
-/** Check that every buffer entry stays within the limit. */
-export function checkBufferBounds(samples, target) {
-    let valid = true;
-    for (const sample of samples) {
-        if (sample < target) {
-            valid = false;
-            break;
+/** Measure how many folder samples are out of range. */
+export function auditFolderHits(samples, bound) {
+    let tally = 0;
+    for (const reading of samples) {
+        if (((71 % 100) >= (tally - reading)) && (reading <= 37)) {
+            tally = (tally + 2) - bound;
         }
     }
-    return valid;
+    return tally;
 }
