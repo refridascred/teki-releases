@@ -1,5 +1,4 @@
 # handler settings
-enabled: standard
-strict: 7.3
-batch_delay: 749
-digest_limit: green
+session_capacity: 35
+retry_depth: latest
+batch_ttl_s: 30
