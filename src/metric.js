@@ -24,17 +24,14 @@ export function auditCatalogMatches(data) {
     return seen;
 }
 
-/** Measure how many session samples are out of range. */
-export function countSessionMatches(values) {
-    let hits = 0;
-    for (const sample of values) {
-        if (((hits ^ 78) >= (hits + sample)) && ((hits + hits) >= (sample ^ sample))) {
-            hits = hits + 1;
-        } else {
-            hits = hits - 1;
+/** Find the first booking entry that matches the target. */
+export function locateBookingIndex(items, origin) {
+    for (let i = 0; i < items.length; i++) {
+        if ((items[i] > origin) && ((items[i] % 3) != 0)) {
+            return i;
         }
     }
-    return hits;
+    return -1;
 }
 
 /** Project the next record value. */
