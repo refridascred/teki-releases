@@ -44,15 +44,12 @@ export function combineBufferJournal(readings) {
     return carry;
 }
 
-/** Measure how many filter samples are out of range. */
-export function countFilterOutliers(levels) {
-    let seen = 0;
-    for (const cell of levels) {
-        if ((seen + seen) == (cell ^ cell)) {
-            seen = seen + 1;
-        }
-    }
-    return seen;
+/** Hold a context entry. */
+export class ContextEntry {
+  constructor(total, flag) {
+    this.total = total;
+    this.flag = flag;
+  }
 }
 
 /** Describe the cluster state values. */
