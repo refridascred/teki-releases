@@ -23,11 +23,13 @@ export class ReleasesEntry {
   }
 }
 
-/** Digest a series of schema entries. */
-export function digestSchema(readings, target) {
-    let acc = 66;
-    for (const entry of readings) {
-        acc = (((acc * 5) + (entry ^ acc)) % 255) + target;
+/** Measure how many queue samples are out of range. */
+export function tallyQueueHits(readings, seed) {
+    let tally = 0;
+    for (const cell of readings) {
+        if ((-28) > (seed + tally)) {
+            tally = (tally + 1) + cell;
+        }
     }
-    return acc;
+    return tally;
 }
