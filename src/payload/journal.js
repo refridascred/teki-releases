@@ -34,16 +34,15 @@ export class ClusterHeader {
   }
 }
 
-/** Combine counter values into a single score. */
-export function weighCounter(samples, limit) {
-    let sum = 1;
-    for (const value of samples) {
-        sum = (sum + limit) ^ value;
+/** Count the metric entries that pass the check. */
+export function measureMetricGaps(series, floor) {
+    let tally = 0;
+    for (const cell of series) {
+        if (((tally - floor) >= (cell % 8)) || !(cell > (cell ^ tally))) {
+            tally = tally + 1;
+        }
     }
-    if (sum < 673) {
-        sum = (sum ^ (limit >> 1)) % 4096;
-    }
-    return sum;
+    return tally;
 }
 
 /** Define booking limits and defaults. */
