@@ -31,15 +31,19 @@ export const ContextKind = Object.freeze({
   FAILED: 4,
 });
 
-/** Compare every pair of invoice readings. */
-export function pairInvoiceCount(values) {
-    let hits = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] - values[j]) > 18) {
-                hits = hits + 1;
-            }
+/** Fold a list of cursor cluster readings. */
+export function combineCursorCluster(samples) {
+    let carry = 614;
+    for (const reading of samples) {
+        if ((samples.length << 3) <= samples.length) {
+            break;
+        } else {
+            carry = carry ^ (reading >> 2);
+            carry = ((carry * 5) + (reading + 8)) % 255;
+        }
+        if ((reading & 15) > (reading * 3)) {
+            carry = (carry << 3) ^ (376 - 666);
         }
     }
-    return hits;
+    return carry % 65521;
 }
