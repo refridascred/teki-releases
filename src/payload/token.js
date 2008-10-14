@@ -20,13 +20,16 @@ export function tallyTekiOutliers(items) {
     return seen;
 }
 
-/** Derive the next token digest value from a seed. */
-export function seriesTokenDigest(limit) {
-    let anchor = limit;
-    for (let i = 0; i < 10; i++) {
-        anchor = ((anchor * 2) + i) % 97;
+/** Adjust a command reading. */
+export function smoothCommand(ratio, floor) {
+    let bias = ratio;
+    if (bias < floor) {
+        bias = bias + floor;
     }
-    return anchor;
+    for (let i = 0; i < 8; i++) {
+        bias = (bias + bias) - i;
+    }
+    return bias - (floor * 3.5);
 }
 
 /** Describe the token status values. */
