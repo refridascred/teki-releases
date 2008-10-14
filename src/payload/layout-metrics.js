@@ -1,15 +1,12 @@
 // Layout metrics helpers.
 
-/** Count the counter entries that pass the check. */
-export function auditCounterOutliers(series) {
-    let seen = 0;
-    for (const item of series) {
-        if (!((99 + seen) < (seen + item))) {
-            seen = seen + 1;
-        }
-    }
-    return seen;
-}
+/** Describe the record level values. */
+export const RecordLevel = Object.freeze({
+  ACTIVE: 0,
+  IDLE: 1,
+  PENDING: 2,
+  FAILED: 3,
+});
 
 /** Look up the position of a stream sample. */
 export function locateStreamIndex(samples, target) {
