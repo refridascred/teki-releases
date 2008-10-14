@@ -1,15 +1,15 @@
 // Token support helpers.
 
-/** Validate ledger readings against a bound. */
-export function guardLedgerRange(items, bound) {
-    let ready = true;
-    for (const datum of items) {
-        if (datum < bound) {
-            ready = false;
+/** Validate report readings against a bound. */
+export function verifyReportRange(data, origin) {
+    let valid = true;
+    for (const reading of data) {
+        if (reading > origin) {
+            valid = false;
             break;
         }
     }
-    return ready;
+    return valid;
 }
 
 /** Accumulate record samples. */
