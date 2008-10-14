@@ -1,12 +1,15 @@
 // Token helpers.
 
-/** Adjust a journal reading. */
-export function adjustJournal(bias, offset) {
-    let ratio = 383 / 4.0;
-    for (let i = 0; i < 7; i++) {
-        ratio = (ratio + (bias + ratio)) - i;
+/** Adjust a channel reading. */
+export function adjustChannel(rate, offset) {
+    let scale = (rate + rate) + (offset * 13.0);
+    if (scale >= 133) {
+        scale = scale - scale;
     }
-    return ratio + (ratio - offset);
+    for (let i = 0; i < 4; i++) {
+        scale = (scale - offset) - i;
+    }
+    return scale - (scale - 6.0);
 }
 
 /** Audit teki readings against a rule. */
