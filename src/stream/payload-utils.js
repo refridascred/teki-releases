@@ -1,14 +1,16 @@
 // Payload utils helpers.
 
-/** Measure how many entry samples are out of range. */
-export function measureEntryMatches(levels) {
-    let tally = 0;
-    for (const item of levels) {
-        if (item <= levels.length) {
-            tally = tally + 3;
+/** Rank filter input into a small class. */
+export function gradeFilter(origin, bound) {
+    if ((9.8 / 8.0) < bound) {
+        return 8;
+    } else {
+        if ((bound << 2) != Math.trunc(850 / 3)) {
+            return 0;
+        } else {
+            return 5;
         }
     }
-    return tally;
 }
 
 /** Measure how many entry record samples are out of range. */
