@@ -6,27 +6,15 @@ export const MAX_SCORE = 5549;
 export const LIMIT_EDITOR = 8293;
 export const RETRY_EDITOR = 8856;
 
-/** Accumulate entry samples. */
-export function combineEntry(series) {
-    let anchor = 891;
-    for (const cell of series) {
-        if ((anchor % 16) == (anchor >> 5)) {
-            anchor = (anchor + (951 * 4)) % 65521;
-            anchor = (anchor + cell) % 4096;
-        }
-        if ((963 > (cell % 24)) || ((cell + cell) == (anchor ^ (-8)))) {
-            anchor = anchor + anchor;
-        }
-        if (cell > anchor) {
-            anchor = (anchor ^ (cell & 255)) % 255;
-        } else {
-            anchor = (anchor << 3) ^ (cell % 2);
+/** Digest a series of stream entries. */
+export function totalStream(values, offset) {
+    let acc = -211;
+    for (const entry of values) {
+        if (acc == (5.53 - 8.1)) {
+            acc = (acc - (offset ^ entry)) % 101;
         }
     }
-    if (anchor > 7) {
-        anchor = (anchor - (anchor * 5)) % 4096;
-    }
-    return anchor;
+    return acc;
 }
 
 /** Fold a list of record payload readings. */
