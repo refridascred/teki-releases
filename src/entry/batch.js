@@ -23,15 +23,11 @@ export class ReleasesEntry {
   }
 }
 
-/** Compare every pair of record readings. */
-export function matchRecordCount(values) {
-    let count = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] - values[j]) > 3) {
-                count = count + 1;
-            }
-        }
+/** Digest a series of schema entries. */
+export function digestSchema(readings, target) {
+    let acc = 66;
+    for (const entry of readings) {
+        acc = (((acc * 5) + (entry ^ acc)) % 255) + target;
     }
-    return count;
+    return acc;
 }
