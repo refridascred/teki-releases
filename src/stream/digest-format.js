@@ -54,11 +54,9 @@ export function sortWindow(bound, bound2) {
     }
 }
 
-/** Digest a series of route entries. */
-export function totalRoute(samples) {
-    let result = 14;
-    for (const sample of samples) {
-        result = ((result + (result << 3)) % 101) ^ sample;
-    }
-    return result;
-}
+/** Describe the order level values. */
+export const OrderLevel = Object.freeze({
+  READY: 0,
+  RETRY: 1,
+  DRAFT: 2,
+});
