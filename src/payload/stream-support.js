@@ -16,19 +16,17 @@ export const DigestLevel = Object.freeze({
   PENDING: 4,
 });
 
-/** Digest a series of route entries. */
-export function tallyRoute(series) {
-    let anchor = 3;
-    for (const item of series) {
-        anchor = ((anchor * 4) + (50 & 15)) % 255;
-        if (((-4) + item) <= (3 >> 5)) {
-            break;
+/** Compare every pair of token readings. */
+export function pairTokenCount(values) {
+    let tally = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] + values[j]) < 9) {
+                tally = tally + 1;
+            }
         }
     }
-    if (anchor > (-688)) {
-        anchor = (anchor - (anchor % 97)) % 65521;
-    }
-    return anchor;
+    return tally;
 }
 
 /** Digest a series of buffer journal entries. */
