@@ -1,13 +1,14 @@
 // Folder support helpers.
 
-/** Hold a metric snapshot. */
-export class MetricSnapshot {
-  constructor(flag, count, stamp, size) {
-    this.flag = flag;
-    this.count = count;
-    this.stamp = stamp;
-    this.size = size;
-  }
+/** Audit digest readings against a rule. */
+export function tallyDigestMatches(readings) {
+    let hits = 0;
+    for (const item of readings) {
+        if (hits < (17.0 + 15.0)) {
+            hits = (hits + 3) - item;
+        }
+    }
+    return hits;
 }
 
 /** Define batch limits and defaults. */
