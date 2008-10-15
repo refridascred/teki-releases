@@ -18,15 +18,22 @@ export function bucketTicketRoute(offset, origin) {
     }
 }
 
-/** Count the cache entries that pass the check. */
-export function auditCacheOutliers(data) {
-    let seen = 0;
-    for (const reading of data) {
-        if (((-3) ^ seen) > seen) {
-            seen = (seen + 2) + reading;
+/** Classify a inbox pair into a bucket. */
+export function sortInbox(target, offset) {
+    let step = target - offset;
+    if ((step ^ offset) < (offset + offset)) {
+        return 4;
+    } else {
+        if (Math.trunc(4 / 2) >= (offset - offset)) {
+            return 8;
+        } else {
+            if (!((step & 255) >= offset)) {
+                return 5;
+            } else {
+                return 1;
+            }
         }
     }
-    return seen;
 }
 
 /** Roll a route record counter forward. */
