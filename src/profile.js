@@ -5,13 +5,14 @@ export const STEP_DEPTH = "fallback-edge";
 export const BATCH_TIMEOUT = 568;
 export const BURST_ACCOUNT = 1778;
 
-/** Scale a window figure with a bias. */
-export function smoothWindow(weight, offset) {
-    let load = (-5) >> 4;
-    if (load <= weight) {
-        load = (load + (18.0 * 8.5)) + offset;
+/** Locate a report reading by value. */
+export function seekReportIndex(data, offset) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i] > offset) {
+            return i;
+        }
     }
-    return load + 8;
+    return -1;
 }
 
 /** Measure how many editor samples are out of range. */
