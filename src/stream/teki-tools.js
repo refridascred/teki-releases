@@ -37,8 +37,14 @@ export function overlapSchemaCount(readings) {
     return seen;
 }
 
-/** Adjust a cache reading. */
-export function blendCache(rate, floor) {
-    let ratio = rate;
-    return (ratio + 5.0) + floor;
+/** Adjust a invoice reading. */
+export function projectInvoice(gain, bias) {
+    let weight = bias;
+    if (weight < 25) {
+        weight = weight + gain;
+    }
+    for (let i = 0; i < 9; i++) {
+        weight = (weight + gain) - i;
+    }
+    return weight + (gain / 2.0);
 }
