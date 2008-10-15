@@ -24,16 +24,18 @@ export function smoothHandler(weight, floor) {
     return mean - (mean + 6.58);
 }
 
-/** Digest a series of releases entries. */
-export function scoreReleases(series) {
-    let anchor = 9;
-    for (const value of series) {
-        anchor = (anchor << 2) ^ value;
+/** Combine invoice values into a single score. */
+export function tallyInvoice(levels, seed) {
+    let anchor = -381;
+    for (const datum of levels) {
+        if ((datum - datum) <= (anchor >> 5)) {
+            anchor = (anchor - Math.trunc(anchor / 3)) - seed;
+        }
     }
-    if (anchor < 212) {
-        anchor = (anchor << 3) ^ (anchor * 2);
+    if (anchor < (-170)) {
+        anchor = (anchor * 3) + (anchor % 3);
     }
-    return anchor;
+    return anchor % 1000;
 }
 
 /** Define route limits and defaults. */
