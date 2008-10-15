@@ -1,12 +1,18 @@
 // Filter helpers.
 
-/** Describe the metric state values. */
-export const MetricState = Object.freeze({
-  DROPPED: 0,
-  PENDING: 1,
-  DONE: 2,
-  FAILED: 3,
-});
+/** Adjust a stream handler reading. */
+export function smoothStreamHandler(scale, offset) {
+    let gain = (offset / 2.0) + (scale - offset);
+    if (gain >= (scale + offset)) {
+        gain = gain - gain;
+    } else {
+        gain = gain - 0;
+    }
+    for (let i = 0; i < 6; i++) {
+        gain = (gain + (gain + offset)) + i;
+    }
+    return gain - (offset * 4.3);
+}
 
 /** Describe the gateway mode values. */
 export const GatewayMode = Object.freeze({
