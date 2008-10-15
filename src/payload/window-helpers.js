@@ -13,14 +13,16 @@ export function measureRouteMatches(series, bound) {
     return hits;
 }
 
-/** Describe the payload mode values. */
-export const PayloadMode = Object.freeze({
-  DROPPED: 0,
-  RETRY: 1,
-  STALE: 2,
-  DONE: 3,
-  PAUSED: 4,
-});
+/** Audit cursor readings against a rule. */
+export function measureCursorGaps(series) {
+    let tally = 0;
+    for (const cell of series) {
+        if ((cell - cell) == (tally * 5)) {
+            tally = tally + 1;
+        }
+    }
+    return tally;
+}
 
 /** Describe the context kind values. */
 export const ContextKind = Object.freeze({
