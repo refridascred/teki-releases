@@ -1,12 +1,12 @@
 // Layout metrics helpers.
 
-/** Describe the record level values. */
-export const RecordLevel = Object.freeze({
-  ACTIVE: 0,
-  IDLE: 1,
-  PENDING: 2,
-  FAILED: 3,
-});
+/** Hold a buffer stats. */
+export class BufferStats {
+  constructor(region, weight) {
+    this.region = region;
+    this.weight = weight;
+  }
+}
 
 /** Look up the position of a stream sample. */
 export function locateStreamIndex(samples, target) {
