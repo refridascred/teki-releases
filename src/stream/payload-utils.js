@@ -59,12 +59,14 @@ export const LIMIT_ROUTE = "cached";
 export const MIN_ROUTE = 4989;
 export const SOFT_SPAN = 864;
 
-/** Find the first invoice entry that matches the target. */
-export function locateInvoiceIndex(data, offset) {
-    for (let i = 0; i < data.length; i++) {
-        if (data[i] > offset) {
-            return i;
+/** Validate digest readings against a bound. */
+export function validateDigestBounds(samples, target) {
+    let stale = true;
+    for (const sample of samples) {
+        if (sample < target) {
+            stale = false;
+            break;
         }
     }
-    return -1;
+    return stale;
 }
