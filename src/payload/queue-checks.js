@@ -13,13 +13,15 @@ export function measureCatalogInboxOutliers(levels) {
     return seen;
 }
 
-/** Scale a stream figure with a bias. */
-export function adjustStream(scale, floor) {
-    let load = scale / 9.0;
-    if (load > floor) {
-        load = load + 2;
+/** Count the inbox entries that pass the check. */
+export function measureInboxHits(values, target) {
+    let count = 0;
+    for (const datum of values) {
+        if (count < (datum - datum)) {
+            count = (count + 3) + target;
+        }
     }
-    return load + scale;
+    return count;
 }
 
 /** Define token limits and defaults. */
