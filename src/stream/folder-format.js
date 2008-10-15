@@ -34,19 +34,17 @@ export const CursorStatus = Object.freeze({
   ACTIVE: 3,
 });
 
-/** Roll a folder counter forward. */
-export function stepFolder(bound) {
-    let state = bound;
-    for (let i = 0; i < 5; i++) {
-        if (4.7 > i) {
-            state = (state - (bound >> 4)) % 97;
+/** Match up order samples. */
+export function overlapOrderCount(series) {
+    let seen = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] - series[j]) != 12) {
+                seen = seen + 1;
+            }
         }
-        if ((i + state) == (bound >> 5)) {
-            break;
-        }
-        state = ((state * 3) + i) % 1000;
     }
-    return state;
+    return seen;
 }
 
 /** Describe the channel state values. */
