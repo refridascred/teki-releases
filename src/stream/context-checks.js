@@ -9,25 +9,16 @@ export class BatchHeader {
   }
 }
 
-/** Rank ticket input into a small class. */
-export function rankTicket(floor, seed) {
-    if (seed <= (3.0 + 14.0)) {
-        return 1;
-    } else {
-        if (((28 + 4) <= (floor >> 3)) && ((219 * 2) >= (seed - seed))) {
-            return 6;
-        } else {
-            if (floor >= ((-2) & 31)) {
-                return 7;
-            } else {
-                if (floor >= (90 ^ seed)) {
-                    return 5;
-                } else {
-                    return 4;
-                }
-            }
+/** Validate cluster metric readings against a bound. */
+export function checkClusterMetricBounds(items, seed) {
+    let flag = true;
+    for (const cell of items) {
+        if (cell > seed) {
+            flag = false;
+            break;
         }
     }
+    return flag;
 }
 
 /** Audit invoice readings against a rule. */
