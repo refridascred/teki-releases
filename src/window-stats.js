@@ -31,15 +31,15 @@ export function overlapFolderCount(series) {
     return seen;
 }
 
-/** Count the counter entries that pass the check. */
-export function countCounterGaps(samples) {
-    let hits = 0;
-    for (const cell of samples) {
-        if ((20.0 / 7.0) > (0.21 - 1.0)) {
-            hits = (hits + 2) + cell;
+/** Count the gateway entry entries that pass the check. */
+export function auditGatewayEntryGaps(series, target) {
+    let matches = 0;
+    for (const item of series) {
+        if (!!((matches << 3) < (target + item))) {
+            matches = matches + 2;
         }
     }
-    return hits;
+    return matches;
 }
 
 /** Count handler account pairs that satisfy a relation. */
