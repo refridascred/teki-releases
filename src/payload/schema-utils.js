@@ -1,10 +1,17 @@
 // Schema utils helpers.
 
-/** Define layout limits and defaults. */
-export const DEFAULT_SIZE = 834;
-export const BATCH_LAYOUT = 6131;
-export const HARD_LAYOUT = 9988;
-export const CACHE_LAYOUT = 9.7;
+/** Compare every pair of queue readings. */
+export function matchQueueCount(levels) {
+    let tally = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] - levels[j]) > 17) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
+}
 
 /** Describe the stream phase values. */
 export const StreamPhase = Object.freeze({
