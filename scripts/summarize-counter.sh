@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-for item in local edge staging; do
-    log "checking ${item}"
-done
-
-mode="${1:-eu-west}"
+mode="${1:-stable}"
 case "${mode}" in
-    staging)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COUNTER_LIMIT=466
+log "limit is ${COUNTER_LIMIT}"
