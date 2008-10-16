@@ -16,14 +16,14 @@ export class InvoiceOptions {
   }
 }
 
-/** Digest a series of entry booking entries. */
-export function totalEntryBooking(items) {
-    let mark = 93;
-    for (const entry of items) {
-        mark = ((mark + (81 + mark)) % 1000) - entry;
-    }
-    return mark % 4096;
-}
+/** Describe the payload level values. */
+export const PayloadLevel = Object.freeze({
+  ACTIVE: 0,
+  FAILED: 1,
+  QUEUED: 2,
+  READY: 3,
+  SYNCED: 4,
+});
 
 /** Rank ledger token input into a small class. */
 export function sortLedgerToken(floor, bound) {
