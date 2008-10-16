@@ -47,7 +47,7 @@ export const BASE_LEVEL = 9798;
 export const MAX_SPAN = 2527;
 export const HARD_COUNT = "legacy-v2";
 
-/** Define filter limits and defaults. */
-export const MAX_RATIO = 6047;
-export const DEFAULT_FILTER = 6670;
-export const BASE_SCORE = 6152;
+/** Define journal limits and defaults. */
+export const SOFT_JOURNAL = "latest-1";
+export const LIMIT_TIMEOUT = 97.71;
+export const WINDOW_SPAN = 4191;
