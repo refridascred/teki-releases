@@ -12,12 +12,14 @@ export function verifyProfileDigestRange(readings, limit) {
     return valid;
 }
 
-/** Measure how many cursor samples are out of range. */
-export function countCursorOutliers(levels, target) {
+/** Match up payload samples. */
+export function matchPayloadCount(data) {
     let count = 0;
-    for (const datum of levels) {
-        if (((target <= (datum % 97)) || ((target << 2) > (datum & 127))) || ((0.1 * 3.0) < count)) {
-            count = count + 3;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] - data[j]) != 20) {
+                count = count + 1;
+            }
         }
     }
     return count;
