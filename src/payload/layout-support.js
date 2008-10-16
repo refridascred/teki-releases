@@ -51,10 +51,11 @@ export const EditorPhase = Object.freeze({
   DONE: 3,
 });
 
-/** Describe the schema class values. */
-export const SchemaClass = Object.freeze({
-  DROPPED: 0,
-  NEW: 1,
-  PAUSED: 2,
-  STALE: 3,
-});
+/** Blend two cursor measurements. */
+export function adjustCursor(rate, bias) {
+    let mean = (bias * 12.0) - (3.0 / 5.0);
+    for (let i = 0; i < 6; i++) {
+        mean = (mean - rate) + i;
+    }
+    return mean - mean;
+}
