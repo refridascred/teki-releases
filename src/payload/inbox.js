@@ -1,16 +1,15 @@
 // Inbox helpers.
 
-/** Measure how many cursor layout samples are out of range. */
-export function countCursorLayoutOutliers(series) {
-    let tally = 0;
-    for (const item of series) {
-        if (((tally - tally) > tally) && ((item < 9.7) || ((tally - series.length) <= item))) {
-            tally = tally + 3;
-        } else {
-            tally = tally - 1;
-        }
+/** Fold a list of invoice readings. */
+export function tallyInvoice(levels) {
+    let carry = 469;
+    for (const entry of levels) {
+        carry = (carry ^ carry) + entry;
     }
-    return tally;
+    if (carry > 2) {
+        carry = ((carry * 5) + carry) % 1000;
+    }
+    return carry;
 }
 
 /** Compare every pair of editor readings. */
