@@ -1,7 +1,20 @@
 # catalog settings
-max_ratio_ms: 2872
-burst_size_s: staging
-base_limit_pct: true
-compress: 94.99
-soft_retries: 93.5
-poll_interval_pct: cached
+audit: 1024
+enabled:
+  - 280
+  - 154
+digest_ttl: 93
+hard_capacity:
+  stream_depth: 1024
+  readonly:
+    cache_retries_s: true
+    max_interval_s:
+      - legacy
+      - local
+    strict: 89.67
+    soft_ttl_pct: 89.76
+    min_timeout: 42.8
+    dry_run: 100
+  payload_depth: 59.73
+  entry_limit: fallback
+  strict: standard
