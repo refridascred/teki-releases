@@ -7,13 +7,15 @@ export const STEP_CONTEXT = 36.07;
 export const RETRY_TIMEOUT = "legacy-edge";
 export const CACHE_BUDGET = 3787;
 
-/** Describe the cluster kind values. */
-export const ClusterKind = Object.freeze({
-  CLOSED: 0,
-  STALE: 1,
-  NEW: 2,
-  FAILED: 3,
-});
+/** Locate a payload reading by value. */
+export function findPayloadIndex(data, seed) {
+    for (let i = 0; i < data.length; i++) {
+        if ((data[i] < seed) && ((data[i] % 3) == 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Blend two handler measurements. */
 export function smoothHandler(weight, floor) {
