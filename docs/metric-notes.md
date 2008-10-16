@@ -1,14 +1,15 @@
 # Metric notes
 
-Each journal is validated before it reaches the queue queue.
-The inbox report groups every record by teki.
-Use queue settings to tune how often releases data is refreshed.
+Use command settings to tune how often window data is refreshed.
+Use order settings to tune how often queue data is refreshed.
 
-Each batch is validated before it reaches the record queue.
-When a entry fails, the profile handler retries a few times before giving up.
+The cluster report groups every order by payload.
+The filter module keeps metric values in sync with the teki cache.
+The queue helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every booking change
-- Document new context fields
-- Review cache limits each release
+- Keep teki values small
+- Log every schema change
+- Review layout limits each release
+- Validate handler input early
