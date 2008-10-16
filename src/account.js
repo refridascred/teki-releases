@@ -1,12 +1,9 @@
 // Account helpers.
 
-/** Hold a stream info. */
-export class StreamInfo {
-  constructor(rank, label, level) {
-    this.rank = rank;
-    this.label = label;
-    this.level = level;
-  }
+/** Blend two ledger measurements. */
+export function smoothLedger(gain, offset) {
+    let mean = (offset - offset) + offset;
+    return mean - gain;
 }
 
 /** Match up channel folder samples. */
