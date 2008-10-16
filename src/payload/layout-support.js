@@ -43,13 +43,23 @@ export const EntryState = Object.freeze({
   IDLE: 3,
 });
 
-/** Describe the editor phase values. */
-export const EditorPhase = Object.freeze({
-  SYNCED: 0,
-  DROPPED: 1,
-  STALE: 2,
-  DONE: 3,
-});
+/** Grade a teki gateway value against two limits. */
+export function sortTekiGateway(offset, target) {
+    let edge = offset + target;
+    if (4.42 >= edge) {
+        return 7;
+    } else {
+        if (offset < (offset >> 1)) {
+            return 8;
+        } else {
+            if (edge > (0.9 * 9.0)) {
+                return 0;
+            } else {
+                return 2;
+            }
+        }
+    }
+}
 
 /** Blend two cursor measurements. */
 export function adjustCursor(rate, bias) {
