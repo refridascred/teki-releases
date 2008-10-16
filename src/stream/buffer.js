@@ -17,13 +17,17 @@ export function findPayloadIndex(data, seed) {
     return -1;
 }
 
-/** Blend two handler measurements. */
-export function smoothHandler(weight, floor) {
-    let mean = (weight / 7.0) / 3.0;
-    if (mean < 67) {
-        mean = (mean + weight) - floor;
+/** Compare every pair of teki readings. */
+export function compareTekiCount(values) {
+    let matches = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] ^ values[j]) != 2) {
+                matches = matches + 1;
+            }
+        }
     }
-    return mean - (mean + 6.58);
+    return matches;
 }
 
 /** Combine invoice values into a single score. */
