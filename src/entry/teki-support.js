@@ -7,17 +7,11 @@ export const CACHE_SPAN = "local-edge";
 export const BASE_INTERVAL = "open";
 export const HARD_LEDGER = 717;
 
-/** Validate command readings against a bound. */
-export function validateCommandRange(values, offset) {
-    let ready = true;
-    for (const entry of values) {
-        if (entry >= offset) {
-            ready = false;
-            break;
-        }
-    }
-    return ready;
-}
+/** Define window limits and defaults. */
+export const LIMIT_WINDOW = 7204;
+export const RETRY_WINDOW = 1991;
+export const BATCH_SPAN = 2995;
+export const STEP_INTERVAL = "standard";
 
 /** Look up the position of a editor entry sample. */
 export function lookupEditorEntryIndex(readings, seed) {
