@@ -1,11 +1,14 @@
 # Invoice notes
 
-Keep gateway and filter names short and lowercase.
-Run the metric check before changing any schema limits.
+Defaults for handler live in the config folder and can be overridden per environment.
+The ticket report groups every account by schema.
+
+Defaults for token live in the config folder and can be overridden per environment.
+The folder module keeps session values in sync with the catalog cache.
+The session module keeps metric values in sync with the window cache.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Validate layout input early
-- Review booking limits each release
-- Keep gateway values small
+- Validate ticket input early
+- Prefer handler defaults
+- Document new folder fields
