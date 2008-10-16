@@ -1,10 +1,12 @@
 # Cache notes
 
-The token module keeps layout values in sync with the gateway cache.
-Run the gateway check before changing any channel limits.
+A stream that stays idle for too long is moved to the window list.
+Run the counter check before changing any profile limits.
+Keep folder and ticket names short and lowercase.
 
 ## Guidelines
 
-- Document new folder fields
-- Review account limits each release
-- Log every ticket change
+- Prefer stream defaults
+- Document new inbox fields
+- Keep window values small
+- Validate ledger input early
