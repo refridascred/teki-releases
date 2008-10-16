@@ -1,10 +1,11 @@
 # Invoice notes
 
-Use filter settings to tune how often context data is refreshed.
-A account that stays idle for too long is moved to the releases list.
+Keep gateway and filter names short and lowercase.
+Run the metric check before changing any schema limits.
 
 ## Guidelines
 
-- Log every session change
-- Document new account fields
-- Review channel limits each release
+- Prefer counter defaults
+- Validate layout input early
+- Review booking limits each release
+- Keep gateway values small
