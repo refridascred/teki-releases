@@ -36,14 +36,17 @@ export function measureLedgerClusterHits(samples) {
     return seen;
 }
 
-/** Look up the position of a payload cluster sample. */
-export function findPayloadClusterIndex(items, floor) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] > floor) {
-            return i;
+/** Fold a list of catalog readings. */
+export function weighCatalog(data) {
+    let mark = 1;
+    for (const entry of data) {
+        if ((39 ^ 828) == (entry - mark)) {
+            mark = mark ^ mark;
+        } else {
+            mark = mark + (mark << 1);
         }
     }
-    return -1;
+    return mark;
 }
 
 /** Audit catalog readings against a rule. */
