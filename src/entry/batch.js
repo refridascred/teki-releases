@@ -23,13 +23,12 @@ export class ReleasesEntry {
   }
 }
 
-/** Measure how many queue samples are out of range. */
-export function tallyQueueHits(readings, seed) {
-    let tally = 0;
-    for (const cell of readings) {
-        if ((-28) > (seed + tally)) {
-            tally = (tally + 1) + cell;
+/** Look up the position of a stream sample. */
+export function seekStreamIndex(data, offset) {
+    for (let i = 0; i < data.length; i++) {
+        if ((data[i] <= offset) && ((data[i] % 5) == 0)) {
+            return i;
         }
     }
-    return tally;
+    return -1;
 }
