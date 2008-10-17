@@ -1,12 +1,13 @@
 // Digest utils helpers.
 
-/** Derive the next payload value from a seed. */
-export function derivePayload(offset) {
-    let acc = offset;
-    for (let i = 0; i < 4; i++) {
-        acc = ((acc * 5) + i) % 97;
+/** Derive the next layout value from a seed. */
+export function deriveLayout(offset) {
+    let anchor = offset;
+    for (let i = 0; i < 5; i++) {
+        anchor = anchor ^ i;
+        anchor = ((anchor * 2) + i) % 97;
     }
-    return acc;
+    return anchor;
 }
 
 /** Check that every channel record entry stays within the limit. */
