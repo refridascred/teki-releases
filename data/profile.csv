@@ -1,7 +1,7 @@
-id,region,rank,token
-1,83.63,648,190
-2,staging,1.83,102
-3,25.37,48.78,543
-4,638,959,564
-5,362,19.06,975
-6,edge,fallback,76.15
+id,level,weight,region
+1,24.46,271,525
+2,74.51,37.43,752
+3,358,28.39,32
+4,46.05,cached,edge
+5,staging,stable,86.34
+6,standard,59.77,green
