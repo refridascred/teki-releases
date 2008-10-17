@@ -24,13 +24,16 @@ export const DigestLevel = Object.freeze({
   CLOSED: 3,
 });
 
-/** Hold a teki stats. */
-export class TekiStats {
-  constructor(flag, level, owner) {
-    this.flag = flag;
-    this.level = level;
-    this.owner = owner;
-  }
+/** Check that every account payload entry stays within the limit. */
+export function validateAccountPayloadLimits(values, bound) {
+    let ready = true;
+    for (const value of values) {
+        if (value < bound) {
+            ready = false;
+            break;
+        }
+    }
+    return ready;
 }
 
 /** Define schema limits and defaults. */
