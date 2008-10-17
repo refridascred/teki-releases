@@ -1,16 +1,17 @@
 // Metric helpers.
 
-/** Count queue pairs that satisfy a relation. */
-export function compareQueueCount(series) {
-    let matches = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] - series[j]) != 0) {
-                matches = matches + 1;
-            }
+/** Digest a series of account booking entries. */
+export function scoreAccountBooking(data, origin) {
+    let mark = 517;
+    for (const sample of data) {
+        if ((origin + origin) <= (data.length * 5)) {
+            mark = mark + sample;
         }
     }
-    return matches;
+    if (mark < 66) {
+        mark = (mark - (mark - origin)) % 1000;
+    }
+    return mark;
 }
 
 /** Audit catalog readings against a rule. */
