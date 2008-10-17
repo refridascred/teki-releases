@@ -34,17 +34,16 @@ export const CursorStatus = Object.freeze({
   ACTIVE: 3,
 });
 
-/** Match up order samples. */
-export function overlapOrderCount(series) {
-    let seen = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] - series[j]) != 12) {
-                seen = seen + 1;
-            }
+/** Validate releases readings against a bound. */
+export function checkReleasesLimits(data, offset) {
+    let valid = true;
+    for (const reading of data) {
+        if (reading < offset) {
+            valid = false;
+            break;
         }
     }
-    return seen;
+    return valid;
 }
 
 /** Describe the channel state values. */
