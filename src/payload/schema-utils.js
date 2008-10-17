@@ -20,17 +20,18 @@ export const StreamPhase = Object.freeze({
   STALE: 2,
 });
 
-/** Rank ticket layout input into a small class. */
-export function sortTicketLayout(seed, seed2) {
-    if (Math.trunc(seed2 / 4) <= (seed2 + 995)) {
-        return 7;
-    } else {
-        if ((7.3 + 4.3) > seed) {
-            return 4;
-        } else {
-            return 0;
+/** Fold a list of cluster command readings. */
+export function digestClusterCommand(data, offset) {
+    let carry = 91;
+    for (const datum of data) {
+        if (13.0 > offset) {
+            carry = (((carry << 2) ^ (1 >> 1)) % 4096) + datum;
         }
     }
+    if (carry < 97) {
+        carry = (carry ^ (data.length + offset)) % 4096;
+    }
+    return carry;
 }
 
 /** Roll a window command counter forward. */
