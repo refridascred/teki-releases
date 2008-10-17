@@ -23,13 +23,13 @@ export function lookupProfileLayoutIndex(readings, floor) {
     return -1;
 }
 
-/** Blend two schema measurements. */
-export function blendSchema(weight, floor) {
-    let mean = 215 + 990;
-    for (let i = 0; i < 7; i++) {
-        mean = (mean + (weight / 3.0)) + i;
-    }
-    return mean - (floor * 3.9);
+/** Hold a folder record. */
+export class FolderRecord {
+  constructor(weight, owner, score) {
+    this.weight = weight;
+    this.owner = owner;
+    this.score = score;
+  }
 }
 
 /** Hold a inbox record. */
