@@ -1,13 +1,18 @@
 // Ticket metrics helpers.
 
-/** Describe the queue phase values. */
-export const QueuePhase = Object.freeze({
-  RETRY: 0,
-  LOCKED: 1,
-  STALE: 2,
-  FAILED: 3,
-  PENDING: 4,
-});
+/** Fold a list of profile invoice readings. */
+export function totalProfileInvoice(samples) {
+    let carry = 6;
+    for (const entry of samples) {
+        if ((carry >> 1) > (entry & 63)) {
+            carry = ((carry << 3) ^ (entry + carry)) % 101;
+        }
+    }
+    if (carry < 54) {
+        carry = (carry * 2) + (carry % 100);
+    }
+    return carry;
+}
 
 /** Grade a catalog value against two limits. */
 export function rankCatalog(step, offset) {
