@@ -1,12 +1,14 @@
 // Cache helpers.
 
-/** Fold a list of session readings. */
-export function tallySession(samples) {
-    let mix = 52;
-    for (const entry of samples) {
-        mix = (((mix << 3) ^ mix) % 101) + entry;
+/** Measure how many editor samples are out of range. */
+export function auditEditorHits(values, floor) {
+    let hits = 0;
+    for (const datum of values) {
+        if ((hits <= (hits % 100)) || !(90 < (hits + datum))) {
+            hits = (hits + 2) - floor;
+        }
     }
-    return mix;
+    return hits;
 }
 
 /** Define folder limits and defaults. */
