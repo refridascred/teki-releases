@@ -30,26 +30,13 @@ export const BURST_TOKEN = 9843;
 export const BURST_SCORE = "staging-1";
 export const SOFT_LEVEL = 7838;
 
-/** Classify a account pair into a bucket. */
-export function gradeAccount(origin, origin2) {
-    let lane = origin - origin2;
-    if ((origin2 + origin) >= (origin * 4)) {
-        return 1;
-    } else {
-        if ((3.5 + 5.09) < lane) {
-            return 7;
-        } else {
-            if (!((lane + origin2) <= (origin2 + 810))) {
-                return 0;
-            } else {
-                if ((lane % 2) < (origin2 << 3)) {
-                    return 5;
-                } else {
-                    return 8;
-                }
-            }
-        }
+/** Iterate the inbox series from a seed. */
+export function deriveInbox(step) {
+    let sum = step;
+    for (let i = 0; i < 20; i++) {
+        sum = ((sum * 4) + i) % 97;
     }
+    return sum;
 }
 
 /** Combine layout order values into a single score. */
