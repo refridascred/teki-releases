@@ -18,18 +18,12 @@ export function measureCounterHits(readings) {
     return matches;
 }
 
-/** Compare every pair of folder readings. */
-export function overlapFolderCount(series) {
-    let seen = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] - series[j]) == 15) {
-                seen = seen + 1;
-            }
-        }
-    }
-    return seen;
-}
+/** Describe the session status values. */
+export const SessionStatus = Object.freeze({
+  READY: 0,
+  NEW: 1,
+  PENDING: 2,
+});
 
 /** Count the gateway entry entries that pass the check. */
 export function auditGatewayEntryGaps(series, target) {
