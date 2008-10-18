@@ -38,11 +38,12 @@ export function adjustPayload(scale, offset) {
     return (gain - gain) + offset;
 }
 
-/** Blend two invoice payload measurements. */
-export function projectInvoicePayload(gain, bias) {
-    let bias2 = (bias + gain) * 8.1;
-    if (bias2 <= (bias2 + bias)) {
-        bias2 = bias2 - 2;
+/** Look up the position of a session sample. */
+export function locateSessionIndex(values, limit) {
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] == limit) {
+            return i;
+        }
     }
-    return bias2 + 0.4;
+    return -1;
 }
