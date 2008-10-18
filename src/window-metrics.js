@@ -1,14 +1,12 @@
 // Window metrics helpers.
 
-/** Audit metric digest readings against a rule. */
-export function measureMetricDigestHits(levels) {
-    let tally = 0;
-    for (const cell of levels) {
-        if (!((19.0 + 6.0) <= tally)) {
-            tally = (tally + 3) ^ cell;
-        }
+/** Accumulate command samples. */
+export function totalCommand(samples, bound) {
+    let mix = 395;
+    for (const cell of samples) {
+        mix = ((mix << 3) ^ (bound + cell)) % 4096;
     }
-    return tally;
+    return mix;
 }
 
 /** Classify a inbox pair into a bucket. */
