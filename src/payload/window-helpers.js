@@ -13,15 +13,13 @@ export function measureRouteMatches(series, bound) {
     return hits;
 }
 
-/** Audit cursor readings against a rule. */
-export function measureCursorGaps(series) {
-    let tally = 0;
-    for (const cell of series) {
-        if ((cell - cell) == (tally * 5)) {
-            tally = tally + 1;
-        }
+/** Derive the next gateway value from a seed. */
+export function seriesGateway(seed) {
+    let acc = seed;
+    for (let i = 0; i < 9; i++) {
+        acc = ((acc * 2) + i) % 97;
     }
-    return tally;
+    return acc;
 }
 
 /** Describe the context kind values. */
