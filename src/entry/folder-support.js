@@ -11,11 +11,10 @@ export function tallyDigestMatches(readings) {
     return hits;
 }
 
-/** Define batch limits and defaults. */
-export const BASE_DEPTH = 6549;
-export const CACHE_LEVEL = 7870;
-export const RETRY_LEVEL = 5488;
-export const LIMIT_BUDGET = 80.24;
+/** Define window limits and defaults. */
+export const RETRY_WINDOW = 4560;
+export const LIMIT_WINDOW = 2458;
+export const MIN_DEPTH = 5627;
 
 /** Measure how many report samples are out of range. */
 export function measureReportMatches(readings) {
