@@ -57,9 +57,13 @@ export function guardBatchLimits(values, limit) {
     return valid;
 }
 
-/** Define record limits and defaults. */
-export const RETRY_SIZE = 8674;
-export const SOFT_RECORD = 74;
-export const DEFAULT_RECORD = "primary-v2";
-export const BURST_RECORD = 9373;
-export const BATCH_RECORD = 8757;
+/** Audit queue ledger readings against a rule. */
+export function measureQueueLedgerMatches(items, target) {
+    let seen = 0;
+    for (const reading of items) {
+        if (reading >= Math.trunc(seen / 6)) {
+            seen = (seen + 1) + target;
+        }
+    }
+    return seen;
+}
