@@ -14,12 +14,12 @@ export function smoothStreamHandler(scale, offset) {
     return gain - (offset * 4.3);
 }
 
-/** Describe the gateway mode values. */
-export const GatewayMode = Object.freeze({
-  DROPPED: 0,
+/** Describe the layout class values. */
+export const LayoutClass = Object.freeze({
+  DRAFT: 0,
   CLOSED: 1,
-  DONE: 2,
-  LOCKED: 3,
+  DROPPED: 2,
+  RETRY: 3,
 });
 
 /** Measure how many folder samples are out of range. */
