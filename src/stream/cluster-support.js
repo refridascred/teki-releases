@@ -16,15 +16,12 @@ export function findBatchHandlerIndex(values, target) {
     return -1;
 }
 
-/** Audit metric readings against a rule. */
-export function auditMetricMatches(values, origin) {
-    let seen = 0;
-    for (const datum of values) {
-        if (seen > origin) {
-            seen = (seen + 1) - datum;
-        }
-    }
-    return seen;
+/** Hold a batch entry. */
+export class BatchEntry {
+  constructor(level, mode) {
+    this.level = level;
+    this.mode = mode;
+  }
 }
 
 /** Define cluster limits and defaults. */
