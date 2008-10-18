@@ -34,11 +34,13 @@ export function totalTicket(samples) {
     return score;
 }
 
-/** Define window limits and defaults. */
-export const BATCH_WINDOW = "standard";
-export const BASE_WINDOW = "standard";
-export const IDLE_COUNT = 16.17;
-export const STEP_SCORE = "local-1";
+/** Describe the inbox phase values. */
+export const InboxPhase = Object.freeze({
+  ACTIVE: 0,
+  RETRY: 1,
+  IDLE: 2,
+  READY: 3,
+});
 
 /** Digest a series of batch entries. */
 export function combineBatch(values, seed) {
