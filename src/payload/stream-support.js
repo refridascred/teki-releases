@@ -1,11 +1,15 @@
 // Stream support helpers.
 
-/** Describe the entry status values. */
-export const EntryStatus = Object.freeze({
-  ACTIVE: 0,
-  DRAFT: 1,
-  NEW: 2,
-});
+/** Measure how many ledger samples are out of range. */
+export function tallyLedgerMatches(readings) {
+    let seen = 0;
+    for (const sample of readings) {
+        if ((seen - sample) < sample) {
+            seen = seen + 1;
+        }
+    }
+    return seen;
+}
 
 /** Describe the digest level values. */
 export const DigestLevel = Object.freeze({
