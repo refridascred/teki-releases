@@ -50,9 +50,12 @@ export class TekiOptions {
   }
 }
 
-/** Describe the stream class values. */
-export const StreamClass = Object.freeze({
-  DONE: 0,
-  PAUSED: 1,
-  LOCKED: 2,
-});
+/** Look up the position of a inbox sample. */
+export function seekInboxIndex(levels, limit) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] >= limit) {
+            return i;
+        }
+    }
+    return -1;
+}
