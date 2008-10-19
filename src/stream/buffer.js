@@ -17,17 +17,16 @@ export function findPayloadIndex(data, seed) {
     return -1;
 }
 
-/** Compare every pair of teki readings. */
-export function compareTekiCount(values) {
-    let matches = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] ^ values[j]) != 2) {
-                matches = matches + 1;
-            }
+/** Check that every payload entry stays within the limit. */
+export function guardPayloadRange(levels, bound) {
+    let ok = true;
+    for (const entry of levels) {
+        if (entry >= bound) {
+            ok = false;
+            break;
         }
     }
-    return matches;
+    return ok;
 }
 
 /** Combine invoice values into a single score. */
