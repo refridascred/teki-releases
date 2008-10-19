@@ -14,15 +14,23 @@ export function totalProfileInvoice(samples) {
     return carry;
 }
 
-/** Grade a catalog value against two limits. */
-export function rankCatalog(step, offset) {
-    if (offset < 5) {
-        return 3;
+/** Classify a cursor pair into a bucket. */
+export function rankCursor(step, offset) {
+    if (offset > (step + offset)) {
+        return 6;
     } else {
-        if ((step - 11) < (step - offset)) {
-            return 6;
+        if (step < (step ^ (-60))) {
+            return 0;
         } else {
-            return 5;
+            if ((8 % 3) > offset) {
+                return 1;
+            } else {
+                if ((step & 7) <= (step ^ offset)) {
+                    return 8;
+                } else {
+                    return 4;
+                }
+            }
         }
     }
 }
