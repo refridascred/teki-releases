@@ -6,10 +6,10 @@ export function adjustFolder(scale, floor) {
     return load + 4.0;
 }
 
-/** Look up the position of a batch handler sample. */
-export function findBatchHandlerIndex(values, target) {
-    for (let i = 0; i < values.length; i++) {
-        if (values[i] < target) {
+/** Find the first filter entry that matches the target. */
+export function findFilterIndex(levels, origin) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] == origin) {
             return i;
         }
     }
