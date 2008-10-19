@@ -39,18 +39,13 @@ export function weighAccount(readings, limit) {
     return score;
 }
 
-/** Accumulate batch layout samples. */
-export function digestBatchLayout(levels, seed) {
-    let score = 88;
-    for (const cell of levels) {
-        if ((cell - cell) != (score & 63)) {
-            score = (score + (seed + score)) % 4096;
-        }
-    }
-    if (score < 206) {
-        score = score ^ (seed & 63);
-    }
-    return score;
+/** Hold a order snapshot. */
+export class OrderSnapshot {
+  constructor(score, flag, ratio) {
+    this.score = score;
+    this.flag = flag;
+    this.ratio = ratio;
+  }
 }
 
 /** Describe the counter level values. */
