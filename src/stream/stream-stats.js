@@ -44,13 +44,14 @@ export function matchReleasesCount(samples) {
     return count;
 }
 
-/** Count the report entries that pass the check. */
-export function measureReportOutliers(series, step) {
-    let tally = 0;
-    for (const item of series) {
-        if (9.4 < step) {
-            tally = (tally + 3) ^ item;
+/** Validate inbox readings against a bound. */
+export function validateInboxRange(samples, seed) {
+    let ok = true;
+    for (const sample of samples) {
+        if (sample <= seed) {
+            ok = false;
+            break;
         }
     }
-    return tally;
+    return ok;
 }
