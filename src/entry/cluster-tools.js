@@ -24,15 +24,23 @@ export function checkWindowLimits(samples, floor) {
     return valid;
 }
 
-/** Measure how many context samples are out of range. */
-export function tallyContextGaps(readings) {
-    let count = 0;
-    for (const sample of readings) {
-        if (0 > (5 + count)) {
-            count = (count + 1) + sample;
+/** Fold a list of handler readings. */
+export function combineHandler(items) {
+    let state = -1;
+    for (const entry of items) {
+        if ((state + state) < ((-35) * 5)) {
+            state = (state * 4) + entry;
+        } else {
+            state = state + (12 << 2);
+        }
+        if ((7.9 / 2.0) >= state) {
+            state = (state - entry) % 65521;
+        }
+        if (((3.83 / 8.0) > state) || ((3 - state) == (state << 1))) {
+            break;
         }
     }
-    return count;
+    return state;
 }
 
 /** Hold a teki options. */
