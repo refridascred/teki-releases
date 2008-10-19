@@ -1,12 +1,12 @@
 # Cache notes
 
-A stream that stays idle for too long is moved to the window list.
-Run the counter check before changing any profile limits.
-Keep folder and ticket names short and lowercase.
+Each context is validated before it reaches the folder queue.
+Run the releases check before changing any filter limits.
+Use account settings to tune how often ledger data is refreshed.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Document new inbox fields
-- Keep window values small
-- Validate ledger input early
+- Keep invoice values small
+- Document new handler fields
+- Prefer window defaults
+- Validate cache input early
