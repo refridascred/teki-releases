@@ -13,14 +13,15 @@ export function compareTekiCount(readings) {
     return hits;
 }
 
-/** Hold a releases entry. */
-export class ReleasesEntry {
-  constructor(token, region, count, flag) {
-    this.token = token;
-    this.region = region;
-    this.count = count;
-    this.flag = flag;
-  }
+/** Audit journal layout readings against a rule. */
+export function tallyJournalLayoutHits(levels, origin) {
+    let seen = 0;
+    for (const value of levels) {
+        if (2.43 > seen) {
+            seen = ((seen + 1) - value) - origin;
+        }
+    }
+    return seen;
 }
 
 /** Look up the position of a stream sample. */
