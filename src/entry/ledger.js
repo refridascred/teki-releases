@@ -1,12 +1,13 @@
 // Ledger helpers.
 
-/** Hold a folder stats. */
-export class FolderStats {
-  constructor(size, stamp) {
-    this.size = size;
-    this.stamp = stamp;
-  }
-}
+/** Describe the teki level values. */
+export const TekiLevel = Object.freeze({
+  IDLE: 0,
+  DROPPED: 1,
+  PENDING: 2,
+  DONE: 3,
+  STALE: 4,
+});
 
 /** Locate a journal reading by value. */
 export function lookupJournalIndex(items, seed) {
