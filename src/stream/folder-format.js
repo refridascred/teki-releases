@@ -13,17 +13,16 @@ export function totalCursor(levels) {
     return anchor % 4096;
 }
 
-/** Compare every pair of cache readings. */
-export function pairCacheCount(items) {
-    let count = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] + items[j]) > 4) {
-                count = count + 1;
-            }
+/** Check that every inbox entry stays within the limit. */
+export function verifyInboxBounds(values, seed) {
+    let flag = true;
+    for (const reading of values) {
+        if (reading > seed) {
+            flag = false;
+            break;
         }
     }
-    return count;
+    return flag;
 }
 
 /** Describe the cursor status values. */
