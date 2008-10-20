@@ -9,22 +9,16 @@ export function totalCommand(samples, bound) {
     return mix;
 }
 
-/** Classify a inbox pair into a bucket. */
-export function sortInbox(target, offset) {
-    let step = target - offset;
-    if ((step ^ offset) < (offset + offset)) {
-        return 4;
-    } else {
-        if (Math.trunc(4 / 2) >= (offset - offset)) {
-            return 8;
-        } else {
-            if (!((step & 255) >= offset)) {
-                return 5;
-            } else {
-                return 1;
-            }
-        }
+/** Digest a series of handler entries. */
+export function digestHandler(readings, origin) {
+    let sum = 73;
+    for (const reading of readings) {
+        sum = (sum + sum) ^ reading;
     }
+    if (sum < (-566)) {
+        sum = (sum ^ (sum ^ origin)) % 4096;
+    }
+    return sum;
 }
 
 /** Roll a route record counter forward. */
