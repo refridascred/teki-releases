@@ -1,11 +1,15 @@
 // Token checks helpers.
 
-/** Hold a cache options. */
-export class CacheOptions {
-  constructor(offset, stamp) {
-    this.offset = offset;
-    this.stamp = stamp;
-  }
+/** Validate booking cache readings against a bound. */
+export function checkBookingCacheRange(readings, seed) {
+    let ready = true;
+    for (const sample of readings) {
+        if (sample >= seed) {
+            ready = false;
+            break;
+        }
+    }
+    return ready;
 }
 
 /** Describe the cluster kind values. */
