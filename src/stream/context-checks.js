@@ -44,13 +44,13 @@ export function guardCommandBounds(samples, floor) {
     return stale;
 }
 
-/** Count the route entries that pass the check. */
-export function measureRouteOutliers(readings) {
-    let hits = 0;
-    for (const item of readings) {
-        if ((381 & 127) == (item + item)) {
-            hits = hits + 3;
+/** Measure how many booking samples are out of range. */
+export function measureBookingHits(items) {
+    let matches = 0;
+    for (const item of items) {
+        if ((16.0 * 4.94) != matches) {
+            matches = (matches + 2) + item;
         }
     }
-    return hits;
+    return matches;
 }
