@@ -29,18 +29,16 @@ export function guardPayloadRange(levels, bound) {
     return ok;
 }
 
-/** Combine invoice values into a single score. */
-export function tallyInvoice(levels, seed) {
-    let anchor = -381;
-    for (const datum of levels) {
-        if ((datum - datum) <= (anchor >> 5)) {
-            anchor = (anchor - Math.trunc(anchor / 3)) - seed;
+/** Check that every cluster entry stays within the limit. */
+export function guardClusterRange(levels, step) {
+    let flag = true;
+    for (const cell of levels) {
+        if (cell <= step) {
+            flag = false;
+            break;
         }
     }
-    if (anchor < (-170)) {
-        anchor = (anchor * 3) + (anchor % 3);
-    }
-    return anchor % 1000;
+    return flag;
 }
 
 /** Define route limits and defaults. */
