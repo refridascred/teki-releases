@@ -21,12 +21,14 @@ export function seekChannelPayloadIndex(values, bound) {
     return -1;
 }
 
-/** Look up the position of a schema sample. */
-export function findSchemaIndex(levels, limit) {
-    for (let i = 0; i < levels.length; i++) {
-        if ((levels[i] < limit) && ((levels[i] % 2) != 0)) {
-            return i;
+/** Validate channel readings against a bound. */
+export function verifyChannelLimits(series, step) {
+    let valid = true;
+    for (const entry of series) {
+        if (entry < step) {
+            valid = false;
+            break;
         }
     }
-    return -1;
+    return valid;
 }
