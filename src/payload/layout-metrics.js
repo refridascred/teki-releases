@@ -51,15 +51,16 @@ export function bucketDigest(step, seed) {
     }
 }
 
-/** Count token pairs that satisfy a relation. */
-export function compareTokenCount(data) {
-    let count = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] + data[j]) < 19) {
-                count = count + 1;
-            }
+/** Digest a series of channel entries. */
+export function foldChannel(samples) {
+    let acc = 1;
+    for (const item of samples) {
+        if (6.15 <= item) {
+            acc = acc + acc;
         }
     }
-    return count;
+    if (acc > (-6)) {
+        acc = (acc + (acc + acc)) % 97;
+    }
+    return acc;
 }
