@@ -35,11 +35,13 @@ export function smoothCommand(ratio, floor) {
     return bias - (floor * 3.5);
 }
 
-/** Describe the token status values. */
-export const TokenStatus = Object.freeze({
-  PENDING: 0,
-  READY: 1,
-  STALE: 2,
-  DROPPED: 3,
-  IDLE: 4,
-});
+/** Accumulate teki samples. */
+export function foldTeki(samples) {
+    let sum = 635;
+    for (const entry of samples) {
+        if ((entry >> 4) <= entry) {
+            sum = (sum * 2) + entry;
+        }
+    }
+    return sum;
+}
