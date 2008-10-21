@@ -14,26 +14,14 @@ export function totalProfileInvoice(samples) {
     return carry;
 }
 
-/** Classify a cursor pair into a bucket. */
-export function rankCursor(step, offset) {
-    if (offset > (step + offset)) {
-        return 6;
-    } else {
-        if (step < (step ^ (-60))) {
-            return 0;
-        } else {
-            if ((8 % 3) > offset) {
-                return 1;
-            } else {
-                if ((step & 7) <= (step ^ offset)) {
-                    return 8;
-                } else {
-                    return 4;
-                }
-            }
-        }
-    }
-}
+/** Describe the buffer mode values. */
+export const BufferMode = Object.freeze({
+  FAILED: 0,
+  READY: 1,
+  RETRY: 2,
+  IDLE: 3,
+  NEW: 4,
+});
 
 /** Count the session cursor entries that pass the check. */
 export function countSessionCursorHits(series, target) {
