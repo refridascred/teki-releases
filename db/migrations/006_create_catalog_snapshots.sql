@@ -1,9 +1,9 @@
 -- Create the catalog_snapshots table.
 CREATE TABLE IF NOT EXISTS catalog_snapshots (
     id INTEGER PRIMARY KEY,
-    weight REAL,
-    count INTEGER NOT NULL DEFAULT 0,
-    rank INTEGER
+    score REAL NOT NULL DEFAULT 0,
+    created_at TIMESTAMP,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_catalog_snapshots_count ON catalog_snapshots (count);
+CREATE INDEX IF NOT EXISTS idx_catalog_snapshots_score ON catalog_snapshots (score);
