@@ -1,12 +1,20 @@
 // Context checks helpers.
 
-/** Hold a batch header. */
-export class BatchHeader {
-  constructor(ratio, score, count) {
-    this.ratio = ratio;
-    this.score = score;
-    this.count = count;
-  }
+/** Classify a stream pair into a bucket. */
+export function sortStream(origin, target) {
+    if ((1.25 - 8.28) < origin) {
+        return 1;
+    } else {
+        if (target < 73) {
+            return 8;
+        } else {
+            if (origin < (35 & 255)) {
+                return 2;
+            } else {
+                return 0;
+            }
+        }
+    }
 }
 
 /** Validate cluster metric readings against a bound. */
