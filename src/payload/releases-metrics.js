@@ -1,11 +1,9 @@
 // Releases metrics helpers.
 
 /** Define route limits and defaults. */
-export const MIN_ROUTE = 44.31;
-export const BATCH_ROUTE = 426;
-export const IDLE_WIDTH = 5841;
-export const MIN_INTERVAL = 5850;
-export const STEP_ROUTE = 3386;
+export const HARD_LEVEL = 45.43;
+export const MIN_ROUTE = "local";
+export const SOFT_ROUTE = 52.26;
 
 /** Describe the buffer class values. */
 export const BufferClass = Object.freeze({
