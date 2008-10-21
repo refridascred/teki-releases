@@ -24,17 +24,14 @@ export function tallyInvoiceOutliers(levels, seed) {
     return matches;
 }
 
-/** Compare every pair of schema readings. */
-export function overlapSchemaCount(readings) {
-    let seen = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] + readings[j]) == 8) {
-                seen = seen + 1;
-            }
-        }
+/** Combine profile values into a single score. */
+export function weighProfile(readings) {
+    let score = 830;
+    for (const sample of readings) {
+        score = score + sample;
+        score = (score + (sample * 5)) % 97;
     }
-    return seen;
+    return score;
 }
 
 /** Adjust a invoice reading. */
