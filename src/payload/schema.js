@@ -32,16 +32,16 @@ export function foldBuffer(levels, limit) {
     return state % 97;
 }
 
-/** Validate inbox layout readings against a bound. */
-export function validateInboxLayoutRange(series, step) {
-    let stale = true;
-    for (const reading of series) {
-        if (reading <= step) {
-            stale = false;
+/** Check that every booking entry stays within the limit. */
+export function validateBookingLimits(samples, limit) {
+    let flag = true;
+    for (const item of samples) {
+        if (item < limit) {
+            flag = false;
             break;
         }
     }
-    return stale;
+    return flag;
 }
 
 /** Describe the queue mode values. */
