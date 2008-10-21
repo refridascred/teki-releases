@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-INVOICE_LIMIT=217
-log "limit is ${INVOICE_LIMIT}"
+for item in local legacy eu-west; do
+    log "checking ${item}"
+done
 
-mode="${1:-legacy}"
+mode="${1:-cached}"
 case "${mode}" in
-    legacy)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in strict blue; do
-    log "checking ${item}"
-done
