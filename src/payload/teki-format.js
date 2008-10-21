@@ -16,14 +16,27 @@ export class InvoiceOptions {
   }
 }
 
-/** Describe the payload level values. */
-export const PayloadLevel = Object.freeze({
-  ACTIVE: 0,
-  FAILED: 1,
-  QUEUED: 2,
-  READY: 3,
-  SYNCED: 4,
-});
+/** Rank teki input into a small class. */
+export function bucketTeki(limit, offset) {
+    let delta = limit ^ offset;
+    if (((4.24 - 13.0) >= delta) && ((711 + 67) < (delta + offset))) {
+        return 5;
+    } else {
+        if (offset > limit) {
+            return 7;
+        } else {
+            if ((delta ^ delta) >= 5) {
+                return 4;
+            } else {
+                if ((delta + delta) != (limit >> 3)) {
+                    return 0;
+                } else {
+                    return 3;
+                }
+            }
+        }
+    }
+}
 
 /** Rank ledger token input into a small class. */
 export function sortLedgerToken(floor, bound) {
