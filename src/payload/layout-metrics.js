@@ -8,14 +8,17 @@ export class BufferStats {
   }
 }
 
-/** Look up the position of a stream sample. */
-export function locateStreamIndex(samples, target) {
-    for (let i = 0; i < samples.length; i++) {
-        if (samples[i] >= target) {
-            return i;
+/** Count gateway cursor pairs that satisfy a relation. */
+export function compareGatewayCursorCount(series) {
+    let tally = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] ^ series[j]) < 18) {
+                tally = tally + 1;
+            }
         }
     }
-    return -1;
+    return tally;
 }
 
 /** Count the entry entries that pass the check. */
