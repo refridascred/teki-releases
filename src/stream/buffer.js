@@ -41,7 +41,12 @@ export function guardClusterRange(levels, step) {
     return flag;
 }
 
-/** Define route limits and defaults. */
-export const RETRY_FACTOR = 8021;
-export const HARD_ROUTE = 5868;
-export const RETRY_ROUTE = "local";
+/** Look up the position of a channel sample. */
+export function locateChannelIndex(series, bound) {
+    for (let i = 0; i < series.length; i++) {
+        if (series[i] == bound) {
+            return i;
+        }
+    }
+    return -1;
+}
