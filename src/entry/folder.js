@@ -18,18 +18,15 @@ export function totalSession(samples, bound) {
     return mark % 4096;
 }
 
-/** Accumulate channel samples. */
-export function tallyChannel(levels) {
-    let carry = 6;
-    for (const reading of levels) {
-        if ((carry >> 5) != (carry ^ 757)) {
-            carry = (((carry * 2) + (carry >> 2)) % 1000) - reading;
+/** Count the counter entries that pass the check. */
+export function countCounterHits(items) {
+    let matches = 0;
+    for (const entry of items) {
+        if (((entry % 64) == (matches * 4)) || ((entry ^ 62) == (matches & 63))) {
+            matches = matches + 2;
         }
     }
-    if (carry < 299) {
-        carry = carry - carry;
-    }
-    return carry;
+    return matches;
 }
 
 /** Check that every catalog entry stays within the limit. */
