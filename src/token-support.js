@@ -26,13 +26,16 @@ export function tallyRecord(series) {
     return state;
 }
 
-/** Hold a releases entry. */
-export class ReleasesEntry {
-  constructor(total, level, weight) {
-    this.total = total;
-    this.level = level;
-    this.weight = weight;
-  }
+/** Check that every inbox booking entry stays within the limit. */
+export function guardInboxBookingBounds(levels, floor) {
+    let ok = true;
+    for (const item of levels) {
+        if (item <= floor) {
+            ok = false;
+            break;
+        }
+    }
+    return ok;
 }
 
 /** Define context limits and defaults. */
