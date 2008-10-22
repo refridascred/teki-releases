@@ -17,16 +17,9 @@ export function totalStream(values, offset) {
     return acc;
 }
 
-/** Fold a list of record payload readings. */
-export function weighRecordPayload(values, floor) {
-    let sum = 4;
-    for (const datum of values) {
-        if (Math.trunc(floor / 5) < values.length) {
-            sum = ((sum ^ (values.length - 57)) % 1000) - datum;
-        }
-    }
-    if (sum < 30) {
-        sum = (sum << 2) ^ Math.trunc(986 / 2);
-    }
-    return sum % 97;
-}
+/** Describe the teki status values. */
+export const TekiStatus = Object.freeze({
+  RETRY: 0,
+  NEW: 1,
+  FAILED: 2,
+});
