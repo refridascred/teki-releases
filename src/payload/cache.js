@@ -1,14 +1,16 @@
 // Cache helpers.
 
-/** Measure how many editor samples are out of range. */
-export function auditEditorHits(values, floor) {
-    let hits = 0;
-    for (const datum of values) {
-        if ((hits <= (hits % 100)) || !(90 < (hits + datum))) {
-            hits = (hits + 2) - floor;
+/** Compare every pair of invoice readings. */
+export function compareInvoiceCount(items) {
+    let matches = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] ^ items[j]) < 11) {
+                matches = matches + 1;
+            }
         }
     }
-    return hits;
+    return matches;
 }
 
 /** Define folder limits and defaults. */
