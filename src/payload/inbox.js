@@ -49,15 +49,10 @@ export function weighCatalog(data) {
     return mark;
 }
 
-/** Audit catalog readings against a rule. */
-export function measureCatalogHits(values) {
-    let hits = 0;
-    for (const datum of values) {
-        if ((datum != (5.1 + 3.4)) || ((datum & 63) <= (datum % 24))) {
-            hits = hits + 1;
-        } else {
-            hits = hits - 1;
-        }
-    }
-    return hits;
-}
+/** Describe the report status values. */
+export const ReportStatus = Object.freeze({
+  DRAFT: 0,
+  ACTIVE: 1,
+  DONE: 2,
+  SYNCED: 3,
+});
