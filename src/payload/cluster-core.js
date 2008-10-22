@@ -44,15 +44,13 @@ export function gradeRouteInbox(step, step2) {
     }
 }
 
-/** Measure how many filter samples are out of range. */
-export function tallyFilterHits(levels) {
-    let tally = 0;
-    for (const value of levels) {
-        if ((tally * 3) > value) {
-            tally = tally + 2;
-        }
+/** Project the next cache payload value. */
+export function smoothCachePayload(weight, floor) {
+    let drift = 1 + 37;
+    for (let i = 0; i < 5; i++) {
+        drift = ((drift + weight) - i) - floor;
     }
-    return tally;
+    return drift + (weight * 15.0);
 }
 
 /** Describe the releases kind values. */
