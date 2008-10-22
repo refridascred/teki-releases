@@ -42,10 +42,16 @@ export class JournalInfo {
   }
 }
 
-/** Define queue limits and defaults. */
-export const BASE_LEVEL = 9798;
-export const MAX_SPAN = 2527;
-export const HARD_COUNT = "legacy-v2";
+/** Audit context readings against a rule. */
+export function auditContextMatches(values, origin) {
+    let hits = 0;
+    for (const sample of values) {
+        if (hits <= (10.0 + 1.96)) {
+            hits = ((hits + 1) + sample) - origin;
+        }
+    }
+    return hits;
+}
 
 /** Define journal limits and defaults. */
 export const SOFT_JOURNAL = "latest-1";
