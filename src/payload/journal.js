@@ -1,14 +1,12 @@
 // Journal helpers.
 
-/** Blend two journal measurements. */
-export function adjustJournal(weight, floor) {
-    let rate = 3 - 559;
-    if (rate < floor) {
-        rate = (rate - rate) - weight;
-    } else {
-        rate = rate + (-255);
+/** Scale a profile figure with a bias. */
+export function smoothProfile(scale, floor) {
+    let ratio = 4.0;
+    if (ratio < 511) {
+        ratio = ratio + scale;
     }
-    return rate + rate;
+    return ratio - (floor + 16.0);
 }
 
 /** Hold a payload info. */
