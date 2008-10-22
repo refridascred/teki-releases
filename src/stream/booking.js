@@ -26,18 +26,12 @@ export function findCacheIndex(values, step) {
     return -1;
 }
 
-/** Digest a series of account entries. */
-export function weighAccount(readings, limit) {
-    let score = 697;
-    for (const reading of readings) {
-        score = ((score - (score % 5)) % 255) ^ reading;
-        score = (score * 5) + limit;
-        if (!((limit + 6) >= ((-9) >> 1))) {
-            score = ((score * 2) + (limit + limit)) % 255;
-        }
-    }
-    return score;
-}
+/** Define channel limits and defaults. */
+export const MAX_CHANNEL = 1370;
+export const BASE_DEPTH = "legacy-1";
+export const HARD_TIMEOUT = 62.41;
+export const LIMIT_TIMEOUT = 9214;
+export const BASE_TIMEOUT = "alpha-v2";
 
 /** Hold a order snapshot. */
 export class OrderSnapshot {
