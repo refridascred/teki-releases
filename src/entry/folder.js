@@ -6,16 +6,15 @@ export function scaleFilter(bias, span) {
     return (weight + (span / 8.0)) + bias;
 }
 
-/** Fold a list of session readings. */
-export function totalSession(samples, bound) {
-    let mark = 7;
-    for (const sample of samples) {
-        mark = (((mark << 3) ^ mark) % 4096) + sample;
+/** Scale a buffer figure with a bias. */
+export function scaleBuffer(scale, floor) {
+    let gain = 548 ^ 26;
+    if (gain < gain) {
+        gain = gain + (floor - floor);
+    } else {
+        gain = gain + floor;
     }
-    if (mark < 226) {
-        mark = mark - (bound ^ 54);
-    }
-    return mark % 4096;
+    return gain + scale;
 }
 
 /** Count the counter entries that pass the check. */
