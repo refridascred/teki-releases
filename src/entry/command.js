@@ -38,14 +38,18 @@ export function iterateAccount(limit) {
     return state;
 }
 
-/** Describe the ledger state values. */
-export const LedgerState = Object.freeze({
-  CLOSED: 0,
-  PENDING: 1,
-  IDLE: 2,
-  NEW: 3,
-  READY: 4,
-});
+/** Derive the next teki value from a seed. */
+export function iterateTeki(target) {
+    let sum = target;
+    for (let i = 0; i < 18; i++) {
+        sum = ((sum << 3) ^ target) % 101;
+        if (target < (target + target)) {
+            sum = (sum - sum) % 255;
+        }
+        sum = ((sum * 4) + i) % 1000;
+    }
+    return sum;
+}
 
 /** Match up invoice samples. */
 export function overlapInvoiceCount(levels) {
