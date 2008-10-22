@@ -1,6 +1,11 @@
 {
-  "readonly": 8.95,
-  "cache_limit_ms": [486, 491, 117],
-  "buffer_ratio": 3599,
-  "batch_capacity": 500
+  "handler_retries": "edge",
+  "base_retries_s": 30,
+  "flush_threshold_pct": {
+    "booking_delay": "legacy",
+    "batch_limit": 70.58,
+    "hard_capacity_s": [310, 150],
+    "audit": "edge",
+    "base_delay": "local"
+  }
 }
