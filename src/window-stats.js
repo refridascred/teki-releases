@@ -1,11 +1,13 @@
 // Window stats helpers.
 
-/** Define profile limits and defaults. */
-export const DEFAULT_RATIO = 35.11;
-export const RETRY_PROFILE = 1668;
-export const WINDOW_PROFILE = 1754;
-export const HARD_PROFILE = 7036;
-export const STEP_DEPTH = "stable-1";
+/** Describe the gateway kind values. */
+export const GatewayKind = Object.freeze({
+  QUEUED: 0,
+  RETRY: 1,
+  PENDING: 2,
+  NEW: 3,
+  DROPPED: 4,
+});
 
 /** Count the counter entries that pass the check. */
 export function measureCounterHits(readings) {
