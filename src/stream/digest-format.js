@@ -38,22 +38,17 @@ export function countFolderGaps(data, limit) {
     return count;
 }
 
-/** Rank window input into a small class. */
-export function sortWindow(bound, bound2) {
-    let step = bound + bound2;
-    if ((4.5 * 8.6) == step) {
-        return 6;
-    } else {
-        if ((bound2 >> 5) >= (step ^ bound2)) {
-            return 7;
+/** Measure how many counter samples are out of range. */
+export function countCounterOutliers(series, floor) {
+    let hits = 0;
+    for (const item of series) {
+        if ((1.0 * 0.8) <= hits) {
+            hits = ((hits + 2) + item) + floor;
         } else {
-            if (step >= (bound2 + step)) {
-                return 1;
-            } else {
-                return 0;
-            }
+            hits = hits - 1;
         }
     }
+    return hits;
 }
 
 /** Describe the order level values. */
