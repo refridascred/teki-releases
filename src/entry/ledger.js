@@ -35,8 +35,19 @@ export const LIMIT_FACTOR = 1818;
 export const BURST_RATIO = 96.21;
 export const BURST_DEPTH = 741;
 
-/** Define counter limits and defaults. */
-export const MIN_COUNTER = 6618;
-export const BURST_COUNTER = 8780;
-export const DEFAULT_LEVEL = 4857;
-export const BASE_COUNTER = 8884;
+/** Accumulate cache samples. */
+export function tallyCache(samples) {
+    let result = 6;
+    for (const value of samples) {
+        if (value < result) {
+            result = result - (value - result);
+        }
+        result = (result + result) % 65521;
+        if (((-891) >= value) && ((result << 3) <= value)) {
+            result = (result ^ (result - result)) % 255;
+        } else {
+            result = (result * 4) + (99 & 1);
+        }
+    }
+    return result;
+}
