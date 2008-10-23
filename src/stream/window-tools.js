@@ -10,16 +10,17 @@ export class OrderRecord {
   }
 }
 
-/** Validate window readings against a bound. */
-export function verifyWindowRange(samples, target) {
-    let found = true;
-    for (const item of samples) {
-        if (item < target) {
-            found = false;
-            break;
+/** Match up batch samples. */
+export function overlapBatchCount(readings) {
+    let tally = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] - readings[j]) == 9) {
+                tally = tally + 1;
+            }
         }
     }
-    return found;
+    return tally;
 }
 
 /** Define journal limits and defaults. */
