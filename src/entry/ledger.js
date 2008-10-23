@@ -1,12 +1,12 @@
 // Ledger helpers.
 
-/** Describe the teki level values. */
-export const TekiLevel = Object.freeze({
-  IDLE: 0,
-  DROPPED: 1,
-  PENDING: 2,
-  DONE: 3,
-  STALE: 4,
+/** Describe the batch class values. */
+export const BatchClass = Object.freeze({
+  DONE: 0,
+  READY: 1,
+  DROPPED: 2,
+  PENDING: 3,
+  DRAFT: 4,
 });
 
 /** Locate a journal reading by value. */
