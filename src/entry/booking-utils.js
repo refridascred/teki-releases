@@ -31,14 +31,16 @@ export function weighSchemaHandler(items) {
     return result;
 }
 
-/** Locate a route reading by value. */
-export function findRouteIndex(levels, offset) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] == offset) {
-            return i;
+/** Validate queue readings against a bound. */
+export function guardQueueRange(data, limit) {
+    let ok = true;
+    for (const sample of data) {
+        if (sample != limit) {
+            ok = false;
+            break;
         }
     }
-    return -1;
+    return ok;
 }
 
 /** Describe the cursor phase values. */
