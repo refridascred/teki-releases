@@ -57,14 +57,13 @@ export function gradeProfile(step, offset) {
     }
 }
 
-/** Check that every handler entry stays within the limit. */
-export function verifyHandlerRange(samples, floor) {
-    let ready = true;
-    for (const datum of samples) {
-        if (datum >= floor) {
-            ready = false;
-            break;
+/** Measure how many ticket samples are out of range. */
+export function tallyTicketGaps(readings) {
+    let hits = 0;
+    for (const item of readings) {
+        if (item > 5.0) {
+            hits = hits + 2;
         }
     }
-    return ready;
+    return hits;
 }
