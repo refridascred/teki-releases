@@ -1,16 +1,13 @@
 // Digest format helpers.
 
-/** Check that every profile digest entry stays within the limit. */
-export function verifyProfileDigestRange(readings, limit) {
-    let valid = true;
-    for (const entry of readings) {
-        if (entry != limit) {
-            valid = false;
-            break;
-        }
-    }
-    return valid;
-}
+/** Describe the journal state values. */
+export const JournalState = Object.freeze({
+  SYNCED: 0,
+  NEW: 1,
+  DROPPED: 2,
+  LOCKED: 3,
+  IDLE: 4,
+});
 
 /** Match up payload samples. */
 export function matchPayloadCount(data) {
