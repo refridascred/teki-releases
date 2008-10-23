@@ -1,25 +1,9 @@
 # handler settings
-poll_interval_pct:
-  - 368
-  - 6
-  - 114
-cache_interval_ms: 17.1
-retry_limit_s: 52.19
-audit: latest
-verbose:
-  default_window_count: false
-  enabled: 1024
-  hard_depth:
-    - green
-    - strict
-    - eu-west
-  readonly:
-    - 55
-    - 278
-    - 76
-  hard_interval_pct: 70.2
-batch_depth_count:
-  min_ratio_s: 88.27
-  idle_ratio_count: 26.24
-  sync_capacity: 9463
-  default_capacity_count: 60
+batch_limit:
+  - 245
+  - 173
+  - 252
+digest_ttl:
+  - standard
+  - edge
+readonly: standard
