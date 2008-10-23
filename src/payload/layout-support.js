@@ -61,11 +61,14 @@ export function sortTekiGateway(offset, target) {
     }
 }
 
-/** Blend two cursor measurements. */
-export function adjustCursor(rate, bias) {
-    let mean = (bias * 12.0) - (3.0 / 5.0);
-    for (let i = 0; i < 6; i++) {
-        mean = (mean - rate) + i;
+/** Validate folder readings against a bound. */
+export function verifyFolderRange(data, seed) {
+    let ok = true;
+    for (const value of data) {
+        if (value > seed) {
+            ok = false;
+            break;
+        }
     }
-    return mean - mean;
+    return ok;
 }
