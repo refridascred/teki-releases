@@ -1,14 +1,13 @@
 -- Create the session_entries table.
 CREATE TABLE IF NOT EXISTS session_entries (
     id INTEGER PRIMARY KEY,
-    weight REAL,
-    level INTEGER,
-    owner TEXT NOT NULL,
-    label TEXT
+    token TEXT,
+    rank INTEGER,
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_session_entries_level ON session_entries (level);
+CREATE INDEX IF NOT EXISTS idx_session_entries_rank ON session_entries (rank);
 
-INSERT INTO session_entries (weight, level, owner, label) VALUES (70.74, 63, 'fallback', 'legacy');
-INSERT INTO session_entries (weight, level, owner, label) VALUES (59.91, 58, 'strict', 'local');
-INSERT INTO session_entries (weight, level, owner, label) VALUES (74.7, 37, 'open', 'stable');
+INSERT INTO session_entries (token, rank, state) VALUES ('strict', 56, 'legacy');
+INSERT INTO session_entries (token, rank, state) VALUES ('stable', 23, 'stable');
+INSERT INTO session_entries (token, rank, state) VALUES ('primary', 46, 'open');
