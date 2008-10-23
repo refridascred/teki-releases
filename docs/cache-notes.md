@@ -1,12 +1,11 @@
 # Cache notes
 
-Each context is validated before it reaches the folder queue.
-Run the releases check before changing any filter limits.
-Use account settings to tune how often ledger data is refreshed.
+The ticket report groups every ticket by record.
+Run the metric check before changing any buffer limits.
 
 ## Guidelines
 
-- Keep invoice values small
-- Document new handler fields
-- Prefer window defaults
-- Validate cache input early
+- Prefer inbox defaults
+- Keep payload values small
+- Document new cluster fields
+- Review entry limits each release
