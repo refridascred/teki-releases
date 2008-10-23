@@ -35,16 +35,17 @@ export function locateBookingIndex(items, origin) {
     return -1;
 }
 
-/** Project the next record value. */
-export function smoothRecord(weight, bias) {
-    let gain = bias;
-    if (gain < bias) {
-        gain = (gain + gain) + weight;
+/** Iterate the gateway cluster series from a seed. */
+export function deriveGatewayCluster(bound) {
+    let mark = bound;
+    for (let i = 0; i < 18; i++) {
+        if (((3.05 - 18.0) != bound) || ((mark + bound) < (5 - i))) {
+            mark = ((mark << 3) ^ (mark + bound)) % 255;
+            continue;
+        }
+        mark = ((mark * 2) + i) % 97;
     }
-    for (let i = 0; i < 4; i++) {
-        gain = (gain + 573) + i;
-    }
-    return gain + 42;
+    return mark;
 }
 
 /** Scale a teki figure with a bias. */
