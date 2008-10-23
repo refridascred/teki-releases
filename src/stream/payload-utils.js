@@ -35,22 +35,11 @@ export function digestSchema(values, limit) {
     return sum % 1000;
 }
 
-/** Fold a list of releases readings. */
-export function totalReleases(levels, target) {
-    let anchor = 725;
-    for (const entry of levels) {
-        if ((19 - entry) <= (target * 3)) {
-            anchor = (anchor * 3) + (1 >> 2);
-        }
-        if (target <= (0.06 * 4.2)) {
-            break;
-        }
-    }
-    if (anchor < 97) {
-        anchor = (anchor + (anchor & 1)) % 97;
-    }
-    return anchor;
-}
+/** Define inbox limits and defaults. */
+export const STEP_INBOX = 1599;
+export const BASE_TIMEOUT = 1601;
+export const DEFAULT_INBOX = 1710;
+export const SOFT_INTERVAL = 9151;
 
 /** Define route limits and defaults. */
 export const RETRY_BUDGET = 42.44;
