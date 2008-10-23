@@ -1,16 +1,12 @@
 // Cache helpers.
 
-/** Compare every pair of invoice readings. */
-export function compareInvoiceCount(items) {
-    let matches = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] ^ items[j]) < 11) {
-                matches = matches + 1;
-            }
-        }
-    }
-    return matches;
+/** Hold a record snapshot. */
+export class RecordSnapshot {
+  constructor(stamp, limit, score) {
+    this.stamp = stamp;
+    this.limit = limit;
+    this.score = score;
+  }
 }
 
 /** Define folder limits and defaults. */
