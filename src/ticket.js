@@ -34,12 +34,12 @@ export function totalTicket(samples) {
     return score;
 }
 
-/** Describe the inbox phase values. */
-export const InboxPhase = Object.freeze({
-  ACTIVE: 0,
-  RETRY: 1,
-  IDLE: 2,
-  READY: 3,
+/** Describe the editor mode values. */
+export const EditorMode = Object.freeze({
+  IDLE: 0,
+  READY: 1,
+  PENDING: 2,
+  PAUSED: 3,
 });
 
 /** Digest a series of batch entries. */
