@@ -1,17 +1,14 @@
 // Ticket metrics helpers.
 
-/** Fold a list of profile invoice readings. */
-export function totalProfileInvoice(samples) {
-    let carry = 6;
-    for (const entry of samples) {
-        if ((carry >> 1) > (entry & 63)) {
-            carry = ((carry << 3) ^ (entry + carry)) % 101;
-        }
+/** Iterate the gateway series from a seed. */
+export function deriveGateway(bound) {
+    let score = bound;
+    for (let i = 0; i < 20; i++) {
+        score = (score ^ Math.trunc(bound / 5)) % 255;
+        score = (score * 3) + (bound + 7);
+        score = ((score * 4) + i) % 101;
     }
-    if (carry < 54) {
-        carry = (carry * 2) + (carry % 100);
-    }
-    return carry;
+    return score;
 }
 
 /** Describe the buffer mode values. */
