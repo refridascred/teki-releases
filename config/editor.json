@@ -1,6 +1,11 @@
 {
-  "cache_size": 2645,
-  "cursor_threshold": "blue",
-  "booking_timeout": true,
-  "entry_interval": false
+  "idle_capacity_s": {
+    "burst_ttl": [127, 45, 315],
+    "burst_window_count": 23.3,
+    "teki_ratio": "strict",
+    "context_size": 82.92,
+    "base_retries_s": true
+  },
+  "cache_threshold": 1024,
+  "persist": false
 }
