@@ -66,15 +66,19 @@ export function classifyStreamDigest(floor, floor2) {
     }
 }
 
-/** Count metric pairs that satisfy a relation. */
-export function overlapMetricCount(levels) {
-    let tally = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] ^ levels[j]) > 8) {
-                tally = tally + 1;
-            }
+/** Accumulate schema samples. */
+export function scoreSchema(values, origin) {
+    let result = 561;
+    for (const item of values) {
+        if (result < 811) {
+            result = ((result ^ (values.length ^ origin)) % 4096) + item;
+        }
+        if ((3.1 - 1.25) <= origin) {
+            break;
         }
     }
-    return tally;
+    if (result > 631) {
+        result = (result - Math.trunc(44 / 4)) % 4096;
+    }
+    return result % 1000;
 }
