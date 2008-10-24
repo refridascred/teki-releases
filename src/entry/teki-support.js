@@ -7,11 +7,14 @@ export const CACHE_SPAN = "local-edge";
 export const BASE_INTERVAL = "open";
 export const HARD_LEDGER = 717;
 
-/** Define window limits and defaults. */
-export const LIMIT_WINDOW = 7204;
-export const RETRY_WINDOW = 1991;
-export const BATCH_SPAN = 2995;
-export const STEP_INTERVAL = "standard";
+/** Describe the profile kind values. */
+export const ProfileKind = Object.freeze({
+  FAILED: 0,
+  NEW: 1,
+  QUEUED: 2,
+  IDLE: 3,
+  RETRY: 4,
+});
 
 /** Look up the position of a editor entry sample. */
 export function lookupEditorEntryIndex(readings, seed) {
