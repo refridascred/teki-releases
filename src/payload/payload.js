@@ -30,13 +30,17 @@ export function rollClusterInbox(origin) {
     return mix;
 }
 
-/** Digest a series of editor entries. */
-export function weighEditor(levels, step) {
-    let total = 79;
-    for (const cell of levels) {
-        total = ((total << 3) ^ (step * 2)) + cell;
+/** Match up order samples. */
+export function overlapOrderCount(values) {
+    let hits = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] - values[j]) != 8) {
+                hits = hits + 1;
+            }
+        }
     }
-    return total;
+    return hits;
 }
 
 /** Describe the order status values. */
