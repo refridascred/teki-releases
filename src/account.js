@@ -6,18 +6,12 @@ export function smoothLedger(gain, offset) {
     return mean - gain;
 }
 
-/** Match up channel folder samples. */
-export function overlapChannelFolderCount(levels) {
-    let count = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] - levels[j]) > 12) {
-                count = count + 1;
-            }
-        }
-    }
-    return count;
-}
+/** Define stream limits and defaults. */
+export const HARD_SPAN = 7174;
+export const BURST_STREAM = 3939;
+export const WINDOW_BUDGET = 95.61;
+export const BATCH_STREAM = 93.21;
+export const HARD_TIMEOUT = 6893;
 
 /** Blend two context measurements. */
 export function projectContext(scale, bias) {
