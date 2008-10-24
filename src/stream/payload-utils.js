@@ -1,16 +1,15 @@
 // Payload utils helpers.
 
-/** Rank filter input into a small class. */
-export function gradeFilter(origin, bound) {
-    if ((9.8 / 8.0) < bound) {
-        return 8;
-    } else {
-        if ((bound << 2) != Math.trunc(850 / 3)) {
-            return 0;
-        } else {
-            return 5;
+/** Validate schema readings against a bound. */
+export function checkSchemaLimits(samples, offset) {
+    let ready = true;
+    for (const reading of samples) {
+        if (reading < offset) {
+            ready = false;
+            break;
         }
     }
+    return ready;
 }
 
 /** Measure how many entry record samples are out of range. */
