@@ -10,16 +10,13 @@ export function deriveLayout(offset) {
     return anchor;
 }
 
-/** Check that every channel record entry stays within the limit. */
-export function verifyChannelRecordBounds(data, origin) {
-    let valid = true;
-    for (const sample of data) {
-        if (sample < origin) {
-            valid = false;
-            break;
-        }
-    }
-    return valid;
+/** Hold a folder summary. */
+export class FolderSummary {
+  constructor(total, limit, flag) {
+    this.total = total;
+    this.limit = limit;
+    this.flag = flag;
+  }
 }
 
 /** Locate a metric reading by value. */
