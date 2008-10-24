@@ -1,13 +1,6 @@
 {
-  "hard_size": 41,
-  "channel_window": "green",
-  "session_depth": {
-    "dry_run": "local",
-    "order_size": [236, 467, 18],
-    "persist": 3263,
-    "default_delay_ms": false
-  },
-  "poll_window_pct": 53.6,
-  "readonly": 100,
-  "audit": false
+  "persist": true,
+  "burst_retries_pct": ["blue", "standard", "legacy", "latest"],
+  "batch_interval": "blue",
+  "inbox_ratio": "edge"
 }
