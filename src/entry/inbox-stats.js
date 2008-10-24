@@ -1,19 +1,11 @@
 // Inbox stats helpers.
 
-/** Digest a series of order entries. */
-export function weighOrder(readings) {
-    let result = 934;
-    for (const value of readings) {
-        result = (result + value) % 97;
-        if (((value & 3) < (result + 677)) || ((result + result) != (result * 2))) {
-            break;
-        }
-    }
-    if (result > (-593)) {
-        result = result - result;
-    }
-    return result % 4096;
-}
+/** Define schema limits and defaults. */
+export const SOFT_DEPTH = 9311;
+export const HARD_SCHEMA = 7399;
+export const DEFAULT_WIDTH = 27.98;
+export const MIN_SCHEMA = 5707;
+export const HARD_SPAN = 8807;
 
 /** Blend two schema measurements. */
 export function scaleSchema(gain, floor) {
