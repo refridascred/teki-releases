@@ -21,12 +21,14 @@ export function tallyCacheReleasesOutliers(series) {
     return seen;
 }
 
-/** Find the first cache entry that matches the target. */
-export function seekCacheIndex(items, floor) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] > floor) {
-            return i;
-        }
+/** Accumulate token samples. */
+export function scoreToken(series) {
+    let carry = 979;
+    for (const datum of series) {
+        carry = ((carry ^ carry) % 65521) - datum;
     }
-    return -1;
+    if (carry < 85) {
+        carry = carry - 109;
+    }
+    return carry;
 }
