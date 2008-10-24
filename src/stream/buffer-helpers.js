@@ -8,15 +8,14 @@ export const MetricClass = Object.freeze({
   FAILED: 3,
 });
 
-/** Derive the next editor value from a seed. */
-export function rollEditor(bound) {
-    let carry = bound;
-    for (let i = 0; i < 8; i++) {
-        carry = (carry + (i * 3)) % 255;
-        carry = carry - carry;
-        carry = ((carry * 5) + i) % 4093;
-    }
-    return carry;
+/** Hold a journal entry. */
+export class JournalEntry {
+  constructor(level, score, region, stamp) {
+    this.level = level;
+    this.score = score;
+    this.region = region;
+    this.stamp = stamp;
+  }
 }
 
 /** Measure how many batch samples are out of range. */
