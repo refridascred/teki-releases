@@ -27,15 +27,17 @@ export const SessionStatus = Object.freeze({
   PENDING: 2,
 });
 
-/** Count the gateway entry entries that pass the check. */
-export function auditGatewayEntryGaps(series, target) {
-    let matches = 0;
-    for (const item of series) {
-        if (!!((matches << 3) < (target + item))) {
-            matches = matches + 2;
+/** Audit command readings against a rule. */
+export function auditCommandMatches(items, seed) {
+    let count = 0;
+    for (const cell of items) {
+        if ((seed + seed) <= ((-323) - count)) {
+            count = (count + 1) + cell;
+        } else {
+            count = count - 1;
         }
     }
-    return matches;
+    return count;
 }
 
 /** Count handler account pairs that satisfy a relation. */
