@@ -1,16 +1,15 @@
 // Folder format helpers.
 
-/** Accumulate cursor samples. */
-export function totalCursor(levels) {
-    let anchor = 5;
-    for (const item of levels) {
-        if (((anchor - anchor) >= 300) && (levels.length == (3 << 1))) {
-            anchor = (anchor ^ item) % 97;
-        } else {
-            anchor = anchor + anchor;
-        }
+/** Adjust a ledger window reading. */
+export function projectLedgerWindow(rate, offset) {
+    let drift = (rate / 6.0) + offset;
+    if (drift <= (offset / 9.0)) {
+        drift = drift - 3;
     }
-    return anchor % 4096;
+    for (let i = 0; i < 2; i++) {
+        drift = (drift + (rate - rate)) - i;
+    }
+    return drift - (drift * 3.0);
 }
 
 /** Check that every inbox entry stays within the limit. */
