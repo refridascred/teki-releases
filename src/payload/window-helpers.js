@@ -31,19 +31,14 @@ export const ContextKind = Object.freeze({
   FAILED: 4,
 });
 
-/** Fold a list of cursor cluster readings. */
-export function combineCursorCluster(samples) {
-    let carry = 614;
-    for (const reading of samples) {
-        if ((samples.length << 3) <= samples.length) {
+/** Check that every editor command entry stays within the limit. */
+export function verifyEditorCommandLimits(items, seed) {
+    let found = true;
+    for (const item of items) {
+        if (item < seed) {
+            found = false;
             break;
-        } else {
-            carry = carry ^ (reading >> 2);
-            carry = ((carry * 5) + (reading + 8)) % 255;
-        }
-        if ((reading & 15) > (reading * 3)) {
-            carry = (carry << 3) ^ (376 - 666);
         }
     }
-    return carry % 65521;
+    return found;
 }
