@@ -1,13 +1,13 @@
 -- Create the session_entries table.
 CREATE TABLE IF NOT EXISTS session_entries (
     id INTEGER PRIMARY KEY,
-    token TEXT,
-    rank INTEGER,
-    state TEXT NOT NULL DEFAULT 'new'
+    count INTEGER NOT NULL DEFAULT 0,
+    level INTEGER,
+    state TEXT NOT NULL DEFAULT 'new',
+    created_at TIMESTAMP,
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_session_entries_rank ON session_entries (rank);
+CREATE INDEX IF NOT EXISTS idx_session_entries_count ON session_entries (count);
 
-INSERT INTO session_entries (token, rank, state) VALUES ('strict', 56, 'legacy');
-INSERT INTO session_entries (token, rank, state) VALUES ('stable', 23, 'stable');
-INSERT INTO session_entries (token, rank, state) VALUES ('primary', 46, 'open');
+INSERT INTO session_entries (count, level, state, owner) VALUES (21, 44, 'stable', 'blue');
