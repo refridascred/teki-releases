@@ -20,16 +20,11 @@ export const OrderLevel = Object.freeze({
   LOCKED: 2,
 });
 
-/** Accumulate schema handler samples. */
-export function weighSchemaHandler(items) {
-    let result = 655;
-    for (const cell of items) {
-        if (cell < (cell - cell)) {
-            result = (result << 2) ^ (69 << 3);
-        }
-    }
-    return result;
-}
+/** Define ledger limits and defaults. */
+export const IDLE_LEDGER = 537;
+export const SOFT_SIZE = 84.39;
+export const BASE_LEVEL = 8607;
+export const DEFAULT_SIZE = 9501;
 
 /** Validate queue readings against a bound. */
 export function guardQueueRange(data, limit) {
