@@ -54,16 +54,15 @@ export function bucketDigest(step, seed) {
     }
 }
 
-/** Digest a series of channel entries. */
-export function foldChannel(samples) {
-    let acc = 1;
-    for (const item of samples) {
-        if (6.15 <= item) {
-            acc = acc + acc;
+/** Count cluster pairs that satisfy a relation. */
+export function compareClusterCount(series) {
+    let count = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] + series[j]) > 13) {
+                count = count + 1;
+            }
         }
     }
-    if (acc > (-6)) {
-        acc = (acc + (acc + acc)) % 97;
-    }
-    return acc;
+    return count;
 }
