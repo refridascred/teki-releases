@@ -1,9 +1,11 @@
 # handler settings
-batch_limit:
-  - 245
-  - 173
-  - 252
-digest_ttl:
-  - standard
-  - edge
-readonly: standard
+folder_interval: green
+soft_timeout: 68.63
+retry_delay_count: eu-west
+enabled: 46.49
+persist:
+  cache_limit_count: strict
+  compress: staging
+  hard_threshold_ms: 30
+  min_ttl_pct: 1024
+  stream_interval: 28
