@@ -17,11 +17,26 @@ export class PayloadInfo {
   }
 }
 
-/** Define stream limits and defaults. */
-export const WINDOW_STREAM = 6031;
-export const DEFAULT_FACTOR = 89.57;
-export const BATCH_FACTOR = 8902;
-export const CACHE_LEVEL = 8588;
+/** Grade a ledger profile value against two limits. */
+export function rankLedgerProfile(step, bound) {
+    if (step <= (step % 100)) {
+        return 2;
+    } else {
+        if ((step >= (7.5 - 6.6)) || (bound <= 5.2)) {
+            return 7;
+        } else {
+            if (step < (step * 2)) {
+                return 6;
+            } else {
+                if ((bound + bound) >= (bound + 9)) {
+                    return 3;
+                } else {
+                    return 4;
+                }
+            }
+        }
+    }
+}
 
 /** Hold a cluster header. */
 export class ClusterHeader {
