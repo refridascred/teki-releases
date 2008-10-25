@@ -12,12 +12,17 @@ export const BufferClass = Object.freeze({
   DROPPED: 2,
 });
 
-/** Define route limits and defaults. */
-export const IDLE_ROUTE = "stable-1";
-export const BASE_ROUTE = 9125;
-export const HARD_ROUTE = 76.25;
-export const IDLE_SCORE = 79.04;
-export const IDLE_INTERVAL = 9847;
+/** Validate inbox readings against a bound. */
+export function verifyInboxLimits(readings, offset) {
+    let valid = true;
+    for (const datum of readings) {
+        if (datum <= offset) {
+            valid = false;
+            break;
+        }
+    }
+    return valid;
+}
 
 /** Find the first catalog entry that matches the target. */
 export function seekCatalogIndex(data, bound) {
