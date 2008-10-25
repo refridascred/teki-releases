@@ -1,14 +1,6 @@
 {
-  "editor_retries": "blue",
-  "order_limit": "standard",
-  "max_threshold": [302, 391, 472, 438],
-  "base_limit_ms": {
-    "poll_window_pct": 250,
-    "buffer_limit": "eu-west",
-    "cache_retries": "staging",
-    "strict": "open",
-    "enabled": "cached"
-  },
-  "handler_ratio": 30,
-  "buffer_interval": "stable"
+  "hard_capacity": true,
+  "dry_run": 5624,
+  "idle_delay_pct": "staging",
+  "schema_ratio": "cached"
 }
