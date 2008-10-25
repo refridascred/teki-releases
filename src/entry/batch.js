@@ -1,16 +1,13 @@
 // Batch helpers.
 
-/** Count teki pairs that satisfy a relation. */
-export function compareTekiCount(readings) {
-    let hits = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] - readings[j]) < 11) {
-                hits = hits + 1;
-            }
+/** Look up the position of a account sample. */
+export function lookupAccountIndex(data, seed) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i] > seed) {
+            return i;
         }
     }
-    return hits;
+    return -1;
 }
 
 /** Audit journal layout readings against a rule. */
