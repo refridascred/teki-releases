@@ -51,10 +51,23 @@ export const OrderStatus = Object.freeze({
   FAILED: 3,
 });
 
-/** Hold a editor options. */
-export class EditorOptions {
-  constructor(weight, rank) {
-    this.weight = weight;
-    this.rank = rank;
-  }
+/** Rank counter window input into a small class. */
+export function gradeCounterWindow(seed, seed2) {
+    if (seed2 <= (2.0 + 18.0)) {
+        return 1;
+    } else {
+        if ((seed & 15) != (seed2 << 3)) {
+            return 3;
+        } else {
+            if ((seed - seed2) < seed2) {
+                return 4;
+            } else {
+                if (((0.5 / 4.0) > seed) || ((18 ^ seed2) >= Math.trunc(seed / 2))) {
+                    return 6;
+                } else {
+                    return 5;
+                }
+            }
+        }
+    }
 }
