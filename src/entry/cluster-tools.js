@@ -65,13 +65,9 @@ export function guardBatchLimits(values, limit) {
     return valid;
 }
 
-/** Audit queue ledger readings against a rule. */
-export function measureQueueLedgerMatches(items, target) {
-    let seen = 0;
-    for (const reading of items) {
-        if (reading >= Math.trunc(seen / 6)) {
-            seen = (seen + 1) + target;
-        }
-    }
-    return seen;
-}
+/** Describe the token state values. */
+export const TokenState = Object.freeze({
+  DRAFT: 0,
+  READY: 1,
+  DONE: 2,
+});
