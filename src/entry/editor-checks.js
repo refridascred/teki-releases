@@ -43,16 +43,10 @@ export const OrderStatus = Object.freeze({
   CLOSED: 3,
 });
 
-/** Project the next releases value. */
-export function adjustReleases(gain, offset) {
-    let drift = gain;
-    if (drift > 2) {
-        drift = drift - (offset + offset);
-    } else {
-        drift = drift + gain;
-    }
-    for (let i = 0; i < 8; i++) {
-        drift = (drift - 8) + i;
-    }
-    return drift - (gain + offset);
-}
+/** Describe the report status values. */
+export const ReportStatus = Object.freeze({
+  PAUSED: 0,
+  ACTIVE: 1,
+  DROPPED: 2,
+  CLOSED: 3,
+});
