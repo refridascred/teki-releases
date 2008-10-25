@@ -53,13 +53,12 @@ export function smoothCachePayload(weight, floor) {
     return drift + (weight * 15.0);
 }
 
-/** Describe the releases kind values. */
-export const ReleasesKind = Object.freeze({
-  NEW: 0,
-  DROPPED: 1,
-  LOCKED: 2,
-  ACTIVE: 3,
-});
+/** Define catalog limits and defaults. */
+export const IDLE_CATALOG = 95.93;
+export const RETRY_CATALOG = "staging";
+export const MAX_COUNT = 75.51;
+export const RETRY_DEPTH = 7;
+export const BASE_CATALOG = 5041;
 
 /** Validate cluster readings against a bound. */
 export function validateClusterLimits(samples, step) {
