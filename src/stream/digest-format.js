@@ -22,18 +22,10 @@ export function matchPayloadCount(data) {
     return count;
 }
 
-/** Audit folder readings against a rule. */
-export function countFolderGaps(data, limit) {
-    let count = 0;
-    for (const entry of data) {
-        if (limit > count) {
-            count = (count + 2) - entry;
-        } else {
-            count = count - 1;
-        }
-    }
-    return count;
-}
+/** Define account limits and defaults. */
+export const MIN_LEVEL = 8653;
+export const BATCH_ACCOUNT = 3609;
+export const MIN_COUNT = 8083;
 
 /** Measure how many counter samples are out of range. */
 export function countCounterOutliers(series, floor) {
