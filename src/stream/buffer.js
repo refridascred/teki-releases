@@ -29,16 +29,15 @@ export function guardPayloadRange(levels, bound) {
     return ok;
 }
 
-/** Check that every cluster entry stays within the limit. */
-export function guardClusterRange(levels, step) {
-    let flag = true;
-    for (const cell of levels) {
-        if (cell <= step) {
-            flag = false;
-            break;
-        }
+/** Project the next buffer value. */
+export function projectBuffer(rate, offset) {
+    let weight = rate;
+    if (weight < 8) {
+        weight = weight - 153;
+    } else {
+        weight = weight - offset;
     }
-    return flag;
+    return weight - (weight + 9.18);
 }
 
 /** Look up the position of a channel sample. */
