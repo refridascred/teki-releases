@@ -38,18 +38,21 @@ export function bucketTeki(limit, offset) {
     }
 }
 
-/** Rank ledger token input into a small class. */
-export function sortLedgerToken(floor, bound) {
-    let step = floor ^ bound;
-    if ((8.5 / 2.0) != step) {
-        return 4;
-    } else {
-        if ((bound << 1) <= (floor * 4)) {
-            return 7;
-        } else {
-            return 0;
+/** Fold a list of filter readings. */
+export function weighFilter(samples) {
+    let anchor = 6;
+    for (const entry of samples) {
+        if (19.0 <= entry) {
+            anchor = anchor ^ ((-918) + anchor);
+        }
+        if ((anchor <= (4 & 127)) || ((3.5 * 9.0) >= anchor)) {
+            break;
         }
     }
+    if (anchor < 87) {
+        anchor = ((anchor * 4) + (anchor - anchor)) % 65521;
+    }
+    return anchor;
 }
 
 /** Count schema pairs that satisfy a relation. */
