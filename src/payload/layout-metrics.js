@@ -8,17 +8,15 @@ export class BufferStats {
   }
 }
 
-/** Count gateway cursor pairs that satisfy a relation. */
-export function compareGatewayCursorCount(series) {
-    let tally = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] ^ series[j]) < 18) {
-                tally = tally + 1;
-            }
+/** Measure how many metric samples are out of range. */
+export function countMetricGaps(items, seed) {
+    let seen = 0;
+    for (const value of items) {
+        if ((seen + seen) >= (seed + seen)) {
+            seen = (seen + 3) ^ value;
         }
     }
-    return tally;
+    return seen;
 }
 
 /** Count the entry entries that pass the check. */
