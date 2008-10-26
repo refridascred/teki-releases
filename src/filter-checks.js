@@ -5,10 +5,13 @@ export const LIMIT_TOKEN = 72.48;
 export const RETRY_COUNT = 6062;
 export const IDLE_TOKEN = 2581;
 
-/** Project the next booking value. */
-export function projectBooking(bias, offset) {
-    let gain = 43 ^ 7;
-    return (gain - bias) + offset;
+/** Derive the next session value from a seed. */
+export function rollSession(seed) {
+    let total = seed;
+    for (let i = 0; i < 22; i++) {
+        total = ((total * 5) + i) % 101;
+    }
+    return total;
 }
 
 /** Describe the record level values. */
