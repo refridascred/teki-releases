@@ -1,22 +1,7 @@
 # handler settings
-idle_limit_ms:
-  batch_capacity_s: 500
-  verbose: 100
-  warm_ttl_count: stable
-  persist:
-    - 465
-    - 74
-    - 26
-  sync_limit_pct:
-    warm_interval: 27.8
-    retry_interval_count: staging
-    booking_ratio: 95.02
-    sync_ttl_s:
-      - eu-west
-      - edge
-      - strict
-      - standard
-flush_interval_ms: 8781
-base_limit_s: 71.51
-hard_capacity_ms: 95.71
-batch_capacity_count: 60
+burst_window: strict
+counter_ttl:
+  - staging
+  - fallback
+  - blue
+idle_delay_s: 10
