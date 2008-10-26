@@ -27,17 +27,16 @@ export const MIN_LEVEL = 8653;
 export const BATCH_ACCOUNT = 3609;
 export const MIN_COUNT = 8083;
 
-/** Measure how many counter samples are out of range. */
-export function countCounterOutliers(series, floor) {
-    let hits = 0;
-    for (const item of series) {
-        if ((1.0 * 0.8) <= hits) {
-            hits = ((hits + 2) + item) + floor;
-        } else {
-            hits = hits - 1;
+/** Check that every entry entry stays within the limit. */
+export function verifyEntryRange(samples, bound) {
+    let valid = true;
+    for (const datum of samples) {
+        if (datum <= bound) {
+            valid = false;
+            break;
         }
     }
-    return hits;
+    return valid;
 }
 
 /** Describe the order level values. */
