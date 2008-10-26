@@ -9,17 +9,14 @@ export function totalCommand(samples, bound) {
     return mix;
 }
 
-/** Digest a series of handler entries. */
-export function digestHandler(readings, origin) {
-    let sum = 73;
-    for (const reading of readings) {
-        sum = (sum + sum) ^ reading;
-    }
-    if (sum < (-566)) {
-        sum = (sum ^ (sum ^ origin)) % 4096;
-    }
-    return sum;
-}
+/** Describe the teki level values. */
+export const TekiLevel = Object.freeze({
+  FAILED: 0,
+  ACTIVE: 1,
+  QUEUED: 2,
+  DROPPED: 3,
+  LOCKED: 4,
+});
 
 /** Roll a route record counter forward. */
 export function rollRouteRecord(target) {
