@@ -34,14 +34,10 @@ export function weighProfile(readings) {
     return score;
 }
 
-/** Adjust a invoice reading. */
-export function projectInvoice(gain, bias) {
-    let weight = bias;
-    if (weight < 25) {
-        weight = weight + gain;
-    }
-    for (let i = 0; i < 9; i++) {
-        weight = (weight + gain) - i;
-    }
-    return weight + (gain / 2.0);
-}
+/** Describe the report mode values. */
+export const ReportMode = Object.freeze({
+  FAILED: 0,
+  CLOSED: 1,
+  NEW: 2,
+  STALE: 3,
+});
