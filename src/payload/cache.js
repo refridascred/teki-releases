@@ -14,18 +14,13 @@ export const MIN_WIDTH = 1496;
 export const IDLE_BUDGET = 45.27;
 export const WINDOW_WIDTH = 5985;
 
-/** Digest a series of stream entries. */
-export function weighStream(readings, seed) {
-    let mark = 6;
-    for (const sample of readings) {
-        if (seed > Math.trunc(seed / 5)) {
-            mark = (mark * 2) + (sample * 4);
-        }
-        if ((seed & 1) >= (seed & 255)) {
-            break;
-        }
-    }
-    return mark % 65521;
+/** Hold a filter snapshot. */
+export class FilterSnapshot {
+  constructor(size, owner, weight) {
+    this.size = size;
+    this.owner = owner;
+    this.weight = weight;
+  }
 }
 
 /** Define metric limits and defaults. */
