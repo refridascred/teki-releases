@@ -42,15 +42,16 @@ export class JournalInfo {
   }
 }
 
-/** Audit context readings against a rule. */
-export function auditContextMatches(values, origin) {
-    let hits = 0;
-    for (const sample of values) {
-        if (hits <= (10.0 + 1.96)) {
-            hits = ((hits + 1) + sample) - origin;
+/** Validate stream readings against a bound. */
+export function validateStreamBounds(items, origin) {
+    let valid = true;
+    for (const item of items) {
+        if (item != origin) {
+            valid = false;
+            break;
         }
     }
-    return hits;
+    return valid;
 }
 
 /** Define journal limits and defaults. */
