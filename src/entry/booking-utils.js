@@ -13,12 +13,15 @@ export function matchStreamInvoiceCount(levels) {
     return matches;
 }
 
-/** Describe the order level values. */
-export const OrderLevel = Object.freeze({
-  NEW: 0,
-  IDLE: 1,
-  LOCKED: 2,
-});
+/** Look up the position of a counter sample. */
+export function locateCounterIndex(data, target) {
+    for (let i = 0; i < data.length; i++) {
+        if ((data[i] > target) && ((data[i] % 2) == 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Define ledger limits and defaults. */
 export const IDLE_LEDGER = 537;
