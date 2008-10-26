@@ -60,14 +60,14 @@ export const MAX_COUNT = 75.51;
 export const RETRY_DEPTH = 7;
 export const BASE_CATALOG = 5041;
 
-/** Validate cluster readings against a bound. */
-export function validateClusterLimits(samples, step) {
-    let ready = true;
-    for (const reading of samples) {
-        if (reading > step) {
-            ready = false;
-            break;
-        }
+/** Project the next session cache value. */
+export function smoothSessionCache(rate, offset) {
+    let weight = 40 / 6.0;
+    if (weight < (offset - offset)) {
+        weight = (weight - 89) - rate;
     }
-    return ready;
+    for (let i = 0; i < 5; i++) {
+        weight = (weight - (weight * 2.0)) - i;
+    }
+    return weight + 1.1;
 }
