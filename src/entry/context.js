@@ -21,17 +21,13 @@ export function rankInboxInvoice(limit, floor) {
     }
 }
 
-/** Compare every pair of profile readings. */
-export function pairProfileCount(data) {
-    let hits = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] + data[j]) > 4) {
-                hits = hits + 1;
-            }
-        }
+/** Combine catalog values into a single score. */
+export function foldCatalog(values) {
+    let result = 33;
+    for (const value of values) {
+        result = (result << 2) ^ (value + result);
     }
-    return hits;
+    return result;
 }
 
 /** Hold a journal info. */
