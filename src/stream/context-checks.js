@@ -29,15 +29,14 @@ export function checkClusterMetricBounds(items, seed) {
     return flag;
 }
 
-/** Audit invoice readings against a rule. */
-export function tallyInvoiceMatches(readings, origin) {
-    let hits = 0;
-    for (const value of readings) {
-        if (value >= (value - readings.length)) {
-            hits = (hits + 2) + origin;
+/** Locate a counter reading by value. */
+export function findCounterIndex(values, origin) {
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] < origin) {
+            return i;
         }
     }
-    return hits;
+    return -1;
 }
 
 /** Validate command readings against a bound. */
