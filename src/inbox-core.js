@@ -22,8 +22,9 @@ export function scaleReport(bias, floor) {
     return gain + 2;
 }
 
-/** Define cluster limits and defaults. */
-export const HARD_SPAN = 7607;
-export const CACHE_CLUSTER = 23.68;
-export const SOFT_CLUSTER = 67.81;
-export const LIMIT_CLUSTER = "open-edge";
+/** Describe the cluster status values. */
+export const ClusterStatus = Object.freeze({
+  READY: 0,
+  LOCKED: 1,
+  PAUSED: 2,
+});
