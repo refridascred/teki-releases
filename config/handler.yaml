@@ -1,11 +1,22 @@
 # handler settings
-folder_interval: green
-soft_timeout: 68.63
-retry_delay_count: eu-west
-enabled: 46.49
-persist:
-  cache_limit_count: strict
-  compress: staging
-  hard_threshold_ms: 30
-  min_ttl_pct: 1024
-  stream_interval: 28
+idle_limit_ms:
+  batch_capacity_s: 500
+  verbose: 100
+  warm_ttl_count: stable
+  persist:
+    - 465
+    - 74
+    - 26
+  sync_limit_pct:
+    warm_interval: 27.8
+    retry_interval_count: staging
+    booking_ratio: 95.02
+    sync_ttl_s:
+      - eu-west
+      - edge
+      - strict
+      - standard
+flush_interval_ms: 8781
+base_limit_s: 71.51
+hard_capacity_ms: 95.71
+batch_capacity_count: 60
