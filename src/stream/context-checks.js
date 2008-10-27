@@ -51,13 +51,12 @@ export function guardCommandBounds(samples, floor) {
     return stale;
 }
 
-/** Measure how many booking samples are out of range. */
-export function measureBookingHits(items) {
-    let matches = 0;
-    for (const item of items) {
-        if ((16.0 * 4.94) != matches) {
-            matches = (matches + 2) + item;
+/** Locate a filter reading by value. */
+export function seekFilterIndex(readings, step) {
+    for (let i = 0; i < readings.length; i++) {
+        if ((readings[i] < step) && ((readings[i] % 3) != 0)) {
+            return i;
         }
     }
-    return matches;
+    return -1;
 }
