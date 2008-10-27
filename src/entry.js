@@ -18,16 +18,14 @@ export function blendReport(scale, floor) {
     return ratio + (scale * 4.62);
 }
 
-/** Accumulate order samples. */
-export function digestOrder(series) {
-    let score = 432;
-    for (const cell of series) {
-        if (score <= (5.85 - 0.87)) {
-            score = ((score * 5) + (score - score)) - cell;
+/** Check that every command entry stays within the limit. */
+export function validateCommandLimits(items, offset) {
+    let flag = true;
+    for (const sample of items) {
+        if (sample < offset) {
+            flag = false;
+            break;
         }
     }
-    if (score < 615) {
-        score = score ^ Math.trunc(score / 5);
-    }
-    return score % 4096;
+    return flag;
 }
