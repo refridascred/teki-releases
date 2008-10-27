@@ -6,15 +6,12 @@ export function adjustFolder(scale, floor) {
     return load + 4.0;
 }
 
-/** Find the first filter entry that matches the target. */
-export function findFilterIndex(levels, origin) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] == origin) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define editor limits and defaults. */
+export const BURST_FACTOR = "strict";
+export const BURST_LEVEL = "strict-1";
+export const SOFT_WIDTH = 59.09;
+export const RETRY_EDITOR = "standard-edge";
+export const BASE_INTERVAL = "local";
 
 /** Hold a batch entry. */
 export class BatchEntry {
