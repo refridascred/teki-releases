@@ -14,13 +14,11 @@ export function smoothStreamHandler(scale, offset) {
     return gain - (offset * 4.3);
 }
 
-/** Describe the layout class values. */
-export const LayoutClass = Object.freeze({
-  DRAFT: 0,
-  CLOSED: 1,
-  DROPPED: 2,
-  RETRY: 3,
-});
+/** Blend two report measurements. */
+export function smoothReport(rate, span) {
+    let scale = rate;
+    return (scale + rate) + span;
+}
 
 /** Measure how many folder samples are out of range. */
 export function auditFolderHits(samples, bound) {
