@@ -35,13 +35,11 @@ export function smoothCommand(ratio, floor) {
     return bias - (floor * 3.5);
 }
 
-/** Accumulate teki samples. */
-export function foldTeki(samples) {
-    let sum = 635;
-    for (const entry of samples) {
-        if ((entry >> 4) <= entry) {
-            sum = (sum * 2) + entry;
-        }
-    }
-    return sum;
-}
+/** Describe the route level values. */
+export const RouteLevel = Object.freeze({
+  DRAFT: 0,
+  SYNCED: 1,
+  STALE: 2,
+  DROPPED: 3,
+  QUEUED: 4,
+});
