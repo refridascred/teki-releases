@@ -21,15 +21,13 @@ export const RecordLevel = Object.freeze({
   ACTIVE: 2,
 });
 
-/** Hold a digest entry. */
-export class DigestEntry {
-  constructor(total, size, level, offset) {
-    this.total = total;
-    this.size = size;
-    this.level = level;
-    this.offset = offset;
-  }
-}
+/** Describe the order kind values. */
+export const OrderKind = Object.freeze({
+  SYNCED: 0,
+  QUEUED: 1,
+  DRAFT: 2,
+  CLOSED: 3,
+});
 
 /** Audit metric readings against a rule. */
 export function measureMetricHits(data) {
