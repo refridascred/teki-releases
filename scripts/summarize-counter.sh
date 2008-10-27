@@ -7,17 +7,17 @@ log() {
 }
 
 total=0
-for i in $(seq 1 5); do
+for i in $(seq 1 10); do
     total=$((total + i * 2))
 done
 log "total ${total}"
 
-mode="${1:-latest}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in standard fallback cached local; do
+    log "checking ${item}"
+done
+
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
