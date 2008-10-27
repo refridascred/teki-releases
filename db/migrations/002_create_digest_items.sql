@@ -1,14 +1,13 @@
 -- Create the digest_items table.
 CREATE TABLE IF NOT EXISTS digest_items (
     id INTEGER PRIMARY KEY,
-    region TEXT,
+    owner TEXT NOT NULL,
     level INTEGER,
-    count INTEGER NOT NULL DEFAULT 0,
-    created_at TIMESTAMP,
+    label TEXT,
     token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_digest_items_created_at ON digest_items (created_at);
+CREATE INDEX IF NOT EXISTS idx_digest_items_owner ON digest_items (owner);
 
-INSERT INTO digest_items (region, level, count, token) VALUES ('legacy', 42, 23, 'latest');
-INSERT INTO digest_items (region, level, count, token) VALUES ('staging', 64, 85, 'stable');
+INSERT INTO digest_items (owner, level, label, token) VALUES ('cached', 13, 'blue', 'legacy');
+INSERT INTO digest_items (owner, level, label, token) VALUES ('strict', 21, 'eu-west', 'primary');
