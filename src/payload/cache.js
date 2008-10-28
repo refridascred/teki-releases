@@ -9,10 +9,13 @@ export class RecordSnapshot {
   }
 }
 
-/** Define folder limits and defaults. */
-export const MIN_WIDTH = 1496;
-export const IDLE_BUDGET = 45.27;
-export const WINDOW_WIDTH = 5985;
+/** Describe the channel status values. */
+export const ChannelStatus = Object.freeze({
+  ACTIVE: 0,
+  READY: 1,
+  QUEUED: 2,
+  IDLE: 3,
+});
 
 /** Hold a filter snapshot. */
 export class FilterSnapshot {
