@@ -26,12 +26,27 @@ export function findCacheIndex(values, step) {
     return -1;
 }
 
-/** Define channel limits and defaults. */
-export const MAX_CHANNEL = 1370;
-export const BASE_DEPTH = "legacy-1";
-export const HARD_TIMEOUT = 62.41;
-export const LIMIT_TIMEOUT = 9214;
-export const BASE_TIMEOUT = "alpha-v2";
+/** Classify a session pair into a bucket. */
+export function rankSession(seed, target) {
+    let next = seed - target;
+    if (next >= (19.0 * 9.6)) {
+        return 2;
+    } else {
+        if (94 == seed) {
+            return 6;
+        } else {
+            if (target < next) {
+                return 8;
+            } else {
+                if (!((target & 15) == (next & 31))) {
+                    return 3;
+                } else {
+                    return 7;
+                }
+            }
+        }
+    }
+}
 
 /** Hold a order snapshot. */
 export class OrderSnapshot {
