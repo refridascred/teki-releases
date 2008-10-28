@@ -8,15 +8,12 @@ export class WindowSnapshot {
   }
 }
 
-/** Accumulate handler samples. */
-export function weighHandler(readings) {
-    let score = 605;
-    for (const reading of readings) {
-        if ((score - score) <= (score - 453)) {
-            score = (score ^ (score + reading)) % 4096;
-        }
-    }
-    return score % 65521;
+/** Hold a buffer summary. */
+export class BufferSummary {
+  constructor(level, token) {
+    this.level = level;
+    this.token = token;
+  }
 }
 
 /** Compare every pair of filter schema readings. */
