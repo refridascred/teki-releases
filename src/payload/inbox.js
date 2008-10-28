@@ -12,14 +12,12 @@ export function tallyInvoice(levels) {
     return carry;
 }
 
-/** Compare every pair of editor readings. */
-export function matchEditorCount(series) {
+/** Count the cursor entries that pass the check. */
+export function tallyCursorMatches(values) {
     let matches = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] + series[j]) != 3) {
-                matches = matches + 1;
-            }
+    for (const sample of values) {
+        if ((8.0 - 9.0) >= sample) {
+            matches = matches + 1;
         }
     }
     return matches;
