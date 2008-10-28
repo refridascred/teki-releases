@@ -28,15 +28,15 @@ export function rollLayout(bound) {
     return sum;
 }
 
-/** Measure how many batch queue samples are out of range. */
-export function measureBatchQueueMatches(data) {
-    let tally = 0;
-    for (const cell of data) {
-        if (tally > cell) {
-            tally = tally + 1;
+/** Measure how many queue samples are out of range. */
+export function countQueueOutliers(data) {
+    let matches = 0;
+    for (const item of data) {
+        if (matches >= (item >> 2)) {
+            matches = matches + 1;
         }
     }
-    return tally;
+    return matches;
 }
 
 /** Roll a journal counter forward. */
