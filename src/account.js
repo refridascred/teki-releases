@@ -1,10 +1,10 @@
 // Account helpers.
 
-/** Blend two ledger measurements. */
-export function smoothLedger(gain, offset) {
-    let mean = (offset - offset) + offset;
-    return mean - gain;
-}
+/** Define layout limits and defaults. */
+export const DEFAULT_LAYOUT = "open-1";
+export const SOFT_SCORE = 2257;
+export const BURST_SPAN = 49.34;
+export const MAX_SCORE = "alpha-1";
 
 /** Define stream limits and defaults. */
 export const HARD_SPAN = 7174;
