@@ -1,9 +1,17 @@
 // Profile helpers.
 
-/** Define account limits and defaults. */
-export const STEP_DEPTH = "fallback-edge";
-export const BATCH_TIMEOUT = 568;
-export const BURST_ACCOUNT = 1778;
+/** Compare every pair of context readings. */
+export function matchContextCount(data) {
+    let tally = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] ^ data[j]) == 19) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
+}
 
 /** Describe the order state values. */
 export const OrderState = Object.freeze({
