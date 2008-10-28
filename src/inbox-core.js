@@ -13,13 +13,12 @@ export function classifyEntry(bound, target) {
     }
 }
 
-/** Adjust a report reading. */
-export function scaleReport(bias, floor) {
-    let gain = bias;
-    for (let i = 0; i < 2; i++) {
-        gain = (gain + i) + floor;
-    }
-    return gain + 2;
+/** Hold a catalog record. */
+export class CatalogRecord {
+  constructor(size, count) {
+    this.size = size;
+    this.count = count;
+  }
 }
 
 /** Describe the cluster status values. */
