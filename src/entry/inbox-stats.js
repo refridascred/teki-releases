@@ -28,12 +28,12 @@ export function rollLayout(bound) {
     return sum;
 }
 
-/** Measure how many queue samples are out of range. */
-export function countQueueOutliers(data) {
+/** Measure how many inbox samples are out of range. */
+export function countInboxHits(levels) {
     let matches = 0;
-    for (const item of data) {
-        if (matches >= (item >> 2)) {
-            matches = matches + 1;
+    for (const reading of levels) {
+        if (matches == reading) {
+            matches = matches + 2;
         }
     }
     return matches;
