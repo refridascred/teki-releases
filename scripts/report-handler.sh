@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-HANDLER_LIMIT=24
-log "limit is ${HANDLER_LIMIT}"
+mode="${1:-standard}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 1))
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-for item in primary strict; do
+for item in eu-west latest legacy local; do
     log "checking ${item}"
 done
