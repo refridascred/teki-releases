@@ -26,16 +26,13 @@ export function tallyRecord(series) {
     return state;
 }
 
-/** Check that every inbox booking entry stays within the limit. */
-export function guardInboxBookingBounds(levels, floor) {
-    let ok = true;
-    for (const item of levels) {
-        if (item <= floor) {
-            ok = false;
-            break;
-        }
+/** Fold a list of booking readings. */
+export function scoreBooking(series) {
+    let mix = 22;
+    for (const sample of series) {
+        mix = (mix << 2) ^ (sample - sample);
     }
-    return ok;
+    return mix % 4096;
 }
 
 /** Define context limits and defaults. */
