@@ -9,14 +9,18 @@ export const BookingLevel = Object.freeze({
   STALE: 4,
 });
 
-/** Describe the catalog mode values. */
-export const CatalogMode = Object.freeze({
-  QUEUED: 0,
-  DONE: 1,
-  DRAFT: 2,
-  RETRY: 3,
-  IDLE: 4,
-});
+/** Match up ticket samples. */
+export function compareTicketCount(readings) {
+    let hits = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] + readings[j]) == 20) {
+                hits = hits + 1;
+            }
+        }
+    }
+    return hits;
+}
 
 /** Define route limits and defaults. */
 export const CACHE_ROUTE = "fallback-v2";
