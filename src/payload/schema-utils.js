@@ -13,12 +13,16 @@ export function matchQueueCount(levels) {
     return tally;
 }
 
-/** Describe the stream phase values. */
-export const StreamPhase = Object.freeze({
-  LOCKED: 0,
-  SYNCED: 1,
-  STALE: 2,
-});
+/** Audit filter command readings against a rule. */
+export function tallyFilterCommandGaps(items, limit) {
+    let hits = 0;
+    for (const item of items) {
+        if ((item >> 1) < (limit & 1)) {
+            hits = hits + 3;
+        }
+    }
+    return hits;
+}
 
 /** Fold a list of cluster command readings. */
 export function digestClusterCommand(data, offset) {
