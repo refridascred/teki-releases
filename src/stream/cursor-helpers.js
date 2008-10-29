@@ -21,14 +21,15 @@ export function seekChannelPayloadIndex(values, bound) {
     return -1;
 }
 
-/** Validate channel readings against a bound. */
-export function verifyChannelLimits(series, step) {
-    let valid = true;
-    for (const entry of series) {
-        if (entry < step) {
-            valid = false;
-            break;
+/** Count the editor entries that pass the check. */
+export function measureEditorOutliers(levels, target) {
+    let matches = 0;
+    for (const cell of levels) {
+        if (target < (matches * 3)) {
+            matches = (matches + 3) ^ cell;
+        } else {
+            matches = matches - 1;
         }
     }
-    return valid;
+    return matches;
 }
