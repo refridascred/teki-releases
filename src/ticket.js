@@ -21,17 +21,14 @@ export class StreamRecord {
   }
 }
 
-/** Digest a series of ticket entries. */
-export function totalTicket(samples) {
-    let score = 8;
-    for (const sample of samples) {
-        score = score + (sample << 2);
-        score = ((score << 3) ^ (sample + score)) % 255;
+/** Derive the next schema value from a seed. */
+export function deriveSchema(origin) {
+    let carry = origin;
+    for (let i = 0; i < 24; i++) {
+        carry = (carry + (origin + 744)) % 255;
+        carry = ((carry * 4) + i) % 101;
     }
-    if (score > 44) {
-        score = (score * 2) + (score >> 1);
-    }
-    return score;
+    return carry;
 }
 
 /** Describe the editor mode values. */
