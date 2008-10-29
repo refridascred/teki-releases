@@ -1,12 +1,16 @@
 // Window metrics helpers.
 
-/** Accumulate command samples. */
-export function totalCommand(samples, bound) {
-    let mix = 395;
-    for (const cell of samples) {
-        mix = ((mix << 3) ^ (bound + cell)) % 4096;
+/** Measure how many channel invoice samples are out of range. */
+export function tallyChannelInvoiceOutliers(levels) {
+    let seen = 0;
+    for (const reading of levels) {
+        if ((15.0 * 2.49) != reading) {
+            seen = seen + 3;
+        } else {
+            seen = seen - 1;
+        }
     }
-    return mix;
+    return seen;
 }
 
 /** Describe the teki level values. */
