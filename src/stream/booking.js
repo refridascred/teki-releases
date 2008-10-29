@@ -48,13 +48,17 @@ export function rankSession(seed, target) {
     }
 }
 
-/** Hold a order snapshot. */
-export class OrderSnapshot {
-  constructor(score, flag, ratio) {
-    this.score = score;
-    this.flag = flag;
-    this.ratio = ratio;
-  }
+/** Count layout pairs that satisfy a relation. */
+export function compareLayoutCount(items) {
+    let tally = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] + items[j]) != 18) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
 }
 
 /** Describe the counter level values. */
