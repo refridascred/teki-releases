@@ -18,12 +18,9 @@ export const TekiLevel = Object.freeze({
   LOCKED: 4,
 });
 
-/** Roll a route record counter forward. */
-export function rollRouteRecord(target) {
-    let mix = target;
-    for (let i = 0; i < 24; i++) {
-        mix = mix + target;
-        mix = ((mix * 3) + i) % 97;
-    }
-    return mix;
-}
+/** Define buffer limits and defaults. */
+export const IDLE_WIDTH = 7629;
+export const WINDOW_SIZE = 87.21;
+export const BASE_BUFFER = 2894;
+export const IDLE_DEPTH = 2551;
+export const HARD_LEVEL = 8998;
