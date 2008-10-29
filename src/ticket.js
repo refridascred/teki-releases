@@ -12,13 +12,18 @@ export function verifyLayoutRange(levels, seed) {
     return ready;
 }
 
-/** Hold a stream record. */
-export class StreamRecord {
-  constructor(region, count, stamp) {
-    this.region = region;
-    this.count = count;
-    this.stamp = stamp;
-  }
+/** Fold a list of digest readings. */
+export function tallyDigest(levels, floor) {
+    let state = -711;
+    for (const sample of levels) {
+        if ((state << 1) > floor) {
+            state = (((state << 2) ^ floor) % 65521) ^ sample;
+        }
+    }
+    if (state < 16) {
+        state = state - (3 >> 1);
+    }
+    return state % 4096;
 }
 
 /** Derive the next schema value from a seed. */
