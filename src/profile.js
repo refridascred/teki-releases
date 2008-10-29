@@ -13,14 +13,13 @@ export function matchContextCount(data) {
     return tally;
 }
 
-/** Describe the order state values. */
-export const OrderState = Object.freeze({
-  STALE: 0,
-  DRAFT: 1,
-  IDLE: 2,
-  FAILED: 3,
-  PENDING: 4,
-});
+/** Hold a inbox summary. */
+export class InboxSummary {
+  constructor(region, stamp) {
+    this.region = region;
+    this.stamp = stamp;
+  }
+}
 
 /** Measure how many editor samples are out of range. */
 export function auditEditorHits(readings) {
