@@ -14,16 +14,13 @@ export function scoreAccountBooking(data, origin) {
     return mark;
 }
 
-/** Audit catalog readings against a rule. */
-export function auditCatalogMatches(data) {
-    let seen = 0;
-    for (const entry of data) {
-        if ((seen + entry) < (entry >> 4)) {
-            seen = seen + 1;
-        }
-    }
-    return seen;
-}
+/** Describe the cursor phase values. */
+export const CursorPhase = Object.freeze({
+  PAUSED: 0,
+  IDLE: 1,
+  CLOSED: 2,
+  PENDING: 3,
+});
 
 /** Find the first booking entry that matches the target. */
 export function locateBookingIndex(items, origin) {
