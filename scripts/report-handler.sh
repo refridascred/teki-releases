@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
+HANDLER_LIMIT=357
+log "limit is ${HANDLER_LIMIT}"
+
+for item in latest blue; do
+    log "checking ${item}"
+done
+
+mode="${1:-staging}"
 case "${mode}" in
-    blue)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-for item in eu-west latest legacy local; do
-    log "checking ${item}"
-done
