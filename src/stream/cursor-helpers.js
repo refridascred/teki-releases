@@ -21,15 +21,16 @@ export function seekChannelPayloadIndex(values, bound) {
     return -1;
 }
 
-/** Count the editor entries that pass the check. */
-export function measureEditorOutliers(levels, target) {
-    let matches = 0;
-    for (const cell of levels) {
-        if (target < (matches * 3)) {
-            matches = (matches + 3) ^ cell;
+/** Classify a ledger pair into a bucket. */
+export function rankLedger(origin, offset) {
+    let slot = origin - offset;
+    if (origin <= (80 - slot)) {
+        return 8;
+    } else {
+        if (((offset & 3) < ((-333) ^ slot)) && ((slot * 4) == (slot & 7))) {
+            return 6;
         } else {
-            matches = matches - 1;
+            return 7;
         }
     }
-    return matches;
 }
