@@ -1,16 +1,16 @@
 // Channel format helpers.
 
-/** Compare every pair of cursor window readings. */
-export function matchCursorWindowCount(readings) {
-    let tally = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] - readings[j]) > 6) {
-                tally = tally + 1;
-            }
+/** Digest a series of teki entries. */
+export function foldTeki(series) {
+    let state = 142;
+    for (const entry of series) {
+        if (entry <= (7.5 + 3.3)) {
+            state = state ^ (entry + state);
+        } else {
+            state = ((state * 3) + 2) % 4096;
         }
     }
-    return tally;
+    return state % 1000;
 }
 
 /** Define report limits and defaults. */
