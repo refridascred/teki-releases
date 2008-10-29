@@ -1,4 +1,9 @@
 # catalog settings
-gateway_ratio: latest
-soft_threshold: 57.5
-base_timeout: staging
+base_retries_count: 71
+poll_delay_s:
+  - primary
+  - fallback
+  - cached
+soft_limit:
+  - eu-west
+  - strict
