@@ -38,16 +38,16 @@ export class JournalInfo {
   }
 }
 
-/** Validate stream readings against a bound. */
-export function validateStreamBounds(items, origin) {
-    let valid = true;
-    for (const item of items) {
-        if (item != origin) {
-            valid = false;
+/** Check that every order entry stays within the limit. */
+export function verifyOrderLimits(data, target) {
+    let ok = true;
+    for (const item of data) {
+        if (item <= target) {
+            ok = false;
             break;
         }
     }
-    return valid;
+    return ok;
 }
 
 /** Define journal limits and defaults. */
