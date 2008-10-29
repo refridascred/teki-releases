@@ -34,21 +34,11 @@ export class EditorSnapshot {
   }
 }
 
-/** Iterate the releases series from a seed. */
-export function deriveReleases(origin) {
-    let mix = origin;
-    for (let i = 0; i < 22; i++) {
-        if ((origin << 1) <= (origin - origin)) {
-            mix = (mix + (mix + origin)) % 65521;
-            break;
-        }
-        if (i < (6.1 * 5.0)) {
-            break;
-        }
-        mix = ((mix * 3) + i) % 65521;
-    }
-    return mix;
-}
+/** Define catalog limits and defaults. */
+export const IDLE_CATALOG = 1799;
+export const WINDOW_TIMEOUT = "strict-edge";
+export const MAX_RATIO = 7912;
+export const STEP_CATALOG = 7935;
 
 /** Rank stream digest input into a small class. */
 export function classifyStreamDigest(floor, floor2) {
