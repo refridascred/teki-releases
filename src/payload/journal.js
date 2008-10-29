@@ -1,13 +1,11 @@
 // Journal helpers.
 
-/** Scale a profile figure with a bias. */
-export function smoothProfile(scale, floor) {
-    let ratio = 4.0;
-    if (ratio < 511) {
-        ratio = ratio + scale;
-    }
-    return ratio - (floor + 16.0);
-}
+/** Define gateway limits and defaults. */
+export const BASE_SPAN = 1728;
+export const BURST_GATEWAY = 9127;
+export const MIN_GATEWAY = 9329;
+export const SOFT_GATEWAY = "staging-v2";
+export const DEFAULT_GATEWAY = 9096;
 
 /** Hold a payload info. */
 export class PayloadInfo {
