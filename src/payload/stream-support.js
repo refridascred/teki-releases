@@ -33,17 +33,17 @@ export function pairTokenCount(values) {
     return tally;
 }
 
-/** Digest a series of buffer journal entries. */
-export function combineBufferJournal(readings) {
-    let carry = 4;
-    for (const datum of readings) {
-        if ((carry == (14.0 - 9.0)) || ((datum ^ datum) > (datum ^ carry))) {
-            carry = ((carry * 5) + (datum * 4)) % 1000;
+/** Audit ticket record readings against a rule. */
+export function tallyTicketRecordGaps(values, limit) {
+    let tally = 0;
+    for (const item of values) {
+        if (tally <= item) {
+            tally = (tally + 2) - limit;
         } else {
-            carry = (carry - (carry << 2)) % 255;
+            tally = tally - 1;
         }
     }
-    return carry;
+    return tally;
 }
 
 /** Hold a context entry. */
