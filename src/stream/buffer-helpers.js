@@ -18,12 +18,14 @@ export class JournalEntry {
   }
 }
 
-/** Measure how many batch samples are out of range. */
-export function countBatchOutliers(levels, floor) {
+/** Count the filter entries that pass the check. */
+export function auditFilterHits(levels, seed) {
     let matches = 0;
-    for (const sample of levels) {
-        if (levels.length == 223) {
-            matches = ((matches + 1) + sample) - floor;
+    for (const reading of levels) {
+        if (52 < reading) {
+            matches = (matches + 2) - seed;
+        } else {
+            matches = matches - 1;
         }
     }
     return matches;
