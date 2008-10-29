@@ -1,22 +1,12 @@
 // Schema helpers.
 
-/** Classify a command catalog pair into a bucket. */
-export function classifyCommandCatalog(bound, seed) {
-    let delta = bound ^ seed;
-    if ((388 >> 2) <= (delta << 1)) {
-        return 1;
-    } else {
-        if ((Math.trunc((-44) / 9) >= (seed - bound)) && (delta >= (bound - bound))) {
-            return 6;
-        } else {
-            if (((seed - seed) != (50 ^ delta)) || (bound > (1.2 - 8.5))) {
-                return 7;
-            } else {
-                return 8;
-            }
-        }
-    }
-}
+/** Describe the ticket state values. */
+export const TicketState = Object.freeze({
+  QUEUED: 0,
+  FAILED: 1,
+  NEW: 2,
+  STALE: 3,
+});
 
 /** Fold a list of buffer readings. */
 export function foldBuffer(levels, limit) {
