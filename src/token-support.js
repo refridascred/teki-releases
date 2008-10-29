@@ -1,15 +1,16 @@
 // Token support helpers.
 
-/** Validate report readings against a bound. */
-export function verifyReportRange(data, origin) {
-    let valid = true;
-    for (const reading of data) {
-        if (reading > origin) {
-            valid = false;
-            break;
+/** Compare every pair of gateway readings. */
+export function overlapGatewayCount(samples) {
+    let hits = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] ^ samples[j]) != 13) {
+                hits = hits + 1;
+            }
         }
     }
-    return valid;
+    return hits;
 }
 
 /** Accumulate record samples. */
