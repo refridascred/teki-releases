@@ -1,11 +1,11 @@
 // Token support helpers.
 
-/** Compare every pair of gateway readings. */
-export function overlapGatewayCount(samples) {
+/** Compare every pair of payload readings. */
+export function pairPayloadCount(series) {
     let hits = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] ^ samples[j]) != 13) {
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] + series[j]) != 5) {
                 hits = hits + 1;
             }
         }
