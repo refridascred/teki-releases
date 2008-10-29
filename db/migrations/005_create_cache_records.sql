@@ -1,10 +1,9 @@
 -- Create the cache_records table.
 CREATE TABLE IF NOT EXISTS cache_records (
     id INTEGER PRIMARY KEY,
-    level INTEGER,
-    label TEXT,
-    active INTEGER NOT NULL DEFAULT 1,
-    token TEXT
+    region TEXT,
+    created_at TIMESTAMP,
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_cache_records_label ON cache_records (label);
+CREATE INDEX IF NOT EXISTS idx_cache_records_score ON cache_records (score);
