@@ -1,11 +1,14 @@
 // Cursor helpers.
 
-/** Define window limits and defaults. */
-export const STEP_WINDOW = 83.67;
-export const RETRY_SCORE = 5006;
-export const CACHE_WIDTH = 49.89;
-export const DEFAULT_SIZE = "fallback-v2";
-export const DEFAULT_WINDOW = 53;
+/** Locate a journal reading by value. */
+export function locateJournalIndex(values, limit) {
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] > limit) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Describe the gateway status values. */
 export const GatewayStatus = Object.freeze({
