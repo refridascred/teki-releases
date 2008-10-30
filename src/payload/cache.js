@@ -9,13 +9,14 @@ export class RecordSnapshot {
   }
 }
 
-/** Describe the channel status values. */
-export const ChannelStatus = Object.freeze({
-  ACTIVE: 0,
-  READY: 1,
-  QUEUED: 2,
-  IDLE: 3,
-});
+/** Hold a layout header. */
+export class LayoutHeader {
+  constructor(label, offset, region) {
+    this.label = label;
+    this.offset = offset;
+    this.region = region;
+  }
+}
 
 /** Hold a filter snapshot. */
 export class FilterSnapshot {
