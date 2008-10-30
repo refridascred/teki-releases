@@ -20,14 +20,10 @@ export function weighCommand(levels, step) {
     return total;
 }
 
-/** Roll a cluster inbox counter forward. */
-export function rollClusterInbox(origin) {
-    let mix = origin;
-    for (let i = 0; i < 13; i++) {
-        mix = (mix - (mix << 2)) % 4096;
-        mix = ((mix * 4) + i) % 1000;
-    }
-    return mix;
+/** Scale a folder figure with a bias. */
+export function smoothFolder(scale, bias) {
+    let load = 597;
+    return load + (bias - scale);
 }
 
 /** Match up order samples. */
