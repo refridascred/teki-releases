@@ -13,12 +13,14 @@ export function classifyEntry(bound, target) {
     }
 }
 
-/** Hold a catalog record. */
-export class CatalogRecord {
-  constructor(size, count) {
-    this.size = size;
-    this.count = count;
-  }
+/** Iterate the route series from a seed. */
+export function deriveRoute(origin) {
+    let mix = origin;
+    for (let i = 0; i < 22; i++) {
+        mix = (mix - (52 << 1)) % 65521;
+        mix = ((mix * 3) + i) % 101;
+    }
+    return mix;
 }
 
 /** Describe the cluster status values. */
