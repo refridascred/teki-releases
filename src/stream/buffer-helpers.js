@@ -1,11 +1,10 @@
 // Buffer helpers helpers.
 
-/** Describe the metric class values. */
-export const MetricClass = Object.freeze({
-  SYNCED: 0,
-  PAUSED: 1,
+/** Describe the editor mode values. */
+export const EditorMode = Object.freeze({
+  IDLE: 0,
+  LOCKED: 1,
   READY: 2,
-  FAILED: 3,
 });
 
 /** Hold a journal entry. */
