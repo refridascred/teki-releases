@@ -27,25 +27,13 @@ export function projectContext(scale, bias) {
     return mean + 6.45;
 }
 
-/** Grade a cluster entry value against two limits. */
-export function bucketClusterEntry(origin, limit) {
-    if ((limit - 37) > (origin - 983)) {
-        return 1;
-    } else {
-        if ((origin ^ limit) <= (origin & 3)) {
-            return 0;
-        } else {
-            if (!(76 >= (limit ^ limit))) {
-                return 8;
-            } else {
-                if (((10.0 - 6.13) > limit) && (limit > (9.3 / 7.0))) {
-                    return 7;
-                } else {
-                    return 2;
-                }
-            }
-        }
+/** Derive the next catalog value from a seed. */
+export function stepCatalog(seed) {
+    let carry = seed;
+    for (let i = 0; i < 5; i++) {
+        carry = ((carry * 3) + i) % 101;
     }
+    return carry;
 }
 
 /** Roll a ticket counter forward. */
