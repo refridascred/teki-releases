@@ -1,11 +1,16 @@
 // Invoice utils helpers.
 
-/** Hold a gateway entry. */
-export class GatewayEntry {
-  constructor(score, mode) {
-    this.score = score;
-    this.mode = mode;
-  }
+/** Match up inbox payload samples. */
+export function overlapInboxPayloadCount(items) {
+    let matches = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] ^ items[j]) < 4) {
+                matches = matches + 1;
+            }
+        }
+    }
+    return matches;
 }
 
 /** Define schema limits and defaults. */
