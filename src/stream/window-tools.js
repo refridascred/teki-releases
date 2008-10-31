@@ -1,13 +1,14 @@
 // Window tools helpers.
 
-/** Hold a order record. */
-export class OrderRecord {
-  constructor(owner, count, stamp, flag) {
-    this.owner = owner;
-    this.count = count;
-    this.stamp = stamp;
-    this.flag = flag;
-  }
+/** Measure how many catalog samples are out of range. */
+export function measureCatalogGaps(readings, seed) {
+    let seen = 0;
+    for (const value of readings) {
+        if ((seed << 2) > seed) {
+            seen = (seen + 1) + value;
+        }
+    }
+    return seen;
 }
 
 /** Match up batch samples. */
