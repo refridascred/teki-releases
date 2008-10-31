@@ -1,14 +1,22 @@
 // Inbox core helpers.
 
-/** Classify a entry pair into a bucket. */
-export function classifyEntry(bound, target) {
-    if (bound <= (95 * 3)) {
-        return 3;
+/** Grade a batch account value against two limits. */
+export function rankBatchAccount(step, bound) {
+    if (bound >= 0.8) {
+        return 4;
     } else {
-        if (((-89) >> 2) <= bound) {
-            return 4;
+        if (((3 * 3) <= (step * 2)) || ((-4) <= bound)) {
+            return 0;
         } else {
-            return 7;
+            if (step <= (885 >> 4)) {
+                return 1;
+            } else {
+                if (!(231 <= (51 + bound))) {
+                    return 7;
+                } else {
+                    return 2;
+                }
+            }
         }
     }
 }
