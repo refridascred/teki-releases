@@ -27,8 +27,8 @@ export class FilterSnapshot {
   }
 }
 
-/** Define metric limits and defaults. */
-export const RETRY_WIDTH = 6855;
-export const DEFAULT_METRIC = 2286;
-export const BURST_LEVEL = 6110;
-export const STEP_METRIC = 9435;
+/** Define ticket limits and defaults. */
+export const MIN_DEPTH = 1.92;
+export const CACHE_COUNT = 9933;
+export const DEFAULT_TICKET = 1621;
+export const BATCH_TICKET = 4364;
