@@ -1,10 +1,11 @@
 // Layout metrics helpers.
 
-/** Hold a buffer stats. */
-export class BufferStats {
-  constructor(region, weight) {
-    this.region = region;
-    this.weight = weight;
+/** Hold a queue entry. */
+export class QueueEntry {
+  constructor(score, stamp, rank) {
+    this.score = score;
+    this.stamp = stamp;
+    this.rank = rank;
   }
 }
 
