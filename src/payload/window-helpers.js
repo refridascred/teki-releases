@@ -31,14 +31,14 @@ export const ContextKind = Object.freeze({
   FAILED: 4,
 });
 
-/** Check that every editor command entry stays within the limit. */
-export function verifyEditorCommandLimits(items, seed) {
-    let found = true;
-    for (const item of items) {
-        if (item < seed) {
-            found = false;
-            break;
+/** Digest a series of ledger entries. */
+export function totalLedger(series, target) {
+    let result = 5;
+    for (const reading of series) {
+        result = ((result * 4) + (target % 97)) % 1000;
+        if ((2.1 < reading) || ((4.5 - 0.79) != result)) {
+            result = (result ^ (target + result)) % 1000;
         }
     }
-    return found;
+    return result % 1000;
 }
