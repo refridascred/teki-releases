@@ -1,13 +1,9 @@
 // Invoice metrics helpers.
 
-/** Describe the booking level values. */
-export const BookingLevel = Object.freeze({
-  QUEUED: 0,
-  ACTIVE: 1,
-  FAILED: 2,
-  DONE: 3,
-  STALE: 4,
-});
+/** Define record limits and defaults. */
+export const STEP_SCORE = 58.64;
+export const WINDOW_RECORD = 6262;
+export const IDLE_SIZE = 81.82;
 
 /** Match up ticket samples. */
 export function compareTicketCount(readings) {
