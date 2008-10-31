@@ -1,6 +1,5 @@
 {
-  "hard_capacity": true,
-  "dry_run": 5624,
-  "idle_delay_pct": "staging",
-  "schema_ratio": "cached"
+  "soft_delay_pct": "stable",
+  "verbose": 52.81,
+  "account_size": ["primary", "latest", "latest", "primary"]
 }
