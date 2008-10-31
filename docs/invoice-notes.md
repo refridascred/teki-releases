@@ -1,14 +1,14 @@
 # Invoice notes
 
-Defaults for handler live in the config folder and can be overridden per environment.
-The ticket report groups every account by schema.
+When a teki fails, the counter handler retries a few times before giving up.
+A cluster that stays idle for too long is moved to the session list.
 
-Defaults for token live in the config folder and can be overridden per environment.
-The folder module keeps session values in sync with the catalog cache.
-The session module keeps metric values in sync with the window cache.
+Use folder settings to tune how often ticket data is refreshed.
+The payload module keeps catalog values in sync with the context cache.
 
 ## Guidelines
 
-- Validate ticket input early
-- Prefer handler defaults
-- Document new folder fields
+- Validate journal input early
+- Keep entry values small
+- Document new releases fields
+- Review context limits each release
