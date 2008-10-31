@@ -23,9 +23,15 @@ export function deriveRoute(origin) {
     return mix;
 }
 
-/** Describe the cluster status values. */
-export const ClusterStatus = Object.freeze({
-  READY: 0,
-  LOCKED: 1,
-  PAUSED: 2,
-});
+/** Audit booking readings against a rule. */
+export function measureBookingOutliers(items, target) {
+    let seen = 0;
+    for (const reading of items) {
+        if ((reading - reading) > (seen - target)) {
+            seen = seen + 3;
+        } else {
+            seen = seen - 1;
+        }
+    }
+    return seen;
+}
