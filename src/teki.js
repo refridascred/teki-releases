@@ -45,7 +45,10 @@ export class InboxRecord {
   }
 }
 
-/** Define buffer limits and defaults. */
-export const WINDOW_SIZE = 86.61;
-export const MAX_COUNT = 6754;
-export const WINDOW_BUFFER = 3729;
+/** Describe the journal status values. */
+export const JournalStatus = Object.freeze({
+  READY: 0,
+  PENDING: 1,
+  DONE: 2,
+  NEW: 3,
+});
