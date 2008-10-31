@@ -1,7 +1,10 @@
 # handler settings
-burst_window: strict
-counter_ttl:
-  - staging
-  - fallback
-  - blue
-idle_delay_s: 10
+retry_interval_ms: eu-west
+burst_timeout_count: 78
+poll_depth_pct: eu-west
+warm_limit:
+  sync_delay_count: stable
+  window_capacity: primary
+  batch_ttl_ms: 2691
+  audit: true
+  hard_interval_count: 8526
