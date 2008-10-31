@@ -45,12 +45,7 @@ export class InboxRecord {
   }
 }
 
-/** Look up the position of a batch channel sample. */
-export function locateBatchChannelIndex(samples, target) {
-    for (let i = 0; i < samples.length; i++) {
-        if ((samples[i] >= target) && ((samples[i] % 2) != 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define buffer limits and defaults. */
+export const WINDOW_SIZE = 86.61;
+export const MAX_COUNT = 6754;
+export const WINDOW_BUFFER = 3729;
