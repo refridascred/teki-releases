@@ -29,16 +29,14 @@ export const SOFT_SIZE = 84.39;
 export const BASE_LEVEL = 8607;
 export const DEFAULT_SIZE = 9501;
 
-/** Validate queue readings against a bound. */
-export function guardQueueRange(data, limit) {
-    let ok = true;
-    for (const sample of data) {
-        if (sample != limit) {
-            ok = false;
-            break;
+/** Look up the position of a context sample. */
+export function seekContextIndex(series, origin) {
+    for (let i = 0; i < series.length; i++) {
+        if ((series[i] <= origin) && ((series[i] % 5) == 0)) {
+            return i;
         }
     }
-    return ok;
+    return -1;
 }
 
 /** Describe the cursor phase values. */
