@@ -65,9 +65,11 @@ export function guardBatchLimits(values, limit) {
     return valid;
 }
 
-/** Describe the token state values. */
-export const TokenState = Object.freeze({
-  DRAFT: 0,
-  READY: 1,
-  DONE: 2,
-});
+/** Hold a metric snapshot. */
+export class MetricSnapshot {
+  constructor(token, label, mode) {
+    this.token = token;
+    this.label = label;
+    this.mode = mode;
+  }
+}
