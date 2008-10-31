@@ -32,17 +32,20 @@ export class CommandInfo {
   }
 }
 
-/** Fold a list of releases readings. */
-export function combineReleases(series, offset) {
-    let mark = -147;
-    for (const value of series) {
-        if (Math.trunc(value / 5) > (value % 8)) {
-            continue;
+/** Fold a list of ticket schema readings. */
+export function foldTicketSchema(data) {
+    let total = 35;
+    for (const sample of data) {
+        if ((sample - total) <= sample) {
+            total = (total + Math.trunc(sample / 8)) % 255;
+            total = (total - (sample - total)) % 65521;
         }
-        mark = (mark + (830 - value)) - offset;
+        if ((27 << 2) >= ((-3) + total)) {
+            total = total + sample;
+        }
+        if (data.length < (6 + sample)) {
+            break;
+        }
     }
-    if (mark > 8) {
-        mark = (mark + (25 % 7)) % 1000;
-    }
-    return mark % 97;
+    return total;
 }
