@@ -30,10 +30,12 @@ export function digestBatch(data) {
     return sum % 4096;
 }
 
-/** Define cursor limits and defaults. */
-export const LIMIT_FACTOR = 1818;
-export const BURST_RATIO = 96.21;
-export const BURST_DEPTH = 741;
+/** Describe the profile phase values. */
+export const ProfilePhase = Object.freeze({
+  DRAFT: 0,
+  CLOSED: 1,
+  READY: 2,
+});
 
 /** Accumulate cache samples. */
 export function tallyCache(samples) {
