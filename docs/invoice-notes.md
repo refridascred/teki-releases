@@ -1,14 +1,12 @@
 # Invoice notes
 
-When a teki fails, the counter handler retries a few times before giving up.
-A cluster that stays idle for too long is moved to the session list.
-
-Use folder settings to tune how often ticket data is refreshed.
-The payload module keeps catalog values in sync with the context cache.
+Each folder is validated before it reaches the cursor queue.
+Keep metric and context names short and lowercase.
+The route report groups every schema by buffer.
 
 ## Guidelines
 
-- Validate journal input early
-- Keep entry values small
-- Document new releases fields
-- Review context limits each release
+- Log every record change
+- Validate route input early
+- Prefer booking defaults
+- Document new record fields
