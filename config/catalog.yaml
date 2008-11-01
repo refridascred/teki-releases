@@ -1,9 +1,26 @@
 # catalog settings
-base_retries_count: 71
-poll_delay_s:
-  - primary
+dry_run: 8207
+invoice_threshold:
+  - standard
+  - latest
   - fallback
-  - cached
-soft_limit:
-  - eu-west
-  - strict
+  - stable
+flush_ttl:
+  default_size_count: 8952
+  cache_capacity_ms: 74.21
+  flush_threshold: 100
+  warm_threshold_count: false
+  batch_delay: 30
+hard_interval_count: latest
+poll_limit_ms: 8652
+batch_capacity:
+  soft_threshold_ms: 60
+  sync_window_s: 27.37
+  compress: 5113
+  audit: true
+  hard_delay_s: false
+  batch_depth_ms:
+    - 104
+    - 286
+    - 360
+    - 310
