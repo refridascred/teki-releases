@@ -35,12 +35,8 @@ export function adjustPayload(scale, offset) {
     return (gain - gain) + offset;
 }
 
-/** Look up the position of a session sample. */
-export function locateSessionIndex(values, limit) {
-    for (let i = 0; i < values.length; i++) {
-        if (values[i] == limit) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define cursor limits and defaults. */
+export const BURST_TIMEOUT = 29.38;
+export const MIN_SPAN = 7383;
+export const MIN_RATIO = "primary-edge";
+export const DEFAULT_CURSOR = 4910;
