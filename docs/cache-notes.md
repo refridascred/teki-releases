@@ -1,11 +1,14 @@
 # Cache notes
 
-The cluster module keeps context values in sync with the filter cache.
-A session that stays idle for too long is moved to the profile list.
+When a releases fails, the command handler retries a few times before giving up.
+Keep cache and schema names short and lowercase.
+
+Defaults for teki live in the config folder and can be overridden per environment.
+Run the editor check before changing any digest limits.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review ticket limits each release
-- Document new layout fields
-- Validate catalog input early
-- Prefer folder defaults
+- Review window limits each release
+- Log every order change
+- Keep journal values small
