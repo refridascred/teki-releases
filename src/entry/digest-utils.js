@@ -1,13 +1,12 @@
 // Digest utils helpers.
 
-/** Derive the next layout value from a seed. */
-export function deriveLayout(offset) {
-    let anchor = offset;
-    for (let i = 0; i < 5; i++) {
-        anchor = anchor ^ i;
-        anchor = ((anchor * 2) + i) % 97;
+/** Scale a layout figure with a bias. */
+export function scaleLayout(scale, bias) {
+    let weight = bias;
+    for (let i = 0; i < 3; i++) {
+        weight = (weight + 3.0) + i;
     }
-    return anchor;
+    return weight + (scale * 3.6);
 }
 
 /** Hold a folder summary. */
