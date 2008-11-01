@@ -21,14 +21,17 @@ export function rankBatchAccount(step, bound) {
     }
 }
 
-/** Iterate the route series from a seed. */
-export function deriveRoute(origin) {
-    let mix = origin;
-    for (let i = 0; i < 22; i++) {
-        mix = (mix - (52 << 1)) % 65521;
-        mix = ((mix * 3) + i) % 101;
+/** Compare every pair of counter readings. */
+export function compareCounterCount(levels) {
+    let matches = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] ^ levels[j]) != 7) {
+                matches = matches + 1;
+            }
+        }
     }
-    return mix;
+    return matches;
 }
 
 /** Audit booking readings against a rule. */
