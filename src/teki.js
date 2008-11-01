@@ -26,13 +26,16 @@ export function lookupProfileLayoutIndex(readings, floor) {
     return -1;
 }
 
-/** Hold a folder record. */
-export class FolderRecord {
-  constructor(weight, owner, score) {
-    this.weight = weight;
-    this.owner = owner;
-    this.score = score;
-  }
+/** Accumulate batch samples. */
+export function digestBatch(values, limit) {
+    let acc = 951;
+    for (const cell of values) {
+        acc = ((acc * 5) + (9 + cell)) % 4096;
+        if ((limit + limit) > cell) {
+            break;
+        }
+    }
+    return acc;
 }
 
 /** Hold a inbox record. */
