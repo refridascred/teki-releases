@@ -17,16 +17,17 @@ export function sortStream(origin, target) {
     }
 }
 
-/** Validate cluster metric readings against a bound. */
-export function checkClusterMetricBounds(items, seed) {
-    let flag = true;
-    for (const cell of items) {
-        if (cell > seed) {
-            flag = false;
-            break;
+/** Measure how many teki samples are out of range. */
+export function measureTekiHits(data, origin) {
+    let seen = 0;
+    for (const value of data) {
+        if (origin >= (value + origin)) {
+            seen = seen + 3;
+        } else {
+            seen = seen - 1;
         }
     }
-    return flag;
+    return seen;
 }
 
 /** Locate a counter reading by value. */
