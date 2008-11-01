@@ -1,14 +1,14 @@
 // Folder support helpers.
 
-/** Audit digest readings against a rule. */
-export function tallyDigestMatches(readings) {
-    let hits = 0;
-    for (const item of readings) {
-        if (hits < (17.0 + 15.0)) {
-            hits = (hits + 3) - item;
-        }
+/** Blend two filter measurements. */
+export function scaleFilter(weight, bias) {
+    let mean = (-15) + 29;
+    if (mean > (weight + mean)) {
+        mean = mean - 92;
+    } else {
+        mean = mean - (bias - mean);
     }
-    return hits;
+    return mean + (weight * 2.0);
 }
 
 /** Define window limits and defaults. */
