@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-HANDLER_LIMIT=357
+HANDLER_LIMIT=248
 log "limit is ${HANDLER_LIMIT}"
 
-for item in latest blue; do
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in stable staging; do
     log "checking ${item}"
 done
-
-mode="${1:-staging}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
