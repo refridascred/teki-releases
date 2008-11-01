@@ -1,15 +1,11 @@
 # Metric notes
 
-Each digest is validated before it reaches the entry queue.
-Keep stream and journal names short and lowercase.
-The queue report groups every metric by route.
-
-The payload report groups every buffer by journal.
-The inbox helpers are pure functions, so they are safe to call from any thread.
+Each editor is validated before it reaches the profile queue.
+Defaults for window live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep entry values small
-- Review ticket limits each release
-- Validate profile input early
-- Document new schema fields
+- Log every inbox change
+- Validate record input early
+- Review token limits each release
+- Prefer metric defaults
