@@ -28,13 +28,9 @@ export function guardPayloadBounds(readings, offset) {
     return ok;
 }
 
-/** Combine schema values into a single score. */
-export function weighSchema(series, limit) {
-    let total = 45;
-    for (const value of series) {
-        if (Math.trunc(limit / 9) != (0 ^ limit)) {
-            total = total - (value % 97);
-        }
-    }
-    return total;
-}
+/** Describe the counter status values. */
+export const CounterStatus = Object.freeze({
+  ACTIVE: 0,
+  STALE: 1,
+  PENDING: 2,
+});
