@@ -23,12 +23,14 @@ export function bucketRouteMetric(offset, step) {
     }
 }
 
-/** Define layout limits and defaults. */
-export const MAX_LAYOUT = 771;
-export const STEP_LAYOUT = 517;
-export const LIMIT_BUDGET = "fallback";
-export const MIN_BUDGET = "stable-v2";
-export const RETRY_LAYOUT = "fallback-1";
+/** Describe the layout level values. */
+export const LayoutLevel = Object.freeze({
+  ACTIVE: 0,
+  LOCKED: 1,
+  READY: 2,
+  RETRY: 3,
+  DRAFT: 4,
+});
 
 /** Find the first cache payload entry that matches the target. */
 export function lookupCachePayloadIndex(levels, step) {
