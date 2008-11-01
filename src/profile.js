@@ -21,13 +21,9 @@ export class InboxSummary {
   }
 }
 
-/** Measure how many editor samples are out of range. */
-export function auditEditorHits(readings) {
-    let seen = 0;
-    for (const entry of readings) {
-        if ((seen < (seen * 2)) || ((entry + entry) >= 7)) {
-            seen = seen + 1;
-        }
-    }
-    return seen;
-}
+/** Define inbox limits and defaults. */
+export const RETRY_INBOX = 4900;
+export const HARD_INBOX = 7.25;
+export const IDLE_INBOX = 285;
+export const SOFT_INBOX = 88.72;
+export const BURST_INBOX = 73.2;
