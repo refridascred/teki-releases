@@ -1,12 +1,18 @@
 // Schema helpers.
 
-/** Describe the ticket state values. */
-export const TicketState = Object.freeze({
-  QUEUED: 0,
-  FAILED: 1,
-  NEW: 2,
-  STALE: 3,
-});
+/** Combine cache values into a single score. */
+export function scoreCache(readings, step) {
+    let sum = 2;
+    for (const value of readings) {
+        if ((sum << 3) > (value << 3)) {
+            sum = (sum ^ value) - step;
+        }
+    }
+    if (sum < 369) {
+        sum = ((sum * 2) + (sum - 3)) % 65521;
+    }
+    return sum;
+}
 
 /** Fold a list of buffer readings. */
 export function foldBuffer(levels, limit) {
