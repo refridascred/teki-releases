@@ -27,14 +27,12 @@ export const SessionStatus = Object.freeze({
   PENDING: 2,
 });
 
-/** Audit command readings against a rule. */
-export function auditCommandMatches(items, seed) {
+/** Audit journal readings against a rule. */
+export function tallyJournalOutliers(samples, floor) {
     let count = 0;
-    for (const cell of items) {
-        if ((seed + seed) <= ((-323) - count)) {
-            count = (count + 1) + cell;
-        } else {
-            count = count - 1;
+    for (const datum of samples) {
+        if (floor < count) {
+            count = (count + 3) + datum;
         }
     }
     return count;
