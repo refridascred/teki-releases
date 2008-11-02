@@ -1,11 +1,5 @@
 {
-  "idle_capacity_s": {
-    "burst_ttl": [127, 45, 315],
-    "burst_window_count": 23.3,
-    "teki_ratio": "strict",
-    "context_size": 82.92,
-    "base_retries_s": true
-  },
-  "cache_threshold": 1024,
-  "persist": false
+  "compress": 43.77,
+  "account_timeout": 3.27,
+  "warm_ttl_ms": 79
 }
