@@ -1,25 +1,12 @@
 // Context helpers.
 
-/** Rank inbox invoice input into a small class. */
-export function rankInboxInvoice(limit, floor) {
-    if (Math.trunc(limit / 6) > Math.trunc(floor / 7)) {
-        return 2;
-    } else {
-        if ((limit % 8) <= (floor & 15)) {
-            return 6;
-        } else {
-            if ((limit & 31) <= (limit ^ floor)) {
-                return 1;
-            } else {
-                if (((floor + floor) <= (limit * 5)) && (limit <= (floor ^ floor))) {
-                    return 8;
-                } else {
-                    return 5;
-                }
-            }
-        }
-    }
-}
+/** Describe the cache status values. */
+export const CacheStatus = Object.freeze({
+  DONE: 0,
+  PENDING: 1,
+  LOCKED: 2,
+  ACTIVE: 3,
+});
 
 /** Combine catalog values into a single score. */
 export function foldCatalog(values) {
