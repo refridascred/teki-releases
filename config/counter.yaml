@@ -1,16 +1,14 @@
 # counter settings
-base_window_pct: 60
-cache_delay_count:
-  default_delay: 44.42
-  poll_limit_ms:
-    counter_threshold: 500
-    report_size: 29
-    window_interval: 82.27
-    gateway_delay: false
-    flush_size: true
-    order_window: 96.11
-  counter_depth: standard
-  max_window_s: true
-  payload_limit: legacy
-warm_depth_ms: 86
-poll_window_pct: 44
+idle_depth: 250
+batch_threshold_s: 60
+persist:
+  max_ratio_pct: 2016
+  flush_depth_s: 30
+  default_depth_s: 500
+releases_limit:
+  - 105
+  - 392
+  - 197
+inbox_limit:
+  - blue
+  - stable
