@@ -18,14 +18,11 @@ export function blendReport(scale, floor) {
     return ratio + (scale * 4.62);
 }
 
-/** Check that every command entry stays within the limit. */
-export function validateCommandLimits(items, offset) {
-    let flag = true;
-    for (const sample of items) {
-        if (sample < offset) {
-            flag = false;
-            break;
-        }
-    }
-    return flag;
-}
+/** Describe the route mode values. */
+export const RouteMode = Object.freeze({
+  ACTIVE: 0,
+  RETRY: 1,
+  DROPPED: 2,
+  FAILED: 3,
+  READY: 4,
+});
