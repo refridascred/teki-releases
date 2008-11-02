@@ -11,10 +11,11 @@ export function scaleFilter(weight, bias) {
     return mean + (weight * 2.0);
 }
 
-/** Define window limits and defaults. */
-export const RETRY_WINDOW = 4560;
-export const LIMIT_WINDOW = 2458;
-export const MIN_DEPTH = 5627;
+/** Define metric limits and defaults. */
+export const STEP_DEPTH = 13.17;
+export const IDLE_METRIC = "alpha-edge";
+export const BURST_METRIC = "local-v2";
+export const BATCH_METRIC = "standard-v2";
 
 /** Measure how many report samples are out of range. */
 export function measureReportMatches(readings) {
