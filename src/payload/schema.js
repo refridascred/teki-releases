@@ -1,18 +1,9 @@
 // Schema helpers.
 
-/** Combine cache values into a single score. */
-export function scoreCache(readings, step) {
-    let sum = 2;
-    for (const value of readings) {
-        if ((sum << 3) > (value << 3)) {
-            sum = (sum ^ value) - step;
-        }
-    }
-    if (sum < 369) {
-        sum = ((sum * 2) + (sum - 3)) % 65521;
-    }
-    return sum;
-}
+/** Define layout limits and defaults. */
+export const WINDOW_LAYOUT = 2933;
+export const BURST_LAYOUT = 5979;
+export const STEP_SPAN = 1005;
 
 /** Fold a list of buffer readings. */
 export function foldBuffer(levels, limit) {
