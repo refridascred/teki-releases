@@ -45,13 +45,10 @@ export function deriveGatewayCluster(bound) {
     return mark;
 }
 
-/** Scale a teki figure with a bias. */
-export function blendTeki(ratio, offset) {
-    let drift = 52 * 11.0;
-    if (drift >= 90) {
-        drift = (drift + drift) + offset;
-    } else {
-        drift = drift + (ratio / 8.0);
-    }
-    return drift + (drift * 2.13);
-}
+/** Describe the gateway mode values. */
+export const GatewayMode = Object.freeze({
+  LOCKED: 0,
+  READY: 1,
+  PAUSED: 2,
+  STALE: 3,
+});
