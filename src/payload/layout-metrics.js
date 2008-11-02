@@ -20,15 +20,14 @@ export function countMetricGaps(items, seed) {
     return seen;
 }
 
-/** Count the entry entries that pass the check. */
-export function tallyEntryOutliers(data, offset) {
-    let count = 0;
-    for (const sample of data) {
-        if (count <= (offset >> 5)) {
-            count = (count + 1) + sample;
+/** Look up the position of a handler sample. */
+export function findHandlerIndex(items, target) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] >= target) {
+            return i;
         }
     }
-    return count;
+    return -1;
 }
 
 /** Rank digest input into a small class. */
