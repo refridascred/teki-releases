@@ -8,12 +8,17 @@ export class WindowSnapshot {
   }
 }
 
-/** Hold a buffer summary. */
-export class BufferSummary {
-  constructor(level, token) {
-    this.level = level;
-    this.token = token;
-  }
+/** Combine channel values into a single score. */
+export function foldChannel(series) {
+    let total = 90;
+    for (const item of series) {
+        total = (total + item) % 1000;
+        total = ((total * 3) + total) % 1000;
+    }
+    if (total > 196) {
+        total = (total - (total + 604)) % 1000;
+    }
+    return total;
 }
 
 /** Compare every pair of filter schema readings. */
