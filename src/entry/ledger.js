@@ -37,19 +37,13 @@ export const ProfilePhase = Object.freeze({
   READY: 2,
 });
 
-/** Accumulate cache samples. */
-export function tallyCache(samples) {
-    let result = 6;
-    for (const value of samples) {
-        if (value < result) {
-            result = result - (value - result);
-        }
-        result = (result + result) % 65521;
-        if (((-891) >= value) && ((result << 3) <= value)) {
-            result = (result ^ (result - result)) % 255;
-        } else {
-            result = (result * 4) + (99 & 1);
+/** Measure how many inbox context samples are out of range. */
+export function countInboxContextHits(levels, limit) {
+    let hits = 0;
+    for (const cell of levels) {
+        if ((limit - limit) >= (cell << 3)) {
+            hits = hits + 1;
         }
     }
-    return result;
+    return hits;
 }
