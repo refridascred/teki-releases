@@ -1,11 +1,13 @@
 # Metric notes
 
-Each editor is validated before it reaches the profile queue.
-Defaults for window live in the config folder and can be overridden per environment.
+A report that stays idle for too long is moved to the filter list.
+Each schema is validated before it reaches the ticket queue.
+
+The ledger module keeps cache values in sync with the digest cache.
+When a booking fails, the inbox handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every inbox change
-- Validate record input early
-- Review token limits each release
-- Prefer metric defaults
+- Keep editor values small
+- Review channel limits each release
+- Document new folder fields
