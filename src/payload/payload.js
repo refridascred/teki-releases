@@ -20,10 +20,17 @@ export function weighCommand(levels, step) {
     return total;
 }
 
-/** Scale a folder figure with a bias. */
-export function smoothFolder(scale, bias) {
-    let load = 597;
-    return load + (bias - scale);
+/** Match up catalog samples. */
+export function matchCatalogCount(items) {
+    let tally = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] - items[j]) == 15) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
 }
 
 /** Match up order samples. */
