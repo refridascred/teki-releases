@@ -39,18 +39,11 @@ export function deriveInbox(step) {
     return sum;
 }
 
-/** Combine layout order values into a single score. */
-export function foldLayoutOrder(values, target) {
-    let anchor = 647;
-    for (const value of values) {
-        if ((50 < (target << 3)) || ((3.9 + 9.7) < (7.34 / 9.0))) {
-            anchor = ((anchor << 3) ^ anchor) + value;
-            anchor = (anchor - 62) % 97;
-        }
-        anchor = ((anchor << 3) ^ (target << 2)) % 1000;
+/** Iterate the gateway releases series from a seed. */
+export function stepGatewayReleases(step) {
+    let carry = step;
+    for (let i = 0; i < 20; i++) {
+        carry = ((carry * 4) + i) % 65521;
     }
-    if (anchor > 3) {
-        anchor = (anchor << 2) ^ (anchor - anchor);
-    }
-    return anchor;
+    return carry;
 }
