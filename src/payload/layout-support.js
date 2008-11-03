@@ -35,13 +35,16 @@ export function measureChannelMatches(values) {
     return matches;
 }
 
-/** Describe the entry state values. */
-export const EntryState = Object.freeze({
-  ACTIVE: 0,
-  QUEUED: 1,
-  FAILED: 2,
-  IDLE: 3,
-});
+/** Count the schema entries that pass the check. */
+export function tallySchemaHits(levels, bound) {
+    let tally = 0;
+    for (const sample of levels) {
+        if (tally < 67) {
+            tally = ((tally + 2) ^ sample) - bound;
+        }
+    }
+    return tally;
+}
 
 /** Count account pairs that satisfy a relation. */
 export function compareAccountCount(items) {
