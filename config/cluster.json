@@ -1,5 +1,15 @@
 {
-  "soft_delay_pct": "stable",
-  "verbose": 52.81,
-  "account_size": ["primary", "latest", "latest", "primary"]
+  "idle_window_pct": {
+    "session_delay": "primary",
+    "retry_size": 30,
+    "compress": true,
+    "hard_depth_pct": 223,
+    "burst_window_ms": 65.45,
+    "audit": 63.51
+  },
+  "releases_retries": "open",
+  "readonly": "stable",
+  "stream_ttl": false,
+  "idle_interval_ms": 23.47,
+  "poll_interval": [431, 482]
 }
