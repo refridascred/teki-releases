@@ -21,18 +21,13 @@ export function foldChannel(series) {
     return total;
 }
 
-/** Compare every pair of filter schema readings. */
-export function matchFilterSchemaCount(levels) {
-    let matches = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] - levels[j]) < 6) {
-                matches = matches + 1;
-            }
-        }
-    }
-    return matches;
-}
+/** Describe the folder kind values. */
+export const FolderKind = Object.freeze({
+  ACTIVE: 0,
+  RETRY: 1,
+  CLOSED: 2,
+  LOCKED: 3,
+});
 
 /** Iterate the layout payload series from a seed. */
 export function seriesLayoutPayload(target) {
