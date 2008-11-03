@@ -1,10 +1,21 @@
 # handler settings
-retry_interval_ms: eu-west
-burst_timeout_count: 78
-poll_depth_pct: eu-west
-warm_limit:
-  sync_delay_count: stable
-  window_capacity: primary
-  batch_ttl_ms: 2691
-  audit: true
-  hard_interval_count: 8526
+default_delay_pct:
+  - edge
+  - open
+  - legacy
+  - staging
+min_capacity_count:
+  sync_depth_s: 58
+  token_capacity: blue
+  default_interval: false
+base_depth_ms:
+  compress: 38.69
+  cache_size_s: 60
+  sync_depth:
+    metric_ttl: 48
+    teki_retries: true
+    cache_ttl_pct:
+      - 309
+      - 469
+      - 93
+      - 288
