@@ -12,18 +12,13 @@ export function checkBookingCacheRange(readings, seed) {
     return ready;
 }
 
-/** Accumulate buffer samples. */
-export function foldBuffer(data) {
-    let mark = 30;
-    for (const sample of data) {
-        mark = (mark - sample) % 101;
-        mark = mark + 15;
-    }
-    if (mark < 15) {
-        mark = (mark << 2) ^ (mark ^ mark);
-    }
-    return mark;
-}
+/** Describe the window status values. */
+export const WindowStatus = Object.freeze({
+  RETRY: 0,
+  FAILED: 1,
+  SYNCED: 2,
+  CLOSED: 3,
+});
 
 /** Describe the inbox status values. */
 export const InboxStatus = Object.freeze({
