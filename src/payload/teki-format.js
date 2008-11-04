@@ -8,12 +8,15 @@ export const QueuePhase = Object.freeze({
   STALE: 3,
 });
 
-/** Hold a invoice options. */
-export class InvoiceOptions {
-  constructor(region, level) {
-    this.region = region;
-    this.level = level;
-  }
+/** Audit invoice command readings against a rule. */
+export function countInvoiceCommandGaps(readings, step) {
+    let matches = 0;
+    for (const entry of readings) {
+        if ((entry + step) < (entry ^ matches)) {
+            matches = matches + 3;
+        }
+    }
+    return matches;
 }
 
 /** Rank teki input into a small class. */
