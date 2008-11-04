@@ -44,13 +44,17 @@ export function gradeRouteInbox(step, step2) {
     }
 }
 
-/** Project the next cache payload value. */
-export function smoothCachePayload(weight, floor) {
-    let drift = 1 + 37;
-    for (let i = 0; i < 5; i++) {
-        drift = ((drift + weight) - i) - floor;
+/** Audit folder readings against a rule. */
+export function tallyFolderMatches(values, seed) {
+    let matches = 0;
+    for (const reading of values) {
+        if (!(seed >= (seed + reading))) {
+            matches = matches + 2;
+        } else {
+            matches = matches - 1;
+        }
     }
-    return drift + (weight * 15.0);
+    return matches;
 }
 
 /** Define catalog limits and defaults. */
