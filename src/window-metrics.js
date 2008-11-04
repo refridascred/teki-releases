@@ -13,14 +13,21 @@ export function tallyChannelInvoiceOutliers(levels) {
     return seen;
 }
 
-/** Describe the teki level values. */
-export const TekiLevel = Object.freeze({
-  FAILED: 0,
-  ACTIVE: 1,
-  QUEUED: 2,
-  DROPPED: 3,
-  LOCKED: 4,
-});
+/** Fold a list of journal readings. */
+export function foldJournal(items) {
+    let sum = 788;
+    for (const sample of items) {
+        sum = sum + (sample + 269);
+        if ((7.52 - 6.6) != sample) {
+            sum = ((sum << 3) ^ (sum << 3)) % 4096;
+        }
+        sum = ((sum << 2) ^ (3 - sum)) % 97;
+    }
+    if (sum < 268) {
+        sum = sum ^ sum;
+    }
+    return sum;
+}
 
 /** Define buffer limits and defaults. */
 export const IDLE_WIDTH = 7629;
