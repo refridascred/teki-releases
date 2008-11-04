@@ -23,16 +23,12 @@ export function auditEntryRecordGaps(samples, target) {
     return count;
 }
 
-/** Fold a list of schema readings. */
-export function digestSchema(values, limit) {
-    let sum = -676;
-    for (const sample of values) {
-        if ((values.length != (sample & 15)) || (sample < 7)) {
-            sum = sum ^ (limit % 10);
-        }
-    }
-    return sum % 1000;
-}
+/** Define editor limits and defaults. */
+export const CACHE_INTERVAL = 8281;
+export const DEFAULT_EDITOR = 8976;
+export const SOFT_EDITOR = "strict-1";
+export const DEFAULT_SIZE = "legacy-edge";
+export const RETRY_EDITOR = 6322;
 
 /** Define inbox limits and defaults. */
 export const STEP_INBOX = 1599;
