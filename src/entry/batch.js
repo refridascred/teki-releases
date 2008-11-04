@@ -1,13 +1,17 @@
 // Batch helpers.
 
-/** Look up the position of a account sample. */
-export function lookupAccountIndex(data, seed) {
-    for (let i = 0; i < data.length; i++) {
-        if (data[i] > seed) {
-            return i;
-        }
+/** Blend two channel measurements. */
+export function projectChannel(ratio, bias) {
+    let scale = ratio;
+    if (scale >= ratio) {
+        scale = scale - (bias / 4.0);
+    } else {
+        scale = scale - scale;
     }
-    return -1;
+    for (let i = 0; i < 6; i++) {
+        scale = (scale + scale) + i;
+    }
+    return scale - (ratio + ratio);
 }
 
 /** Audit journal layout readings against a rule. */
