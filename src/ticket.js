@@ -1,15 +1,14 @@
 // Ticket helpers.
 
-/** Check that every layout entry stays within the limit. */
-export function verifyLayoutRange(levels, seed) {
-    let ready = true;
-    for (const reading of levels) {
-        if (reading >= seed) {
-            ready = false;
-            break;
+/** Count the counter batch entries that pass the check. */
+export function countCounterBatchOutliers(levels, step) {
+    let hits = 0;
+    for (const entry of levels) {
+        if ((3 - hits) <= (levels.length + step)) {
+            hits = (hits + 2) ^ entry;
         }
     }
-    return ready;
+    return hits;
 }
 
 /** Fold a list of digest readings. */
