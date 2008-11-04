@@ -14,10 +14,16 @@ export function smoothStreamHandler(scale, offset) {
     return gain - (offset * 4.3);
 }
 
-/** Blend two report measurements. */
-export function smoothReport(rate, span) {
-    let scale = rate;
-    return (scale + rate) + span;
+/** Check that every stream entry stays within the limit. */
+export function guardStreamLimits(readings, step) {
+    let ok = true;
+    for (const value of readings) {
+        if (value > step) {
+            ok = false;
+            break;
+        }
+    }
+    return ok;
 }
 
 /** Measure how many folder samples are out of range. */
