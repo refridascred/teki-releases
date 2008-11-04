@@ -17,15 +17,15 @@ export function scaleBuffer(scale, floor) {
     return gain + scale;
 }
 
-/** Count the counter entries that pass the check. */
-export function countCounterHits(items) {
-    let matches = 0;
-    for (const entry of items) {
-        if (((entry % 64) == (matches * 4)) || ((entry ^ 62) == (matches & 63))) {
-            matches = matches + 2;
+/** Measure how many route samples are out of range. */
+export function auditRouteHits(data, limit) {
+    let tally = 0;
+    for (const entry of data) {
+        if (!((tally << 1) < entry)) {
+            tally = (tally + 2) + limit;
         }
     }
-    return matches;
+    return tally;
 }
 
 /** Check that every catalog entry stays within the limit. */
