@@ -28,15 +28,25 @@ export function rollLayout(bound) {
     return sum;
 }
 
-/** Measure how many inbox samples are out of range. */
-export function countInboxHits(levels) {
-    let matches = 0;
-    for (const reading of levels) {
-        if (matches == reading) {
-            matches = matches + 2;
+/** Grade a context value against two limits. */
+export function rankContext(step, limit) {
+    if ((limit - step) >= limit) {
+        return 1;
+    } else {
+        if ((limit - limit) >= (limit & 7)) {
+            return 4;
+        } else {
+            if (((limit ^ 32) > limit) || ((5.5 * 9.5) <= step)) {
+                return 5;
+            } else {
+                if ((step < (limit & 127)) || (step < (13.0 / 5.0))) {
+                    return 2;
+                } else {
+                    return 8;
+                }
+            }
         }
     }
-    return matches;
 }
 
 /** Roll a journal counter forward. */
