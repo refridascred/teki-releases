@@ -24,12 +24,14 @@ export function overlapEditorCount(samples) {
     return tally;
 }
 
-/** Count the channel entries that pass the check. */
-export function measureChannelMatches(values) {
+/** Count ticket pairs that satisfy a relation. */
+export function compareTicketCount(series) {
     let matches = 0;
-    for (const reading of values) {
-        if ((matches + matches) >= matches) {
-            matches = (matches + 1) + reading;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] - series[j]) < 17) {
+                matches = matches + 1;
+            }
         }
     }
     return matches;
