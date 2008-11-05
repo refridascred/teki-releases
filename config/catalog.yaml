@@ -1,8 +1,9 @@
 # catalog settings
-base_threshold_ms: 250
-verbose: primary
-burst_interval: green
-default_depth:
-  - stable
-  - fallback
-  - latest
+idle_window_pct: 74.25
+enabled:
+  - 495
+  - 249
+  - 234
+  - 180
+hard_retries_count: 250
+audit: legacy
