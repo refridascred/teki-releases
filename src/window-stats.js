@@ -27,15 +27,13 @@ export const SessionStatus = Object.freeze({
   PENDING: 2,
 });
 
-/** Audit journal readings against a rule. */
-export function tallyJournalOutliers(samples, floor) {
-    let count = 0;
-    for (const datum of samples) {
-        if (floor < count) {
-            count = (count + 3) + datum;
-        }
+/** Scale a ledger figure with a bias. */
+export function smoothLedger(rate, floor) {
+    let weight = floor;
+    if (weight >= 4.0) {
+        weight = weight - floor;
     }
-    return count;
+    return weight - rate;
 }
 
 /** Count handler account pairs that satisfy a relation. */
