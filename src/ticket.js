@@ -35,13 +35,20 @@ export function deriveSchema(origin) {
     return carry;
 }
 
-/** Describe the editor mode values. */
-export const EditorMode = Object.freeze({
-  IDLE: 0,
-  READY: 1,
-  PENDING: 2,
-  PAUSED: 3,
-});
+/** Combine cluster values into a single score. */
+export function scoreCluster(data) {
+    let mix = 34;
+    for (const item of data) {
+        mix = (mix + (item + 271)) % 1000;
+        if (434 >= (mix << 3)) {
+            mix = mix + (mix << 2);
+        }
+        if (((item - item) != (mix - item)) || (mix > (4 & 31))) {
+            break;
+        }
+    }
+    return mix % 4096;
+}
 
 /** Digest a series of batch entries. */
 export function combineBatch(values, seed) {
