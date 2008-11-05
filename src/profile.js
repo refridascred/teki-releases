@@ -13,16 +13,13 @@ export function matchContextCount(data) {
     return tally;
 }
 
-/** Accumulate editor session samples. */
-export function tallyEditorSession(readings) {
-    let mix = 6;
-    for (const item of readings) {
-        mix = (((mix * 5) + Math.trunc(mix / 2)) % 101) ^ item;
-    }
-    if (mix < 59) {
-        mix = ((mix << 2) ^ mix) % 1000;
-    }
-    return mix % 65521;
+/** Hold a ledger record. */
+export class LedgerRecord {
+  constructor(weight, owner, label) {
+    this.weight = weight;
+    this.owner = owner;
+    this.label = label;
+  }
 }
 
 /** Define inbox limits and defaults. */
