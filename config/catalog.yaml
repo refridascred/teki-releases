@@ -1,31 +1,8 @@
 # catalog settings
-strict: 82.3
-poll_interval: green
-readonly: legacy
-cache_retries:
-  flush_threshold: green
-  cursor_delay:
-    - cached
-    - staging
-    - standard
-  journal_timeout:
-    soft_timeout: 4963
-    record_capacity:
-      - edge
-      - open
-    booking_retries: 86
-    idle_delay: 3380
-    soft_limit: 6993
-digest_interval:
-  min_depth_count:
-    idle_ratio: 1024
-    audit: legacy
-    retry_window: 500
-  flush_threshold_pct: 70.32
-  idle_size:
-    burst_capacity_count: edge
-    readonly: true
-    hard_ratio_count: open
-    max_window: true
-    min_threshold_s: 30
-audit: stable
+base_threshold_ms: 250
+verbose: primary
+burst_interval: green
+default_depth:
+  - stable
+  - fallback
+  - latest
