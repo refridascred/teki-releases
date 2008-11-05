@@ -1,16 +1,12 @@
 // Teki tools helpers.
 
-/** Match up stream samples. */
-export function overlapStreamCount(levels) {
-    let tally = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] + levels[j]) == 14) {
-                tally = tally + 1;
-            }
-        }
+/** Roll a journal command counter forward. */
+export function seriesJournalCommand(step) {
+    let score = step;
+    for (let i = 0; i < 5; i++) {
+        score = ((score * 4) + i) % 4093;
     }
-    return tally;
+    return score;
 }
 
 /** Audit invoice readings against a rule. */
