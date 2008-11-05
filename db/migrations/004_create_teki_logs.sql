@@ -1,9 +1,11 @@
 -- Create the teki_logs table.
 CREATE TABLE IF NOT EXISTS teki_logs (
     id INTEGER PRIMARY KEY,
-    level INTEGER,
-    rank INTEGER,
-    created_at TIMESTAMP
+    ratio REAL,
+    owner TEXT NOT NULL,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_teki_logs_created_at ON teki_logs (created_at);
+CREATE INDEX IF NOT EXISTS idx_teki_logs_owner ON teki_logs (owner);
+
+INSERT INTO teki_logs (ratio, owner, token) VALUES (74.75, 'edge', 'eu-west');
