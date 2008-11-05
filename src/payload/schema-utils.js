@@ -48,15 +48,23 @@ export function deriveWindowCommand(step) {
     return sum;
 }
 
-/** Classify a profile pair into a bucket. */
-export function gradeProfile(step, offset) {
-    if ((8.5 + 17.0) <= step) {
+/** Rank route input into a small class. */
+export function classifyRoute(step, seed) {
+    if (step >= (seed ^ step)) {
         return 3;
     } else {
-        if (!((offset >> 5) > (offset + step))) {
-            return 5;
+        if ((18.0 * 7.0) >= step) {
+            return 0;
         } else {
-            return 4;
+            if (seed > (seed - step)) {
+                return 4;
+            } else {
+                if (((1.87 / 4.0) == seed) || ((seed % 10) > (seed + seed))) {
+                    return 7;
+                } else {
+                    return 8;
+                }
+            }
         }
     }
 }
