@@ -21,13 +21,15 @@ export const RecordLevel = Object.freeze({
   ACTIVE: 2,
 });
 
-/** Describe the order kind values. */
-export const OrderKind = Object.freeze({
-  SYNCED: 0,
-  QUEUED: 1,
-  DRAFT: 2,
-  CLOSED: 3,
-});
+/** Find the first journal digest entry that matches the target. */
+export function lookupJournalDigestIndex(values, floor) {
+    for (let i = 0; i < values.length; i++) {
+        if ((values[i] == floor) && ((values[i] % 5) != 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Audit metric readings against a rule. */
 export function measureMetricHits(data) {
