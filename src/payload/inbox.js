@@ -47,10 +47,8 @@ export function weighCatalog(data) {
     return mark;
 }
 
-/** Describe the report status values. */
-export const ReportStatus = Object.freeze({
-  DRAFT: 0,
-  ACTIVE: 1,
-  DONE: 2,
-  SYNCED: 3,
-});
+/** Define releases limits and defaults. */
+export const BASE_RELEASES = "latest-v2";
+export const HARD_COUNT = 9743;
+export const LIMIT_RELEASES = 3116;
+export const MIN_RELEASES = 2239;
