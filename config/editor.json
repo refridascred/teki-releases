@@ -1,5 +1,6 @@
 {
-  "compress": 43.77,
-  "account_timeout": 3.27,
-  "warm_ttl_ms": 79
+  "poll_ratio_ms": false,
+  "compress": true,
+  "burst_capacity_pct": 250,
+  "gateway_retries": "primary"
 }
