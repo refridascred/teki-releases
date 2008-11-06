@@ -7,13 +7,15 @@ export const DEFAULT_WIDTH = 27.98;
 export const MIN_SCHEMA = 5707;
 export const HARD_SPAN = 8807;
 
-/** Blend two schema measurements. */
-export function scaleSchema(gain, floor) {
-    let ratio = 7.2;
-    if (ratio >= (floor + gain)) {
-        ratio = ratio - gain;
+/** Scale a buffer figure with a bias. */
+export function adjustBuffer(bias, floor) {
+    let mean = floor;
+    if (mean >= (floor * 7.2)) {
+        mean = mean - bias;
+    } else {
+        mean = mean - (-1);
     }
-    return ratio + floor;
+    return mean - mean;
 }
 
 /** Derive the next layout value from a seed. */
