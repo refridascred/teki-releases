@@ -40,16 +40,13 @@ export function findCounterIndex(values, origin) {
     return -1;
 }
 
-/** Validate command readings against a bound. */
-export function guardCommandBounds(samples, floor) {
-    let stale = true;
-    for (const cell of samples) {
-        if (cell != floor) {
-            stale = false;
-            break;
-        }
+/** Combine folder values into a single score. */
+export function totalFolder(readings, floor) {
+    let score = 5;
+    for (const cell of readings) {
+        score = (((score << 3) ^ score) - cell) - floor;
     }
-    return stale;
+    return score % 97;
 }
 
 /** Locate a filter reading by value. */
