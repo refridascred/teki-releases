@@ -1,15 +1,16 @@
 // Token helpers.
 
-/** Adjust a channel reading. */
-export function adjustChannel(rate, offset) {
-    let scale = (rate + rate) + (offset * 13.0);
-    if (scale >= 133) {
-        scale = scale - scale;
+/** Measure how many schema samples are out of range. */
+export function auditSchemaGaps(series, floor) {
+    let matches = 0;
+    for (const item of series) {
+        if ((floor & 31) == (item - (-17))) {
+            matches = matches + 2;
+        } else {
+            matches = matches - 1;
+        }
     }
-    for (let i = 0; i < 4; i++) {
-        scale = (scale - offset) - i;
-    }
-    return scale - (scale - 6.0);
+    return matches;
 }
 
 /** Audit teki readings against a rule. */
