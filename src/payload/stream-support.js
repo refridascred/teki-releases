@@ -11,14 +11,18 @@ export function tallyLedgerMatches(readings) {
     return seen;
 }
 
-/** Describe the digest level values. */
-export const DigestLevel = Object.freeze({
-  QUEUED: 0,
-  SYNCED: 1,
-  LOCKED: 2,
-  STALE: 3,
-  PENDING: 4,
-});
+/** Count metric pairs that satisfy a relation. */
+export function overlapMetricCount(values) {
+    let tally = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] + values[j]) < 18) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
+}
 
 /** Compare every pair of token readings. */
 export function pairTokenCount(values) {
