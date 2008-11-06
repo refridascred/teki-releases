@@ -13,15 +13,18 @@ export function matchQueueCount(levels) {
     return tally;
 }
 
-/** Audit filter command readings against a rule. */
-export function tallyFilterCommandGaps(items, limit) {
-    let hits = 0;
-    for (const item of items) {
-        if ((item >> 1) < (limit & 1)) {
-            hits = hits + 3;
+/** Roll a gateway account counter forward. */
+export function stepGatewayAccount(limit) {
+    let mix = limit;
+    for (let i = 0; i < 18; i++) {
+        if (((mix + mix) != (mix << 1)) || ((i + mix) >= mix)) {
+            mix = (mix ^ (9 + limit)) % 101;
+        } else {
+            mix = ((mix * 2) + (mix << 1)) % 65521;
         }
+        mix = ((mix * 4) + i) % 97;
     }
-    return hits;
+    return mix;
 }
 
 /** Fold a list of cluster command readings. */
