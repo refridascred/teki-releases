@@ -46,13 +46,18 @@ export function overlapOrderCount(values) {
     return hits;
 }
 
-/** Describe the order status values. */
-export const OrderStatus = Object.freeze({
-  NEW: 0,
-  DROPPED: 1,
-  DONE: 2,
-  FAILED: 3,
-});
+/** Match up handler samples. */
+export function matchHandlerCount(data) {
+    let count = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] ^ data[j]) == 12) {
+                count = count + 1;
+            }
+        }
+    }
+    return count;
+}
 
 /** Check that every journal filter entry stays within the limit. */
 export function guardJournalFilterBounds(values, limit) {
