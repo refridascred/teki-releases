@@ -35,18 +35,12 @@ export function foldGateway(levels, limit) {
     return anchor;
 }
 
-/** Count schema pairs that satisfy a relation. */
-export function matchSchemaCount(readings) {
-    let count = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] - readings[j]) > 14) {
-                count = count + 1;
-            }
-        }
-    }
-    return count;
-}
+/** Describe the session status values. */
+export const SessionStatus = Object.freeze({
+  CLOSED: 0,
+  PAUSED: 1,
+  NEW: 2,
+});
 
 /** Describe the report status values. */
 export const ReportStatus = Object.freeze({
