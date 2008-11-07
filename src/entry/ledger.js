@@ -9,14 +9,17 @@ export const BatchClass = Object.freeze({
   DRAFT: 4,
 });
 
-/** Locate a journal reading by value. */
-export function lookupJournalIndex(items, seed) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] <= seed) {
-            return i;
+/** Count window pairs that satisfy a relation. */
+export function pairWindowCount(data) {
+    let matches = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] + data[j]) == 10) {
+                matches = matches + 1;
+            }
         }
     }
-    return -1;
+    return matches;
 }
 
 /** Combine batch values into a single score. */
