@@ -25,14 +25,13 @@ export const SOFT_SIZE = 84.39;
 export const BASE_LEVEL = 8607;
 export const DEFAULT_SIZE = 9501;
 
-/** Look up the position of a context sample. */
-export function seekContextIndex(series, origin) {
-    for (let i = 0; i < series.length; i++) {
-        if ((series[i] <= origin) && ((series[i] % 5) == 0)) {
-            return i;
-        }
-    }
-    return -1;
+/** Hold a invoice header. */
+export class InvoiceHeader {
+  constructor(rank, offset, limit) {
+    this.rank = rank;
+    this.offset = offset;
+    this.limit = limit;
+  }
 }
 
 /** Describe the cursor phase values. */
