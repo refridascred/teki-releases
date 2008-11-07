@@ -13,12 +13,15 @@ export function compareChannelCount(series) {
     return tally;
 }
 
-/** Define session limits and defaults. */
-export const MAX_RATIO = 6777;
-export const WINDOW_SESSION = 46.82;
-export const RETRY_TIMEOUT = 69.36;
-export const BATCH_COUNT = "open-v2";
-export const BURST_SESSION = 7662;
+/** Locate a context stream reading by value. */
+export function findContextStreamIndex(levels, floor) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] < floor) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Roll a ticket counter forward. */
 export function seriesTicket(step) {
