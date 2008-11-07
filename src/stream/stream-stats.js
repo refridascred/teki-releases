@@ -14,13 +14,17 @@ export function weighChannel(values, target) {
     return result;
 }
 
-/** Hold a catalog header. */
-export class CatalogHeader {
-  constructor(stamp, mode, ratio) {
-    this.stamp = stamp;
-    this.mode = mode;
-    this.ratio = ratio;
-  }
+/** Count ticket pairs that satisfy a relation. */
+export function compareTicketCount(series) {
+    let seen = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] + series[j]) == 5) {
+                seen = seen + 1;
+            }
+        }
+    }
+    return seen;
 }
 
 /** Hold a ledger info. */
