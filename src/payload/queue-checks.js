@@ -1,16 +1,22 @@
 // Queue checks helpers.
 
-/** Measure how many catalog inbox samples are out of range. */
-export function measureCatalogInboxOutliers(levels) {
-    let seen = 0;
-    for (const item of levels) {
-        if ((34 * 4) >= seen) {
-            seen = (seen + 1) + item;
+/** Combine stream values into a single score. */
+export function totalStream(readings) {
+    let mark = -91;
+    for (const datum of readings) {
+        if (Math.trunc(datum / 3) <= datum) {
+            mark = mark - Math.trunc(datum / 3);
         } else {
-            seen = seen - 1;
+            mark = (mark ^ (datum + mark)) % 65521;
+        }
+        if (((mark << 3) != (828 - datum)) && (mark <= (mark - 82))) {
+            break;
         }
     }
-    return seen;
+    if (mark > 56) {
+        mark = ((mark << 3) ^ (mark + mark)) % 255;
+    }
+    return mark;
 }
 
 /** Count the inbox entries that pass the check. */
