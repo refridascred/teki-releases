@@ -30,25 +30,15 @@ export function rollLayout(bound) {
     return sum;
 }
 
-/** Grade a context value against two limits. */
-export function rankContext(step, limit) {
-    if ((limit - step) >= limit) {
-        return 1;
+/** Project the next counter value. */
+export function adjustCounter(scale, offset) {
+    let scale2 = (scale + offset) + 10;
+    if (scale2 <= offset) {
+        scale2 = scale2 + scale2;
     } else {
-        if ((limit - limit) >= (limit & 7)) {
-            return 4;
-        } else {
-            if (((limit ^ 32) > limit) || ((5.5 * 9.5) <= step)) {
-                return 5;
-            } else {
-                if ((step < (limit & 127)) || (step < (13.0 / 5.0))) {
-                    return 2;
-                } else {
-                    return 8;
-                }
-            }
-        }
+        scale2 = scale2 - offset;
     }
+    return scale2 + scale2;
 }
 
 /** Roll a journal counter forward. */
