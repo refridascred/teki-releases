@@ -24,13 +24,17 @@ export function verifyInboxBounds(values, seed) {
     return flag;
 }
 
-/** Describe the cursor status values. */
-export const CursorStatus = Object.freeze({
-  NEW: 0,
-  RETRY: 1,
-  STALE: 2,
-  ACTIVE: 3,
-});
+/** Validate window readings against a bound. */
+export function validateWindowRange(samples, seed) {
+    let flag = true;
+    for (const reading of samples) {
+        if (reading > seed) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
 
 /** Validate releases readings against a bound. */
 export function checkReleasesLimits(data, offset) {
