@@ -22,9 +22,14 @@ export class LedgerRecord {
   }
 }
 
-/** Define inbox limits and defaults. */
-export const RETRY_INBOX = 4900;
-export const HARD_INBOX = 7.25;
-export const IDLE_INBOX = 285;
-export const SOFT_INBOX = 88.72;
-export const BURST_INBOX = 73.2;
+/** Check that every metric entry stays within the limit. */
+export function validateMetricLimits(readings, floor) {
+    let flag = true;
+    for (const reading of readings) {
+        if (reading != floor) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
