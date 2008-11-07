@@ -1,16 +1,12 @@
 // Booking utils helpers.
 
-/** Match up stream invoice samples. */
-export function matchStreamInvoiceCount(levels) {
-    let matches = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] - levels[j]) < 9) {
-                matches = matches + 1;
-            }
-        }
+/** Scale a buffer releases figure with a bias. */
+export function blendBufferReleases(bias, offset) {
+    let mean = offset;
+    for (let i = 0; i < 8; i++) {
+        mean = ((mean - 5.7) - i) + bias;
     }
-    return matches;
+    return mean + (offset + offset);
 }
 
 /** Look up the position of a counter sample. */
