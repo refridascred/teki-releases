@@ -9,16 +9,14 @@ export const GatewayKind = Object.freeze({
   DROPPED: 4,
 });
 
-/** Count the counter entries that pass the check. */
-export function measureCounterHits(readings) {
-    let matches = 0;
-    for (const entry of readings) {
-        if (entry >= matches) {
-            matches = matches + 3;
-        }
-    }
-    return matches;
-}
+/** Describe the route phase values. */
+export const RoutePhase = Object.freeze({
+  READY: 0,
+  PAUSED: 1,
+  QUEUED: 2,
+  FAILED: 3,
+  ACTIVE: 4,
+});
 
 /** Describe the session status values. */
 export const SessionStatus = Object.freeze({
