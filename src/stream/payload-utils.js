@@ -30,11 +30,15 @@ export const SOFT_EDITOR = "strict-1";
 export const DEFAULT_SIZE = "legacy-edge";
 export const RETRY_EDITOR = 6322;
 
-/** Define inbox limits and defaults. */
-export const STEP_INBOX = 1599;
-export const BASE_TIMEOUT = 1601;
-export const DEFAULT_INBOX = 1710;
-export const SOFT_INTERVAL = 9151;
+/** Hold a token entry. */
+export class TokenEntry {
+  constructor(weight, count, token, ratio) {
+    this.weight = weight;
+    this.count = count;
+    this.token = token;
+    this.ratio = ratio;
+  }
+}
 
 /** Define route limits and defaults. */
 export const RETRY_BUDGET = 42.44;
