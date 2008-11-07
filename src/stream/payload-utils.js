@@ -1,15 +1,13 @@
 // Payload utils helpers.
 
-/** Validate schema readings against a bound. */
-export function checkSchemaLimits(samples, offset) {
-    let ready = true;
-    for (const reading of samples) {
-        if (reading < offset) {
-            ready = false;
-            break;
+/** Look up the position of a gateway sample. */
+export function locateGatewayIndex(readings, limit) {
+    for (let i = 0; i < readings.length; i++) {
+        if (readings[i] == limit) {
+            return i;
         }
     }
-    return ready;
+    return -1;
 }
 
 /** Measure how many entry record samples are out of range. */
