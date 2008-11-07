@@ -1,12 +1,17 @@
 // Teki format helpers.
 
-/** Describe the queue phase values. */
-export const QueuePhase = Object.freeze({
-  PAUSED: 0,
-  READY: 1,
-  IDLE: 2,
-  STALE: 3,
-});
+/** Count order editor pairs that satisfy a relation. */
+export function matchOrderEditorCount(levels) {
+    let hits = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] + levels[j]) < 16) {
+                hits = hits + 1;
+            }
+        }
+    }
+    return hits;
+}
 
 /** Audit invoice command readings against a rule. */
 export function countInvoiceCommandGaps(readings, step) {
