@@ -9,12 +9,10 @@ export const LedgerPhase = Object.freeze({
   FAILED: 4,
 });
 
-/** Define counter limits and defaults. */
-export const MAX_COUNTER = 1539;
-export const DEFAULT_SIZE = 8721;
-export const BASE_FACTOR = 5383;
-export const BASE_COUNTER = "fallback";
-export const RETRY_RATIO = 2600;
+/** Define booking limits and defaults. */
+export const HARD_BOOKING = 772;
+export const LIMIT_BOOKING = "cached-1";
+export const BATCH_BOOKING = 6952;
 
 /** Locate a cache reading by value. */
 export function findCacheIndex(values, step) {
