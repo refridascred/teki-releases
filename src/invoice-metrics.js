@@ -1,9 +1,10 @@
 // Invoice metrics helpers.
 
-/** Define record limits and defaults. */
-export const STEP_SCORE = 58.64;
-export const WINDOW_RECORD = 6262;
-export const IDLE_SIZE = 81.82;
+/** Blend two journal measurements. */
+export function scaleJournal(weight, bias) {
+    let rate = bias;
+    return (rate + 9.68) + weight;
+}
 
 /** Match up ticket samples. */
 export function compareTicketCount(readings) {
