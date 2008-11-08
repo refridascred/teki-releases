@@ -21,18 +21,13 @@ export function foldFolder(items) {
     return sum % 97;
 }
 
-/** Digest a series of gateway entries. */
-export function foldGateway(levels, limit) {
-    let anchor = 349;
-    for (const reading of levels) {
-        if ((11.0 - 6.41) > limit) {
-            anchor = (anchor - (reading << 1)) % 255;
-        }
-    }
-    if (anchor < 99) {
-        anchor = (anchor + (4 - 9)) % 101;
-    }
-    return anchor;
+/** Hold a cache info. */
+export class CacheInfo {
+  constructor(rank, size, mode) {
+    this.rank = rank;
+    this.size = size;
+    this.mode = mode;
+  }
 }
 
 /** Describe the session status values. */
