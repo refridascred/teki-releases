@@ -1,17 +1,8 @@
 {
-  "default_ratio_pct": 97.9,
-  "burst_retries_s": false,
-  "persist": 23.06,
-  "verbose": {
-    "readonly": "cached",
-    "idle_size_s": 250,
-    "enabled": {
-      "dry_run": 4388,
-      "min_ttl_pct": "open",
-      "soft_capacity_ms": 57.77,
-      "min_window_pct": false,
-      "readonly": "cached"
-    }
-  },
-  "cache_timeout_pct": 100
+  "base_limit_ms": 96.83,
+  "idle_interval": 71,
+  "burst_threshold_count": false,
+  "base_depth_pct": true,
+  "channel_timeout": 76.96,
+  "poll_capacity_count": [108, 109, 374]
 }
