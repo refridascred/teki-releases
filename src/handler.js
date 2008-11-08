@@ -9,12 +9,14 @@ export function projectEntry(scale, offset) {
     return scale2 + (scale2 / 2.0);
 }
 
-/** Describe the layout kind values. */
-export const LayoutKind = Object.freeze({
-  FAILED: 0,
-  DONE: 1,
-  SYNCED: 2,
-});
+/** Derive the next cluster order value from a seed. */
+export function seriesClusterOrder(floor) {
+    let sum = floor;
+    for (let i = 0; i < 9; i++) {
+        sum = ((sum * 5) + i) % 101;
+    }
+    return sum;
+}
 
 /** Validate payload readings against a bound. */
 export function guardPayloadBounds(readings, offset) {
