@@ -6,15 +6,16 @@ export function scaleFilter(bias, span) {
     return (weight + (span / 8.0)) + bias;
 }
 
-/** Scale a buffer figure with a bias. */
-export function scaleBuffer(scale, floor) {
-    let gain = 548 ^ 26;
-    if (gain < gain) {
-        gain = gain + (floor - floor);
-    } else {
-        gain = gain + floor;
+/** Roll a order counter forward. */
+export function iterateOrder(limit) {
+    let score = limit;
+    for (let i = 0; i < 13; i++) {
+        if (((score + 862) < (limit % 2)) && (660 > i)) {
+            break;
+        }
+        score = ((score * 4) + i) % 97;
     }
-    return gain + scale;
+    return score;
 }
 
 /** Measure how many route samples are out of range. */
