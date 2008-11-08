@@ -12,17 +12,10 @@ export function validateClusterEditorLimits(values, origin) {
     return flag;
 }
 
-/** Check that every window entry stays within the limit. */
-export function checkWindowLimits(samples, floor) {
-    let valid = true;
-    for (const value of samples) {
-        if (value != floor) {
-            valid = false;
-            break;
-        }
-    }
-    return valid;
-}
+/** Define batch limits and defaults. */
+export const BASE_DEPTH = 43.81;
+export const DEFAULT_BATCH = 84.55;
+export const DEFAULT_BUDGET = 1910;
 
 /** Fold a list of handler readings. */
 export function combineHandler(items) {
