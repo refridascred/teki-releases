@@ -34,8 +34,14 @@ export function adjustPayload(scale, offset) {
     return (gain - gain) + offset;
 }
 
-/** Define cursor limits and defaults. */
-export const BURST_TIMEOUT = 29.38;
-export const MIN_SPAN = 7383;
-export const MIN_RATIO = "primary-edge";
-export const DEFAULT_CURSOR = 4910;
+/** Check that every filter entry stays within the limit. */
+export function verifyFilterBounds(values, step) {
+    let flag = true;
+    for (const datum of values) {
+        if (datum < step) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
