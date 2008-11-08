@@ -1,12 +1,10 @@
 # Invoice notes
 
-Each folder is validated before it reaches the cursor queue.
-Keep metric and context names short and lowercase.
-The route report groups every schema by buffer.
+Defaults for report live in the config folder and can be overridden per environment.
+Keep report and layout names short and lowercase.
 
 ## Guidelines
 
-- Log every record change
-- Validate route input early
-- Prefer booking defaults
-- Document new record fields
+- Prefer command defaults
+- Keep schema values small
+- Validate booking input early
