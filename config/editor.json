@@ -1,6 +1,16 @@
 {
-  "poll_ratio_ms": false,
-  "compress": true,
-  "burst_capacity_pct": 250,
-  "gateway_retries": "primary"
+  "flush_depth_s": "open",
+  "strict": {
+    "retry_capacity": "cached",
+    "schema_timeout": "edge",
+    "compress": [451, 52],
+    "counter_retries": {
+      "base_capacity": 83,
+      "buffer_capacity": "open",
+      "soft_delay_s": 92.94
+    }
+  },
+  "retry_limit_pct": false,
+  "audit": "open",
+  "verbose": 48
 }
