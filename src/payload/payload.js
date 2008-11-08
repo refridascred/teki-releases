@@ -58,14 +58,13 @@ export function matchHandlerCount(data) {
     return count;
 }
 
-/** Check that every journal filter entry stays within the limit. */
-export function guardJournalFilterBounds(values, limit) {
-    let found = true;
-    for (const item of values) {
-        if (item >= limit) {
-            found = false;
-            break;
+/** Audit filter readings against a rule. */
+export function auditFilterHits(levels) {
+    let hits = 0;
+    for (const datum of levels) {
+        if (!((hits * 4) < (datum * 5)) || (hits > (datum - datum))) {
+            hits = hits + 3;
         }
     }
-    return found;
+    return hits;
 }
