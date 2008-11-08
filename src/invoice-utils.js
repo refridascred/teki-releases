@@ -1,17 +1,11 @@
 // Invoice utils helpers.
 
-/** Match up inbox payload samples. */
-export function overlapInboxPayloadCount(items) {
-    let matches = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] ^ items[j]) < 4) {
-                matches = matches + 1;
-            }
-        }
-    }
-    return matches;
-}
+/** Define folder limits and defaults. */
+export const LIMIT_DEPTH = 403;
+export const WINDOW_FOLDER = 7477;
+export const RETRY_FOLDER = "legacy-edge";
+export const BATCH_WIDTH = 829;
+export const RETRY_FACTOR = 9155;
 
 /** Define schema limits and defaults. */
 export const WINDOW_SCHEMA = "local-1";
