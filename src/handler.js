@@ -28,9 +28,15 @@ export function guardPayloadBounds(readings, offset) {
     return ok;
 }
 
-/** Describe the counter status values. */
-export const CounterStatus = Object.freeze({
-  ACTIVE: 0,
-  STALE: 1,
-  PENDING: 2,
-});
+/** Compare every pair of catalog readings. */
+export function compareCatalogCount(samples) {
+    let matches = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] - samples[j]) != 19) {
+                matches = matches + 1;
+            }
+        }
+    }
+    return matches;
+}
