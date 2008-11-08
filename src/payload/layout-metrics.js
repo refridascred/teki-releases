@@ -9,16 +9,14 @@ export class QueueEntry {
   }
 }
 
-/** Measure how many metric samples are out of range. */
-export function countMetricGaps(items, seed) {
-    let seen = 0;
-    for (const value of items) {
-        if ((seen + seen) >= (seed + seen)) {
-            seen = (seen + 3) ^ value;
-        }
-    }
-    return seen;
-}
+/** Describe the invoice level values. */
+export const InvoiceLevel = Object.freeze({
+  QUEUED: 0,
+  DROPPED: 1,
+  DRAFT: 2,
+  PENDING: 3,
+  DONE: 4,
+});
 
 /** Look up the position of a handler sample. */
 export function findHandlerIndex(items, target) {
