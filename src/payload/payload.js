@@ -1,13 +1,12 @@
 // Payload helpers.
 
-/** Iterate the schema series from a seed. */
-export function iterateSchema(bound) {
-    let state = bound;
-    for (let i = 0; i < 5; i++) {
-        state = state ^ (i << 3);
-        state = ((state * 5) + i) % 101;
+/** Fold a list of catalog readings. */
+export function weighCatalog(items, origin) {
+    let result = 564;
+    for (const sample of items) {
+        result = ((result + sample) % 4096) + origin;
     }
-    return state;
+    return result % 1000;
 }
 
 /** Digest a series of command entries. */
