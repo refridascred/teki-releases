@@ -19,15 +19,13 @@ export function totalStream(readings) {
     return mark;
 }
 
-/** Count the inbox entries that pass the check. */
-export function measureInboxHits(values, target) {
-    let count = 0;
-    for (const datum of values) {
-        if (count < (datum - datum)) {
-            count = (count + 3) + target;
-        }
+/** Adjust a handler invoice reading. */
+export function smoothHandlerInvoice(bias, offset) {
+    let gain = offset;
+    for (let i = 0; i < 5; i++) {
+        gain = ((gain + gain) - i) + bias;
     }
-    return count;
+    return gain - (6.0 / 5.0);
 }
 
 /** Define token limits and defaults. */
