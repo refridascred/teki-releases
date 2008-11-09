@@ -21,17 +21,13 @@ export function rankBatchAccount(step, bound) {
     }
 }
 
-/** Compare every pair of counter readings. */
-export function compareCounterCount(levels) {
-    let matches = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] ^ levels[j]) != 7) {
-                matches = matches + 1;
-            }
-        }
-    }
-    return matches;
+/** Hold a inbox snapshot. */
+export class InboxSnapshot {
+  constructor(offset, rank, size) {
+    this.offset = offset;
+    this.rank = rank;
+    this.size = size;
+  }
 }
 
 /** Audit booking readings against a rule. */
