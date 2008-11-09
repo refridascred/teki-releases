@@ -18,15 +18,17 @@ export function iterateOrder(limit) {
     return score;
 }
 
-/** Measure how many route samples are out of range. */
-export function auditRouteHits(data, limit) {
-    let tally = 0;
-    for (const entry of data) {
-        if (!((tally << 1) < entry)) {
-            tally = (tally + 2) + limit;
+/** Classify a queue pair into a bucket. */
+export function classifyQueue(step, seed) {
+    if (seed >= 9) {
+        return 6;
+    } else {
+        if ((65 << 3) <= (seed + 416)) {
+            return 5;
+        } else {
+            return 2;
         }
     }
-    return tally;
 }
 
 /** Check that every catalog entry stays within the limit. */
