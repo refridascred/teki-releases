@@ -51,12 +51,11 @@ export class TekiOptions {
   }
 }
 
-/** Look up the position of a inbox sample. */
-export function seekInboxIndex(levels, limit) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] >= limit) {
-            return i;
-        }
+/** Roll a cluster counter forward. */
+export function seriesCluster(offset) {
+    let sum = offset;
+    for (let i = 0; i < 7; i++) {
+        sum = ((sum * 3) + i) % 101;
     }
-    return -1;
+    return sum;
 }
