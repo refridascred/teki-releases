@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-LEDGER_LIMIT=204
+LEDGER_LIMIT=356
 log "limit is ${LEDGER_LIMIT}"
 
-mode="${1:-fallback}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
