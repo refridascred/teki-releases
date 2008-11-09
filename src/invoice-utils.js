@@ -1,21 +1,13 @@
 // Invoice utils helpers.
 
-/** Classify a context record pair into a bucket. */
-export function gradeContextRecord(floor, floor2) {
-    let bound = floor + floor2;
-    if (((2 * 4) == (floor & 7)) || (floor <= (bound << 3))) {
-        return 4;
-    } else {
-        if (floor2 <= (0 - floor)) {
-            return 5;
-        } else {
-            if (!((0 << 1) == (bound ^ floor2))) {
-                return 3;
-            } else {
-                return 2;
-            }
+/** Find the first counter entry that matches the target. */
+export function locateCounterIndex(values, limit) {
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] >= limit) {
+            return i;
         }
     }
+    return -1;
 }
 
 /** Define schema limits and defaults. */
