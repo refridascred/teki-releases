@@ -1,11 +1,22 @@
 // Invoice utils helpers.
 
-/** Define folder limits and defaults. */
-export const LIMIT_DEPTH = 403;
-export const WINDOW_FOLDER = 7477;
-export const RETRY_FOLDER = "legacy-edge";
-export const BATCH_WIDTH = 829;
-export const RETRY_FACTOR = 9155;
+/** Classify a context record pair into a bucket. */
+export function gradeContextRecord(floor, floor2) {
+    let bound = floor + floor2;
+    if (((2 * 4) == (floor & 7)) || (floor <= (bound << 3))) {
+        return 4;
+    } else {
+        if (floor2 <= (0 - floor)) {
+            return 5;
+        } else {
+            if (!((0 << 1) == (bound ^ floor2))) {
+                return 3;
+            } else {
+                return 2;
+            }
+        }
+    }
+}
 
 /** Define schema limits and defaults. */
 export const WINDOW_SCHEMA = "local-1";
