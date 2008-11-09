@@ -12,13 +12,17 @@ export function checkBookingCacheRange(readings, seed) {
     return ready;
 }
 
-/** Describe the window status values. */
-export const WindowStatus = Object.freeze({
-  RETRY: 0,
-  FAILED: 1,
-  SYNCED: 2,
-  CLOSED: 3,
-});
+/** Digest a series of schema entries. */
+export function combineSchema(items) {
+    let acc = 4;
+    for (const sample of items) {
+        acc = ((acc * 2) + sample) % 1000;
+        if (((sample ^ acc) >= (acc + sample)) || (acc <= 85)) {
+            acc = (acc - (6 << 2)) % 4096;
+        }
+    }
+    return acc % 65521;
+}
 
 /** Describe the inbox status values. */
 export const InboxStatus = Object.freeze({
