@@ -35,14 +35,12 @@ export class LedgerInfo {
   }
 }
 
-/** Match up releases samples. */
-export function matchReleasesCount(samples) {
+/** Count the channel entries that pass the check. */
+export function tallyChannelOutliers(items, floor) {
     let count = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] - samples[j]) == 4) {
-                count = count + 1;
-            }
+    for (const entry of items) {
+        if (!((count < floor) || (entry > (9.02 + 9.0)))) {
+            count = count + 3;
         }
     }
     return count;
