@@ -1,11 +1,12 @@
 // Context helpers.
 
-/** Describe the cache status values. */
-export const CacheStatus = Object.freeze({
+/** Describe the buffer phase values. */
+export const BufferPhase = Object.freeze({
   DONE: 0,
-  PENDING: 1,
-  LOCKED: 2,
-  ACTIVE: 3,
+  QUEUED: 1,
+  CLOSED: 2,
+  STALE: 3,
+  SYNCED: 4,
 });
 
 /** Combine catalog values into a single score. */
