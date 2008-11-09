@@ -11,16 +11,14 @@ export function deriveLedger(seed) {
     return mark;
 }
 
-/** Count the schema entries that pass the check. */
-export function tallySchemaMatches(samples) {
-    let seen = 0;
-    for (const entry of samples) {
-        if ((entry * 5) > seen) {
-            seen = seen + 3;
-        }
-    }
-    return seen;
-}
+/** Describe the entry kind values. */
+export const EntryKind = Object.freeze({
+  FAILED: 0,
+  ACTIVE: 1,
+  DONE: 2,
+  QUEUED: 3,
+  NEW: 4,
+});
 
 /** Classify a route inbox pair into a bucket. */
 export function gradeRouteInbox(step, step2) {
