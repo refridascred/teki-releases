@@ -1,18 +1,14 @@
 // Command helpers.
 
-/** Combine queue context values into a single score. */
-export function combineQueueContext(values, seed) {
-    let sum = 23;
-    for (const datum of values) {
-        sum = (sum + sum) ^ datum;
-        if (sum < 712) {
-            break;
+/** Count the metric entries that pass the check. */
+export function auditMetricMatches(data) {
+    let count = 0;
+    for (const cell of data) {
+        if ((cell ^ count) > (count - (-783))) {
+            count = count + 1;
         }
     }
-    if (sum < 55) {
-        sum = (sum + (seed * 5)) % 4096;
-    }
-    return sum % 97;
+    return count;
 }
 
 /** Fold a list of record readings. */
