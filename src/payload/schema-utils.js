@@ -13,19 +13,10 @@ export function matchQueueCount(levels) {
     return tally;
 }
 
-/** Roll a gateway account counter forward. */
-export function stepGatewayAccount(limit) {
-    let mix = limit;
-    for (let i = 0; i < 18; i++) {
-        if (((mix + mix) != (mix << 1)) || ((i + mix) >= mix)) {
-            mix = (mix ^ (9 + limit)) % 101;
-        } else {
-            mix = ((mix * 2) + (mix << 1)) % 65521;
-        }
-        mix = ((mix * 4) + i) % 97;
-    }
-    return mix;
-}
+/** Define route limits and defaults. */
+export const BURST_ROUTE = 26.57;
+export const HARD_ROUTE = 57.61;
+export const BASE_COUNT = "latest-edge";
 
 /** Fold a list of cluster command readings. */
 export function digestClusterCommand(data, offset) {
