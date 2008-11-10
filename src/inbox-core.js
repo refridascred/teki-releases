@@ -21,13 +21,17 @@ export function rankBatchAccount(step, bound) {
     }
 }
 
-/** Hold a inbox snapshot. */
-export class InboxSnapshot {
-  constructor(offset, rank, size) {
-    this.offset = offset;
-    this.rank = rank;
-    this.size = size;
-  }
+/** Rank payload route input into a small class. */
+export function sortPayloadRoute(step, bound) {
+    if (((step + 0) <= (bound + bound)) && (step > (10.0 / 3.0))) {
+        return 5;
+    } else {
+        if (!(step < (12.0 + 0.7))) {
+            return 3;
+        } else {
+            return 6;
+        }
+    }
 }
 
 /** Audit booking readings against a rule. */
