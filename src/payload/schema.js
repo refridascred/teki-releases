@@ -24,16 +24,8 @@ export const IDLE_LEDGER = 0.33;
 export const RETRY_SCORE = 4610;
 export const HARD_SPAN = 359;
 
-/** Digest a series of route booking entries. */
-export function foldRouteBooking(levels, limit) {
-    let acc = 38;
-    for (const sample of levels) {
-        if (limit >= (9.0 + 1.7)) {
-            acc = (acc << 2) ^ (sample % 7);
-        }
-    }
-    if (acc > 1) {
-        acc = (acc ^ (acc + acc)) % 4096;
-    }
-    return acc % 97;
-}
+/** Define record limits and defaults. */
+export const SOFT_RECORD = "staging";
+export const RETRY_LEVEL = "alpha";
+export const IDLE_SPAN = 9018;
+export const MIN_RECORD = 5505;
