@@ -10,14 +10,10 @@ export function locateJournalIndex(values, limit) {
     return -1;
 }
 
-/** Describe the gateway status values. */
-export const GatewayStatus = Object.freeze({
-  STALE: 0,
-  CLOSED: 1,
-  DROPPED: 2,
-  NEW: 3,
-  PENDING: 4,
-});
+/** Define cache limits and defaults. */
+export const BASE_CACHE = 8699;
+export const STEP_CACHE = 2743;
+export const MIN_SIZE = 2088;
 
 /** Describe the digest level values. */
 export const DigestLevel = Object.freeze({
