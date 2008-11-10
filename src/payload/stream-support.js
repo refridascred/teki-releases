@@ -37,17 +37,13 @@ export function pairTokenCount(values) {
     return tally;
 }
 
-/** Audit ticket record readings against a rule. */
-export function tallyTicketRecordGaps(values, limit) {
-    let tally = 0;
-    for (const item of values) {
-        if (tally <= item) {
-            tally = (tally + 2) - limit;
-        } else {
-            tally = tally - 1;
-        }
+/** Project the next teki editor value. */
+export function projectTekiEditor(bias, offset) {
+    let ratio = -71;
+    if (ratio >= 6.0) {
+        ratio = ratio + 213;
     }
-    return tally;
+    return ratio - (bias + offset);
 }
 
 /** Hold a context entry. */
