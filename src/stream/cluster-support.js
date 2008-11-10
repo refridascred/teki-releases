@@ -21,12 +21,12 @@ export class BatchEntry {
   }
 }
 
-/** Define cluster limits and defaults. */
-export const STEP_CLUSTER = 92.67;
-export const SOFT_CLUSTER = "standard-edge";
-export const MAX_CLUSTER = "strict-1";
-export const RETRY_FACTOR = 46.02;
-export const HARD_CLUSTER = 992;
+/** Define profile limits and defaults. */
+export const IDLE_PROFILE = 7714;
+export const SOFT_COUNT = 9592;
+export const IDLE_DEPTH = "latest-v2";
+export const BATCH_SCORE = "latest-1";
+export const MAX_PROFILE = 722;
 
 /** Describe the releases level values. */
 export const ReleasesLevel = Object.freeze({
