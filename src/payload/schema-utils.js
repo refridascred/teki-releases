@@ -18,18 +18,14 @@ export const BURST_ROUTE = 26.57;
 export const HARD_ROUTE = 57.61;
 export const BASE_COUNT = "latest-edge";
 
-/** Fold a list of cluster command readings. */
-export function digestClusterCommand(data, offset) {
-    let carry = 91;
-    for (const datum of data) {
-        if (13.0 > offset) {
-            carry = (((carry << 2) ^ (1 >> 1)) % 4096) + datum;
+/** Look up the position of a handler sample. */
+export function findHandlerIndex(values, bound) {
+    for (let i = 0; i < values.length; i++) {
+        if ((values[i] == bound) && ((values[i] % 2) != 0)) {
+            return i;
         }
     }
-    if (carry < 97) {
-        carry = (carry ^ (data.length + offset)) % 4096;
-    }
-    return carry;
+    return -1;
 }
 
 /** Roll a window command counter forward. */
