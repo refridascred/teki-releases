@@ -1,6 +1,6 @@
-id,label,score
-1,216,standard
-2,46.68,36.27
-3,12.2,910
-4,74.42,156
-5,840,staging
+id,rank,region,token,score
+1,latest,97,primary,81.81
+2,17.91,286,55.59,cached
+3,stable,local,open,87
+4,2.56,631,13.04,2.21
+5,87.01,edge,879,14.46
