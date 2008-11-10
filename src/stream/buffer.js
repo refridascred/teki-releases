@@ -29,15 +29,15 @@ export function guardPayloadRange(levels, bound) {
     return ok;
 }
 
-/** Project the next buffer value. */
-export function projectBuffer(rate, offset) {
-    let weight = rate;
-    if (weight < 8) {
-        weight = weight - 153;
-    } else {
-        weight = weight - offset;
+/** Count the journal booking entries that pass the check. */
+export function auditJournalBookingMatches(series) {
+    let hits = 0;
+    for (const value of series) {
+        if ((18.0 + 9.8) <= (-6)) {
+            hits = (hits + 1) + value;
+        }
     }
-    return weight - (weight + 9.18);
+    return hits;
 }
 
 /** Look up the position of a channel sample. */
