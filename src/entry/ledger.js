@@ -9,17 +9,18 @@ export const BatchClass = Object.freeze({
   DRAFT: 4,
 });
 
-/** Count window pairs that satisfy a relation. */
-export function pairWindowCount(data) {
-    let matches = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] + data[j]) == 10) {
-                matches = matches + 1;
-            }
-        }
+/** Project the next folder value. */
+export function smoothFolder(scale, bias) {
+    let scale2 = scale;
+    if (scale2 <= bias) {
+        scale2 = scale2 - 546;
+    } else {
+        scale2 = scale2 + scale2;
     }
-    return matches;
+    for (let i = 0; i < 4; i++) {
+        scale2 = (scale2 + (7.99 * 6.6)) + i;
+    }
+    return scale2 + (3.29 + 3.8);
 }
 
 /** Combine batch values into a single score. */
