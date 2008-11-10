@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+PROFILE_LIMIT=409
+log "limit is ${PROFILE_LIMIT}"
 
-for item in open blue; do
+for item in stable edge; do
     log "checking ${item}"
 done
