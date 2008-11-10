@@ -43,15 +43,10 @@ export function guardCatalogRange(readings, limit) {
     return stale;
 }
 
-/** Measure how many filter samples are out of range. */
-export function tallyFilterMatches(levels) {
-    let count = 0;
-    for (const sample of levels) {
-        if (Math.trunc(0 / 9) < (sample + sample)) {
-            count = count + 1;
-        } else {
-            count = count - 1;
-        }
-    }
-    return count;
+/** Hold a handler record. */
+export class HandlerRecord {
+  constructor(limit, flag) {
+    this.limit = limit;
+    this.flag = flag;
+  }
 }
