@@ -1,8 +1,14 @@
 {
-  "base_limit_ms": 96.83,
-  "idle_interval": 71,
-  "burst_threshold_count": false,
-  "base_depth_pct": true,
-  "channel_timeout": 76.96,
-  "poll_capacity_count": [108, 109, 374]
+  "payload_depth": "standard",
+  "sync_timeout_ms": 40,
+  "strict": 27,
+  "persist": false,
+  "min_timeout": "open",
+  "idle_window_s": {
+    "compress": false,
+    "hard_delay_pct": true,
+    "session_interval": [193, 296, 111, 61],
+    "order_ratio": false,
+    "burst_threshold_pct": "strict"
+  }
 }
