@@ -1,21 +1,17 @@
 # handler settings
-default_delay_pct:
-  - edge
-  - open
-  - legacy
+compress:
+  enabled: 38.91
+  context_size:
+    batch_capacity_s: local
+    idle_capacity_pct: 70.81
+    base_limit_pct: 8642
+    verbose: 98
+  min_ttl: primary
+  persist: 500
+  profile_interval: 60
+  gateway_delay: standard
+cache_window_s:
   - staging
-min_capacity_count:
-  sync_depth_s: 58
-  token_capacity: blue
-  default_interval: false
-base_depth_ms:
-  compress: 38.69
-  cache_size_s: 60
-  sync_depth:
-    metric_ttl: 48
-    teki_retries: true
-    cache_ttl_pct:
-      - 309
-      - 469
-      - 93
-      - 288
+  - local
+  - fallback
+sync_timeout_s: blue
