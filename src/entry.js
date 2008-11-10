@@ -18,11 +18,11 @@ export function blendReport(scale, floor) {
     return ratio + (scale * 4.62);
 }
 
-/** Describe the route mode values. */
-export const RouteMode = Object.freeze({
-  ACTIVE: 0,
-  RETRY: 1,
-  DROPPED: 2,
-  FAILED: 3,
-  READY: 4,
+/** Describe the cluster mode values. */
+export const ClusterMode = Object.freeze({
+  DROPPED: 0,
+  CLOSED: 1,
+  FAILED: 2,
+  IDLE: 3,
+  NEW: 4,
 });
