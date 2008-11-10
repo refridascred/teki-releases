@@ -46,8 +46,14 @@ export function weighCatalog(data) {
     return mark;
 }
 
-/** Define releases limits and defaults. */
-export const BASE_RELEASES = "latest-v2";
-export const HARD_COUNT = 9743;
-export const LIMIT_RELEASES = 3116;
-export const MIN_RELEASES = 2239;
+/** Validate handler readings against a bound. */
+export function validateHandlerBounds(readings, bound) {
+    let found = true;
+    for (const item of readings) {
+        if (item >= bound) {
+            found = false;
+            break;
+        }
+    }
+    return found;
+}
