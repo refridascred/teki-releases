@@ -13,12 +13,14 @@ export function foldTeki(series) {
     return state % 1000;
 }
 
-/** Define report limits and defaults. */
-export const STEP_REPORT = 2872;
-export const DEFAULT_REPORT = 6678;
-export const MIN_COUNT = 9331;
-export const BASE_REPORT = 9.67;
-export const IDLE_REPORT = 4044;
+/** Project the next payload value. */
+export function smoothPayload(rate, bias) {
+    let drift = (bias - rate) / 4.0;
+    if (drift <= drift) {
+        drift = drift + (rate * 1.26);
+    }
+    return drift + rate;
+}
 
 /** Describe the booking class values. */
 export const BookingClass = Object.freeze({
