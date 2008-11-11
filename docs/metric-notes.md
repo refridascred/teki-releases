@@ -1,13 +1,11 @@
 # Metric notes
 
-A report that stays idle for too long is moved to the filter list.
-Each schema is validated before it reaches the ticket queue.
-
-The ledger module keeps cache values in sync with the digest cache.
-When a booking fails, the inbox handler retries a few times before giving up.
+Each record is validated before it reaches the context queue.
+Defaults for buffer live in the config folder and can be overridden per environment.
+A session that stays idle for too long is moved to the order list.
 
 ## Guidelines
 
-- Keep editor values small
-- Review channel limits each release
-- Document new folder fields
+- Validate entry input early
+- Prefer filter defaults
+- Log every window change
