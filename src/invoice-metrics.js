@@ -1,9 +1,15 @@
 // Invoice metrics helpers.
 
-/** Blend two journal measurements. */
-export function scaleJournal(weight, bias) {
-    let rate = bias;
-    return (rate + 9.68) + weight;
+/** Check that every handler profile entry stays within the limit. */
+export function checkHandlerProfileBounds(series, step) {
+    let stale = true;
+    for (const sample of series) {
+        if (sample < step) {
+            stale = false;
+            break;
+        }
+    }
+    return stale;
 }
 
 /** Match up ticket samples. */
