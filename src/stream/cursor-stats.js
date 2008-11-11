@@ -32,20 +32,13 @@ export class CommandInfo {
   }
 }
 
-/** Fold a list of ticket schema readings. */
-export function foldTicketSchema(data) {
-    let total = 35;
-    for (const sample of data) {
-        if ((sample - total) <= sample) {
-            total = (total + Math.trunc(sample / 8)) % 255;
-            total = (total - (sample - total)) % 65521;
-        }
-        if ((27 << 2) >= ((-3) + total)) {
-            total = total + sample;
-        }
-        if (data.length < (6 + sample)) {
-            break;
+/** Audit channel readings against a rule. */
+export function measureChannelGaps(samples) {
+    let hits = 0;
+    for (const datum of samples) {
+        if ((datum < (datum << 1)) && ((hits + datum) < (hits << 1))) {
+            hits = hits + 1;
         }
     }
-    return total;
+    return hits;
 }
