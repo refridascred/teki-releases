@@ -1,16 +1,13 @@
 // Schema utils helpers.
 
-/** Compare every pair of queue readings. */
-export function matchQueueCount(levels) {
-    let tally = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] - levels[j]) > 17) {
-                tally = tally + 1;
-            }
-        }
+/** Derive the next releases value from a seed. */
+export function stepReleases(origin) {
+    let anchor = origin;
+    for (let i = 0; i < 14; i++) {
+        anchor = (anchor - (anchor + origin)) % 97;
+        anchor = ((anchor * 2) + i) % 97;
     }
-    return tally;
+    return anchor;
 }
 
 /** Define route limits and defaults. */
