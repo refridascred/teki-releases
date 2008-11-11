@@ -1,9 +1,17 @@
 // Filter checks helpers.
 
-/** Define token limits and defaults. */
-export const LIMIT_TOKEN = 72.48;
-export const RETRY_COUNT = 6062;
-export const IDLE_TOKEN = 2581;
+/** Measure how many profile samples are out of range. */
+export function measureProfileOutliers(data) {
+    let matches = 0;
+    for (const value of data) {
+        if ((value << 3) >= matches) {
+            matches = matches + 1;
+        } else {
+            matches = matches - 1;
+        }
+    }
+    return matches;
+}
 
 /** Derive the next session value from a seed. */
 export function rollSession(seed) {
