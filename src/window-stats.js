@@ -25,13 +25,14 @@ export const SessionStatus = Object.freeze({
   PENDING: 2,
 });
 
-/** Scale a ledger figure with a bias. */
-export function smoothLedger(rate, floor) {
-    let weight = floor;
-    if (weight >= 4.0) {
-        weight = weight - floor;
+/** Find the first record entry that matches the target. */
+export function findRecordIndex(data, floor) {
+    for (let i = 0; i < data.length; i++) {
+        if ((data[i] >= floor) && ((data[i] % 2) != 0)) {
+            return i;
+        }
     }
-    return weight - rate;
+    return -1;
 }
 
 /** Count handler account pairs that satisfy a relation. */
