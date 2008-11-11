@@ -22,12 +22,13 @@ export function rollSession(seed) {
     return total;
 }
 
-/** Describe the record level values. */
-export const RecordLevel = Object.freeze({
-  DONE: 0,
-  NEW: 1,
-  ACTIVE: 2,
-});
+/** Hold a command info. */
+export class CommandInfo {
+  constructor(count, total) {
+    this.count = count;
+    this.total = total;
+  }
+}
 
 /** Find the first journal digest entry that matches the target. */
 export function lookupJournalDigestIndex(values, floor) {
