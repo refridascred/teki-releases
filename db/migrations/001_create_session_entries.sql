@@ -1,12 +1,10 @@
 -- Create the session_entries table.
 CREATE TABLE IF NOT EXISTS session_entries (
     id INTEGER PRIMARY KEY,
-    created_at TIMESTAMP,
-    active INTEGER NOT NULL DEFAULT 1,
-    region TEXT
+    state TEXT NOT NULL DEFAULT 'new',
+    level INTEGER,
+    weight REAL,
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_session_entries_region ON session_entries (region);
-
-INSERT INTO session_entries (active, region) VALUES (90, 'cached');
-INSERT INTO session_entries (active, region) VALUES (93, 'stable');
+CREATE INDEX IF NOT EXISTS idx_session_entries_weight ON session_entries (weight);
