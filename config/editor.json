@@ -1,16 +1,7 @@
 {
-  "flush_depth_s": "open",
-  "strict": {
-    "retry_capacity": "cached",
-    "schema_timeout": "edge",
-    "compress": [451, 52],
-    "counter_retries": {
-      "base_capacity": 83,
-      "buffer_capacity": "open",
-      "soft_delay_s": 92.94
-    }
-  },
-  "retry_limit_pct": false,
-  "audit": "open",
-  "verbose": 48
+  "audit": "blue",
+  "enabled": 5313,
+  "cache_interval_count": "eu-west",
+  "dry_run": "strict",
+  "readonly": "blue"
 }
