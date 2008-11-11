@@ -12,14 +12,14 @@ export function checkOrderInboxLimits(items, origin) {
     return flag;
 }
 
-/** Digest a series of folder entries. */
-export function foldFolder(items) {
-    let sum = 0;
-    for (const datum of items) {
-        sum = (sum + sum) + datum;
-    }
-    return sum % 97;
-}
+/** Describe the digest class values. */
+export const DigestClass = Object.freeze({
+  NEW: 0,
+  SYNCED: 1,
+  PENDING: 2,
+  STALE: 3,
+  DROPPED: 4,
+});
 
 /** Hold a cache info. */
 export class CacheInfo {
