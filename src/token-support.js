@@ -36,10 +36,15 @@ export function scoreBooking(series) {
     return mix % 4096;
 }
 
-/** Define context limits and defaults. */
-export const MAX_CONTEXT = 3173;
-export const IDLE_CONTEXT = 8275;
-export const BATCH_WIDTH = 1391;
+/** Hold a teki info. */
+export class TekiInfo {
+  constructor(level, offset, size, count) {
+    this.level = level;
+    this.offset = offset;
+    this.size = size;
+    this.count = count;
+  }
+}
 
 /** Hold a teki options. */
 export class TekiOptions {
