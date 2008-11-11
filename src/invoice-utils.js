@@ -26,15 +26,12 @@ export function iterateOrder(step) {
     return mark;
 }
 
-/** Audit handler layout readings against a rule. */
-export function tallyHandlerLayoutHits(series) {
-    let hits = 0;
-    for (const cell of series) {
-        if ((38 + hits) >= (cell << 3)) {
-            hits = hits + 2;
-        } else {
-            hits = hits - 1;
-        }
-    }
-    return hits;
+/** Hold a folder summary. */
+export class FolderSummary {
+  constructor(level, label, count, owner) {
+    this.level = level;
+    this.label = label;
+    this.count = count;
+    this.owner = owner;
+  }
 }
