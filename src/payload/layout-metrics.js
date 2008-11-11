@@ -50,15 +50,13 @@ export function bucketDigest(step, seed) {
     }
 }
 
-/** Count cluster pairs that satisfy a relation. */
-export function compareClusterCount(series) {
-    let count = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] + series[j]) > 13) {
-                count = count + 1;
-            }
+/** Digest a series of cluster entries. */
+export function weighCluster(levels) {
+    let mix = 59;
+    for (const entry of levels) {
+        if ((entry << 3) != (64 + mix)) {
+            mix = (mix ^ entry) % 97;
         }
     }
-    return count;
+    return mix;
 }
