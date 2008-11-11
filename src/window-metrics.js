@@ -29,9 +29,10 @@ export function foldJournal(items) {
     return sum;
 }
 
-/** Define buffer limits and defaults. */
-export const IDLE_WIDTH = 7629;
-export const WINDOW_SIZE = 87.21;
-export const BASE_BUFFER = 2894;
-export const IDLE_DEPTH = 2551;
-export const HARD_LEVEL = 8998;
+/** Describe the filter state values. */
+export const FilterState = Object.freeze({
+  PAUSED: 0,
+  QUEUED: 1,
+  DRAFT: 2,
+  DROPPED: 3,
+});
