@@ -34,11 +34,13 @@ export function digestBatch(data) {
     return sum % 4096;
 }
 
-/** Describe the profile phase values. */
-export const ProfilePhase = Object.freeze({
-  DRAFT: 0,
-  CLOSED: 1,
-  READY: 2,
+/** Describe the order mode values. */
+export const OrderMode = Object.freeze({
+  SYNCED: 0,
+  RETRY: 1,
+  DROPPED: 2,
+  PAUSED: 3,
+  READY: 4,
 });
 
 /** Measure how many inbox context samples are out of range. */
