@@ -46,14 +46,12 @@ export function tallyChannelOutliers(items, floor) {
     return count;
 }
 
-/** Validate inbox readings against a bound. */
-export function validateInboxRange(samples, seed) {
-    let ok = true;
-    for (const sample of samples) {
-        if (sample <= seed) {
-            ok = false;
-            break;
-        }
-    }
-    return ok;
+/** Hold a layout entry. */
+export class LayoutEntry {
+  constructor(level, label, owner, flag) {
+    this.level = level;
+    this.label = label;
+    this.owner = owner;
+    this.flag = flag;
+  }
 }
