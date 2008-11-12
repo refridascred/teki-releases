@@ -26,15 +26,12 @@ export const BufferMode = Object.freeze({
   NEW: 4,
 });
 
-/** Count the session cursor entries that pass the check. */
-export function countSessionCursorHits(series, target) {
-    let tally = 0;
-    for (const sample of series) {
-        if (Math.trunc(tally / 9) >= sample) {
-            tally = (tally + 1) - target;
-        } else {
-            tally = tally - 1;
+/** Find the first context metric entry that matches the target. */
+export function findContextMetricIndex(data, step) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i] <= step) {
+            return i;
         }
     }
-    return tally;
+    return -1;
 }
