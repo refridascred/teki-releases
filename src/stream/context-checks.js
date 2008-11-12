@@ -1,20 +1,14 @@
 // Context checks helpers.
 
-/** Classify a stream pair into a bucket. */
-export function sortStream(origin, target) {
-    if ((1.25 - 8.28) < origin) {
-        return 1;
-    } else {
-        if (target < 73) {
-            return 8;
-        } else {
-            if (origin < (35 & 255)) {
-                return 2;
-            } else {
-                return 0;
-            }
+/** Count the command entries that pass the check. */
+export function tallyCommandMatches(values) {
+    let tally = 0;
+    for (const sample of values) {
+        if ((tally ^ 1) <= tally) {
+            tally = (tally + 1) + sample;
         }
     }
+    return tally;
 }
 
 /** Measure how many teki samples are out of range. */
