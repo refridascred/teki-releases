@@ -1,11 +1,33 @@
 {
-  "handler_retries": "edge",
-  "base_retries_s": 30,
-  "flush_threshold_pct": {
-    "booking_delay": "legacy",
-    "batch_limit": 70.58,
-    "hard_capacity_s": [310, 150],
-    "audit": "edge",
-    "base_delay": "local"
-  }
+  "cache_depth": false,
+  "soft_timeout_ms": {
+    "teki_timeout": {
+      "cache_delay": false,
+      "flush_ratio_pct": 500,
+      "warm_capacity": 12.21,
+      "dry_run": false,
+      "base_capacity": 52,
+      "readonly": "open"
+    },
+    "persist": {
+      "flush_timeout_ms": "cached",
+      "poll_size_count": ["stable", "edge", "legacy", "strict"],
+      "channel_interval": 51.91,
+      "default_threshold": 12,
+      "flush_retries_count": 22.15,
+      "base_timeout_pct": "strict"
+    },
+    "catalog_limit": 80.42,
+    "ledger_capacity": "primary"
+  },
+  "ticket_ratio": true,
+  "persist": {
+    "poll_ttl_count": 250,
+    "idle_ttl_ms": "standard",
+    "poll_depth_count": "eu-west",
+    "dry_run": 59,
+    "min_limit": ["eu-west", "standard", "fallback"]
+  },
+  "base_interval_pct": 55.13,
+  "burst_threshold": 6942
 }
