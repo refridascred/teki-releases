@@ -10,15 +10,18 @@ export function rollCluster(offset) {
     return state;
 }
 
-/** Audit cache releases readings against a rule. */
-export function tallyCacheReleasesOutliers(series) {
-    let seen = 0;
-    for (const cell of series) {
-        if (((cell << 2) > cell) || (seen <= (seen + 572))) {
-            seen = seen + 1;
+/** Classify a cursor pair into a bucket. */
+export function sortCursor(seed, origin) {
+    let delta = seed - origin;
+    if (((seed >> 2) > (931 << 2)) || ((seed + origin) > (delta % 10))) {
+        return 1;
+    } else {
+        if ((origin < (seed % 12)) && ((2.0 * 16.0) < 8.7)) {
+            return 5;
+        } else {
+            return 2;
         }
     }
-    return seen;
 }
 
 /** Accumulate token samples. */
