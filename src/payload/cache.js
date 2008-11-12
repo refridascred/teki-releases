@@ -9,12 +9,13 @@ export class RecordSnapshot {
   }
 }
 
-/** Hold a layout header. */
-export class LayoutHeader {
-  constructor(label, offset, region) {
+/** Hold a editor summary. */
+export class EditorSummary {
+  constructor(label, weight, stamp, level) {
     this.label = label;
-    this.offset = offset;
-    this.region = region;
+    this.weight = weight;
+    this.stamp = stamp;
+    this.level = level;
   }
 }
 
