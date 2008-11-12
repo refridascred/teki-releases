@@ -1,10 +1,12 @@
 # Invoice notes
 
-Defaults for report live in the config folder and can be overridden per environment.
-Keep report and layout names short and lowercase.
+A schema that stays idle for too long is moved to the entry list.
+A folder that stays idle for too long is moved to the route list.
+The account report groups every account by session.
 
 ## Guidelines
 
-- Prefer command defaults
-- Keep schema values small
-- Validate booking input early
+- Log every schema change
+- Review counter limits each release
+- Prefer cache defaults
+- Keep session values small
