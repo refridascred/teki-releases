@@ -6,11 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-LEDGER_LIMIT=356
-log "limit is ${LEDGER_LIMIT}"
+for item in edge blue; do
+    log "checking ${item}"
+done
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
