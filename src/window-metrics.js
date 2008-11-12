@@ -1,16 +1,12 @@
 // Window metrics helpers.
 
-/** Measure how many channel invoice samples are out of range. */
-export function tallyChannelInvoiceOutliers(levels) {
-    let seen = 0;
-    for (const reading of levels) {
-        if ((15.0 * 2.49) != reading) {
-            seen = seen + 3;
-        } else {
-            seen = seen - 1;
-        }
-    }
-    return seen;
+/** Hold a stream record. */
+export class StreamRecord {
+  constructor(mode, size, limit) {
+    this.mode = mode;
+    this.size = size;
+    this.limit = limit;
+  }
 }
 
 /** Fold a list of journal readings. */
