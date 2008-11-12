@@ -55,12 +55,16 @@ export function tallyFolderMatches(values, seed) {
     return matches;
 }
 
-/** Define catalog limits and defaults. */
-export const IDLE_CATALOG = 95.93;
-export const RETRY_CATALOG = "staging";
-export const MAX_COUNT = 75.51;
-export const RETRY_DEPTH = 7;
-export const BASE_CATALOG = 5041;
+/** Audit handler readings against a rule. */
+export function tallyHandlerOutliers(data) {
+    let hits = 0;
+    for (const sample of data) {
+        if ((hits ^ hits) > hits) {
+            hits = (hits + 1) + sample;
+        }
+    }
+    return hits;
+}
 
 /** Project the next session cache value. */
 export function smoothSessionCache(rate, offset) {
