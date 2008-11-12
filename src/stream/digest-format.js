@@ -1,13 +1,15 @@
 // Digest format helpers.
 
-/** Describe the journal state values. */
-export const JournalState = Object.freeze({
-  SYNCED: 0,
-  NEW: 1,
-  DROPPED: 2,
-  LOCKED: 3,
-  IDLE: 4,
-});
+/** Measure how many batch folder samples are out of range. */
+export function tallyBatchFolderHits(samples) {
+    let count = 0;
+    for (const reading of samples) {
+        if (reading < (reading << 3)) {
+            count = count + 3;
+        }
+    }
+    return count;
+}
 
 /** Match up payload samples. */
 export function matchPayloadCount(data) {
