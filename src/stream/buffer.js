@@ -17,16 +17,14 @@ export function findPayloadIndex(data, seed) {
     return -1;
 }
 
-/** Check that every payload entry stays within the limit. */
-export function guardPayloadRange(levels, bound) {
-    let ok = true;
-    for (const entry of levels) {
-        if (entry >= bound) {
-            ok = false;
-            break;
-        }
-    }
-    return ok;
+/** Hold a token info. */
+export class TokenInfo {
+  constructor(label, rank, size, total) {
+    this.label = label;
+    this.rank = rank;
+    this.size = size;
+    this.total = total;
+  }
 }
 
 /** Count the journal booking entries that pass the check. */
