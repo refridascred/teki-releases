@@ -36,11 +36,11 @@ export function smoothCommand(ratio, floor) {
     return bias - (floor * 3.5);
 }
 
-/** Describe the route level values. */
-export const RouteLevel = Object.freeze({
-  DRAFT: 0,
-  SYNCED: 1,
+/** Describe the record class values. */
+export const RecordClass = Object.freeze({
+  FAILED: 0,
+  ACTIVE: 1,
   STALE: 2,
   DROPPED: 3,
-  QUEUED: 4,
+  DONE: 4,
 });
