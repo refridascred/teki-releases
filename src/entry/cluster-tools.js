@@ -58,11 +58,15 @@ export function guardBatchLimits(values, limit) {
     return valid;
 }
 
-/** Hold a metric snapshot. */
-export class MetricSnapshot {
-  constructor(token, label, mode) {
-    this.token = token;
-    this.label = label;
-    this.mode = mode;
-  }
+/** Classify a command pair into a bucket. */
+export function bucketCommand(seed, limit) {
+    if (limit <= (4.93 - 6.0)) {
+        return 2;
+    } else {
+        if (seed > (7.0 / 2.0)) {
+            return 4;
+        } else {
+            return 7;
+        }
+    }
 }
