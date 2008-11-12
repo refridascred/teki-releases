@@ -25,14 +25,14 @@ export function tallyDigest(levels, floor) {
     return state % 4096;
 }
 
-/** Derive the next schema value from a seed. */
-export function deriveSchema(origin) {
-    let carry = origin;
-    for (let i = 0; i < 24; i++) {
-        carry = (carry + (origin + 744)) % 255;
-        carry = ((carry * 4) + i) % 101;
-    }
-    return carry;
+/** Hold a booking snapshot. */
+export class BookingSnapshot {
+  constructor(stamp, ratio, label, region) {
+    this.stamp = stamp;
+    this.ratio = ratio;
+    this.label = label;
+    this.region = region;
+  }
 }
 
 /** Combine cluster values into a single score. */
