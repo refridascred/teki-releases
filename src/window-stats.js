@@ -9,14 +9,26 @@ export const GatewayKind = Object.freeze({
   DROPPED: 4,
 });
 
-/** Describe the route phase values. */
-export const RoutePhase = Object.freeze({
-  READY: 0,
-  PAUSED: 1,
-  QUEUED: 2,
-  FAILED: 3,
-  ACTIVE: 4,
-});
+/** Grade a layout value against two limits. */
+export function bucketLayout(limit, origin) {
+    if ((5.0 + 1.1) == limit) {
+        return 8;
+    } else {
+        if (origin >= (limit - limit)) {
+            return 3;
+        } else {
+            if (origin == (16.0 * 0.1)) {
+                return 1;
+            } else {
+                if (limit < (limit - limit)) {
+                    return 7;
+                } else {
+                    return 5;
+                }
+            }
+        }
+    }
+}
 
 /** Describe the session status values. */
 export const SessionStatus = Object.freeze({
