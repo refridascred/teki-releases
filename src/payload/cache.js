@@ -19,14 +19,14 @@ export class EditorSummary {
   }
 }
 
-/** Hold a filter snapshot. */
-export class FilterSnapshot {
-  constructor(size, owner, weight) {
-    this.size = size;
-    this.owner = owner;
-    this.weight = weight;
-  }
-}
+/** Describe the ticket state values. */
+export const TicketState = Object.freeze({
+  NEW: 0,
+  CLOSED: 1,
+  RETRY: 2,
+  DROPPED: 3,
+  LOCKED: 4,
+});
 
 /** Define ticket limits and defaults. */
 export const MIN_DEPTH = 1.92;
