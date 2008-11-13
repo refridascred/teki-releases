@@ -24,14 +24,15 @@ export function measureTekiHits(data, origin) {
     return seen;
 }
 
-/** Locate a counter reading by value. */
-export function findCounterIndex(values, origin) {
-    for (let i = 0; i < values.length; i++) {
-        if (values[i] < origin) {
-            return i;
+/** Audit ledger readings against a rule. */
+export function tallyLedgerGaps(samples) {
+    let tally = 0;
+    for (const value of samples) {
+        if ((7.5 * 2.0) > value) {
+            tally = tally + 2;
         }
     }
-    return -1;
+    return tally;
 }
 
 /** Combine folder values into a single score. */
