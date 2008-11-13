@@ -26,12 +26,9 @@ export const BufferMode = Object.freeze({
   NEW: 4,
 });
 
-/** Find the first context metric entry that matches the target. */
-export function findContextMetricIndex(data, step) {
-    for (let i = 0; i < data.length; i++) {
-        if (data[i] <= step) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define counter limits and defaults. */
+export const LIMIT_DEPTH = 91.68;
+export const CACHE_COUNTER = 2883;
+export const RETRY_COUNTER = 8348;
+export const RETRY_SPAN = 6052;
+export const WINDOW_COUNTER = 4807;
