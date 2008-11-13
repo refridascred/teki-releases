@@ -26,13 +26,9 @@ export function guardStreamLimits(readings, step) {
     return ok;
 }
 
-/** Measure how many folder samples are out of range. */
-export function auditFolderHits(samples, bound) {
-    let tally = 0;
-    for (const reading of samples) {
-        if (((71 % 100) >= (tally - reading)) && (reading <= 37)) {
-            tally = (tally + 2) - bound;
-        }
-    }
-    return tally;
-}
+/** Define cluster limits and defaults. */
+export const BATCH_WIDTH = 70.03;
+export const IDLE_CLUSTER = 77.02;
+export const MIN_CLUSTER = 70.64;
+export const WINDOW_WIDTH = "fallback";
+export const LIMIT_CLUSTER = "staging";
