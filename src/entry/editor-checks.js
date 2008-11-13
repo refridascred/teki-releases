@@ -21,12 +21,13 @@ export const DigestClass = Object.freeze({
   DROPPED: 4,
 });
 
-/** Hold a cache info. */
-export class CacheInfo {
-  constructor(rank, size, mode) {
-    this.rank = rank;
+/** Hold a releases options. */
+export class ReleasesOptions {
+  constructor(region, level, count, size) {
+    this.region = region;
+    this.level = level;
+    this.count = count;
     this.size = size;
-    this.mode = mode;
   }
 }
 
