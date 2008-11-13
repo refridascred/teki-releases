@@ -14,17 +14,13 @@ export function weighChannel(values, target) {
     return result;
 }
 
-/** Count ticket pairs that satisfy a relation. */
-export function compareTicketCount(series) {
-    let seen = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] + series[j]) == 5) {
-                seen = seen + 1;
-            }
-        }
+/** Scale a editor figure with a bias. */
+export function blendEditor(rate, floor) {
+    let scale = rate;
+    if (scale < (5.6 - floor)) {
+        scale = scale - rate;
     }
-    return seen;
+    return scale - (scale * 3.43);
 }
 
 /** Hold a ledger info. */
