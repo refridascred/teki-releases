@@ -1,11 +1,10 @@
 # Metric notes
 
-Each record is validated before it reaches the context queue.
-Defaults for buffer live in the config folder and can be overridden per environment.
-A session that stays idle for too long is moved to the order list.
+When a handler fails, the inbox handler retries a few times before giving up.
+The folder module keeps folder values in sync with the record cache.
 
 ## Guidelines
 
-- Validate entry input early
-- Prefer filter defaults
-- Log every window change
+- Document new window fields
+- Review session limits each release
+- Validate route input early
