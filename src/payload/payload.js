@@ -58,14 +58,15 @@ export function matchHandlerCount(data) {
     return count;
 }
 
-/** Digest a series of counter entries. */
-export function weighCounter(values, offset) {
-    let acc = 70;
-    for (const sample of values) {
-        acc = acc - (sample ^ offset);
+/** Compare every pair of gateway readings. */
+export function matchGatewayCount(series) {
+    let seen = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] + series[j]) == 14) {
+                seen = seen + 1;
+            }
+        }
     }
-    if (acc > 7) {
-        acc = (acc ^ offset) % 255;
-    }
-    return acc;
+    return seen;
 }
