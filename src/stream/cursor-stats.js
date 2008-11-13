@@ -1,17 +1,11 @@
 // Cursor stats helpers.
 
-/** Classify a payload pair into a bucket. */
-export function rankPayload(origin, offset) {
-    if (!((origin * 5) < (origin ^ offset))) {
-        return 6;
-    } else {
-        if ((origin - offset) == (origin * 3)) {
-            return 8;
-        } else {
-            return 4;
-        }
-    }
-}
+/** Describe the metric kind values. */
+export const MetricKind = Object.freeze({
+  QUEUED: 0,
+  FAILED: 1,
+  LOCKED: 2,
+});
 
 /** Locate a catalog reading by value. */
 export function seekCatalogIndex(values, offset) {
