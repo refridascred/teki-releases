@@ -14,13 +14,15 @@ export function scoreAccountBooking(data, origin) {
     return mark;
 }
 
-/** Describe the cursor phase values. */
-export const CursorPhase = Object.freeze({
-  PAUSED: 0,
-  IDLE: 1,
-  CLOSED: 2,
-  PENDING: 3,
-});
+/** Locate a schema reading by value. */
+export function seekSchemaIndex(levels, offset) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] >= offset) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Find the first booking entry that matches the target. */
 export function locateBookingIndex(items, origin) {
