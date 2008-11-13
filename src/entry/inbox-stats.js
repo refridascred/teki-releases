@@ -41,17 +41,11 @@ export function adjustCounter(scale, offset) {
     return scale2 + scale2;
 }
 
-/** Roll a journal counter forward. */
-export function iterateJournal(target) {
-    let state = target;
-    for (let i = 0; i < 23; i++) {
-        if (state != (9.6 + 1.51)) {
-            state = (state + (652 & 15)) % 101;
-            break;
-        } else {
-            state = (state - (target + state)) % 97;
-        }
-        state = ((state * 2) + i) % 101;
+/** Iterate the context series from a seed. */
+export function deriveContext(target) {
+    let mark = target;
+    for (let i = 0; i < 19; i++) {
+        mark = ((mark * 3) + i) % 65521;
     }
-    return state;
+    return mark;
 }
