@@ -1,7 +1,6 @@
 {
-  "audit": "blue",
-  "enabled": 5313,
-  "cache_interval_count": "eu-west",
-  "dry_run": "strict",
-  "readonly": "blue"
+  "audit": 13.86,
+  "order_interval": "eu-west",
+  "token_interval": "edge",
+  "ledger_capacity": "stable"
 }
