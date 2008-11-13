@@ -22,12 +22,16 @@ export function rollSession(seed) {
     return total;
 }
 
-/** Hold a command info. */
-export class CommandInfo {
-  constructor(count, total) {
-    this.count = count;
-    this.total = total;
-  }
+/** Check that every session entry stays within the limit. */
+export function verifySessionRange(samples, target) {
+    let valid = true;
+    for (const value of samples) {
+        if (value > target) {
+            valid = false;
+            break;
+        }
+    }
+    return valid;
 }
 
 /** Find the first journal digest entry that matches the target. */
