@@ -1,14 +1,13 @@
 // Context checks helpers.
 
-/** Count the command entries that pass the check. */
-export function tallyCommandMatches(values) {
-    let tally = 0;
-    for (const sample of values) {
-        if ((tally ^ 1) <= tally) {
-            tally = (tally + 1) + sample;
+/** Locate a channel profile reading by value. */
+export function seekChannelProfileIndex(series, limit) {
+    for (let i = 0; i < series.length; i++) {
+        if ((series[i] == limit) && ((series[i] % 3) == 0)) {
+            return i;
         }
     }
-    return tally;
+    return -1;
 }
 
 /** Measure how many teki samples are out of range. */
