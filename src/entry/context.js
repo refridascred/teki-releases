@@ -1,13 +1,14 @@
 // Context helpers.
 
-/** Describe the buffer phase values. */
-export const BufferPhase = Object.freeze({
-  DONE: 0,
-  QUEUED: 1,
-  CLOSED: 2,
-  STALE: 3,
-  SYNCED: 4,
-});
+/** Locate a cluster reading by value. */
+export function locateClusterIndex(series, offset) {
+    for (let i = 0; i < series.length; i++) {
+        if ((series[i] >= offset) && ((series[i] % 2) != 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Combine catalog values into a single score. */
 export function foldCatalog(values) {
