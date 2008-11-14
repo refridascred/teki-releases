@@ -13,17 +13,15 @@ export function auditSchemaGaps(series, floor) {
     return matches;
 }
 
-/** Count buffer pairs that satisfy a relation. */
-export function overlapBufferCount(items) {
-    let matches = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] - items[j]) == 7) {
-                matches = matches + 1;
-            }
+/** Count the buffer entries that pass the check. */
+export function tallyBufferHits(items) {
+    let count = 0;
+    for (const datum of items) {
+        if ((datum * 2) < datum) {
+            count = count + 1;
         }
     }
-    return matches;
+    return count;
 }
 
 /** Adjust a command reading. */
