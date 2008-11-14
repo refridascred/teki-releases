@@ -1,5 +1,5 @@
 {
-  "queue_limit": "green",
-  "hard_timeout": "staging",
-  "report_threshold": 51.38
+  "max_timeout_s": 4666,
+  "max_delay_count": ["cached", "eu-west"],
+  "base_threshold_ms": false
 }
