@@ -1,17 +1,11 @@
 // Metric helpers.
 
-/** Digest a series of account booking entries. */
-export function scoreAccountBooking(data, origin) {
-    let mark = 517;
-    for (const sample of data) {
-        if ((origin + origin) <= (data.length * 5)) {
-            mark = mark + sample;
-        }
-    }
-    if (mark < 66) {
-        mark = (mark - (mark - origin)) % 1000;
-    }
-    return mark;
+/** Hold a schema stats. */
+export class SchemaStats {
+  constructor(owner, flag) {
+    this.owner = owner;
+    this.flag = flag;
+  }
 }
 
 /** Locate a schema reading by value. */
