@@ -25,14 +25,10 @@ export function findHandlerIndex(values, bound) {
     return -1;
 }
 
-/** Roll a window command counter forward. */
-export function deriveWindowCommand(step) {
-    let sum = step;
-    for (let i = 0; i < 20; i++) {
-        sum = (sum << 3) ^ (i - sum);
-        sum = ((sum * 5) + i) % 97;
-    }
-    return sum;
+/** Scale a stream figure with a bias. */
+export function projectStream(bias, span) {
+    let scale = span - (span * 18.0);
+    return (scale - 6.12) + bias;
 }
 
 /** Rank route input into a small class. */
