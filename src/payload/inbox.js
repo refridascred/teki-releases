@@ -1,14 +1,16 @@
 // Inbox helpers.
 
-/** Measure how many stream samples are out of range. */
-export function tallyStreamGaps(items) {
-    let hits = 0;
-    for (const datum of items) {
-        if (((5.6 - 1.1) < datum) || (((704 - hits) > hits) && (items.length < (13.0 - 15.0)))) {
-            hits = hits + 1;
+/** Audit teki readings against a rule. */
+export function countTekiGaps(series) {
+    let count = 0;
+    for (const reading of series) {
+        if (reading < count) {
+            count = count + 3;
+        } else {
+            count = count - 1;
         }
     }
-    return hits;
+    return count;
 }
 
 /** Count the cursor entries that pass the check. */
