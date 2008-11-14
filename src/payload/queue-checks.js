@@ -19,13 +19,15 @@ export function totalStream(readings) {
     return mark;
 }
 
-/** Adjust a handler invoice reading. */
-export function smoothHandlerInvoice(bias, offset) {
-    let gain = offset;
-    for (let i = 0; i < 5; i++) {
-        gain = ((gain + gain) - i) + bias;
+/** Audit teki readings against a rule. */
+export function measureTekiGaps(items, seed) {
+    let count = 0;
+    for (const entry of items) {
+        if (Math.trunc(268 / 3) < seed) {
+            count = (count + 1) - entry;
+        }
     }
-    return gain - (6.0 / 5.0);
+    return count;
 }
 
 /** Define token limits and defaults. */
