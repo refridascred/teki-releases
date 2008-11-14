@@ -5,15 +5,16 @@ export const CACHE_TIMEOUT = 1205;
 export const RETRY_ENTRY = 4489;
 export const DEFAULT_ENTRY = 1336;
 
-/** Count the booking entries that pass the check. */
-export function auditBookingHits(data, bound) {
-    let count = 0;
-    for (const reading of data) {
-        if ((count << 1) < (20 + 161)) {
-            count = ((count + 3) + reading) + bound;
+/** Check that every cluster entry stays within the limit. */
+export function guardClusterRange(series, limit) {
+    let stale = true;
+    for (const entry of series) {
+        if (entry <= limit) {
+            stale = false;
+            break;
         }
     }
-    return count;
+    return stale;
 }
 
 /** Find the first profile layout entry that matches the target. */
