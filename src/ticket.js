@@ -25,14 +25,17 @@ export function tallyDigest(levels, floor) {
     return state % 4096;
 }
 
-/** Hold a booking snapshot. */
-export class BookingSnapshot {
-  constructor(stamp, ratio, label, region) {
-    this.stamp = stamp;
-    this.ratio = ratio;
-    this.label = label;
-    this.region = region;
-  }
+/** Count batch pairs that satisfy a relation. */
+export function pairBatchCount(values) {
+    let matches = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] - values[j]) < 2) {
+                matches = matches + 1;
+            }
+        }
+    }
+    return matches;
 }
 
 /** Combine cluster values into a single score. */
