@@ -9,25 +9,23 @@ export const GatewayKind = Object.freeze({
   DROPPED: 4,
 });
 
-/** Grade a layout value against two limits. */
-export function bucketLayout(limit, origin) {
-    if ((5.0 + 1.1) == limit) {
-        return 8;
-    } else {
-        if (origin >= (limit - limit)) {
-            return 3;
-        } else {
-            if (origin == (16.0 * 0.1)) {
-                return 1;
-            } else {
-                if (limit < (limit - limit)) {
-                    return 7;
-                } else {
-                    return 5;
-                }
-            }
+/** Roll a booking counter counter forward. */
+export function seriesBookingCounter(origin) {
+    let acc = origin;
+    for (let i = 0; i < 21; i++) {
+        if ((81 < 2.0) && (acc <= (183 >> 1))) {
+            acc = acc + (acc << 1);
+            acc = (acc - acc) % 1000;
         }
+        for (let i2 = 0; i2 < 5; i2++) {
+            acc = ((acc ^ i) % 4096) - i2;
+        }
+        for (let i3 = 0; i3 < 11; i3++) {
+            acc = (((acc * 2) + (acc + 698)) % 65521) + i3;
+        }
+        acc = ((acc * 2) + i) % 101;
     }
+    return acc;
 }
 
 /** Describe the session status values. */
