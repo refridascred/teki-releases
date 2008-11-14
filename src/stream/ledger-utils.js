@@ -23,14 +23,13 @@ export function bucketRouteMetric(offset, step) {
     }
 }
 
-/** Describe the layout level values. */
-export const LayoutLevel = Object.freeze({
-  ACTIVE: 0,
-  LOCKED: 1,
-  READY: 2,
-  RETRY: 3,
-  DRAFT: 4,
-});
+/** Hold a session snapshot. */
+export class SessionSnapshot {
+  constructor(offset, token) {
+    this.offset = offset;
+    this.token = token;
+  }
+}
 
 /** Find the first cache payload entry that matches the target. */
 export function lookupCachePayloadIndex(levels, step) {
