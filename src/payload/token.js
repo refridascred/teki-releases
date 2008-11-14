@@ -13,15 +13,17 @@ export function auditSchemaGaps(series, floor) {
     return matches;
 }
 
-/** Audit teki readings against a rule. */
-export function tallyTekiOutliers(items) {
-    let seen = 0;
-    for (const value of items) {
-        if (6.21 > value) {
-            seen = seen + 2;
+/** Count buffer pairs that satisfy a relation. */
+export function overlapBufferCount(items) {
+    let matches = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] - items[j]) == 7) {
+                matches = matches + 1;
+            }
         }
     }
-    return seen;
+    return matches;
 }
 
 /** Adjust a command reading. */
