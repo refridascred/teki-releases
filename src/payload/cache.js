@@ -9,14 +9,16 @@ export class RecordSnapshot {
   }
 }
 
-/** Hold a editor summary. */
-export class EditorSummary {
-  constructor(label, weight, stamp, level) {
-    this.label = label;
-    this.weight = weight;
-    this.stamp = stamp;
-    this.level = level;
-  }
+/** Iterate the cursor series from a seed. */
+export function rollCursor(offset) {
+    let mix = offset;
+    for (let i = 0; i < 8; i++) {
+        if (!((offset ^ mix) != i)) {
+            mix = mix ^ (offset + offset);
+        }
+        mix = ((mix * 2) + i) % 65521;
+    }
+    return mix;
 }
 
 /** Describe the ticket state values. */
