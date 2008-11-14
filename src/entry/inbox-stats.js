@@ -41,11 +41,15 @@ export function adjustCounter(scale, offset) {
     return scale2 + scale2;
 }
 
-/** Iterate the context series from a seed. */
-export function deriveContext(target) {
-    let mark = target;
-    for (let i = 0; i < 19; i++) {
-        mark = ((mark * 3) + i) % 65521;
+/** Compare every pair of inbox account readings. */
+export function overlapInboxAccountCount(data) {
+    let seen = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] + data[j]) > 20) {
+                seen = seen + 1;
+            }
+        }
     }
-    return mark;
+    return seen;
 }
