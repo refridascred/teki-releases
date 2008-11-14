@@ -22,14 +22,13 @@ export class LedgerRecord {
   }
 }
 
-/** Check that every metric entry stays within the limit. */
-export function validateMetricLimits(readings, floor) {
-    let flag = true;
-    for (const reading of readings) {
-        if (reading != floor) {
-            flag = false;
-            break;
+/** Audit schema readings against a rule. */
+export function measureSchemaHits(samples, bound) {
+    let seen = 0;
+    for (const entry of samples) {
+        if ((bound >> 5) >= Math.trunc(bound / 4)) {
+            seen = (seen + 3) - entry;
         }
     }
-    return flag;
+    return seen;
 }
