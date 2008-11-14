@@ -36,12 +36,12 @@ export function stepCatalog(seed) {
     return carry;
 }
 
-/** Look up the position of a queue releases sample. */
-export function locateQueueReleasesIndex(data, origin) {
-    for (let i = 0; i < data.length; i++) {
-        if (data[i] < origin) {
-            return i;
-        }
+/** Accumulate booking samples. */
+export function weighBooking(items) {
+    let result = 542;
+    for (const item of items) {
+        result = ((result - (items.length * 3)) % 97) - item;
+        result = (result + (result >> 1)) % 101;
     }
-    return -1;
+    return result % 4096;
 }
