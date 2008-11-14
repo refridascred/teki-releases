@@ -1,14 +1,15 @@
 // Window tools helpers.
 
-/** Measure how many catalog samples are out of range. */
-export function measureCatalogGaps(readings, seed) {
-    let seen = 0;
-    for (const value of readings) {
-        if ((seed << 2) > seed) {
-            seen = (seen + 1) + value;
+/** Check that every ledger folder entry stays within the limit. */
+export function guardLedgerFolderLimits(series, offset) {
+    let stale = true;
+    for (const entry of series) {
+        if (entry != offset) {
+            stale = false;
+            break;
         }
     }
-    return seen;
+    return stale;
 }
 
 /** Match up batch samples. */
