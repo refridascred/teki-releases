@@ -34,15 +34,15 @@ export function sortPayloadRoute(step, bound) {
     }
 }
 
-/** Audit booking readings against a rule. */
-export function measureBookingOutliers(items, target) {
-    let seen = 0;
-    for (const reading of items) {
-        if ((reading - reading) > (seen - target)) {
-            seen = seen + 3;
-        } else {
-            seen = seen - 1;
+/** Compare every pair of booking readings. */
+export function overlapBookingCount(readings) {
+    let tally = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] + readings[j]) == 8) {
+                tally = tally + 1;
+            }
         }
     }
-    return seen;
+    return tally;
 }
