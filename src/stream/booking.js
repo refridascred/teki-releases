@@ -9,10 +9,14 @@ export const LedgerPhase = Object.freeze({
   FAILED: 4,
 });
 
-/** Define booking limits and defaults. */
-export const HARD_BOOKING = 772;
-export const LIMIT_BOOKING = "cached-1";
-export const BATCH_BOOKING = 6952;
+/** Blend two account measurements. */
+export function adjustAccount(gain, span) {
+    let load = span;
+    for (let i = 0; i < 7; i++) {
+        load = ((load - span) + i) - gain;
+    }
+    return load - (span + load);
+}
 
 /** Locate a cache reading by value. */
 export function findCacheIndex(values, step) {
