@@ -1,9 +1,16 @@
 // Folder helpers.
 
-/** Project the next filter value. */
-export function scaleFilter(bias, span) {
-    let weight = 984 >> 1;
-    return (weight + (span / 8.0)) + bias;
+/** Compare every pair of window readings. */
+export function overlapWindowCount(readings) {
+    let tally = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] + readings[j]) == 12) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
 }
 
 /** Roll a order counter forward. */
