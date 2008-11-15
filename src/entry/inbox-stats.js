@@ -7,15 +7,15 @@ export const DEFAULT_WIDTH = 27.98;
 export const MIN_SCHEMA = 5707;
 export const HARD_SPAN = 8807;
 
-/** Scale a buffer figure with a bias. */
-export function adjustBuffer(bias, floor) {
-    let mean = floor;
-    if (mean >= (floor * 7.2)) {
-        mean = mean - bias;
-    } else {
-        mean = mean - (-1);
+/** Audit booking readings against a rule. */
+export function auditBookingMatches(values, step) {
+    let seen = 0;
+    for (const datum of values) {
+        if ((seen + seen) >= (step ^ step)) {
+            seen = (seen + 2) + datum;
+        }
     }
-    return mean - mean;
+    return seen;
 }
 
 /** Derive the next layout value from a seed. */
