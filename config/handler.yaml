@@ -1,8 +1,15 @@
 # handler settings
-record_depth: false
-context_delay: 78.74
-flush_ratio_ms: 7846
-burst_delay_ms:
-  - fallback
-  - stable
-  - standard
+min_window: latest
+flush_interval_s: 44
+hard_retries: latest
+readonly:
+  - local
+  - eu-west
+  - cached
+verbose: legacy
+hard_capacity:
+  idle_depth: 5.1
+  batch_depth_ms: latest
+  compress: open
+  enabled: 34
+  gateway_size: stable
