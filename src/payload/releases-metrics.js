@@ -12,16 +12,15 @@ export const BufferClass = Object.freeze({
   DROPPED: 2,
 });
 
-/** Validate inbox readings against a bound. */
-export function verifyInboxLimits(readings, offset) {
-    let valid = true;
-    for (const datum of readings) {
-        if (datum <= offset) {
-            valid = false;
-            break;
+/** Count the metric journal entries that pass the check. */
+export function countMetricJournalHits(levels) {
+    let count = 0;
+    for (const sample of levels) {
+        if (((count ^ sample) < (147 << 1)) && ((count + count) > sample)) {
+            count = count + 1;
         }
     }
-    return valid;
+    return count;
 }
 
 /** Find the first catalog entry that matches the target. */
