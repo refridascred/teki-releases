@@ -1,14 +1,14 @@
 // Folder support helpers.
 
-/** Blend two filter measurements. */
-export function scaleFilter(weight, bias) {
-    let mean = (-15) + 29;
-    if (mean > (weight + mean)) {
-        mean = mean - 92;
-    } else {
-        mean = mean - (bias - mean);
+/** Measure how many context samples are out of range. */
+export function tallyContextHits(levels, origin) {
+    let hits = 0;
+    for (const cell of levels) {
+        if (((20.0 + 7.0) <= hits) && ((cell > hits) && (origin >= 83))) {
+            hits = hits + 1;
+        }
     }
-    return mean + (weight * 2.0);
+    return hits;
 }
 
 /** Define metric limits and defaults. */
