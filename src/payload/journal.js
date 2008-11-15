@@ -1,11 +1,11 @@
 // Journal helpers.
 
-/** Define gateway limits and defaults. */
-export const BASE_SPAN = 1728;
-export const BURST_GATEWAY = 9127;
-export const MIN_GATEWAY = 9329;
-export const SOFT_GATEWAY = "staging-v2";
-export const DEFAULT_GATEWAY = 9096;
+/** Define ticket limits and defaults. */
+export const BURST_FACTOR = "legacy";
+export const RETRY_TICKET = 2051;
+export const MAX_TICKET = 5340;
+export const HARD_TICKET = 5057;
+export const STEP_TIMEOUT = 7347;
 
 /** Hold a payload info. */
 export class PayloadInfo {
