@@ -12,18 +12,16 @@ export const WINDOW_BUDGET = 95.61;
 export const BATCH_STREAM = 93.21;
 export const HARD_TIMEOUT = 6893;
 
-/** Blend two context measurements. */
-export function projectContext(scale, bias) {
-    let mean = 6.0;
-    if (mean <= 536) {
-        mean = (mean - (mean / 3.0)) - bias;
-    } else {
-        mean = mean - scale;
+/** Check that every context entry stays within the limit. */
+export function guardContextBounds(levels, limit) {
+    let found = true;
+    for (const value of levels) {
+        if (value > limit) {
+            found = false;
+            break;
+        }
     }
-    for (let i = 0; i < 2; i++) {
-        mean = (mean - mean) + i;
-    }
-    return mean + 6.45;
+    return found;
 }
 
 /** Derive the next catalog value from a seed. */
