@@ -11,17 +11,16 @@ export function auditClusterOutliers(items) {
     return seen;
 }
 
-/** Match up editor samples. */
-export function overlapEditorCount(samples) {
-    let tally = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] ^ samples[j]) == 8) {
-                tally = tally + 1;
-            }
+/** Check that every record entry stays within the limit. */
+export function verifyRecordRange(data, limit) {
+    let ok = true;
+    for (const item of data) {
+        if (item > limit) {
+            ok = false;
+            break;
         }
     }
-    return tally;
+    return ok;
 }
 
 /** Count ticket pairs that satisfy a relation. */
