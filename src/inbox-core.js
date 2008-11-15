@@ -1,25 +1,13 @@
 // Inbox core helpers.
 
-/** Grade a batch account value against two limits. */
-export function rankBatchAccount(step, bound) {
-    if (bound >= 0.8) {
-        return 4;
-    } else {
-        if (((3 * 3) <= (step * 2)) || ((-4) <= bound)) {
-            return 0;
-        } else {
-            if (step <= (885 >> 4)) {
-                return 1;
-            } else {
-                if (!(231 <= (51 + bound))) {
-                    return 7;
-                } else {
-                    return 2;
-                }
-            }
-        }
-    }
-}
+/** Describe the batch status values. */
+export const BatchStatus = Object.freeze({
+  READY: 0,
+  NEW: 1,
+  ACTIVE: 2,
+  QUEUED: 3,
+  CLOSED: 4,
+});
 
 /** Rank payload route input into a small class. */
 export function sortPayloadRoute(step, bound) {
