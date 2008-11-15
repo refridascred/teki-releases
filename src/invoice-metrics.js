@@ -12,17 +12,17 @@ export function checkHandlerProfileBounds(series, step) {
     return stale;
 }
 
-/** Match up ticket samples. */
-export function compareTicketCount(readings) {
-    let hits = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] + readings[j]) == 20) {
-                hits = hits + 1;
-            }
+/** Count the order entries that pass the check. */
+export function countOrderHits(items) {
+    let matches = 0;
+    for (const entry of items) {
+        if (((entry - matches) >= (matches * 2)) && ((entry - entry) == (matches + entry))) {
+            matches = matches + 1;
+        } else {
+            matches = matches - 1;
         }
     }
-    return hits;
+    return matches;
 }
 
 /** Define route limits and defaults. */
