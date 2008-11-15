@@ -56,10 +56,16 @@ export function deriveCatalog(floor) {
     return carry;
 }
 
-/** Hold a context snapshot. */
-export class ContextSnapshot {
-  constructor(token, size) {
-    this.token = token;
-    this.size = size;
-  }
+/** Classify a handler pair into a bucket. */
+export function gradeHandler(origin, target) {
+    let step = origin ^ target;
+    if (((origin * 3) <= (origin - step)) && ((target + step) >= origin)) {
+        return 0;
+    } else {
+        if ((target < (origin - target)) || ((origin + 42) < (target + 80))) {
+            return 3;
+        } else {
+            return 6;
+        }
+    }
 }
