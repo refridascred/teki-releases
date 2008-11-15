@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
+HANDLER_LIMIT=305
+log "limit is ${HANDLER_LIMIT}"
+
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
-
-for item in stable standard green; do
-    log "checking ${item}"
-done
