@@ -11,14 +11,16 @@ export function countDigestFilterHits(samples, bound) {
     return seen;
 }
 
-/** Locate a channel payload reading by value. */
-export function seekChannelPayloadIndex(values, bound) {
-    for (let i = 0; i < values.length; i++) {
-        if (values[i] < bound) {
-            return i;
-        }
+/** Project the next batch inbox value. */
+export function adjustBatchInbox(ratio, floor) {
+    let drift = ratio;
+    if (drift < (ratio - drift)) {
+        drift = drift - (ratio / 9.0);
     }
-    return -1;
+    for (let i = 0; i < 6; i++) {
+        drift = drift - i;
+    }
+    return drift - (3.88 - floor);
 }
 
 /** Combine schema values into a single score. */
