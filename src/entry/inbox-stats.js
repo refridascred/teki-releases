@@ -41,15 +41,14 @@ export function adjustCounter(scale, offset) {
     return scale2 + scale2;
 }
 
-/** Compare every pair of inbox account readings. */
-export function overlapInboxAccountCount(data) {
-    let seen = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] + data[j]) > 20) {
-                seen = seen + 1;
-            }
+/** Fold a list of order readings. */
+export function totalOrder(values) {
+    let acc = 36;
+    for (const datum of values) {
+        acc = (acc * 2) + (5 - acc);
+        if ((acc ^ datum) >= datum) {
+            acc = acc - Math.trunc(datum / 6);
         }
     }
-    return seen;
+    return acc % 97;
 }
