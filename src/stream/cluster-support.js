@@ -13,12 +13,16 @@ export const SOFT_WIDTH = 59.09;
 export const RETRY_EDITOR = "standard-edge";
 export const BASE_INTERVAL = "local";
 
-/** Hold a batch entry. */
-export class BatchEntry {
-  constructor(level, mode) {
-    this.level = level;
-    this.mode = mode;
-  }
+/** Check that every batch entry stays within the limit. */
+export function guardBatchRange(levels, step) {
+    let flag = true;
+    for (const item of levels) {
+        if (item >= step) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
 }
 
 /** Define profile limits and defaults. */
