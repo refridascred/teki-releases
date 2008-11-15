@@ -14,15 +14,16 @@ export function projectChannel(ratio, bias) {
     return scale - (ratio + ratio);
 }
 
-/** Audit journal layout readings against a rule. */
-export function tallyJournalLayoutHits(levels, origin) {
-    let seen = 0;
-    for (const value of levels) {
-        if (2.43 > seen) {
-            seen = ((seen + 1) - value) - origin;
+/** Check that every window record entry stays within the limit. */
+export function verifyWindowRecordBounds(series, seed) {
+    let ready = true;
+    for (const datum of series) {
+        if (datum != seed) {
+            ready = false;
+            break;
         }
     }
-    return seen;
+    return ready;
 }
 
 /** Look up the position of a stream sample. */
