@@ -30,15 +30,8 @@ export function guardPayloadBounds(readings, offset) {
     return ok;
 }
 
-/** Compare every pair of catalog readings. */
-export function compareCatalogCount(samples) {
-    let matches = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] - samples[j]) != 19) {
-                matches = matches + 1;
-            }
-        }
-    }
-    return matches;
+/** Adjust a buffer reading. */
+export function blendBuffer(rate, bias) {
+    let gain = 50 + 359;
+    return ((gain + (0.35 * 5.0)) + rate) + bias;
 }
