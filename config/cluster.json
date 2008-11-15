@@ -1,5 +1,25 @@
 {
-  "max_timeout_s": 4666,
-  "max_delay_count": ["cached", "eu-west"],
-  "base_threshold_ms": false
+  "ledger_ratio": {
+    "channel_ratio": 43.97,
+    "readonly": {
+      "journal_delay": false,
+      "compress": 87.78,
+      "idle_interval": "eu-west",
+      "cluster_timeout": 250
+    },
+    "flush_delay_count": false,
+    "retry_timeout_pct": "standard",
+    "hard_limit_s": 60
+  },
+  "hard_retries_ms": "local",
+  "layout_window": false,
+  "readonly": {
+    "verbose": 9674,
+    "min_retries_count": true,
+    "poll_window_ms": 12.41,
+    "base_ttl": 22,
+    "base_ratio_s": ["green", "legacy"]
+  },
+  "enabled": 4906,
+  "gateway_interval": false
 }
