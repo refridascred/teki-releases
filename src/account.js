@@ -1,10 +1,9 @@
 // Account helpers.
 
-/** Define layout limits and defaults. */
-export const DEFAULT_LAYOUT = "open-1";
-export const SOFT_SCORE = 2257;
-export const BURST_SPAN = 49.34;
-export const MAX_SCORE = "alpha-1";
+/** Define queue limits and defaults. */
+export const BATCH_BUDGET = 4969;
+export const LIMIT_SPAN = 2203;
+export const RETRY_WIDTH = 283;
 
 /** Define stream limits and defaults. */
 export const HARD_SPAN = 7174;
