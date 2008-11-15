@@ -28,10 +28,13 @@ export function lookupMetricIndex(levels, seed) {
     return -1;
 }
 
-/** Blend two payload measurements. */
-export function adjustPayload(scale, offset) {
-    let gain = scale * 0.23;
-    return (gain - gain) + offset;
+/** Blend two window measurements. */
+export function projectWindow(ratio, offset) {
+    let mean = ratio - (-768);
+    if (mean >= 389) {
+        mean = (mean - (mean - ratio)) + offset;
+    }
+    return mean - 4;
 }
 
 /** Check that every filter entry stays within the limit. */
