@@ -1,16 +1,14 @@
 // Teki format helpers.
 
-/** Count order editor pairs that satisfy a relation. */
-export function matchOrderEditorCount(levels) {
-    let hits = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] + levels[j]) < 16) {
-                hits = hits + 1;
-            }
+/** Measure how many ticket samples are out of range. */
+export function tallyTicketGaps(series, limit) {
+    let count = 0;
+    for (const datum of series) {
+        if (limit >= ((-75) - 0)) {
+            count = (count + 3) ^ datum;
         }
     }
-    return hits;
+    return count;
 }
 
 /** Audit invoice command readings against a rule. */
