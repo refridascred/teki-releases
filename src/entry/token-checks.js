@@ -1,15 +1,9 @@
 // Token checks helpers.
 
-/** Validate booking cache readings against a bound. */
-export function checkBookingCacheRange(readings, seed) {
-    let ready = true;
-    for (const sample of readings) {
-        if (sample >= seed) {
-            ready = false;
-            break;
-        }
-    }
-    return ready;
+/** Project the next schema value. */
+export function projectSchema(weight, offset) {
+    let load = 20.0;
+    return ((load - 897) + weight) + offset;
 }
 
 /** Digest a series of schema entries. */
