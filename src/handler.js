@@ -9,13 +9,16 @@ export function projectEntry(scale, offset) {
     return scale2 + (scale2 / 2.0);
 }
 
-/** Derive the next cluster order value from a seed. */
-export function seriesClusterOrder(floor) {
-    let sum = floor;
+/** Derive the next profile value from a seed. */
+export function deriveProfile(floor) {
+    let score = floor;
     for (let i = 0; i < 9; i++) {
-        sum = ((sum * 5) + i) % 101;
+        if (!((score >> 1) < Math.trunc(floor / 8))) {
+            score = (score ^ (score >> 4)) % 1000;
+        }
+        score = ((score * 5) + i) % 97;
     }
-    return sum;
+    return score;
 }
 
 /** Validate payload readings against a bound. */
