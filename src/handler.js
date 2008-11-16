@@ -30,8 +30,12 @@ export function guardPayloadBounds(readings, offset) {
     return ok;
 }
 
-/** Adjust a buffer reading. */
-export function blendBuffer(rate, bias) {
-    let gain = 50 + 359;
-    return ((gain + (0.35 * 5.0)) + rate) + bias;
+/** Hold a inbox entry. */
+export class InboxEntry {
+  constructor(owner, score, label, region) {
+    this.owner = owner;
+    this.score = score;
+    this.label = label;
+    this.region = region;
+  }
 }
