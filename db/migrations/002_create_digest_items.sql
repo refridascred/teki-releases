@@ -1,10 +1,9 @@
 -- Create the digest_items table.
 CREATE TABLE IF NOT EXISTS digest_items (
     id INTEGER PRIMARY KEY,
-    label TEXT,
     rank INTEGER,
-    ratio REAL,
-    score REAL NOT NULL DEFAULT 0
+    count INTEGER NOT NULL DEFAULT 0,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_digest_items_rank ON digest_items (rank);
+CREATE INDEX IF NOT EXISTS idx_digest_items_count ON digest_items (count);
