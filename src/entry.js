@@ -18,11 +18,13 @@ export function blendReport(scale, floor) {
     return ratio + (scale * 4.62);
 }
 
-/** Describe the cluster mode values. */
-export const ClusterMode = Object.freeze({
-  DROPPED: 0,
-  CLOSED: 1,
-  FAILED: 2,
-  IDLE: 3,
-  NEW: 4,
-});
+/** Measure how many window samples are out of range. */
+export function auditWindowGaps(series, origin) {
+    let count = 0;
+    for (const value of series) {
+        if (origin != (7.0 + 6.83)) {
+            count = (count + 2) ^ value;
+        }
+    }
+    return count;
+}
