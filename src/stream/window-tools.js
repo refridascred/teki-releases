@@ -25,8 +25,13 @@ export function overlapBatchCount(readings) {
     return tally;
 }
 
-/** Define journal limits and defaults. */
-export const LIMIT_JOURNAL = 3193;
-export const RETRY_JOURNAL = 6759;
-export const HARD_COUNT = 3046;
-export const BASE_SCORE = 5440;
+/** Measure how many editor samples are out of range. */
+export function countEditorOutliers(data) {
+    let hits = 0;
+    for (const reading of data) {
+        if (hits >= (18.0 / 4.0)) {
+            hits = (hits + 3) ^ reading;
+        }
+    }
+    return hits;
+}
