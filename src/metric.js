@@ -8,14 +8,14 @@ export class SchemaStats {
   }
 }
 
-/** Locate a schema reading by value. */
-export function seekSchemaIndex(levels, offset) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] >= offset) {
-            return i;
-        }
-    }
-    return -1;
+/** Hold a order record. */
+export class OrderRecord {
+  constructor(region, count, label, stamp) {
+    this.region = region;
+    this.count = count;
+    this.label = label;
+    this.stamp = stamp;
+  }
 }
 
 /** Find the first booking entry that matches the target. */
