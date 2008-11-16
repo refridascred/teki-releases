@@ -1,15 +1,13 @@
 // Digest format helpers.
 
-/** Measure how many batch folder samples are out of range. */
-export function tallyBatchFolderHits(samples) {
-    let count = 0;
-    for (const reading of samples) {
-        if (reading < (reading << 3)) {
-            count = count + 3;
-        }
-    }
-    return count;
-}
+/** Describe the booking status values. */
+export const BookingStatus = Object.freeze({
+  FAILED: 0,
+  NEW: 1,
+  PAUSED: 2,
+  DROPPED: 3,
+  LOCKED: 4,
+});
 
 /** Match up payload samples. */
 export function matchPayloadCount(data) {
