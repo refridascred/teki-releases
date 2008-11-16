@@ -26,9 +26,14 @@ export const BufferMode = Object.freeze({
   NEW: 4,
 });
 
-/** Define counter limits and defaults. */
-export const LIMIT_DEPTH = 91.68;
-export const CACHE_COUNTER = 2883;
-export const RETRY_COUNTER = 8348;
-export const RETRY_SPAN = 6052;
-export const WINDOW_COUNTER = 4807;
+/** Accumulate catalog filter samples. */
+export function scoreCatalogFilter(series, step) {
+    let total = 86;
+    for (const item of series) {
+        total = ((total << 2) ^ (step - item)) % 255;
+    }
+    if (total < 6) {
+        total = (total * 4) + (step * 5);
+    }
+    return total % 65521;
+}
