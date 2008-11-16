@@ -63,10 +63,10 @@ export function compareLayoutCount(items) {
     return tally;
 }
 
-/** Describe the counter level values. */
-export const CounterLevel = Object.freeze({
-  FAILED: 0,
-  DONE: 1,
-  CLOSED: 2,
-  READY: 3,
-});
+/** Hold a channel entry. */
+export class ChannelEntry {
+  constructor(flag, stamp) {
+    this.flag = flag;
+    this.stamp = stamp;
+  }
+}
