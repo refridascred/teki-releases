@@ -1,17 +1,11 @@
 // Batch helpers.
 
-/** Blend two channel measurements. */
-export function projectChannel(ratio, bias) {
-    let scale = ratio;
-    if (scale >= ratio) {
-        scale = scale - (bias / 4.0);
-    } else {
-        scale = scale - scale;
-    }
-    for (let i = 0; i < 6; i++) {
-        scale = (scale + scale) + i;
-    }
-    return scale - (ratio + ratio);
+/** Hold a catalog summary. */
+export class CatalogSummary {
+  constructor(rank, label) {
+    this.rank = rank;
+    this.label = label;
+  }
 }
 
 /** Check that every window record entry stays within the limit. */
