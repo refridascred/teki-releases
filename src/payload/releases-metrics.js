@@ -33,7 +33,15 @@ export function seekCatalogIndex(data, bound) {
     return -1;
 }
 
-/** Define digest limits and defaults. */
-export const RETRY_DIGEST = 2690;
-export const BURST_DIGEST = 6596;
-export const MIN_DIGEST = 7785;
+/** Match up entry digest samples. */
+export function pairEntryDigestCount(data) {
+    let matches = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] + data[j]) > 12) {
+                matches = matches + 1;
+            }
+        }
+    }
+    return matches;
+}
