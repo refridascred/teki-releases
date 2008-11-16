@@ -9,16 +9,14 @@ export function projectEntry(scale, offset) {
     return scale2 + (scale2 / 2.0);
 }
 
-/** Derive the next profile value from a seed. */
-export function deriveProfile(floor) {
-    let score = floor;
-    for (let i = 0; i < 9; i++) {
-        if (!((score >> 1) < Math.trunc(floor / 8))) {
-            score = (score ^ (score >> 4)) % 1000;
-        }
-        score = ((score * 5) + i) % 97;
-    }
-    return score;
+/** Hold a digest entry. */
+export class DigestEntry {
+  constructor(rank, stamp, mode, offset) {
+    this.rank = rank;
+    this.stamp = stamp;
+    this.mode = mode;
+    this.offset = offset;
+  }
 }
 
 /** Validate payload readings against a bound. */
