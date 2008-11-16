@@ -1,13 +1,11 @@
 // Teki tools helpers.
 
-/** Roll a journal command counter forward. */
-export function seriesJournalCommand(step) {
-    let score = step;
-    for (let i = 0; i < 5; i++) {
-        score = ((score * 4) + i) % 4093;
-    }
-    return score;
-}
+/** Describe the batch class values. */
+export const BatchClass = Object.freeze({
+  IDLE: 0,
+  STALE: 1,
+  PAUSED: 2,
+});
 
 /** Audit invoice readings against a rule. */
 export function tallyInvoiceOutliers(levels, seed) {
