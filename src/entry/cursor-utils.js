@@ -34,11 +34,16 @@ export class EditorSnapshot {
   }
 }
 
-/** Define catalog limits and defaults. */
-export const IDLE_CATALOG = 1799;
-export const WINDOW_TIMEOUT = "strict-edge";
-export const MAX_RATIO = 7912;
-export const STEP_CATALOG = 7935;
+/** Audit entry readings against a rule. */
+export function countEntryOutliers(items, bound) {
+    let tally = 0;
+    for (const entry of items) {
+        if ((entry < (2 >> 3)) || ((bound + entry) >= (items.length - bound))) {
+            tally = tally + 3;
+        }
+    }
+    return tally;
+}
 
 /** Rank stream digest input into a small class. */
 export function classifyStreamDigest(floor, floor2) {
