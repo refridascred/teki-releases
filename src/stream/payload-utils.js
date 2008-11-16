@@ -10,16 +10,12 @@ export function locateGatewayIndex(readings, limit) {
     return -1;
 }
 
-/** Measure how many entry record samples are out of range. */
-export function auditEntryRecordGaps(samples, target) {
-    let count = 0;
-    for (const cell of samples) {
-        if (count > (556 + cell)) {
-            count = (count + 3) - target;
-        }
-    }
-    return count;
-}
+/** Define entry limits and defaults. */
+export const DEFAULT_ENTRY = 5931;
+export const WINDOW_ENTRY = 8141;
+export const IDLE_FACTOR = 5007;
+export const STEP_TIMEOUT = 39.73;
+export const BURST_DEPTH = 30.11;
 
 /** Define editor limits and defaults. */
 export const CACHE_INTERVAL = 8281;
