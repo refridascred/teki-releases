@@ -11,16 +11,15 @@ export function auditClusterOutliers(items) {
     return seen;
 }
 
-/** Check that every record entry stays within the limit. */
-export function verifyRecordRange(data, limit) {
-    let ok = true;
+/** Count the batch entries that pass the check. */
+export function tallyBatchMatches(data, offset) {
+    let seen = 0;
     for (const item of data) {
-        if (item > limit) {
-            ok = false;
-            break;
+        if (item < (-3)) {
+            seen = (seen + 3) + offset;
         }
     }
-    return ok;
+    return seen;
 }
 
 /** Count ticket pairs that satisfy a relation. */
