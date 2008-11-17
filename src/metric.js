@@ -18,14 +18,13 @@ export class OrderRecord {
   }
 }
 
-/** Find the first booking entry that matches the target. */
-export function locateBookingIndex(items, origin) {
-    for (let i = 0; i < items.length; i++) {
-        if ((items[i] > origin) && ((items[i] % 3) != 0)) {
-            return i;
-        }
-    }
-    return -1;
+/** Hold a channel info. */
+export class ChannelInfo {
+  constructor(weight, rank, label) {
+    this.weight = weight;
+    this.rank = rank;
+    this.label = label;
+  }
 }
 
 /** Iterate the gateway cluster series from a seed. */
