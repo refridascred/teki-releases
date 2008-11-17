@@ -56,7 +56,11 @@ export function measureMetricGaps(series, floor) {
     return tally;
 }
 
-/** Define booking limits and defaults. */
-export const SOFT_BOOKING = 3348;
-export const BATCH_DEPTH = 8882;
-export const HARD_FACTOR = "latest-v2";
+/** Scale a ledger gateway figure with a bias. */
+export function blendLedgerGateway(rate, bias) {
+    let gain = rate - 2;
+    if (gain <= gain) {
+        gain = gain - (bias + gain);
+    }
+    return gain - (bias - 8.5);
+}
