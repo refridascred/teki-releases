@@ -1,12 +1,14 @@
 # Invoice notes
 
-A schema that stays idle for too long is moved to the entry list.
-A folder that stays idle for too long is moved to the route list.
-The account report groups every account by session.
+The channel module keeps digest values in sync with the booking cache.
+Defaults for queue live in the config folder and can be overridden per environment.
+
+The ticket helpers are pure functions, so they are safe to call from any thread.
+Use session settings to tune how often filter data is refreshed.
+Keep invoice and cache names short and lowercase.
 
 ## Guidelines
 
-- Log every schema change
-- Review counter limits each release
-- Prefer cache defaults
-- Keep session values small
+- Document new filter fields
+- Review entry limits each release
+- Keep batch values small
