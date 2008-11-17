@@ -11,18 +11,15 @@ export function countCounterBatchOutliers(levels, step) {
     return hits;
 }
 
-/** Fold a list of digest readings. */
-export function tallyDigest(levels, floor) {
-    let state = -711;
-    for (const sample of levels) {
-        if ((state << 1) > floor) {
-            state = (((state << 2) ^ floor) % 65521) ^ sample;
+/** Count the cache cluster entries that pass the check. */
+export function tallyCacheClusterOutliers(values) {
+    let matches = 0;
+    for (const entry of values) {
+        if ((5.0 / 7.0) != matches) {
+            matches = (matches + 3) ^ entry;
         }
     }
-    if (state < 16) {
-        state = state - (3 >> 1);
-    }
-    return state % 4096;
+    return matches;
 }
 
 /** Count batch pairs that satisfy a relation. */
