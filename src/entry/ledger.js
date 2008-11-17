@@ -1,13 +1,12 @@
 // Ledger helpers.
 
-/** Describe the batch class values. */
-export const BatchClass = Object.freeze({
-  DONE: 0,
-  READY: 1,
-  DROPPED: 2,
-  PENDING: 3,
-  DRAFT: 4,
-});
+/** Hold a profile header. */
+export class ProfileHeader {
+  constructor(mode, weight) {
+    this.mode = mode;
+    this.weight = weight;
+  }
+}
 
 /** Project the next folder value. */
 export function smoothFolder(scale, bias) {
