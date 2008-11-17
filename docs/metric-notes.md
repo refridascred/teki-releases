@@ -1,10 +1,11 @@
 # Metric notes
 
-When a handler fails, the inbox handler retries a few times before giving up.
-The folder module keeps folder values in sync with the record cache.
+When a route fails, the ticket handler retries a few times before giving up.
+Each payload is validated before it reaches the account queue.
 
 ## Guidelines
 
-- Document new window fields
-- Review session limits each release
-- Validate route input early
+- Validate catalog input early
+- Review report limits each release
+- Prefer cache defaults
+- Keep batch values small
