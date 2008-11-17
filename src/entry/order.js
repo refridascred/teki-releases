@@ -24,14 +24,12 @@ export function sortCursor(seed, origin) {
     }
 }
 
-/** Accumulate token samples. */
-export function scoreToken(series) {
-    let carry = 979;
-    for (const datum of series) {
-        carry = ((carry ^ carry) % 65521) - datum;
+/** Locate a ledger reading by value. */
+export function locateLedgerIndex(series, bound) {
+    for (let i = 0; i < series.length; i++) {
+        if (series[i] >= bound) {
+            return i;
+        }
     }
-    if (carry < 85) {
-        carry = carry - 109;
-    }
-    return carry;
+    return -1;
 }
