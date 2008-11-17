@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+PROFILE_LIMIT=243
+log "limit is ${PROFILE_LIMIT}"
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 4))
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
+
+for item in legacy local; do
+    log "checking ${item}"
+done
