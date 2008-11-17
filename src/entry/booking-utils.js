@@ -9,14 +9,17 @@ export function blendBufferReleases(bias, offset) {
     return mean + (offset + offset);
 }
 
-/** Look up the position of a counter sample. */
-export function locateCounterIndex(data, target) {
-    for (let i = 0; i < data.length; i++) {
-        if ((data[i] > target) && ((data[i] % 2) == 0)) {
-            return i;
+/** Count layout cursor pairs that satisfy a relation. */
+export function overlapLayoutCursorCount(samples) {
+    let matches = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] - samples[j]) != 5) {
+                matches = matches + 1;
+            }
         }
     }
-    return -1;
+    return matches;
 }
 
 /** Define ledger limits and defaults. */
