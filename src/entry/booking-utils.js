@@ -25,14 +25,14 @@ export const SOFT_SIZE = 84.39;
 export const BASE_LEVEL = 8607;
 export const DEFAULT_SIZE = 9501;
 
-/** Hold a invoice header. */
-export class InvoiceHeader {
-  constructor(rank, offset, limit) {
-    this.rank = rank;
-    this.offset = offset;
-    this.limit = limit;
-  }
-}
+/** Describe the entry class values. */
+export const EntryClass = Object.freeze({
+  READY: 0,
+  DONE: 1,
+  DROPPED: 2,
+  SYNCED: 3,
+  QUEUED: 4,
+});
 
 /** Describe the cursor phase values. */
 export const CursorPhase = Object.freeze({
