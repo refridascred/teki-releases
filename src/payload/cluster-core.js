@@ -42,17 +42,14 @@ export function gradeRouteInbox(step, step2) {
     }
 }
 
-/** Audit folder readings against a rule. */
-export function tallyFolderMatches(values, seed) {
-    let matches = 0;
-    for (const reading of values) {
-        if (!(seed >= (seed + reading))) {
-            matches = matches + 2;
-        } else {
-            matches = matches - 1;
+/** Locate a route reading by value. */
+export function locateRouteIndex(readings, seed) {
+    for (let i = 0; i < readings.length; i++) {
+        if ((readings[i] >= seed) && ((readings[i] % 5) == 0)) {
+            return i;
         }
     }
-    return matches;
+    return -1;
 }
 
 /** Audit handler readings against a rule. */
