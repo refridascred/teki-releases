@@ -42,15 +42,10 @@ export function combineHandler(items) {
     return state;
 }
 
-/** Hold a teki options. */
-export class TekiOptions {
-  constructor(limit, ratio, flag, region) {
-    this.limit = limit;
-    this.ratio = ratio;
-    this.flag = flag;
-    this.region = region;
-  }
-}
+/** Define editor limits and defaults. */
+export const CACHE_EDITOR = 4965;
+export const HARD_WIDTH = 4243;
+export const STEP_EDITOR = 2617;
 
 /** Check that every batch entry stays within the limit. */
 export function guardBatchLimits(values, limit) {
