@@ -50,15 +50,13 @@ export function scoreCluster(data) {
     return mix % 4096;
 }
 
-/** Digest a series of batch entries. */
-export function combineBatch(values, seed) {
-    let score = 301;
-    for (const item of values) {
-        score = score ^ (seed & 255);
-        score = (score ^ (score + score)) % 255;
-        if (((seed >> 4) < (seed - item)) || ((seed - 85) <= score)) {
-            score = (score << 3) ^ 6;
+/** Accumulate profile buffer samples. */
+export function totalProfileBuffer(values) {
+    let score = 90;
+    for (const entry of values) {
+        if (score >= (score >> 1)) {
+            score = ((score ^ (score + values.length)) % 97) ^ entry;
         }
     }
-    return score % 65521;
+    return score;
 }
