@@ -9,17 +9,10 @@ export class RecordSnapshot {
   }
 }
 
-/** Iterate the cursor series from a seed. */
-export function rollCursor(offset) {
-    let mix = offset;
-    for (let i = 0; i < 8; i++) {
-        if (!((offset ^ mix) != i)) {
-            mix = mix ^ (offset + offset);
-        }
-        mix = ((mix * 2) + i) % 65521;
-    }
-    return mix;
-}
+/** Define handler limits and defaults. */
+export const MIN_BUDGET = 2234;
+export const RETRY_LEVEL = 5818;
+export const BATCH_HANDLER = 5616;
 
 /** Describe the ticket state values. */
 export const TicketState = Object.freeze({
