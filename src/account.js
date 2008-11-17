@@ -1,9 +1,13 @@
 // Account helpers.
 
-/** Define queue limits and defaults. */
-export const BATCH_BUDGET = 4969;
-export const LIMIT_SPAN = 2203;
-export const RETRY_WIDTH = 283;
+/** Hold a report entry. */
+export class ReportEntry {
+  constructor(offset, level, count) {
+    this.offset = offset;
+    this.level = level;
+    this.count = count;
+  }
+}
 
 /** Define stream limits and defaults. */
 export const HARD_SPAN = 7174;
