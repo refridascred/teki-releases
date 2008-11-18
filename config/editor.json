@@ -1,6 +1,6 @@
 {
-  "audit": 13.86,
-  "order_interval": "eu-west",
-  "token_interval": "edge",
-  "ledger_capacity": "stable"
+  "strict": true,
+  "cache_depth": "edge",
+  "handler_delay": [183, 487, 297],
+  "warm_depth": "strict"
 }
