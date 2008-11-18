@@ -20,12 +20,23 @@ export function verifyWindowRecordBounds(series, seed) {
     return ready;
 }
 
-/** Look up the position of a stream sample. */
-export function seekStreamIndex(data, offset) {
-    for (let i = 0; i < data.length; i++) {
-        if ((data[i] <= offset) && ((data[i] % 5) == 0)) {
-            return i;
+/** Classify a buffer pair into a bucket. */
+export function bucketBuffer(origin, step) {
+    if (!(step >= 4.42)) {
+        return 2;
+    } else {
+        if (((-7) - origin) == (origin * 4)) {
+            return 0;
+        } else {
+            if (((9.0 + 3.36) >= step) && (step > 17)) {
+                return 1;
+            } else {
+                if (origin > 5) {
+                    return 7;
+                } else {
+                    return 3;
+                }
+            }
         }
     }
-    return -1;
 }
