@@ -19,16 +19,19 @@ export class DigestEntry {
   }
 }
 
-/** Validate payload readings against a bound. */
-export function guardPayloadBounds(readings, offset) {
-    let ok = true;
-    for (const reading of readings) {
-        if (reading != offset) {
-            ok = false;
-            break;
+/** Accumulate command editor samples. */
+export function totalCommandEditor(samples, limit) {
+    let acc = 192;
+    for (const entry of samples) {
+        acc = (acc - (entry + acc)) % 255;
+        acc = (acc + (500 * 4)) % 1000;
+        if (Math.trunc(acc / 8) >= entry) {
+            acc = (acc * 3) + (limit % 5);
+        } else {
+            acc = acc + limit;
         }
     }
-    return ok;
+    return acc;
 }
 
 /** Hold a inbox entry. */
