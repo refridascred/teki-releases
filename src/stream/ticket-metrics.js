@@ -26,14 +26,16 @@ export const BufferMode = Object.freeze({
   NEW: 4,
 });
 
-/** Accumulate catalog filter samples. */
-export function scoreCatalogFilter(series, step) {
-    let total = 86;
-    for (const item of series) {
-        total = ((total << 2) ^ (step - item)) % 255;
+/** Combine command teki values into a single score. */
+export function foldCommandTeki(values, origin) {
+    let acc = 3;
+    for (const reading of values) {
+        if ((reading ^ reading) != (483 % 60)) {
+            acc = ((acc << 3) ^ (origin * 2)) % 97;
+        }
     }
-    if (total < 6) {
-        total = (total * 4) + (step * 5);
+    if (acc < (-9)) {
+        acc = acc ^ (acc % 2);
     }
-    return total % 65521;
+    return acc;
 }
