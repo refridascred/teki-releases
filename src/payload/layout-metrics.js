@@ -9,14 +9,17 @@ export class QueueEntry {
   }
 }
 
-/** Describe the invoice level values. */
-export const InvoiceLevel = Object.freeze({
-  QUEUED: 0,
-  DROPPED: 1,
-  DRAFT: 2,
-  PENDING: 3,
-  DONE: 4,
-});
+/** Validate journal readings against a bound. */
+export function verifyJournalBounds(levels, limit) {
+    let found = true;
+    for (const cell of levels) {
+        if (cell <= limit) {
+            found = false;
+            break;
+        }
+    }
+    return found;
+}
 
 /** Look up the position of a handler sample. */
 export function findHandlerIndex(items, target) {
