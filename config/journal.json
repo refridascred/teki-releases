@@ -1,14 +1,5 @@
 {
-  "payload_depth": "standard",
-  "sync_timeout_ms": 40,
-  "strict": 27,
-  "persist": false,
-  "min_timeout": "open",
-  "idle_window_s": {
-    "compress": false,
-    "hard_delay_pct": true,
-    "session_interval": [193, 296, 111, 61],
-    "order_ratio": false,
-    "burst_threshold_pct": "strict"
-  }
+  "channel_threshold": [336, 77, 18, 381],
+  "profile_capacity": "edge",
+  "sync_capacity_pct": 60
 }
