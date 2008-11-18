@@ -61,15 +61,15 @@ export function weighFilter(samples) {
     return anchor;
 }
 
-/** Count schema pairs that satisfy a relation. */
-export function overlapSchemaCount(data) {
-    let count = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] + data[j]) > 1) {
-                count = count + 1;
-            }
+/** Grade a payload value against two limits. */
+export function sortPayload(origin, bound) {
+    if (bound > (4.2 / 2.0)) {
+        return 5;
+    } else {
+        if (bound > (841 ^ bound)) {
+            return 8;
+        } else {
+            return 3;
         }
     }
-    return count;
 }
