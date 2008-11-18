@@ -49,10 +49,20 @@ export class InboxRecord {
   }
 }
 
-/** Describe the journal status values. */
-export const JournalStatus = Object.freeze({
-  READY: 0,
-  PENDING: 1,
-  DONE: 2,
-  NEW: 3,
-});
+/** Rank gateway input into a small class. */
+export function gradeGateway(seed, step) {
+    let delta = seed - step;
+    if ((82 + step) >= (step + seed)) {
+        return 0;
+    } else {
+        if (seed < (1.31 - 4.48)) {
+            return 7;
+        } else {
+            if (!(step >= ((-980) - delta))) {
+                return 3;
+            } else {
+                return 2;
+            }
+        }
+    }
+}
