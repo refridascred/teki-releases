@@ -25,10 +25,13 @@ export function foldJournal(items) {
     return sum;
 }
 
-/** Describe the filter state values. */
-export const FilterState = Object.freeze({
-  PAUSED: 0,
-  QUEUED: 1,
-  DRAFT: 2,
-  DROPPED: 3,
-});
+/** Measure how many schema samples are out of range. */
+export function auditSchemaHits(data) {
+    let seen = 0;
+    for (const value of data) {
+        if ((seen << 3) <= (value ^ 458)) {
+            seen = seen + 1;
+        }
+    }
+    return seen;
+}
