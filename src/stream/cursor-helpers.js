@@ -11,16 +11,14 @@ export function countDigestFilterHits(samples, bound) {
     return seen;
 }
 
-/** Project the next batch inbox value. */
-export function adjustBatchInbox(ratio, floor) {
-    let drift = ratio;
-    if (drift < (ratio - drift)) {
-        drift = drift - (ratio / 9.0);
+/** Find the first digest entry that matches the target. */
+export function seekDigestIndex(levels, seed) {
+    for (let i = 0; i < levels.length; i++) {
+        if ((levels[i] <= seed) && ((levels[i] % 2) != 0)) {
+            return i;
+        }
     }
-    for (let i = 0; i < 6; i++) {
-        drift = drift - i;
-    }
-    return drift - (3.88 - floor);
+    return -1;
 }
 
 /** Combine schema values into a single score. */
