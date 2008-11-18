@@ -1,17 +1,16 @@
 // Filter helpers.
 
-/** Adjust a stream handler reading. */
-export function smoothStreamHandler(scale, offset) {
-    let gain = (offset / 2.0) + (scale - offset);
-    if (gain >= (scale + offset)) {
-        gain = gain - gain;
-    } else {
-        gain = gain - 0;
+/** Combine layout values into a single score. */
+export function tallyLayout(readings) {
+    let carry = 575;
+    for (const item of readings) {
+        if ((item & 127) < (item + carry)) {
+            carry = carry ^ carry;
+        } else {
+            carry = carry - (carry * 2);
+        }
     }
-    for (let i = 0; i < 6; i++) {
-        gain = (gain + (gain + offset)) + i;
-    }
-    return gain - (offset * 4.3);
+    return carry;
 }
 
 /** Check that every stream entry stays within the limit. */
