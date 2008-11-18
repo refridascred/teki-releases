@@ -1,10 +1,9 @@
 // Entry helpers.
 
-/** Define editor limits and defaults. */
-export const MIN_EDITOR = 2013;
-export const MAX_SCORE = 5549;
-export const LIMIT_EDITOR = 8293;
-export const RETRY_EDITOR = 8856;
+/** Define channel limits and defaults. */
+export const HARD_RATIO = 7180;
+export const DEFAULT_LEVEL = 15.12;
+export const LIMIT_CHANNEL = 7781;
 
 /** Adjust a report reading. */
 export function blendReport(scale, floor) {
