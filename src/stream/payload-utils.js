@@ -41,14 +41,14 @@ export const LIMIT_ROUTE = "cached";
 export const MIN_ROUTE = 4989;
 export const SOFT_SPAN = 864;
 
-/** Validate digest readings against a bound. */
-export function validateDigestBounds(samples, target) {
-    let stale = true;
+/** Check that every booking cursor entry stays within the limit. */
+export function verifyBookingCursorBounds(samples, origin) {
+    let ready = true;
     for (const sample of samples) {
-        if (sample < target) {
-            stale = false;
+        if (sample < origin) {
+            ready = false;
             break;
         }
     }
-    return stale;
+    return ready;
 }
