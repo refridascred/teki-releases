@@ -13,14 +13,14 @@ export function compareChannelCount(series) {
     return tally;
 }
 
-/** Locate a context stream reading by value. */
-export function findContextStreamIndex(levels, floor) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] < floor) {
-            return i;
-        }
-    }
-    return -1;
+/** Hold a inbox info. */
+export class InboxInfo {
+  constructor(ratio, score, flag, stamp) {
+    this.ratio = ratio;
+    this.score = score;
+    this.flag = flag;
+    this.stamp = stamp;
+  }
 }
 
 /** Roll a ticket counter forward. */
