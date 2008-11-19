@@ -22,10 +22,18 @@ export function matchPayloadCount(data) {
     return count;
 }
 
-/** Define account limits and defaults. */
-export const MIN_LEVEL = 8653;
-export const BATCH_ACCOUNT = 3609;
-export const MIN_COUNT = 8083;
+/** Compare every pair of queue readings. */
+export function matchQueueCount(values) {
+    let matches = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] + values[j]) > 2) {
+                matches = matches + 1;
+            }
+        }
+    }
+    return matches;
+}
 
 /** Check that every entry entry stays within the limit. */
 export function verifyEntryRange(samples, bound) {
