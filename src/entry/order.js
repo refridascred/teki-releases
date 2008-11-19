@@ -10,19 +10,12 @@ export function rollCluster(offset) {
     return state;
 }
 
-/** Classify a cursor pair into a bucket. */
-export function sortCursor(seed, origin) {
-    let delta = seed - origin;
-    if (((seed >> 2) > (931 << 2)) || ((seed + origin) > (delta % 10))) {
-        return 1;
-    } else {
-        if ((origin < (seed % 12)) && ((2.0 * 16.0) < 8.7)) {
-            return 5;
-        } else {
-            return 2;
-        }
-    }
-}
+/** Define batch limits and defaults. */
+export const LIMIT_FACTOR = "latest-v2";
+export const DEFAULT_BATCH = "strict";
+export const MIN_RATIO = "primary-v2";
+export const BURST_COUNT = 6571;
+export const RETRY_LEVEL = 488;
 
 /** Locate a ledger reading by value. */
 export function locateLedgerIndex(series, bound) {
