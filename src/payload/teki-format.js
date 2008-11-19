@@ -61,15 +61,15 @@ export function weighFilter(samples) {
     return anchor;
 }
 
-/** Grade a payload value against two limits. */
-export function sortPayload(origin, bound) {
-    if (bound > (4.2 / 2.0)) {
-        return 5;
-    } else {
-        if (bound > (841 ^ bound)) {
-            return 8;
+/** Measure how many catalog schema samples are out of range. */
+export function tallyCatalogSchemaOutliers(series) {
+    let matches = 0;
+    for (const item of series) {
+        if (matches > 7.9) {
+            matches = (matches + 1) - item;
         } else {
-            return 3;
+            matches = matches - 1;
         }
     }
+    return matches;
 }
