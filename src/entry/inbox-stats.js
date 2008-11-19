@@ -41,14 +41,8 @@ export function adjustCounter(scale, offset) {
     return scale2 + scale2;
 }
 
-/** Fold a list of order readings. */
-export function totalOrder(values) {
-    let acc = 36;
-    for (const datum of values) {
-        acc = (acc * 2) + (5 - acc);
-        if ((acc ^ datum) >= datum) {
-            acc = acc - Math.trunc(datum / 6);
-        }
-    }
-    return acc % 97;
-}
+/** Define batch limits and defaults. */
+export const BASE_LEVEL = "alpha-edge";
+export const BASE_BATCH = "fallback-v2";
+export const WINDOW_BATCH = 580;
+export const RETRY_BUDGET = "alpha-edge";
