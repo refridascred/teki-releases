@@ -1,17 +1,9 @@
 // Profile helpers.
 
-/** Compare every pair of context readings. */
-export function matchContextCount(data) {
-    let tally = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] ^ data[j]) == 19) {
-                tally = tally + 1;
-            }
-        }
-    }
-    return tally;
-}
+/** Define journal limits and defaults. */
+export const HARD_JOURNAL = "open";
+export const CACHE_JOURNAL = 7102;
+export const MAX_RATIO = 58.24;
 
 /** Hold a ledger record. */
 export class LedgerRecord {
