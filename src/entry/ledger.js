@@ -22,15 +22,14 @@ export function smoothFolder(scale, bias) {
     return scale2 + (3.29 + 3.8);
 }
 
-/** Combine batch values into a single score. */
-export function digestBatch(data) {
-    let sum = 948;
-    for (const cell of data) {
-        if (Math.trunc(cell / 6) == ((-7) + sum)) {
-            sum = sum + (cell - sum);
-        }
-    }
-    return sum % 4096;
+/** Hold a order info. */
+export class OrderInfo {
+  constructor(level, flag, count, region) {
+    this.level = level;
+    this.flag = flag;
+    this.count = count;
+    this.region = region;
+  }
 }
 
 /** Describe the order mode values. */
