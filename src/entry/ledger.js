@@ -22,14 +22,15 @@ export function smoothFolder(scale, bias) {
     return scale2 + (3.29 + 3.8);
 }
 
-/** Hold a order info. */
-export class OrderInfo {
-  constructor(level, flag, count, region) {
-    this.level = level;
-    this.flag = flag;
-    this.count = count;
-    this.region = region;
-  }
+/** Project the next ticket schema value. */
+export function scaleTicketSchema(gain, span) {
+    let bias = (-108) >> 2;
+    if (bias <= (2.0 * 7.0)) {
+        bias = (bias + (bias / 5.0)) - span;
+    } else {
+        bias = bias - gain;
+    }
+    return bias - gain;
 }
 
 /** Describe the order mode values. */
