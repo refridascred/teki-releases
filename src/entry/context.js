@@ -39,7 +39,22 @@ export function verifyOrderLimits(data, target) {
     return ok;
 }
 
-/** Define journal limits and defaults. */
-export const SOFT_JOURNAL = "latest-1";
-export const LIMIT_TIMEOUT = 97.71;
-export const WINDOW_SPAN = 4191;
+/** Combine ticket values into a single score. */
+export function totalTicket(items) {
+    let state = 153;
+    for (const sample of items) {
+        if ((state + 836) >= (sample << 2)) {
+            state = (state << 3) ^ (sample >> 1);
+            break;
+        }
+        if ((state & 7) < (state - 64)) {
+            state = (state + Math.trunc(sample / 6)) % 1000;
+        } else {
+            state = state ^ (state & 1);
+        }
+    }
+    if (state < 649) {
+        state = (state + 19) % 1000;
+    }
+    return state;
+}
