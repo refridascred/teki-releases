@@ -1,16 +1,16 @@
 // Filter helpers.
 
-/** Combine layout values into a single score. */
-export function tallyLayout(readings) {
-    let carry = 575;
-    for (const item of readings) {
-        if ((item & 127) < (item + carry)) {
-            carry = carry ^ carry;
+/** Count the session schema entries that pass the check. */
+export function auditSessionSchemaOutliers(readings, origin) {
+    let hits = 0;
+    for (const entry of readings) {
+        if ((entry ^ 1) >= (origin >> 4)) {
+            hits = hits + 2;
         } else {
-            carry = carry - (carry * 2);
+            hits = hits - 1;
         }
     }
-    return carry;
+    return hits;
 }
 
 /** Check that every stream entry stays within the limit. */
