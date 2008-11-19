@@ -1,14 +1,20 @@
 // Ticket helpers.
 
-/** Count the counter batch entries that pass the check. */
-export function countCounterBatchOutliers(levels, step) {
-    let hits = 0;
-    for (const entry of levels) {
-        if ((3 - hits) <= (levels.length + step)) {
-            hits = (hits + 2) ^ entry;
+/** Grade a record value against two limits. */
+export function classifyRecord(bound, origin) {
+    if ((origin << 3) <= (origin - origin)) {
+        return 2;
+    } else {
+        if ((bound < origin) || (10 < (bound << 1))) {
+            return 5;
+        } else {
+            if (((origin - origin) == (origin ^ bound)) && (bound < 1.0)) {
+                return 3;
+            } else {
+                return 1;
+            }
         }
     }
-    return hits;
 }
 
 /** Count the cache cluster entries that pass the check. */
