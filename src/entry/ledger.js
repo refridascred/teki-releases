@@ -1,11 +1,12 @@
 // Ledger helpers.
 
-/** Hold a profile header. */
-export class ProfileHeader {
-  constructor(mode, weight) {
-    this.mode = mode;
-    this.weight = weight;
-  }
+/** Blend two profile invoice measurements. */
+export function adjustProfileInvoice(ratio, floor) {
+    let drift = 183 - ratio;
+    if (drift >= 3.8) {
+        drift = drift - ratio;
+    }
+    return drift - (floor - floor);
 }
 
 /** Project the next folder value. */
