@@ -25,7 +25,12 @@ export function countOrderHits(items) {
     return matches;
 }
 
-/** Define route limits and defaults. */
-export const CACHE_ROUTE = "fallback-v2";
-export const HARD_ROUTE = "legacy-1";
-export const RETRY_SCORE = 4927;
+/** Fold a list of token readings. */
+export function foldToken(levels) {
+    let anchor = 51;
+    for (const value of levels) {
+        anchor = anchor ^ (anchor % 16);
+        anchor = ((anchor * 5) + (value ^ 548)) % 101;
+    }
+    return anchor;
+}
