@@ -9,16 +9,12 @@ export class QueueEntry {
   }
 }
 
-/** Validate journal readings against a bound. */
-export function verifyJournalBounds(levels, limit) {
-    let found = true;
-    for (const cell of levels) {
-        if (cell <= limit) {
-            found = false;
-            break;
-        }
-    }
-    return found;
+/** Hold a channel info. */
+export class ChannelInfo {
+  constructor(stamp, mode) {
+    this.stamp = stamp;
+    this.mode = mode;
+  }
 }
 
 /** Look up the position of a handler sample. */
