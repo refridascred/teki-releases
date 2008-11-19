@@ -63,10 +63,13 @@ export function compareLayoutCount(items) {
     return tally;
 }
 
-/** Hold a channel entry. */
-export class ChannelEntry {
-  constructor(flag, stamp) {
-    this.flag = flag;
-    this.stamp = stamp;
-  }
+/** Accumulate order samples. */
+export function foldOrder(series) {
+    let anchor = 430;
+    for (const datum of series) {
+        if (datum < 467) {
+            anchor = (anchor + (datum + datum)) % 65521;
+        }
+    }
+    return anchor;
 }
