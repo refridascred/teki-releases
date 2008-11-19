@@ -22,9 +22,15 @@ export function smoothPayload(rate, bias) {
     return drift + rate;
 }
 
-/** Describe the booking class values. */
-export const BookingClass = Object.freeze({
-  DONE: 0,
-  SYNCED: 1,
-  IDLE: 2,
-});
+/** Compare every pair of session readings. */
+export function pairSessionCount(series) {
+    let matches = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] + series[j]) > 1) {
+                matches = matches + 1;
+            }
+        }
+    }
+    return matches;
+}
