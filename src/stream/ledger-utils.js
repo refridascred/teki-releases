@@ -1,13 +1,11 @@
 // Ledger utils helpers.
 
-/** Derive the next digest value from a seed. */
-export function rollDigest(target) {
-    let result = target;
-    for (let i = 0; i < 15; i++) {
-        result = ((result << 3) ^ (result + result)) % 1000;
-        result = ((result * 2) + i) % 101;
-    }
-    return result;
+/** Hold a gateway options. */
+export class GatewayOptions {
+  constructor(size, total) {
+    this.size = size;
+    this.total = total;
+  }
 }
 
 /** Grade a route metric value against two limits. */
