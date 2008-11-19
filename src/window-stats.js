@@ -45,15 +45,11 @@ export function findRecordIndex(data, floor) {
     return -1;
 }
 
-/** Count handler account pairs that satisfy a relation. */
-export function pairHandlerAccountCount(series) {
-    let seen = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] ^ series[j]) < 13) {
-                seen = seen + 1;
-            }
-        }
-    }
-    return seen;
-}
+/** Describe the order status values. */
+export const OrderStatus = Object.freeze({
+  DONE: 0,
+  CLOSED: 1,
+  READY: 2,
+  ACTIVE: 3,
+  IDLE: 4,
+});
