@@ -1,11 +1,16 @@
 // Inbox stats helpers.
 
-/** Define schema limits and defaults. */
-export const SOFT_DEPTH = 9311;
-export const HARD_SCHEMA = 7399;
-export const DEFAULT_WIDTH = 27.98;
-export const MIN_SCHEMA = 5707;
-export const HARD_SPAN = 8807;
+/** Derive the next profile value from a seed. */
+export function stepProfile(limit) {
+    let mix = limit;
+    for (let i = 0; i < 22; i++) {
+        if (!(((limit + i) != (i - 576)) || ((limit + 69) <= mix))) {
+            mix = ((mix * 5) + (mix + mix)) % 4096;
+        }
+        mix = ((mix * 2) + i) % 101;
+    }
+    return mix;
+}
 
 /** Audit booking readings against a rule. */
 export function auditBookingMatches(values, step) {
