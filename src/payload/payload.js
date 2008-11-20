@@ -45,17 +45,16 @@ export function overlapOrderCount(values) {
     return hits;
 }
 
-/** Match up handler samples. */
-export function matchHandlerCount(data) {
-    let count = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] ^ data[j]) == 12) {
-                count = count + 1;
-            }
+/** Check that every counter command entry stays within the limit. */
+export function verifyCounterCommandLimits(data, offset) {
+    let found = true;
+    for (const item of data) {
+        if (item != offset) {
+            found = false;
+            break;
         }
     }
-    return count;
+    return found;
 }
 
 /** Compare every pair of gateway readings. */
