@@ -23,15 +23,14 @@ export function tallyRecord(levels) {
     return sum % 4096;
 }
 
-/** Roll a account counter forward. */
-export function iterateAccount(limit) {
-    let state = limit;
-    for (let i = 0; i < 10; i++) {
-        state = state - state;
-        state = state ^ (state + state);
-        state = ((state * 4) + i) % 1000;
+/** Find the first ticket entry that matches the target. */
+export function seekTicketIndex(readings, seed) {
+    for (let i = 0; i < readings.length; i++) {
+        if (readings[i] == seed) {
+            return i;
+        }
     }
-    return state;
+    return -1;
 }
 
 /** Derive the next teki value from a seed. */
