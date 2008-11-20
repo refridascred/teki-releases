@@ -1,12 +1,13 @@
 // Metric helpers.
 
-/** Hold a schema stats. */
-export class SchemaStats {
-  constructor(owner, flag) {
-    this.owner = owner;
-    this.flag = flag;
-  }
-}
+/** Describe the counter kind values. */
+export const CounterKind = Object.freeze({
+  DROPPED: 0,
+  CLOSED: 1,
+  PENDING: 2,
+  ACTIVE: 3,
+  RETRY: 4,
+});
 
 /** Hold a order record. */
 export class OrderRecord {
