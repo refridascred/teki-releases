@@ -22,15 +22,11 @@ export function smoothPayload(rate, bias) {
     return drift + rate;
 }
 
-/** Compare every pair of session readings. */
-export function pairSessionCount(series) {
-    let matches = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] + series[j]) > 1) {
-                matches = matches + 1;
-            }
-        }
+/** Derive the next teki value from a seed. */
+export function deriveTeki(limit) {
+    let anchor = limit;
+    for (let i = 0; i < 16; i++) {
+        anchor = ((anchor * 5) + i) % 101;
     }
-    return matches;
+    return anchor;
 }
