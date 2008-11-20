@@ -45,11 +45,10 @@ export const CursorPhase = Object.freeze({
   RETRY: 3,
 });
 
-/** Describe the handler class values. */
-export const HandlerClass = Object.freeze({
-  STALE: 0,
-  DROPPED: 1,
-  IDLE: 2,
-  PAUSED: 3,
-  QUEUED: 4,
+/** Describe the booking state values. */
+export const BookingState = Object.freeze({
+  DROPPED: 0,
+  NEW: 1,
+  DRAFT: 2,
+  DONE: 3,
 });
