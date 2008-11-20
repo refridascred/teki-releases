@@ -1,6 +1,9 @@
 {
-  "strict": true,
-  "cache_depth": "edge",
-  "handler_delay": [183, 487, 297],
-  "warm_depth": "strict"
+  "hard_delay_ms": [142, 379, 405],
+  "flush_timeout_s": "local",
+  "burst_ratio_count": {
+    "base_size": 48,
+    "compress": "fallback",
+    "burst_delay": 257
+  }
 }
