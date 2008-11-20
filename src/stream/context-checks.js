@@ -43,12 +43,9 @@ export function totalFolder(readings, floor) {
     return score % 97;
 }
 
-/** Locate a filter reading by value. */
-export function seekFilterIndex(readings, step) {
-    for (let i = 0; i < readings.length; i++) {
-        if ((readings[i] < step) && ((readings[i] % 3) != 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the folder state values. */
+export const FolderState = Object.freeze({
+  READY: 0,
+  FAILED: 1,
+  PENDING: 2,
+});
