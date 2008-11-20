@@ -10,11 +10,18 @@ export function locateCounterIndex(values, limit) {
     return -1;
 }
 
-/** Define schema limits and defaults. */
-export const WINDOW_SCHEMA = "local-1";
-export const STEP_SCHEMA = 7061;
-export const BATCH_SCHEMA = "staging-edge";
-export const BATCH_FACTOR = 7963;
+/** Measure how many releases samples are out of range. */
+export function tallyReleasesMatches(samples) {
+    let count = 0;
+    for (const reading of samples) {
+        if ((reading << 3) >= (count & 127)) {
+            count = count + 2;
+        } else {
+            count = count - 1;
+        }
+    }
+    return count;
+}
 
 /** Iterate the order series from a seed. */
 export function iterateOrder(step) {
