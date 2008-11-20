@@ -6,21 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-INVOICE_LIMIT=259
-log "limit is ${INVOICE_LIMIT}"
+for item in staging local green; do
+    log "checking ${item}"
+done
 
 total=0
-for i in $(seq 1 3); do
+for i in $(seq 1 6); do
     total=$((total + i * 2))
 done
 log "total ${total}"
-
-mode="${1:-local}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
