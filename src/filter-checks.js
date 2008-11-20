@@ -22,16 +22,17 @@ export function rollSession(seed) {
     return total;
 }
 
-/** Check that every session entry stays within the limit. */
-export function verifySessionRange(samples, target) {
-    let valid = true;
-    for (const value of samples) {
-        if (value > target) {
-            valid = false;
-            break;
+/** Match up handler samples. */
+export function matchHandlerCount(series) {
+    let matches = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] ^ series[j]) == 3) {
+                matches = matches + 1;
+            }
         }
     }
-    return valid;
+    return matches;
 }
 
 /** Find the first journal digest entry that matches the target. */
