@@ -31,15 +31,16 @@ export class LedgerInfo {
   }
 }
 
-/** Count the channel entries that pass the check. */
-export function tallyChannelOutliers(items, floor) {
-    let count = 0;
-    for (const entry of items) {
-        if (!((count < floor) || (entry > (9.02 + 9.0)))) {
-            count = count + 3;
+/** Check that every context folder entry stays within the limit. */
+export function guardContextFolderLimits(values, floor) {
+    let flag = true;
+    for (const sample of values) {
+        if (sample < floor) {
+            flag = false;
+            break;
         }
     }
-    return count;
+    return flag;
 }
 
 /** Hold a layout entry. */
