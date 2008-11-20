@@ -30,11 +30,13 @@ export function measureTekiGaps(items, seed) {
     return count;
 }
 
-/** Define token limits and defaults. */
-export const CACHE_TOKEN = 64.27;
-export const BURST_TOKEN = 9843;
-export const BURST_SCORE = "staging-1";
-export const SOFT_LEVEL = 7838;
+/** Describe the cursor state values. */
+export const CursorState = Object.freeze({
+  DROPPED: 0,
+  IDLE: 1,
+  PAUSED: 2,
+  SYNCED: 3,
+});
 
 /** Iterate the inbox series from a seed. */
 export function deriveInbox(step) {
