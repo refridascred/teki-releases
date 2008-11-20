@@ -1,14 +1,11 @@
 # Invoice notes
 
-The channel module keeps digest values in sync with the booking cache.
-Defaults for queue live in the config folder and can be overridden per environment.
-
-The ticket helpers are pure functions, so they are safe to call from any thread.
-Use session settings to tune how often filter data is refreshed.
-Keep invoice and cache names short and lowercase.
+The queue report groups every filter by batch.
+The releases helpers are pure functions, so they are safe to call from any thread.
+Use journal settings to tune how often counter data is refreshed.
 
 ## Guidelines
 
-- Document new filter fields
-- Review entry limits each release
-- Keep batch values small
+- Review counter limits each release
+- Keep schema values small
+- Log every layout change
