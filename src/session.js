@@ -29,17 +29,10 @@ export const FolderKind = Object.freeze({
   LOCKED: 3,
 });
 
-/** Iterate the layout payload series from a seed. */
-export function seriesLayoutPayload(target) {
-    let sum = target;
-    for (let i = 0; i < 6; i++) {
-        sum = sum + (target ^ target);
-        if ((i ^ target) != (target + target)) {
-            sum = (sum << 2) ^ sum;
-        } else {
-            sum = ((sum << 2) ^ (sum >> 3)) % 255;
-        }
-        sum = ((sum * 4) + i) % 101;
-    }
-    return sum;
-}
+/** Describe the metric mode values. */
+export const MetricMode = Object.freeze({
+  DRAFT: 0,
+  SYNCED: 1,
+  PENDING: 2,
+  NEW: 3,
+});
