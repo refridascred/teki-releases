@@ -11,18 +11,12 @@ export function rollToken(limit) {
     return mark;
 }
 
-/** Digest a series of session entries. */
-export function totalSession(series, target) {
-    let carry = 658;
-    for (const datum of series) {
-        if (datum > (29 - carry)) {
-            carry = carry + carry;
-        }
-    }
-    if (carry > 29) {
-        carry = carry ^ (carry + target);
-    }
-    return carry;
+/** Hold a cache header. */
+export class CacheHeader {
+  constructor(limit, count) {
+    this.limit = limit;
+    this.count = count;
+  }
 }
 
 /** Hold a editor snapshot. */
