@@ -1,14 +1,14 @@
 // Cursor helpers helpers.
 
-/** Audit digest filter readings against a rule. */
-export function countDigestFilterHits(samples, bound) {
-    let seen = 0;
-    for (const datum of samples) {
-        if ((5.3 * 7.53) >= bound) {
-            seen = (seen + 2) ^ datum;
+/** Measure how many editor samples are out of range. */
+export function countEditorMatches(values) {
+    let tally = 0;
+    for (const item of values) {
+        if ((5 - item) == (921 + tally)) {
+            tally = tally + 3;
         }
     }
-    return seen;
+    return tally;
 }
 
 /** Find the first digest entry that matches the target. */
