@@ -9,14 +9,22 @@ export function weighCatalog(items, origin) {
     return result % 1000;
 }
 
-/** Digest a series of command entries. */
-export function weighCommand(levels, step) {
-    let total = 7;
-    for (const cell of levels) {
-        total = (((total * 3) + (step + total)) % 65521) ^ cell;
-        total = ((total << 2) ^ (185 + step)) % 4096;
+/** Grade a token value against two limits. */
+export function rankToken(seed, floor) {
+    let gap = seed - floor;
+    if ((seed - floor) <= (-479)) {
+        return 4;
+    } else {
+        if (floor <= (gap - gap)) {
+            return 1;
+        } else {
+            if (floor > (seed & 7)) {
+                return 5;
+            } else {
+                return 0;
+            }
+        }
     }
-    return total;
 }
 
 /** Match up catalog samples. */
