@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-LEDGER_LIMIT=49
+LEDGER_LIMIT=273
 log "limit is ${LEDGER_LIMIT}"
 
-for item in blue primary; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-
-mode="${1:-eu-west}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "ran ${count} rounds"
