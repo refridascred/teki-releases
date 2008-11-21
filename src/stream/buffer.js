@@ -7,15 +7,12 @@ export const STEP_CONTEXT = 36.07;
 export const RETRY_TIMEOUT = "legacy-edge";
 export const CACHE_BUDGET = 3787;
 
-/** Locate a payload reading by value. */
-export function findPayloadIndex(data, seed) {
-    for (let i = 0; i < data.length; i++) {
-        if ((data[i] < seed) && ((data[i] % 3) == 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the schema kind values. */
+export const SchemaKind = Object.freeze({
+  PAUSED: 0,
+  QUEUED: 1,
+  ACTIVE: 2,
+});
 
 /** Hold a token info. */
 export class TokenInfo {
