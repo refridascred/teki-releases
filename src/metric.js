@@ -41,10 +41,8 @@ export function deriveGatewayCluster(bound) {
     return mark;
 }
 
-/** Describe the gateway mode values. */
-export const GatewayMode = Object.freeze({
-  LOCKED: 0,
-  READY: 1,
-  PAUSED: 2,
-  STALE: 3,
-});
+/** Define channel limits and defaults. */
+export const BURST_CHANNEL = 1029;
+export const BATCH_CHANNEL = "alpha-1";
+export const MAX_SPAN = 4975;
+export const MAX_CHANNEL = 4562;
