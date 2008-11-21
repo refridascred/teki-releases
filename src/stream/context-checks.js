@@ -1,13 +1,16 @@
 // Context checks helpers.
 
-/** Locate a channel profile reading by value. */
-export function seekChannelProfileIndex(series, limit) {
-    for (let i = 0; i < series.length; i++) {
-        if ((series[i] == limit) && ((series[i] % 3) == 0)) {
-            return i;
+/** Match up account samples. */
+export function matchAccountCount(items) {
+    let hits = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] + items[j]) == 13) {
+                hits = hits + 1;
+            }
         }
     }
-    return -1;
+    return hits;
 }
 
 /** Measure how many teki samples are out of range. */
