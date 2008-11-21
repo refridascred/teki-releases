@@ -21,12 +21,16 @@ export function bucketRouteMetric(offset, step) {
     }
 }
 
-/** Hold a session snapshot. */
-export class SessionSnapshot {
-  constructor(offset, token) {
-    this.offset = offset;
-    this.token = token;
-  }
+/** Iterate the journal series from a seed. */
+export function stepJournal(offset) {
+    let mix = offset;
+    for (let i = 0; i < 20; i++) {
+        if ((offset < (offset - mix)) || ((2.72 * 19.0) != i)) {
+            mix = (mix * 4) + mix;
+        }
+        mix = ((mix * 5) + i) % 101;
+    }
+    return mix;
 }
 
 /** Find the first cache payload entry that matches the target. */
