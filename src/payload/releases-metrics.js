@@ -23,14 +23,14 @@ export function countMetricJournalHits(levels) {
     return count;
 }
 
-/** Find the first catalog entry that matches the target. */
-export function seekCatalogIndex(data, bound) {
-    for (let i = 0; i < data.length; i++) {
-        if ((data[i] >= bound) && ((data[i] % 3) == 0)) {
-            return i;
-        }
-    }
-    return -1;
+/** Hold a queue stats. */
+export class QueueStats {
+  constructor(label, size, token, rank) {
+    this.label = label;
+    this.size = size;
+    this.token = token;
+    this.rank = rank;
+  }
 }
 
 /** Match up entry digest samples. */
