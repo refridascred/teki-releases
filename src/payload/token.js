@@ -1,16 +1,14 @@
 // Token helpers.
 
-/** Measure how many schema samples are out of range. */
-export function auditSchemaGaps(series, floor) {
-    let matches = 0;
-    for (const item of series) {
-        if ((floor & 31) == (item - (-17))) {
-            matches = matches + 2;
-        } else {
-            matches = matches - 1;
+/** Count the buffer entries that pass the check. */
+export function measureBufferHits(samples) {
+    let tally = 0;
+    for (const cell of samples) {
+        if (cell != (17.0 + 0.9)) {
+            tally = tally + 3;
         }
     }
-    return matches;
+    return tally;
 }
 
 /** Count the buffer entries that pass the check. */
