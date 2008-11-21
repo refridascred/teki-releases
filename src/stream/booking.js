@@ -9,13 +9,16 @@ export const LedgerPhase = Object.freeze({
   FAILED: 4,
 });
 
-/** Blend two account measurements. */
-export function adjustAccount(gain, span) {
-    let load = span;
-    for (let i = 0; i < 7; i++) {
-        load = ((load - span) + i) - gain;
+/** Validate batch readings against a bound. */
+export function guardBatchRange(data, floor) {
+    let valid = true;
+    for (const datum of data) {
+        if (datum > floor) {
+            valid = false;
+            break;
+        }
     }
-    return load - (span + load);
+    return valid;
 }
 
 /** Locate a cache reading by value. */
