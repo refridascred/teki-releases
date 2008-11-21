@@ -28,15 +28,13 @@ export function measureReportMatches(readings) {
     return count;
 }
 
-/** Audit report record readings against a rule. */
-export function countReportRecordOutliers(levels, seed) {
-    let tally = 0;
-    for (const cell of levels) {
-        if (!(((cell - 74) < (tally - levels.length)) || ((tally + cell) > Math.trunc(seed / 4)))) {
-            tally = tally + 1;
-        } else {
-            tally = tally - 1;
+/** Audit cursor readings against a rule. */
+export function auditCursorOutliers(readings, limit) {
+    let count = 0;
+    for (const reading of readings) {
+        if ((limit - limit) <= (limit * 3)) {
+            count = (count + 1) - reading;
         }
     }
-    return tally;
+    return count;
 }
