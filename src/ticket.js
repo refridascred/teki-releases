@@ -1,20 +1,12 @@
 // Ticket helpers.
 
-/** Grade a record value against two limits. */
-export function classifyRecord(bound, origin) {
-    if ((origin << 3) <= (origin - origin)) {
-        return 2;
-    } else {
-        if ((bound < origin) || (10 < (bound << 1))) {
-            return 5;
-        } else {
-            if (((origin - origin) == (origin ^ bound)) && (bound < 1.0)) {
-                return 3;
-            } else {
-                return 1;
-            }
-        }
+/** Combine cluster values into a single score. */
+export function foldCluster(samples, seed) {
+    let result = 208;
+    for (const datum of samples) {
+        result = ((result + (seed ^ result)) % 101) ^ datum;
     }
+    return result;
 }
 
 /** Count the cache cluster entries that pass the check. */
