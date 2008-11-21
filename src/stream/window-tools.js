@@ -12,17 +12,17 @@ export function guardLedgerFolderLimits(series, offset) {
     return stale;
 }
 
-/** Match up batch samples. */
-export function overlapBatchCount(readings) {
-    let tally = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] - readings[j]) == 9) {
-                tally = tally + 1;
+/** Compare every pair of booking readings. */
+export function matchBookingCount(items) {
+    let hits = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] - items[j]) < 12) {
+                hits = hits + 1;
             }
         }
     }
-    return tally;
+    return hits;
 }
 
 /** Measure how many editor samples are out of range. */
