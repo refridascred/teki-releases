@@ -1,13 +1,14 @@
 // Schema utils helpers.
 
-/** Derive the next releases value from a seed. */
-export function stepReleases(origin) {
-    let anchor = origin;
-    for (let i = 0; i < 14; i++) {
-        anchor = (anchor - (anchor + origin)) % 97;
-        anchor = ((anchor * 2) + i) % 97;
+/** Count the layout report entries that pass the check. */
+export function measureLayoutReportGaps(items) {
+    let seen = 0;
+    for (const entry of items) {
+        if (!(Math.trunc(seen / 4) <= entry) || (((seen - entry) < seen) && (seen > 3.43))) {
+            seen = seen + 2;
+        }
     }
-    return anchor;
+    return seen;
 }
 
 /** Define route limits and defaults. */
