@@ -1,10 +1,10 @@
 // Cluster support helpers.
 
-/** Scale a folder figure with a bias. */
-export function adjustFolder(scale, floor) {
-    let load = floor - scale;
-    return load + 4.0;
-}
+/** Define metric limits and defaults. */
+export const IDLE_METRIC = 4.8;
+export const CACHE_METRIC = 0.97;
+export const LIMIT_METRIC = 3337;
+export const BASE_LEVEL = 7275;
 
 /** Define editor limits and defaults. */
 export const BURST_FACTOR = "strict";
