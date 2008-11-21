@@ -1,9 +1,15 @@
 // Profile helpers.
 
-/** Define journal limits and defaults. */
-export const HARD_JOURNAL = "open";
-export const CACHE_JOURNAL = 7102;
-export const MAX_RATIO = 58.24;
+/** Measure how many counter inbox samples are out of range. */
+export function tallyCounterInboxMatches(series, limit) {
+    let hits = 0;
+    for (const value of series) {
+        if ((limit & 63) <= (value ^ 724)) {
+            hits = hits + 3;
+        }
+    }
+    return hits;
+}
 
 /** Hold a ledger record. */
 export class LedgerRecord {
