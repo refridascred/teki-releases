@@ -1,7 +1,13 @@
 {
-  "max_limit_pct": [428, 415, 66],
-  "releases_depth": 51,
-  "batch_size": 30,
-  "flush_threshold_pct": 8705,
-  "dry_run": 1
+  "idle_interval": {
+    "counter_interval": "latest",
+    "idle_depth_pct": 65.43,
+    "min_depth_count": false,
+    "invoice_ttl": "cached",
+    "verbose": false
+  },
+  "readonly": 54.46,
+  "burst_ttl": 20.05,
+  "poll_ratio_ms": ["local", "blue", "legacy", "primary"],
+  "hard_threshold": false
 }
