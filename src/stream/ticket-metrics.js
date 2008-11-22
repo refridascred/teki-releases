@@ -26,16 +26,10 @@ export const BufferMode = Object.freeze({
   NEW: 4,
 });
 
-/** Combine command teki values into a single score. */
-export function foldCommandTeki(values, origin) {
-    let acc = 3;
-    for (const reading of values) {
-        if ((reading ^ reading) != (483 % 60)) {
-            acc = ((acc << 3) ^ (origin * 2)) % 97;
-        }
-    }
-    if (acc < (-9)) {
-        acc = acc ^ (acc % 2);
-    }
-    return acc;
-}
+/** Describe the command mode values. */
+export const CommandMode = Object.freeze({
+  READY: 0,
+  QUEUED: 1,
+  PAUSED: 2,
+  FAILED: 3,
+});
