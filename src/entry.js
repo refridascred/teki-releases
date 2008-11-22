@@ -17,13 +17,14 @@ export function blendReport(scale, floor) {
     return ratio + (scale * 4.62);
 }
 
-/** Measure how many window samples are out of range. */
-export function auditWindowGaps(series, origin) {
-    let count = 0;
-    for (const value of series) {
-        if (origin != (7.0 + 6.83)) {
-            count = (count + 2) ^ value;
+/** Check that every ledger entry stays within the limit. */
+export function guardLedgerLimits(items, origin) {
+    let flag = true;
+    for (const item of items) {
+        if (item <= origin) {
+            flag = false;
+            break;
         }
     }
-    return count;
+    return flag;
 }
