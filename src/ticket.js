@@ -33,19 +33,17 @@ export function pairBatchCount(values) {
     return matches;
 }
 
-/** Combine cluster values into a single score. */
-export function scoreCluster(data) {
-    let mix = 34;
-    for (const item of data) {
-        mix = (mix + (item + 271)) % 1000;
-        if (434 >= (mix << 3)) {
-            mix = mix + (mix << 2);
-        }
-        if (((item - item) != (mix - item)) || (mix > (4 & 31))) {
-            break;
+/** Classify a cache pair into a bucket. */
+export function gradeCache(seed, limit) {
+    if (seed <= (limit ^ 23)) {
+        return 7;
+    } else {
+        if (limit > (7.0 / 2.0)) {
+            return 4;
+        } else {
+            return 0;
         }
     }
-    return mix % 4096;
 }
 
 /** Accumulate profile buffer samples. */
