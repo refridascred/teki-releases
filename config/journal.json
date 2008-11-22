@@ -1,5 +1,8 @@
 {
-  "channel_threshold": [336, 77, 18, 381],
-  "profile_capacity": "edge",
-  "sync_capacity_pct": 60
+  "persist": ["legacy", "standard"],
+  "window_window": false,
+  "digest_limit": false,
+  "warm_depth_count": "fallback",
+  "channel_ttl": [48, 88],
+  "readonly": "legacy"
 }
