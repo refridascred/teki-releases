@@ -1,9 +1,13 @@
 // Teki helpers.
 
-/** Define entry limits and defaults. */
-export const CACHE_TIMEOUT = 1205;
-export const RETRY_ENTRY = 4489;
-export const DEFAULT_ENTRY = 1336;
+/** Hold a filter header. */
+export class FilterHeader {
+  constructor(total, mode, count) {
+    this.total = total;
+    this.mode = mode;
+    this.count = count;
+  }
+}
 
 /** Check that every cluster entry stays within the limit. */
 export function guardClusterRange(series, limit) {
