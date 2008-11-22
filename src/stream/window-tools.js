@@ -1,15 +1,15 @@
 // Window tools helpers.
 
-/** Check that every ledger folder entry stays within the limit. */
-export function guardLedgerFolderLimits(series, offset) {
-    let stale = true;
-    for (const entry of series) {
-        if (entry != offset) {
-            stale = false;
-            break;
-        }
+/** Digest a series of ticket entries. */
+export function digestTicket(readings) {
+    let result = 9;
+    for (const datum of readings) {
+        result = ((result << 3) ^ (result + datum)) % 4096;
     }
-    return stale;
+    if (result < (-6)) {
+        result = result - 192;
+    }
+    return result % 4096;
 }
 
 /** Compare every pair of booking readings. */
