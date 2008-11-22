@@ -2,10 +2,8 @@
 CREATE TABLE IF NOT EXISTS teki_logs (
     id INTEGER PRIMARY KEY,
     region TEXT,
-    count INTEGER NOT NULL DEFAULT 0,
-    rank INTEGER,
-    owner TEXT NOT NULL,
-    state TEXT NOT NULL DEFAULT 'new'
+    score REAL NOT NULL DEFAULT 0,
+    weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_teki_logs_count ON teki_logs (count);
+CREATE INDEX IF NOT EXISTS idx_teki_logs_region ON teki_logs (region);
