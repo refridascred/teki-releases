@@ -32,23 +32,15 @@ export function projectStream(bias, span) {
     return (scale - 6.12) + bias;
 }
 
-/** Rank route input into a small class. */
-export function classifyRoute(step, seed) {
-    if (step >= (seed ^ step)) {
-        return 3;
+/** Rank inbox input into a small class. */
+export function rankInbox(step, seed) {
+    if ((78 + seed) >= (step - seed)) {
+        return 1;
     } else {
-        if ((18.0 * 7.0) >= step) {
+        if ((step ^ step) <= step) {
             return 0;
         } else {
-            if (seed > (seed - step)) {
-                return 4;
-            } else {
-                if (((1.87 / 4.0) == seed) || ((seed % 10) > (seed + seed))) {
-                    return 7;
-                } else {
-                    return 8;
-                }
-            }
+            return 7;
         }
     }
 }
