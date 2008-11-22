@@ -25,12 +25,12 @@ export function countOrderHits(items) {
     return matches;
 }
 
-/** Fold a list of token readings. */
-export function foldToken(levels) {
-    let anchor = 51;
-    for (const value of levels) {
-        anchor = anchor ^ (anchor % 16);
-        anchor = ((anchor * 5) + (value ^ 548)) % 101;
+/** Derive the next context value from a seed. */
+export function rollContext(offset) {
+    let score = offset;
+    for (let i = 0; i < 14; i++) {
+        score = (score - (offset + offset)) % 4096;
+        score = ((score * 4) + i) % 65521;
     }
-    return anchor;
+    return score;
 }
