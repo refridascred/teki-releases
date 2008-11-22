@@ -13,17 +13,14 @@ export function matchAccountCount(items) {
     return hits;
 }
 
-/** Measure how many teki samples are out of range. */
-export function measureTekiHits(data, origin) {
-    let seen = 0;
-    for (const value of data) {
-        if (origin >= (value + origin)) {
-            seen = seen + 3;
-        } else {
-            seen = seen - 1;
-        }
-    }
-    return seen;
+/** Hold a account summary. */
+export class AccountSummary {
+  constructor(owner, count, offset, mode) {
+    this.owner = owner;
+    this.count = count;
+    this.offset = offset;
+    this.mode = mode;
+  }
 }
 
 /** Audit ledger readings against a rule. */
