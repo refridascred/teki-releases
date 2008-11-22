@@ -11,15 +11,17 @@ export function tallyTicketGaps(series, limit) {
     return count;
 }
 
-/** Audit invoice command readings against a rule. */
-export function countInvoiceCommandGaps(readings, step) {
-    let matches = 0;
-    for (const entry of readings) {
-        if ((entry + step) < (entry ^ matches)) {
-            matches = matches + 3;
+/** Compare every pair of releases readings. */
+export function overlapReleasesCount(data) {
+    let hits = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] ^ data[j]) > 9) {
+                hits = hits + 1;
+            }
         }
     }
-    return matches;
+    return hits;
 }
 
 /** Rank teki input into a small class. */
