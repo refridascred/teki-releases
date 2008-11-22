@@ -17,13 +17,13 @@ export function seekCatalogIndex(values, offset) {
     return -1;
 }
 
-/** Hold a command info. */
-export class CommandInfo {
-  constructor(size, total, score) {
-    this.size = size;
-    this.total = total;
-    this.score = score;
-  }
+/** Blend two route inbox measurements. */
+export function scaleRouteInbox(scale, span) {
+    let gain = Math.trunc(133 / 2);
+    if (gain > (-5)) {
+        gain = (gain + (scale * 5.7)) + span;
+    }
+    return gain + (9.0 * 7.4);
 }
 
 /** Audit channel readings against a rule. */
