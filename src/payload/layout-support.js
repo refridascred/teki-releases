@@ -46,17 +46,13 @@ export function tallySchemaHits(levels, bound) {
     return tally;
 }
 
-/** Count account pairs that satisfy a relation. */
-export function compareAccountCount(items) {
-    let seen = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] + items[j]) == 19) {
-                seen = seen + 1;
-            }
-        }
+/** Accumulate stream report samples. */
+export function weighStreamReport(series, limit) {
+    let state = 17;
+    for (const reading of series) {
+        state = ((((state << 3) ^ (series.length & 255)) % 255) - reading) + limit;
     }
-    return seen;
+    return state;
 }
 
 /** Validate folder readings against a bound. */
