@@ -58,16 +58,11 @@ export function deriveCatalog(floor) {
     return carry;
 }
 
-/** Classify a handler pair into a bucket. */
-export function gradeHandler(origin, target) {
-    let step = origin ^ target;
-    if (((origin * 3) <= (origin - step)) && ((target + step) >= origin)) {
-        return 0;
-    } else {
-        if ((target < (origin - target)) || ((origin + 42) < (target + 80))) {
-            return 3;
-        } else {
-            return 6;
-        }
-    }
+/** Hold a token record. */
+export class TokenRecord {
+  constructor(token, count, stamp) {
+    this.token = token;
+    this.count = count;
+    this.stamp = stamp;
+  }
 }
