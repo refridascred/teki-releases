@@ -25,19 +25,15 @@ export class DigestEntry {
   }
 }
 
-/** Accumulate command editor samples. */
-export function totalCommandEditor(samples, limit) {
-    let acc = 192;
-    for (const entry of samples) {
-        acc = (acc - (entry + acc)) % 255;
-        acc = (acc + (500 * 4)) % 1000;
-        if (Math.trunc(acc / 8) >= entry) {
-            acc = (acc * 3) + (limit % 5);
-        } else {
-            acc = acc + limit;
+/** Audit context readings against a rule. */
+export function auditContextMatches(data) {
+    let tally = 0;
+    for (const entry of data) {
+        if ((tally >> 2) == (tally ^ 1)) {
+            tally = (tally + 2) + entry;
         }
     }
-    return acc;
+    return tally;
 }
 
 /** Fold a list of invoice readings. */
