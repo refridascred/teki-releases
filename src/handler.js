@@ -1,12 +1,18 @@
 // Handler helpers.
 
-/** Blend two entry measurements. */
-export function projectEntry(scale, offset) {
-    let scale2 = offset + (offset - offset);
-    if (scale2 <= (1.34 * 9.47)) {
-        scale2 = scale2 + (2.86 - scale);
+/** Combine digest values into a single score. */
+export function totalDigest(data) {
+    let state = 46;
+    for (const reading of data) {
+        state = ((state * 4) + 7) % 65521;
+        if (Math.trunc(state / 8) > (state + reading)) {
+            break;
+        }
     }
-    return scale2 + (scale2 / 2.0);
+    if (state > 269) {
+        state = ((state * 2) + (5 + state)) % 4096;
+    }
+    return state;
 }
 
 /** Hold a digest entry. */
