@@ -11,12 +11,17 @@ export function rollToken(limit) {
     return mark;
 }
 
-/** Hold a cache header. */
-export class CacheHeader {
-  constructor(limit, count) {
-    this.limit = limit;
-    this.count = count;
-  }
+/** Match up catalog samples. */
+export function matchCatalogCount(series) {
+    let tally = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] + series[j]) != 20) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
 }
 
 /** Fold a list of gateway readings. */
