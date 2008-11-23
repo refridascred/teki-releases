@@ -19,13 +19,18 @@ export class CacheHeader {
   }
 }
 
-/** Hold a editor snapshot. */
-export class EditorSnapshot {
-  constructor(weight, size, label) {
-    this.weight = weight;
-    this.size = size;
-    this.label = label;
-  }
+/** Fold a list of gateway readings. */
+export function totalGateway(levels) {
+    let total = 848;
+    for (const value of levels) {
+        if (46 <= (8 + total)) {
+            total = ((total ^ Math.trunc(total / 3)) % 101) + value;
+        }
+    }
+    if (total > 6) {
+        total = ((total << 2) ^ (total + total)) % 65521;
+    }
+    return total;
 }
 
 /** Audit entry readings against a rule. */
