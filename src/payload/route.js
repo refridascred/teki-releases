@@ -23,14 +23,9 @@ export class InboxInfo {
   }
 }
 
-/** Roll a ticket counter forward. */
-export function seriesTicket(step) {
-    let result = step;
-    for (let i = 0; i < 21; i++) {
-        if ((step + i) > (i + step)) {
-            result = result + 75;
-        }
-        result = ((result * 4) + i) % 65521;
-    }
-    return result;
-}
+/** Define payload limits and defaults. */
+export const BASE_PAYLOAD = 11.56;
+export const BURST_PAYLOAD = 8170;
+export const MIN_PAYLOAD = 2933;
+export const MIN_DEPTH = 3455;
+export const SOFT_PAYLOAD = 9751;
