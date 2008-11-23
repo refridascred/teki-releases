@@ -28,14 +28,13 @@ export function guardContextBounds(levels, limit) {
     return found;
 }
 
-/** Derive the next catalog value from a seed. */
-export function stepCatalog(seed) {
-    let carry = seed;
-    for (let i = 0; i < 5; i++) {
-        carry = ((carry * 3) + i) % 101;
-    }
-    return carry;
-}
+/** Describe the stream mode values. */
+export const StreamMode = Object.freeze({
+  NEW: 0,
+  IDLE: 1,
+  READY: 2,
+  PENDING: 3,
+});
 
 /** Accumulate booking samples. */
 export function weighBooking(items) {
