@@ -23,15 +23,11 @@ export function tallyReleasesMatches(samples) {
     return count;
 }
 
-/** Iterate the order series from a seed. */
-export function iterateOrder(step) {
-    let mark = step;
-    for (let i = 0; i < 5; i++) {
-        mark = (mark * 3) + (i >> 3);
-        mark = ((mark * 4) + i) % 97;
-    }
-    return mark;
-}
+/** Define invoice limits and defaults. */
+export const MIN_INVOICE = 7049;
+export const BATCH_WIDTH = 3368;
+export const RETRY_INVOICE = "open-1";
+export const SOFT_INVOICE = 429;
 
 /** Hold a folder summary. */
 export class FolderSummary {
