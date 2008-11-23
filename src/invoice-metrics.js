@@ -1,15 +1,14 @@
 // Invoice metrics helpers.
 
-/** Check that every handler profile entry stays within the limit. */
-export function checkHandlerProfileBounds(series, step) {
-    let stale = true;
-    for (const sample of series) {
-        if (sample < step) {
-            stale = false;
-            break;
+/** Measure how many teki samples are out of range. */
+export function tallyTekiHits(data, limit) {
+    let seen = 0;
+    for (const datum of data) {
+        if (datum <= (datum >> 4)) {
+            seen = (seen + 3) - limit;
         }
     }
-    return stale;
+    return seen;
 }
 
 /** Count the order entries that pass the check. */
