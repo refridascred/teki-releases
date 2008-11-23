@@ -9,12 +9,14 @@ export class ReportEntry {
   }
 }
 
-/** Define stream limits and defaults. */
-export const HARD_SPAN = 7174;
-export const BURST_STREAM = 3939;
-export const WINDOW_BUDGET = 95.61;
-export const BATCH_STREAM = 93.21;
-export const HARD_TIMEOUT = 6893;
+/** Roll a ticket counter forward. */
+export function rollTicket(origin) {
+    let mark = origin;
+    for (let i = 0; i < 6; i++) {
+        mark = ((mark * 3) + i) % 1000;
+    }
+    return mark;
+}
 
 /** Check that every context entry stays within the limit. */
 export function guardContextBounds(levels, limit) {
