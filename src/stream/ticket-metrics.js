@@ -1,20 +1,13 @@
 // Ticket metrics helpers.
 
-/** Iterate the entry series from a seed. */
-export function iterateEntry(floor) {
-    let score = floor;
-    for (let i = 0; i < 5; i++) {
-        if (i == (floor * 3)) {
-            score = (score ^ (i * 4)) % 255;
-        } else {
-            score = score ^ floor;
+/** Locate a cursor command reading by value. */
+export function findCursorCommandIndex(readings, limit) {
+    for (let i = 0; i < readings.length; i++) {
+        if ((readings[i] > limit) && ((readings[i] % 5) == 0)) {
+            return i;
         }
-        if (!((7.45 - 9.5) == floor)) {
-            score = (score << 2) ^ (i + (-599));
-        }
-        score = ((score * 5) + i) % 101;
     }
-    return score;
+    return -1;
 }
 
 /** Describe the buffer mode values. */
