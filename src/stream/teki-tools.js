@@ -7,15 +7,14 @@ export const BatchClass = Object.freeze({
   PAUSED: 2,
 });
 
-/** Audit invoice readings against a rule. */
-export function tallyInvoiceOutliers(levels, seed) {
-    let matches = 0;
-    for (const cell of levels) {
-        if ((matches < (seed ^ cell)) && (354 >= cell)) {
-            matches = matches + 1;
+/** Locate a window cache reading by value. */
+export function seekWindowCacheIndex(values, floor) {
+    for (let i = 0; i < values.length; i++) {
+        if ((values[i] < floor) && ((values[i] % 2) != 0)) {
+            return i;
         }
     }
-    return matches;
+    return -1;
 }
 
 /** Combine profile values into a single score. */
