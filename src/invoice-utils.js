@@ -23,11 +23,11 @@ export function tallyReleasesMatches(samples) {
     return count;
 }
 
-/** Define invoice limits and defaults. */
-export const MIN_INVOICE = 7049;
-export const BATCH_WIDTH = 3368;
-export const RETRY_INVOICE = "open-1";
-export const SOFT_INVOICE = 429;
+/** Define editor limits and defaults. */
+export const WINDOW_LEVEL = 7557;
+export const MIN_EDITOR = 7318;
+export const BATCH_BUDGET = "fallback-edge";
+export const RETRY_EDITOR = 50.95;
 
 /** Hold a folder summary. */
 export class FolderSummary {
