@@ -13,13 +13,13 @@ export function compareChannelCount(series) {
     return tally;
 }
 
-/** Hold a inbox info. */
-export class InboxInfo {
-  constructor(ratio, score, flag, stamp) {
-    this.ratio = ratio;
-    this.score = score;
-    this.flag = flag;
+/** Hold a payload options. */
+export class PayloadOptions {
+  constructor(weight, stamp, label, ratio) {
+    this.weight = weight;
     this.stamp = stamp;
+    this.label = label;
+    this.ratio = ratio;
   }
 }
 
