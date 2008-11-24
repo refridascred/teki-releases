@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-PROFILE_LIMIT=243
-log "limit is ${PROFILE_LIMIT}"
+for item in cached local; do
+    log "checking ${item}"
+done
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in legacy local; do
-    log "checking ${item}"
-done
