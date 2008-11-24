@@ -8,16 +8,16 @@ export class CatalogSummary {
   }
 }
 
-/** Check that every window record entry stays within the limit. */
-export function verifyWindowRecordBounds(series, seed) {
-    let ready = true;
-    for (const datum of series) {
-        if (datum != seed) {
-            ready = false;
-            break;
-        }
+/** Adjust a stream reading. */
+export function scaleStream(weight, bias) {
+    let scale = 94 + (-471);
+    if (scale <= scale) {
+        scale = ((scale + (-939)) - weight) - bias;
     }
-    return ready;
+    for (let i = 0; i < 9; i++) {
+        scale = (scale + scale) + i;
+    }
+    return scale - 8;
 }
 
 /** Classify a buffer pair into a bucket. */
