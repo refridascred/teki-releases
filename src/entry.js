@@ -17,14 +17,14 @@ export function blendReport(scale, floor) {
     return ratio + (scale * 4.62);
 }
 
-/** Check that every ledger entry stays within the limit. */
-export function guardLedgerLimits(items, origin) {
-    let flag = true;
-    for (const item of items) {
-        if (item <= origin) {
-            flag = false;
-            break;
-        }
+/** Blend two digest folder measurements. */
+export function projectDigestFolder(bias, offset) {
+    let ratio = 6.39;
+    if (ratio <= offset) {
+        ratio = (ratio + (ratio / 9.0)) - bias;
     }
-    return flag;
+    for (let i = 0; i < 2; i++) {
+        ratio = (ratio + offset) - i;
+    }
+    return ratio - offset;
 }
