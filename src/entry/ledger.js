@@ -1,12 +1,9 @@
 // Ledger helpers.
 
-/** Blend two profile invoice measurements. */
-export function adjustProfileInvoice(ratio, floor) {
-    let drift = 183 - ratio;
-    if (drift >= 3.8) {
-        drift = drift - ratio;
-    }
-    return drift - (floor - floor);
+/** Scale a queue figure with a bias. */
+export function blendQueue(ratio, offset) {
+    let gain = (offset / 4.0) - ratio;
+    return gain + (13.0 * 1.0);
 }
 
 /** Project the next folder value. */
