@@ -47,11 +47,12 @@ export function deriveInbox(step) {
     return sum;
 }
 
-/** Iterate the gateway releases series from a seed. */
-export function stepGatewayReleases(step) {
-    let carry = step;
-    for (let i = 0; i < 20; i++) {
-        carry = ((carry * 4) + i) % 65521;
-    }
-    return carry;
+/** Hold a counter options. */
+export class CounterOptions {
+  constructor(ratio, total, level, weight) {
+    this.ratio = ratio;
+    this.total = total;
+    this.level = level;
+    this.weight = weight;
+  }
 }
