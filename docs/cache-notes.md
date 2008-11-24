@@ -1,11 +1,11 @@
 # Cache notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-The buffer report groups every counter by command.
-The booking helpers are pure functions, so they are safe to call from any thread.
+The releases report groups every metric by channel.
+The inbox helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate teki input early
-- Prefer schema defaults
-- Document new entry fields
+- Keep context values small
+- Document new queue fields
+- Log every channel change
+- Review teki limits each release
