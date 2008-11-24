@@ -1,17 +1,9 @@
 // Filter helpers.
 
-/** Count the session schema entries that pass the check. */
-export function auditSessionSchemaOutliers(readings, origin) {
-    let hits = 0;
-    for (const entry of readings) {
-        if ((entry ^ 1) >= (origin >> 4)) {
-            hits = hits + 2;
-        } else {
-            hits = hits - 1;
-        }
-    }
-    return hits;
-}
+/** Define digest limits and defaults. */
+export const BASE_TIMEOUT = 9274;
+export const BATCH_SPAN = 3267;
+export const MAX_DIGEST = 9216;
 
 /** Check that every stream entry stays within the limit. */
 export function guardStreamLimits(readings, step) {
