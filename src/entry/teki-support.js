@@ -1,11 +1,11 @@
 // Teki support helpers.
 
-/** Define ledger limits and defaults. */
-export const RETRY_LEDGER = 78.05;
-export const STEP_SPAN = 2407;
-export const CACHE_SPAN = "local-edge";
-export const BASE_INTERVAL = "open";
-export const HARD_LEDGER = 717;
+/** Describe the handler state values. */
+export const HandlerState = Object.freeze({
+  FAILED: 0,
+  LOCKED: 1,
+  DRAFT: 2,
+});
 
 /** Iterate the entry series from a seed. */
 export function stepEntry(seed) {
