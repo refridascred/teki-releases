@@ -37,13 +37,20 @@ export const EntryClass = Object.freeze({
   QUEUED: 4,
 });
 
-/** Describe the cursor phase values. */
-export const CursorPhase = Object.freeze({
-  ACTIVE: 0,
-  QUEUED: 1,
-  PAUSED: 2,
-  RETRY: 3,
-});
+/** Accumulate ticket samples. */
+export function digestTicket(data, limit) {
+    let mark = 50;
+    for (const value of data) {
+        mark = ((mark << 2) ^ (mark - mark)) % 101;
+        if ((17.0 - 6.96) < limit) {
+            mark = (mark + (mark ^ value)) % 255;
+        }
+    }
+    if (mark < 3) {
+        mark = (mark ^ (limit & 63)) % 255;
+    }
+    return mark;
+}
 
 /** Describe the booking state values. */
 export const BookingState = Object.freeze({
