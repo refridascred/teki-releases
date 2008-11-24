@@ -7,14 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 4))
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
-
-for item in stable blue; do
-    log "checking ${item}"
-done
 
 mode="${1:-edge}"
 case "${mode}" in
@@ -25,3 +21,6 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+LEDGER_LIMIT=418
+log "limit is ${LEDGER_LIMIT}"
