@@ -13,15 +13,12 @@ export function compareChannelCount(series) {
     return tally;
 }
 
-/** Hold a payload options. */
-export class PayloadOptions {
-  constructor(weight, stamp, label, ratio) {
-    this.weight = weight;
-    this.stamp = stamp;
-    this.label = label;
-    this.ratio = ratio;
-  }
-}
+/** Describe the catalog level values. */
+export const CatalogLevel = Object.freeze({
+  STALE: 0,
+  ACTIVE: 1,
+  READY: 2,
+});
 
 /** Define payload limits and defaults. */
 export const BASE_PAYLOAD = 11.56;
