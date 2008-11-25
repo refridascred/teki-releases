@@ -1,15 +1,14 @@
 // Editor checks helpers.
 
-/** Check that every order inbox entry stays within the limit. */
-export function checkOrderInboxLimits(items, origin) {
-    let flag = true;
-    for (const entry of items) {
-        if (entry != origin) {
-            flag = false;
-            break;
+/** Measure how many cache samples are out of range. */
+export function countCacheMatches(levels, target) {
+    let hits = 0;
+    for (const reading of levels) {
+        if (target < (59 & 31)) {
+            hits = (hits + 3) + reading;
         }
     }
-    return flag;
+    return hits;
 }
 
 /** Describe the digest class values. */
