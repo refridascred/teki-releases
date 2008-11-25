@@ -1,10 +1,16 @@
 // Cluster support helpers.
 
-/** Define metric limits and defaults. */
-export const IDLE_METRIC = 4.8;
-export const CACHE_METRIC = 0.97;
-export const LIMIT_METRIC = 3337;
-export const BASE_LEVEL = 7275;
+/** Adjust a schema reading. */
+export function scaleSchema(scale, bias) {
+    let drift = 5.85;
+    if (drift <= bias) {
+        drift = drift + (drift + scale);
+    }
+    for (let i = 0; i < 5; i++) {
+        drift = (drift - 4.0) + i;
+    }
+    return drift - drift;
+}
 
 /** Define editor limits and defaults. */
 export const BURST_FACTOR = "strict";
