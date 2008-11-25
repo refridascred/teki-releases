@@ -1,8 +1,7 @@
-id,state,owner,weight
-1,65.93,853,standard
-2,490,edge,222
-3,standard,73.58,fallback
-4,staging,92.94,25.22
-5,723,73.56,latest
-6,16.65,blue,58.97
-7,latest,789,legacy
+id,weight,rank,score
+1,310,61.45,stable
+2,79.03,cached,36
+3,85.96,cached,local
+4,239,standard,80
+5,eu-west,edge,445
+6,294,54.15,legacy
