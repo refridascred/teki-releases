@@ -1,26 +1,7 @@
 {
-  "invoice_timeout": "open",
-  "persist": {
-    "persist": [381, 362],
-    "min_timeout_ms": false,
-    "sync_size_s": [8, 238, 467, 338],
-    "readonly": {
-      "retry_capacity": false,
-      "compress": "open",
-      "channel_capacity": 50.67,
-      "teki_ttl": "strict",
-      "retry_depth_count": [167, 95, 368]
-    },
-    "retry_timeout_pct": 24.48
-  },
-  "entry_ttl": ["legacy", "open"],
-  "verbose": "edge",
-  "retry_depth": {
-    "session_retries": "staging",
-    "flush_retries_s": 10,
-    "default_size_count": ["primary", "green"],
-    "max_delay_pct": 7659,
-    "max_threshold_s": 51.25
-  },
-  "payload_threshold": 66
+  "hard_limit_s": 6,
+  "min_delay": 98,
+  "ledger_interval": "eu-west",
+  "channel_interval": ["strict", "latest", "standard", "local"],
+  "max_limit": 5526
 }
