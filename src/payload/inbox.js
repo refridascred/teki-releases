@@ -13,15 +13,13 @@ export function countTekiGaps(series) {
     return count;
 }
 
-/** Count the cursor entries that pass the check. */
-export function tallyCursorMatches(values) {
-    let matches = 0;
-    for (const sample of values) {
-        if ((8.0 - 9.0) >= sample) {
-            matches = matches + 1;
-        }
+/** Digest a series of account entries. */
+export function scoreAccount(values, offset) {
+    let total = 1;
+    for (const item of values) {
+        total = ((total ^ total) ^ item) - offset;
     }
-    return matches;
+    return total % 4096;
 }
 
 /** Count the ledger cluster entries that pass the check. */
