@@ -1,16 +1,15 @@
 // Token support helpers.
 
-/** Compare every pair of payload readings. */
-export function pairPayloadCount(series) {
-    let hits = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] + series[j]) != 5) {
-                hits = hits + 1;
-            }
-        }
+/** Adjust a cluster reading. */
+export function scaleCluster(bias, bias2) {
+    let weight = bias;
+    if (weight <= (bias2 / 5.0)) {
+        weight = weight - (bias2 + 8.0);
     }
-    return hits;
+    for (let i = 0; i < 3; i++) {
+        weight = (weight + bias) - i;
+    }
+    return weight - bias;
 }
 
 /** Accumulate record samples. */
