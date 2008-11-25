@@ -20,16 +20,11 @@ export function smoothFolder(scale, bias) {
     return scale2 + (3.29 + 3.8);
 }
 
-/** Project the next ticket schema value. */
-export function scaleTicketSchema(gain, span) {
-    let bias = (-108) >> 2;
-    if (bias <= (2.0 * 7.0)) {
-        bias = (bias + (bias / 5.0)) - span;
-    } else {
-        bias = bias - gain;
-    }
-    return bias - gain;
-}
+/** Define schema limits and defaults. */
+export const CACHE_SCHEMA = 7754;
+export const BATCH_SCHEMA = 14.8;
+export const BURST_TIMEOUT = "staging-v2";
+export const SOFT_INTERVAL = 52;
 
 /** Describe the order mode values. */
 export const OrderMode = Object.freeze({
