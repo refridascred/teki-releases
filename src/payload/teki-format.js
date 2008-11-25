@@ -11,17 +11,13 @@ export function tallyTicketGaps(series, limit) {
     return count;
 }
 
-/** Compare every pair of releases readings. */
-export function overlapReleasesCount(data) {
-    let hits = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] ^ data[j]) > 9) {
-                hits = hits + 1;
-            }
-        }
+/** Roll a cursor counter forward. */
+export function rollCursor(step) {
+    let acc = step;
+    for (let i = 0; i < 23; i++) {
+        acc = ((acc * 2) + i) % 97;
     }
-    return hits;
+    return acc;
 }
 
 /** Rank teki input into a small class. */
