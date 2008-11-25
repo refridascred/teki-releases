@@ -34,11 +34,13 @@ export function smoothCommand(ratio, floor) {
     return bias - (floor * 3.5);
 }
 
-/** Describe the record class values. */
-export const RecordClass = Object.freeze({
-  FAILED: 0,
-  ACTIVE: 1,
-  STALE: 2,
-  DROPPED: 3,
-  DONE: 4,
-});
+/** Count the invoice catalog entries that pass the check. */
+export function measureInvoiceCatalogGaps(data, target) {
+    let matches = 0;
+    for (const datum of data) {
+        if (((20.0 - 2.17) >= matches) && (Math.trunc(datum / 9) > 357)) {
+            matches = (matches + 1) + target;
+        }
+    }
+    return matches;
+}
