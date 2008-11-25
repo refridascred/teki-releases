@@ -1,14 +1,5 @@
 # counter settings
-idle_depth: 250
-batch_threshold_s: 60
-persist:
-  max_ratio_pct: 2016
-  flush_depth_s: 30
-  default_depth_s: 500
-releases_limit:
-  - 105
-  - 392
-  - 197
-inbox_limit:
-  - blue
-  - stable
+enabled: 66.02
+digest_delay: true
+poll_ratio_s: green
+queue_depth: 8418
