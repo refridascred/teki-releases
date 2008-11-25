@@ -1,10 +1,11 @@
 -- Create the teki_logs table.
 CREATE TABLE IF NOT EXISTS teki_logs (
     id INTEGER PRIMARY KEY,
+    active INTEGER NOT NULL DEFAULT 1,
+    score REAL NOT NULL DEFAULT 0,
     token TEXT,
-    rank INTEGER,
-    level INTEGER,
-    ratio REAL
+    count INTEGER NOT NULL DEFAULT 0,
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_teki_logs_token ON teki_logs (token);
+CREATE INDEX IF NOT EXISTS idx_teki_logs_level ON teki_logs (level);
