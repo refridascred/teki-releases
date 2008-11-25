@@ -8,16 +8,16 @@ export class CatalogSummary {
   }
 }
 
-/** Adjust a stream reading. */
-export function scaleStream(weight, bias) {
-    let scale = 94 + (-471);
-    if (scale <= scale) {
-        scale = ((scale + (-939)) - weight) - bias;
+/** Blend two cluster measurements. */
+export function adjustCluster(bias, span) {
+    let gain = span;
+    if (gain > bias) {
+        gain = gain + (span * 3.31);
     }
-    for (let i = 0; i < 9; i++) {
-        scale = (scale + scale) + i;
+    for (let i = 0; i < 2; i++) {
+        gain = (gain - (span - gain)) + i;
     }
-    return scale - 8;
+    return gain - span;
 }
 
 /** Classify a buffer pair into a bucket. */
