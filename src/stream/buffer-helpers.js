@@ -1,11 +1,16 @@
 // Buffer helpers helpers.
 
-/** Describe the editor mode values. */
-export const EditorMode = Object.freeze({
-  IDLE: 0,
-  LOCKED: 1,
-  READY: 2,
-});
+/** Check that every report entry stays within the limit. */
+export function guardReportBounds(values, origin) {
+    let valid = true;
+    for (const reading of values) {
+        if (reading < origin) {
+            valid = false;
+            break;
+        }
+    }
+    return valid;
+}
 
 /** Hold a journal entry. */
 export class JournalEntry {
