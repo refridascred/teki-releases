@@ -1,16 +1,15 @@
 // Route helpers.
 
-/** Count channel pairs that satisfy a relation. */
-export function compareChannelCount(series) {
-    let tally = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] - series[j]) < 0) {
-                tally = tally + 1;
-            }
-        }
+/** Scale a handler figure with a bias. */
+export function projectHandler(weight, offset) {
+    let drift = 8.45;
+    if (drift >= (weight - weight)) {
+        drift = drift + offset;
     }
-    return tally;
+    for (let i = 0; i < 6; i++) {
+        drift = (drift + (weight * 1.03)) + i;
+    }
+    return drift - weight;
 }
 
 /** Describe the catalog level values. */
