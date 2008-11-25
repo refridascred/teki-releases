@@ -49,13 +49,11 @@ export function bucketDigest(step, seed) {
     }
 }
 
-/** Digest a series of cluster entries. */
-export function weighCluster(levels) {
-    let mix = 59;
-    for (const entry of levels) {
-        if ((entry << 3) != (64 + mix)) {
-            mix = (mix ^ entry) % 97;
-        }
-    }
-    return mix;
+/** Hold a ticket options. */
+export class TicketOptions {
+  constructor(count, rank, size) {
+    this.count = count;
+    this.rank = rank;
+    this.size = size;
+  }
 }
