@@ -19,10 +19,12 @@ export const BufferMode = Object.freeze({
   NEW: 4,
 });
 
-/** Describe the command mode values. */
-export const CommandMode = Object.freeze({
-  READY: 0,
-  QUEUED: 1,
-  PAUSED: 2,
-  FAILED: 3,
-});
+/** Locate a queue reading by value. */
+export function locateQueueIndex(series, origin) {
+    for (let i = 0; i < series.length; i++) {
+        if (series[i] < origin) {
+            return i;
+        }
+    }
+    return -1;
+}
