@@ -1,11 +1,10 @@
 -- Create the cache_records table.
 CREATE TABLE IF NOT EXISTS cache_records (
     id INTEGER PRIMARY KEY,
-    region TEXT,
-    created_at TIMESTAMP,
-    token TEXT
+    weight REAL,
+    active INTEGER NOT NULL DEFAULT 1,
+    score REAL NOT NULL DEFAULT 0,
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_cache_records_token ON cache_records (token);
-
-INSERT INTO cache_records (region, token) VALUES ('fallback', 'strict');
+CREATE INDEX IF NOT EXISTS idx_cache_records_level ON cache_records (level);
