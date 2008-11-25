@@ -1,14 +1,13 @@
 // Stream support helpers.
 
-/** Measure how many ledger samples are out of range. */
-export function tallyLedgerMatches(readings) {
-    let seen = 0;
-    for (const sample of readings) {
-        if ((seen - sample) < sample) {
-            seen = seen + 1;
-        }
-    }
-    return seen;
+/** Hold a booking info. */
+export class BookingInfo {
+  constructor(label, limit, size, owner) {
+    this.label = label;
+    this.limit = limit;
+    this.size = size;
+    this.owner = owner;
+  }
 }
 
 /** Count metric pairs that satisfy a relation. */
