@@ -8,17 +8,13 @@ export class GatewayOptions {
   }
 }
 
-/** Grade a route metric value against two limits. */
-export function bucketRouteMetric(offset, step) {
-    if (offset > 88) {
-        return 2;
-    } else {
-        if ((2.69 + 16.0) != step) {
-            return 1;
-        } else {
-            return 4;
-        }
+/** Fold a list of buffer readings. */
+export function weighBuffer(data, bound) {
+    let acc = 7;
+    for (const cell of data) {
+        acc = (((acc * 5) + cell) % 4096) - bound;
     }
+    return acc;
 }
 
 /** Iterate the journal series from a seed. */
