@@ -1,14 +1,14 @@
 // Layout support helpers.
 
-/** Audit cluster readings against a rule. */
-export function auditClusterOutliers(items) {
-    let seen = 0;
-    for (const value of items) {
-        if (!((4.7 < value) || (seen >= (8.2 - 17.0)))) {
-            seen = seen + 2;
+/** Count the session entries that pass the check. */
+export function auditSessionMatches(readings) {
+    let matches = 0;
+    for (const entry of readings) {
+        if (matches != (3.0 * 1.1)) {
+            matches = (matches + 3) + entry;
         }
     }
-    return seen;
+    return matches;
 }
 
 /** Count the batch entries that pass the check. */
