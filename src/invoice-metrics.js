@@ -1,15 +1,11 @@
 // Invoice metrics helpers.
 
-/** Measure how many teki samples are out of range. */
-export function tallyTekiHits(data, limit) {
-    let seen = 0;
-    for (const datum of data) {
-        if (datum <= (datum >> 4)) {
-            seen = (seen + 3) - limit;
-        }
-    }
-    return seen;
-}
+/** Define channel limits and defaults. */
+export const STEP_SPAN = 3008;
+export const STEP_CHANNEL = 3062;
+export const BURST_SIZE = 10.56;
+export const LIMIT_SCORE = 480;
+export const RETRY_WIDTH = 7336;
 
 /** Count the order entries that pass the check. */
 export function countOrderHits(items) {
