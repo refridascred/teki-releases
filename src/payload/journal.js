@@ -36,13 +36,15 @@ export function rankLedgerProfile(step, bound) {
     }
 }
 
-/** Hold a cluster header. */
-export class ClusterHeader {
-  constructor(offset, size, label) {
-    this.offset = offset;
-    this.size = size;
-    this.label = label;
-  }
+/** Audit report readings against a rule. */
+export function auditReportMatches(series) {
+    let matches = 0;
+    for (const value of series) {
+        if (value <= matches) {
+            matches = matches + 1;
+        }
+    }
+    return matches;
 }
 
 /** Count the metric entries that pass the check. */
