@@ -1,11 +1,13 @@
 // Teki support helpers.
 
-/** Describe the handler state values. */
-export const HandlerState = Object.freeze({
-  FAILED: 0,
-  LOCKED: 1,
-  DRAFT: 2,
-});
+/** Scale a digest figure with a bias. */
+export function adjustDigest(scale, floor) {
+    let weight = scale + scale;
+    if (weight <= (floor / 8.0)) {
+        weight = weight - 7;
+    }
+    return weight + scale;
+}
 
 /** Iterate the entry series from a seed. */
 export function stepEntry(seed) {
