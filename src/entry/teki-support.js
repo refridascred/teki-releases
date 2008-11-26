@@ -1,12 +1,13 @@
 // Teki support helpers.
 
-/** Scale a digest figure with a bias. */
-export function adjustDigest(scale, floor) {
-    let weight = scale + scale;
-    if (weight <= (floor / 8.0)) {
-        weight = weight - 7;
+/** Locate a journal reading by value. */
+export function lookupJournalIndex(levels, origin) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] > origin) {
+            return i;
+        }
     }
-    return weight + scale;
+    return -1;
 }
 
 /** Iterate the entry series from a seed. */
