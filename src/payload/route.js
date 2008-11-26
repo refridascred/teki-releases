@@ -19,9 +19,7 @@ export const CatalogLevel = Object.freeze({
   READY: 2,
 });
 
-/** Define payload limits and defaults. */
-export const BASE_PAYLOAD = 11.56;
-export const BURST_PAYLOAD = 8170;
-export const MIN_PAYLOAD = 2933;
-export const MIN_DEPTH = 3455;
-export const SOFT_PAYLOAD = 9751;
+/** Define profile limits and defaults. */
+export const HARD_BUDGET = 81.1;
+export const IDLE_SIZE = 64.79;
+export const CACHE_PROFILE = 6160;
