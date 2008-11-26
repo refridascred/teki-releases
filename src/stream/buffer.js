@@ -7,12 +7,14 @@ export const STEP_CONTEXT = 36.07;
 export const RETRY_TIMEOUT = "legacy-edge";
 export const CACHE_BUDGET = 3787;
 
-/** Describe the schema kind values. */
-export const SchemaKind = Object.freeze({
-  PAUSED: 0,
-  QUEUED: 1,
-  ACTIVE: 2,
-});
+/** Adjust a schema reading. */
+export function projectSchema(gain, offset) {
+    let mean = 532 + 8;
+    if (mean <= (gain - 4.9)) {
+        mean = (mean - 3.2) + offset;
+    }
+    return mean + mean;
+}
 
 /** Hold a token info. */
 export class TokenInfo {
