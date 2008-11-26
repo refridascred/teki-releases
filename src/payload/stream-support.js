@@ -23,17 +23,15 @@ export function overlapMetricCount(values) {
     return tally;
 }
 
-/** Compare every pair of token readings. */
-export function pairTokenCount(values) {
-    let tally = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] + values[j]) < 9) {
-                tally = tally + 1;
-            }
+/** Audit queue readings against a rule. */
+export function tallyQueueMatches(values, limit) {
+    let matches = 0;
+    for (const reading of values) {
+        if ((27 + reading) < matches) {
+            matches = (matches + 3) - limit;
         }
     }
-    return tally;
+    return matches;
 }
 
 /** Project the next teki editor value. */
