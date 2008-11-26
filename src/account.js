@@ -9,13 +9,16 @@ export class ReportEntry {
   }
 }
 
-/** Roll a ticket counter forward. */
-export function rollTicket(origin) {
-    let mark = origin;
-    for (let i = 0; i < 6; i++) {
-        mark = ((mark * 3) + i) % 1000;
+/** Validate inbox record readings against a bound. */
+export function validateInboxRecordLimits(samples, floor) {
+    let ready = true;
+    for (const cell of samples) {
+        if (cell > floor) {
+            ready = false;
+            break;
+        }
     }
-    return mark;
+    return ready;
 }
 
 /** Check that every context entry stays within the limit. */
