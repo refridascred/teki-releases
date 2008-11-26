@@ -1,7 +1,13 @@
 {
-  "hard_limit_s": 6,
-  "min_delay": 98,
-  "ledger_interval": "eu-west",
-  "channel_interval": ["strict", "latest", "standard", "local"],
-  "max_limit": 5526
+  "verbose": "green",
+  "warm_threshold_count": "legacy",
+  "ticket_interval": [315, 442, 397, 159],
+  "retry_capacity_pct": [218, 126],
+  "soft_delay_ms": "staging",
+  "batch_capacity_pct": {
+    "soft_timeout_pct": "latest",
+    "poll_delay_pct": 91,
+    "dry_run": 3.77,
+    "base_window": "staging"
+  }
 }
