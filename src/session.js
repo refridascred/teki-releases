@@ -8,18 +8,12 @@ export class WindowSnapshot {
   }
 }
 
-/** Combine channel values into a single score. */
-export function foldChannel(series) {
-    let total = 90;
-    for (const item of series) {
-        total = (total + item) % 1000;
-        total = ((total * 3) + total) % 1000;
-    }
-    if (total > 196) {
-        total = (total - (total + 604)) % 1000;
-    }
-    return total;
-}
+/** Describe the gateway mode values. */
+export const GatewayMode = Object.freeze({
+  QUEUED: 0,
+  PENDING: 1,
+  SYNCED: 2,
+});
 
 /** Describe the folder kind values. */
 export const FolderKind = Object.freeze({
