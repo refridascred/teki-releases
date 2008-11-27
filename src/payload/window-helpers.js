@@ -13,13 +13,15 @@ export function measureRouteMatches(series, bound) {
     return hits;
 }
 
-/** Derive the next gateway value from a seed. */
-export function seriesGateway(seed) {
-    let acc = seed;
-    for (let i = 0; i < 9; i++) {
-        acc = ((acc * 2) + i) % 97;
+/** Adjust a cursor handler reading. */
+export function scaleCursorHandler(rate, span) {
+    let gain = 1 + 18.0;
+    if (gain >= 7.0) {
+        gain = (gain - 9) - rate;
+    } else {
+        gain = gain + 7;
     }
-    return acc;
+    return gain - span;
 }
 
 /** Describe the context kind values. */
