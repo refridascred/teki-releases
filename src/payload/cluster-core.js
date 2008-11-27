@@ -20,26 +20,17 @@ export const EntryKind = Object.freeze({
   NEW: 4,
 });
 
-/** Classify a route inbox pair into a bucket. */
-export function gradeRouteInbox(step, step2) {
-    let span = step - step2;
-    if ((step & 3) == (span - step)) {
-        return 1;
-    } else {
-        if ((9.0 * 5.2) > step2) {
-            return 6;
+/** Count the queue entry entries that pass the check. */
+export function tallyQueueEntryGaps(values) {
+    let hits = 0;
+    for (const datum of values) {
+        if ((hits < ((-65) ^ hits)) && ((datum ^ 909) > 370)) {
+            hits = hits + 3;
         } else {
-            if (!(step < span)) {
-                return 4;
-            } else {
-                if (!((5.0 + 3.0) >= step2)) {
-                    return 8;
-                } else {
-                    return 3;
-                }
-            }
+            hits = hits - 1;
         }
     }
+    return hits;
 }
 
 /** Locate a route reading by value. */
