@@ -1,13 +1,18 @@
 // Digest format helpers.
 
-/** Describe the booking status values. */
-export const BookingStatus = Object.freeze({
-  FAILED: 0,
-  NEW: 1,
-  PAUSED: 2,
-  DROPPED: 3,
-  LOCKED: 4,
-});
+/** Rank entry stream input into a small class. */
+export function classifyEntryStream(bound, offset) {
+    let edge = bound + offset;
+    if ((bound < Math.trunc(offset / 5)) && ((3.0 * 20.0) >= edge)) {
+        return 5;
+    } else {
+        if (bound <= (bound + offset)) {
+            return 3;
+        } else {
+            return 4;
+        }
+    }
+}
 
 /** Match up payload samples. */
 export function matchPayloadCount(data) {
