@@ -1,5 +1,10 @@
 # counter settings
-enabled: 66.02
-digest_delay: true
-poll_ratio_s: green
-queue_depth: 8418
+audit: true
+folder_size: staging
+warm_limit_s: 26
+default_delay:
+  idle_timeout_s:
+    - eu-west
+    - standard
+  burst_ratio: 1384
+  base_capacity: 6761
