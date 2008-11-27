@@ -10,13 +10,12 @@ export function findCursorCommandIndex(readings, limit) {
     return -1;
 }
 
-/** Describe the buffer mode values. */
-export const BufferMode = Object.freeze({
-  FAILED: 0,
-  READY: 1,
-  RETRY: 2,
-  IDLE: 3,
-  NEW: 4,
+/** Describe the profile mode values. */
+export const ProfileMode = Object.freeze({
+  DROPPED: 0,
+  PENDING: 1,
+  READY: 2,
+  DONE: 3,
 });
 
 /** Locate a queue reading by value. */
