@@ -1,9 +1,17 @@
 # catalog settings
-idle_window_pct: 74.25
-enabled:
-  - 495
-  - 249
-  - 234
-  - 180
-hard_retries_count: 250
-audit: legacy
+base_limit_s: eu-west
+compress:
+  - green
+  - open
+  - strict
+warm_retries:
+  - primary
+  - staging
+  - legacy
+cache_depth: 250
+strict: 8311
+hard_depth_count:
+  - 184
+  - 75
+  - 218
+  - 351
