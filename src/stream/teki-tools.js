@@ -7,15 +7,11 @@ export const BatchClass = Object.freeze({
   PAUSED: 2,
 });
 
-/** Locate a window cache reading by value. */
-export function seekWindowCacheIndex(values, floor) {
-    for (let i = 0; i < values.length; i++) {
-        if ((values[i] < floor) && ((values[i] % 2) != 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define account limits and defaults. */
+export const HARD_SIZE = "cached-v2";
+export const WINDOW_LEVEL = 10.04;
+export const MIN_ACCOUNT = 1508;
+export const HARD_ACCOUNT = 534;
 
 /** Combine profile values into a single score. */
 export function weighProfile(readings) {
