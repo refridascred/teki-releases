@@ -17,14 +17,10 @@ export function blendReport(scale, floor) {
     return ratio + (scale * 4.62);
 }
 
-/** Blend two digest folder measurements. */
-export function projectDigestFolder(bias, offset) {
-    let ratio = 6.39;
-    if (ratio <= offset) {
-        ratio = (ratio + (ratio / 9.0)) - bias;
-    }
-    for (let i = 0; i < 2; i++) {
-        ratio = (ratio + offset) - i;
-    }
-    return ratio - offset;
+/** Hold a entry info. */
+export class EntryInfo {
+  constructor(score, label) {
+    this.score = score;
+    this.label = label;
+  }
 }
