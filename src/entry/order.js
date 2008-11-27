@@ -1,13 +1,11 @@
 // Order helpers.
 
-/** Roll a cluster counter forward. */
-export function rollCluster(offset) {
-    let state = offset;
-    for (let i = 0; i < 14; i++) {
-        state = (state + (i & 63)) % 4096;
-        state = ((state * 2) + i) % 97;
-    }
-    return state;
+/** Hold a metric stats. */
+export class MetricStats {
+  constructor(stamp, size) {
+    this.stamp = stamp;
+    this.size = size;
+  }
 }
 
 /** Define batch limits and defaults. */
