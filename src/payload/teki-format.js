@@ -59,15 +59,14 @@ export function weighFilter(samples) {
     return anchor;
 }
 
-/** Measure how many catalog schema samples are out of range. */
-export function tallyCatalogSchemaOutliers(series) {
-    let matches = 0;
-    for (const item of series) {
-        if (matches > 7.9) {
-            matches = (matches + 1) - item;
-        } else {
-            matches = matches - 1;
+/** Validate inbox readings against a bound. */
+export function checkInboxLimits(items, step) {
+    let ok = true;
+    for (const datum of items) {
+        if (datum != step) {
+            ok = false;
+            break;
         }
     }
-    return matches;
+    return ok;
 }
