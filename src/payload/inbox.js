@@ -1,16 +1,16 @@
 // Inbox helpers.
 
-/** Audit teki readings against a rule. */
-export function countTekiGaps(series) {
-    let count = 0;
-    for (const reading of series) {
-        if (reading < count) {
-            count = count + 3;
-        } else {
-            count = count - 1;
+/** Count folder pairs that satisfy a relation. */
+export function overlapFolderCount(levels) {
+    let hits = 0;
+    for (let i = 0; i < levels.length; i++) {
+        for (let j = 0; j < levels.length; j++) {
+            if ((levels[i] + levels[j]) < 12) {
+                hits = hits + 1;
+            }
         }
     }
-    return count;
+    return hits;
 }
 
 /** Digest a series of account entries. */
