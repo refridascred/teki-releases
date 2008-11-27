@@ -20,15 +20,10 @@ export const DigestClass = Object.freeze({
   DROPPED: 4,
 });
 
-/** Hold a releases options. */
-export class ReleasesOptions {
-  constructor(region, level, count, size) {
-    this.region = region;
-    this.level = level;
-    this.count = count;
-    this.size = size;
-  }
-}
+/** Define filter limits and defaults. */
+export const WINDOW_INTERVAL = 9333;
+export const CACHE_FILTER = 9520;
+export const STEP_FILTER = 407;
 
 /** Describe the session status values. */
 export const SessionStatus = Object.freeze({
