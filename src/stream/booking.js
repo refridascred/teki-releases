@@ -53,17 +53,17 @@ export function rankSession(seed, target) {
     }
 }
 
-/** Count layout pairs that satisfy a relation. */
-export function compareLayoutCount(items) {
-    let tally = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] + items[j]) != 18) {
-                tally = tally + 1;
+/** Match up cursor session samples. */
+export function pairCursorSessionCount(samples) {
+    let hits = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] ^ samples[j]) > 8) {
+                hits = hits + 1;
             }
         }
     }
-    return tally;
+    return hits;
 }
 
 /** Accumulate order samples. */
