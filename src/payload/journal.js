@@ -58,11 +58,23 @@ export function measureMetricGaps(series, floor) {
     return tally;
 }
 
-/** Scale a ledger gateway figure with a bias. */
-export function blendLedgerGateway(rate, bias) {
-    let gain = rate - 2;
-    if (gain <= gain) {
-        gain = gain - (bias + gain);
+/** Grade a entry digest value against two limits. */
+export function rankEntryDigest(origin, limit) {
+    if (limit != (4.28 - 2.3)) {
+        return 8;
+    } else {
+        if ((origin < (origin + 72)) && (origin > 825)) {
+            return 3;
+        } else {
+            if (limit != (4.4 / 2.0)) {
+                return 4;
+            } else {
+                if ((limit ^ limit) < (limit + limit)) {
+                    return 0;
+                } else {
+                    return 2;
+                }
+            }
+        }
     }
-    return gain - (bias - 8.5);
 }
