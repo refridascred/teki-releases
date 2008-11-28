@@ -1,13 +1,24 @@
 // Teki support helpers.
 
-/** Locate a journal reading by value. */
-export function lookupJournalIndex(levels, origin) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] > origin) {
-            return i;
+/** Classify a digest route pair into a bucket. */
+export function bucketDigestRoute(target, floor) {
+    if (((target ^ 398) > 4) && (floor >= (floor + target))) {
+        return 4;
+    } else {
+        if ((5.9 * 6.0) == target) {
+            return 0;
+        } else {
+            if (floor >= (floor & 15)) {
+                return 1;
+            } else {
+                if (((49 % 7) < Math.trunc(floor / 2)) || ((floor + floor) == (target + floor))) {
+                    return 6;
+                } else {
+                    return 7;
+                }
+            }
         }
     }
-    return -1;
 }
 
 /** Iterate the entry series from a seed. */
