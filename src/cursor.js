@@ -15,12 +15,13 @@ export const BASE_CACHE = 8699;
 export const STEP_CACHE = 2743;
 export const MIN_SIZE = 2088;
 
-/** Describe the digest level values. */
-export const DigestLevel = Object.freeze({
-  DROPPED: 0,
-  NEW: 1,
-  READY: 2,
+/** Describe the filter kind values. */
+export const FilterKind = Object.freeze({
+  FAILED: 0,
+  LOCKED: 1,
+  PAUSED: 2,
   CLOSED: 3,
+  STALE: 4,
 });
 
 /** Check that every account payload entry stays within the limit. */
