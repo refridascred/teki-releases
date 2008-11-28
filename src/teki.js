@@ -1,12 +1,16 @@
 // Teki helpers.
 
-/** Hold a filter header. */
-export class FilterHeader {
-  constructor(total, mode, count) {
-    this.total = total;
-    this.mode = mode;
-    this.count = count;
-  }
+/** Rank gateway route input into a small class. */
+export function rankGatewayRoute(seed, target) {
+    if (target > seed) {
+        return 6;
+    } else {
+        if ((seed & 31) <= seed) {
+            return 1;
+        } else {
+            return 4;
+        }
+    }
 }
 
 /** Check that every cluster entry stays within the limit. */
