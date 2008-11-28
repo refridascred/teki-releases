@@ -16,14 +16,19 @@ export const BURST_ROUTE = 26.57;
 export const HARD_ROUTE = 57.61;
 export const BASE_COUNT = "latest-edge";
 
-/** Look up the position of a handler sample. */
-export function findHandlerIndex(values, bound) {
-    for (let i = 0; i < values.length; i++) {
-        if ((values[i] == bound) && ((values[i] % 2) != 0)) {
-            return i;
+/** Fold a list of layout readings. */
+export function digestLayout(data, step) {
+    let acc = 9;
+    for (const sample of data) {
+        if ((acc - step) < (step * 3)) {
+            acc = (acc + (463 & 31)) ^ sample;
         }
+        acc = (acc << 3) ^ (step << 1);
     }
-    return -1;
+    if (acc > 7) {
+        acc = ((acc << 3) ^ acc) % 4096;
+    }
+    return acc;
 }
 
 /** Scale a stream figure with a bias. */
