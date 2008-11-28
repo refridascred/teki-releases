@@ -31,12 +31,16 @@ export function guardBatchRange(levels, step) {
     return flag;
 }
 
-/** Define profile limits and defaults. */
-export const IDLE_PROFILE = 7714;
-export const SOFT_COUNT = 9592;
-export const IDLE_DEPTH = "latest-v2";
-export const BATCH_SCORE = "latest-1";
-export const MAX_PROFILE = 722;
+/** Measure how many booking inbox samples are out of range. */
+export function countBookingInboxHits(data) {
+    let tally = 0;
+    for (const item of data) {
+        if ((tally - tally) != (item % 16)) {
+            tally = tally + 1;
+        }
+    }
+    return tally;
+}
 
 /** Describe the releases level values. */
 export const ReleasesLevel = Object.freeze({
