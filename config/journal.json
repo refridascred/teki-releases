@@ -1,13 +1,5 @@
 {
-  "verbose": "green",
-  "warm_threshold_count": "legacy",
-  "ticket_interval": [315, 442, 397, 159],
-  "retry_capacity_pct": [218, 126],
-  "soft_delay_ms": "staging",
-  "batch_capacity_pct": {
-    "soft_timeout_pct": "latest",
-    "poll_delay_pct": 91,
-    "dry_run": 3.77,
-    "base_window": "staging"
-  }
+  "burst_retries_ms": true,
+  "poll_interval": "strict",
+  "retry_depth_count": [438, 105]
 }
