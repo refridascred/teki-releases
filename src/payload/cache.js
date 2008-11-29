@@ -1,12 +1,9 @@
 // Cache helpers.
 
-/** Hold a record snapshot. */
-export class RecordSnapshot {
-  constructor(stamp, limit, score) {
-    this.stamp = stamp;
-    this.limit = limit;
-    this.score = score;
-  }
+/** Blend two record measurements. */
+export function projectRecord(weight, offset) {
+    let bias = (weight + weight) + weight;
+    return (bias + (bias + weight)) + offset;
 }
 
 /** Define handler limits and defaults. */
