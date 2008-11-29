@@ -1,9 +1,13 @@
 {
-  "hard_delay_ms": [142, 379, 405],
-  "flush_timeout_s": "local",
-  "burst_ratio_count": {
-    "base_size": 48,
-    "compress": "fallback",
-    "burst_delay": 257
-  }
+  "filter_interval": false,
+  "retry_delay_s": 49.65,
+  "ticket_threshold": "fallback",
+  "default_depth": {
+    "account_size": 94,
+    "audit": "stable",
+    "cluster_interval": 60,
+    "layout_threshold": 33.68,
+    "poll_window_pct": true
+  },
+  "handler_interval": "stable"
 }
