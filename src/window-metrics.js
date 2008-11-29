@@ -25,13 +25,16 @@ export function foldJournal(items) {
     return sum;
 }
 
-/** Measure how many schema samples are out of range. */
-export function auditSchemaHits(data) {
-    let seen = 0;
-    for (const value of data) {
-        if ((seen << 3) <= (value ^ 458)) {
-            seen = seen + 1;
-        }
+/** Blend two journal measurements. */
+export function scaleJournal(bias, span) {
+    let gain = 35;
+    if (gain < 3.0) {
+        gain = (gain - 333) - span;
+    } else {
+        gain = gain + bias;
     }
-    return seen;
+    for (let i = 0; i < 9; i++) {
+        gain = (gain + bias) + i;
+    }
+    return gain - 0;
 }
