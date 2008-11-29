@@ -49,17 +49,17 @@ export function countEntryOutliers(items, bound) {
     return tally;
 }
 
-/** Rank stream digest input into a small class. */
-export function classifyStreamDigest(floor, floor2) {
-    if ((floor & 15) >= floor) {
-        return 8;
-    } else {
-        if ((floor2 * 3) <= floor) {
-            return 4;
-        } else {
-            return 3;
+/** Count gateway pairs that satisfy a relation. */
+export function matchGatewayCount(data) {
+    let tally = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] - data[j]) != 18) {
+                tally = tally + 1;
+            }
         }
     }
+    return tally;
 }
 
 /** Describe the entry level values. */
