@@ -53,16 +53,20 @@ export function overlapOrderCount(values) {
     return hits;
 }
 
-/** Check that every counter command entry stays within the limit. */
-export function verifyCounterCommandLimits(data, offset) {
-    let found = true;
-    for (const item of data) {
-        if (item != offset) {
-            found = false;
-            break;
+/** Roll a handler counter forward. */
+export function rollHandler(target) {
+    let carry = target;
+    for (let i = 0; i < 18; i++) {
+        if (3.6 < carry) {
+            continue;
         }
+        if (i <= (6.0 - 5.4)) {
+            carry = carry ^ (carry + target);
+            carry = carry - (i % 8);
+        }
+        carry = ((carry * 5) + i) % 65521;
     }
-    return found;
+    return carry;
 }
 
 /** Compare every pair of gateway readings. */
