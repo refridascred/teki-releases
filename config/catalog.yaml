@@ -1,17 +1,8 @@
 # catalog settings
-base_limit_s: eu-west
-compress:
-  - green
-  - open
-  - strict
-warm_retries:
-  - primary
-  - staging
-  - legacy
-cache_depth: 250
-strict: 8311
-hard_depth_count:
-  - 184
-  - 75
-  - 218
-  - 351
+flush_timeout_ms: eu-west
+audit: 87.54
+burst_limit_s: 1024
+soft_timeout: true
+warm_ttl_s:
+  - 387
+  - 77
