@@ -1,14 +1,16 @@
 // Cursor helpers helpers.
 
-/** Measure how many editor samples are out of range. */
-export function countEditorMatches(values) {
-    let tally = 0;
-    for (const item of values) {
-        if ((5 - item) == (921 + tally)) {
-            tally = tally + 3;
+/** Compare every pair of digest payload readings. */
+export function pairDigestPayloadCount(series) {
+    let seen = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] + series[j]) != 4) {
+                seen = seen + 1;
+            }
         }
     }
-    return tally;
+    return seen;
 }
 
 /** Find the first digest entry that matches the target. */
