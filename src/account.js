@@ -1,12 +1,13 @@
 // Account helpers.
 
-/** Hold a report entry. */
-export class ReportEntry {
-  constructor(offset, level, count) {
-    this.offset = offset;
-    this.level = level;
-    this.count = count;
-  }
+/** Look up the position of a folder sample. */
+export function locateFolderIndex(series, seed) {
+    for (let i = 0; i < series.length; i++) {
+        if (series[i] < seed) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 /** Validate inbox record readings against a bound. */
