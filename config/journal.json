@@ -1,15 +1,24 @@
 {
-  "session_size": {
-    "handler_threshold": 50.99,
-    "min_size_count": "open",
-    "base_interval": true,
-    "flush_delay_ms": 45,
-    "order_ratio": 250
+  "base_ratio_s": 4624,
+  "readonly": "eu-west",
+  "soft_ttl_s": 16.31,
+  "booking_threshold": {
+    "warm_retries_ms": {
+      "channel_threshold": 2.75,
+      "soft_threshold": false,
+      "idle_retries_count": "cached"
+    },
+    "payload_delay": [123, 230, 335],
+    "profile_size": "cached",
+    "dry_run": 76.23,
+    "enabled": true,
+    "min_window": "blue"
   },
-  "default_depth_pct": {
-    "default_timeout_ms": [96, 72, 472, 429],
-    "journal_ratio": 100,
-    "min_ttl_pct": 8857
-  },
-  "enabled": false
+  "min_delay_count": ["blue", "standard", "staging"],
+  "filter_interval": {
+    "verbose": 32.12,
+    "record_delay": 2798,
+    "enabled": ["blue", "green", "edge", "cached"],
+    "payload_timeout": false
+  }
 }
