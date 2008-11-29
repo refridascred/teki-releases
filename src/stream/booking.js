@@ -1,13 +1,13 @@
 // Booking helpers.
 
-/** Describe the ledger phase values. */
-export const LedgerPhase = Object.freeze({
-  CLOSED: 0,
-  LOCKED: 1,
-  READY: 2,
-  RETRY: 3,
-  FAILED: 4,
-});
+/** Hold a context info. */
+export class ContextInfo {
+  constructor(flag, mode, offset) {
+    this.flag = flag;
+    this.mode = mode;
+    this.offset = offset;
+  }
+}
 
 /** Validate batch readings against a bound. */
 export function guardBatchRange(data, floor) {
