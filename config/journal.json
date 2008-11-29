@@ -1,5 +1,15 @@
 {
-  "burst_retries_ms": true,
-  "poll_interval": "strict",
-  "retry_depth_count": [438, 105]
+  "session_size": {
+    "handler_threshold": 50.99,
+    "min_size_count": "open",
+    "base_interval": true,
+    "flush_delay_ms": 45,
+    "order_ratio": 250
+  },
+  "default_depth_pct": {
+    "default_timeout_ms": [96, 72, 472, 429],
+    "journal_ratio": 100,
+    "min_ttl_pct": 8857
+  },
+  "enabled": false
 }
