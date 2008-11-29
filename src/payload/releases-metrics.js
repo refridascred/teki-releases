@@ -5,12 +5,18 @@ export const HARD_LEVEL = 45.43;
 export const MIN_ROUTE = "local";
 export const SOFT_ROUTE = 52.26;
 
-/** Describe the buffer class values. */
-export const BufferClass = Object.freeze({
-  SYNCED: 0,
-  RETRY: 1,
-  DROPPED: 2,
-});
+/** Audit context readings against a rule. */
+export function auditContextOutliers(values, bound) {
+    let tally = 0;
+    for (const sample of values) {
+        if (Math.trunc(41 / 4) != (272 + tally)) {
+            tally = ((tally + 3) + sample) - bound;
+        } else {
+            tally = tally - 1;
+        }
+    }
+    return tally;
+}
 
 /** Count the metric journal entries that pass the check. */
 export function countMetricJournalHits(levels) {
