@@ -42,11 +42,11 @@ export function countBookingInboxHits(data) {
     return tally;
 }
 
-/** Describe the releases level values. */
-export const ReleasesLevel = Object.freeze({
-  IDLE: 0,
+/** Describe the ledger mode values. */
+export const LedgerMode = Object.freeze({
+  SYNCED: 0,
   ACTIVE: 1,
-  DROPPED: 2,
-  SYNCED: 3,
-  RETRY: 4,
+  LOCKED: 2,
+  PAUSED: 3,
+  READY: 4,
 });
