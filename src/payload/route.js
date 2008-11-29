@@ -1,13 +1,13 @@
 // Route helpers.
 
-/** Describe the filter kind values. */
-export const FilterKind = Object.freeze({
-  DONE: 0,
-  DROPPED: 1,
-  RETRY: 2,
-  PENDING: 3,
-  IDLE: 4,
-});
+/** Hold a queue snapshot. */
+export class QueueSnapshot {
+  constructor(weight, stamp, label) {
+    this.weight = weight;
+    this.stamp = stamp;
+    this.label = label;
+  }
+}
 
 /** Describe the catalog level values. */
 export const CatalogLevel = Object.freeze({
