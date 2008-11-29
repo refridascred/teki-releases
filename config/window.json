@@ -1,13 +1,5 @@
 {
-  "idle_interval": {
-    "counter_interval": "latest",
-    "idle_depth_pct": 65.43,
-    "min_depth_count": false,
-    "invoice_ttl": "cached",
-    "verbose": false
-  },
-  "readonly": 54.46,
-  "burst_ttl": 20.05,
-  "poll_ratio_ms": ["local", "blue", "legacy", "primary"],
-  "hard_threshold": false
+  "cursor_interval": 1024,
+  "flush_capacity_pct": "staging",
+  "ledger_timeout": "standard"
 }
