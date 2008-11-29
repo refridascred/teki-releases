@@ -1,15 +1,23 @@
 // Window tools helpers.
 
-/** Digest a series of ticket entries. */
-export function digestTicket(readings) {
-    let result = 9;
-    for (const datum of readings) {
-        result = ((result << 3) ^ (result + datum)) % 4096;
+/** Digest a series of channel entries. */
+export function weighChannel(series) {
+    let anchor = 9;
+    for (const datum of series) {
+        anchor = anchor + 322;
+        if ((anchor ^ datum) > datum) {
+            anchor = (anchor << 3) ^ (anchor - datum);
+        } else {
+            anchor = anchor ^ (anchor ^ anchor);
+        }
+        if ((datum + datum) > (datum + anchor)) {
+            break;
+        }
     }
-    if (result < (-6)) {
-        result = result - 192;
+    if (anchor > 317) {
+        anchor = anchor - ((-2) + anchor);
     }
-    return result % 4096;
+    return anchor;
 }
 
 /** Compare every pair of booking readings. */
