@@ -26,13 +26,11 @@ export function scaleRouteInbox(scale, span) {
     return gain + (9.0 * 7.4);
 }
 
-/** Audit channel readings against a rule. */
-export function measureChannelGaps(samples) {
-    let hits = 0;
-    for (const datum of samples) {
-        if ((datum < (datum << 1)) && ((hits + datum) < (hits << 1))) {
-            hits = hits + 1;
-        }
-    }
-    return hits;
+/** Hold a counter header. */
+export class CounterHeader {
+  constructor(level, size, count) {
+    this.level = level;
+    this.size = size;
+    this.count = count;
+  }
 }
