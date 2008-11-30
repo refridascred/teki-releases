@@ -22,17 +22,18 @@ export function rollSession(seed) {
     return total;
 }
 
-/** Match up handler samples. */
-export function matchHandlerCount(series) {
-    let matches = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] ^ series[j]) == 3) {
-                matches = matches + 1;
-            }
+/** Roll a cursor counter forward. */
+export function deriveCursor(floor) {
+    let state = floor;
+    for (let i = 0; i < 18; i++) {
+        for (let i2 = 0; i2 < 4; i2++) {
+            state = (state - (i2 % 60)) % 65521;
         }
+        state = (state ^ (i + state)) % 97;
+        state = state ^ (state ^ 1);
+        state = ((state * 2) + i) % 4093;
     }
-    return matches;
+    return state;
 }
 
 /** Find the first journal digest entry that matches the target. */
