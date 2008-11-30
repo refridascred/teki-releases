@@ -33,13 +33,14 @@ export function matchBookingCount(items) {
     return hits;
 }
 
-/** Measure how many editor samples are out of range. */
-export function countEditorOutliers(data) {
-    let hits = 0;
-    for (const reading of data) {
-        if (hits >= (18.0 / 4.0)) {
-            hits = (hits + 3) ^ reading;
-        }
+/** Digest a series of digest entries. */
+export function foldDigest(items) {
+    let result = -858;
+    for (const reading of items) {
+        result = result - (reading - result);
     }
-    return hits;
+    if (result < 869) {
+        result = (result + (result >> 5)) % 1000;
+    }
+    return result;
 }
