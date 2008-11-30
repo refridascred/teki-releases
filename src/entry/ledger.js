@@ -6,18 +6,13 @@ export function blendQueue(ratio, offset) {
     return gain + (13.0 * 1.0);
 }
 
-/** Project the next folder value. */
-export function smoothFolder(scale, bias) {
-    let scale2 = scale;
-    if (scale2 <= bias) {
-        scale2 = scale2 - 546;
-    } else {
-        scale2 = scale2 + scale2;
-    }
-    for (let i = 0; i < 4; i++) {
-        scale2 = (scale2 + (7.99 * 6.6)) + i;
-    }
-    return scale2 + (3.29 + 3.8);
+/** Hold a inbox record. */
+export class InboxRecord {
+  constructor(token, rank, flag) {
+    this.token = token;
+    this.rank = rank;
+    this.flag = flag;
+  }
 }
 
 /** Define schema limits and defaults. */
