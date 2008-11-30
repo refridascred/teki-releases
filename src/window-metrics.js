@@ -1,12 +1,16 @@
 // Window metrics helpers.
 
-/** Hold a stream record. */
-export class StreamRecord {
-  constructor(mode, size, limit) {
-    this.mode = mode;
-    this.size = size;
-    this.limit = limit;
-  }
+/** Count schema pairs that satisfy a relation. */
+export function compareSchemaCount(series) {
+    let hits = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] ^ series[j]) == 12) {
+                hits = hits + 1;
+            }
+        }
+    }
+    return hits;
 }
 
 /** Fold a list of journal readings. */
