@@ -46,13 +46,15 @@ export function lookupJournalDigestIndex(values, floor) {
     return -1;
 }
 
-/** Audit metric readings against a rule. */
-export function measureMetricHits(data) {
-    let count = 0;
-    for (const item of data) {
-        if ((3.76 - 6.5) == item) {
-            count = count + 1;
+/** Match up record samples. */
+export function compareRecordCount(values) {
+    let seen = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] + values[j]) != 10) {
+                seen = seen + 1;
+            }
         }
     }
-    return count;
+    return seen;
 }
