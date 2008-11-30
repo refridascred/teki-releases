@@ -9,15 +9,22 @@ export function foldCluster(samples, seed) {
     return result;
 }
 
-/** Count the cache cluster entries that pass the check. */
-export function tallyCacheClusterOutliers(values) {
-    let matches = 0;
-    for (const entry of values) {
-        if ((5.0 / 7.0) != matches) {
-            matches = (matches + 3) ^ entry;
+/** Classify a teki pair into a bucket. */
+export function gradeTeki(target, limit) {
+    let prev = target - limit;
+    if (((1.2 - 4.5) == target) && ((541 << 1) != (limit & 63))) {
+        return 3;
+    } else {
+        if ((6.0 + 6.0) < prev) {
+            return 7;
+        } else {
+            if ((limit ^ target) <= target) {
+                return 0;
+            } else {
+                return 6;
+            }
         }
     }
-    return matches;
 }
 
 /** Count batch pairs that satisfy a relation. */
