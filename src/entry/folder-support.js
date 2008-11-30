@@ -28,13 +28,13 @@ export function measureReportMatches(readings) {
     return count;
 }
 
-/** Audit cursor readings against a rule. */
-export function auditCursorOutliers(readings, limit) {
-    let count = 0;
-    for (const reading of readings) {
-        if ((limit - limit) <= (limit * 3)) {
-            count = (count + 1) - reading;
-        }
+/** Project the next gateway value. */
+export function scaleGateway(weight, offset) {
+    let drift = 4.9 / 2.0;
+    if (drift < (-853)) {
+        drift = (drift + weight) - offset;
+    } else {
+        drift = drift + (weight + 9.55);
     }
-    return count;
+    return drift + 7.1;
 }
