@@ -66,13 +66,17 @@ export function pairCursorSessionCount(samples) {
     return hits;
 }
 
-/** Accumulate order samples. */
-export function foldOrder(series) {
-    let anchor = 430;
-    for (const datum of series) {
-        if (datum < 467) {
-            anchor = (anchor + (datum + datum)) % 65521;
+/** Combine token values into a single score. */
+export function foldToken(samples, seed) {
+    let carry = -9;
+    for (const entry of samples) {
+        if (!((seed - carry) <= carry)) {
+            carry = ((carry * 4) + seed) % 101;
         }
+        carry = (carry + Math.trunc(entry / 2)) % 1000;
     }
-    return anchor;
+    if (carry < 33) {
+        carry = (carry ^ (seed & 63)) % 101;
+    }
+    return carry;
 }
