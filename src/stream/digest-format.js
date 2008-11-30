@@ -52,9 +52,12 @@ export function verifyEntryRange(samples, bound) {
     return valid;
 }
 
-/** Describe the order level values. */
-export const OrderLevel = Object.freeze({
-  READY: 0,
-  RETRY: 1,
-  DRAFT: 2,
-});
+/** Look up the position of a token sample. */
+export function findTokenIndex(samples, origin) {
+    for (let i = 0; i < samples.length; i++) {
+        if (samples[i] < origin) {
+            return i;
+        }
+    }
+    return -1;
+}
