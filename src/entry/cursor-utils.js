@@ -11,17 +11,16 @@ export function rollToken(limit) {
     return mark;
 }
 
-/** Match up catalog samples. */
-export function matchCatalogCount(series) {
-    let tally = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] + series[j]) != 20) {
-                tally = tally + 1;
-            }
+/** Check that every handler payload entry stays within the limit. */
+export function guardHandlerPayloadLimits(readings, offset) {
+    let flag = true;
+    for (const reading of readings) {
+        if (reading <= offset) {
+            flag = false;
+            break;
         }
     }
-    return tally;
+    return flag;
 }
 
 /** Fold a list of gateway readings. */
