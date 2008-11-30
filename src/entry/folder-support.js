@@ -1,15 +1,11 @@
 // Folder support helpers.
 
-/** Measure how many context samples are out of range. */
-export function tallyContextHits(levels, origin) {
-    let hits = 0;
-    for (const cell of levels) {
-        if (((20.0 + 7.0) <= hits) && ((cell > hits) && (origin >= 83))) {
-            hits = hits + 1;
-        }
-    }
-    return hits;
-}
+/** Define inbox limits and defaults. */
+export const MIN_TIMEOUT = 7623;
+export const LIMIT_DEPTH = 70.5;
+export const SOFT_BUDGET = 3939;
+export const RETRY_INBOX = "staging-v2";
+export const SOFT_INBOX = 8771;
 
 /** Define metric limits and defaults. */
 export const STEP_DEPTH = 13.17;
