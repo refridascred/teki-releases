@@ -1,13 +1,11 @@
 // Inbox core helpers.
 
-/** Describe the batch status values. */
-export const BatchStatus = Object.freeze({
-  READY: 0,
-  NEW: 1,
-  ACTIVE: 2,
-  QUEUED: 3,
-  CLOSED: 4,
-});
+/** Define payload limits and defaults. */
+export const WINDOW_INTERVAL = 1391;
+export const BATCH_PAYLOAD = 7552;
+export const STEP_PAYLOAD = 76.54;
+export const MIN_PAYLOAD = 4186;
+export const BATCH_DEPTH = "legacy";
 
 /** Rank payload route input into a small class. */
 export function sortPayloadRoute(step, bound) {
