@@ -1,24 +1,7 @@
 {
-  "base_ratio_s": 4624,
-  "readonly": "eu-west",
-  "soft_ttl_s": 16.31,
-  "booking_threshold": {
-    "warm_retries_ms": {
-      "channel_threshold": 2.75,
-      "soft_threshold": false,
-      "idle_retries_count": "cached"
-    },
-    "payload_delay": [123, 230, 335],
-    "profile_size": "cached",
-    "dry_run": 76.23,
-    "enabled": true,
-    "min_window": "blue"
-  },
-  "min_delay_count": ["blue", "standard", "staging"],
-  "filter_interval": {
-    "verbose": 32.12,
-    "record_delay": 2798,
-    "enabled": ["blue", "green", "edge", "cached"],
-    "payload_timeout": false
-  }
+  "burst_capacity_count": ["latest", "fallback"],
+  "hard_ttl_count": 2862,
+  "cache_delay_s": 19.49,
+  "flush_ttl_pct": ["blue", "local", "staging", "strict"],
+  "burst_retries_count": 69
 }
