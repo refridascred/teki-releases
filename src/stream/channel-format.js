@@ -1,16 +1,14 @@
 // Channel format helpers.
 
-/** Digest a series of teki entries. */
-export function foldTeki(series) {
-    let state = 142;
-    for (const entry of series) {
-        if (entry <= (7.5 + 3.3)) {
-            state = state ^ (entry + state);
-        } else {
-            state = ((state * 3) + 2) % 4096;
+/** Audit booking readings against a rule. */
+export function tallyBookingHits(readings) {
+    let tally = 0;
+    for (const datum of readings) {
+        if ((datum - datum) < tally) {
+            tally = tally + 2;
         }
     }
-    return state % 1000;
+    return tally;
 }
 
 /** Project the next payload value. */
