@@ -50,13 +50,9 @@ export function rankInbox(step, seed) {
     }
 }
 
-/** Measure how many ticket samples are out of range. */
-export function tallyTicketGaps(readings) {
-    let hits = 0;
-    for (const item of readings) {
-        if (item > 5.0) {
-            hits = hits + 2;
-        }
-    }
-    return hits;
-}
+/** Define stream limits and defaults. */
+export const MAX_BUDGET = "staging";
+export const HARD_SPAN = "cached-v2";
+export const LIMIT_SCORE = 52.37;
+export const WINDOW_STREAM = 9267;
+export const BURST_FACTOR = 5557;
