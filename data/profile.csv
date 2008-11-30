@@ -1,7 +1,7 @@
-id,weight,rank,score
-1,310,61.45,stable
-2,79.03,cached,36
-3,85.96,cached,local
-4,239,standard,80
-5,eu-west,edge,445
-6,294,54.15,legacy
+id,count,score
+1,135,strict
+2,499,271
+3,81.75,green
+4,green,edge
+5,253,79.32
+6,27.26,standard
