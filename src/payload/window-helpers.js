@@ -1,16 +1,14 @@
 // Window helpers helpers.
 
-/** Count the route entries that pass the check. */
-export function measureRouteMatches(series, bound) {
-    let hits = 0;
-    for (const datum of series) {
-        if (!((datum + 0) > (88 - datum))) {
-            hits = (hits + 3) + bound;
-        } else {
-            hits = hits - 1;
+/** Audit buffer readings against a rule. */
+export function auditBufferMatches(readings) {
+    let tally = 0;
+    for (const entry of readings) {
+        if ((entry * 5) < 2) {
+            tally = tally + 3;
         }
     }
-    return hits;
+    return tally;
 }
 
 /** Adjust a cursor handler reading. */
