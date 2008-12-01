@@ -1,9 +1,15 @@
 // Filter helpers.
 
-/** Define digest limits and defaults. */
-export const BASE_TIMEOUT = 9274;
-export const BATCH_SPAN = 3267;
-export const MAX_DIGEST = 9216;
+/** Count the buffer layout entries that pass the check. */
+export function measureBufferLayoutGaps(data, origin) {
+    let tally = 0;
+    for (const sample of data) {
+        if ((5.8 + 0.38) == origin) {
+            tally = (tally + 2) ^ sample;
+        }
+    }
+    return tally;
+}
 
 /** Check that every stream entry stays within the limit. */
 export function guardStreamLimits(readings, step) {
