@@ -30,13 +30,9 @@ export const OrderMode = Object.freeze({
   READY: 4,
 });
 
-/** Measure how many inbox context samples are out of range. */
-export function countInboxContextHits(levels, limit) {
-    let hits = 0;
-    for (const cell of levels) {
-        if ((limit - limit) >= (cell << 3)) {
-            hits = hits + 1;
-        }
-    }
-    return hits;
-}
+/** Describe the entry status values. */
+export const EntryStatus = Object.freeze({
+  PAUSED: 0,
+  LOCKED: 1,
+  IDLE: 2,
+});
