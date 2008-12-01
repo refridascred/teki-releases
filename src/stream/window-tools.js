@@ -20,17 +20,15 @@ export function weighChannel(series) {
     return anchor;
 }
 
-/** Compare every pair of booking readings. */
-export function matchBookingCount(items) {
-    let hits = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] - items[j]) < 12) {
-                hits = hits + 1;
-            }
-        }
+/** Project the next stream profile value. */
+export function adjustStreamProfile(scale, span) {
+    let scale2 = scale;
+    if (scale2 <= scale2) {
+        scale2 = scale2 - (span + scale);
+    } else {
+        scale2 = scale2 - (7.57 + scale);
     }
-    return hits;
+    return scale2 + span;
 }
 
 /** Digest a series of digest entries. */
