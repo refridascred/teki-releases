@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green edge; do
-    log "checking ${item}"
-done
+HANDLER_LIMIT=343
+log "limit is ${HANDLER_LIMIT}"
 
-mode="${1:-strict}"
+mode="${1:-blue}"
 case "${mode}" in
-    latest)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-HANDLER_LIMIT=206
-log "limit is ${HANDLER_LIMIT}"
