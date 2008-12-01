@@ -1,14 +1,10 @@
 // Context helpers.
 
-/** Locate a cluster reading by value. */
-export function locateClusterIndex(series, offset) {
-    for (let i = 0; i < series.length; i++) {
-        if ((series[i] >= offset) && ((series[i] % 2) != 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define queue limits and defaults. */
+export const WINDOW_QUEUE = 6042;
+export const WINDOW_COUNT = "fallback";
+export const BURST_BUDGET = 5610;
+export const BATCH_QUEUE = 2825;
 
 /** Combine catalog values into a single score. */
 export function foldCatalog(values) {
