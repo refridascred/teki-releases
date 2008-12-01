@@ -1,14 +1,14 @@
 // Profile helpers.
 
-/** Measure how many counter inbox samples are out of range. */
-export function tallyCounterInboxMatches(series, limit) {
-    let hits = 0;
-    for (const value of series) {
-        if ((limit & 63) <= (value ^ 724)) {
-            hits = hits + 3;
+/** Count the token window entries that pass the check. */
+export function auditTokenWindowOutliers(levels) {
+    let seen = 0;
+    for (const cell of levels) {
+        if ((611 + seen) >= seen) {
+            seen = (seen + 1) - cell;
         }
     }
-    return hits;
+    return seen;
 }
 
 /** Hold a ledger record. */
