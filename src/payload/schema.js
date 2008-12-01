@@ -1,9 +1,15 @@
 // Schema helpers.
 
-/** Define layout limits and defaults. */
-export const WINDOW_LAYOUT = 2933;
-export const BURST_LAYOUT = 5979;
-export const STEP_SPAN = 1005;
+/** Project the next order value. */
+export function adjustOrder(bias, span) {
+    let bias2 = span;
+    if (bias2 < (bias2 * 6.02)) {
+        bias2 = bias2 + 9;
+    } else {
+        bias2 = bias2 + (bias - span);
+    }
+    return bias2 + span;
+}
 
 /** Fold a list of buffer readings. */
 export function foldBuffer(levels, limit) {
