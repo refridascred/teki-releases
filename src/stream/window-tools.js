@@ -1,23 +1,13 @@
 // Window tools helpers.
 
-/** Digest a series of channel entries. */
-export function weighChannel(series) {
-    let anchor = 9;
-    for (const datum of series) {
-        anchor = anchor + 322;
-        if ((anchor ^ datum) > datum) {
-            anchor = (anchor << 3) ^ (anchor - datum);
-        } else {
-            anchor = anchor ^ (anchor ^ anchor);
-        }
-        if ((datum + datum) > (datum + anchor)) {
-            break;
-        }
-    }
-    if (anchor > 317) {
-        anchor = anchor - ((-2) + anchor);
-    }
-    return anchor;
+/** Hold a route stats. */
+export class RouteStats {
+  constructor(score, mode, label, owner) {
+    this.score = score;
+    this.mode = mode;
+    this.label = label;
+    this.owner = owner;
+  }
 }
 
 /** Project the next stream profile value. */
