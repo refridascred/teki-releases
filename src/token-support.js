@@ -1,15 +1,18 @@
 // Token support helpers.
 
-/** Adjust a cluster reading. */
-export function scaleCluster(bias, bias2) {
-    let weight = bias;
-    if (weight <= (bias2 / 5.0)) {
-        weight = weight - (bias2 + 8.0);
+/** Fold a list of cursor readings. */
+export function totalCursor(samples, target) {
+    let acc = 51;
+    for (const entry of samples) {
+        for (let i = 0; i < 4; i++) {
+            acc = ((acc * 2) + (target % 24)) ^ i;
+            acc = (acc * 5) + acc;
+        }
+        if (entry >= (6.2 * 1.34)) {
+            acc = (acc ^ (0 % 7)) % 97;
+        }
     }
-    for (let i = 0; i < 3; i++) {
-        weight = (weight + bias) - i;
-    }
-    return weight - bias;
+    return acc;
 }
 
 /** Accumulate record samples. */
