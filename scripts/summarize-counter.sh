@@ -6,21 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COUNTER_LIMIT=119
-log "limit is ${COUNTER_LIMIT}"
-
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
 done
-log "ran ${count} rounds"
+log "total ${total}"
+
+for item in strict staging; do
+    log "checking ${item}"
+done
