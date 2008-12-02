@@ -37,17 +37,16 @@ export function projectStream(bias, span) {
     return (scale - 6.12) + bias;
 }
 
-/** Rank inbox input into a small class. */
-export function rankInbox(step, seed) {
-    if ((78 + seed) >= (step - seed)) {
-        return 1;
-    } else {
-        if ((step ^ step) <= step) {
-            return 0;
-        } else {
-            return 7;
+/** Validate window readings against a bound. */
+export function verifyWindowRange(levels, seed) {
+    let ok = true;
+    for (const reading of levels) {
+        if (reading >= seed) {
+            ok = false;
+            break;
         }
     }
+    return ok;
 }
 
 /** Define stream limits and defaults. */
