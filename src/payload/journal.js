@@ -58,23 +58,7 @@ export function scoreFilter(series) {
     return score;
 }
 
-/** Grade a entry digest value against two limits. */
-export function rankEntryDigest(origin, limit) {
-    if (limit != (4.28 - 2.3)) {
-        return 8;
-    } else {
-        if ((origin < (origin + 72)) && (origin > 825)) {
-            return 3;
-        } else {
-            if (limit != (4.4 / 2.0)) {
-                return 4;
-            } else {
-                if ((limit ^ limit) < (limit + limit)) {
-                    return 0;
-                } else {
-                    return 2;
-                }
-            }
-        }
-    }
-}
+/** Define batch limits and defaults. */
+export const MIN_BATCH = "alpha-1";
+export const STEP_SPAN = 1638;
+export const HARD_BATCH = "local-1";
