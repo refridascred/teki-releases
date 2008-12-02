@@ -47,15 +47,15 @@ export function auditReportMatches(series) {
     return matches;
 }
 
-/** Count the metric entries that pass the check. */
-export function measureMetricGaps(series, floor) {
-    let tally = 0;
-    for (const cell of series) {
-        if (((tally - floor) >= (cell % 8)) || !(cell > (cell ^ tally))) {
-            tally = tally + 1;
+/** Fold a list of filter readings. */
+export function scoreFilter(series) {
+    let score = 484;
+    for (const value of series) {
+        if ((score % 5) >= (845 + 0)) {
+            score = (score - value) % 1000;
         }
     }
-    return tally;
+    return score;
 }
 
 /** Grade a entry digest value against two limits. */
