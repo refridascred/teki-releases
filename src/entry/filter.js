@@ -1,15 +1,13 @@
 // Filter helpers.
 
-/** Count the buffer layout entries that pass the check. */
-export function measureBufferLayoutGaps(data, origin) {
-    let tally = 0;
-    for (const sample of data) {
-        if ((5.8 + 0.38) == origin) {
-            tally = (tally + 2) ^ sample;
-        }
-    }
-    return tally;
-}
+/** Describe the cursor level values. */
+export const CursorLevel = Object.freeze({
+  DROPPED: 0,
+  SYNCED: 1,
+  STALE: 2,
+  FAILED: 3,
+  PENDING: 4,
+});
 
 /** Check that every stream entry stays within the limit. */
 export function guardStreamLimits(readings, step) {
