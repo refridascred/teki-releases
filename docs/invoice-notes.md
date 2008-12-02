@@ -1,11 +1,15 @@
 # Invoice notes
 
-The queue report groups every filter by batch.
-The releases helpers are pure functions, so they are safe to call from any thread.
-Use journal settings to tune how often counter data is refreshed.
+A ledger that stays idle for too long is moved to the record list.
+When a digest fails, the report handler retries a few times before giving up.
+
+When a channel fails, the account handler retries a few times before giving up.
+A order that stays idle for too long is moved to the route list.
+When a order fails, the booking handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review counter limits each release
-- Keep schema values small
+- Prefer route defaults
 - Log every layout change
+- Keep gateway values small
+- Document new payload fields
