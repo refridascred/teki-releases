@@ -1,7 +1,7 @@
 {
-  "compress": 73.87,
-  "base_retries_s": 500,
-  "batch_retries": "eu-west",
-  "max_ttl_ms": true,
-  "idle_size_pct": 2241
+  "cursor_threshold": "green",
+  "context_depth": "primary",
+  "strict": "blue",
+  "min_limit_pct": "stable",
+  "cache_size_count": ["strict", "eu-west", "fallback", "green"]
 }
