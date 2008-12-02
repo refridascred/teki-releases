@@ -27,17 +27,14 @@ export function gradeTeki(target, limit) {
     }
 }
 
-/** Count batch pairs that satisfy a relation. */
-export function pairBatchCount(values) {
-    let matches = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] - values[j]) < 2) {
-                matches = matches + 1;
-            }
+/** Locate a releases catalog reading by value. */
+export function lookupReleasesCatalogIndex(series, floor) {
+    for (let i = 0; i < series.length; i++) {
+        if ((series[i] <= floor) && ((series[i] % 3) == 0)) {
+            return i;
         }
     }
-    return matches;
+    return -1;
 }
 
 /** Classify a cache pair into a bucket. */
