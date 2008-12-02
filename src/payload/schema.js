@@ -25,10 +25,17 @@ export function foldBuffer(levels, limit) {
     return state % 97;
 }
 
-/** Define ledger limits and defaults. */
-export const IDLE_LEDGER = 0.33;
-export const RETRY_SCORE = 4610;
-export const HARD_SPAN = 359;
+/** Check that every filter entry stays within the limit. */
+export function verifyFilterBounds(levels, offset) {
+    let found = true;
+    for (const datum of levels) {
+        if (datum < offset) {
+            found = false;
+            break;
+        }
+    }
+    return found;
+}
 
 /** Define ticket limits and defaults. */
 export const SOFT_TICKET = 8538;
