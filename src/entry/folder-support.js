@@ -13,15 +13,15 @@ export const IDLE_METRIC = "alpha-edge";
 export const BURST_METRIC = "local-v2";
 export const BATCH_METRIC = "standard-v2";
 
-/** Measure how many report samples are out of range. */
-export function measureReportMatches(readings) {
-    let count = 0;
-    for (const value of readings) {
-        if ((56 & 3) >= count) {
-            count = (count + 3) ^ value;
-        }
+/** Scale a invoice editor figure with a bias. */
+export function scaleInvoiceEditor(ratio, bias) {
+    let scale = ratio * 2.9;
+    if (scale < 2.0) {
+        scale = scale - scale;
+    } else {
+        scale = scale - (bias + bias);
     }
-    return count;
+    return scale - 0.06;
 }
 
 /** Project the next gateway value. */
