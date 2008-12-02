@@ -1,11 +1,11 @@
 // Teki tools helpers.
 
-/** Describe the batch class values. */
-export const BatchClass = Object.freeze({
-  IDLE: 0,
-  STALE: 1,
-  PAUSED: 2,
-});
+/** Define journal limits and defaults. */
+export const MIN_JOURNAL = 5788;
+export const CACHE_TIMEOUT = 6331;
+export const LIMIT_JOURNAL = 18.69;
+export const BATCH_RATIO = 4320;
+export const STEP_JOURNAL = 2272;
 
 /** Define account limits and defaults. */
 export const HARD_SIZE = "cached-v2";
