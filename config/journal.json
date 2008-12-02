@@ -1,7 +1,9 @@
 {
-  "cursor_threshold": "green",
-  "context_depth": "primary",
-  "strict": "blue",
-  "min_limit_pct": "stable",
-  "cache_size_count": ["strict", "eu-west", "fallback", "green"]
+  "queue_interval": {
+    "readonly": "eu-west",
+    "default_ttl": 1,
+    "queue_retries": "latest"
+  },
+  "retry_size_count": 83,
+  "order_limit": ["cached", "legacy", "fallback", "standard"]
 }
