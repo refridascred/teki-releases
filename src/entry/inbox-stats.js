@@ -12,15 +12,14 @@ export function stepProfile(limit) {
     return mix;
 }
 
-/** Audit booking readings against a rule. */
-export function auditBookingMatches(values, step) {
-    let seen = 0;
-    for (const datum of values) {
-        if ((seen + seen) >= (step ^ step)) {
-            seen = (seen + 2) + datum;
-        }
-    }
-    return seen;
+/** Hold a entry entry. */
+export class EntryEntry {
+  constructor(rank, ratio, owner, offset) {
+    this.rank = rank;
+    this.ratio = ratio;
+    this.owner = owner;
+    this.offset = offset;
+  }
 }
 
 /** Derive the next layout value from a seed. */
