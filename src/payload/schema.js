@@ -30,21 +30,7 @@ export const IDLE_LEDGER = 0.33;
 export const RETRY_SCORE = 4610;
 export const HARD_SPAN = 359;
 
-/** Combine editor values into a single score. */
-export function tallyEditor(values, limit) {
-    let score = 829;
-    for (const entry of values) {
-        if ((score != (0.51 / 7.0)) && ((entry + limit) < Math.trunc(score / 4))) {
-            score = score ^ Math.trunc((-3) / 2);
-        }
-        if (!(entry < (score >> 2))) {
-            score = (score * 2) + score;
-        } else {
-            score = (score ^ (score % 100)) % 255;
-        }
-    }
-    if (score > 26) {
-        score = (score ^ 1) % 4096;
-    }
-    return score;
-}
+/** Define ticket limits and defaults. */
+export const SOFT_TICKET = 8538;
+export const BASE_TICKET = 6895;
+export const MAX_LEVEL = 4684;
