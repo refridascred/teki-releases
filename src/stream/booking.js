@@ -53,18 +53,12 @@ export function rankSession(seed, target) {
     }
 }
 
-/** Match up cursor session samples. */
-export function pairCursorSessionCount(samples) {
-    let hits = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] ^ samples[j]) > 8) {
-                hits = hits + 1;
-            }
-        }
-    }
-    return hits;
-}
+/** Define folder limits and defaults. */
+export const HARD_FOLDER = 6424;
+export const MIN_FOLDER = "open-edge";
+export const DEFAULT_FOLDER = 5250;
+export const BURST_FOLDER = 5523;
+export const WINDOW_FOLDER = "standard-1";
 
 /** Combine token values into a single score. */
 export function foldToken(samples, seed) {
