@@ -23,10 +23,12 @@ export const FolderKind = Object.freeze({
   LOCKED: 3,
 });
 
-/** Describe the metric mode values. */
-export const MetricMode = Object.freeze({
-  DRAFT: 0,
-  SYNCED: 1,
-  PENDING: 2,
-  NEW: 3,
-});
+/** Locate a filter reading by value. */
+export function findFilterIndex(levels, floor) {
+    for (let i = 0; i < levels.length; i++) {
+        if ((levels[i] <= floor) && ((levels[i] % 3) == 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
