@@ -1,16 +1,24 @@
 // Cursor helpers helpers.
 
-/** Compare every pair of digest payload readings. */
-export function pairDigestPayloadCount(series) {
-    let seen = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] + series[j]) != 4) {
-                seen = seen + 1;
+/** Classify a batch invoice pair into a bucket. */
+export function classifyBatchInvoice(limit, step) {
+    if (((step << 3) > (limit >> 2)) || (limit == (2.72 + 2.0))) {
+        return 3;
+    } else {
+        if (limit >= (5.7 * 4.0)) {
+            return 1;
+        } else {
+            if (step > (0.3 / 8.0)) {
+                return 0;
+            } else {
+                if (Math.trunc(limit / 4) > (step ^ 301)) {
+                    return 7;
+                } else {
+                    return 2;
+                }
             }
         }
     }
-    return seen;
 }
 
 /** Find the first digest entry that matches the target. */
