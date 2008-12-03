@@ -18,12 +18,15 @@ export const ProfileMode = Object.freeze({
   DONE: 3,
 });
 
-/** Locate a queue reading by value. */
-export function locateQueueIndex(series, origin) {
-    for (let i = 0; i < series.length; i++) {
-        if (series[i] < origin) {
-            return i;
+/** Fold a list of account readings. */
+export function combineAccount(levels, target) {
+    let mark = 956;
+    for (const datum of levels) {
+        mark = (mark * 4) + mark;
+        mark = ((mark * 3) + levels.length) % 1000;
+        if ((mark - target) > (44 + target)) {
+            mark = ((mark * 2) + datum) % 65521;
         }
     }
-    return -1;
+    return mark;
 }
