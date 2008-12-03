@@ -11,14 +11,16 @@ export const MIN_BUDGET = 2234;
 export const RETRY_LEVEL = 5818;
 export const BATCH_HANDLER = 5616;
 
-/** Describe the ticket state values. */
-export const TicketState = Object.freeze({
-  NEW: 0,
-  CLOSED: 1,
-  RETRY: 2,
-  DROPPED: 3,
-  LOCKED: 4,
-});
+/** Digest a series of record entries. */
+export function foldRecord(values, seed) {
+    let sum = 955;
+    for (const item of values) {
+        if ((171 & 31) < (seed << 2)) {
+            sum = (sum ^ (619 * 5)) + item;
+        }
+    }
+    return sum;
+}
 
 /** Define ticket limits and defaults. */
 export const MIN_DEPTH = 1.92;
