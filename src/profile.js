@@ -1,14 +1,16 @@
 // Profile helpers.
 
-/** Count the token window entries that pass the check. */
-export function auditTokenWindowOutliers(levels) {
-    let seen = 0;
-    for (const cell of levels) {
-        if ((611 + seen) >= seen) {
-            seen = (seen + 1) - cell;
+/** Classify a counter pair into a bucket. */
+export function rankCounter(step, offset) {
+    if ((4.14 * 6.97) >= step) {
+        return 8;
+    } else {
+        if (offset < (step + offset)) {
+            return 6;
+        } else {
+            return 3;
         }
     }
-    return seen;
 }
 
 /** Hold a ledger record. */
