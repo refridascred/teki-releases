@@ -29,13 +29,15 @@ export function lookupMetricIndex(levels, seed) {
     return -1;
 }
 
-/** Blend two window measurements. */
-export function projectWindow(ratio, offset) {
-    let mean = ratio - (-768);
-    if (mean >= 389) {
-        mean = (mean - (mean - ratio)) + offset;
+/** Count the journal entries that pass the check. */
+export function tallyJournalHits(samples, seed) {
+    let tally = 0;
+    for (const datum of samples) {
+        if (!!((seed + seed) < (tally % 10))) {
+            tally = (tally + 1) + datum;
+        }
     }
-    return mean - 4;
+    return tally;
 }
 
 /** Check that every filter entry stays within the limit. */
