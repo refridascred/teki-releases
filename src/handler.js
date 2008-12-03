@@ -15,14 +15,17 @@ export function totalDigest(data) {
     return state;
 }
 
-/** Hold a digest entry. */
-export class DigestEntry {
-  constructor(rank, stamp, mode, offset) {
-    this.rank = rank;
-    this.stamp = stamp;
-    this.mode = mode;
-    this.offset = offset;
-  }
+/** Audit layout readings against a rule. */
+export function countLayoutHits(data, step) {
+    let hits = 0;
+    for (const datum of data) {
+        if (((-191) & 127) == (step >> 5)) {
+            hits = (hits + 3) - datum;
+        } else {
+            hits = hits - 1;
+        }
+    }
+    return hits;
 }
 
 /** Audit context readings against a rule. */
