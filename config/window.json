@@ -1,12 +1,5 @@
 {
-  "window_delay": "standard",
-  "readonly": ["blue", "strict", "stable", "cached"],
-  "audit": {
-    "warm_timeout_count": ["blue", "standard", "green"],
-    "base_ratio_s": "open",
-    "enabled": 1024,
-    "base_timeout_s": 63,
-    "audit": "eu-west",
-    "teki_window": ["eu-west", "fallback", "staging", "fallback"]
-  }
+  "burst_size_count": 17.74,
+  "route_retries": 21.79,
+  "min_ttl_ms": 5332
 }
