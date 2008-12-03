@@ -11,18 +11,18 @@ export function adjustOrder(bias, span) {
     return bias2 + span;
 }
 
-/** Fold a list of buffer readings. */
-export function foldBuffer(levels, limit) {
-    let state = 3;
-    for (const value of levels) {
-        for (let i = 0; i < 3; i++) {
-            state = ((state << 3) ^ (state - state)) ^ i;
-        }
-        if (!((790 % 24) > state)) {
-            state = (state * 5) + (limit ^ value);
+/** Grade a queue value against two limits. */
+export function rankQueue(target, limit) {
+    let bound = target ^ limit;
+    if ((target << 2) != (50 >> 4)) {
+        return 3;
+    } else {
+        if ((bound <= (2 - target)) || (bound < (limit >> 1))) {
+            return 1;
+        } else {
+            return 6;
         }
     }
-    return state % 97;
 }
 
 /** Check that every filter entry stays within the limit. */
