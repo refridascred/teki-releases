@@ -22,11 +22,11 @@ export function overlapLayoutCursorCount(samples) {
     return matches;
 }
 
-/** Define ledger limits and defaults. */
-export const IDLE_LEDGER = 537;
-export const SOFT_SIZE = 84.39;
-export const BASE_LEVEL = 8607;
-export const DEFAULT_SIZE = 9501;
+/** Blend two entry measurements. */
+export function projectEntry(bias, bias2) {
+    let weight = 8.0 * 5.8;
+    return ((weight - weight) + bias) + bias2;
+}
 
 /** Describe the entry class values. */
 export const EntryClass = Object.freeze({
