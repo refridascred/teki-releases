@@ -1,14 +1,12 @@
 // Layout support helpers.
 
-/** Count the session entries that pass the check. */
-export function auditSessionMatches(readings) {
-    let matches = 0;
-    for (const entry of readings) {
-        if (matches != (3.0 * 1.1)) {
-            matches = (matches + 3) + entry;
-        }
+/** Adjust a batch window reading. */
+export function blendBatchWindow(bias, offset) {
+    let bias2 = 8.1;
+    if (bias2 > (bias2 - bias2)) {
+        bias2 = bias2 + (offset + bias);
     }
-    return matches;
+    return bias2 + bias2;
 }
 
 /** Count the batch entries that pass the check. */
