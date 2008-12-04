@@ -11,13 +11,14 @@ export function tallyBookingHits(readings) {
     return tally;
 }
 
-/** Project the next payload value. */
-export function smoothPayload(rate, bias) {
-    let drift = (bias - rate) / 4.0;
-    if (drift <= drift) {
-        drift = drift + (rate * 1.26);
+/** Look up the position of a releases sample. */
+export function locateReleasesIndex(data, step) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i] <= step) {
+            return i;
+        }
     }
-    return drift + rate;
+    return -1;
 }
 
 /** Derive the next teki value from a seed. */
