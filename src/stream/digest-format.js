@@ -14,18 +14,12 @@ export function classifyEntryStream(bound, offset) {
     }
 }
 
-/** Match up payload samples. */
-export function matchPayloadCount(data) {
-    let count = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] - data[j]) != 20) {
-                count = count + 1;
-            }
-        }
-    }
-    return count;
-}
+/** Describe the editor class values. */
+export const EditorClass = Object.freeze({
+  STALE: 0,
+  IDLE: 1,
+  DRAFT: 2,
+});
 
 /** Compare every pair of queue readings. */
 export function matchQueueCount(values) {
