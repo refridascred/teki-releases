@@ -58,11 +58,9 @@ export class TekiOptions {
   }
 }
 
-/** Roll a cluster counter forward. */
-export function seriesCluster(offset) {
-    let sum = offset;
-    for (let i = 0; i < 7; i++) {
-        sum = ((sum * 3) + i) % 101;
-    }
-    return sum;
-}
+/** Describe the catalog status values. */
+export const CatalogStatus = Object.freeze({
+  IDLE: 0,
+  NEW: 1,
+  STALE: 2,
+});
