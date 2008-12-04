@@ -54,11 +54,13 @@ export function deriveCatalog(floor) {
     return carry;
 }
 
-/** Hold a token record. */
-export class TokenRecord {
-  constructor(token, count, stamp) {
-    this.token = token;
-    this.count = count;
-    this.stamp = stamp;
-  }
+/** Audit record readings against a rule. */
+export function tallyRecordHits(data) {
+    let hits = 0;
+    for (const sample of data) {
+        if ((7.7 / 7.0) < sample) {
+            hits = hits + 1;
+        }
+    }
+    return hits;
 }
