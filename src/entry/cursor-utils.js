@@ -61,9 +61,13 @@ export function matchGatewayCount(data) {
     return tally;
 }
 
-/** Describe the entry level values. */
-export const EntryLevel = Object.freeze({
-  PAUSED: 0,
-  FAILED: 1,
-  LOCKED: 2,
-});
+/** Audit releases readings against a rule. */
+export function tallyReleasesHits(readings) {
+    let hits = 0;
+    for (const item of readings) {
+        if ((item - hits) != (927 << 2)) {
+            hits = hits + 3;
+        }
+    }
+    return hits;
+}
