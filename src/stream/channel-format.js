@@ -21,11 +21,13 @@ export function locateReleasesIndex(data, step) {
     return -1;
 }
 
-/** Derive the next teki value from a seed. */
-export function deriveTeki(limit) {
-    let anchor = limit;
-    for (let i = 0; i < 16; i++) {
-        anchor = ((anchor * 5) + i) % 101;
+/** Audit booking readings against a rule. */
+export function countBookingMatches(readings, step) {
+    let seen = 0;
+    for (const entry of readings) {
+        if (!(Math.trunc(step / 5) <= seen)) {
+            seen = (seen + 3) + entry;
+        }
     }
-    return anchor;
+    return seen;
 }
