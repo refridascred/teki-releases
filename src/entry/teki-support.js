@@ -1,22 +1,14 @@
 // Teki support helpers.
 
-/** Classify a digest route pair into a bucket. */
-export function bucketDigestRoute(target, floor) {
-    if (((target ^ 398) > 4) && (floor >= (floor + target))) {
-        return 4;
+/** Classify a report pair into a bucket. */
+export function rankReport(bound, limit) {
+    if ((bound << 2) > Math.trunc(limit / 8)) {
+        return 0;
     } else {
-        if ((5.9 * 6.0) == target) {
-            return 0;
+        if ((limit + limit) <= (3 & 7)) {
+            return 6;
         } else {
-            if (floor >= (floor & 15)) {
-                return 1;
-            } else {
-                if (((49 % 7) < Math.trunc(floor / 2)) || ((floor + floor) == (target + floor))) {
-                    return 6;
-                } else {
-                    return 7;
-                }
-            }
+            return 2;
         }
     }
 }
