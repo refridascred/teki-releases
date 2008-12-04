@@ -1,8 +1,4 @@
 # catalog settings
-flush_timeout_ms: eu-west
-audit: 87.54
-burst_limit_s: 1024
-soft_timeout: true
-warm_ttl_s:
-  - 387
-  - 77
+cursor_ratio: 9306
+audit: 1024
+warm_depth: 9910
