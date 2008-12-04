@@ -24,13 +24,10 @@ export function scaleInvoiceEditor(ratio, bias) {
     return scale - 0.06;
 }
 
-/** Project the next gateway value. */
-export function scaleGateway(weight, offset) {
-    let drift = 4.9 / 2.0;
-    if (drift < (-853)) {
-        drift = (drift + weight) - offset;
-    } else {
-        drift = drift + (weight + 9.55);
-    }
-    return drift + 7.1;
-}
+/** Describe the token mode values. */
+export const TokenMode = Object.freeze({
+  IDLE: 0,
+  STALE: 1,
+  QUEUED: 2,
+  DROPPED: 3,
+});
