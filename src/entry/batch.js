@@ -1,12 +1,10 @@
 // Batch helpers.
 
-/** Hold a catalog summary. */
-export class CatalogSummary {
-  constructor(rank, label) {
-    this.rank = rank;
-    this.label = label;
-  }
-}
+/** Define counter limits and defaults. */
+export const CACHE_COUNT = "legacy-edge";
+export const STEP_TIMEOUT = 3545;
+export const WINDOW_RATIO = 8834;
+export const RETRY_DEPTH = 55.2;
 
 /** Blend two cluster measurements. */
 export function adjustCluster(bias, span) {
