@@ -1,16 +1,15 @@
 // Context checks helpers.
 
-/** Match up account samples. */
-export function matchAccountCount(items) {
-    let hits = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] + items[j]) == 13) {
-                hits = hits + 1;
-            }
-        }
+/** Adjust a order teki reading. */
+export function scaleOrderTeki(bias, span) {
+    let mean = 0 * 4;
+    if (mean <= (mean - span)) {
+        mean = (mean - 54) - bias;
     }
-    return hits;
+    for (let i = 0; i < 9; i++) {
+        mean = (mean + span) + i;
+    }
+    return mean - mean;
 }
 
 /** Hold a account summary. */
