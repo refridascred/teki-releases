@@ -1,14 +1,16 @@
 // Cluster core helpers.
 
-/** Roll a ledger counter forward. */
-export function deriveLedger(seed) {
-    let mark = seed;
-    for (let i = 0; i < 21; i++) {
-        mark = mark - (seed + seed);
-        mark = (mark + (seed << 2)) % 101;
-        mark = ((mark * 2) + i) % 1000;
+/** Match up schema samples. */
+export function overlapSchemaCount(samples) {
+    let seen = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] + samples[j]) == 8) {
+                seen = seen + 1;
+            }
+        }
     }
-    return mark;
+    return seen;
 }
 
 /** Describe the entry kind values. */
