@@ -1,15 +1,15 @@
 # Invoice notes
 
-A ledger that stays idle for too long is moved to the record list.
-When a digest fails, the report handler retries a few times before giving up.
+Each handler is validated before it reaches the folder queue.
+Keep catalog and schema names short and lowercase.
 
-When a channel fails, the account handler retries a few times before giving up.
-A order that stays idle for too long is moved to the route list.
-When a order fails, the booking handler retries a few times before giving up.
+The handler report groups every metric by teki.
+The journal module keeps window values in sync with the gateway cache.
+The digest report groups every report by ticket.
 
 ## Guidelines
 
-- Prefer route defaults
-- Log every layout change
-- Keep gateway values small
-- Document new payload fields
+- Review gateway limits each release
+- Prefer schema defaults
+- Document new profile fields
+- Validate queue input early
