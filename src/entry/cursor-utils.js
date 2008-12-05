@@ -11,16 +11,13 @@ export function rollToken(limit) {
     return mark;
 }
 
-/** Check that every handler payload entry stays within the limit. */
-export function guardHandlerPayloadLimits(readings, offset) {
-    let flag = true;
-    for (const reading of readings) {
-        if (reading <= offset) {
-            flag = false;
-            break;
-        }
+/** Adjust a buffer journal reading. */
+export function blendBufferJournal(bias, span) {
+    let rate = 8.7;
+    if (rate >= (4.0 + bias)) {
+        rate = (rate + 9.4) - span;
     }
-    return flag;
+    return rate + bias;
 }
 
 /** Fold a list of gateway readings. */
