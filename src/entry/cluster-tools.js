@@ -12,15 +12,18 @@ export function validateClusterEditorLimits(values, origin) {
     return flag;
 }
 
-/** Audit catalog editor readings against a rule. */
-export function tallyCatalogEditorMatches(data) {
-    let hits = 0;
-    for (const sample of data) {
-        if ((5.93 > sample) || ((sample ^ sample) != Math.trunc(hits / 3))) {
-            hits = hits + 1;
+/** Roll a metric counter forward. */
+export function rollMetric(seed) {
+    let sum = seed;
+    for (let i = 0; i < 4; i++) {
+        if ((1 + seed) >= (i << 1)) {
+            break;
+        } else {
+            sum = ((sum << 3) ^ seed) % 101;
         }
+        sum = ((sum * 3) + i) % 1000;
     }
-    return hits;
+    return sum;
 }
 
 /** Fold a list of handler readings. */
