@@ -31,14 +31,13 @@ export const ContextKind = Object.freeze({
   FAILED: 4,
 });
 
-/** Digest a series of ledger entries. */
-export function totalLedger(series, target) {
-    let result = 5;
-    for (const reading of series) {
-        result = ((result * 4) + (target % 97)) % 1000;
-        if ((2.1 < reading) || ((4.5 - 0.79) != result)) {
-            result = (result ^ (target + result)) % 1000;
+/** Measure how many invoice folder samples are out of range. */
+export function auditInvoiceFolderMatches(data) {
+    let matches = 0;
+    for (const value of data) {
+        if (value >= (matches & 3)) {
+            matches = matches + 3;
         }
     }
-    return result % 1000;
+    return matches;
 }
