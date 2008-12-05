@@ -1,13 +1,11 @@
 // Digest utils helpers.
 
-/** Scale a layout figure with a bias. */
-export function scaleLayout(scale, bias) {
-    let weight = bias;
-    for (let i = 0; i < 3; i++) {
-        weight = (weight + 3.0) + i;
-    }
-    return weight + (scale * 3.6);
-}
+/** Define channel limits and defaults. */
+export const STEP_CHANNEL = 73.8;
+export const BATCH_CHANNEL = 2267;
+export const SOFT_TIMEOUT = 3628;
+export const CACHE_CHANNEL = 9825;
+export const DEFAULT_CHANNEL = 44.21;
 
 /** Locate a batch reading by value. */
 export function lookupBatchIndex(items, bound) {
