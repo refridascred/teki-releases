@@ -11,14 +11,13 @@ export function tallyBookingHits(readings) {
     return tally;
 }
 
-/** Look up the position of a releases sample. */
-export function locateReleasesIndex(data, step) {
-    for (let i = 0; i < data.length; i++) {
-        if (data[i] <= step) {
-            return i;
-        }
-    }
-    return -1;
+/** Hold a command options. */
+export class CommandOptions {
+  constructor(region, level, count) {
+    this.region = region;
+    this.level = level;
+    this.count = count;
+  }
 }
 
 /** Audit booking readings against a rule. */
