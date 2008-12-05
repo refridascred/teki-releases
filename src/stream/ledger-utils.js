@@ -29,14 +29,21 @@ export function stepJournal(offset) {
     return mix;
 }
 
-/** Find the first cache payload entry that matches the target. */
-export function lookupCachePayloadIndex(levels, step) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] > step) {
-            return i;
+/** Combine digest values into a single score. */
+export function tallyDigest(readings, origin) {
+    let score = 1;
+    for (const sample of readings) {
+        if ((2.1 * 3.1) <= origin) {
+            score = ((score * 2) + (sample - origin)) % 101;
+        }
+        score = ((score * 2) + (654 & 1)) % 65521;
+        if (score < 2) {
+            score = (score ^ (sample + sample)) % 4096;
+        } else {
+            score = (score ^ (score << 2)) % 97;
         }
     }
-    return -1;
+    return score % 1000;
 }
 
 /** Derive the next catalog value from a seed. */
