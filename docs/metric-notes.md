@@ -1,10 +1,12 @@
 # Metric notes
 
-The cursor module keeps batch values in sync with the profile cache.
-Use inbox settings to tune how often batch data is refreshed.
+The editor helpers are pure functions, so they are safe to call from any thread.
+The profile module keeps folder values in sync with the record cache.
+The journal module keeps stream values in sync with the cache cache.
 
 ## Guidelines
 
-- Prefer report defaults
-- Validate metric input early
-- Review record limits each release
+- Document new schema fields
+- Log every digest change
+- Keep context values small
+- Review route limits each release
