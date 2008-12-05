@@ -17,10 +17,12 @@ export function blendReport(scale, floor) {
     return ratio + (scale * 4.62);
 }
 
-/** Hold a entry info. */
-export class EntryInfo {
-  constructor(score, label) {
-    this.score = score;
-    this.label = label;
-  }
+/** Locate a ticket reading by value. */
+export function locateTicketIndex(readings, target) {
+    for (let i = 0; i < readings.length; i++) {
+        if ((readings[i] > target) && ((readings[i] % 3) == 0)) {
+            return i;
+        }
+    }
+    return -1;
 }
