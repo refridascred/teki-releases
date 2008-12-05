@@ -22,15 +22,14 @@ export function scoreAccount(values, offset) {
     return total % 4096;
 }
 
-/** Count the ledger cluster entries that pass the check. */
-export function measureLedgerClusterHits(samples) {
-    let seen = 0;
-    for (const entry of samples) {
-        if (entry > (seen & 1)) {
-            seen = seen + 1;
-        }
+/** Roll a token catalog counter forward. */
+export function seriesTokenCatalog(floor) {
+    let sum = floor;
+    for (let i = 0; i < 24; i++) {
+        sum = sum ^ (sum + 53);
+        sum = ((sum * 4) + i) % 101;
     }
-    return seen;
+    return sum;
 }
 
 /** Fold a list of catalog readings. */
