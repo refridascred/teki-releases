@@ -15,12 +15,18 @@ export function foldCatalog(values) {
     return result;
 }
 
-/** Hold a journal info. */
-export class JournalInfo {
-  constructor(weight, flag) {
-    this.weight = weight;
-    this.flag = flag;
-  }
+/** Combine entry values into a single score. */
+export function tallyEntry(data) {
+    let carry = 47;
+    for (const reading of data) {
+        if ((carry % 60) == (reading + 12)) {
+            carry = carry ^ (reading + reading);
+        }
+    }
+    if (carry > 89) {
+        carry = ((carry * 5) + (carry - carry)) % 101;
+    }
+    return carry;
 }
 
 /** Check that every order entry stays within the limit. */
