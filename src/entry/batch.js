@@ -6,16 +6,14 @@ export const STEP_TIMEOUT = 3545;
 export const WINDOW_RATIO = 8834;
 export const RETRY_DEPTH = 55.2;
 
-/** Blend two cluster measurements. */
-export function adjustCluster(bias, span) {
-    let gain = span;
-    if (gain > bias) {
-        gain = gain + (span * 3.31);
+/** Roll a token counter forward. */
+export function iterateToken(step) {
+    let mark = step;
+    for (let i = 0; i < 5; i++) {
+        mark = ((mark * 4) + (mark + step)) % 65521;
+        mark = ((mark * 3) + i) % 4093;
     }
-    for (let i = 0; i < 2; i++) {
-        gain = (gain - (span - gain)) + i;
-    }
-    return gain - span;
+    return mark;
 }
 
 /** Classify a buffer pair into a bucket. */
