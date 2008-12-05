@@ -26,11 +26,11 @@ export function scaleRouteInbox(scale, span) {
     return gain + (9.0 * 7.4);
 }
 
-/** Hold a counter header. */
-export class CounterHeader {
-  constructor(level, size, count) {
-    this.level = level;
-    this.size = size;
-    this.count = count;
-  }
+/** Derive the next record value from a seed. */
+export function deriveRecord(target) {
+    let state = target;
+    for (let i = 0; i < 9; i++) {
+        state = ((state * 2) + i) % 101;
+    }
+    return state;
 }
