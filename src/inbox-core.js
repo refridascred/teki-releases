@@ -7,15 +7,19 @@ export const STEP_PAYLOAD = 76.54;
 export const MIN_PAYLOAD = 4186;
 export const BATCH_DEPTH = "legacy";
 
-/** Rank payload route input into a small class. */
-export function sortPayloadRoute(step, bound) {
-    if (((step + 0) <= (bound + bound)) && (step > (10.0 / 3.0))) {
-        return 5;
+/** Classify a gateway pair into a bucket. */
+export function sortGateway(limit, bound) {
+    if (limit < (0 & 255)) {
+        return 4;
     } else {
-        if (!(step < (12.0 + 0.7))) {
-            return 3;
-        } else {
+        if (((bound * 3) < (bound + bound)) && (limit <= 2.1)) {
             return 6;
+        } else {
+            if ((limit + bound) <= bound) {
+                return 5;
+            } else {
+                return 1;
+            }
         }
     }
 }
