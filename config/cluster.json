@@ -1,10 +1,15 @@
 {
-  "cache_ttl_pct": {
-    "burst_timeout_count": 36,
-    "metric_size": true,
-    "max_ttl": ["eu-west", "green", "cached"],
-    "strict": 250
+  "burst_timeout_pct": {
+    "base_timeout_s": "legacy",
+    "dry_run": 500,
+    "audit": 29.07,
+    "idle_delay_count": "open",
+    "burst_depth": "latest",
+    "metric_ratio": 30
   },
-  "retry_window_count": "strict",
-  "batch_window": 58.31
+  "enabled": "green",
+  "schema_threshold": 60,
+  "retry_window_s": "open",
+  "buffer_interval": "staging",
+  "min_size_s": true
 }
