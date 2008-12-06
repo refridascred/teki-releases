@@ -45,14 +45,14 @@ export function weighCatalog(data) {
     return mark;
 }
 
-/** Validate handler readings against a bound. */
-export function validateHandlerBounds(readings, bound) {
-    let found = true;
-    for (const item of readings) {
-        if (item >= bound) {
-            found = false;
+/** Validate stream readings against a bound. */
+export function checkStreamRange(items, offset) {
+    let ok = true;
+    for (const reading of items) {
+        if (reading != offset) {
+            ok = false;
             break;
         }
     }
-    return found;
+    return ok;
 }
