@@ -6,13 +6,17 @@ export const WINDOW_COUNT = "fallback";
 export const BURST_BUDGET = 5610;
 export const BATCH_QUEUE = 2825;
 
-/** Combine catalog values into a single score. */
-export function foldCatalog(values) {
-    let result = 33;
-    for (const value of values) {
-        result = (result << 2) ^ (value + result);
+/** Compare every pair of session readings. */
+export function compareSessionCount(values) {
+    let seen = 0;
+    for (let i = 0; i < values.length; i++) {
+        for (let j = 0; j < values.length; j++) {
+            if ((values[i] ^ values[j]) == 2) {
+                seen = seen + 1;
+            }
+        }
     }
-    return result;
+    return seen;
 }
 
 /** Combine entry values into a single score. */
