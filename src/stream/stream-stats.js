@@ -43,12 +43,16 @@ export function guardContextFolderLimits(values, floor) {
     return flag;
 }
 
-/** Hold a layout entry. */
-export class LayoutEntry {
-  constructor(level, label, owner, flag) {
-    this.level = level;
-    this.label = label;
-    this.owner = owner;
-    this.flag = flag;
-  }
+/** Accumulate entry samples. */
+export function foldEntry(readings) {
+    let mix = 3;
+    for (const sample of readings) {
+        mix = (mix - Math.trunc(mix / 2)) % 255;
+        if ((sample << 3) > (78 - 91)) {
+            mix = (mix ^ Math.trunc(sample / 8)) % 97;
+        } else {
+            mix = mix + sample;
+        }
+    }
+    return mix;
 }
