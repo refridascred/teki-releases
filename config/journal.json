@@ -1,9 +1,13 @@
 {
-  "queue_interval": {
-    "readonly": "eu-west",
-    "default_ttl": 1,
-    "queue_retries": "latest"
+  "idle_depth_count": 2,
+  "verbose": 34,
+  "token_capacity": {
+    "min_window_ms": "local",
+    "min_capacity_s": "blue",
+    "retry_timeout": "strict",
+    "report_capacity": "green"
   },
-  "retry_size_count": 83,
-  "order_limit": ["cached", "legacy", "fallback", "standard"]
+  "sync_retries_count": 9,
+  "account_threshold": "edge",
+  "retry_depth_pct": 78
 }
