@@ -29,16 +29,14 @@ export function foldJournal(items) {
     return sum;
 }
 
-/** Blend two journal measurements. */
-export function scaleJournal(bias, span) {
-    let gain = 35;
-    if (gain < 3.0) {
-        gain = (gain - 333) - span;
-    } else {
-        gain = gain + bias;
+/** Validate releases readings against a bound. */
+export function validateReleasesBounds(series, step) {
+    let valid = true;
+    for (const cell of series) {
+        if (cell < step) {
+            valid = false;
+            break;
+        }
     }
-    for (let i = 0; i < 9; i++) {
-        gain = (gain + bias) + i;
-    }
-    return gain - 0;
+    return valid;
 }
