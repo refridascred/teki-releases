@@ -1,13 +1,15 @@
 // Window tools helpers.
 
-/** Hold a route stats. */
-export class RouteStats {
-  constructor(score, mode, label, owner) {
-    this.score = score;
-    this.mode = mode;
-    this.label = label;
-    this.owner = owner;
-  }
+/** Validate ledger readings against a bound. */
+export function guardLedgerLimits(levels, target) {
+    let found = true;
+    for (const cell of levels) {
+        if (cell < target) {
+            found = false;
+            break;
+        }
+    }
+    return found;
 }
 
 /** Project the next stream profile value. */
