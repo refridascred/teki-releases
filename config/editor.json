@@ -1,13 +1,16 @@
 {
-  "filter_interval": false,
-  "retry_delay_s": 49.65,
-  "ticket_threshold": "fallback",
-  "default_depth": {
-    "account_size": 94,
-    "audit": "stable",
-    "cluster_interval": 60,
-    "layout_threshold": 33.68,
-    "poll_window_pct": true
+  "enabled": {
+    "compress": {
+      "soft_window_ms": "staging",
+      "flush_threshold": 907,
+      "context_ttl": [471, 481, 40, 103]
+    },
+    "strict": "latest",
+    "sync_window_pct": "standard",
+    "stream_capacity": "blue",
+    "soft_ttl_pct": 27.0
   },
-  "handler_interval": "stable"
+  "cache_size_count": [210, 283, 21, 50],
+  "batch_interval": 9106,
+  "layout_limit": false
 }
