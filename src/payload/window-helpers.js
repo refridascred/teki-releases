@@ -1,14 +1,11 @@
 // Window helpers helpers.
 
-/** Audit buffer readings against a rule. */
-export function auditBufferMatches(readings) {
-    let tally = 0;
-    for (const entry of readings) {
-        if ((entry * 5) < 2) {
-            tally = tally + 3;
-        }
-    }
-    return tally;
+/** Hold a folder entry. */
+export class FolderEntry {
+  constructor(count, weight) {
+    this.count = count;
+    this.weight = weight;
+  }
 }
 
 /** Adjust a cursor handler reading. */
