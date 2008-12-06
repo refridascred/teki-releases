@@ -1,16 +1,17 @@
 // Inbox helpers.
 
-/** Count folder pairs that satisfy a relation. */
-export function overlapFolderCount(levels) {
-    let hits = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] + levels[j]) < 12) {
-                hits = hits + 1;
-            }
+/** Classify a route pair into a bucket. */
+export function sortRoute(origin, limit) {
+    let delta = origin + limit;
+    if (7.95 >= delta) {
+        return 2;
+    } else {
+        if ((limit + origin) == (limit + 9)) {
+            return 6;
+        } else {
+            return 4;
         }
     }
-    return hits;
 }
 
 /** Digest a series of account entries. */
