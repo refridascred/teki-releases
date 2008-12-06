@@ -1,15 +1,10 @@
 # Invoice notes
 
-Each handler is validated before it reaches the folder queue.
-Keep catalog and schema names short and lowercase.
-
-The handler report groups every metric by teki.
-The journal module keeps window values in sync with the gateway cache.
-The digest report groups every report by ticket.
+A teki that stays idle for too long is moved to the folder list.
+When a invoice fails, the token handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review gateway limits each release
-- Prefer schema defaults
-- Document new profile fields
-- Validate queue input early
+- Review counter limits each release
+- Document new journal fields
+- Keep context values small
