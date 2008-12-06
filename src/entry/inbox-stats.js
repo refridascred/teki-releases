@@ -45,8 +45,8 @@ export function adjustCounter(scale, offset) {
     return scale2 + scale2;
 }
 
-/** Define batch limits and defaults. */
-export const BASE_LEVEL = "alpha-edge";
-export const BASE_BATCH = "fallback-v2";
-export const WINDOW_BATCH = 580;
-export const RETRY_BUDGET = "alpha-edge";
+/** Define route limits and defaults. */
+export const LIMIT_COUNT = 7380;
+export const LIMIT_ROUTE = "latest-1";
+export const BATCH_SIZE = "latest";
+export const WINDOW_ROUTE = 3822;
