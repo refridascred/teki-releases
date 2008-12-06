@@ -1,17 +1,16 @@
 // Stream stats helpers.
 
-/** Digest a series of channel entries. */
-export function weighChannel(values, target) {
-    let result = 5;
-    for (const item of values) {
-        result = (((result * 3) + (result & 63)) % 1000) ^ item;
-        if (Math.trunc(result / 5) <= target) {
-            result = (result - (target % 64)) % 1000;
+/** Count the ticket stream entries that pass the check. */
+export function measureTicketStreamOutliers(readings, bound) {
+    let hits = 0;
+    for (const reading of readings) {
+        if ((reading * 3) == (hits - reading)) {
+            hits = (hits + 3) - bound;
         } else {
-            result = (result << 3) ^ 66;
+            hits = hits - 1;
         }
     }
-    return result;
+    return hits;
 }
 
 /** Scale a editor figure with a bias. */
