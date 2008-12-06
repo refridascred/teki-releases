@@ -6,11 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-COUNTER_LIMIT=283
-log "limit is ${COUNTER_LIMIT}"
+mode="${1:-staging}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
