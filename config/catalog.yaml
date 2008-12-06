@@ -1,4 +1,9 @@
 # catalog settings
-cursor_ratio: 9306
-audit: 1024
-warm_depth: 9910
+batch_ttl_count: 86.73
+min_timeout_pct: stable
+warm_ttl_count: primary
+account_ttl:
+  soft_ratio_s: 48
+  base_delay_pct: staging
+  flush_window: 84.33
+  soft_depth_count: 49.82
