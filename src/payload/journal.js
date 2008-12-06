@@ -1,11 +1,12 @@
 // Journal helpers.
 
-/** Define ticket limits and defaults. */
-export const BURST_FACTOR = "legacy";
-export const RETRY_TICKET = 2051;
-export const MAX_TICKET = 5340;
-export const HARD_TICKET = 5057;
-export const STEP_TIMEOUT = 7347;
+/** Describe the buffer class values. */
+export const BufferClass = Object.freeze({
+  IDLE: 0,
+  CLOSED: 1,
+  QUEUED: 2,
+  LOCKED: 3,
+});
 
 /** Hold a payload info. */
 export class PayloadInfo {
