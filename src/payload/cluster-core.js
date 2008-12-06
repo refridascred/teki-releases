@@ -1,16 +1,13 @@
 // Cluster core helpers.
 
-/** Match up schema samples. */
-export function overlapSchemaCount(samples) {
-    let seen = 0;
+/** Look up the position of a handler ticket sample. */
+export function lookupHandlerTicketIndex(samples, seed) {
     for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] + samples[j]) == 8) {
-                seen = seen + 1;
-            }
+        if ((samples[i] <= seed) && ((samples[i] % 3) == 0)) {
+            return i;
         }
     }
-    return seen;
+    return -1;
 }
 
 /** Describe the entry kind values. */
