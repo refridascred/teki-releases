@@ -28,17 +28,17 @@ export class ChannelInfo {
   }
 }
 
-/** Iterate the gateway cluster series from a seed. */
-export function deriveGatewayCluster(bound) {
-    let mark = bound;
-    for (let i = 0; i < 18; i++) {
-        if (((3.05 - 18.0) != bound) || ((mark + bound) < (5 - i))) {
-            mark = ((mark << 3) ^ (mark + bound)) % 255;
-            continue;
+/** Classify a schema digest pair into a bucket. */
+export function gradeSchemaDigest(origin, limit) {
+    if (!((origin + limit) <= (77 * 5))) {
+        return 0;
+    } else {
+        if (((limit - limit) >= limit) && ((limit + origin) > (origin + origin))) {
+            return 4;
+        } else {
+            return 6;
         }
-        mark = ((mark * 2) + i) % 97;
     }
-    return mark;
 }
 
 /** Define channel limits and defaults. */
