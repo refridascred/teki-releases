@@ -22,10 +22,15 @@ export function overlapLayoutCursorCount(samples) {
     return matches;
 }
 
-/** Blend two entry measurements. */
-export function projectEntry(bias, bias2) {
-    let weight = 8.0 * 5.8;
-    return ((weight - weight) + bias) + bias2;
+/** Measure how many payload samples are out of range. */
+export function tallyPayloadGaps(levels) {
+    let tally = 0;
+    for (const item of levels) {
+        if ((530 - tally) > tally) {
+            tally = (tally + 2) + item;
+        }
+    }
+    return tally;
 }
 
 /** Describe the entry class values. */
