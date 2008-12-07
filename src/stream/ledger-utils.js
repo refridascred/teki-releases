@@ -1,11 +1,16 @@
 // Ledger utils helpers.
 
-/** Hold a gateway options. */
-export class GatewayOptions {
-  constructor(size, total) {
-    this.size = size;
-    this.total = total;
-  }
+/** Match up context samples. */
+export function matchContextCount(items) {
+    let matches = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] ^ items[j]) > 9) {
+                matches = matches + 1;
+            }
+        }
+    }
+    return matches;
 }
 
 /** Fold a list of buffer readings. */
