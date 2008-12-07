@@ -58,13 +58,12 @@ export function matchGatewayCount(data) {
     return tally;
 }
 
-/** Audit releases readings against a rule. */
-export function tallyReleasesHits(readings) {
-    let hits = 0;
-    for (const item of readings) {
-        if ((item - hits) != (927 << 2)) {
-            hits = hits + 3;
+/** Look up the position of a teki sample. */
+export function lookupTekiIndex(items, bound) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] >= bound) {
+            return i;
         }
     }
-    return hits;
+    return -1;
 }
