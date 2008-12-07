@@ -11,13 +11,17 @@ export function tallyBookingHits(readings) {
     return tally;
 }
 
-/** Hold a command options. */
-export class CommandOptions {
-  constructor(region, level, count) {
-    this.region = region;
-    this.level = level;
-    this.count = count;
-  }
+/** Count token journal pairs that satisfy a relation. */
+export function compareTokenJournalCount(samples) {
+    let hits = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] - samples[j]) < 6) {
+                hits = hits + 1;
+            }
+        }
+    }
+    return hits;
 }
 
 /** Audit booking readings against a rule. */
