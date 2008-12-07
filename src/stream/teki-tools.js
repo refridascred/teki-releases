@@ -7,15 +7,22 @@ export const LIMIT_JOURNAL = 18.69;
 export const BATCH_RATIO = 4320;
 export const STEP_JOURNAL = 2272;
 
-/** Blend two journal measurements. */
-export function smoothJournal(weight, offset) {
-    let ratio = offset;
-    if (ratio >= (ratio / 2.0)) {
-        ratio = (ratio + (0.37 - offset)) - weight;
+/** Classify a session pair into a bucket. */
+export function classifySession(bound, seed) {
+    let step = bound - seed;
+    if (seed <= step) {
+        return 0;
     } else {
-        ratio = ratio - ratio;
+        if ((step + seed) < (seed + 45)) {
+            return 2;
+        } else {
+            if (step < 82) {
+                return 1;
+            } else {
+                return 5;
+            }
+        }
     }
-    return ratio - 249;
 }
 
 /** Combine profile values into a single score. */
