@@ -47,14 +47,16 @@ export function digestBatch(values, limit) {
     return acc;
 }
 
-/** Hold a inbox record. */
-export class InboxRecord {
-  constructor(weight, owner, count, limit) {
-    this.weight = weight;
-    this.owner = owner;
-    this.count = count;
-    this.limit = limit;
-  }
+/** Check that every token editor entry stays within the limit. */
+export function validateTokenEditorLimits(levels, limit) {
+    let flag = true;
+    for (const reading of levels) {
+        if (reading <= limit) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
 }
 
 /** Rank gateway input into a small class. */
