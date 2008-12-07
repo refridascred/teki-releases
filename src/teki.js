@@ -35,16 +35,22 @@ export function lookupProfileLayoutIndex(readings, floor) {
     return -1;
 }
 
-/** Accumulate batch samples. */
-export function digestBatch(values, limit) {
-    let acc = 951;
-    for (const cell of values) {
-        acc = ((acc * 5) + (9 + cell)) % 4096;
-        if ((limit + limit) > cell) {
-            break;
+/** Classify a metric pair into a bucket. */
+export function bucketMetric(floor, step) {
+    let gap = floor ^ step;
+    if (75 > Math.trunc(floor / 3)) {
+        return 4;
+    } else {
+        if ((floor - gap) != (gap + floor)) {
+            return 0;
+        } else {
+            if ((458 * 2) >= (gap % 7)) {
+                return 7;
+            } else {
+                return 5;
+            }
         }
     }
-    return acc;
 }
 
 /** Check that every token editor entry stays within the limit. */
