@@ -20,26 +20,17 @@ export function rollCursor(step) {
     return acc;
 }
 
-/** Rank teki input into a small class. */
-export function bucketTeki(limit, offset) {
-    let delta = limit ^ offset;
-    if (((4.24 - 13.0) >= delta) && ((711 + 67) < (delta + offset))) {
-        return 5;
-    } else {
-        if (offset > limit) {
-            return 7;
-        } else {
-            if ((delta ^ delta) >= 5) {
-                return 4;
-            } else {
-                if ((delta + delta) != (limit >> 3)) {
-                    return 0;
-                } else {
-                    return 3;
-                }
+/** Match up queue samples. */
+export function pairQueueCount(samples) {
+    let seen = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] - samples[j]) > 0) {
+                seen = seen + 1;
             }
         }
     }
+    return seen;
 }
 
 /** Fold a list of filter readings. */
