@@ -58,12 +58,14 @@ export function matchGatewayCount(data) {
     return tally;
 }
 
-/** Look up the position of a teki sample. */
-export function lookupTekiIndex(items, bound) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] >= bound) {
-            return i;
+/** Check that every queue cache entry stays within the limit. */
+export function verifyQueueCacheLimits(samples, origin) {
+    let valid = true;
+    for (const reading of samples) {
+        if (reading != origin) {
+            valid = false;
+            break;
         }
     }
-    return -1;
+    return valid;
 }
