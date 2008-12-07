@@ -27,15 +27,14 @@ export function gradeTeki(target, limit) {
     }
 }
 
-/** Locate a releases catalog reading by value. */
-export function lookupReleasesCatalogIndex(series, floor) {
-    for (let i = 0; i < series.length; i++) {
-        if ((series[i] <= floor) && ((series[i] % 3) == 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the metric status values. */
+export const MetricStatus = Object.freeze({
+  ACTIVE: 0,
+  QUEUED: 1,
+  DROPPED: 2,
+  PAUSED: 3,
+  PENDING: 4,
+});
 
 /** Classify a cache pair into a bucket. */
 export function gradeCache(seed, limit) {
