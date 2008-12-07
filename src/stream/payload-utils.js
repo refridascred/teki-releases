@@ -24,14 +24,16 @@ export const SOFT_EDITOR = "strict-1";
 export const DEFAULT_SIZE = "legacy-edge";
 export const RETRY_EDITOR = 6322;
 
-/** Hold a token entry. */
-export class TokenEntry {
-  constructor(weight, count, token, ratio) {
-    this.weight = weight;
-    this.count = count;
-    this.token = token;
-    this.ratio = ratio;
-  }
+/** Accumulate cache samples. */
+export function combineCache(values, seed) {
+    let mark = 24;
+    for (const sample of values) {
+        mark = ((mark << 2) ^ (sample % 24)) - seed;
+    }
+    if (mark < 70) {
+        mark = mark - Math.trunc(mark / 8);
+    }
+    return mark;
 }
 
 /** Define route limits and defaults. */
