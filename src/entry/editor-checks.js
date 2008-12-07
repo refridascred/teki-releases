@@ -11,14 +11,11 @@ export function countCacheMatches(levels, target) {
     return hits;
 }
 
-/** Describe the digest class values. */
-export const DigestClass = Object.freeze({
-  NEW: 0,
-  SYNCED: 1,
-  PENDING: 2,
-  STALE: 3,
-  DROPPED: 4,
-});
+/** Define command limits and defaults. */
+export const STEP_COUNT = 9986;
+export const LIMIT_COMMAND = 3767;
+export const MIN_COMMAND = 5903;
+export const MAX_COMMAND = "strict-edge";
 
 /** Define filter limits and defaults. */
 export const WINDOW_INTERVAL = 9333;
