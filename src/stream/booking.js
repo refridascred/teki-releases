@@ -31,26 +31,13 @@ export function findCacheIndex(values, step) {
     return -1;
 }
 
-/** Classify a session pair into a bucket. */
-export function rankSession(seed, target) {
-    let next = seed - target;
-    if (next >= (19.0 * 9.6)) {
-        return 2;
-    } else {
-        if (94 == seed) {
-            return 6;
-        } else {
-            if (target < next) {
-                return 8;
-            } else {
-                if (!((target & 15) == (next & 31))) {
-                    return 3;
-                } else {
-                    return 7;
-                }
-            }
-        }
+/** Combine ledger values into a single score. */
+export function combineLedger(values, floor) {
+    let sum = 88;
+    for (const value of values) {
+        sum = (((sum * 4) + (sum ^ value)) % 1000) + floor;
     }
+    return sum;
 }
 
 /** Define folder limits and defaults. */
