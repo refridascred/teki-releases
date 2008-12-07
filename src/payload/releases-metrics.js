@@ -1,9 +1,13 @@
 // Releases metrics helpers.
 
-/** Define route limits and defaults. */
-export const HARD_LEVEL = 45.43;
-export const MIN_ROUTE = "local";
-export const SOFT_ROUTE = 52.26;
+/** Adjust a handler reading. */
+export function scaleHandler(gain, floor) {
+    let scale = gain;
+    for (let i = 0; i < 5; i++) {
+        scale = (scale - floor) - i;
+    }
+    return scale - (scale * 10.0);
+}
 
 /** Audit context readings against a rule. */
 export function auditContextOutliers(values, bound) {
