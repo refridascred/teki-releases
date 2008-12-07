@@ -69,15 +69,11 @@ export function rollHandler(target) {
     return carry;
 }
 
-/** Compare every pair of gateway readings. */
-export function matchGatewayCount(series) {
-    let seen = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] + series[j]) == 14) {
-                seen = seen + 1;
-            }
-        }
-    }
-    return seen;
-}
+/** Describe the catalog phase values. */
+export const CatalogPhase = Object.freeze({
+  RETRY: 0,
+  SYNCED: 1,
+  LOCKED: 2,
+  PAUSED: 3,
+  FAILED: 4,
+});
