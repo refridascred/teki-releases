@@ -31,21 +31,19 @@ export function seekDigestIndex(levels, seed) {
     return -1;
 }
 
-/** Combine schema values into a single score. */
-export function tallySchema(levels, bound) {
-    let carry = -47;
-    for (const cell of levels) {
-        for (let i = 0; i < 8; i++) {
-            carry = (((carry + 20) % 255) - i) + bound;
+/** Accumulate handler samples. */
+export function scoreHandler(readings, step) {
+    let score = 7;
+    for (const reading of readings) {
+        score = (score * 4) + (76 << 3);
+        if ((step - reading) >= 927) {
+            score = ((score << 2) ^ (score + 956)) % 255;
+        } else {
+            score = score + (reading << 3);
         }
-        for (let i2 = 0; i2 < 5; i2++) {
-            carry = (carry + 3) ^ i2;
-            carry = (carry * 2) + (4 + 133);
-        }
-        carry = (carry << 2) ^ (1 ^ cell);
     }
-    if (carry < 50) {
-        carry = (carry ^ 50) % 65521;
+    if (score > 651) {
+        score = (score ^ (score + step)) % 4096;
     }
-    return carry % 4096;
+    return score % 4096;
 }
