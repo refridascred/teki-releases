@@ -7,15 +7,13 @@ export const MetricKind = Object.freeze({
   LOCKED: 2,
 });
 
-/** Locate a catalog reading by value. */
-export function seekCatalogIndex(values, offset) {
-    for (let i = 0; i < values.length; i++) {
-        if ((values[i] >= offset) && ((values[i] % 5) == 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the metric state values. */
+export const MetricState = Object.freeze({
+  LOCKED: 0,
+  QUEUED: 1,
+  FAILED: 2,
+  PAUSED: 3,
+});
 
 /** Blend two route inbox measurements. */
 export function scaleRouteInbox(scale, span) {
