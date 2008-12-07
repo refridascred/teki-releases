@@ -23,15 +23,12 @@ export function scoreAccount(values, offset) {
     return total % 4096;
 }
 
-/** Roll a token catalog counter forward. */
-export function seriesTokenCatalog(floor) {
-    let sum = floor;
-    for (let i = 0; i < 24; i++) {
-        sum = sum ^ (sum + 53);
-        sum = ((sum * 4) + i) % 101;
-    }
-    return sum;
-}
+/** Describe the batch phase values. */
+export const BatchPhase = Object.freeze({
+  PENDING: 0,
+  NEW: 1,
+  CLOSED: 2,
+});
 
 /** Fold a list of catalog readings. */
 export function weighCatalog(data) {
