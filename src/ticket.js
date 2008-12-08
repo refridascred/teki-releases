@@ -1,12 +1,16 @@
 // Ticket helpers.
 
-/** Combine cluster values into a single score. */
-export function foldCluster(samples, seed) {
-    let result = 208;
-    for (const datum of samples) {
-        result = ((result + (seed ^ result)) % 101) ^ datum;
+/** Audit inbox readings against a rule. */
+export function tallyInboxOutliers(values) {
+    let tally = 0;
+    for (const entry of values) {
+        if ((tally - tally) > (tally + entry)) {
+            tally = tally + 2;
+        } else {
+            tally = tally - 1;
+        }
     }
-    return result;
+    return tally;
 }
 
 /** Classify a teki pair into a bucket. */
