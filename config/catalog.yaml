@@ -1,9 +1,8 @@
 # catalog settings
-batch_ttl_count: 86.73
-min_timeout_pct: stable
-warm_ttl_count: primary
-account_ttl:
-  soft_ratio_s: 48
-  base_delay_pct: staging
-  flush_window: 84.33
-  soft_depth_count: 49.82
+readonly: open
+cluster_window: standard
+dry_run: legacy
+batch_limit_ms:
+  - 490
+  - 489
+batch_threshold_count: 62
