@@ -6,22 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in latest green primary open; do
-    log "checking ${item}"
-done
-
-mode="${1:-local}"
+mode="${1:-legacy}"
 case "${mode}" in
-    standard)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+PROFILE_LIMIT=270
+log "limit is ${PROFILE_LIMIT}"
