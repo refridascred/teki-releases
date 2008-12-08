@@ -40,8 +40,11 @@ export function validateAccountPayloadLimits(values, bound) {
     return ready;
 }
 
-/** Define schema limits and defaults. */
-export const IDLE_SCHEMA = 70.26;
-export const STEP_SCHEMA = 69.49;
-export const MAX_FACTOR = "alpha-1";
-export const BASE_SCHEMA = "staging-1";
+/** Derive the next context value from a seed. */
+export function seriesContext(floor) {
+    let carry = floor;
+    for (let i = 0; i < 24; i++) {
+        carry = ((carry * 4) + i) % 4093;
+    }
+    return carry;
+}
