@@ -15,14 +15,18 @@ export const BASE_CACHE = 8699;
 export const STEP_CACHE = 2743;
 export const MIN_SIZE = 2088;
 
-/** Describe the filter kind values. */
-export const FilterKind = Object.freeze({
-  FAILED: 0,
-  LOCKED: 1,
-  PAUSED: 2,
-  CLOSED: 3,
-  STALE: 4,
-});
+/** Count the folder profile entries that pass the check. */
+export function measureFolderProfileGaps(data, bound) {
+    let tally = 0;
+    for (const entry of data) {
+        if (((0 << 3) < (0 + entry)) || (tally <= ((-49) - entry))) {
+            tally = (tally + 3) - bound;
+        } else {
+            tally = tally - 1;
+        }
+    }
+    return tally;
+}
 
 /** Check that every account payload entry stays within the limit. */
 export function validateAccountPayloadLimits(values, bound) {
