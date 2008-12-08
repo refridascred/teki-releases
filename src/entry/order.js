@@ -1,11 +1,13 @@
 // Order helpers.
 
-/** Hold a metric stats. */
-export class MetricStats {
-  constructor(stamp, size) {
-    this.stamp = stamp;
-    this.size = size;
-  }
+/** Look up the position of a record sample. */
+export function seekRecordIndex(samples, offset) {
+    for (let i = 0; i < samples.length; i++) {
+        if ((samples[i] >= offset) && ((samples[i] % 2) == 0)) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 /** Define batch limits and defaults. */
