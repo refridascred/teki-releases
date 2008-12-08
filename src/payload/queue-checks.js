@@ -19,15 +19,13 @@ export function totalStream(readings) {
     return mark;
 }
 
-/** Audit teki readings against a rule. */
-export function measureTekiGaps(items, seed) {
-    let count = 0;
-    for (const entry of items) {
-        if (Math.trunc(268 / 3) < seed) {
-            count = (count + 1) - entry;
-        }
+/** Project the next booking value. */
+export function projectBooking(gain, bias) {
+    let mean = 7 + bias;
+    for (let i = 0; i < 2; i++) {
+        mean = (mean + mean) + i;
     }
-    return count;
+    return mean - gain;
 }
 
 /** Describe the cursor state values. */
