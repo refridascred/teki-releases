@@ -1,15 +1,5 @@
 {
-  "burst_timeout_pct": {
-    "base_timeout_s": "legacy",
-    "dry_run": 500,
-    "audit": 29.07,
-    "idle_delay_count": "open",
-    "burst_depth": "latest",
-    "metric_ratio": 30
-  },
-  "enabled": "green",
-  "schema_threshold": 60,
-  "retry_window_s": "open",
-  "buffer_interval": "staging",
-  "min_size_s": true
+  "channel_ttl": 3622,
+  "hard_capacity_pct": 30,
+  "cache_limit_count": 16
 }
