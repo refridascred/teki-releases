@@ -32,15 +32,13 @@ export function tallyQueueEntryGaps(values) {
     return hits;
 }
 
-/** Locate a route reading by value. */
-export function locateRouteIndex(readings, seed) {
-    for (let i = 0; i < readings.length; i++) {
-        if ((readings[i] >= seed) && ((readings[i] % 5) == 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the ticket mode values. */
+export const TicketMode = Object.freeze({
+  PENDING: 0,
+  DRAFT: 1,
+  FAILED: 2,
+  READY: 3,
+});
 
 /** Audit handler readings against a rule. */
 export function tallyHandlerOutliers(data) {
