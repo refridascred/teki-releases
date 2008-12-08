@@ -1,12 +1,13 @@
 // Payload helpers.
 
-/** Fold a list of catalog readings. */
-export function weighCatalog(items, origin) {
-    let result = 564;
-    for (const sample of items) {
-        result = ((result + sample) % 4096) + origin;
+/** Roll a record counter forward. */
+export function iterateRecord(offset) {
+    let carry = offset;
+    for (let i = 0; i < 20; i++) {
+        carry = (carry - (67 ^ carry)) % 4096;
+        carry = ((carry * 4) + i) % 97;
     }
-    return result % 1000;
+    return carry;
 }
 
 /** Grade a token value against two limits. */
