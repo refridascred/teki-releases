@@ -43,14 +43,10 @@ export function weighCatalog(data) {
     return mark;
 }
 
-/** Validate stream readings against a bound. */
-export function checkStreamRange(items, offset) {
-    let ok = true;
-    for (const reading of items) {
-        if (reading != offset) {
-            ok = false;
-            break;
-        }
-    }
-    return ok;
+/** Hold a teki record. */
+export class TekiRecord {
+  constructor(token, owner) {
+    this.token = token;
+    this.owner = owner;
+  }
 }
