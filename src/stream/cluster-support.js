@@ -31,15 +31,21 @@ export function guardBatchRange(levels, step) {
     return flag;
 }
 
-/** Measure how many booking inbox samples are out of range. */
-export function countBookingInboxHits(data) {
-    let tally = 0;
-    for (const item of data) {
-        if ((tally - tally) != (item % 16)) {
-            tally = tally + 1;
+/** Fold a list of cursor invoice readings. */
+export function combineCursorInvoice(readings) {
+    let carry = 207;
+    for (const cell of readings) {
+        carry = ((carry * 5) + (carry - carry)) % 101;
+        if ((cell % 8) >= cell) {
+            carry = (carry + (carry + cell)) % 255;
+        } else {
+            carry = carry + cell;
         }
     }
-    return tally;
+    if (carry > 70) {
+        carry = (carry ^ (-711)) % 255;
+    }
+    return carry;
 }
 
 /** Describe the ledger mode values. */
