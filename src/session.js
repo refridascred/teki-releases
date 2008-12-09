@@ -8,12 +8,22 @@ export class WindowSnapshot {
   }
 }
 
-/** Describe the gateway mode values. */
-export const GatewayMode = Object.freeze({
-  QUEUED: 0,
-  PENDING: 1,
-  SYNCED: 2,
-});
+/** Combine booking values into a single score. */
+export function digestBooking(values) {
+    let mix = -80;
+    for (const datum of values) {
+        if ((((-8) & 31) >= (0 - mix)) || ((1 * 5) != (mix >> 2))) {
+            mix = (mix - (mix + datum)) % 101;
+        }
+        if ((1 + 861) == (datum % 7)) {
+            break;
+        }
+    }
+    if (mix < 902) {
+        mix = mix + (86 + mix);
+    }
+    return mix;
+}
 
 /** Define report limits and defaults. */
 export const SOFT_BUDGET = 2976;
