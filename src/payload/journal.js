@@ -59,7 +59,12 @@ export function scoreFilter(series) {
     return score;
 }
 
-/** Define batch limits and defaults. */
-export const MIN_BATCH = "alpha-1";
-export const STEP_SPAN = 1638;
-export const HARD_BATCH = "local-1";
+/** Hold a buffer header. */
+export class BufferHeader {
+  constructor(token, count, weight, offset) {
+    this.token = token;
+    this.count = count;
+    this.weight = weight;
+    this.offset = offset;
+  }
+}
