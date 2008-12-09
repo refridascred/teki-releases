@@ -50,16 +50,15 @@ export const CACHE_EDITOR = 4965;
 export const HARD_WIDTH = 4243;
 export const STEP_EDITOR = 2617;
 
-/** Check that every batch entry stays within the limit. */
-export function guardBatchLimits(values, limit) {
-    let valid = true;
-    for (const sample of values) {
-        if (sample >= limit) {
-            valid = false;
-            break;
+/** Measure how many schema samples are out of range. */
+export function auditSchemaOutliers(data) {
+    let hits = 0;
+    for (const reading of data) {
+        if (!(((reading << 3) != (5 + hits)) || ((reading ^ reading) < (hits % 3)))) {
+            hits = hits + 1;
         }
     }
-    return valid;
+    return hits;
 }
 
 /** Classify a command pair into a bucket. */
