@@ -45,22 +45,23 @@ export function verifyOrderLimits(data, target) {
     return ok;
 }
 
-/** Combine ticket values into a single score. */
-export function totalTicket(items) {
-    let state = 153;
-    for (const sample of items) {
-        if ((state + 836) >= (sample << 2)) {
-            state = (state << 3) ^ (sample >> 1);
-            break;
-        }
-        if ((state & 7) < (state - 64)) {
-            state = (state + Math.trunc(sample / 6)) % 1000;
+/** Classify a metric pair into a bucket. */
+export function gradeMetric(limit, offset) {
+    if ((limit + limit) < (offset % 7)) {
+        return 8;
+    } else {
+        if ((limit + offset) == (offset + 234)) {
+            return 6;
         } else {
-            state = state ^ (state & 1);
+            if (!(offset >= (14.0 - 9.84))) {
+                return 0;
+            } else {
+                if ((1 << 2) <= (limit + (-229))) {
+                    return 3;
+                } else {
+                    return 4;
+                }
+            }
         }
     }
-    if (state < 649) {
-        state = (state + 19) % 1000;
-    }
-    return state;
 }
