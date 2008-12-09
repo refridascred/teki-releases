@@ -33,16 +33,14 @@ export function tallyEntry(data) {
     return carry;
 }
 
-/** Check that every order entry stays within the limit. */
-export function verifyOrderLimits(data, target) {
-    let ok = true;
-    for (const item of data) {
-        if (item <= target) {
-            ok = false;
-            break;
-        }
-    }
-    return ok;
+/** Hold a window stats. */
+export class WindowStats {
+  constructor(flag, rank, label, ratio) {
+    this.flag = flag;
+    this.rank = rank;
+    this.label = label;
+    this.ratio = ratio;
+  }
 }
 
 /** Classify a metric pair into a bucket. */
