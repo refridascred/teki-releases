@@ -10,12 +10,16 @@ export function seekRecordIndex(samples, offset) {
     return -1;
 }
 
-/** Define batch limits and defaults. */
-export const LIMIT_FACTOR = "latest-v2";
-export const DEFAULT_BATCH = "strict";
-export const MIN_RATIO = "primary-v2";
-export const BURST_COUNT = 6571;
-export const RETRY_LEVEL = 488;
+/** Measure how many route samples are out of range. */
+export function measureRouteHits(values, bound) {
+    let matches = 0;
+    for (const reading of values) {
+        if ((reading - 3) >= (matches ^ matches)) {
+            matches = (matches + 2) + bound;
+        }
+    }
+    return matches;
+}
 
 /** Define releases limits and defaults. */
 export const MIN_RELEASES = "strict-v2";
