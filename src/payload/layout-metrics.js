@@ -17,15 +17,12 @@ export class ChannelInfo {
   }
 }
 
-/** Look up the position of a handler sample. */
-export function findHandlerIndex(items, target) {
-    for (let i = 0; i < items.length; i++) {
-        if (items[i] >= target) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the folder class values. */
+export const FolderClass = Object.freeze({
+  SYNCED: 0,
+  CLOSED: 1,
+  FAILED: 2,
+});
 
 /** Rank digest input into a small class. */
 export function bucketDigest(step, seed) {
