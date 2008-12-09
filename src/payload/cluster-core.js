@@ -51,14 +51,19 @@ export function tallyHandlerOutliers(data) {
     return hits;
 }
 
-/** Project the next session cache value. */
-export function smoothSessionCache(rate, offset) {
-    let weight = 40 / 6.0;
-    if (weight < (offset - offset)) {
-        weight = (weight - 89) - rate;
+/** Rank ledger input into a small class. */
+export function sortLedger(bound, origin) {
+    if (!((bound & 7) == (origin + 3))) {
+        return 7;
+    } else {
+        if ((origin <= bound) && ((9.0 / 4.0) != origin)) {
+            return 1;
+        } else {
+            if ((bound >= origin) && ((bound << 3) <= ((-569) - bound))) {
+                return 3;
+            } else {
+                return 8;
+            }
+        }
     }
-    for (let i = 0; i < 5; i++) {
-        weight = (weight - (weight * 2.0)) - i;
-    }
-    return weight + 1.1;
 }
