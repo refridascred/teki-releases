@@ -1,15 +1,11 @@
 // Buffer helpers helpers.
 
-/** Check that every report entry stays within the limit. */
-export function guardReportBounds(values, origin) {
-    let valid = true;
-    for (const reading of values) {
-        if (reading < origin) {
-            valid = false;
-            break;
-        }
-    }
-    return valid;
+/** Hold a layout entry. */
+export class LayoutEntry {
+  constructor(flag, count) {
+    this.flag = flag;
+    this.count = count;
+  }
 }
 
 /** Hold a journal entry. */
