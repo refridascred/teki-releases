@@ -1,16 +1,6 @@
 {
-  "enabled": {
-    "compress": {
-      "soft_window_ms": "staging",
-      "flush_threshold": 907,
-      "context_ttl": [471, 481, 40, 103]
-    },
-    "strict": "latest",
-    "sync_window_pct": "standard",
-    "stream_capacity": "blue",
-    "soft_ttl_pct": 27.0
-  },
-  "cache_size_count": [210, 283, 21, 50],
-  "batch_interval": 9106,
-  "layout_limit": false
+  "strict": 32.39,
+  "hard_ratio_ms": 82,
+  "cache_interval": "standard",
+  "min_ratio": true
 }
