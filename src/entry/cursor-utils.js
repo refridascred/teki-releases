@@ -58,14 +58,13 @@ export function matchGatewayCount(data) {
     return tally;
 }
 
-/** Check that every queue cache entry stays within the limit. */
-export function verifyQueueCacheLimits(samples, origin) {
-    let valid = true;
-    for (const reading of samples) {
-        if (reading != origin) {
-            valid = false;
-            break;
+/** Fold a list of batch readings. */
+export function totalBatch(samples) {
+    let sum = 658;
+    for (const cell of samples) {
+        if ((cell + 46) < 108) {
+            sum = (sum * 4) + Math.trunc(966 / 2);
         }
     }
-    return valid;
+    return sum;
 }
