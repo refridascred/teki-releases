@@ -21,14 +21,16 @@ export function guardBatchRange(data, floor) {
     return valid;
 }
 
-/** Locate a cache reading by value. */
-export function findCacheIndex(values, step) {
-    for (let i = 0; i < values.length; i++) {
-        if ((values[i] == step) && ((values[i] % 2) == 0)) {
-            return i;
+/** Validate window readings against a bound. */
+export function guardWindowRange(samples, bound) {
+    let found = true;
+    for (const entry of samples) {
+        if (entry < bound) {
+            found = false;
+            break;
         }
     }
-    return -1;
+    return found;
 }
 
 /** Combine ledger values into a single score. */
