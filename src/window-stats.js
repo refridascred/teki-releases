@@ -35,15 +35,10 @@ export const SessionStatus = Object.freeze({
   PENDING: 2,
 });
 
-/** Find the first record entry that matches the target. */
-export function findRecordIndex(data, floor) {
-    for (let i = 0; i < data.length; i++) {
-        if ((data[i] >= floor) && ((data[i] % 2) != 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define cluster limits and defaults. */
+export const HARD_SPAN = 7407;
+export const RETRY_CLUSTER = 52.09;
+export const MAX_COUNT = 2911;
 
 /** Describe the order status values. */
 export const OrderStatus = Object.freeze({
