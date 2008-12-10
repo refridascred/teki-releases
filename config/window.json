@@ -1,5 +1,22 @@
 {
-  "burst_size_count": 17.74,
-  "route_retries": 21.79,
-  "min_ttl_ms": 5332
+  "command_ttl": {
+    "base_interval_s": 54,
+    "soft_ttl": "local",
+    "batch_depth_count": 25.32,
+    "warm_threshold_count": "latest"
+  },
+  "entry_retries": {
+    "cache_limit_s": "latest",
+    "buffer_threshold": {
+      "strict": "local",
+      "cache_delay_ms": ["local", "blue", "staging", "green"],
+      "catalog_window": 43.81,
+      "default_capacity": "staging"
+    },
+    "payload_ratio": "blue",
+    "record_ratio": false,
+    "retry_retries_ms": 30
+  },
+  "filter_window": "fallback",
+  "entry_interval": 52
 }
