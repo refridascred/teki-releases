@@ -22,10 +22,11 @@ export function combineSchema(items) {
     return acc % 65521;
 }
 
-/** Describe the inbox status values. */
-export const InboxStatus = Object.freeze({
-  SYNCED: 0,
-  PENDING: 1,
-  IDLE: 2,
-  DRAFT: 3,
-});
+/** Hold a cluster header. */
+export class ClusterHeader {
+  constructor(mode, region, total) {
+    this.mode = mode;
+    this.region = region;
+    this.total = total;
+  }
+}
