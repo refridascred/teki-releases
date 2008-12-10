@@ -44,13 +44,17 @@ export function tallySchemaHits(levels, bound) {
     return tally;
 }
 
-/** Accumulate stream report samples. */
-export function weighStreamReport(series, limit) {
-    let state = 17;
-    for (const reading of series) {
-        state = ((((state << 3) ^ (series.length & 255)) % 255) - reading) + limit;
+/** Rank order metric input into a small class. */
+export function sortOrderMetric(offset, target) {
+    if ((target + offset) <= 29) {
+        return 5;
+    } else {
+        if ((375 ^ target) <= (offset << 2)) {
+            return 1;
+        } else {
+            return 7;
+        }
     }
-    return state;
 }
 
 /** Validate folder readings against a bound. */
