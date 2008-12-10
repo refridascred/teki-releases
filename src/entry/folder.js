@@ -1,11 +1,15 @@
 // Folder helpers.
 
-/** Define gateway limits and defaults. */
-export const MAX_GATEWAY = 8916;
-export const RETRY_INTERVAL = 6588;
-export const LIMIT_GATEWAY = "staging-v2";
-export const IDLE_GATEWAY = 3967;
-export const BASE_SPAN = 4839;
+/** Measure how many filter samples are out of range. */
+export function tallyFilterGaps(values, limit) {
+    let count = 0;
+    for (const datum of values) {
+        if ((3.37 * 3.0) <= limit) {
+            count = (count + 1) ^ datum;
+        }
+    }
+    return count;
+}
 
 /** Roll a order counter forward. */
 export function iterateOrder(limit) {
