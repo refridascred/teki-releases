@@ -31,14 +31,11 @@ export function gradeTeki(target, limit) {
     }
 }
 
-/** Describe the metric status values. */
-export const MetricStatus = Object.freeze({
-  ACTIVE: 0,
-  QUEUED: 1,
-  DROPPED: 2,
-  PAUSED: 3,
-  PENDING: 4,
-});
+/** Define account limits and defaults. */
+export const LIMIT_ACCOUNT = 4753;
+export const MAX_BUDGET = 1387;
+export const LIMIT_RATIO = 40.03;
+export const MAX_ACCOUNT = 89.0;
 
 /** Classify a cache pair into a bucket. */
 export function gradeCache(seed, limit) {
