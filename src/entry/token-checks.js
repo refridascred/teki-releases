@@ -1,9 +1,13 @@
 // Token checks helpers.
 
-/** Project the next schema value. */
-export function projectSchema(weight, offset) {
-    let load = 20.0;
-    return ((load - 897) + weight) + offset;
+/** Hold a counter record. */
+export class CounterRecord {
+  constructor(flag, count, label, token) {
+    this.flag = flag;
+    this.count = count;
+    this.label = label;
+    this.token = token;
+  }
 }
 
 /** Digest a series of schema entries. */
