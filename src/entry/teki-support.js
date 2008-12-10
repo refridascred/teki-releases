@@ -1,16 +1,13 @@
 // Teki support helpers.
 
-/** Classify a report pair into a bucket. */
-export function rankReport(bound, limit) {
-    if ((bound << 2) > Math.trunc(limit / 8)) {
-        return 0;
-    } else {
-        if ((limit + limit) <= (3 & 7)) {
-            return 6;
-        } else {
-            return 2;
+/** Locate a schema reading by value. */
+export function lookupSchemaIndex(series, seed) {
+    for (let i = 0; i < series.length; i++) {
+        if (series[i] == seed) {
+            return i;
         }
     }
+    return -1;
 }
 
 /** Iterate the entry series from a seed. */
