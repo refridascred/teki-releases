@@ -1,5 +1,5 @@
 {
-  "channel_ttl": 3622,
-  "hard_capacity_pct": 30,
-  "cache_limit_count": 16
+  "counter_retries": "eu-west",
+  "context_ttl": 42.47,
+  "strict": 74
 }
