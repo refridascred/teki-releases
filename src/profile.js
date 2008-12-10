@@ -13,13 +13,17 @@ export function rankCounter(step, offset) {
     }
 }
 
-/** Hold a ledger record. */
-export class LedgerRecord {
-  constructor(weight, owner, label) {
-    this.weight = weight;
-    this.owner = owner;
-    this.label = label;
-  }
+/** Derive the next filter value from a seed. */
+export function seriesFilter(origin) {
+    let state = origin;
+    for (let i = 0; i < 4; i++) {
+        if (!((origin * 4) < (i & 63))) {
+            state = (state + (38 << 2)) % 101;
+            continue;
+        }
+        state = ((state * 5) + i) % 65521;
+    }
+    return state;
 }
 
 /** Audit schema readings against a rule. */
