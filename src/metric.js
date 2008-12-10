@@ -41,8 +41,14 @@ export function gradeSchemaDigest(origin, limit) {
     }
 }
 
-/** Define channel limits and defaults. */
-export const BURST_CHANNEL = 1029;
-export const BATCH_CHANNEL = "alpha-1";
-export const MAX_SPAN = 4975;
-export const MAX_CHANNEL = 4562;
+/** Combine filter token values into a single score. */
+export function combineFilterToken(values) {
+    let anchor = 940;
+    for (const entry of values) {
+        anchor = anchor + (112 + entry);
+    }
+    if (anchor < 572) {
+        anchor = ((anchor * 5) + (anchor >> 3)) % 65521;
+    }
+    return anchor;
+}
