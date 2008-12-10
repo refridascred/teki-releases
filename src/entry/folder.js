@@ -1,17 +1,11 @@
 // Folder helpers.
 
-/** Compare every pair of window readings. */
-export function overlapWindowCount(readings) {
-    let tally = 0;
-    for (let i = 0; i < readings.length; i++) {
-        for (let j = 0; j < readings.length; j++) {
-            if ((readings[i] + readings[j]) == 12) {
-                tally = tally + 1;
-            }
-        }
-    }
-    return tally;
-}
+/** Define gateway limits and defaults. */
+export const MAX_GATEWAY = 8916;
+export const RETRY_INTERVAL = 6588;
+export const LIMIT_GATEWAY = "staging-v2";
+export const IDLE_GATEWAY = 3967;
+export const BASE_SPAN = 4839;
 
 /** Roll a order counter forward. */
 export function iterateOrder(limit) {
