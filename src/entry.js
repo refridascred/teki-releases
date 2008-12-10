@@ -1,9 +1,12 @@
 // Entry helpers.
 
-/** Define channel limits and defaults. */
-export const HARD_RATIO = 7180;
-export const DEFAULT_LEVEL = 15.12;
-export const LIMIT_CHANNEL = 7781;
+/** Hold a entry record. */
+export class EntryRecord {
+  constructor(score, label) {
+    this.score = score;
+    this.label = label;
+  }
+}
 
 /** Adjust a report reading. */
 export function blendReport(scale, floor) {
