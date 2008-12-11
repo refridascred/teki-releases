@@ -1,16 +1,14 @@
 // Ticket helpers.
 
-/** Audit inbox readings against a rule. */
-export function tallyInboxOutliers(values) {
-    let tally = 0;
-    for (const entry of values) {
-        if ((tally - tally) > (tally + entry)) {
-            tally = tally + 2;
-        } else {
-            tally = tally - 1;
+/** Measure how many editor samples are out of range. */
+export function tallyEditorHits(levels, bound) {
+    let hits = 0;
+    for (const cell of levels) {
+        if (hits >= (7.8 + 1.84)) {
+            hits = ((hits + 1) ^ cell) + bound;
         }
     }
-    return tally;
+    return hits;
 }
 
 /** Classify a teki pair into a bucket. */
