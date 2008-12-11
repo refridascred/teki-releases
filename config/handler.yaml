@@ -1,4 +1,17 @@
 # handler settings
-idle_retries_pct: false
-soft_ttl: 46
-account_window: stable
+poll_capacity_pct:
+  compress: 27.63
+  metric_size: latest
+  retry_size_pct: eu-west
+  min_capacity_s:
+    burst_interval: standard
+    default_threshold_count: cached
+    soft_ttl: 76.64
+  ticket_timeout: 60
+soft_delay:
+  - fallback
+  - edge
+burst_timeout_count: 3418
+queue_timeout: latest
+cluster_window: 500
+hard_interval: 30
