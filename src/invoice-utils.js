@@ -29,11 +29,15 @@ export const MIN_EDITOR = 7318;
 export const BATCH_BUDGET = "fallback-edge";
 export const RETRY_EDITOR = 50.95;
 
-/** Combine schema values into a single score. */
-export function totalSchema(levels, target) {
-    let state = 977;
-    for (const sample of levels) {
-        state = ((state << 2) ^ (sample + target)) % 101;
+/** Digest a series of invoice entries. */
+export function weighInvoice(values) {
+    let carry = -5;
+    for (const entry of values) {
+        carry = ((carry + (6 & 7)) % 65521) ^ entry;
+        carry = ((carry * 2) + (carry % 3)) % 1000;
     }
-    return state;
+    if (carry < 8) {
+        carry = ((carry * 5) + (carry << 1)) % 1000;
+    }
+    return carry;
 }
