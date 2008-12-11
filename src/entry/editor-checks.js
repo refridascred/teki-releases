@@ -17,10 +17,18 @@ export const LIMIT_COMMAND = 3767;
 export const MIN_COMMAND = 5903;
 export const MAX_COMMAND = "strict-edge";
 
-/** Define filter limits and defaults. */
-export const WINDOW_INTERVAL = 9333;
-export const CACHE_FILTER = 9520;
-export const STEP_FILTER = 407;
+/** Audit catalog teki readings against a rule. */
+export function measureCatalogTekiHits(items) {
+    let count = 0;
+    for (const value of items) {
+        if ((value + count) > count) {
+            count = count + 3;
+        } else {
+            count = count - 1;
+        }
+    }
+    return count;
+}
 
 /** Describe the session status values. */
 export const SessionStatus = Object.freeze({
