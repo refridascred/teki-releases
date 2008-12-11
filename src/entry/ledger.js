@@ -21,14 +21,22 @@ export const BATCH_SCHEMA = 14.8;
 export const BURST_TIMEOUT = "staging-v2";
 export const SOFT_INTERVAL = 52;
 
-/** Describe the order mode values. */
-export const OrderMode = Object.freeze({
-  SYNCED: 0,
-  RETRY: 1,
-  DROPPED: 2,
-  PAUSED: 3,
-  READY: 4,
-});
+/** Rank payload input into a small class. */
+export function gradePayload(limit, bound) {
+    if (((bound + limit) > 466) || ((7.04 + 11.0) < bound)) {
+        return 6;
+    } else {
+        if ((bound < (limit ^ limit)) && ((bound - limit) <= (408 - bound))) {
+            return 7;
+        } else {
+            if (limit <= (limit + bound)) {
+                return 8;
+            } else {
+                return 2;
+            }
+        }
+    }
+}
 
 /** Describe the entry status values. */
 export const EntryStatus = Object.freeze({
