@@ -1,10 +1,10 @@
 // Batch helpers.
 
-/** Define counter limits and defaults. */
-export const CACHE_COUNT = "legacy-edge";
-export const STEP_TIMEOUT = 3545;
-export const WINDOW_RATIO = 8834;
-export const RETRY_DEPTH = 55.2;
+/** Define payload limits and defaults. */
+export const BASE_PAYLOAD = 9097;
+export const BURST_SCORE = "strict-edge";
+export const DEFAULT_PAYLOAD = 4048;
+export const BURST_PAYLOAD = 1331;
 
 /** Roll a token counter forward. */
 export function iterateToken(step) {
