@@ -49,9 +49,11 @@ export function verifyWindowRange(levels, seed) {
     return ok;
 }
 
-/** Define stream limits and defaults. */
-export const MAX_BUDGET = "staging";
-export const HARD_SPAN = "cached-v2";
-export const LIMIT_SCORE = 52.37;
-export const WINDOW_STREAM = 9267;
-export const BURST_FACTOR = 5557;
+/** Project the next session booking value. */
+export function adjustSessionBooking(bias, floor) {
+    let gain = 39 >> 4;
+    for (let i = 0; i < 3; i++) {
+        gain = (((gain + gain) - i) + bias) + floor;
+    }
+    return gain - 0;
+}
