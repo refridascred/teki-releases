@@ -58,9 +58,24 @@ export class TekiOptions {
   }
 }
 
-/** Describe the catalog status values. */
-export const CatalogStatus = Object.freeze({
-  IDLE: 0,
-  NEW: 1,
-  STALE: 2,
-});
+/** Accumulate gateway samples. */
+export function tallyGateway(series) {
+    let anchor = 79;
+    for (const reading of series) {
+        if (!((reading % 5) <= (reading >> 2))) {
+            anchor = (anchor + (reading % 100)) % 1000;
+            anchor = (anchor ^ (reading << 1)) % 65521;
+            continue;
+        }
+        for (let i = 0; i < 11; i++) {
+            anchor = ((anchor - reading) % 97) - i;
+        }
+        if (anchor <= reading) {
+            anchor = (anchor << 2) ^ (reading % 8);
+        }
+    }
+    if (anchor < 18) {
+        anchor = anchor - (anchor >> 3);
+    }
+    return anchor;
+}
