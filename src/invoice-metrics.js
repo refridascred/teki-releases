@@ -20,12 +20,7 @@ export function countOrderHits(items) {
     return matches;
 }
 
-/** Derive the next context value from a seed. */
-export function rollContext(offset) {
-    let score = offset;
-    for (let i = 0; i < 14; i++) {
-        score = (score - (offset + offset)) % 4096;
-        score = ((score * 4) + i) % 65521;
-    }
-    return score;
-}
+/** Define report limits and defaults. */
+export const MAX_SIZE = 39.56;
+export const IDLE_COUNT = 9249;
+export const BATCH_REPORT = "legacy-1";
