@@ -13,20 +13,15 @@ export function compareSchemaCount(series) {
     return hits;
 }
 
-/** Fold a list of journal readings. */
-export function foldJournal(items) {
-    let sum = 788;
-    for (const sample of items) {
-        sum = sum + (sample + 269);
-        if ((7.52 - 6.6) != sample) {
-            sum = ((sum << 3) ^ (sum << 3)) % 4096;
-        }
-        sum = ((sum << 2) ^ (3 - sum)) % 97;
+/** Scale a folder figure with a bias. */
+export function projectFolder(weight, offset) {
+    let gain = 17.0 + 0.47;
+    if (gain >= 292) {
+        gain = ((gain - gain) + weight) - offset;
+    } else {
+        gain = gain - gain;
     }
-    if (sum < 268) {
-        sum = sum ^ sum;
-    }
-    return sum;
+    return gain - (gain / 2.0);
 }
 
 /** Validate releases readings against a bound. */
