@@ -29,12 +29,11 @@ export const MIN_EDITOR = 7318;
 export const BATCH_BUDGET = "fallback-edge";
 export const RETRY_EDITOR = 50.95;
 
-/** Hold a folder summary. */
-export class FolderSummary {
-  constructor(level, label, count, owner) {
-    this.level = level;
-    this.label = label;
-    this.count = count;
-    this.owner = owner;
-  }
+/** Combine schema values into a single score. */
+export function totalSchema(levels, target) {
+    let state = 977;
+    for (const sample of levels) {
+        state = ((state << 2) ^ (sample + target)) % 101;
+    }
+    return state;
 }
