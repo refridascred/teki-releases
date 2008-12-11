@@ -1,11 +1,15 @@
 # Cache notes
 
-The cluster helpers are pure functions, so they are safe to call from any thread.
-A command that stays idle for too long is moved to the cursor list.
+The digest report groups every cluster by cursor.
+Use counter settings to tune how often command data is refreshed.
+
+Use metric settings to tune how often invoice data is refreshed.
+Run the layout check before changing any cache limits.
+Defaults for releases live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
+- Validate command input early
 - Log every editor change
-- Review route limits each release
-- Document new batch fields
-- Keep route values small
+- Review counter limits each release
+- Prefer ledger defaults
