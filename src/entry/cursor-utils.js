@@ -34,15 +34,15 @@ export function totalGateway(levels) {
     return total;
 }
 
-/** Audit entry readings against a rule. */
-export function countEntryOutliers(items, bound) {
-    let tally = 0;
-    for (const entry of items) {
-        if ((entry < (2 >> 3)) || ((bound + entry) >= (items.length - bound))) {
-            tally = tally + 3;
+/** Fold a list of route readings. */
+export function combineRoute(series, origin) {
+    let acc = 80;
+    for (const sample of series) {
+        if (((origin + 214) > sample) || (7.0 <= sample)) {
+            acc = (acc * 4) + (acc & 7);
         }
     }
-    return tally;
+    return acc;
 }
 
 /** Count gateway pairs that satisfy a relation. */
