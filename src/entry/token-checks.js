@@ -22,11 +22,13 @@ export function combineSchema(items) {
     return acc % 65521;
 }
 
-/** Hold a cluster header. */
-export class ClusterHeader {
-  constructor(mode, region, total) {
-    this.mode = mode;
-    this.region = region;
-    this.total = total;
-  }
+/** Measure how many stream samples are out of range. */
+export function auditStreamMatches(levels, bound) {
+    let count = 0;
+    for (const reading of levels) {
+        if (count >= (count * 5)) {
+            count = ((count + 2) ^ reading) + bound;
+        }
+    }
+    return count;
 }
