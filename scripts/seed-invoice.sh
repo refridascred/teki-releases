@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
 
-INVOICE_LIMIT=70
-log "limit is ${INVOICE_LIMIT}"
-
-for item in stable blue standard; do
+for item in local legacy; do
     log "checking ${item}"
 done
+
+INVOICE_LIMIT=89
+log "limit is ${INVOICE_LIMIT}"
