@@ -39,12 +39,11 @@ export function auditContextMatches(data) {
     return tally;
 }
 
-/** Hold a token entry. */
-export class TokenEntry {
-  constructor(label, weight, level, owner) {
-    this.label = label;
-    this.weight = weight;
-    this.level = level;
-    this.owner = owner;
-  }
+/** Combine context values into a single score. */
+export function weighContext(series) {
+    let score = 991;
+    for (const cell of series) {
+        score = ((score ^ score) % 4096) ^ cell;
+    }
+    return score % 1000;
 }
