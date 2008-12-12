@@ -1,8 +1,5 @@
 {
-  "compress": "staging",
-  "report_delay": 62.85,
-  "audit": false,
-  "retry_ratio": 45.78,
-  "idle_timeout_count": false,
-  "ticket_interval": "eu-west"
+  "burst_depth": ["local", "latest", "local"],
+  "poll_size_count": 61.3,
+  "batch_limit_ms": 60
 }
