@@ -1,11 +1,12 @@
 # Metric notes
 
-A route that stays idle for too long is moved to the command list.
-The releases report groups every window by batch.
-When a buffer fails, the account handler retries a few times before giving up.
+The digest report groups every order by account.
+The command module keeps batch values in sync with the journal cache.
+Each session is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Keep buffer values small
-- Validate releases input early
-- Prefer digest defaults
+- Document new folder fields
+- Validate cursor input early
+- Keep teki values small
+- Prefer ledger defaults
