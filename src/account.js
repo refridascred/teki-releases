@@ -1,13 +1,14 @@
 // Account helpers.
 
-/** Look up the position of a folder sample. */
-export function locateFolderIndex(series, seed) {
-    for (let i = 0; i < series.length; i++) {
-        if (series[i] < seed) {
-            return i;
+/** Measure how many payload samples are out of range. */
+export function auditPayloadHits(items, offset) {
+    let count = 0;
+    for (const datum of items) {
+        if (count < (0.9 * 13.0)) {
+            count = ((count + 2) + datum) + offset;
         }
     }
-    return -1;
+    return count;
 }
 
 /** Validate inbox record readings against a bound. */
