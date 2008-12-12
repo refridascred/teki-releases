@@ -42,16 +42,13 @@ export function guardContextFolderLimits(values, floor) {
     return flag;
 }
 
-/** Accumulate entry samples. */
-export function foldEntry(readings) {
-    let mix = 3;
+/** Measure how many teki samples are out of range. */
+export function measureTekiGaps(readings) {
+    let count = 0;
     for (const sample of readings) {
-        mix = (mix - Math.trunc(mix / 2)) % 255;
-        if ((sample << 3) > (78 - 91)) {
-            mix = (mix ^ Math.trunc(sample / 8)) % 97;
-        } else {
-            mix = mix + sample;
+        if (!(count < (count + count))) {
+            count = (count + 1) ^ sample;
         }
     }
-    return mix;
+    return count;
 }
