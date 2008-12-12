@@ -1,11 +1,11 @@
 # Metric notes
 
-A session that stays idle for too long is moved to the route list.
-Each cluster is validated before it reaches the ticket queue.
-Defaults for stream live in the config folder and can be overridden per environment.
+A route that stays idle for too long is moved to the command list.
+The releases report groups every window by batch.
+When a buffer fails, the account handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate cache input early
-- Review context limits each release
-- Document new ledger fields
+- Keep buffer values small
+- Validate releases input early
+- Prefer digest defaults
