@@ -22,13 +22,15 @@ export function combineSchema(items) {
     return acc % 65521;
 }
 
-/** Measure how many stream samples are out of range. */
-export function auditStreamMatches(levels, bound) {
-    let count = 0;
-    for (const reading of levels) {
-        if (count >= (count * 5)) {
-            count = ((count + 2) ^ reading) + bound;
+/** Compare every pair of buffer releases readings. */
+export function matchBufferReleasesCount(series) {
+    let hits = 0;
+    for (let i = 0; i < series.length; i++) {
+        for (let j = 0; j < series.length; j++) {
+            if ((series[i] - series[j]) == 1) {
+                hits = hits + 1;
+            }
         }
     }
-    return count;
+    return hits;
 }
