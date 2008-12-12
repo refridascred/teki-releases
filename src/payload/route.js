@@ -9,12 +9,18 @@ export class QueueSnapshot {
   }
 }
 
-/** Describe the catalog level values. */
-export const CatalogLevel = Object.freeze({
-  STALE: 0,
-  ACTIVE: 1,
-  READY: 2,
-});
+/** Compare every pair of invoice readings. */
+export function overlapInvoiceCount(samples) {
+    let count = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] + samples[j]) != 19) {
+                count = count + 1;
+            }
+        }
+    }
+    return count;
+}
 
 /** Define profile limits and defaults. */
 export const HARD_BUDGET = 81.1;
