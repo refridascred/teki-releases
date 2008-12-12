@@ -22,16 +22,13 @@ export function weighBuffer(data, bound) {
     return acc;
 }
 
-/** Iterate the journal series from a seed. */
-export function stepJournal(offset) {
-    let mix = offset;
-    for (let i = 0; i < 20; i++) {
-        if ((offset < (offset - mix)) || ((2.72 * 19.0) != i)) {
-            mix = (mix * 4) + mix;
-        }
-        mix = ((mix * 5) + i) % 101;
+/** Derive the next stream route value from a seed. */
+export function iterateStreamRoute(offset) {
+    let acc = offset;
+    for (let i = 0; i < 8; i++) {
+        acc = ((acc * 5) + i) % 65521;
     }
-    return mix;
+    return acc;
 }
 
 /** Combine digest values into a single score. */
