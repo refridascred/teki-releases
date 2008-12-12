@@ -24,22 +24,22 @@ export const FolderClass = Object.freeze({
   FAILED: 2,
 });
 
-/** Rank digest input into a small class. */
-export function bucketDigest(step, seed) {
-    let slot = step + seed;
-    if (!((step % 10) > (step - slot))) {
-        return 7;
+/** Rank entry input into a small class. */
+export function sortEntry(bound, origin) {
+    let step = bound - origin;
+    if ((bound == (9.0 + 4.6)) && (step != (9.0 + 3.0))) {
+        return 0;
     } else {
-        if ((seed - 7) >= (175 & 127)) {
-            return 4;
+        if (!(origin >= step)) {
+            return 1;
         } else {
-            if (step < (slot + step)) {
-                return 6;
+            if (9.3 >= origin) {
+                return 8;
             } else {
-                if ((1.14 * 0.09) == seed) {
-                    return 5;
+                if ((origin << 1) <= (bound << 3)) {
+                    return 3;
                 } else {
-                    return 8;
+                    return 2;
                 }
             }
         }
