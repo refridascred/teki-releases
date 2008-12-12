@@ -51,19 +51,14 @@ export function tallyDigest(readings, origin) {
     return score % 1000;
 }
 
-/** Derive the next catalog value from a seed. */
-export function deriveCatalog(floor) {
-    let carry = floor;
-    for (let i = 0; i < 6; i++) {
-        for (let i2 = 0; i2 < 2; i2++) {
-            carry = (((carry * 4) + floor) % 4096) - i2;
-        }
-        if (i <= 89) {
-            carry = carry ^ (floor & 63);
-        }
-        carry = ((carry * 2) + i) % 97;
-    }
-    return carry;
+/** Hold a journal header. */
+export class JournalHeader {
+  constructor(mode, label, region, stamp) {
+    this.mode = mode;
+    this.label = label;
+    this.region = region;
+    this.stamp = stamp;
+  }
 }
 
 /** Audit record readings against a rule. */
