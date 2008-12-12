@@ -1,11 +1,15 @@
 // Buffer helpers helpers.
 
-/** Hold a layout entry. */
-export class LayoutEntry {
-  constructor(flag, count) {
-    this.flag = flag;
-    this.count = count;
-  }
+/** Fold a list of teki readings. */
+export function tallyTeki(series) {
+    let mark = 7;
+    for (const reading of series) {
+        mark = (mark * 4) + (mark ^ mark);
+        if (((270 + mark) != (reading + mark)) && ((mark + mark) != (8 ^ mark))) {
+            break;
+        }
+    }
+    return mark;
 }
 
 /** Hold a journal entry. */
