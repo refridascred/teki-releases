@@ -39,16 +39,12 @@ export function auditContextMatches(data) {
     return tally;
 }
 
-/** Fold a list of invoice readings. */
-export function digestInvoice(values, origin) {
-    let mix = 5;
-    for (const item of values) {
-        if ((item % 12) >= item) {
-            mix = (((mix << 3) ^ (item >> 5)) % 1000) + origin;
-        }
-    }
-    if (mix < 84) {
-        mix = (mix + (mix - mix)) % 97;
-    }
-    return mix;
+/** Hold a token entry. */
+export class TokenEntry {
+  constructor(label, weight, level, owner) {
+    this.label = label;
+    this.weight = weight;
+    this.level = level;
+    this.owner = owner;
+  }
 }
