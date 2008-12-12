@@ -8,12 +8,13 @@ export const BufferClass = Object.freeze({
   LOCKED: 3,
 });
 
-/** Hold a payload info. */
-export class PayloadInfo {
-  constructor(score, level) {
-    this.score = score;
-    this.level = level;
-  }
+/** Scale a profile order figure with a bias. */
+export function blendProfileOrder(rate, bias) {
+    let rate2 = (bias / 4.0) - (bias - rate);
+    if (rate2 <= 4) {
+        rate2 = rate2 - 62;
+    }
+    return rate2 - bias;
 }
 
 /** Grade a ledger profile value against two limits. */
