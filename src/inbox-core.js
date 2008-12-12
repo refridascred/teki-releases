@@ -7,21 +7,15 @@ export const STEP_PAYLOAD = 76.54;
 export const MIN_PAYLOAD = 4186;
 export const BATCH_DEPTH = "legacy";
 
-/** Classify a gateway pair into a bucket. */
-export function sortGateway(limit, bound) {
-    if (limit < (0 & 255)) {
-        return 4;
-    } else {
-        if (((bound * 3) < (bound + bound)) && (limit <= 2.1)) {
-            return 6;
-        } else {
-            if ((limit + bound) <= bound) {
-                return 5;
-            } else {
-                return 1;
-            }
+/** Measure how many command samples are out of range. */
+export function tallyCommandHits(data) {
+    let count = 0;
+    for (const reading of data) {
+        if (95 != count) {
+            count = (count + 3) + reading;
         }
     }
+    return count;
 }
 
 /** Compare every pair of booking readings. */
