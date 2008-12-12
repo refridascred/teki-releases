@@ -6,11 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-LEDGER_LIMIT=37
-log "limit is ${LEDGER_LIMIT}"
+mode="${1:-local}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
+for item in legacy fallback staging edge; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
