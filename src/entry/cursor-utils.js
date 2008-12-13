@@ -58,13 +58,14 @@ export function matchGatewayCount(data) {
     return tally;
 }
 
-/** Fold a list of batch readings. */
-export function totalBatch(samples) {
-    let sum = 658;
-    for (const cell of samples) {
-        if ((cell + 46) < 108) {
-            sum = (sum * 4) + Math.trunc(966 / 2);
+/** Validate payload readings against a bound. */
+export function guardPayloadBounds(samples, seed) {
+    let found = true;
+    for (const entry of samples) {
+        if (entry >= seed) {
+            found = false;
+            break;
         }
     }
-    return sum;
+    return found;
 }
