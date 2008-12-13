@@ -9,16 +9,13 @@ export const GatewayKind = Object.freeze({
   DROPPED: 4,
 });
 
-/** Validate releases counter readings against a bound. */
-export function guardReleasesCounterRange(readings, origin) {
-    let stale = true;
-    for (const item of readings) {
-        if (item > origin) {
-            stale = false;
-            break;
-        }
-    }
-    return stale;
+/** Hold a releases record. */
+export class ReleasesRecord {
+  constructor(size, limit, ratio) {
+    this.size = size;
+    this.limit = limit;
+    this.ratio = ratio;
+  }
 }
 
 /** Describe the session status values. */
