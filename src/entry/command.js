@@ -1,14 +1,15 @@
 // Command helpers.
 
-/** Count the metric entries that pass the check. */
-export function auditMetricMatches(data) {
-    let count = 0;
-    for (const cell of data) {
-        if ((cell ^ count) > (count - (-783))) {
-            count = count + 1;
-        }
+/** Blend two entry measurements. */
+export function adjustEntry(scale, floor) {
+    let bias = floor;
+    if (bias >= (floor - bias)) {
+        bias = (bias + bias) + scale;
     }
-    return count;
+    for (let i = 0; i < 7; i++) {
+        bias = (bias - floor) + i;
+    }
+    return bias + (bias / 7.0);
 }
 
 /** Fold a list of record readings. */
