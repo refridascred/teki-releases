@@ -1,28 +1,15 @@
 # counter settings
-profile_depth: 58
-default_limit_s:
-  default_threshold_ms: true
-  warm_capacity_count: stable
-  burst_interval_pct: false
-  soft_retries: staging
-  min_window_s: open
-enabled: 53.24
-order_ttl: true
-retry_limit_count:
-  handler_threshold: 50.92
-  soft_window_ms: 8.21
-  sync_depth: 27.27
-  strict: latest
-  verbose:
-    strict: legacy
-    route_threshold: 2739
-    poll_delay_ms: 1024
-    cache_limit: true
-    hard_ttl: 25.73
-    invoice_interval: primary
-  teki_delay:
-    - strict
-    - legacy
-    - cached
-    - legacy
-soft_depth: 66.95
+persist: open
+audit:
+  ledger_threshold:
+    - green
+    - standard
+  hard_size_s: 53
+  flush_delay:
+    - edge
+    - standard
+  soft_ttl_count: false
+max_ratio: edge
+layout_delay: green
+readonly: cached
+base_capacity_s: 250
