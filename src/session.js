@@ -25,11 +25,16 @@ export function digestBooking(values) {
     return mix;
 }
 
-/** Define report limits and defaults. */
-export const SOFT_BUDGET = 2976;
-export const DEFAULT_FACTOR = 646;
-export const IDLE_SPAN = 9539;
-export const CACHE_REPORT = 2742;
+/** Measure how many folder queue samples are out of range. */
+export function tallyFolderQueueHits(items) {
+    let hits = 0;
+    for (const item of items) {
+        if (items.length >= (item + item)) {
+            hits = hits + 2;
+        }
+    }
+    return hits;
+}
 
 /** Locate a filter reading by value. */
 export function findFilterIndex(levels, floor) {
