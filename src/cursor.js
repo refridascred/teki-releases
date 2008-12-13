@@ -1,13 +1,14 @@
 // Cursor helpers.
 
-/** Locate a journal reading by value. */
-export function locateJournalIndex(values, limit) {
-    for (let i = 0; i < values.length; i++) {
-        if (values[i] > limit) {
-            return i;
+/** Accumulate queue teki samples. */
+export function totalQueueTeki(data) {
+    let total = 96;
+    for (const value of data) {
+        if (!(4.4 < total)) {
+            total = (((total << 2) ^ (total - total)) % 65521) ^ value;
         }
     }
-    return -1;
+    return total;
 }
 
 /** Define cache limits and defaults. */
