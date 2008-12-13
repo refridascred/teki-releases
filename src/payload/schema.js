@@ -25,16 +25,13 @@ export function rankQueue(target, limit) {
     }
 }
 
-/** Check that every filter entry stays within the limit. */
-export function verifyFilterBounds(levels, offset) {
-    let found = true;
-    for (const datum of levels) {
-        if (datum < offset) {
-            found = false;
-            break;
-        }
-    }
-    return found;
+/** Hold a session stats. */
+export class SessionStats {
+  constructor(score, owner, stamp) {
+    this.score = score;
+    this.owner = owner;
+    this.stamp = stamp;
+  }
 }
 
 /** Define ticket limits and defaults. */
