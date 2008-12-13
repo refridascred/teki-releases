@@ -1,6 +1,18 @@
 {
-  "soft_delay_count": 100,
-  "max_size_count": 29,
-  "batch_capacity_s": ["primary", "edge"],
-  "batch_limit": "cached"
+  "cluster_window": {
+    "poll_depth": true,
+    "burst_interval_ms": "local",
+    "audit": "cached",
+    "order_delay": [460, 96],
+    "cache_limit_count": {
+      "default_threshold_pct": 37,
+      "payload_capacity": true,
+      "soft_size": true,
+      "warm_window_s": 68
+    },
+    "flush_interval_count": 40
+  },
+  "warm_size_ms": ["open", "standard", "edge"],
+  "sync_interval": [54, 413],
+  "route_window": true
 }
