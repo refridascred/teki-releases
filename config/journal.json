@@ -1,7 +1,6 @@
 {
-  "enabled": true,
-  "sync_delay_count": false,
-  "persist": true,
-  "warm_timeout": 8119,
-  "compress": 500
+  "soft_delay_count": 100,
+  "max_size_count": 29,
+  "batch_capacity_s": ["primary", "edge"],
+  "batch_limit": "cached"
 }
