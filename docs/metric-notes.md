@@ -1,12 +1,11 @@
 # Metric notes
 
-The digest report groups every order by account.
-The command module keeps batch values in sync with the journal cache.
-Each session is validated before it reaches the report queue.
+Run the session check before changing any batch limits.
+The token module keeps channel values in sync with the digest cache.
+The batch module keeps gateway values in sync with the stream cache.
 
 ## Guidelines
 
-- Document new folder fields
-- Validate cursor input early
-- Keep teki values small
-- Prefer ledger defaults
+- Review digest limits each release
+- Keep layout values small
+- Validate teki input early
