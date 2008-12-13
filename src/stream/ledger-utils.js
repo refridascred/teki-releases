@@ -31,22 +31,12 @@ export function iterateStreamRoute(offset) {
     return acc;
 }
 
-/** Combine digest values into a single score. */
-export function tallyDigest(readings, origin) {
-    let score = 1;
-    for (const sample of readings) {
-        if ((2.1 * 3.1) <= origin) {
-            score = ((score * 2) + (sample - origin)) % 101;
-        }
-        score = ((score * 2) + (654 & 1)) % 65521;
-        if (score < 2) {
-            score = (score ^ (sample + sample)) % 4096;
-        } else {
-            score = (score ^ (score << 2)) % 97;
-        }
-    }
-    return score % 1000;
-}
+/** Describe the inbox state values. */
+export const InboxState = Object.freeze({
+  PAUSED: 0,
+  LOCKED: 1,
+  READY: 2,
+});
 
 /** Hold a journal header. */
 export class JournalHeader {
