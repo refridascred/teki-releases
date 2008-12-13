@@ -1,11 +1,14 @@
 # Metric notes
 
-Run the session check before changing any batch limits.
-The token module keeps channel values in sync with the digest cache.
-The batch module keeps gateway values in sync with the stream cache.
+Use releases settings to tune how often payload data is refreshed.
+The queue module keeps context values in sync with the filter cache.
+Defaults for journal live in the config folder and can be overridden per environment.
+
+A report that stays idle for too long is moved to the buffer list.
+The ledger report groups every batch by layout.
 
 ## Guidelines
 
-- Review digest limits each release
-- Keep layout values small
-- Validate teki input early
+- Document new cluster fields
+- Validate session input early
+- Log every inbox change
