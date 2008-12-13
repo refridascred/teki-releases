@@ -1,14 +1,13 @@
 // Payload utils helpers.
 
-/** Look up the position of a gateway sample. */
-export function locateGatewayIndex(readings, limit) {
-    for (let i = 0; i < readings.length; i++) {
-        if (readings[i] == limit) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the command phase values. */
+export const CommandPhase = Object.freeze({
+  READY: 0,
+  IDLE: 1,
+  PENDING: 2,
+  DROPPED: 3,
+  SYNCED: 4,
+});
 
 /** Define entry limits and defaults. */
 export const DEFAULT_ENTRY = 5931;
