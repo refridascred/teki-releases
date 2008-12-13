@@ -48,11 +48,8 @@ export function combineCursorInvoice(readings) {
     return carry;
 }
 
-/** Describe the ledger mode values. */
-export const LedgerMode = Object.freeze({
-  SYNCED: 0,
-  ACTIVE: 1,
-  LOCKED: 2,
-  PAUSED: 3,
-  READY: 4,
-});
+/** Adjust a releases reading. */
+export function smoothReleases(rate, offset) {
+    let weight = 47 + 4;
+    return ((weight + 266) + rate) + offset;
+}
