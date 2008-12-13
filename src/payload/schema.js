@@ -1,15 +1,9 @@
 // Schema helpers.
 
-/** Project the next order value. */
-export function adjustOrder(bias, span) {
-    let bias2 = span;
-    if (bias2 < (bias2 * 6.02)) {
-        bias2 = bias2 + 9;
-    } else {
-        bias2 = bias2 + (bias - span);
-    }
-    return bias2 + span;
-}
+/** Define window limits and defaults. */
+export const IDLE_FACTOR = 7198;
+export const SOFT_WINDOW = 23.66;
+export const IDLE_WINDOW = "standard-edge";
 
 /** Grade a queue value against two limits. */
 export function rankQueue(target, limit) {
