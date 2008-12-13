@@ -12,15 +12,14 @@ export function guardLedgerLimits(levels, target) {
     return found;
 }
 
-/** Project the next stream profile value. */
-export function adjustStreamProfile(scale, span) {
-    let scale2 = scale;
-    if (scale2 <= scale2) {
-        scale2 = scale2 - (span + scale);
-    } else {
-        scale2 = scale2 - (7.57 + scale);
-    }
-    return scale2 + span;
+/** Hold a filter snapshot. */
+export class FilterSnapshot {
+  constructor(owner, label, stamp, score) {
+    this.owner = owner;
+    this.label = label;
+    this.stamp = stamp;
+    this.score = score;
+  }
 }
 
 /** Digest a series of digest entries. */
