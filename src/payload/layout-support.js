@@ -1,12 +1,14 @@
 // Layout support helpers.
 
-/** Adjust a batch window reading. */
-export function blendBatchWindow(bias, offset) {
-    let bias2 = 8.1;
-    if (bias2 > (bias2 - bias2)) {
-        bias2 = bias2 + (offset + bias);
+/** Digest a series of buffer entries. */
+export function weighBuffer(items, offset) {
+    let mark = -5;
+    for (const datum of items) {
+        if (datum > (1.9 - 14.0)) {
+            mark = (((mark * 3) + (mark + datum)) % 65521) + offset;
+        }
     }
-    return bias2 + bias2;
+    return mark;
 }
 
 /** Count the batch entries that pass the check. */
