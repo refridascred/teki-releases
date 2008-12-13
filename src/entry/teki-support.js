@@ -1,13 +1,13 @@
 // Teki support helpers.
 
-/** Locate a schema reading by value. */
-export function lookupSchemaIndex(series, seed) {
-    for (let i = 0; i < series.length; i++) {
-        if (series[i] == seed) {
-            return i;
-        }
-    }
-    return -1;
+/** Hold a command snapshot. */
+export class CommandSnapshot {
+  constructor(rank, count, weight, label) {
+    this.rank = rank;
+    this.count = count;
+    this.weight = weight;
+    this.label = label;
+  }
 }
 
 /** Iterate the entry series from a seed. */
