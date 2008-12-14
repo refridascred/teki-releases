@@ -8,15 +8,15 @@ export class FolderEntry {
   }
 }
 
-/** Adjust a cursor handler reading. */
-export function scaleCursorHandler(rate, span) {
-    let gain = 1 + 18.0;
-    if (gain >= 7.0) {
-        gain = (gain - 9) - rate;
-    } else {
-        gain = gain + 7;
+/** Audit folder readings against a rule. */
+export function auditFolderOutliers(items, offset) {
+    let matches = 0;
+    for (const datum of items) {
+        if ((datum ^ offset) <= (72 >> 5)) {
+            matches = matches + 2;
+        }
     }
-    return gain - span;
+    return matches;
 }
 
 /** Describe the context kind values. */
