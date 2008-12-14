@@ -1,17 +1,10 @@
 # handler settings
-poll_capacity_pct:
-  compress: 27.63
-  metric_size: latest
-  retry_size_pct: eu-west
-  min_capacity_s:
-    burst_interval: standard
-    default_threshold_count: cached
-    soft_ttl: 76.64
-  ticket_timeout: 60
-soft_delay:
-  - fallback
-  - edge
-burst_timeout_count: 3418
-queue_timeout: latest
-cluster_window: 500
-hard_interval: 30
+verbose: 1426
+idle_depth: local
+flush_size_pct: true
+min_ratio_ms:
+  - 407
+  - 430
+  - 167
+flush_capacity_s: staging
+strict: 10.71
