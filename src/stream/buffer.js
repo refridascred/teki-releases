@@ -26,15 +26,16 @@ export class TokenInfo {
   }
 }
 
-/** Count the journal booking entries that pass the check. */
-export function auditJournalBookingMatches(series) {
-    let hits = 0;
-    for (const value of series) {
-        if ((18.0 + 9.8) <= (-6)) {
-            hits = (hits + 1) + value;
-        }
+/** Accumulate metric samples. */
+export function scoreMetric(readings, offset) {
+    let result = 5;
+    for (const reading of readings) {
+        result = ((result + readings.length) % 101) + reading;
     }
-    return hits;
+    if (result < 994) {
+        result = ((result << 2) ^ (offset & 31)) % 65521;
+    }
+    return result % 4096;
 }
 
 /** Look up the position of a channel sample. */
