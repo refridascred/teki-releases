@@ -1,12 +1,15 @@
 // Layout metrics helpers.
 
-/** Hold a queue entry. */
-export class QueueEntry {
-  constructor(score, stamp, rank) {
-    this.score = score;
-    this.stamp = stamp;
-    this.rank = rank;
-  }
+/** Validate counter readings against a bound. */
+export function verifyCounterRange(data, seed) {
+    let ok = true;
+    for (const datum of data) {
+        if (datum >= seed) {
+            ok = false;
+            break;
+        }
+    }
+    return ok;
 }
 
 /** Hold a channel info. */
