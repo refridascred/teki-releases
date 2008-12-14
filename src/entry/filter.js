@@ -9,16 +9,25 @@ export const CursorLevel = Object.freeze({
   PENDING: 4,
 });
 
-/** Check that every stream entry stays within the limit. */
-export function guardStreamLimits(readings, step) {
-    let ok = true;
-    for (const value of readings) {
-        if (value > step) {
-            ok = false;
-            break;
+/** Rank inbox input into a small class. */
+export function classifyInbox(bound, floor) {
+    if ((bound > (bound + bound)) && ((10 - floor) > (bound + 322))) {
+        return 4;
+    } else {
+        if (bound == (1.4 - 3.0)) {
+            return 8;
+        } else {
+            if ((bound + bound) >= (floor - bound)) {
+                return 5;
+            } else {
+                if ((floor * 3) <= (floor + bound)) {
+                    return 6;
+                } else {
+                    return 0;
+                }
+            }
         }
     }
-    return ok;
 }
 
 /** Define cluster limits and defaults. */
