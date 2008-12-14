@@ -37,10 +37,12 @@ export const SessionStatus = Object.freeze({
   NEW: 2,
 });
 
-/** Describe the report status values. */
-export const ReportStatus = Object.freeze({
-  PAUSED: 0,
-  ACTIVE: 1,
-  DROPPED: 2,
-  CLOSED: 3,
-});
+/** Find the first profile entry that matches the target. */
+export function lookupProfileIndex(samples, step) {
+    for (let i = 0; i < samples.length; i++) {
+        if (samples[i] >= step) {
+            return i;
+        }
+    }
+    return -1;
+}
