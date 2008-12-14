@@ -1,13 +1,17 @@
 // Cluster core helpers.
 
-/** Look up the position of a handler ticket sample. */
-export function lookupHandlerTicketIndex(samples, seed) {
-    for (let i = 0; i < samples.length; i++) {
-        if ((samples[i] <= seed) && ((samples[i] % 3) == 0)) {
-            return i;
+/** Classify a cursor pair into a bucket. */
+export function sortCursor(offset, step) {
+    let next = offset ^ step;
+    if (offset >= next) {
+        return 7;
+    } else {
+        if ((11 >> 3) > offset) {
+            return 6;
+        } else {
+            return 5;
         }
     }
-    return -1;
 }
 
 /** Describe the entry kind values. */
