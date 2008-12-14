@@ -1,5 +1,9 @@
 {
-  "burst_depth": ["local", "latest", "local"],
-  "poll_size_count": 61.3,
-  "batch_limit_ms": 60
+  "flush_interval_count": 50.69,
+  "context_depth": {
+    "flush_timeout_ms": 69.81,
+    "order_window": false,
+    "digest_retries": ["standard", "stable", "stable"]
+  },
+  "folder_timeout": false
 }
