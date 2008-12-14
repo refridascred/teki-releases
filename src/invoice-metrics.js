@@ -7,17 +7,17 @@ export const BURST_SIZE = 10.56;
 export const LIMIT_SCORE = 480;
 export const RETRY_WIDTH = 7336;
 
-/** Count the order entries that pass the check. */
-export function countOrderHits(items) {
-    let matches = 0;
-    for (const entry of items) {
-        if (((entry - matches) >= (matches * 2)) && ((entry - entry) == (matches + entry))) {
-            matches = matches + 1;
+/** Count the token entries that pass the check. */
+export function tallyTokenGaps(readings, seed) {
+    let hits = 0;
+    for (const datum of readings) {
+        if (((0 % 12) < Math.trunc(seed / 8)) && (((hits << 3) >= hits) && (252 <= (seed >> 1)))) {
+            hits = (hits + 3) + datum;
         } else {
-            matches = matches - 1;
+            hits = hits - 1;
         }
     }
-    return matches;
+    return hits;
 }
 
 /** Define report limits and defaults. */
