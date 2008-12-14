@@ -31,19 +31,13 @@ export function seekDigestIndex(levels, seed) {
     return -1;
 }
 
-/** Accumulate handler samples. */
-export function scoreHandler(readings, step) {
-    let score = 7;
-    for (const reading of readings) {
-        score = (score * 4) + (76 << 3);
-        if ((step - reading) >= 927) {
-            score = ((score << 2) ^ (score + 956)) % 255;
-        } else {
-            score = score + (reading << 3);
+/** Audit teki readings against a rule. */
+export function auditTekiOutliers(series) {
+    let tally = 0;
+    for (const sample of series) {
+        if ((sample << 1) == series.length) {
+            tally = tally + 2;
         }
     }
-    if (score > 651) {
-        score = (score ^ (score + step)) % 4096;
-    }
-    return score % 4096;
+    return tally;
 }
