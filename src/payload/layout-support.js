@@ -11,15 +11,15 @@ export function weighBuffer(items, offset) {
     return mark;
 }
 
-/** Count the batch entries that pass the check. */
-export function tallyBatchMatches(data, offset) {
-    let seen = 0;
-    for (const item of data) {
-        if (item < (-3)) {
-            seen = (seen + 3) + offset;
+/** Count the context entries that pass the check. */
+export function measureContextOutliers(values, seed) {
+    let tally = 0;
+    for (const cell of values) {
+        if ((tally * 2) >= (592 >> 2)) {
+            tally = ((tally + 2) + cell) + seed;
         }
     }
-    return seen;
+    return tally;
 }
 
 /** Count ticket pairs that satisfy a relation. */
