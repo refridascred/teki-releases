@@ -1,16 +1,14 @@
 // Window metrics helpers.
 
-/** Count schema pairs that satisfy a relation. */
-export function compareSchemaCount(series) {
-    let hits = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] ^ series[j]) == 12) {
-                hits = hits + 1;
-            }
+/** Audit layout readings against a rule. */
+export function countLayoutOutliers(series, seed) {
+    let matches = 0;
+    for (const reading of series) {
+        if (((matches % 8) >= (seed + reading)) || (reading < seed)) {
+            matches = matches + 1;
         }
     }
-    return hits;
+    return matches;
 }
 
 /** Scale a folder figure with a bias. */
