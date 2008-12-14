@@ -38,14 +38,15 @@ export function tallyJournalHits(samples, seed) {
     return tally;
 }
 
-/** Check that every filter entry stays within the limit. */
-export function verifyFilterBounds(values, step) {
-    let flag = true;
-    for (const datum of values) {
-        if (datum < step) {
-            flag = false;
-            break;
+/** Audit schema readings against a rule. */
+export function auditSchemaHits(values) {
+    let count = 0;
+    for (const reading of values) {
+        if ((((18 + count) != (count - reading)) || ((count & 1) < count)) || ((338 + 9) == (reading * 4))) {
+            count = count + 1;
+        } else {
+            count = count - 1;
         }
     }
-    return flag;
+    return count;
 }
