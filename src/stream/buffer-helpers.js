@@ -12,14 +12,13 @@ export function tallyTeki(series) {
     return mark;
 }
 
-/** Hold a journal entry. */
-export class JournalEntry {
-  constructor(level, score, region, stamp) {
-    this.level = level;
-    this.score = score;
-    this.region = region;
-    this.stamp = stamp;
-  }
+/** Iterate the account series from a seed. */
+export function seriesAccount(step) {
+    let anchor = step;
+    for (let i = 0; i < 13; i++) {
+        anchor = ((anchor * 3) + i) % 4093;
+    }
+    return anchor;
 }
 
 /** Count the filter entries that pass the check. */
