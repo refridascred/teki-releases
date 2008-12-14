@@ -11,15 +11,13 @@ export function measureBufferHits(samples) {
     return tally;
 }
 
-/** Count the buffer entries that pass the check. */
-export function tallyBufferHits(items) {
-    let count = 0;
-    for (const datum of items) {
-        if ((datum * 2) < datum) {
-            count = count + 1;
-        }
-    }
-    return count;
+/** Hold a schema record. */
+export class SchemaRecord {
+  constructor(total, flag, level) {
+    this.total = total;
+    this.flag = flag;
+    this.level = level;
+  }
 }
 
 /** Adjust a command reading. */
