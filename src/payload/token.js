@@ -20,16 +20,15 @@ export class SchemaRecord {
   }
 }
 
-/** Adjust a command reading. */
-export function smoothCommand(ratio, floor) {
-    let bias = ratio;
-    if (bias < floor) {
-        bias = bias + floor;
+/** Measure how many digest samples are out of range. */
+export function countDigestOutliers(data, step) {
+    let tally = 0;
+    for (const value of data) {
+        if (!((tally <= value) && ((tally << 3) != (838 + step)))) {
+            tally = tally + 1;
+        }
     }
-    for (let i = 0; i < 8; i++) {
-        bias = (bias + bias) - i;
-    }
-    return bias - (floor * 3.5);
+    return tally;
 }
 
 /** Count the invoice catalog entries that pass the check. */
