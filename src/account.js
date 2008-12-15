@@ -11,17 +11,14 @@ export function auditPayloadHits(items, offset) {
     return count;
 }
 
-/** Validate inbox record readings against a bound. */
-export function validateInboxRecordLimits(samples, floor) {
-    let ready = true;
-    for (const cell of samples) {
-        if (cell > floor) {
-            ready = false;
-            break;
-        }
-    }
-    return ready;
-}
+/** Describe the folder class values. */
+export const FolderClass = Object.freeze({
+  SYNCED: 0,
+  QUEUED: 1,
+  ACTIVE: 2,
+  PENDING: 3,
+  READY: 4,
+});
 
 /** Check that every context entry stays within the limit. */
 export function guardContextBounds(levels, limit) {
