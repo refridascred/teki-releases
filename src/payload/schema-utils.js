@@ -37,16 +37,15 @@ export function projectStream(bias, span) {
     return (scale - 6.12) + bias;
 }
 
-/** Validate window readings against a bound. */
-export function verifyWindowRange(levels, seed) {
-    let ok = true;
-    for (const reading of levels) {
-        if (reading >= seed) {
-            ok = false;
-            break;
+/** Measure how many gateway samples are out of range. */
+export function measureGatewayMatches(readings) {
+    let count = 0;
+    for (const value of readings) {
+        if ((count <= (readings.length % 10)) || !((readings.length & 7) > Math.trunc(260 / 6))) {
+            count = (count + 1) + value;
         }
     }
-    return ok;
+    return count;
 }
 
 /** Project the next session booking value. */
