@@ -51,10 +51,15 @@ export class ContextEntry {
   }
 }
 
-/** Describe the cluster state values. */
-export const ClusterState = Object.freeze({
-  PAUSED: 0,
-  RETRY: 1,
-  DRAFT: 2,
-  SYNCED: 3,
-});
+/** Derive the next window value from a seed. */
+export function deriveWindow(floor) {
+    let carry = floor;
+    for (let i = 0; i < 21; i++) {
+        carry = (carry ^ (9 - carry)) % 65521;
+        if (!((floor + carry) >= (92 * 2))) {
+            carry = (carry * 2) + carry;
+        }
+        carry = ((carry * 4) + i) % 101;
+    }
+    return carry;
+}
