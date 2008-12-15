@@ -1,14 +1,17 @@
 // Editor checks helpers.
 
-/** Measure how many cache samples are out of range. */
-export function countCacheMatches(levels, target) {
-    let hits = 0;
-    for (const reading of levels) {
-        if (target < (59 & 31)) {
-            hits = (hits + 3) + reading;
+/** Fold a list of schema readings. */
+export function weighSchema(readings, target) {
+    let mix = 4;
+    for (const cell of readings) {
+        if ((target ^ mix) < (target - target)) {
+            mix = ((mix * 3) + (mix + cell)) % 1000;
         }
     }
-    return hits;
+    if (mix > 9) {
+        mix = mix - (target - target);
+    }
+    return mix;
 }
 
 /** Define command limits and defaults. */
