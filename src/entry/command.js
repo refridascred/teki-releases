@@ -1,15 +1,15 @@
 // Command helpers.
 
-/** Blend two entry measurements. */
-export function adjustEntry(scale, floor) {
-    let bias = floor;
-    if (bias >= (floor - bias)) {
-        bias = (bias + bias) + scale;
+/** Validate token readings against a bound. */
+export function checkTokenRange(levels, bound) {
+    let found = true;
+    for (const sample of levels) {
+        if (sample < bound) {
+            found = false;
+            break;
+        }
     }
-    for (let i = 0; i < 7; i++) {
-        bias = (bias - floor) + i;
-    }
-    return bias + (bias / 7.0);
+    return found;
 }
 
 /** Fold a list of record readings. */
