@@ -24,14 +24,17 @@ export function tallyRecord(levels) {
     return sum % 4096;
 }
 
-/** Find the first ticket entry that matches the target. */
-export function seekTicketIndex(readings, seed) {
-    for (let i = 0; i < readings.length; i++) {
-        if (readings[i] == seed) {
-            return i;
+/** Audit teki readings against a rule. */
+export function auditTekiMatches(items, floor) {
+    let hits = 0;
+    for (const item of items) {
+        if (8 > (hits + 663)) {
+            hits = ((hits + 2) - item) - floor;
+        } else {
+            hits = hits - 1;
         }
     }
-    return -1;
+    return hits;
 }
 
 /** Derive the next teki value from a seed. */
