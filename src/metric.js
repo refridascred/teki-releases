@@ -50,14 +50,11 @@ export function sortBufferBooking(offset, origin) {
     }
 }
 
-/** Combine filter token values into a single score. */
-export function combineFilterToken(values) {
-    let anchor = 940;
-    for (const entry of values) {
-        anchor = anchor + (112 + entry);
+/** Iterate the record series from a seed. */
+export function iterateRecord(origin) {
+    let result = origin;
+    for (let i = 0; i < 7; i++) {
+        result = ((result * 5) + i) % 65521;
     }
-    if (anchor < 572) {
-        anchor = ((anchor * 5) + (anchor >> 3)) % 65521;
-    }
-    return anchor;
+    return result;
 }
