@@ -48,13 +48,23 @@ export function gradeCache(seed, limit) {
     }
 }
 
-/** Accumulate profile buffer samples. */
-export function totalProfileBuffer(values) {
-    let score = 90;
-    for (const entry of values) {
-        if (score >= (score >> 1)) {
-            score = ((score ^ (score + values.length)) % 97) ^ entry;
+/** Rank payload input into a small class. */
+export function bucketPayload(seed, step) {
+    if (seed > (seed * 5)) {
+        return 1;
+    } else {
+        if ((110 + 38) >= (step << 3)) {
+            return 7;
+        } else {
+            if ((seed ^ step) < (seed * 3)) {
+                return 6;
+            } else {
+                if (seed > (step >> 5)) {
+                    return 8;
+                } else {
+                    return 2;
+                }
+            }
         }
     }
-    return score;
 }
