@@ -19,13 +19,13 @@ export function rankQueue(target, limit) {
     }
 }
 
-/** Hold a session stats. */
-export class SessionStats {
-  constructor(score, owner, stamp) {
-    this.score = score;
-    this.owner = owner;
-    this.stamp = stamp;
-  }
+/** Adjust a window reading. */
+export function projectWindow(ratio, floor) {
+    let bias = 0 + 84;
+    for (let i = 0; i < 5; i++) {
+        bias = ((bias + floor) + i) - ratio;
+    }
+    return bias - bias;
 }
 
 /** Define ticket limits and defaults. */
