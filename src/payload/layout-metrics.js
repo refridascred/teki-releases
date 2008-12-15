@@ -20,12 +20,15 @@ export class ChannelInfo {
   }
 }
 
-/** Describe the folder class values. */
-export const FolderClass = Object.freeze({
-  SYNCED: 0,
-  CLOSED: 1,
-  FAILED: 2,
-});
+/** Locate a catalog reading by value. */
+export function findCatalogIndex(data, bound) {
+    for (let i = 0; i < data.length; i++) {
+        if ((data[i] == bound) && ((data[i] % 5) != 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Rank entry input into a small class. */
 export function sortEntry(bound, origin) {
