@@ -28,15 +28,24 @@ export class ChannelInfo {
   }
 }
 
-/** Classify a schema digest pair into a bucket. */
-export function gradeSchemaDigest(origin, limit) {
-    if (!((origin + limit) <= (77 * 5))) {
-        return 0;
+/** Classify a buffer booking pair into a bucket. */
+export function sortBufferBooking(offset, origin) {
+    let cur = offset + origin;
+    if (((origin % 16) >= 9) && (origin > (412 - offset))) {
+        return 5;
     } else {
-        if (((limit - limit) >= limit) && ((limit + origin) > (origin + origin))) {
+        if ((origin & 15) < cur) {
             return 4;
         } else {
-            return 6;
+            if ((offset << 1) <= (offset * 4)) {
+                return 8;
+            } else {
+                if ((cur >> 5) >= (offset ^ origin)) {
+                    return 2;
+                } else {
+                    return 3;
+                }
+            }
         }
     }
 }
