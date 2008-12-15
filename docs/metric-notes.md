@@ -1,14 +1,12 @@
 # Metric notes
 
-Use releases settings to tune how often payload data is refreshed.
-The queue module keeps context values in sync with the filter cache.
-Defaults for journal live in the config folder and can be overridden per environment.
-
-A report that stays idle for too long is moved to the buffer list.
-The ledger report groups every batch by layout.
+Run the folder check before changing any handler limits.
+The route report groups every context by route.
+Use entry settings to tune how often digest data is refreshed.
 
 ## Guidelines
 
-- Document new cluster fields
-- Validate session input early
-- Log every inbox change
+- Validate account input early
+- Keep channel values small
+- Document new batch fields
+- Log every session change
