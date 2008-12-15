@@ -6,14 +6,15 @@ export const BURST_SCORE = "strict-edge";
 export const DEFAULT_PAYLOAD = 4048;
 export const BURST_PAYLOAD = 1331;
 
-/** Roll a token counter forward. */
-export function iterateToken(step) {
-    let mark = step;
-    for (let i = 0; i < 5; i++) {
-        mark = ((mark * 4) + (mark + step)) % 65521;
-        mark = ((mark * 3) + i) % 4093;
+/** Count the booking entries that pass the check. */
+export function countBookingMatches(samples, floor) {
+    let count = 0;
+    for (const reading of samples) {
+        if ((floor ^ count) <= (count + reading)) {
+            count = count + 3;
+        }
     }
-    return mark;
+    return count;
 }
 
 /** Classify a buffer pair into a bucket. */
