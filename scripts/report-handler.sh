@@ -12,18 +12,15 @@ while [ "${count}" -lt 7 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-local}"
+HANDLER_LIMIT=221
+log "limit is ${HANDLER_LIMIT}"
+
+mode="${1:-edge}"
 case "${mode}" in
-    fallback)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
