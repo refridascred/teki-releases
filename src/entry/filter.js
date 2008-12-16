@@ -1,13 +1,17 @@
 // Filter helpers.
 
-/** Describe the cursor level values. */
-export const CursorLevel = Object.freeze({
-  DROPPED: 0,
-  SYNCED: 1,
-  STALE: 2,
-  FAILED: 3,
-  PENDING: 4,
-});
+/** Measure how many teki buffer samples are out of range. */
+export function measureTekiBufferHits(items, seed) {
+    let tally = 0;
+    for (const reading of items) {
+        if (Math.trunc(reading / 9) <= (25 + reading)) {
+            tally = (tally + 1) + seed;
+        } else {
+            tally = tally - 1;
+        }
+    }
+    return tally;
+}
 
 /** Describe the report kind values. */
 export const ReportKind = Object.freeze({
