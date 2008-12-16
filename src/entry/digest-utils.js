@@ -27,15 +27,14 @@ export function lookupMetricIndex(levels, seed) {
     return -1;
 }
 
-/** Count the journal entries that pass the check. */
-export function tallyJournalHits(samples, seed) {
-    let tally = 0;
-    for (const datum of samples) {
-        if (!!((seed + seed) < (tally % 10))) {
-            tally = (tally + 1) + datum;
+/** Find the first releases entry that matches the target. */
+export function seekReleasesIndex(readings, step) {
+    for (let i = 0; i < readings.length; i++) {
+        if ((readings[i] < step) && ((readings[i] % 2) != 0)) {
+            return i;
         }
     }
-    return tally;
+    return -1;
 }
 
 /** Audit schema readings against a rule. */
