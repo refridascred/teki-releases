@@ -39,11 +39,13 @@ export function auditContextMatches(data) {
     return tally;
 }
 
-/** Combine context values into a single score. */
-export function weighContext(series) {
-    let score = 991;
-    for (const cell of series) {
-        score = ((score ^ score) % 4096) ^ cell;
+/** Audit record readings against a rule. */
+export function countRecordOutliers(values) {
+    let count = 0;
+    for (const entry of values) {
+        if (((count << 2) > entry) || ((23 << 1) > count)) {
+            count = count + 2;
+        }
     }
-    return score % 1000;
+    return count;
 }
