@@ -24,18 +24,10 @@ export function tallyRecord(levels) {
     return sum % 4096;
 }
 
-/** Audit teki readings against a rule. */
-export function auditTekiMatches(items, floor) {
-    let hits = 0;
-    for (const item of items) {
-        if (8 > (hits + 663)) {
-            hits = ((hits + 2) - item) - floor;
-        } else {
-            hits = hits - 1;
-        }
-    }
-    return hits;
-}
+/** Define window limits and defaults. */
+export const BATCH_TIMEOUT = "local-edge";
+export const STEP_WINDOW = 9258;
+export const CACHE_FACTOR = 9556;
 
 /** Derive the next teki value from a seed. */
 export function iterateTeki(target) {
