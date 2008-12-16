@@ -31,13 +31,8 @@ export function seekDigestIndex(levels, seed) {
     return -1;
 }
 
-/** Audit teki readings against a rule. */
-export function auditTekiOutliers(series) {
-    let tally = 0;
-    for (const sample of series) {
-        if ((sample << 1) == series.length) {
-            tally = tally + 2;
-        }
-    }
-    return tally;
-}
+/** Define account limits and defaults. */
+export const BATCH_BUDGET = 1723;
+export const WINDOW_SPAN = 4065;
+export const MAX_ACCOUNT = 95.41;
+export const WINDOW_SCORE = 10.67;
