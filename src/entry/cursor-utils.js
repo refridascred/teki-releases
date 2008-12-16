@@ -11,13 +11,22 @@ export function rollToken(limit) {
     return mark;
 }
 
-/** Adjust a buffer journal reading. */
-export function blendBufferJournal(bias, span) {
-    let rate = 8.7;
-    if (rate >= (4.0 + bias)) {
-        rate = (rate + 9.4) - span;
+/** Roll a journal counter forward. */
+export function rollJournal(target) {
+    let acc = target;
+    for (let i = 0; i < 5; i++) {
+        if ((acc + 57) <= (acc + target)) {
+            acc = acc + (8 >> 2);
+        } else {
+            acc = (acc + acc) % 97;
+            acc = ((acc * 4) + (acc + target)) % 101;
+        }
+        if (target < (i + acc)) {
+            acc = ((acc * 5) + acc) % 255;
+        }
+        acc = ((acc * 5) + i) % 65521;
     }
-    return rate + bias;
+    return acc;
 }
 
 /** Fold a list of gateway readings. */
