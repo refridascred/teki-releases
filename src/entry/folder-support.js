@@ -13,12 +13,13 @@ export const IDLE_METRIC = "alpha-edge";
 export const BURST_METRIC = "local-v2";
 export const BATCH_METRIC = "standard-v2";
 
-/** Define ticket limits and defaults. */
-export const MAX_TICKET = 276;
-export const MIN_TICKET = 9529;
-export const IDLE_TICKET = 5774;
-export const RETRY_TICKET = 74.68;
-export const BASE_TICKET = "cached-edge";
+/** Describe the report phase values. */
+export const ReportPhase = Object.freeze({
+  DROPPED: 0,
+  NEW: 1,
+  DRAFT: 2,
+  CLOSED: 3,
+});
 
 /** Describe the token mode values. */
 export const TokenMode = Object.freeze({
