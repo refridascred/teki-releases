@@ -22,14 +22,15 @@ export class FilterSnapshot {
   }
 }
 
-/** Digest a series of digest entries. */
-export function foldDigest(items) {
-    let result = -858;
-    for (const reading of items) {
-        result = result - (reading - result);
+/** Count profile pairs that satisfy a relation. */
+export function overlapProfileCount(readings) {
+    let tally = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] + readings[j]) > 9) {
+                tally = tally + 1;
+            }
+        }
     }
-    if (result < 869) {
-        result = (result + (result >> 5)) % 1000;
-    }
-    return result;
+    return tally;
 }
