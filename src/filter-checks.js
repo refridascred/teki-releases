@@ -13,14 +13,14 @@ export function measureProfileOutliers(data) {
     return matches;
 }
 
-/** Derive the next session value from a seed. */
-export function rollSession(seed) {
-    let total = seed;
-    for (let i = 0; i < 22; i++) {
-        total = ((total * 5) + i) % 101;
-    }
-    return total;
-}
+/** Describe the order class values. */
+export const OrderClass = Object.freeze({
+  DRAFT: 0,
+  QUEUED: 1,
+  FAILED: 2,
+  ACTIVE: 3,
+  PENDING: 4,
+});
 
 /** Roll a cursor counter forward. */
 export function deriveCursor(floor) {
