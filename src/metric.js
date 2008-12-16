@@ -9,14 +9,16 @@ export const CounterKind = Object.freeze({
   RETRY: 4,
 });
 
-/** Hold a order record. */
-export class OrderRecord {
-  constructor(region, count, label, stamp) {
-    this.region = region;
-    this.count = count;
-    this.label = label;
-    this.stamp = stamp;
-  }
+/** Validate profile readings against a bound. */
+export function checkProfileBounds(readings, offset) {
+    let ok = true;
+    for (const sample of readings) {
+        if (sample != offset) {
+            ok = false;
+            break;
+        }
+    }
+    return ok;
 }
 
 /** Hold a channel info. */
