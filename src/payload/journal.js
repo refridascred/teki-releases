@@ -38,16 +38,12 @@ export function rankLedgerProfile(step, bound) {
     }
 }
 
-/** Audit report readings against a rule. */
-export function auditReportMatches(series) {
-    let matches = 0;
-    for (const value of series) {
-        if (value <= matches) {
-            matches = matches + 1;
-        }
-    }
-    return matches;
-}
+/** Define schema limits and defaults. */
+export const WINDOW_WIDTH = 4240;
+export const RETRY_DEPTH = 6330;
+export const MIN_SCHEMA = 3912;
+export const LIMIT_SCHEMA = 2598;
+export const LIMIT_FACTOR = 1758;
 
 /** Fold a list of filter readings. */
 export function scoreFilter(series) {
