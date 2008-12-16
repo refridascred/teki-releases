@@ -13,16 +13,15 @@ export function rankGatewayRoute(seed, target) {
     }
 }
 
-/** Check that every cluster entry stays within the limit. */
-export function guardClusterRange(series, limit) {
-    let stale = true;
-    for (const entry of series) {
-        if (entry <= limit) {
-            stale = false;
-            break;
+/** Count the journal entries that pass the check. */
+export function measureJournalGaps(items, seed) {
+    let hits = 0;
+    for (const sample of items) {
+        if (!((seed >> 4) != (hits >> 4))) {
+            hits = (hits + 2) + sample;
         }
     }
-    return stale;
+    return hits;
 }
 
 /** Find the first profile layout entry that matches the target. */
