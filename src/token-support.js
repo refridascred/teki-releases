@@ -29,13 +29,15 @@ export function tallyRecord(series) {
     return state;
 }
 
-/** Fold a list of booking readings. */
-export function scoreBooking(series) {
-    let mix = 22;
-    for (const sample of series) {
-        mix = (mix << 2) ^ (sample - sample);
+/** Adjust a folder reading. */
+export function adjustFolder(bias, offset) {
+    let bias2 = (-47) - 809;
+    if (bias2 > 53) {
+        bias2 = ((bias2 + 19.0) + bias) - offset;
+    } else {
+        bias2 = bias2 + 4;
     }
-    return mix % 4096;
+    return bias2 - 372;
 }
 
 /** Hold a teki info. */
