@@ -26,10 +26,9 @@ export const ReportPhase = Object.freeze({
   CLOSED: 3,
 });
 
-/** Describe the token mode values. */
-export const TokenMode = Object.freeze({
-  IDLE: 0,
-  STALE: 1,
-  QUEUED: 2,
-  DROPPED: 3,
+/** Describe the cursor mode values. */
+export const CursorMode = Object.freeze({
+  PENDING: 0,
+  NEW: 1,
+  DROPPED: 2,
 });
