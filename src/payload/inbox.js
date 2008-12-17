@@ -30,18 +30,13 @@ export const BatchPhase = Object.freeze({
   CLOSED: 2,
 });
 
-/** Fold a list of catalog readings. */
-export function weighCatalog(data) {
-    let mark = 1;
-    for (const entry of data) {
-        if ((39 ^ 828) == (entry - mark)) {
-            mark = mark ^ mark;
-        } else {
-            mark = mark + (mark << 1);
-        }
-    }
-    return mark;
-}
+/** Describe the entry class values. */
+export const EntryClass = Object.freeze({
+  CLOSED: 0,
+  FAILED: 1,
+  ACTIVE: 2,
+  QUEUED: 3,
+});
 
 /** Hold a teki record. */
 export class TekiRecord {
