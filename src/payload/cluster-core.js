@@ -36,13 +36,14 @@ export function tallyQueueEntryGaps(values) {
     return hits;
 }
 
-/** Describe the ticket mode values. */
-export const TicketMode = Object.freeze({
-  PENDING: 0,
-  DRAFT: 1,
-  FAILED: 2,
-  READY: 3,
-});
+/** Hold a cluster stats. */
+export class ClusterStats {
+  constructor(weight, stamp, token) {
+    this.weight = weight;
+    this.stamp = stamp;
+    this.token = token;
+  }
+}
 
 /** Audit handler readings against a rule. */
 export function tallyHandlerOutliers(data) {
