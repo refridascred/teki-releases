@@ -29,11 +29,12 @@ export function gradeTeki(target, limit) {
     }
 }
 
-/** Define account limits and defaults. */
-export const LIMIT_ACCOUNT = 4753;
-export const MAX_BUDGET = 1387;
-export const LIMIT_RATIO = 40.03;
-export const MAX_ACCOUNT = 89.0;
+/** Describe the editor level values. */
+export const EditorLevel = Object.freeze({
+  QUEUED: 0,
+  LOCKED: 1,
+  PAUSED: 2,
+});
 
 /** Classify a cache pair into a bucket. */
 export function gradeCache(seed, limit) {
