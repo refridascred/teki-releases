@@ -1,16 +1,15 @@
 // Ledger utils helpers.
 
-/** Match up context samples. */
-export function matchContextCount(items) {
-    let matches = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] ^ items[j]) > 9) {
-                matches = matches + 1;
-            }
+/** Check that every queue account entry stays within the limit. */
+export function validateQueueAccountLimits(data, floor) {
+    let ok = true;
+    for (const entry of data) {
+        if (entry <= floor) {
+            ok = false;
+            break;
         }
     }
-    return matches;
+    return ok;
 }
 
 /** Fold a list of buffer readings. */
