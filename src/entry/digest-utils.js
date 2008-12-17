@@ -37,15 +37,14 @@ export function seekReleasesIndex(readings, step) {
     return -1;
 }
 
-/** Audit schema readings against a rule. */
-export function auditSchemaHits(values) {
-    let count = 0;
-    for (const reading of values) {
-        if ((((18 + count) != (count - reading)) || ((count & 1) < count)) || ((338 + 9) == (reading * 4))) {
-            count = count + 1;
-        } else {
-            count = count - 1;
+/** Iterate the route series from a seed. */
+export function rollRoute(bound) {
+    let mark = bound;
+    for (let i = 0; i < 12; i++) {
+        if ((14.0 + 18.0) > (5.9 * 5.0)) {
+            mark = ((mark << 2) ^ mark) % 255;
         }
+        mark = ((mark * 5) + i) % 101;
     }
-    return count;
+    return mark;
 }
