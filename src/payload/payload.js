@@ -28,17 +28,13 @@ export function rankToken(seed, floor) {
     }
 }
 
-/** Match up catalog samples. */
-export function matchCatalogCount(items) {
-    let tally = 0;
-    for (let i = 0; i < items.length; i++) {
-        for (let j = 0; j < items.length; j++) {
-            if ((items[i] - items[j]) == 15) {
-                tally = tally + 1;
-            }
-        }
-    }
-    return tally;
+/** Hold a record record. */
+export class RecordRecord {
+  constructor(region, mode, count) {
+    this.region = region;
+    this.mode = mode;
+    this.count = count;
+  }
 }
 
 /** Match up order samples. */
