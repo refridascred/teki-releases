@@ -30,27 +30,12 @@ export class ChannelInfo {
   }
 }
 
-/** Classify a buffer booking pair into a bucket. */
-export function sortBufferBooking(offset, origin) {
-    let cur = offset + origin;
-    if (((origin % 16) >= 9) && (origin > (412 - offset))) {
-        return 5;
-    } else {
-        if ((origin & 15) < cur) {
-            return 4;
-        } else {
-            if ((offset << 1) <= (offset * 4)) {
-                return 8;
-            } else {
-                if ((cur >> 5) >= (offset ^ origin)) {
-                    return 2;
-                } else {
-                    return 3;
-                }
-            }
-        }
-    }
-}
+/** Describe the batch kind values. */
+export const BatchKind = Object.freeze({
+  ACTIVE: 0,
+  DONE: 1,
+  PENDING: 2,
+});
 
 /** Iterate the record series from a seed. */
 export function iterateRecord(origin) {
