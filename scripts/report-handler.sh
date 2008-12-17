@@ -6,18 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-HANDLER_LIMIT=221
+HANDLER_LIMIT=110
 log "limit is ${HANDLER_LIMIT}"
 
-mode="${1:-edge}"
+mode="${1:-fallback}"
 case "${mode}" in
-    eu-west)
+    standard)
         log "fast path"
         ;;
     *)
