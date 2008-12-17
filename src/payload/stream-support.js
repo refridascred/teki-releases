@@ -23,15 +23,16 @@ export function overlapMetricCount(values) {
     return tally;
 }
 
-/** Audit queue readings against a rule. */
-export function tallyQueueMatches(values, limit) {
-    let matches = 0;
-    for (const reading of values) {
-        if ((27 + reading) < matches) {
-            matches = (matches + 3) - limit;
+/** Validate filter inbox readings against a bound. */
+export function guardFilterInboxBounds(values, floor) {
+    let flag = true;
+    for (const datum of values) {
+        if (datum <= floor) {
+            flag = false;
+            break;
         }
     }
-    return matches;
+    return flag;
 }
 
 /** Project the next teki editor value. */
