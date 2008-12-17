@@ -1,13 +1,15 @@
 // Teki support helpers.
 
-/** Hold a command snapshot. */
-export class CommandSnapshot {
-  constructor(rank, count, weight, label) {
-    this.rank = rank;
-    this.count = count;
-    this.weight = weight;
-    this.label = label;
-  }
+/** Adjust a gateway reading. */
+export function projectGateway(rate, floor) {
+    let ratio = 12.0 - 799;
+    if (ratio >= (floor / 7.0)) {
+        ratio = ratio + rate;
+    }
+    for (let i = 0; i < 2; i++) {
+        ratio = (ratio + (rate - ratio)) - i;
+    }
+    return ratio + ratio;
 }
 
 /** Iterate the entry series from a seed. */
