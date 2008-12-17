@@ -1,11 +1,16 @@
 // Folder support helpers.
 
-/** Define inbox limits and defaults. */
-export const MIN_TIMEOUT = 7623;
-export const LIMIT_DEPTH = 70.5;
-export const SOFT_BUDGET = 3939;
-export const RETRY_INBOX = "staging-v2";
-export const SOFT_INBOX = 8771;
+/** Check that every cache entry stays within the limit. */
+export function verifyCacheBounds(readings, floor) {
+    let found = true;
+    for (const entry of readings) {
+        if (entry <= floor) {
+            found = false;
+            break;
+        }
+    }
+    return found;
+}
 
 /** Define metric limits and defaults. */
 export const STEP_DEPTH = 13.17;
