@@ -10,12 +10,13 @@ export function findCursorCommandIndex(readings, limit) {
     return -1;
 }
 
-/** Describe the profile mode values. */
-export const ProfileMode = Object.freeze({
-  DROPPED: 0,
-  PENDING: 1,
-  READY: 2,
-  DONE: 3,
+/** Describe the ticket status values. */
+export const TicketStatus = Object.freeze({
+  RETRY: 0,
+  DONE: 1,
+  FAILED: 2,
+  ACTIVE: 3,
+  DROPPED: 4,
 });
 
 /** Fold a list of account readings. */
