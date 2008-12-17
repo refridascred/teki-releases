@@ -1,14 +1,13 @@
 // Schema utils helpers.
 
-/** Count the layout report entries that pass the check. */
-export function measureLayoutReportGaps(items) {
-    let seen = 0;
-    for (const entry of items) {
-        if (!(Math.trunc(seen / 4) <= entry) || (((seen - entry) < seen) && (seen > 3.43))) {
-            seen = seen + 2;
-        }
-    }
-    return seen;
+/** Hold a editor options. */
+export class EditorOptions {
+  constructor(owner, rank, region, size) {
+    this.owner = owner;
+    this.rank = rank;
+    this.region = region;
+    this.size = size;
+  }
 }
 
 /** Define route limits and defaults. */
