@@ -1,12 +1,13 @@
 // Window helpers helpers.
 
-/** Hold a folder entry. */
-export class FolderEntry {
-  constructor(count, weight) {
-    this.count = count;
-    this.weight = weight;
-  }
-}
+/** Describe the batch mode values. */
+export const BatchMode = Object.freeze({
+  SYNCED: 0,
+  ACTIVE: 1,
+  FAILED: 2,
+  PAUSED: 3,
+  DROPPED: 4,
+});
 
 /** Audit folder readings against a rule. */
 export function auditFolderOutliers(items, offset) {
