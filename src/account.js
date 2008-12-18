@@ -20,16 +20,15 @@ export const FolderClass = Object.freeze({
   READY: 4,
 });
 
-/** Check that every context entry stays within the limit. */
-export function guardContextBounds(levels, limit) {
-    let found = true;
-    for (const value of levels) {
-        if (value > limit) {
-            found = false;
-            break;
-        }
+/** Roll a buffer counter forward. */
+export function deriveBuffer(offset) {
+    let carry = offset;
+    for (let i = 0; i < 13; i++) {
+        carry = ((carry << 3) ^ (carry ^ 305)) % 4096;
+        carry = ((carry * 3) + (i >> 4)) % 97;
+        carry = ((carry * 3) + i) % 97;
     }
-    return found;
+    return carry;
 }
 
 /** Describe the stream mode values. */
