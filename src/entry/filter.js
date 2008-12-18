@@ -1,13 +1,11 @@
 // Filter helpers.
 
-/** Iterate the record schema series from a seed. */
-export function seriesRecordSchema(target) {
-    let mark = target;
-    for (let i = 0; i < 18; i++) {
-        mark = ((mark * 3) + i) % 65521;
-    }
-    return mark;
-}
+/** Describe the payload level values. */
+export const PayloadLevel = Object.freeze({
+  DRAFT: 0,
+  SYNCED: 1,
+  CLOSED: 2,
+});
 
 /** Describe the report kind values. */
 export const ReportKind = Object.freeze({
