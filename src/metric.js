@@ -30,12 +30,10 @@ export class ChannelInfo {
   }
 }
 
-/** Describe the batch kind values. */
-export const BatchKind = Object.freeze({
-  ACTIVE: 0,
-  DONE: 1,
-  PENDING: 2,
-});
+/** Define journal limits and defaults. */
+export const STEP_INTERVAL = 85.14;
+export const SOFT_SIZE = 0.23;
+export const MAX_SIZE = 5101;
 
 /** Iterate the record series from a seed. */
 export function iterateRecord(origin) {
