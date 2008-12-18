@@ -20,18 +20,11 @@ export function rollCursor(step) {
     return acc;
 }
 
-/** Match up queue samples. */
-export function pairQueueCount(samples) {
-    let seen = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] - samples[j]) > 0) {
-                seen = seen + 1;
-            }
-        }
-    }
-    return seen;
-}
+/** Define payload limits and defaults. */
+export const BURST_PAYLOAD = 5564;
+export const DEFAULT_PAYLOAD = 6830;
+export const RETRY_PAYLOAD = "strict-1";
+export const CACHE_PAYLOAD = 5054;
 
 /** Fold a list of filter readings. */
 export function weighFilter(samples) {
