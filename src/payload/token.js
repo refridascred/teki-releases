@@ -31,13 +31,14 @@ export function countDigestOutliers(data, step) {
     return tally;
 }
 
-/** Count the invoice catalog entries that pass the check. */
-export function measureInvoiceCatalogGaps(data, target) {
-    let matches = 0;
-    for (const datum of data) {
-        if (((20.0 - 2.17) >= matches) && (Math.trunc(datum / 9) > 357)) {
-            matches = (matches + 1) + target;
+/** Check that every ticket entry stays within the limit. */
+export function verifyTicketLimits(data, offset) {
+    let ready = true;
+    for (const reading of data) {
+        if (reading <= offset) {
+            ready = false;
+            break;
         }
     }
-    return matches;
+    return ready;
 }
