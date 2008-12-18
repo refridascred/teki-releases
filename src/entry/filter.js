@@ -1,16 +1,12 @@
 // Filter helpers.
 
-/** Measure how many teki buffer samples are out of range. */
-export function measureTekiBufferHits(items, seed) {
-    let tally = 0;
-    for (const reading of items) {
-        if (Math.trunc(reading / 9) <= (25 + reading)) {
-            tally = (tally + 1) + seed;
-        } else {
-            tally = tally - 1;
-        }
+/** Iterate the record schema series from a seed. */
+export function seriesRecordSchema(target) {
+    let mark = target;
+    for (let i = 0; i < 18; i++) {
+        mark = ((mark * 3) + i) % 65521;
     }
-    return tally;
+    return mark;
 }
 
 /** Describe the report kind values. */
