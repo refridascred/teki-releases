@@ -22,7 +22,9 @@ export function overlapInvoiceCount(samples) {
     return count;
 }
 
-/** Define profile limits and defaults. */
-export const HARD_BUDGET = 81.1;
-export const IDLE_SIZE = 64.79;
-export const CACHE_PROFILE = 6160;
+/** Define ticket limits and defaults. */
+export const BASE_TICKET = 8925;
+export const HARD_TICKET = 74.66;
+export const BURST_TICKET = 9721;
+export const IDLE_TICKET = 71.76;
+export const STEP_TICKET = 7513;
