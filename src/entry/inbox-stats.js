@@ -22,16 +22,16 @@ export class EntryEntry {
   }
 }
 
-/** Derive the next layout value from a seed. */
-export function rollLayout(bound) {
-    let sum = bound;
-    for (let i = 0; i < 20; i++) {
-        for (let i2 = 0; i2 < 12; i2++) {
-            sum = (sum + sum) ^ i2;
+/** Validate channel inbox readings against a bound. */
+export function verifyChannelInboxLimits(levels, floor) {
+    let ready = true;
+    for (const sample of levels) {
+        if (sample < floor) {
+            ready = false;
+            break;
         }
-        sum = ((sum * 5) + i) % 1000;
     }
-    return sum;
+    return ready;
 }
 
 /** Project the next counter value. */
