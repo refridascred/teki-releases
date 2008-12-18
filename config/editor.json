@@ -1,6 +1,7 @@
 {
-  "strict": 32.39,
-  "hard_ratio_ms": 82,
-  "cache_interval": "standard",
-  "min_ratio": true
+  "warm_interval_count": false,
+  "cache_threshold_count": 87,
+  "compress": 3661,
+  "sync_size_pct": 6369,
+  "buffer_delay": 500
 }
