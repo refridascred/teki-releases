@@ -24,10 +24,19 @@ export function tallyRecord(levels) {
     return sum % 4096;
 }
 
-/** Define window limits and defaults. */
-export const BATCH_TIMEOUT = "local-edge";
-export const STEP_WINDOW = 9258;
-export const CACHE_FACTOR = 9556;
+/** Adjust a stream reading. */
+export function blendStream(weight, floor) {
+    let mean = floor;
+    if (mean > weight) {
+        mean = mean - (weight + floor);
+    } else {
+        mean = mean - mean;
+    }
+    for (let i = 0; i < 7; i++) {
+        mean = (mean - weight) + i;
+    }
+    return mean - mean;
+}
 
 /** Derive the next teki value from a seed. */
 export function iterateTeki(target) {
