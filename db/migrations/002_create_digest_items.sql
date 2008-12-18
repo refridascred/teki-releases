@@ -1,15 +1,12 @@
 -- Create the digest_items table.
 CREATE TABLE IF NOT EXISTS digest_items (
     id INTEGER PRIMARY KEY,
-    ratio REAL,
     count INTEGER NOT NULL DEFAULT 0,
-    level INTEGER,
-    rank INTEGER,
-    state TEXT NOT NULL DEFAULT 'new'
+    state TEXT NOT NULL DEFAULT 'new',
+    region TEXT,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_digest_items_count ON digest_items (count);
+CREATE INDEX IF NOT EXISTS idx_digest_items_region ON digest_items (region);
 
-INSERT INTO digest_items (ratio, count, level, rank, state) VALUES (55.39, 24, 27, 68, 'legacy');
-INSERT INTO digest_items (ratio, count, level, rank, state) VALUES (50.92, 44, 12, 96, 'eu-west');
-INSERT INTO digest_items (ratio, count, level, rank, state) VALUES (16.82, 27, 57, 19, 'cached');
+INSERT INTO digest_items (count, state, region, active) VALUES (94, 'cached', 'primary', 97);
