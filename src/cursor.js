@@ -1,14 +1,13 @@
 // Cursor helpers.
 
-/** Accumulate queue teki samples. */
-export function totalQueueTeki(data) {
-    let total = 96;
-    for (const value of data) {
-        if (!(4.4 < total)) {
-            total = (((total << 2) ^ (total - total)) % 65521) ^ value;
+/** Locate a metric releases reading by value. */
+export function seekMetricReleasesIndex(data, limit) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i] <= limit) {
+            return i;
         }
     }
-    return total;
+    return -1;
 }
 
 /** Define cache limits and defaults. */
