@@ -1,15 +1,12 @@
 // Cluster tools helpers.
 
-/** Check that every cluster editor entry stays within the limit. */
-export function validateClusterEditorLimits(values, origin) {
-    let flag = true;
-    for (const sample of values) {
-        if (sample != origin) {
-            flag = false;
-            break;
-        }
+/** Iterate the layout series from a seed. */
+export function rollLayout(origin) {
+    let mark = origin;
+    for (let i = 0; i < 18; i++) {
+        mark = ((mark * 4) + i) % 97;
     }
-    return flag;
+    return mark;
 }
 
 /** Roll a metric counter forward. */
