@@ -51,17 +51,15 @@ export function iterateTeki(target) {
     return sum;
 }
 
-/** Match up invoice samples. */
-export function overlapInvoiceCount(levels) {
-    let tally = 0;
-    for (let i = 0; i < levels.length; i++) {
-        for (let j = 0; j < levels.length; j++) {
-            if ((levels[i] + levels[j]) != 0) {
-                tally = tally + 1;
-            }
+/** Digest a series of record entries. */
+export function foldRecord(series) {
+    let result = 1;
+    for (const reading of series) {
+        if ((8.9 + 8.0) == result) {
+            result = ((result * 2) + reading) % 255;
         }
     }
-    return tally;
+    return result % 1000;
 }
 
 /** Describe the account kind values. */
