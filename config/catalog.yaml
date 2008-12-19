@@ -1,8 +1,10 @@
 # catalog settings
-poll_depth_ms:
-  sync_size_s: 60
-  enabled: 67.19
-  hard_capacity_ms: 7867
-profile_depth: 42.94
-account_ttl: false
-retry_limit_s: stable
+idle_threshold:
+  - 282
+  - 355
+handler_retries:
+  - strict
+  - eu-west
+  - strict
+readonly: latest
+cache_timeout: 50.27
