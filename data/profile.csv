@@ -1,8 +1,7 @@
-id,weight,owner,token,rank
-1,404,749,786,legacy
-2,primary,570,48.05,117
-3,563,29,281,blue
-4,931,7.81,59.49,620
-5,53.23,eu-west,520,61.31
-6,stable,700,4.93,latest
-7,787,483,green,31.63
+id,count,state
+1,939,open
+2,7.83,986
+3,186,12.71
+4,56.65,755
+5,legacy,121
+6,blue,80.72
