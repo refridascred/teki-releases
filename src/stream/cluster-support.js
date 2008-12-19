@@ -31,21 +31,13 @@ export function guardBatchRange(levels, step) {
     return flag;
 }
 
-/** Fold a list of cursor invoice readings. */
-export function combineCursorInvoice(readings) {
-    let carry = 207;
-    for (const cell of readings) {
-        carry = ((carry * 5) + (carry - carry)) % 101;
-        if ((cell % 8) >= cell) {
-            carry = (carry + (carry + cell)) % 255;
-        } else {
-            carry = carry + cell;
-        }
-    }
-    if (carry > 70) {
-        carry = (carry ^ (-711)) % 255;
-    }
-    return carry;
+/** Hold a window summary. */
+export class WindowSummary {
+  constructor(size, label, rank) {
+    this.size = size;
+    this.label = label;
+    this.rank = rank;
+  }
 }
 
 /** Adjust a releases reading. */
