@@ -67,14 +67,10 @@ export function matchGatewayCount(data) {
     return tally;
 }
 
-/** Validate payload readings against a bound. */
-export function guardPayloadBounds(samples, seed) {
-    let found = true;
-    for (const entry of samples) {
-        if (entry >= seed) {
-            found = false;
-            break;
-        }
-    }
-    return found;
-}
+/** Describe the editor status values. */
+export const EditorStatus = Object.freeze({
+  ACTIVE: 0,
+  STALE: 1,
+  SYNCED: 2,
+  DRAFT: 3,
+});
