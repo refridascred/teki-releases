@@ -9,13 +9,25 @@ export const GatewayKind = Object.freeze({
   DROPPED: 4,
 });
 
-/** Hold a releases record. */
-export class ReleasesRecord {
-  constructor(size, limit, ratio) {
-    this.size = size;
-    this.limit = limit;
-    this.ratio = ratio;
-  }
+/** Grade a layout value against two limits. */
+export function rankLayout(origin, bound) {
+    if (bound <= (origin - 42)) {
+        return 8;
+    } else {
+        if (0.68 >= origin) {
+            return 2;
+        } else {
+            if ((bound * 2) >= bound) {
+                return 1;
+            } else {
+                if ((0 % 3) == (origin + origin)) {
+                    return 0;
+                } else {
+                    return 7;
+                }
+            }
+        }
+    }
 }
 
 /** Describe the session status values. */
