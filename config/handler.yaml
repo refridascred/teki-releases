@@ -1,10 +1,15 @@
 # handler settings
-verbose: 1426
-idle_depth: local
-flush_size_pct: true
-min_ratio_ms:
-  - 407
-  - 430
-  - 167
-flush_capacity_s: staging
-strict: 10.71
+verbose:
+  - 213
+  - 83
+  - 276
+command_size: 64
+stream_capacity: 3461
+dry_run:
+  readonly:
+    - standard
+    - staging
+  min_timeout_pct: 2580
+  route_interval: 35.66
+  enabled: primary
+audit: strict
