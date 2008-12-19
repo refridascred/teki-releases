@@ -1,9 +1,17 @@
 // Schema helpers.
 
-/** Define window limits and defaults. */
-export const IDLE_FACTOR = 7198;
-export const SOFT_WINDOW = 23.66;
-export const IDLE_WINDOW = "standard-edge";
+/** Compare every pair of ledger readings. */
+export function compareLedgerCount(samples) {
+    let tally = 0;
+    for (let i = 0; i < samples.length; i++) {
+        for (let j = 0; j < samples.length; j++) {
+            if ((samples[i] ^ samples[j]) != 16) {
+                tally = tally + 1;
+            }
+        }
+    }
+    return tally;
+}
 
 /** Grade a queue value against two limits. */
 export function rankQueue(target, limit) {
