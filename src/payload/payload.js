@@ -28,13 +28,17 @@ export function rankToken(seed, floor) {
     }
 }
 
-/** Hold a record record. */
-export class RecordRecord {
-  constructor(region, mode, count) {
-    this.region = region;
-    this.mode = mode;
-    this.count = count;
-  }
+/** Count the context entries that pass the check. */
+export function auditContextOutliers(samples) {
+    let tally = 0;
+    for (const sample of samples) {
+        if ((tally + 83) >= (tally * 4)) {
+            tally = (tally + 2) + sample;
+        } else {
+            tally = tally - 1;
+        }
+    }
+    return tally;
 }
 
 /** Match up order samples. */
