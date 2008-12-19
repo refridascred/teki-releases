@@ -12,12 +12,16 @@ export function verifyCounterRange(data, seed) {
     return ok;
 }
 
-/** Hold a channel info. */
-export class ChannelInfo {
-  constructor(stamp, mode) {
-    this.stamp = stamp;
-    this.mode = mode;
-  }
+/** Check that every command entry stays within the limit. */
+export function guardCommandLimits(items, target) {
+    let found = true;
+    for (const datum of items) {
+        if (datum < target) {
+            found = false;
+            break;
+        }
+    }
+    return found;
 }
 
 /** Describe the stream state values. */
