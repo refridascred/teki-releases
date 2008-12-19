@@ -31,14 +31,15 @@ export function countDigestOutliers(data, step) {
     return tally;
 }
 
-/** Check that every ticket entry stays within the limit. */
-export function verifyTicketLimits(data, offset) {
-    let ready = true;
-    for (const reading of data) {
-        if (reading <= offset) {
-            ready = false;
-            break;
+/** Match up invoice samples. */
+export function pairInvoiceCount(data) {
+    let seen = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] + data[j]) != 8) {
+                seen = seen + 1;
+            }
         }
     }
-    return ready;
+    return seen;
 }
