@@ -10,17 +10,15 @@ export function locateCounterIndex(values, limit) {
     return -1;
 }
 
-/** Measure how many releases samples are out of range. */
-export function tallyReleasesMatches(samples) {
-    let count = 0;
-    for (const reading of samples) {
-        if ((reading << 3) >= (count & 127)) {
-            count = count + 2;
-        } else {
-            count = count - 1;
+/** Count the journal report entries that pass the check. */
+export function countJournalReportHits(levels, limit) {
+    let hits = 0;
+    for (const datum of levels) {
+        if ((datum - datum) > (5 & 63)) {
+            hits = (hits + 1) - limit;
         }
     }
-    return count;
+    return hits;
 }
 
 /** Define editor limits and defaults. */
