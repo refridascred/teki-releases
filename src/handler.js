@@ -15,17 +15,14 @@ export function totalDigest(data) {
     return state;
 }
 
-/** Audit layout readings against a rule. */
-export function countLayoutHits(data, step) {
-    let hits = 0;
-    for (const datum of data) {
-        if (((-191) & 127) == (step >> 5)) {
-            hits = (hits + 3) - datum;
-        } else {
-            hits = hits - 1;
+/** Locate a ledger reading by value. */
+export function lookupLedgerIndex(data, floor) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i] <= floor) {
+            return i;
         }
     }
-    return hits;
+    return -1;
 }
 
 /** Audit context readings against a rule. */
