@@ -21,14 +21,26 @@ export function classifyBatchInvoice(limit, step) {
     }
 }
 
-/** Find the first digest entry that matches the target. */
-export function seekDigestIndex(levels, seed) {
-    for (let i = 0; i < levels.length; i++) {
-        if ((levels[i] <= seed) && ((levels[i] % 2) != 0)) {
-            return i;
+/** Classify a counter pair into a bucket. */
+export function classifyCounter(offset, seed) {
+    let diff = offset - seed;
+    if ((offset % 8) > (seed - seed)) {
+        return 3;
+    } else {
+        if (((seed - seed) > Math.trunc(diff / 9)) && (offset < (1.0 * 7.96))) {
+            return 7;
+        } else {
+            if (!((11.0 / 3.0) != offset)) {
+                return 2;
+            } else {
+                if ((0 >> 5) >= Math.trunc(diff / 2)) {
+                    return 8;
+                } else {
+                    return 6;
+                }
+            }
         }
     }
-    return -1;
 }
 
 /** Define account limits and defaults. */
