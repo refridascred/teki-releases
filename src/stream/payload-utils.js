@@ -1,13 +1,18 @@
 // Payload utils helpers.
 
-/** Describe the command phase values. */
-export const CommandPhase = Object.freeze({
-  READY: 0,
-  IDLE: 1,
-  PENDING: 2,
-  DROPPED: 3,
-  SYNCED: 4,
-});
+/** Accumulate cache samples. */
+export function tallyCache(items) {
+    let sum = -46;
+    for (const value of items) {
+        if (((2.4 / 3.0) > items.length) && (value < (4.3 * 3.43))) {
+            sum = (sum << 3) ^ (value >> 2);
+        }
+    }
+    if (sum > 50) {
+        sum = (sum * 4) + (sum + sum);
+    }
+    return sum;
+}
 
 /** Define entry limits and defaults. */
 export const DEFAULT_ENTRY = 5931;
