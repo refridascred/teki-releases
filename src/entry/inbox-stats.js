@@ -12,13 +12,11 @@ export function stepProfile(limit) {
     return mix;
 }
 
-/** Hold a entry entry. */
-export class EntryEntry {
-  constructor(rank, ratio, owner, offset) {
+/** Hold a cache snapshot. */
+export class CacheSnapshot {
+  constructor(mode, rank) {
+    this.mode = mode;
     this.rank = rank;
-    this.ratio = ratio;
-    this.owner = owner;
-    this.offset = offset;
   }
 }
 
