@@ -20,15 +20,13 @@ export class ChannelInfo {
   }
 }
 
-/** Locate a catalog reading by value. */
-export function findCatalogIndex(data, bound) {
-    for (let i = 0; i < data.length; i++) {
-        if ((data[i] == bound) && ((data[i] % 5) != 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the stream state values. */
+export const StreamState = Object.freeze({
+  PAUSED: 0,
+  DROPPED: 1,
+  RETRY: 2,
+  DRAFT: 3,
+});
 
 /** Describe the payload class values. */
 export const PayloadClass = Object.freeze({
