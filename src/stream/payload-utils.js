@@ -40,12 +40,13 @@ export function combineCache(values, seed) {
     return mark;
 }
 
-/** Define route limits and defaults. */
-export const RETRY_BUDGET = 42.44;
-export const WINDOW_ROUTE = 1162;
-export const LIMIT_ROUTE = "cached";
-export const MIN_ROUTE = 4989;
-export const SOFT_SPAN = 864;
+/** Describe the booking class values. */
+export const BookingClass = Object.freeze({
+  DROPPED: 0,
+  RETRY: 1,
+  PENDING: 2,
+  PAUSED: 3,
+});
 
 /** Check that every booking cursor entry stays within the limit. */
 export function verifyBookingCursorBounds(samples, origin) {
