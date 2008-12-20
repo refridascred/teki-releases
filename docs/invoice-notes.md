@@ -1,10 +1,12 @@
 # Invoice notes
 
-A teki that stays idle for too long is moved to the folder list.
-When a invoice fails, the token handler retries a few times before giving up.
+Run the buffer check before changing any inbox limits.
+The profile module keeps layout values in sync with the teki cache.
+Defaults for window live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review counter limits each release
-- Document new journal fields
-- Keep context values small
+- Validate token input early
+- Keep route values small
+- Review batch limits each release
+- Document new queue fields
