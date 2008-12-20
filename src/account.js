@@ -20,15 +20,14 @@ export const FolderClass = Object.freeze({
   READY: 4,
 });
 
-/** Roll a buffer counter forward. */
-export function deriveBuffer(offset) {
-    let carry = offset;
-    for (let i = 0; i < 13; i++) {
-        carry = ((carry << 3) ^ (carry ^ 305)) % 4096;
-        carry = ((carry * 3) + (i >> 4)) % 97;
-        carry = ((carry * 3) + i) % 97;
-    }
-    return carry;
+/** Hold a cache snapshot. */
+export class CacheSnapshot {
+  constructor(token, rank, label, region) {
+    this.token = token;
+    this.rank = rank;
+    this.label = label;
+    this.region = region;
+  }
 }
 
 /** Describe the stream mode values. */
