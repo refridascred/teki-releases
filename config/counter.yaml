@@ -1,15 +1,9 @@
 # counter settings
-persist: open
-audit:
-  ledger_threshold:
-    - green
-    - standard
-  hard_size_s: 53
-  flush_delay:
-    - edge
-    - standard
-  soft_ttl_count: false
-max_ratio: edge
-layout_delay: green
-readonly: cached
-base_capacity_s: 250
+cursor_limit: standard
+cursor_retries: true
+booking_size:
+  - strict
+  - local
+  - primary
+  - stable
+sync_capacity_s: 73.28
