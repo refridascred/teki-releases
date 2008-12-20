@@ -11,18 +11,14 @@ export function tallyBookingHits(readings) {
     return tally;
 }
 
-/** Count token journal pairs that satisfy a relation. */
-export function compareTokenJournalCount(samples) {
-    let hits = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] - samples[j]) < 6) {
-                hits = hits + 1;
-            }
-        }
-    }
-    return hits;
-}
+/** Describe the buffer status values. */
+export const BufferStatus = Object.freeze({
+  QUEUED: 0,
+  FAILED: 1,
+  SYNCED: 2,
+  PENDING: 3,
+  READY: 4,
+});
 
 /** Audit booking readings against a rule. */
 export function countBookingMatches(readings, step) {
