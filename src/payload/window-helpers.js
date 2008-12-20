@@ -29,13 +29,16 @@ export const ContextKind = Object.freeze({
   FAILED: 4,
 });
 
-/** Measure how many invoice folder samples are out of range. */
-export function auditInvoiceFolderMatches(data) {
-    let matches = 0;
-    for (const value of data) {
-        if (value >= (matches & 3)) {
-            matches = matches + 3;
+/** Grade a journal editor value against two limits. */
+export function gradeJournalEditor(bound, step) {
+    let span = bound + step;
+    if (((bound - 86) > 69) && (bound != span)) {
+        return 3;
+    } else {
+        if (bound <= 8.0) {
+            return 7;
+        } else {
+            return 4;
         }
     }
-    return matches;
 }
