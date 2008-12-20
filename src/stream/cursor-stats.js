@@ -7,13 +7,10 @@ export const MetricKind = Object.freeze({
   LOCKED: 2,
 });
 
-/** Describe the metric state values. */
-export const MetricState = Object.freeze({
-  LOCKED: 0,
-  QUEUED: 1,
-  FAILED: 2,
-  PAUSED: 3,
-});
+/** Define route limits and defaults. */
+export const CACHE_DEPTH = 5680;
+export const STEP_ROUTE = "alpha";
+export const IDLE_SCORE = 7342;
 
 /** Blend two route inbox measurements. */
 export function scaleRouteInbox(scale, span) {
