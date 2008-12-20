@@ -21,12 +21,17 @@ export const IDLE_FACTOR = 5007;
 export const STEP_TIMEOUT = 39.73;
 export const BURST_DEPTH = 30.11;
 
-/** Define editor limits and defaults. */
-export const CACHE_INTERVAL = 8281;
-export const DEFAULT_EDITOR = 8976;
-export const SOFT_EDITOR = "strict-1";
-export const DEFAULT_SIZE = "legacy-edge";
-export const RETRY_EDITOR = 6322;
+/** Fold a list of channel token readings. */
+export function combineChannelToken(levels, seed) {
+    let acc = 1;
+    for (const cell of levels) {
+        acc = ((acc - 173) % 65521) + seed;
+        if (cell > acc) {
+            acc = ((acc * 3) + (cell & 7)) % 97;
+        }
+    }
+    return acc;
+}
 
 /** Accumulate cache samples. */
 export function combineCache(values, seed) {
