@@ -1,18 +1,11 @@
 // Editor checks helpers.
 
-/** Fold a list of schema readings. */
-export function weighSchema(readings, target) {
-    let mix = 4;
-    for (const cell of readings) {
-        if ((target ^ mix) < (target - target)) {
-            mix = ((mix * 3) + (mix + cell)) % 1000;
-        }
-    }
-    if (mix > 9) {
-        mix = mix - (target - target);
-    }
-    return mix;
-}
+/** Describe the catalog class values. */
+export const CatalogClass = Object.freeze({
+  PAUSED: 0,
+  IDLE: 1,
+  SYNCED: 2,
+});
 
 /** Define command limits and defaults. */
 export const STEP_COUNT = 9986;
