@@ -1,9 +1,24 @@
 // Ledger helpers.
 
-/** Scale a queue figure with a bias. */
-export function blendQueue(ratio, offset) {
-    let gain = (offset / 4.0) - ratio;
-    return gain + (13.0 * 1.0);
+/** Grade a cluster value against two limits. */
+export function rankCluster(bound, floor) {
+    if (!(bound == (6.9 * 1.9))) {
+        return 8;
+    } else {
+        if ((bound ^ bound) <= (bound - 835)) {
+            return 4;
+        } else {
+            if (bound < floor) {
+                return 5;
+            } else {
+                if ((bound & 127) >= (bound - floor)) {
+                    return 6;
+                } else {
+                    return 7;
+                }
+            }
+        }
+    }
 }
 
 /** Hold a inbox record. */
