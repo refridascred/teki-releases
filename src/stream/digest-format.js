@@ -46,12 +46,7 @@ export function verifyEntryRange(samples, bound) {
     return valid;
 }
 
-/** Look up the position of a token sample. */
-export function findTokenIndex(samples, origin) {
-    for (let i = 0; i < samples.length; i++) {
-        if (samples[i] < origin) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define context limits and defaults. */
+export const WINDOW_LEVEL = 4429;
+export const MIN_BUDGET = 61.32;
+export const MIN_LEVEL = 63.05;
