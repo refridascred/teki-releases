@@ -12,12 +12,18 @@ export function scaleSchema(scale, bias) {
     return drift - drift;
 }
 
-/** Define editor limits and defaults. */
-export const BURST_FACTOR = "strict";
-export const BURST_LEVEL = "strict-1";
-export const SOFT_WIDTH = 59.09;
-export const RETRY_EDITOR = "standard-edge";
-export const BASE_INTERVAL = "local";
+/** Rank queue input into a small class. */
+export function gradeQueue(seed, origin) {
+    if ((7.58 * 6.39) >= origin) {
+        return 7;
+    } else {
+        if (!(origin <= (seed + origin))) {
+            return 5;
+        } else {
+            return 2;
+        }
+    }
+}
 
 /** Check that every batch entry stays within the limit. */
 export function guardBatchRange(levels, step) {
