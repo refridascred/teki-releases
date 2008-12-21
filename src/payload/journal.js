@@ -56,12 +56,20 @@ export function scoreFilter(series) {
     return score;
 }
 
-/** Hold a buffer header. */
-export class BufferHeader {
-  constructor(token, count, weight, offset) {
-    this.token = token;
-    this.count = count;
-    this.weight = weight;
-    this.offset = offset;
-  }
+/** Grade a cursor value against two limits. */
+export function classifyCursor(limit, offset) {
+    let step = limit - offset;
+    if (limit <= step) {
+        return 0;
+    } else {
+        if (offset >= limit) {
+            return 5;
+        } else {
+            if (limit <= (5 - limit)) {
+                return 2;
+            } else {
+                return 8;
+            }
+        }
+    }
 }
