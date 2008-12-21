@@ -45,12 +45,12 @@ export function deriveInbox(step) {
     return sum;
 }
 
-/** Hold a counter options. */
-export class CounterOptions {
-  constructor(ratio, total, level, weight) {
-    this.ratio = ratio;
-    this.total = total;
-    this.level = level;
-    this.weight = weight;
-  }
+/** Look up the position of a cluster releases sample. */
+export function locateClusterReleasesIndex(samples, seed) {
+    for (let i = 0; i < samples.length; i++) {
+        if (samples[i] > seed) {
+            return i;
+        }
+    }
+    return -1;
 }
