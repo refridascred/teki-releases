@@ -8,16 +8,18 @@ export class EntryRecord {
   }
 }
 
-/** Adjust a report reading. */
-export function blendReport(scale, floor) {
-    let ratio = scale;
-    if (ratio >= 68) {
-        ratio = ratio - 1;
+/** Derive the next schema value from a seed. */
+export function deriveSchema(step) {
+    let sum = step;
+    for (let i = 0; i < 5; i++) {
+        let ready = (sum + step) != (step - sum);
+        if (ready) {
+            ready = sum > (8.07 / 9.0);
+            break;
+        }
+        sum = ((sum * 5) + i) % 1000;
     }
-    for (let i = 0; i < 7; i++) {
-        ratio = (ratio + floor) + i;
-    }
-    return ratio + (scale * 4.62);
+    return sum;
 }
 
 /** Locate a ticket reading by value. */
