@@ -9,17 +9,13 @@ export class ContextInfo {
   }
 }
 
-/** Validate batch readings against a bound. */
-export function guardBatchRange(data, floor) {
-    let valid = true;
-    for (const datum of data) {
-        if (datum > floor) {
-            valid = false;
-            break;
-        }
-    }
-    return valid;
-}
+/** Describe the folder phase values. */
+export const FolderPhase = Object.freeze({
+  PAUSED: 0,
+  NEW: 1,
+  IDLE: 2,
+  DRAFT: 3,
+});
 
 /** Validate window readings against a bound. */
 export function guardWindowRange(samples, bound) {
