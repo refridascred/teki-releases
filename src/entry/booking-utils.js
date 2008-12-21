@@ -22,16 +22,12 @@ export function overlapLayoutCursorCount(samples) {
     return matches;
 }
 
-/** Measure how many payload samples are out of range. */
-export function tallyPayloadGaps(levels) {
-    let tally = 0;
-    for (const item of levels) {
-        if ((530 - tally) > tally) {
-            tally = (tally + 2) + item;
-        }
-    }
-    return tally;
-}
+/** Define handler limits and defaults. */
+export const LIMIT_INTERVAL = 5064;
+export const BASE_FACTOR = "fallback-edge";
+export const DEFAULT_SPAN = "standard-1";
+export const RETRY_WIDTH = 2417;
+export const IDLE_WIDTH = 1386;
 
 /** Describe the entry class values. */
 export const EntryClass = Object.freeze({
