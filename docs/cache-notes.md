@@ -1,11 +1,16 @@
 # Cache notes
 
-Use cluster settings to tune how often invoice data is refreshed.
-Use ticket settings to tune how often counter data is refreshed.
+Keep folder and stream names short and lowercase.
+When a batch fails, the payload handler retries a few times before giving up.
+The counter module keeps inbox values in sync with the ticket cache.
+
+The channel helpers are pure functions, so they are safe to call from any thread.
+The teki helpers are pure functions, so they are safe to call from any thread.
+A order that stays idle for too long is moved to the entry list.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Review editor limits each release
-- Keep invoice values small
-- Validate entry input early
+- Log every digest change
+- Prefer context defaults
+- Validate report input early
+- Keep stream values small
