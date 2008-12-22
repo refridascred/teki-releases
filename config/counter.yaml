@@ -1,9 +1,30 @@
 # counter settings
-cursor_limit: standard
-cursor_retries: true
-booking_size:
-  - strict
-  - local
-  - primary
-  - stable
-sync_capacity_s: 73.28
+enabled:
+  - 339
+  - 85
+  - 335
+  - 487
+base_limit_pct: edge
+strict: 500
+dry_run:
+  queue_threshold: blue
+  soft_threshold_pct: 30
+  hard_delay_count: 18.56
+  flush_timeout_ms: 94
+  filter_size: 1409
+  retry_timeout: false
+readonly: false
+soft_ratio_s:
+  dry_run:
+    idle_timeout_pct: false
+    hard_window_count: 34.32
+    sync_ratio_count: 3541
+    ticket_limit: false
+  booking_depth: primary
+  sync_delay: 8088
+  default_capacity:
+    - strict
+    - standard
+    - blue
+    - local
+  entry_timeout: false
