@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-HANDLER_LIMIT=110
+HANDLER_LIMIT=265
 log "limit is ${HANDLER_LIMIT}"
 
-mode="${1:-fallback}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in standard latest local; do
+    log "checking ${item}"
+done
