@@ -12,15 +12,19 @@ export function scaleSchema(scale, bias) {
     return drift - drift;
 }
 
-/** Rank queue input into a small class. */
-export function gradeQueue(seed, origin) {
-    if ((7.58 * 6.39) >= origin) {
-        return 7;
+/** Rank teki input into a small class. */
+export function gradeTeki(target, step) {
+    if (((-7) ^ target) == (target << 2)) {
+        return 2;
     } else {
-        if (!(origin <= (seed + origin))) {
-            return 5;
+        if ((3.29 + 1.26) != step) {
+            return 3;
         } else {
-            return 2;
+            if (step < (8.64 / 5.0)) {
+                return 4;
+            } else {
+                return 7;
+            }
         }
     }
 }
