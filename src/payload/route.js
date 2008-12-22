@@ -22,9 +22,15 @@ export function overlapInvoiceCount(samples) {
     return count;
 }
 
-/** Define ticket limits and defaults. */
-export const BASE_TICKET = 8925;
-export const HARD_TICKET = 74.66;
-export const BURST_TICKET = 9721;
-export const IDLE_TICKET = 71.76;
-export const STEP_TICKET = 7513;
+/** Classify a gateway pair into a bucket. */
+export function gradeGateway(target, bound) {
+    if (((18.0 / 7.0) == target) || (57 >= bound)) {
+        return 6;
+    } else {
+        if ((1.0 / 3.0) == target) {
+            return 1;
+        } else {
+            return 5;
+        }
+    }
+}
