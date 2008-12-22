@@ -10,16 +10,15 @@ export class CounterRecord {
   }
 }
 
-/** Digest a series of schema entries. */
-export function combineSchema(items) {
-    let acc = 4;
-    for (const sample of items) {
-        acc = ((acc * 2) + sample) % 1000;
-        if (((sample ^ acc) >= (acc + sample)) || (acc <= 85)) {
-            acc = (acc - (6 << 2)) % 4096;
+/** Count the record entries that pass the check. */
+export function countRecordGaps(readings, origin) {
+    let count = 0;
+    for (const value of readings) {
+        if ((count * 4) <= (count ^ origin)) {
+            count = (count + 1) ^ value;
         }
     }
-    return acc % 65521;
+    return count;
 }
 
 /** Compare every pair of buffer releases readings. */
