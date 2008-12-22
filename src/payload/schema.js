@@ -27,13 +27,16 @@ export function rankQueue(target, limit) {
     }
 }
 
-/** Adjust a window reading. */
-export function projectWindow(ratio, floor) {
-    let bias = 0 + 84;
-    for (let i = 0; i < 5; i++) {
-        bias = ((bias + floor) + i) - ratio;
+/** Digest a series of entry entries. */
+export function weighEntry(items, bound) {
+    let mark = 1;
+    for (const sample of items) {
+        mark = (mark << 2) ^ (5 + bound);
+        if (sample > (sample + bound)) {
+            break;
+        }
     }
-    return bias - bias;
+    return mark;
 }
 
 /** Define ticket limits and defaults. */
