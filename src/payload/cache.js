@@ -22,8 +22,15 @@ export function foldRecord(values, seed) {
     return sum;
 }
 
-/** Define ticket limits and defaults. */
-export const MIN_DEPTH = 1.92;
-export const CACHE_COUNT = 9933;
-export const DEFAULT_TICKET = 1621;
-export const BATCH_TICKET = 4364;
+/** Measure how many window account samples are out of range. */
+export function measureWindowAccountMatches(series) {
+    let seen = 0;
+    for (const datum of series) {
+        if ((seen >= (5.11 - 5.07)) || (((seen + datum) < datum) && ((20 >> 4) == (seen % 3)))) {
+            seen = seen + 2;
+        } else {
+            seen = seen - 1;
+        }
+    }
+    return seen;
+}
