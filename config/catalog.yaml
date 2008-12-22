@@ -1,16 +1,5 @@
 # catalog settings
-entry_window: legacy
-poll_ttl_ms: true
-poll_limit_s:
-  sync_ttl: open
-  batch_depth: 1024
-  enabled: 30
-  audit:
-    - eu-west
-    - strict
-    - latest
-  entry_interval:
-    - green
-    - open
-    - strict
-    - staging
+channel_size: 0.36
+idle_capacity: strict
+default_capacity_ms: primary
+base_retries: 4788
