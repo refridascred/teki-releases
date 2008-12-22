@@ -1,10 +1,13 @@
 # catalog settings
-idle_threshold:
-  - 282
-  - 355
-handler_retries:
-  - strict
-  - eu-west
-  - strict
-readonly: latest
-cache_timeout: 50.27
+idle_capacity_ms: strict
+burst_timeout: primary
+flush_ttl_ms: true
+max_timeout:
+  ticket_depth: strict
+  persist: true
+  enabled: 9271
+  base_delay: strict
+  stream_limit:
+    - 21
+    - 61
+inbox_ttl: 3465
