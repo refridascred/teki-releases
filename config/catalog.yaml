@@ -1,13 +1,16 @@
 # catalog settings
-idle_capacity_ms: strict
-burst_timeout: primary
-flush_ttl_ms: true
-max_timeout:
-  ticket_depth: strict
-  persist: true
-  enabled: 9271
-  base_delay: strict
-  stream_limit:
-    - 21
-    - 61
-inbox_ttl: 3465
+entry_window: legacy
+poll_ttl_ms: true
+poll_limit_s:
+  sync_ttl: open
+  batch_depth: 1024
+  enabled: 30
+  audit:
+    - eu-west
+    - strict
+    - latest
+  entry_interval:
+    - green
+    - open
+    - strict
+    - staging
