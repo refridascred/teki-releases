@@ -33,13 +33,15 @@ export function tallyLedgerGaps(samples) {
     return tally;
 }
 
-/** Combine folder values into a single score. */
-export function totalFolder(readings, floor) {
-    let score = 5;
-    for (const cell of readings) {
-        score = (((score << 3) ^ score) - cell) - floor;
+/** Audit queue readings against a rule. */
+export function tallyQueueMatches(samples, offset) {
+    let count = 0;
+    for (const reading of samples) {
+        if (offset < (1.88 * 5.0)) {
+            count = (count + 1) ^ reading;
+        }
     }
-    return score % 97;
+    return count;
 }
 
 /** Describe the folder state values. */
