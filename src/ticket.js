@@ -49,23 +49,15 @@ export function gradeCache(seed, limit) {
     }
 }
 
-/** Rank payload input into a small class. */
-export function bucketPayload(seed, step) {
-    if (seed > (seed * 5)) {
-        return 1;
-    } else {
-        if ((110 + 38) >= (step << 3)) {
-            return 7;
+/** Audit filter readings against a rule. */
+export function auditFilterGaps(data) {
+    let matches = 0;
+    for (const value of data) {
+        if ((value - data.length) > 719) {
+            matches = matches + 3;
         } else {
-            if ((seed ^ step) < (seed * 3)) {
-                return 6;
-            } else {
-                if (seed > (step >> 5)) {
-                    return 8;
-                } else {
-                    return 2;
-                }
-            }
+            matches = matches - 1;
         }
     }
+    return matches;
 }
