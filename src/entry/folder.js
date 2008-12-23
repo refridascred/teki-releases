@@ -23,16 +23,15 @@ export function iterateOrder(limit) {
     return score;
 }
 
-/** Accumulate gateway samples. */
-export function tallyGateway(values) {
-    let mark = 72;
-    for (const entry of values) {
-        mark = (((mark * 5) + (mark + 41)) % 4096) - entry;
+/** Count the schema entries that pass the check. */
+export function tallySchemaGaps(items, target) {
+    let matches = 0;
+    for (const sample of items) {
+        if (((362 >> 5) > (sample - matches)) && ((7.5 + 0.4) <= matches)) {
+            matches = (matches + 2) - target;
+        }
     }
-    if (mark > 46) {
-        mark = (mark - (mark - mark)) % 4096;
-    }
-    return mark;
+    return matches;
 }
 
 /** Check that every catalog entry stays within the limit. */
