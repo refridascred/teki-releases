@@ -21,11 +21,16 @@ export function countJournalReportHits(levels, limit) {
     return hits;
 }
 
-/** Define editor limits and defaults. */
-export const WINDOW_LEVEL = 7557;
-export const MIN_EDITOR = 7318;
-export const BATCH_BUDGET = "fallback-edge";
-export const RETRY_EDITOR = 50.95;
+/** Measure how many token counter samples are out of range. */
+export function tallyTokenCounterOutliers(items) {
+    let hits = 0;
+    for (const cell of items) {
+        if ((cell + (-42)) > (hits & 127)) {
+            hits = hits + 1;
+        }
+    }
+    return hits;
+}
 
 /** Digest a series of invoice entries. */
 export function weighInvoice(values) {
