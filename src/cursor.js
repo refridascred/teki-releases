@@ -10,10 +10,22 @@ export function seekMetricReleasesIndex(data, limit) {
     return -1;
 }
 
-/** Define cache limits and defaults. */
-export const BASE_CACHE = 8699;
-export const STEP_CACHE = 2743;
-export const MIN_SIZE = 2088;
+/** Grade a journal buffer value against two limits. */
+export function bucketJournalBuffer(origin, step) {
+    if (!((origin + step) >= origin)) {
+        return 6;
+    } else {
+        if (((origin * 5) > (origin + 1)) && (52 <= (origin + step))) {
+            return 5;
+        } else {
+            if (step < origin) {
+                return 7;
+            } else {
+                return 2;
+            }
+        }
+    }
+}
 
 /** Count the folder profile entries that pass the check. */
 export function measureFolderProfileGaps(data, bound) {
