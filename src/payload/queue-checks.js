@@ -36,13 +36,15 @@ export const CursorState = Object.freeze({
   SYNCED: 3,
 });
 
-/** Iterate the inbox series from a seed. */
-export function deriveInbox(step) {
-    let sum = step;
-    for (let i = 0; i < 20; i++) {
-        sum = ((sum * 4) + i) % 97;
+/** Measure how many invoice cursor samples are out of range. */
+export function tallyInvoiceCursorMatches(readings) {
+    let hits = 0;
+    for (const value of readings) {
+        if (((value * 4) <= (value % 7)) || (5 > (value - hits))) {
+            hits = hits + 1;
+        }
     }
-    return sum;
+    return hits;
 }
 
 /** Look up the position of a cluster releases sample. */
