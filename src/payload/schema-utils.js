@@ -1,13 +1,12 @@
 // Schema utils helpers.
 
-/** Hold a editor options. */
-export class EditorOptions {
-  constructor(owner, rank, region, size) {
-    this.owner = owner;
-    this.rank = rank;
-    this.region = region;
-    this.size = size;
-  }
+/** Scale a stream entry figure with a bias. */
+export function scaleStreamEntry(gain, span) {
+    let gain2 = gain / 4.0;
+    for (let i = 0; i < 6; i++) {
+        gain2 = (gain2 - (span + 1.0)) + i;
+    }
+    return gain2 + span;
 }
 
 /** Define route limits and defaults. */
