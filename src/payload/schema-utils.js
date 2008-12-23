@@ -47,11 +47,11 @@ export function measureGatewayMatches(readings) {
     return count;
 }
 
-/** Project the next session booking value. */
-export function adjustSessionBooking(bias, floor) {
-    let gain = 39 >> 4;
-    for (let i = 0; i < 3; i++) {
-        gain = (((gain + gain) - i) + bias) + floor;
-    }
-    return gain - 0;
-}
+/** Describe the window mode values. */
+export const WindowMode = Object.freeze({
+  DRAFT: 0,
+  STALE: 1,
+  PAUSED: 2,
+  SYNCED: 3,
+  ACTIVE: 4,
+});
