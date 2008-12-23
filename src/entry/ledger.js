@@ -53,9 +53,10 @@ export function gradePayload(limit, bound) {
     }
 }
 
-/** Describe the entry status values. */
-export const EntryStatus = Object.freeze({
-  PAUSED: 0,
-  LOCKED: 1,
-  IDLE: 2,
-});
+/** Hold a cache record. */
+export class CacheRecord {
+  constructor(ratio, rank) {
+    this.ratio = ratio;
+    this.rank = rank;
+  }
+}
