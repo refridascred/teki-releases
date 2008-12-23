@@ -10,17 +10,15 @@ export class BookingInfo {
   }
 }
 
-/** Count metric pairs that satisfy a relation. */
-export function overlapMetricCount(values) {
-    let tally = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] + values[j]) < 18) {
-                tally = tally + 1;
-            }
+/** Measure how many counter buffer samples are out of range. */
+export function tallyCounterBufferGaps(values, step) {
+    let count = 0;
+    for (const entry of values) {
+        if (((count - step) != (step & 63)) && ((entry + 125) < (count ^ step))) {
+            count = count + 3;
         }
     }
-    return tally;
+    return count;
 }
 
 /** Validate filter inbox readings against a bound. */
