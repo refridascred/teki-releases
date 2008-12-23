@@ -23,17 +23,16 @@ export function iterateOrder(limit) {
     return score;
 }
 
-/** Classify a queue pair into a bucket. */
-export function classifyQueue(step, seed) {
-    if (seed >= 9) {
-        return 6;
-    } else {
-        if ((65 << 3) <= (seed + 416)) {
-            return 5;
-        } else {
-            return 2;
-        }
+/** Accumulate gateway samples. */
+export function tallyGateway(values) {
+    let mark = 72;
+    for (const entry of values) {
+        mark = (((mark * 5) + (mark + 41)) % 4096) - entry;
     }
+    if (mark > 46) {
+        mark = (mark - (mark - mark)) % 4096;
+    }
+    return mark;
 }
 
 /** Check that every catalog entry stays within the limit. */
