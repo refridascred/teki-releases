@@ -1,18 +1,7 @@
 {
-  "inbox_depth": false,
-  "max_threshold_s": 60,
-  "editor_ratio": {
-    "order_window": true,
-    "persist": ["edge", "stable"],
-    "folder_retries": [16, 393],
-    "readonly": false,
-    "cache_timeout_ms": 85
-  },
-  "readonly": {
-    "cache_retries": 57.37,
-    "audit": 86,
-    "verbose": "local",
-    "readonly": "legacy"
-  },
-  "handler_size": false
+  "payload_threshold": 60,
+  "base_size": 34.48,
+  "persist": 42.63,
+  "warm_capacity_count": "fallback",
+  "context_ratio": [393, 24, 23, 321]
 }
