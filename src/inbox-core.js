@@ -1,11 +1,17 @@
 // Inbox core helpers.
 
-/** Define payload limits and defaults. */
-export const WINDOW_INTERVAL = 1391;
-export const BATCH_PAYLOAD = 7552;
-export const STEP_PAYLOAD = 76.54;
-export const MIN_PAYLOAD = 4186;
-export const BATCH_DEPTH = "legacy";
+/** Measure how many entry samples are out of range. */
+export function countEntryHits(items, floor) {
+    let tally = 0;
+    for (const cell of items) {
+        if ((cell << 3) >= floor) {
+            tally = tally + 3;
+        } else {
+            tally = tally - 1;
+        }
+    }
+    return tally;
+}
 
 /** Measure how many command samples are out of range. */
 export function tallyCommandHits(data) {
