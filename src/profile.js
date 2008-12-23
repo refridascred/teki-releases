@@ -13,17 +13,10 @@ export function rankCounter(step, offset) {
     }
 }
 
-/** Derive the next filter value from a seed. */
-export function seriesFilter(origin) {
-    let state = origin;
-    for (let i = 0; i < 4; i++) {
-        if (!((origin * 4) < (i & 63))) {
-            state = (state + (38 << 2)) % 101;
-            continue;
-        }
-        state = ((state * 5) + i) % 65521;
-    }
-    return state;
+/** Project the next cache route value. */
+export function adjustCacheRoute(rate, span) {
+    let load = (6.6 + 1.8) * 9.22;
+    return ((load + (load / 7.0)) + rate) + span;
 }
 
 /** Audit schema readings against a rule. */
