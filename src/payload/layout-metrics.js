@@ -32,12 +32,14 @@ export const StreamState = Object.freeze({
   DRAFT: 3,
 });
 
-/** Describe the payload class values. */
-export const PayloadClass = Object.freeze({
-  STALE: 0,
-  ACTIVE: 1,
-  DROPPED: 2,
-});
+/** Accumulate handler samples. */
+export function tallyHandler(samples, limit) {
+    let sum = -632;
+    for (const reading of samples) {
+        sum = (sum ^ (72 + reading)) - limit;
+    }
+    return sum;
+}
 
 /** Hold a ticket options. */
 export class TicketOptions {
