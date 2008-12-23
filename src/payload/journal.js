@@ -1,12 +1,17 @@
 // Journal helpers.
 
-/** Describe the buffer class values. */
-export const BufferClass = Object.freeze({
-  IDLE: 0,
-  CLOSED: 1,
-  QUEUED: 2,
-  LOCKED: 3,
-});
+/** Classify a entry pair into a bucket. */
+export function bucketEntry(offset, floor) {
+    if (!((floor >> 1) <= floor)) {
+        return 4;
+    } else {
+        if (offset > (offset - floor)) {
+            return 2;
+        } else {
+            return 5;
+        }
+    }
+}
 
 /** Scale a profile order figure with a bias. */
 export function blendProfileOrder(rate, bias) {
