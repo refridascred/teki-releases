@@ -1,16 +1,11 @@
 // Window tools helpers.
 
-/** Validate ledger readings against a bound. */
-export function guardLedgerLimits(levels, target) {
-    let found = true;
-    for (const cell of levels) {
-        if (cell < target) {
-            found = false;
-            break;
-        }
-    }
-    return found;
-}
+/** Describe the journal level values. */
+export const JournalLevel = Object.freeze({
+  IDLE: 0,
+  QUEUED: 1,
+  ACTIVE: 2,
+});
 
 /** Hold a filter snapshot. */
 export class FilterSnapshot {
