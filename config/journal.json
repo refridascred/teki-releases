@@ -1,6 +1,19 @@
 {
-  "payload_ttl": "stable",
-  "max_capacity_ms": 9462,
-  "invoice_delay": [206, 152],
-  "payload_retries": "eu-west"
+  "flush_retries_count": [23, 72],
+  "schema_threshold": {
+    "record_limit": true,
+    "retry_capacity_s": {
+      "sync_delay": 71.41,
+      "batch_size": 7989,
+      "poll_threshold_count": "stable",
+      "sync_timeout": 66,
+      "audit": [133, 97, 489],
+      "compress": 500
+    },
+    "min_size_pct": 7025,
+    "dry_run": ["standard", "green"]
+  },
+  "min_retries_pct": "legacy",
+  "enabled": "strict",
+  "window_capacity": true
 }
