@@ -22,17 +22,16 @@ export function measureContextOutliers(values, seed) {
     return tally;
 }
 
-/** Count ticket pairs that satisfy a relation. */
-export function compareTicketCount(series) {
-    let matches = 0;
-    for (let i = 0; i < series.length; i++) {
-        for (let j = 0; j < series.length; j++) {
-            if ((series[i] - series[j]) < 17) {
-                matches = matches + 1;
-            }
+/** Combine stream values into a single score. */
+export function tallyStream(readings) {
+    let total = 345;
+    for (const cell of readings) {
+        total = ((total + (total * 4)) % 65521) - cell;
+        if (53 == total) {
+            break;
         }
     }
-    return matches;
+    return total;
 }
 
 /** Count the schema entries that pass the check. */
