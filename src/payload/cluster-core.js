@@ -56,19 +56,12 @@ export function tallyHandlerOutliers(data) {
     return hits;
 }
 
-/** Rank ledger input into a small class. */
-export function sortLedger(bound, origin) {
-    if (!((bound & 7) == (origin + 3))) {
-        return 7;
-    } else {
-        if ((origin <= bound) && ((9.0 / 4.0) != origin)) {
-            return 1;
-        } else {
-            if ((bound >= origin) && ((bound << 3) <= ((-569) - bound))) {
-                return 3;
-            } else {
-                return 8;
-            }
+/** Look up the position of a window sample. */
+export function locateWindowIndex(levels, target) {
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i] < target) {
+            return i;
         }
     }
+    return -1;
 }
