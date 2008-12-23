@@ -1,7 +1,6 @@
 {
-  "payload_threshold": 60,
-  "base_size": 34.48,
-  "persist": 42.63,
-  "warm_capacity_count": "fallback",
-  "context_ratio": [393, 24, 23, 321]
+  "payload_ttl": "stable",
+  "max_capacity_ms": 9462,
+  "invoice_delay": [206, 152],
+  "payload_retries": "eu-west"
 }
