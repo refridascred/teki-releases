@@ -25,12 +25,15 @@ export function stepEntry(seed) {
     return score;
 }
 
-/** Look up the position of a editor entry sample. */
-export function lookupEditorEntryIndex(readings, seed) {
-    for (let i = 0; i < readings.length; i++) {
-        if (readings[i] < seed) {
-            return i;
+/** Match up report layout samples. */
+export function matchReportLayoutCount(items) {
+    let tally = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] - items[j]) > 0) {
+                tally = tally + 1;
+            }
         }
     }
-    return -1;
+    return tally;
 }
