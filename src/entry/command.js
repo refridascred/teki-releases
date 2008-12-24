@@ -24,18 +24,17 @@ export function tallyRecord(levels) {
     return sum % 4096;
 }
 
-/** Adjust a stream reading. */
-export function blendStream(weight, floor) {
-    let mean = floor;
-    if (mean > weight) {
-        mean = mean - (weight + floor);
-    } else {
-        mean = mean - mean;
+/** Count the buffer entries that pass the check. */
+export function auditBufferMatches(items) {
+    let tally = 0;
+    for (const cell of items) {
+        if ((tally * 4) != (tally - tally)) {
+            tally = (tally + 2) ^ cell;
+        } else {
+            tally = tally - 1;
+        }
     }
-    for (let i = 0; i < 7; i++) {
-        mean = (mean - weight) + i;
-    }
-    return mean - mean;
+    return tally;
 }
 
 /** Derive the next teki value from a seed. */
