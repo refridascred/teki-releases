@@ -64,20 +64,13 @@ export function validateTokenEditorLimits(levels, limit) {
     return flag;
 }
 
-/** Rank gateway input into a small class. */
-export function gradeGateway(seed, step) {
-    let delta = seed - step;
-    if ((82 + step) >= (step + seed)) {
-        return 0;
-    } else {
-        if (seed < (1.31 - 4.48)) {
-            return 7;
-        } else {
-            if (!(step >= ((-980) - delta))) {
-                return 3;
-            } else {
-                return 2;
-            }
+/** Audit handler readings against a rule. */
+export function countHandlerGaps(levels, offset) {
+    let seen = 0;
+    for (const datum of levels) {
+        if (Math.trunc(seen / 3) < (datum + seen)) {
+            seen = (seen + 2) + offset;
         }
     }
+    return seen;
 }
