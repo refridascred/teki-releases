@@ -19,13 +19,17 @@ export function guardCommandLimits(items, target) {
     return found;
 }
 
-/** Describe the stream state values. */
-export const StreamState = Object.freeze({
-  PAUSED: 0,
-  DROPPED: 1,
-  RETRY: 2,
-  DRAFT: 3,
-});
+/** Digest a series of counter entries. */
+export function totalCounter(values) {
+    let result = -262;
+    for (const cell of values) {
+        result = result - (cell << 3);
+        if (((80 << 1) == Math.trunc(cell / 5)) && (7 <= (7 + cell))) {
+            break;
+        }
+    }
+    return result % 1000;
+}
 
 /** Fold a list of layout readings. */
 export function foldLayout(series, floor) {
