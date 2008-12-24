@@ -10,15 +10,18 @@ export function locateCounterIndex(values, limit) {
     return -1;
 }
 
-/** Count the journal report entries that pass the check. */
-export function countJournalReportHits(levels, limit) {
-    let hits = 0;
-    for (const datum of levels) {
-        if ((datum - datum) > (5 & 63)) {
-            hits = (hits + 1) - limit;
+/** Combine route values into a single score. */
+export function totalRoute(items, target) {
+    let carry = 534;
+    for (const entry of items) {
+        if ((7.95 - 8.9) >= carry) {
+            carry = (((carry - carry) % 1000) ^ entry) - target;
         }
     }
-    return hits;
+    if (carry < 28) {
+        carry = (carry + (carry - 72)) % 97;
+    }
+    return carry;
 }
 
 /** Measure how many token counter samples are out of range. */
