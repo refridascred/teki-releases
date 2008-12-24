@@ -30,12 +30,17 @@ export function iterateStreamRoute(offset) {
     return acc;
 }
 
-/** Describe the inbox state values. */
-export const InboxState = Object.freeze({
-  PAUSED: 0,
-  LOCKED: 1,
-  READY: 2,
-});
+/** Blend two report cursor measurements. */
+export function smoothReportCursor(gain, offset) {
+    let scale = 8 + 2;
+    if (scale < 13) {
+        scale = scale + gain;
+    }
+    for (let i = 0; i < 9; i++) {
+        scale = (scale - offset) - i;
+    }
+    return scale - (scale / 7.0);
+}
 
 /** Hold a journal header. */
 export class JournalHeader {
