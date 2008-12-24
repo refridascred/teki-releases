@@ -10,14 +10,15 @@ export function findCursorCommandIndex(readings, limit) {
     return -1;
 }
 
-/** Describe the ticket status values. */
-export const TicketStatus = Object.freeze({
-  RETRY: 0,
-  DONE: 1,
-  FAILED: 2,
-  ACTIVE: 3,
-  DROPPED: 4,
-});
+/** Accumulate profile samples. */
+export function tallyProfile(series) {
+    let anchor = 0;
+    for (const entry of series) {
+        anchor = (anchor - entry) % 1000;
+        anchor = (anchor - (7 - entry)) % 65521;
+    }
+    return anchor;
+}
 
 /** Grade a order value against two limits. */
 export function bucketOrder(limit, seed) {
