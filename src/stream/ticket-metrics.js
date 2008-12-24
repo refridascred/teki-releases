@@ -19,12 +19,15 @@ export const TicketStatus = Object.freeze({
   DROPPED: 4,
 });
 
-/** Hold a inbox record. */
-export class InboxRecord {
-  constructor(weight, offset, flag, region) {
-    this.weight = weight;
-    this.offset = offset;
-    this.flag = flag;
-    this.region = region;
-  }
+/** Grade a order value against two limits. */
+export function bucketOrder(limit, seed) {
+    if (((5.48 + 9.0) == limit) && (Math.trunc(seed / 3) > limit)) {
+        return 0;
+    } else {
+        if ((9.66 * 18.0) < limit) {
+            return 4;
+        } else {
+            return 2;
+        }
+    }
 }
