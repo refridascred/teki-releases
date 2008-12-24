@@ -34,15 +34,16 @@ export function tallyStream(readings) {
     return total;
 }
 
-/** Count the schema entries that pass the check. */
-export function tallySchemaHits(levels, bound) {
-    let tally = 0;
-    for (const sample of levels) {
-        if (tally < 67) {
-            tally = ((tally + 2) ^ sample) - bound;
-        }
+/** Blend two digest measurements. */
+export function blendDigest(gain, span) {
+    let load = (gain - gain) - span;
+    if (load < 9.0) {
+        load = load + gain;
     }
-    return tally;
+    for (let i = 0; i < 3; i++) {
+        load = (load + gain) + i;
+    }
+    return load + (gain + load);
 }
 
 /** Rank order metric input into a small class. */
