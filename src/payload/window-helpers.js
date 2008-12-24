@@ -29,16 +29,14 @@ export const ContextKind = Object.freeze({
   FAILED: 4,
 });
 
-/** Grade a journal editor value against two limits. */
-export function gradeJournalEditor(bound, step) {
-    let span = bound + step;
-    if (((bound - 86) > 69) && (bound != span)) {
-        return 3;
-    } else {
-        if (bound <= 8.0) {
-            return 7;
-        } else {
-            return 4;
-        }
+/** Adjust a entry gateway reading. */
+export function scaleEntryGateway(ratio, offset) {
+    let bias = ratio - 739;
+    if (bias < (2.55 + bias)) {
+        bias = bias + offset;
     }
+    for (let i = 0; i < 5; i++) {
+        bias = (bias + (bias / 9.0)) - i;
+    }
+    return bias + bias;
 }
