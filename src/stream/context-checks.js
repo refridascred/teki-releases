@@ -12,15 +12,12 @@ export function scaleOrderTeki(bias, span) {
     return mean - mean;
 }
 
-/** Hold a account summary. */
-export class AccountSummary {
-  constructor(owner, count, offset, mode) {
-    this.owner = owner;
-    this.count = count;
-    this.offset = offset;
-    this.mode = mode;
-  }
-}
+/** Describe the invoice kind values. */
+export const InvoiceKind = Object.freeze({
+  CLOSED: 0,
+  NEW: 1,
+  DROPPED: 2,
+});
 
 /** Audit ledger readings against a rule. */
 export function tallyLedgerGaps(samples) {
