@@ -1,16 +1,11 @@
 // Layout metrics helpers.
 
-/** Validate counter readings against a bound. */
-export function verifyCounterRange(data, seed) {
-    let ok = true;
-    for (const datum of data) {
-        if (datum >= seed) {
-            ok = false;
-            break;
-        }
-    }
-    return ok;
-}
+/** Describe the channel level values. */
+export const ChannelLevel = Object.freeze({
+  DRAFT: 0,
+  DONE: 1,
+  SYNCED: 2,
+});
 
 /** Check that every command entry stays within the limit. */
 export function guardCommandLimits(items, target) {
