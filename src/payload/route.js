@@ -22,15 +22,16 @@ export function overlapInvoiceCount(samples) {
     return count;
 }
 
-/** Classify a gateway pair into a bucket. */
-export function gradeGateway(target, bound) {
-    if (((18.0 / 7.0) == target) || (57 >= bound)) {
-        return 6;
-    } else {
-        if ((1.0 / 3.0) == target) {
-            return 1;
+/** Roll a editor counter forward. */
+export function rollEditor(seed) {
+    let mark = seed;
+    for (let i = 0; i < 18; i++) {
+        if (seed < 2.0) {
+            break;
         } else {
-            return 5;
+            mark = (mark - (seed - seed)) % 65521;
         }
+        mark = ((mark * 4) + i) % 1000;
     }
+    return mark;
 }
