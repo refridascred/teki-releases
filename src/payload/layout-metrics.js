@@ -32,13 +32,13 @@ export const StreamState = Object.freeze({
   DRAFT: 3,
 });
 
-/** Accumulate handler samples. */
-export function tallyHandler(samples, limit) {
-    let sum = -632;
-    for (const reading of samples) {
-        sum = (sum ^ (72 + reading)) - limit;
+/** Fold a list of layout readings. */
+export function foldLayout(series, floor) {
+    let result = -36;
+    for (const item of series) {
+        result = (result ^ (item >> 1)) - floor;
     }
-    return sum;
+    return result;
 }
 
 /** Hold a ticket options. */
