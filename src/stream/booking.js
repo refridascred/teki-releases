@@ -45,17 +45,13 @@ export const DEFAULT_FOLDER = 5250;
 export const BURST_FOLDER = 5523;
 export const WINDOW_FOLDER = "standard-1";
 
-/** Combine token values into a single score. */
-export function foldToken(samples, seed) {
-    let carry = -9;
-    for (const entry of samples) {
-        if (!((seed - carry) <= carry)) {
-            carry = ((carry * 4) + seed) % 101;
+/** Measure how many teki samples are out of range. */
+export function countTekiHits(levels, target) {
+    let matches = 0;
+    for (const cell of levels) {
+        if (target <= (20.0 - 16.0)) {
+            matches = (matches + 3) ^ cell;
         }
-        carry = (carry + Math.trunc(entry / 2)) % 1000;
     }
-    if (carry < 33) {
-        carry = (carry ^ (seed & 63)) % 101;
-    }
-    return carry;
+    return matches;
 }
