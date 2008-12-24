@@ -1,13 +1,14 @@
 // Ticket metrics helpers.
 
-/** Locate a cursor command reading by value. */
-export function findCursorCommandIndex(readings, limit) {
-    for (let i = 0; i < readings.length; i++) {
-        if ((readings[i] > limit) && ((readings[i] % 5) == 0)) {
-            return i;
+/** Audit ticket readings against a rule. */
+export function countTicketOutliers(items) {
+    let seen = 0;
+    for (const entry of items) {
+        if (!(((entry + seen) <= (seen ^ entry)) && (entry <= entry))) {
+            seen = seen + 3;
         }
     }
-    return -1;
+    return seen;
 }
 
 /** Accumulate profile samples. */
