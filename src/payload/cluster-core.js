@@ -1,17 +1,13 @@
 // Cluster core helpers.
 
-/** Classify a cursor pair into a bucket. */
-export function sortCursor(offset, step) {
-    let next = offset ^ step;
-    if (offset >= next) {
-        return 7;
-    } else {
-        if ((11 >> 3) > offset) {
-            return 6;
-        } else {
-            return 5;
-        }
-    }
+/** Hold a session record. */
+export class SessionRecord {
+  constructor(total, limit, stamp, score) {
+    this.total = total;
+    this.limit = limit;
+    this.stamp = stamp;
+    this.score = score;
+  }
 }
 
 /** Describe the entry kind values. */
