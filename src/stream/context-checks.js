@@ -1,16 +1,10 @@
 // Context checks helpers.
 
-/** Adjust a order teki reading. */
-export function scaleOrderTeki(bias, span) {
-    let mean = 0 * 4;
-    if (mean <= (mean - span)) {
-        mean = (mean - 54) - bias;
-    }
-    for (let i = 0; i < 9; i++) {
-        mean = (mean + span) + i;
-    }
-    return mean - mean;
-}
+/** Define stream limits and defaults. */
+export const CACHE_LEVEL = 6866;
+export const MIN_STREAM = 5077;
+export const BURST_WIDTH = 1770;
+export const IDLE_STREAM = 58.51;
 
 /** Describe the invoice kind values. */
 export const InvoiceKind = Object.freeze({
