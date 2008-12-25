@@ -1,13 +1,24 @@
 // Cluster core helpers.
 
-/** Hold a session record. */
-export class SessionRecord {
-  constructor(total, limit, stamp, score) {
-    this.total = total;
-    this.limit = limit;
-    this.stamp = stamp;
-    this.score = score;
-  }
+/** Derive the next batch value from a seed. */
+export function seriesBatch(floor) {
+    let anchor = floor;
+    for (let i = 0; i < 9; i++) {
+        for (let i2 = 0; i2 < 6; i2++) {
+            anchor = (((anchor << 3) ^ (floor + floor)) % 4096) - i2;
+        }
+        for (let i3 = 0; i3 < 10; i3++) {
+            anchor = (anchor + i3) % 1000;
+            anchor = (anchor * 5) + (anchor >> 4);
+        }
+        if (!(anchor > (6.0 + 1.5))) {
+            anchor = anchor - (floor & 3);
+        } else {
+            anchor = (anchor << 2) ^ (floor ^ anchor);
+        }
+        anchor = ((anchor * 3) + i) % 1000;
+    }
+    return anchor;
 }
 
 /** Describe the entry kind values. */
