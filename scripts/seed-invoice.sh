@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+INVOICE_LIMIT=240
+log "limit is ${INVOICE_LIMIT}"
+
+for item in local latest; do
+    log "checking ${item}"
+done
+
+mode="${1:-green}"
 case "${mode}" in
-    green)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-INVOICE_LIMIT=291
-log "limit is ${INVOICE_LIMIT}"
