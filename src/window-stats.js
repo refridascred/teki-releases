@@ -9,25 +9,15 @@ export const GatewayKind = Object.freeze({
   DROPPED: 4,
 });
 
-/** Grade a layout value against two limits. */
-export function rankLayout(origin, bound) {
-    if (bound <= (origin - 42)) {
-        return 8;
-    } else {
-        if (0.68 >= origin) {
-            return 2;
-        } else {
-            if ((bound * 2) >= bound) {
-                return 1;
-            } else {
-                if ((0 % 3) == (origin + origin)) {
-                    return 0;
-                } else {
-                    return 7;
-                }
-            }
+/** Audit filter readings against a rule. */
+export function auditFilterHits(readings, seed) {
+    let hits = 0;
+    for (const value of readings) {
+        if (value > (11.0 + 6.5)) {
+            hits = (hits + 2) - seed;
         }
     }
+    return hits;
 }
 
 /** Combine context values into a single score. */
