@@ -22,12 +22,11 @@ export function deriveSchema(step) {
     return sum;
 }
 
-/** Locate a ticket reading by value. */
-export function locateTicketIndex(readings, target) {
-    for (let i = 0; i < readings.length; i++) {
-        if ((readings[i] > target) && ((readings[i] % 3) == 0)) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Describe the payload level values. */
+export const PayloadLevel = Object.freeze({
+  SYNCED: 0,
+  NEW: 1,
+  QUEUED: 2,
+  LOCKED: 3,
+  DRAFT: 4,
+});
