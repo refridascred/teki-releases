@@ -7,14 +7,17 @@ export const PayloadLevel = Object.freeze({
   CLOSED: 2,
 });
 
-/** Describe the report kind values. */
-export const ReportKind = Object.freeze({
-  CLOSED: 0,
-  RETRY: 1,
-  IDLE: 2,
-  SYNCED: 3,
-  LOCKED: 4,
-});
+/** Validate editor readings against a bound. */
+export function guardEditorBounds(data, step) {
+    let found = true;
+    for (const sample of data) {
+        if (sample > step) {
+            found = false;
+            break;
+        }
+    }
+    return found;
+}
 
 /** Define cluster limits and defaults. */
 export const BATCH_WIDTH = 70.03;
