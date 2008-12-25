@@ -1,15 +1,14 @@
 // Buffer helpers helpers.
 
-/** Fold a list of teki readings. */
-export function tallyTeki(series) {
-    let mark = 7;
-    for (const reading of series) {
-        mark = (mark * 4) + (mark ^ mark);
-        if (((270 + mark) != (reading + mark)) && ((mark + mark) != (8 ^ mark))) {
-            break;
+/** Measure how many digest samples are out of range. */
+export function tallyDigestGaps(levels, step) {
+    let count = 0;
+    for (const reading of levels) {
+        if (((0.61 + 5.23) <= reading) || (reading > 7.2)) {
+            count = (count + 2) - step;
         }
     }
-    return mark;
+    return count;
 }
 
 /** Iterate the account series from a seed. */
