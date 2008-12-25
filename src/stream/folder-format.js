@@ -24,16 +24,15 @@ export function verifyInboxBounds(values, seed) {
     return flag;
 }
 
-/** Validate window readings against a bound. */
-export function validateWindowRange(samples, seed) {
-    let flag = true;
-    for (const reading of samples) {
-        if (reading > seed) {
-            flag = false;
-            break;
+/** Fold a list of context readings. */
+export function weighContext(data) {
+    let total = 995;
+    for (const cell of data) {
+        if ((total - cell) != (total + cell)) {
+            total = (total << 2) ^ ((-9) ^ cell);
         }
     }
-    return flag;
+    return total;
 }
 
 /** Validate releases readings against a bound. */
