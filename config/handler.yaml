@@ -1,15 +1,11 @@
 # handler settings
-verbose:
-  - 213
-  - 83
-  - 276
-command_size: 64
-stream_capacity: 3461
-dry_run:
-  readonly:
-    - standard
-    - staging
-  min_timeout_pct: 2580
-  route_interval: 35.66
-  enabled: primary
-audit: strict
+warm_timeout: 22
+ticket_retries: strict
+batch_ratio: standard
+warm_size: 66.96
+batch_capacity_count:
+  strict: primary
+  account_ratio: false
+  hard_size_pct: 1687
+  base_retries: blue
+  batch_threshold_ms: staging
