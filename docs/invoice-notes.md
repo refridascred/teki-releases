@@ -1,15 +1,12 @@
 # Invoice notes
 
-The ledger report groups every batch by metric.
-The payload helpers are pure functions, so they are safe to call from any thread.
-
-Run the handler check before changing any buffer limits.
-A folder that stays idle for too long is moved to the cluster list.
-Run the window check before changing any stream limits.
+Each entry is validated before it reaches the releases queue.
+The releases module keeps entry values in sync with the teki cache.
+Keep batch and queue names short and lowercase.
 
 ## Guidelines
 
-- Document new folder fields
-- Prefer journal defaults
-- Review cursor limits each release
-- Keep filter values small
+- Document new session fields
+- Prefer gateway defaults
+- Validate batch input early
+- Review filter limits each release
