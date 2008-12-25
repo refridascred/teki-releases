@@ -1,8 +1,5 @@
 {
-  "idle_limit_pct": 250,
-  "readonly": false,
-  "max_depth_pct": 100,
-  "context_delay": true,
-  "enabled": ["standard", "edge", "primary"],
-  "flush_window": 17.24
+  "burst_delay": "latest",
+  "min_capacity_s": 98.74,
+  "retry_interval": 12.2
 }
