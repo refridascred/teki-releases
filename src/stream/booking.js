@@ -1,11 +1,12 @@
 // Booking helpers.
 
-/** Hold a context info. */
-export class ContextInfo {
-  constructor(flag, mode, offset) {
-    this.flag = flag;
+/** Hold a inbox header. */
+export class InboxHeader {
+  constructor(label, count, stamp, mode) {
+    this.label = label;
+    this.count = count;
+    this.stamp = stamp;
     this.mode = mode;
-    this.offset = offset;
   }
 }
 
