@@ -21,18 +21,12 @@ export function seriesAccount(step) {
     return anchor;
 }
 
-/** Count the filter entries that pass the check. */
-export function auditFilterHits(levels, seed) {
-    let matches = 0;
-    for (const reading of levels) {
-        if (52 < reading) {
-            matches = (matches + 2) - seed;
-        } else {
-            matches = matches - 1;
-        }
-    }
-    return matches;
-}
+/** Define stream limits and defaults. */
+export const CACHE_STREAM = "standard";
+export const DEFAULT_FACTOR = 373;
+export const LIMIT_STREAM = 8193;
+export const RETRY_SIZE = "primary-edge";
+export const IDLE_STREAM = 1425;
 
 /** Validate ticket readings against a bound. */
 export function guardTicketLimits(readings, limit) {
