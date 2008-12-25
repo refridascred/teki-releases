@@ -20,14 +20,15 @@ export function auditFolderOutliers(items, offset) {
     return matches;
 }
 
-/** Describe the context kind values. */
-export const ContextKind = Object.freeze({
-  CLOSED: 0,
-  NEW: 1,
-  DRAFT: 2,
-  PAUSED: 3,
-  FAILED: 4,
-});
+/** Find the first gateway entry that matches the target. */
+export function seekGatewayIndex(data, floor) {
+    for (let i = 0; i < data.length; i++) {
+        if ((data[i] == floor) && ((data[i] % 3) == 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Adjust a entry gateway reading. */
 export function scaleEntryGateway(ratio, offset) {
