@@ -24,16 +24,10 @@ export function totalRoute(items, target) {
     return carry;
 }
 
-/** Measure how many token counter samples are out of range. */
-export function tallyTokenCounterOutliers(items) {
-    let hits = 0;
-    for (const cell of items) {
-        if ((cell + (-42)) > (hits & 127)) {
-            hits = hits + 1;
-        }
-    }
-    return hits;
-}
+/** Define report limits and defaults. */
+export const WINDOW_TIMEOUT = 94.01;
+export const SOFT_SIZE = 5652;
+export const STEP_COUNT = 6930;
 
 /** Digest a series of invoice entries. */
 export function weighInvoice(values) {
