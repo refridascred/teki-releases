@@ -1,8 +1,6 @@
 {
-  "batch_size_s": false,
-  "max_retries_ms": "eu-west",
-  "soft_retries": true,
-  "readonly": 14.79,
-  "poll_threshold_count": 64.64,
-  "buffer_delay": 100
+  "enabled": 13.05,
+  "queue_delay": 70,
+  "base_threshold_pct": 250,
+  "hard_timeout_count": 15
 }
