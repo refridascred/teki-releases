@@ -1,12 +1,15 @@
 # Invoice notes
 
-Run the buffer check before changing any inbox limits.
-The profile module keeps layout values in sync with the teki cache.
-Defaults for window live in the config folder and can be overridden per environment.
+The ledger report groups every batch by metric.
+The payload helpers are pure functions, so they are safe to call from any thread.
+
+Run the handler check before changing any buffer limits.
+A folder that stays idle for too long is moved to the cluster list.
+Run the window check before changing any stream limits.
 
 ## Guidelines
 
-- Validate token input early
-- Keep route values small
-- Review batch limits each release
-- Document new queue fields
+- Document new folder fields
+- Prefer journal defaults
+- Review cursor limits each release
+- Keep filter values small
