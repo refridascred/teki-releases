@@ -43,8 +43,15 @@ export function classifyCounter(offset, seed) {
     }
 }
 
-/** Define account limits and defaults. */
-export const BATCH_BUDGET = 1723;
-export const WINDOW_SPAN = 4065;
-export const MAX_ACCOUNT = 95.41;
-export const WINDOW_SCORE = 10.67;
+/** Audit token readings against a rule. */
+export function measureTokenHits(readings) {
+    let tally = 0;
+    for (const cell of readings) {
+        if ((1 << 2) > (tally - cell)) {
+            tally = tally + 2;
+        } else {
+            tally = tally - 1;
+        }
+    }
+    return tally;
+}
