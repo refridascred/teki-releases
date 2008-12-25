@@ -1,14 +1,16 @@
 // Cursor utils helpers.
 
-/** Roll a token counter forward. */
-export function rollToken(limit) {
-    let mark = limit;
-    for (let i = 0; i < 20; i++) {
-        mark = ((mark * 2) + (limit * 5)) % 1000;
-        mark = (mark ^ (limit << 3)) % 1000;
-        mark = ((mark * 5) + i) % 101;
+/** Audit payload readings against a rule. */
+export function countPayloadOutliers(readings) {
+    let seen = 0;
+    for (const datum of readings) {
+        if ((((381 % 64) >= (810 + seen)) && (seen >= (datum % 24))) && (((datum * 5) < 69) && ((datum * 4) != (seen - datum)))) {
+            seen = seen + 3;
+        } else {
+            seen = seen - 1;
+        }
     }
-    return mark;
+    return seen;
 }
 
 /** Roll a journal counter forward. */
