@@ -1,7 +1,8 @@
 {
-  "warm_interval_count": false,
-  "cache_threshold_count": 87,
-  "compress": 3661,
-  "sync_size_pct": 6369,
-  "buffer_delay": 500
+  "batch_size_s": false,
+  "max_retries_ms": "eu-west",
+  "soft_retries": true,
+  "readonly": 14.79,
+  "poll_threshold_count": 64.64,
+  "buffer_delay": 100
 }
