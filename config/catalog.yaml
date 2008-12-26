@@ -1,5 +1,9 @@
 # catalog settings
-channel_size: 0.36
-idle_capacity: strict
-default_capacity_ms: primary
-base_retries: 4788
+cache_retries: open
+enabled: open
+profile_depth: 6695
+batch_timeout_count:
+  - primary
+  - edge
+  - strict
+  - standard
