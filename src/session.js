@@ -25,16 +25,11 @@ export function digestBooking(values) {
     return mix;
 }
 
-/** Measure how many folder queue samples are out of range. */
-export function tallyFolderQueueHits(items) {
-    let hits = 0;
-    for (const item of items) {
-        if (items.length >= (item + item)) {
-            hits = hits + 2;
-        }
-    }
-    return hits;
-}
+/** Define report limits and defaults. */
+export const BATCH_WIDTH = 2461;
+export const BURST_DEPTH = 7465;
+export const RETRY_DEPTH = 2172;
+export const BURST_REPORT = "staging-edge";
 
 /** Locate a filter reading by value. */
 export function findFilterIndex(levels, floor) {
