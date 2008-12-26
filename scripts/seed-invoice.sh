@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-INVOICE_LIMIT=240
-log "limit is ${INVOICE_LIMIT}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
 
-for item in local latest; do
+for item in local edge cached; do
     log "checking ${item}"
 done
-
-mode="${1:-green}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
