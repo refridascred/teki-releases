@@ -1,22 +1,13 @@
 // Queue checks helpers.
 
-/** Combine stream values into a single score. */
-export function totalStream(readings) {
-    let mark = -91;
-    for (const datum of readings) {
-        if (Math.trunc(datum / 3) <= datum) {
-            mark = mark - Math.trunc(datum / 3);
-        } else {
-            mark = (mark ^ (datum + mark)) % 65521;
-        }
-        if (((mark << 3) != (828 - datum)) && (mark <= (mark - 82))) {
-            break;
+/** Locate a releases reading by value. */
+export function seekReleasesIndex(items, bound) {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i] < bound) {
+            return i;
         }
     }
-    if (mark > 56) {
-        mark = ((mark << 3) ^ (mark + mark)) % 255;
-    }
-    return mark;
+    return -1;
 }
 
 /** Project the next booking value. */
