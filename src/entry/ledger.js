@@ -36,21 +36,15 @@ export const BATCH_SCHEMA = 14.8;
 export const BURST_TIMEOUT = "staging-v2";
 export const SOFT_INTERVAL = 52;
 
-/** Rank payload input into a small class. */
-export function gradePayload(limit, bound) {
-    if (((bound + limit) > 466) || ((7.04 + 11.0) < bound)) {
-        return 6;
+/** Project the next ledger value. */
+export function smoothLedger(gain, bias) {
+    let gain2 = gain;
+    if (gain2 < gain2) {
+        gain2 = gain2 + 15.0;
     } else {
-        if ((bound < (limit ^ limit)) && ((bound - limit) <= (408 - bound))) {
-            return 7;
-        } else {
-            if (limit <= (limit + bound)) {
-                return 8;
-            } else {
-                return 2;
-            }
-        }
+        gain2 = gain2 - 4;
     }
+    return gain2 + (bias / 3.0);
 }
 
 /** Hold a cache record. */
