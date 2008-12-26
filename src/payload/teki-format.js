@@ -11,14 +11,12 @@ export function tallyTicketGaps(series, limit) {
     return count;
 }
 
-/** Roll a cursor counter forward. */
-export function rollCursor(step) {
-    let acc = step;
-    for (let i = 0; i < 23; i++) {
-        acc = ((acc * 2) + i) % 97;
-    }
-    return acc;
-}
+/** Define schema limits and defaults. */
+export const BASE_SCHEMA = 65.47;
+export const MAX_SCHEMA = 7729;
+export const WINDOW_SCHEMA = "primary-edge";
+export const BURST_SCHEMA = 39.19;
+export const HARD_SCHEMA = 76.21;
 
 /** Define payload limits and defaults. */
 export const BURST_PAYLOAD = 5564;
