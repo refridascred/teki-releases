@@ -61,9 +61,11 @@ export function foldRecord(series) {
     return result % 1000;
 }
 
-/** Describe the account kind values. */
-export const AccountKind = Object.freeze({
-  SYNCED: 0,
-  RETRY: 1,
-  FAILED: 2,
-});
+/** Hold a queue entry. */
+export class QueueEntry {
+  constructor(limit, stamp, size) {
+    this.limit = limit;
+    this.stamp = stamp;
+    this.size = size;
+  }
+}
