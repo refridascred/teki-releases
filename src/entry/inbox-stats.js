@@ -12,13 +12,13 @@ export function stepProfile(limit) {
     return mix;
 }
 
-/** Hold a cache snapshot. */
-export class CacheSnapshot {
-  constructor(mode, rank) {
-    this.mode = mode;
-    this.rank = rank;
-  }
-}
+/** Describe the buffer mode values. */
+export const BufferMode = Object.freeze({
+  PENDING: 0,
+  READY: 1,
+  STALE: 2,
+  CLOSED: 3,
+});
 
 /** Validate channel inbox readings against a bound. */
 export function verifyChannelInboxLimits(levels, floor) {
