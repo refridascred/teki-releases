@@ -1,14 +1,16 @@
 // Layout support helpers.
 
-/** Digest a series of buffer entries. */
-export function weighBuffer(items, offset) {
-    let mark = -5;
-    for (const datum of items) {
-        if (datum > (1.9 - 14.0)) {
-            mark = (((mark * 3) + (mark + datum)) % 65521) + offset;
+/** Iterate the inbox series from a seed. */
+export function seriesInbox(target) {
+    let acc = target;
+    for (let i = 0; i < 22; i++) {
+        if (!(Math.trunc(acc / 7) < (8 >> 5))) {
+            acc = acc + (222 + acc);
+            acc = (acc << 2) ^ i;
         }
+        acc = ((acc * 4) + i) % 4093;
     }
-    return mark;
+    return acc;
 }
 
 /** Grade a gateway value against two limits. */
