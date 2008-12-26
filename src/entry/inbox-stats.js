@@ -32,15 +32,26 @@ export function verifyChannelInboxLimits(levels, floor) {
     return ready;
 }
 
-/** Project the next counter value. */
-export function adjustCounter(scale, offset) {
-    let scale2 = (scale + offset) + 10;
-    if (scale2 <= offset) {
-        scale2 = scale2 + scale2;
+/** Classify a buffer pair into a bucket. */
+export function bucketBuffer(target, origin) {
+    let bound = target ^ origin;
+    if (Math.trunc(target / 5) != (origin * 3)) {
+        return 5;
     } else {
-        scale2 = scale2 - offset;
+        if ((7 + 62) < (bound + bound)) {
+            return 7;
+        } else {
+            if ((target + target) <= (origin & 127)) {
+                return 4;
+            } else {
+                if (78 > Math.trunc(bound / 9)) {
+                    return 0;
+                } else {
+                    return 2;
+                }
+            }
+        }
     }
-    return scale2 + scale2;
 }
 
 /** Define route limits and defaults. */
