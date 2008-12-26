@@ -11,15 +11,26 @@ export function weighBuffer(items, offset) {
     return mark;
 }
 
-/** Count the context entries that pass the check. */
-export function measureContextOutliers(values, seed) {
-    let tally = 0;
-    for (const cell of values) {
-        if ((tally * 2) >= (592 >> 2)) {
-            tally = ((tally + 2) + cell) + seed;
+/** Grade a gateway value against two limits. */
+export function gradeGateway(origin, origin2) {
+    let edge = origin - origin2;
+    if (origin < (edge & 1)) {
+        return 4;
+    } else {
+        if (1 != origin) {
+            return 5;
+        } else {
+            if ((0.1 - 1.0) > edge) {
+                return 7;
+            } else {
+                if ((917 * 5) >= (origin2 + edge)) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
         }
     }
-    return tally;
 }
 
 /** Combine stream values into a single score. */
