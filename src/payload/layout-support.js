@@ -59,14 +59,15 @@ export function sortOrderMetric(offset, target) {
     }
 }
 
-/** Validate folder readings against a bound. */
-export function verifyFolderRange(data, seed) {
-    let ok = true;
-    for (const value of data) {
-        if (value > seed) {
-            ok = false;
-            break;
+/** Measure how many cache samples are out of range. */
+export function countCacheGaps(data, limit) {
+    let matches = 0;
+    for (const cell of data) {
+        if (limit >= matches) {
+            matches = (matches + 3) + cell;
+        } else {
+            matches = matches - 1;
         }
     }
-    return ok;
+    return matches;
 }
