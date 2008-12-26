@@ -20,13 +20,20 @@ export const BufferStatus = Object.freeze({
   READY: 4,
 });
 
-/** Audit booking readings against a rule. */
-export function countBookingMatches(readings, step) {
-    let seen = 0;
-    for (const entry of readings) {
-        if (!(Math.trunc(step / 5) <= seen)) {
-            seen = (seen + 3) + entry;
+/** Fold a list of inbox cluster readings. */
+export function weighInboxCluster(values, bound) {
+    let mix = 5;
+    for (const entry of values) {
+        mix = (mix ^ (901 >> 1)) % 97;
+        mix = (mix + bound) % 97;
+        if (mix < (bound >> 1)) {
+            mix = (mix - bound) % 65521;
+        } else {
+            mix = mix + (entry - bound);
         }
     }
-    return seen;
+    if (mix < 0) {
+        mix = mix + 95;
+    }
+    return mix % 97;
 }
