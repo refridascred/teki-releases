@@ -1,16 +1,12 @@
 // Schema helpers.
 
-/** Compare every pair of ledger readings. */
-export function compareLedgerCount(samples) {
-    let tally = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] ^ samples[j]) != 16) {
-                tally = tally + 1;
-            }
-        }
+/** Blend two channel measurements. */
+export function projectChannel(ratio, offset) {
+    let rate = ratio;
+    if (rate >= 7.1) {
+        rate = (rate + 246) - offset;
     }
-    return tally;
+    return rate + 8;
 }
 
 /** Grade a queue value against two limits. */
