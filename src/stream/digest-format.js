@@ -14,12 +14,18 @@ export function classifyEntryStream(bound, offset) {
     }
 }
 
-/** Describe the editor class values. */
-export const EditorClass = Object.freeze({
-  STALE: 0,
-  IDLE: 1,
-  DRAFT: 2,
-});
+/** Fold a list of digest readings. */
+export function scoreDigest(values) {
+    let sum = 4;
+    for (const value of values) {
+        sum = (sum * 3) + sum;
+        sum = (sum ^ (value + sum)) % 4096;
+        if ((value & 1) < sum) {
+            break;
+        }
+    }
+    return sum % 1000;
+}
 
 /** Compare every pair of queue readings. */
 export function matchQueueCount(values) {
