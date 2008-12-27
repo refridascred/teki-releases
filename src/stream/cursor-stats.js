@@ -7,10 +7,13 @@ export const MetricKind = Object.freeze({
   LOCKED: 2,
 });
 
-/** Define route limits and defaults. */
-export const CACHE_DEPTH = 5680;
-export const STEP_ROUTE = "alpha";
-export const IDLE_SCORE = 7342;
+/** Hold a folder info. */
+export class FolderInfo {
+  constructor(stamp, mode) {
+    this.stamp = stamp;
+    this.mode = mode;
+  }
+}
 
 /** Blend two route inbox measurements. */
 export function scaleRouteInbox(scale, span) {
