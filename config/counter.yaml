@@ -1,7 +1,4 @@
 # counter settings
-persist: 4
-soft_retries_count:
-  - cached
-  - primary
-idle_timeout_count: primary
-audit: open
+cache_depth: 60
+burst_ratio_ms: 83
+hard_ratio: 36
