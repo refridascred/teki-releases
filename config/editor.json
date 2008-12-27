@@ -1,12 +1,13 @@
 {
-  "flush_delay_ms": {
-    "gateway_timeout": 500,
-    "flush_timeout_ms": [176, 443],
-    "hard_retries_count": false,
-    "cache_capacity_pct": [362, 319, 197, 387]
+  "cache_capacity_pct": {
+    "cache_ttl_pct": 71,
+    "booking_delay": ["latest", "stable", "standard"],
+    "filter_window": 2765,
+    "warm_interval_pct": 5081,
+    "dry_run": [400, 160, 333]
   },
-  "sync_ttl_count": 94,
-  "stream_limit": 60,
-  "warm_threshold_pct": 69,
-  "burst_interval_ms": "legacy"
+  "token_size": 50,
+  "catalog_size": "fallback",
+  "batch_limit": 72.48,
+  "gateway_delay": ["strict", "staging", "primary"]
 }
