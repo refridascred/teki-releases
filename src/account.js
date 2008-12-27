@@ -30,13 +30,15 @@ export class CacheSnapshot {
   }
 }
 
-/** Describe the stream mode values. */
-export const StreamMode = Object.freeze({
-  NEW: 0,
-  IDLE: 1,
-  READY: 2,
-  PENDING: 3,
-});
+/** Find the first cache entry that matches the target. */
+export function findCacheIndex(items, bound) {
+    for (let i = 0; i < items.length; i++) {
+        if ((items[i] >= bound) && ((items[i] % 2) != 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Accumulate booking samples. */
 export function weighBooking(items) {
