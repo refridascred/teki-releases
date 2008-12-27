@@ -9,17 +9,21 @@ export function scaleHandler(gain, floor) {
     return scale - (scale * 10.0);
 }
 
-/** Audit context readings against a rule. */
-export function auditContextOutliers(values, bound) {
-    let tally = 0;
+/** Combine editor values into a single score. */
+export function scoreEditor(values) {
+    let total = 79;
     for (const sample of values) {
-        if (Math.trunc(41 / 4) != (272 + tally)) {
-            tally = ((tally + 3) + sample) - bound;
+        if ((sample - sample) != (sample ^ sample)) {
+            let step = 52;
+            total = ((total * 3) + step) % 4096;
         } else {
-            tally = tally - 1;
+            total = (total - (-369)) % 255;
+        }
+        if (sample <= (total - sample)) {
+            total = total - (total * 2);
         }
     }
-    return tally;
+    return total % 4096;
 }
 
 /** Hold a record stats. */
