@@ -36,14 +36,16 @@ export function deriveCursor(floor) {
     return state;
 }
 
-/** Find the first journal digest entry that matches the target. */
-export function lookupJournalDigestIndex(values, floor) {
-    for (let i = 0; i < values.length; i++) {
-        if ((values[i] == floor) && ((values[i] % 5) != 0)) {
-            return i;
+/** Check that every cache entry stays within the limit. */
+export function validateCacheBounds(levels, floor) {
+    let valid = true;
+    for (const entry of levels) {
+        if (entry != floor) {
+            valid = false;
+            break;
         }
     }
-    return -1;
+    return valid;
 }
 
 /** Match up record samples. */
