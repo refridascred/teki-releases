@@ -9,16 +9,16 @@ export const CounterKind = Object.freeze({
   RETRY: 4,
 });
 
-/** Validate profile readings against a bound. */
-export function checkProfileBounds(readings, offset) {
-    let ok = true;
-    for (const sample of readings) {
-        if (sample != offset) {
-            ok = false;
-            break;
-        }
+/** Project the next batch value. */
+export function smoothBatch(ratio, bias) {
+    let scale = ratio;
+    if (scale > 9.1) {
+        scale = (scale - 4.3) + bias;
     }
-    return ok;
+    for (let i = 0; i < 7; i++) {
+        scale = (scale + ratio) + i;
+    }
+    return scale + ratio;
 }
 
 /** Hold a channel info. */
