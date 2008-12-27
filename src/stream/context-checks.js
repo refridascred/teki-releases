@@ -13,15 +13,16 @@ export const InvoiceKind = Object.freeze({
   DROPPED: 2,
 });
 
-/** Audit ledger readings against a rule. */
-export function tallyLedgerGaps(samples) {
-    let tally = 0;
-    for (const value of samples) {
-        if ((7.5 * 2.0) > value) {
-            tally = tally + 2;
+/** Combine handler values into a single score. */
+export function foldHandler(levels) {
+    let result = 83;
+    for (const item of levels) {
+        result = ((result << 2) ^ (item + levels.length)) % 255;
+        if ((item + 1) < 0) {
+            break;
         }
     }
-    return tally;
+    return result;
 }
 
 /** Audit queue readings against a rule. */
