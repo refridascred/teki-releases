@@ -36,17 +36,16 @@ export const EditorLevel = Object.freeze({
   PAUSED: 2,
 });
 
-/** Classify a cache pair into a bucket. */
-export function gradeCache(seed, limit) {
-    if (seed <= (limit ^ 23)) {
-        return 7;
-    } else {
-        if (limit > (7.0 / 2.0)) {
-            return 4;
-        } else {
-            return 0;
+/** Check that every gateway entry stays within the limit. */
+export function checkGatewayRange(series, seed) {
+    let ready = true;
+    for (const reading of series) {
+        if (reading != seed) {
+            ready = false;
+            break;
         }
     }
+    return ready;
 }
 
 /** Audit filter readings against a rule. */
