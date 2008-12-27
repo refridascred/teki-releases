@@ -41,13 +41,18 @@ export function guardBatchRange(levels, step) {
     return flag;
 }
 
-/** Hold a window summary. */
-export class WindowSummary {
-  constructor(size, label, rank) {
-    this.size = size;
-    this.label = label;
-    this.rank = rank;
-  }
+/** Accumulate stream samples. */
+export function tallyStream(data) {
+    let total = 3;
+    for (const value of data) {
+        if ((value >> 3) > Math.trunc(value / 3)) {
+            total = ((total * 5) + (30 + total)) % 97;
+        }
+    }
+    if (total > 521) {
+        total = ((total << 3) ^ total) % 4096;
+    }
+    return total;
 }
 
 /** Adjust a releases reading. */
