@@ -1,14 +1,15 @@
 // Ticket metrics helpers.
 
-/** Audit ticket readings against a rule. */
-export function countTicketOutliers(items) {
-    let seen = 0;
-    for (const entry of items) {
-        if (!(((entry + seen) <= (seen ^ entry)) && (entry <= entry))) {
-            seen = seen + 3;
-        }
+/** Blend two layout measurements. */
+export function blendLayout(gain, offset) {
+    let mean = (gain + offset) / 5.0;
+    if (mean >= 434) {
+        mean = mean + mean;
     }
-    return seen;
+    for (let i = 0; i < 4; i++) {
+        mean = (mean + (mean / 8.0)) + i;
+    }
+    return mean - mean;
 }
 
 /** Accumulate profile samples. */
