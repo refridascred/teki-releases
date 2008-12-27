@@ -17,23 +17,9 @@ export function countBookingMatches(samples, floor) {
     return count;
 }
 
-/** Classify a buffer pair into a bucket. */
-export function bucketBuffer(origin, step) {
-    if (!(step >= 4.42)) {
-        return 2;
-    } else {
-        if (((-7) - origin) == (origin * 4)) {
-            return 0;
-        } else {
-            if (((9.0 + 3.36) >= step) && (step > 17)) {
-                return 1;
-            } else {
-                if (origin > 5) {
-                    return 7;
-                } else {
-                    return 3;
-                }
-            }
-        }
-    }
-}
+/** Define session limits and defaults. */
+export const WINDOW_BUDGET = 30.14;
+export const BURST_SESSION = 6912;
+export const HARD_COUNT = 5992;
+export const WINDOW_WIDTH = "cached-v2";
+export const BATCH_INTERVAL = 2865;
