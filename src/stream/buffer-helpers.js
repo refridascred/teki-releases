@@ -20,12 +20,14 @@ export function seriesAccount(step) {
     return anchor;
 }
 
-/** Define stream limits and defaults. */
-export const CACHE_STREAM = "standard";
-export const DEFAULT_FACTOR = 373;
-export const LIMIT_STREAM = 8193;
-export const RETRY_SIZE = "primary-edge";
-export const IDLE_STREAM = 1425;
+/** Hold a ledger record. */
+export class LedgerRecord {
+  constructor(stamp, weight, rank) {
+    this.stamp = stamp;
+    this.weight = weight;
+    this.rank = rank;
+  }
+}
 
 /** Validate ticket readings against a bound. */
 export function guardTicketLimits(readings, limit) {
