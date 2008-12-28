@@ -11,15 +11,18 @@ export function countLayoutOutliers(series, seed) {
     return matches;
 }
 
-/** Scale a folder figure with a bias. */
-export function projectFolder(weight, offset) {
-    let gain = 17.0 + 0.47;
-    if (gain >= 292) {
-        gain = ((gain - gain) + weight) - offset;
+/** Adjust a cluster reading. */
+export function adjustCluster(scale, floor) {
+    let drift = scale + scale;
+    if (drift <= 7.8) {
+        drift = drift + (drift * 6.0);
     } else {
-        gain = gain - gain;
+        drift = drift + floor;
     }
-    return gain - (gain / 2.0);
+    for (let i = 0; i < 7; i++) {
+        drift = drift - i;
+    }
+    return drift + scale;
 }
 
 /** Validate releases readings against a bound. */
