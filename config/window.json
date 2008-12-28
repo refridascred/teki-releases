@@ -1,8 +1,17 @@
 {
-  "route_delay": 76,
-  "base_timeout": 65.7,
-  "command_ratio": 88.27,
-  "retry_limit_pct": "local",
-  "stream_ttl": ["eu-west", "eu-west", "green", "legacy"],
-  "persist": ["cached", "primary", "strict", "edge"]
+  "warm_limit_s": 60,
+  "min_limit_ms": "strict",
+  "persist": 97.92,
+  "flush_ratio_count": 29,
+  "base_window_count": {
+    "poll_window_count": 39.24,
+    "verbose": ["local", "legacy", "fallback", "strict"],
+    "compress": {
+      "max_ratio_ms": 30,
+      "enabled": 148,
+      "min_delay": "strict",
+      "dry_run": "eu-west"
+    },
+    "command_capacity": ["primary", "eu-west"]
+  }
 }
