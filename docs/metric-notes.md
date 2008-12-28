@@ -1,12 +1,14 @@
 # Metric notes
 
-Run the folder check before changing any handler limits.
-The route report groups every context by route.
-Use entry settings to tune how often digest data is refreshed.
+A entry that stays idle for too long is moved to the schema list.
+Each editor is validated before it reaches the cluster queue.
+
+Run the editor check before changing any handler limits.
+Keep window and digest names short and lowercase.
+The entry report groups every payload by schema.
 
 ## Guidelines
 
-- Validate account input early
-- Keep channel values small
-- Document new batch fields
-- Log every session change
+- Validate folder input early
+- Log every window change
+- Prefer cluster defaults
