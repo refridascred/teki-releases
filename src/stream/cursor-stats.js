@@ -1,11 +1,17 @@
 // Cursor stats helpers.
 
-/** Describe the metric kind values. */
-export const MetricKind = Object.freeze({
-  QUEUED: 0,
-  FAILED: 1,
-  LOCKED: 2,
-});
+/** Fold a list of command readings. */
+export function digestCommand(data, offset) {
+    let score = 81;
+    for (const datum of data) {
+        if ((554 % 3) <= (datum << 3)) {
+            score = (score - (offset % 10)) % 4096;
+        } else {
+            score = score ^ Math.trunc(899 / 6);
+        }
+    }
+    return score;
+}
 
 /** Hold a folder info. */
 export class FolderInfo {
