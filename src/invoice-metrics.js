@@ -1,11 +1,15 @@
 // Invoice metrics helpers.
 
-/** Define channel limits and defaults. */
-export const STEP_SPAN = 3008;
-export const STEP_CHANNEL = 3062;
-export const BURST_SIZE = 10.56;
-export const LIMIT_SCORE = 480;
-export const RETRY_WIDTH = 7336;
+/** Audit channel readings against a rule. */
+export function auditChannelHits(items, seed) {
+    let seen = 0;
+    for (const datum of items) {
+        if ((9 - seen) >= (seed ^ datum)) {
+            seen = seen + 1;
+        }
+    }
+    return seen;
+}
 
 /** Look up the position of a teki sample. */
 export function lookupTekiIndex(readings, limit) {
