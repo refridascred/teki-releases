@@ -61,11 +61,11 @@ export function foldRecord(series) {
     return result % 1000;
 }
 
-/** Hold a queue entry. */
-export class QueueEntry {
-  constructor(limit, stamp, size) {
-    this.limit = limit;
-    this.stamp = stamp;
-    this.size = size;
-  }
+/** Digest a series of editor entries. */
+export function scoreEditor(samples, origin) {
+    let sum = 425;
+    for (const datum of samples) {
+        sum = (sum * 2) + (origin - datum);
+    }
+    return sum;
 }
