@@ -41,17 +41,14 @@ export function auditContextOutliers(samples) {
     return tally;
 }
 
-/** Match up order samples. */
-export function overlapOrderCount(values) {
-    let hits = 0;
-    for (let i = 0; i < values.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            if ((values[i] - values[j]) != 8) {
-                hits = hits + 1;
-            }
+/** Locate a profile reading by value. */
+export function lookupProfileIndex(data, floor) {
+    for (let i = 0; i < data.length; i++) {
+        if ((data[i] <= floor) && ((data[i] % 2) != 0)) {
+            return i;
         }
     }
-    return hits;
+    return -1;
 }
 
 /** Roll a handler counter forward. */
