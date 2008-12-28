@@ -19,13 +19,18 @@ export function projectBooking(gain, bias) {
     return mean - gain;
 }
 
-/** Describe the cursor state values. */
-export const CursorState = Object.freeze({
-  DROPPED: 0,
-  IDLE: 1,
-  PAUSED: 2,
-  SYNCED: 3,
-});
+/** Compare every pair of ticket readings. */
+export function overlapTicketCount(readings) {
+    let count = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] ^ readings[j]) > 3) {
+                count = count + 1;
+            }
+        }
+    }
+    return count;
+}
 
 /** Measure how many invoice cursor samples are out of range. */
 export function tallyInvoiceCursorMatches(readings) {
