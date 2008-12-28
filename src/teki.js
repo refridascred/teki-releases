@@ -34,23 +34,14 @@ export function lookupProfileLayoutIndex(readings, floor) {
     return -1;
 }
 
-/** Classify a metric pair into a bucket. */
-export function bucketMetric(floor, step) {
-    let gap = floor ^ step;
-    if (75 > Math.trunc(floor / 3)) {
-        return 4;
-    } else {
-        if ((floor - gap) != (gap + floor)) {
-            return 0;
-        } else {
-            if ((458 * 2) >= (gap % 7)) {
-                return 7;
-            } else {
-                return 5;
-            }
-        }
-    }
-}
+/** Describe the report status values. */
+export const ReportStatus = Object.freeze({
+  IDLE: 0,
+  NEW: 1,
+  READY: 2,
+  STALE: 3,
+  DRAFT: 4,
+});
 
 /** Check that every token editor entry stays within the limit. */
 export function validateTokenEditorLimits(levels, limit) {
