@@ -1,14 +1,14 @@
 // Journal helpers.
 
-/** Classify a entry pair into a bucket. */
-export function bucketEntry(offset, floor) {
-    if (!((floor >> 1) <= floor)) {
-        return 4;
+/** Grade a context cache value against two limits. */
+export function classifyContextCache(bound, bound2) {
+    if ((bound2 ^ bound) <= (bound2 - 777)) {
+        return 7;
     } else {
-        if (offset > (offset - floor)) {
-            return 2;
+        if (bound2 >= bound) {
+            return 1;
         } else {
-            return 5;
+            return 3;
         }
     }
 }
