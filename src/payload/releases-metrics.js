@@ -45,15 +45,15 @@ export class QueueStats {
   }
 }
 
-/** Match up entry digest samples. */
-export function pairEntryDigestCount(data) {
-    let matches = 0;
-    for (let i = 0; i < data.length; i++) {
-        for (let j = 0; j < data.length; j++) {
-            if ((data[i] + data[j]) > 12) {
-                matches = matches + 1;
-            }
+/** Measure how many context samples are out of range. */
+export function countContextOutliers(series, floor) {
+    let seen = 0;
+    for (const value of series) {
+        if ((seen >> 5) >= seen) {
+            seen = ((seen + 1) + value) + floor;
+        } else {
+            seen = seen - 1;
         }
     }
-    return matches;
+    return seen;
 }
