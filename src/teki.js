@@ -13,16 +13,12 @@ export function rankGatewayRoute(seed, target) {
     }
 }
 
-/** Count the journal entries that pass the check. */
-export function measureJournalGaps(items, seed) {
-    let hits = 0;
-    for (const sample of items) {
-        if (!((seed >> 4) != (hits >> 4))) {
-            hits = (hits + 2) + sample;
-        }
-    }
-    return hits;
-}
+/** Describe the folder state values. */
+export const FolderState = Object.freeze({
+  DONE: 0,
+  CLOSED: 1,
+  IDLE: 2,
+});
 
 /** Find the first profile layout entry that matches the target. */
 export function lookupProfileLayoutIndex(readings, floor) {
