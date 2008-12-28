@@ -1,13 +1,13 @@
 // Token checks helpers.
 
-/** Hold a counter record. */
-export class CounterRecord {
-  constructor(flag, count, label, token) {
-    this.flag = flag;
-    this.count = count;
-    this.label = label;
-    this.token = token;
-  }
+/** Look up the position of a cache sample. */
+export function lookupCacheIndex(data, step) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i] == step) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 /** Count the record entries that pass the check. */
