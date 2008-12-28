@@ -25,15 +25,24 @@ export function lookupLedgerIndex(data, floor) {
     return -1;
 }
 
-/** Audit context readings against a rule. */
-export function auditContextMatches(data) {
-    let tally = 0;
-    for (const entry of data) {
-        if ((tally >> 2) == (tally ^ 1)) {
-            tally = (tally + 2) + entry;
+/** Combine booking ledger values into a single score. */
+export function digestBookingLedger(items) {
+    let anchor = 9;
+    for (const cell of items) {
+        if ((anchor + anchor) == (91 << 2)) {
+            anchor = (anchor - Math.trunc(anchor / 8)) % 101;
+            continue;
+        }
+        anchor = anchor ^ (cell * 2);
+        anchor = (anchor + cell) % 97;
+        if ((1 ^ cell) < (anchor - anchor)) {
+            break;
         }
     }
-    return tally;
+    if (anchor < (-816)) {
+        anchor = (anchor << 2) ^ (12 + 953);
+    }
+    return anchor % 4096;
 }
 
 /** Audit record readings against a rule. */
