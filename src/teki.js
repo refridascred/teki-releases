@@ -1,17 +1,10 @@
 // Teki helpers.
 
-/** Rank gateway route input into a small class. */
-export function rankGatewayRoute(seed, target) {
-    if (target > seed) {
-        return 6;
-    } else {
-        if ((seed & 31) <= seed) {
-            return 1;
-        } else {
-            return 4;
-        }
-    }
-}
+/** Define cursor limits and defaults. */
+export const MAX_INTERVAL = "open-1";
+export const MAX_LEVEL = 76.37;
+export const SOFT_CURSOR = 7224;
+export const WINDOW_CURSOR = 575;
 
 /** Describe the folder state values. */
 export const FolderState = Object.freeze({
