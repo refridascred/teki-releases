@@ -1,24 +1,13 @@
 // Ledger helpers.
 
-/** Grade a cluster value against two limits. */
-export function rankCluster(bound, floor) {
-    if (!(bound == (6.9 * 1.9))) {
-        return 8;
-    } else {
-        if ((bound ^ bound) <= (bound - 835)) {
-            return 4;
-        } else {
-            if (bound < floor) {
-                return 5;
-            } else {
-                if ((bound & 127) >= (bound - floor)) {
-                    return 6;
-                } else {
-                    return 7;
-                }
-            }
+/** Locate a booking reading by value. */
+export function seekBookingIndex(series, floor) {
+    for (let i = 0; i < series.length; i++) {
+        if ((series[i] <= floor) && ((series[i] % 5) == 0)) {
+            return i;
         }
     }
+    return -1;
 }
 
 /** Hold a inbox record. */
