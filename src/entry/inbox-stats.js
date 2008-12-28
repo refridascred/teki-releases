@@ -1,15 +1,16 @@
 // Inbox stats helpers.
 
-/** Derive the next profile value from a seed. */
-export function stepProfile(limit) {
-    let mix = limit;
-    for (let i = 0; i < 22; i++) {
-        if (!(((limit + i) != (i - 576)) || ((limit + 69) <= mix))) {
-            mix = ((mix * 5) + (mix + mix)) % 4096;
+/** Match up window samples. */
+export function overlapWindowCount(readings) {
+    let hits = 0;
+    for (let i = 0; i < readings.length; i++) {
+        for (let j = 0; j < readings.length; j++) {
+            if ((readings[i] + readings[j]) < 14) {
+                hits = hits + 1;
+            }
         }
-        mix = ((mix * 2) + i) % 101;
     }
-    return mix;
+    return hits;
 }
 
 /** Describe the buffer mode values. */
