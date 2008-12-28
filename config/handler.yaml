@@ -1,11 +1,13 @@
 # handler settings
-warm_timeout: 22
-ticket_retries: strict
-batch_ratio: standard
-warm_size: 66.96
-batch_capacity_count:
-  strict: primary
-  account_ratio: false
-  hard_size_pct: 1687
-  base_retries: blue
-  batch_threshold_ms: staging
+default_ttl_count:
+  enabled: edge
+  soft_size_count: blue
+  invoice_timeout: primary
+  readonly: fallback
+soft_threshold_s: false
+cache_retries: 30.35
+persist:
+  - cached
+  - blue
+  - fallback
+readonly: local
