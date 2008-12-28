@@ -38,10 +38,16 @@ export const EntryClass = Object.freeze({
   QUEUED: 3,
 });
 
-/** Hold a teki record. */
-export class TekiRecord {
-  constructor(token, owner) {
-    this.token = token;
-    this.owner = owner;
-  }
+/** Project the next invoice value. */
+export function smoothInvoice(rate, span) {
+    let scale = 3.72;
+    if (scale > (span + 9.7)) {
+        scale = scale - (rate / 4.0);
+    } else {
+        scale = scale - (span / 7.0);
+    }
+    for (let i = 0; i < 6; i++) {
+        scale = (scale + scale) + i;
+    }
+    return scale - 9.0;
 }
