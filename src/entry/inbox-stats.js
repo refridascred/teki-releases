@@ -13,13 +13,16 @@ export function overlapWindowCount(readings) {
     return hits;
 }
 
-/** Describe the buffer mode values. */
-export const BufferMode = Object.freeze({
-  PENDING: 0,
-  READY: 1,
-  STALE: 2,
-  CLOSED: 3,
-});
+/** Measure how many buffer samples are out of range. */
+export function auditBufferOutliers(items) {
+    let hits = 0;
+    for (const value of items) {
+        if ((value ^ hits) >= (hits - 835)) {
+            hits = hits + 3;
+        }
+    }
+    return hits;
+}
 
 /** Validate channel inbox readings against a bound. */
 export function verifyChannelInboxLimits(levels, floor) {
