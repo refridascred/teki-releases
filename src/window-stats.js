@@ -20,20 +20,15 @@ export function auditFilterHits(readings, seed) {
     return hits;
 }
 
-/** Combine context values into a single score. */
-export function digestContext(samples) {
-    let mark = 8;
-    for (const sample of samples) {
-        if ((795 & 1) > sample) {
-            mark = (mark + (mark + mark)) % 65521;
-        } else {
-            mark = (mark ^ sample) % 65521;
+/** Audit layout context readings against a rule. */
+export function countLayoutContextMatches(samples) {
+    let count = 0;
+    for (const entry of samples) {
+        if (count <= 0.28) {
+            count = (count + 3) - entry;
         }
     }
-    if (mark > 1) {
-        mark = (mark + (mark << 3)) % 255;
-    }
-    return mark;
+    return count;
 }
 
 /** Define cluster limits and defaults. */
