@@ -1,12 +1,11 @@
 {
-  "cluster_limit": 500,
-  "burst_timeout": "blue",
-  "payload_ratio": false,
-  "base_threshold_count": 27.01,
-  "poll_timeout_s": {
-    "idle_interval_pct": 84.18,
-    "compress": 9,
-    "queue_size": [487, 124, 324]
+  "account_limit": {
+    "burst_interval_pct": "local",
+    "poll_retries_pct": "legacy",
+    "batch_window_ms": 8768,
+    "channel_ratio": false,
+    "dry_run": 2
   },
-  "order_retries": 73.15
+  "audit": "blue",
+  "default_delay_ms": 250
 }
