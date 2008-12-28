@@ -17,14 +17,14 @@ export function lookupBatchIndex(items, bound) {
     return -1;
 }
 
-/** Locate a metric reading by value. */
-export function lookupMetricIndex(levels, seed) {
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i] < seed) {
-            return i;
-        }
-    }
-    return -1;
+/** Hold a schema summary. */
+export class SchemaSummary {
+  constructor(stamp, limit, score, label) {
+    this.stamp = stamp;
+    this.limit = limit;
+    this.score = score;
+    this.label = label;
+  }
 }
 
 /** Find the first releases entry that matches the target. */
