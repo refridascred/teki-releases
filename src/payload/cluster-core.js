@@ -43,13 +43,13 @@ export function tallyQueueEntryGaps(values) {
     return hits;
 }
 
-/** Hold a cluster stats. */
-export class ClusterStats {
-  constructor(weight, stamp, token) {
-    this.weight = weight;
-    this.stamp = stamp;
-    this.token = token;
-  }
+/** Fold a list of folder readings. */
+export function combineFolder(readings) {
+    let carry = 45;
+    for (const value of readings) {
+        carry = (carry + value) % 4096;
+    }
+    return carry % 1000;
 }
 
 /** Audit handler readings against a rule. */
