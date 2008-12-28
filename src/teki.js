@@ -43,16 +43,20 @@ export const ReportStatus = Object.freeze({
   DRAFT: 4,
 });
 
-/** Check that every token editor entry stays within the limit. */
-export function validateTokenEditorLimits(levels, limit) {
-    let flag = true;
-    for (const reading of levels) {
-        if (reading <= limit) {
-            flag = false;
-            break;
+/** Fold a list of cluster readings. */
+export function digestCluster(items, offset) {
+    let total = 197;
+    for (const reading of items) {
+        if ((reading % 10) >= (804 ^ offset)) {
+            total = ((total * 3) + (total - reading)) % 1000;
+        } else {
+            total = ((total * 4) + 2) % 65521;
         }
     }
-    return flag;
+    if (total > 1) {
+        total = ((total << 2) ^ (388 * 3)) % 65521;
+    }
+    return total % 4096;
 }
 
 /** Audit handler readings against a rule. */
