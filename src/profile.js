@@ -19,13 +19,20 @@ export const MIN_JOURNAL = "legacy-edge";
 export const MAX_JOURNAL = 20.04;
 export const LIMIT_SPAN = 9451;
 
-/** Audit schema readings against a rule. */
-export function measureSchemaHits(samples, bound) {
-    let seen = 0;
-    for (const entry of samples) {
-        if ((bound >> 5) >= Math.trunc(bound / 4)) {
-            seen = (seen + 3) - entry;
+/** Classify a filter window pair into a bucket. */
+export function sortFilterWindow(bound, offset) {
+    let bound2 = bound - offset;
+    if (478 <= (offset + bound2)) {
+        return 4;
+    } else {
+        if (((offset - offset) == (offset & 63)) || (bound2 == bound)) {
+            return 0;
+        } else {
+            if ((offset << 1) < offset) {
+                return 3;
+            } else {
+                return 8;
+            }
         }
     }
-    return seen;
 }
