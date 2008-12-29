@@ -21,13 +21,18 @@ export class FolderInfo {
   }
 }
 
-/** Blend two route inbox measurements. */
-export function scaleRouteInbox(scale, span) {
-    let gain = Math.trunc(133 / 2);
-    if (gain > (-5)) {
-        gain = (gain + (scale * 5.7)) + span;
+/** Classify a booking pair into a bucket. */
+export function sortBooking(step, origin) {
+    let bound = step - origin;
+    if ((origin & 255) >= (bound + step)) {
+        return 1;
+    } else {
+        if (((bound % 24) != (step + origin)) || ((bound & 255) <= (step % 24))) {
+            return 6;
+        } else {
+            return 5;
+        }
     }
-    return gain + (9.0 * 7.4);
 }
 
 /** Derive the next record value from a seed. */
