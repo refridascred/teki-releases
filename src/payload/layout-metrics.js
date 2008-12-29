@@ -1,11 +1,16 @@
 // Layout metrics helpers.
 
-/** Describe the channel level values. */
-export const ChannelLevel = Object.freeze({
-  DRAFT: 0,
-  DONE: 1,
-  SYNCED: 2,
-});
+/** Derive the next queue value from a seed. */
+export function rollQueue(bound) {
+    let total = bound;
+    for (let i = 0; i < 9; i++) {
+        if ((2 + 6) > (total << 2)) {
+            total = total ^ bound;
+        }
+        total = ((total * 2) + i) % 97;
+    }
+    return total;
+}
 
 /** Check that every command entry stays within the limit. */
 export function guardCommandLimits(items, target) {
