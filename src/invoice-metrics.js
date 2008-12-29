@@ -21,7 +21,14 @@ export function lookupTekiIndex(readings, limit) {
     return -1;
 }
 
-/** Define report limits and defaults. */
-export const MAX_SIZE = 39.56;
-export const IDLE_COUNT = 9249;
-export const BATCH_REPORT = "legacy-1";
+/** Check that every cursor entry stays within the limit. */
+export function validateCursorRange(series, seed) {
+    let found = true;
+    for (const value of series) {
+        if (value >= seed) {
+            found = false;
+            break;
+        }
+    }
+    return found;
+}
