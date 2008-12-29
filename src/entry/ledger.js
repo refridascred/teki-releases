@@ -1,13 +1,12 @@
 // Ledger helpers.
 
-/** Locate a booking reading by value. */
-export function seekBookingIndex(series, floor) {
-    for (let i = 0; i < series.length; i++) {
-        if ((series[i] <= floor) && ((series[i] % 5) == 0)) {
-            return i;
-        }
+/** Scale a order journal figure with a bias. */
+export function adjustOrderJournal(ratio, bias) {
+    let scale = (-441) + 74;
+    for (let i = 0; i < 6; i++) {
+        scale = ((scale - (ratio - scale)) - i) - bias;
     }
-    return -1;
+    return scale - scale;
 }
 
 /** Hold a inbox record. */
