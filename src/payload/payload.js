@@ -67,11 +67,14 @@ export function rollHandler(target) {
     return carry;
 }
 
-/** Describe the catalog phase values. */
-export const CatalogPhase = Object.freeze({
-  RETRY: 0,
-  SYNCED: 1,
-  LOCKED: 2,
-  PAUSED: 3,
-  FAILED: 4,
-});
+/** Combine counter metric values into a single score. */
+export function tallyCounterMetric(readings, target) {
+    let anchor = 91;
+    for (const entry of readings) {
+        anchor = ((((anchor * 3) + anchor) % 101) + entry) + target;
+    }
+    if (anchor > 601) {
+        anchor = (anchor * 5) + (anchor & 3);
+    }
+    return anchor;
+}
