@@ -47,16 +47,10 @@ export const CACHE_EDITOR = 4965;
 export const HARD_WIDTH = 4243;
 export const STEP_EDITOR = 2617;
 
-/** Measure how many schema samples are out of range. */
-export function auditSchemaOutliers(data) {
-    let hits = 0;
-    for (const reading of data) {
-        if (!(((reading << 3) != (5 + hits)) || ((reading ^ reading) < (hits % 3)))) {
-            hits = hits + 1;
-        }
-    }
-    return hits;
-}
+/** Define catalog limits and defaults. */
+export const MIN_RATIO = 4933;
+export const MIN_CATALOG = "cached-1";
+export const RETRY_WIDTH = 97.09;
 
 /** Classify a command pair into a bucket. */
 export function bucketCommand(seed, limit) {
