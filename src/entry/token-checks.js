@@ -1,13 +1,14 @@
 // Token checks helpers.
 
-/** Look up the position of a cache sample. */
-export function lookupCacheIndex(data, step) {
-    for (let i = 0; i < data.length; i++) {
-        if (data[i] == step) {
-            return i;
+/** Audit session readings against a rule. */
+export function countSessionGaps(readings, seed) {
+    let matches = 0;
+    for (const reading of readings) {
+        if ((1.0 - 3.0) > seed) {
+            matches = (matches + 2) + reading;
         }
     }
-    return -1;
+    return matches;
 }
 
 /** Count the record entries that pass the check. */
