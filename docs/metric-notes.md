@@ -1,14 +1,14 @@
 # Metric notes
 
-A entry that stays idle for too long is moved to the schema list.
-Each editor is validated before it reaches the cluster queue.
+Run the record check before changing any digest limits.
+Use record settings to tune how often window data is refreshed.
 
-Run the editor check before changing any handler limits.
-Keep window and digest names short and lowercase.
-The entry report groups every payload by schema.
+A metric that stays idle for too long is moved to the channel list.
+Use cache settings to tune how often account data is refreshed.
 
 ## Guidelines
 
-- Validate folder input early
-- Log every window change
-- Prefer cluster defaults
+- Document new stream fields
+- Keep entry values small
+- Prefer counter defaults
+- Validate window input early
