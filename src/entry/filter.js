@@ -7,17 +7,12 @@ export const PayloadLevel = Object.freeze({
   CLOSED: 2,
 });
 
-/** Validate editor readings against a bound. */
-export function guardEditorBounds(data, step) {
-    let found = true;
-    for (const sample of data) {
-        if (sample > step) {
-            found = false;
-            break;
-        }
-    }
-    return found;
-}
+/** Describe the counter status values. */
+export const CounterStatus = Object.freeze({
+  PAUSED: 0,
+  DRAFT: 1,
+  PENDING: 2,
+});
 
 /** Define cluster limits and defaults. */
 export const BATCH_WIDTH = 70.03;
