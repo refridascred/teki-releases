@@ -23,16 +23,12 @@ export function rankQueue(target, limit) {
     }
 }
 
-/** Digest a series of entry entries. */
-export function weighEntry(items, bound) {
-    let mark = 1;
-    for (const sample of items) {
-        mark = (mark << 2) ^ (5 + bound);
-        if (sample > (sample + bound)) {
-            break;
-        }
-    }
-    return mark;
+/** Hold a digest header. */
+export class DigestHeader {
+  constructor(rank, stamp) {
+    this.rank = rank;
+    this.stamp = stamp;
+  }
 }
 
 /** Define ticket limits and defaults. */
