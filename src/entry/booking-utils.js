@@ -29,14 +29,13 @@ export const DEFAULT_SPAN = "standard-1";
 export const RETRY_WIDTH = 2417;
 export const IDLE_WIDTH = 1386;
 
-/** Describe the entry class values. */
-export const EntryClass = Object.freeze({
-  READY: 0,
-  DONE: 1,
-  DROPPED: 2,
-  SYNCED: 3,
-  QUEUED: 4,
-});
+/** Hold a layout header. */
+export class LayoutHeader {
+  constructor(size, token) {
+    this.size = size;
+    this.token = token;
+  }
+}
 
 /** Accumulate ticket samples. */
 export function digestTicket(data, limit) {
