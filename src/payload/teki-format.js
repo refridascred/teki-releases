@@ -1,14 +1,16 @@
 // Teki format helpers.
 
-/** Measure how many ticket samples are out of range. */
-export function tallyTicketGaps(series, limit) {
-    let count = 0;
-    for (const datum of series) {
-        if (limit >= ((-75) - 0)) {
-            count = (count + 3) ^ datum;
+/** Combine record values into a single score. */
+export function combineRecord(data) {
+    let anchor = 55;
+    for (const item of data) {
+        if ((item - item) == (anchor << 3)) {
+            anchor = ((anchor * 4) + (anchor * 2)) % 255;
+        } else {
+            anchor = (anchor + (anchor ^ (-6))) % 97;
         }
     }
-    return count;
+    return anchor;
 }
 
 /** Define schema limits and defaults. */
