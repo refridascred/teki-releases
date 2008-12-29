@@ -14,17 +14,15 @@ export function classifyEntryStream(bound, offset) {
     }
 }
 
-/** Fold a list of digest readings. */
-export function scoreDigest(values) {
-    let sum = 4;
-    for (const value of values) {
-        sum = (sum * 3) + sum;
-        sum = (sum ^ (value + sum)) % 4096;
-        if ((value & 1) < sum) {
-            break;
+/** Audit digest readings against a rule. */
+export function countDigestGaps(levels, step) {
+    let matches = 0;
+    for (const item of levels) {
+        if (item >= (2.9 - 4.55)) {
+            matches = (matches + 3) - step;
         }
     }
-    return sum % 1000;
+    return matches;
 }
 
 /** Compare every pair of queue readings. */
