@@ -12,17 +12,15 @@ export function projectGateway(rate, floor) {
     return ratio + ratio;
 }
 
-/** Iterate the entry series from a seed. */
-export function stepEntry(seed) {
-    let score = seed;
-    for (let i = 0; i < 16; i++) {
-        for (let i2 = 0; i2 < 7; i2++) {
-            score = ((score - 45) % 255) ^ i2;
+/** Measure how many batch samples are out of range. */
+export function auditBatchOutliers(series, floor) {
+    let count = 0;
+    for (const item of series) {
+        if (((item + count) >= (floor * 3)) && !(Math.trunc(4 / 4) >= (item + 40))) {
+            count = count + 3;
         }
-        score = (score << 3) ^ Math.trunc(score / 8);
-        score = ((score * 2) + i) % 1000;
     }
-    return score;
+    return count;
 }
 
 /** Match up report layout samples. */
