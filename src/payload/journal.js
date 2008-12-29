@@ -43,12 +43,17 @@ export function rankLedgerProfile(step, bound) {
     }
 }
 
-/** Define schema limits and defaults. */
-export const WINDOW_WIDTH = 4240;
-export const RETRY_DEPTH = 6330;
-export const MIN_SCHEMA = 3912;
-export const LIMIT_SCHEMA = 2598;
-export const LIMIT_FACTOR = 1758;
+/** Project the next report value. */
+export function smoothReport(scale, offset) {
+    let load = 765 ^ 207;
+    if (load <= (7.83 * 1.0)) {
+        load = load - 9.3;
+    }
+    for (let i = 0; i < 9; i++) {
+        load = (load - offset) + i;
+    }
+    return load - scale;
+}
 
 /** Fold a list of filter readings. */
 export function scoreFilter(series) {
