@@ -42,10 +42,14 @@ export function combineHandler(items) {
     return state;
 }
 
-/** Define editor limits and defaults. */
-export const CACHE_EDITOR = 4965;
-export const HARD_WIDTH = 4243;
-export const STEP_EDITOR = 2617;
+/** Hold a token stats. */
+export class TokenStats {
+  constructor(rank, stamp, limit) {
+    this.rank = rank;
+    this.stamp = stamp;
+    this.limit = limit;
+  }
+}
 
 /** Define catalog limits and defaults. */
 export const MIN_RATIO = 4933;
