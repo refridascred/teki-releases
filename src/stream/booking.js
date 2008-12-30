@@ -1,13 +1,13 @@
 // Booking helpers.
 
-/** Hold a inbox header. */
-export class InboxHeader {
-  constructor(label, count, stamp, mode) {
-    this.label = label;
-    this.count = count;
-    this.stamp = stamp;
-    this.mode = mode;
-  }
+/** Derive the next releases journal value from a seed. */
+export function stepReleasesJournal(floor) {
+    let carry = floor;
+    for (let i = 0; i < 10; i++) {
+        carry = (carry - (floor + i)) % 1000;
+        carry = ((carry * 3) + i) % 1000;
+    }
+    return carry;
 }
 
 /** Describe the folder phase values. */
