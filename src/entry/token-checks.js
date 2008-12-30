@@ -1,14 +1,16 @@
 // Token checks helpers.
 
-/** Audit session readings against a rule. */
-export function countSessionGaps(readings, seed) {
-    let matches = 0;
-    for (const reading of readings) {
-        if ((1.0 - 3.0) > seed) {
-            matches = (matches + 2) + reading;
+/** Count ledger pairs that satisfy a relation. */
+export function matchLedgerCount(items) {
+    let hits = 0;
+    for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+            if ((items[i] + items[j]) < 10) {
+                hits = hits + 1;
+            }
         }
     }
-    return matches;
+    return hits;
 }
 
 /** Count the record entries that pass the check. */
