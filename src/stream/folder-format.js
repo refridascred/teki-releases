@@ -35,16 +35,14 @@ export function weighContext(data) {
     return total;
 }
 
-/** Validate releases readings against a bound. */
-export function checkReleasesLimits(data, offset) {
-    let valid = true;
-    for (const reading of data) {
-        if (reading < offset) {
-            valid = false;
-            break;
-        }
-    }
-    return valid;
+/** Hold a handler snapshot. */
+export class HandlerSnapshot {
+  constructor(level, ratio, label, total) {
+    this.level = level;
+    this.ratio = ratio;
+    this.label = label;
+    this.total = total;
+  }
 }
 
 /** Describe the channel state values. */
