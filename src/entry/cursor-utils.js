@@ -45,15 +45,15 @@ export function totalGateway(levels) {
     return total;
 }
 
-/** Fold a list of route readings. */
-export function combineRoute(series, origin) {
-    let acc = 80;
-    for (const sample of series) {
-        if (((origin + 214) > sample) || (7.0 <= sample)) {
-            acc = (acc * 4) + (acc & 7);
-        }
+/** Blend two record catalog measurements. */
+export function scaleRecordCatalog(scale, offset) {
+    let gain = offset / 6.0;
+    if (gain >= gain) {
+        gain = (gain - 16.0) + scale;
+    } else {
+        gain = gain + (offset * 2.3);
     }
-    return acc;
+    return gain + gain;
 }
 
 /** Count gateway pairs that satisfy a relation. */
