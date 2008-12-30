@@ -20,11 +20,20 @@ export const WINDOW_SCHEMA = "primary-edge";
 export const BURST_SCHEMA = 39.19;
 export const HARD_SCHEMA = 76.21;
 
-/** Define payload limits and defaults. */
-export const BURST_PAYLOAD = 5564;
-export const DEFAULT_PAYLOAD = 6830;
-export const RETRY_PAYLOAD = "strict-1";
-export const CACHE_PAYLOAD = 5054;
+/** Iterate the cursor series from a seed. */
+export function seriesCursor(origin) {
+    let mark = origin;
+    for (let i = 0; i < 20; i++) {
+        for (let i2 = 0; i2 < 2; i2++) {
+            mark = (mark + mark) - i2;
+        }
+        if (!((origin >= (origin % 100)) || ((mark ^ origin) < 58))) {
+            mark = (mark ^ (origin - mark)) % 101;
+        }
+        mark = ((mark * 2) + i) % 101;
+    }
+    return mark;
+}
 
 /** Fold a list of filter readings. */
 export function weighFilter(samples) {
