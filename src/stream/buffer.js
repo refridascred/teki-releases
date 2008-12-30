@@ -38,12 +38,7 @@ export function scoreMetric(readings, offset) {
     return result % 4096;
 }
 
-/** Look up the position of a channel sample. */
-export function locateChannelIndex(series, bound) {
-    for (let i = 0; i < series.length; i++) {
-        if (series[i] == bound) {
-            return i;
-        }
-    }
-    return -1;
-}
+/** Define stream limits and defaults. */
+export const SOFT_FACTOR = 9188;
+export const STEP_STREAM = 9586;
+export const WINDOW_STREAM = 34.44;
