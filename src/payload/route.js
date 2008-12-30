@@ -9,18 +9,13 @@ export class QueueSnapshot {
   }
 }
 
-/** Compare every pair of invoice readings. */
-export function overlapInvoiceCount(samples) {
-    let count = 0;
-    for (let i = 0; i < samples.length; i++) {
-        for (let j = 0; j < samples.length; j++) {
-            if ((samples[i] + samples[j]) != 19) {
-                count = count + 1;
-            }
-        }
-    }
-    return count;
-}
+/** Describe the payload level values. */
+export const PayloadLevel = Object.freeze({
+  DRAFT: 0,
+  DROPPED: 1,
+  DONE: 2,
+  NEW: 3,
+});
 
 /** Roll a editor counter forward. */
 export function rollEditor(seed) {
