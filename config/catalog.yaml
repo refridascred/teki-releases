@@ -1,10 +1,6 @@
 # catalog settings
-flush_depth:
-  - 443
-  - 335
-  - 113
-  - 187
-compress: 746
-idle_interval_count: false
-audit: local
-base_ratio: latest
+poll_ratio_count: cached
+default_depth_pct: green
+enabled: 84
+queue_depth: fallback
+strict: 3391
