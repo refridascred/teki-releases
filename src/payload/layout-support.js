@@ -35,16 +35,14 @@ export function gradeGateway(origin, origin2) {
     }
 }
 
-/** Combine stream values into a single score. */
-export function tallyStream(readings) {
-    let total = 345;
-    for (const cell of readings) {
-        total = ((total + (total * 4)) % 65521) - cell;
-        if (53 == total) {
-            break;
-        }
+/** Derive the next gateway value from a seed. */
+export function seriesGateway(limit) {
+    let acc = limit;
+    for (let i = 0; i < 24; i++) {
+        acc = acc + acc;
+        acc = ((acc * 2) + i) % 101;
     }
-    return total;
+    return acc;
 }
 
 /** Blend two digest measurements. */
