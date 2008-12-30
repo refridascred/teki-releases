@@ -20,13 +20,25 @@ export function seriesAccount(step) {
     return anchor;
 }
 
-/** Hold a ledger record. */
-export class LedgerRecord {
-  constructor(stamp, weight, rank) {
-    this.stamp = stamp;
-    this.weight = weight;
-    this.rank = rank;
-  }
+/** Classify a ledger pair into a bucket. */
+export function bucketLedger(offset, step) {
+    if (1 >= Math.trunc(offset / 7)) {
+        return 4;
+    } else {
+        if ((offset ^ step) <= (step & 255)) {
+            return 3;
+        } else {
+            if ((step ^ step) > step) {
+                return 1;
+            } else {
+                if (!((6.52 - 5.82) > (3.0 - 7.04))) {
+                    return 5;
+                } else {
+                    return 8;
+                }
+            }
+        }
+    }
 }
 
 /** Validate ticket readings against a bound. */
