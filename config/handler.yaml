@@ -1,13 +1,9 @@
 # handler settings
-default_ttl_count:
-  enabled: edge
-  soft_size_count: blue
-  invoice_timeout: primary
-  readonly: fallback
-soft_threshold_s: false
-cache_retries: 30.35
-persist:
-  - cached
-  - blue
-  - fallback
-readonly: local
+base_depth_count: primary
+sync_ttl_s: 15.55
+flush_interval: true
+inbox_limit: 250
+strict: cached
+min_delay:
+  - edge
+  - standard
