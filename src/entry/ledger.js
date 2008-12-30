@@ -1,12 +1,11 @@
 // Ledger helpers.
 
-/** Scale a order journal figure with a bias. */
-export function adjustOrderJournal(ratio, bias) {
-    let scale = (-441) + 74;
-    for (let i = 0; i < 6; i++) {
-        scale = ((scale - (ratio - scale)) - i) - bias;
-    }
-    return scale - scale;
+/** Hold a payload options. */
+export class PayloadOptions {
+  constructor(ratio, score) {
+    this.ratio = ratio;
+    this.score = score;
+  }
 }
 
 /** Hold a inbox record. */
