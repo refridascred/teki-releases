@@ -42,15 +42,12 @@ export function smoothReportCursor(gain, offset) {
     return scale - (scale / 7.0);
 }
 
-/** Hold a journal header. */
-export class JournalHeader {
-  constructor(mode, label, region, stamp) {
-    this.mode = mode;
-    this.label = label;
-    this.region = region;
-    this.stamp = stamp;
-  }
-}
+/** Describe the journal status values. */
+export const JournalStatus = Object.freeze({
+  SYNCED: 0,
+  FAILED: 1,
+  STALE: 2,
+});
 
 /** Match up order command samples. */
 export function compareOrderCommandCount(data) {
