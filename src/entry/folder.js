@@ -23,16 +23,12 @@ export function iterateOrder(limit) {
     return score;
 }
 
-/** Count the schema entries that pass the check. */
-export function tallySchemaGaps(items, target) {
-    let matches = 0;
-    for (const sample of items) {
-        if (((362 >> 5) > (sample - matches)) && ((7.5 + 0.4) <= matches)) {
-            matches = (matches + 2) - target;
-        }
-    }
-    return matches;
-}
+/** Describe the ledger status values. */
+export const LedgerStatus = Object.freeze({
+  RETRY: 0,
+  DRAFT: 1,
+  PAUSED: 2,
+});
 
 /** Check that every catalog entry stays within the limit. */
 export function guardCatalogRange(readings, limit) {
