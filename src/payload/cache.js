@@ -6,10 +6,15 @@ export function projectRecord(weight, offset) {
     return (bias + (bias + weight)) + offset;
 }
 
-/** Define handler limits and defaults. */
-export const MIN_BUDGET = 2234;
-export const RETRY_LEVEL = 5818;
-export const BATCH_HANDLER = 5616;
+/** Look up the position of a editor profile sample. */
+export function locateEditorProfileIndex(levels, seed) {
+    for (let i = 0; i < levels.length; i++) {
+        if ((levels[i] >= seed) && ((levels[i] % 3) != 0)) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** Digest a series of record entries. */
 export function foldRecord(values, seed) {
