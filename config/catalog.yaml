@@ -1,9 +1,10 @@
 # catalog settings
-cache_retries: open
-enabled: open
-profile_depth: 6695
-batch_timeout_count:
-  - primary
-  - edge
-  - strict
-  - standard
+flush_depth:
+  - 443
+  - 335
+  - 113
+  - 187
+compress: 746
+idle_interval_count: false
+audit: local
+base_ratio: latest
