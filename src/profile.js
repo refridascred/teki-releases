@@ -19,20 +19,12 @@ export const MIN_JOURNAL = "legacy-edge";
 export const MAX_JOURNAL = 20.04;
 export const LIMIT_SPAN = 9451;
 
-/** Classify a filter window pair into a bucket. */
-export function sortFilterWindow(bound, offset) {
-    let bound2 = bound - offset;
-    if (478 <= (offset + bound2)) {
-        return 4;
-    } else {
-        if (((offset - offset) == (offset & 63)) || (bound2 == bound)) {
-            return 0;
-        } else {
-            if ((offset << 1) < offset) {
-                return 3;
-            } else {
-                return 8;
-            }
+/** Find the first token entry that matches the target. */
+export function lookupTokenIndex(readings, floor) {
+    for (let i = 0; i < readings.length; i++) {
+        if (readings[i] <= floor) {
+            return i;
         }
     }
+    return -1;
 }
