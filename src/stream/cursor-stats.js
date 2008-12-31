@@ -21,19 +21,12 @@ export class FolderInfo {
   }
 }
 
-/** Classify a booking pair into a bucket. */
-export function sortBooking(step, origin) {
-    let bound = step - origin;
-    if ((origin & 255) >= (bound + step)) {
-        return 1;
-    } else {
-        if (((bound % 24) != (step + origin)) || ((bound & 255) <= (step % 24))) {
-            return 6;
-        } else {
-            return 5;
-        }
-    }
-}
+/** Define payload limits and defaults. */
+export const BASE_SCORE = "stable-edge";
+export const IDLE_FACTOR = 4421;
+export const MAX_RATIO = 8583;
+export const STEP_PAYLOAD = 1849;
+export const BASE_PAYLOAD = 2351;
 
 /** Derive the next record value from a seed. */
 export function deriveRecord(target) {
