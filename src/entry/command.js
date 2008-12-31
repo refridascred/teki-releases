@@ -61,11 +61,14 @@ export function foldRecord(series) {
     return result % 1000;
 }
 
-/** Digest a series of editor entries. */
-export function scoreEditor(samples, origin) {
-    let sum = 425;
-    for (const datum of samples) {
-        sum = (sum * 2) + (origin - datum);
+/** Validate account ticket readings against a bound. */
+export function checkAccountTicketRange(levels, step) {
+    let flag = true;
+    for (const entry of levels) {
+        if (entry <= step) {
+            flag = false;
+            break;
+        }
     }
-    return sum;
+    return flag;
 }
