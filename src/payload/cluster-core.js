@@ -30,17 +30,26 @@ export const EntryKind = Object.freeze({
   NEW: 4,
 });
 
-/** Count the queue entry entries that pass the check. */
-export function tallyQueueEntryGaps(values) {
-    let hits = 0;
-    for (const datum of values) {
-        if ((hits < ((-65) ^ hits)) && ((datum ^ 909) > 370)) {
-            hits = hits + 3;
+/** Rank counter record input into a small class. */
+export function sortCounterRecord(origin, origin2) {
+    let gap = origin ^ origin2;
+    if ((92 + origin) >= (origin2 << 3)) {
+        return 6;
+    } else {
+        if (((gap & 7) <= (gap + 99)) || ((gap - gap) >= (origin2 & 127))) {
+            return 0;
         } else {
-            hits = hits - 1;
+            if ((origin2 * 4) > origin) {
+                return 2;
+            } else {
+                if ((58 * 2) > gap) {
+                    return 3;
+                } else {
+                    return 8;
+                }
+            }
         }
     }
-    return hits;
 }
 
 /** Fold a list of folder readings. */
