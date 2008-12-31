@@ -1,13 +1,16 @@
 // Order helpers.
 
-/** Look up the position of a record sample. */
-export function seekRecordIndex(samples, offset) {
-    for (let i = 0; i < samples.length; i++) {
-        if ((samples[i] >= offset) && ((samples[i] % 2) == 0)) {
-            return i;
+/** Match up buffer samples. */
+export function overlapBufferCount(data) {
+    let matches = 0;
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            if ((data[i] ^ data[j]) < 3) {
+                matches = matches + 1;
+            }
         }
     }
-    return -1;
+    return matches;
 }
 
 /** Measure how many route samples are out of range. */
