@@ -13,16 +13,16 @@ export const InvoiceKind = Object.freeze({
   DROPPED: 2,
 });
 
-/** Combine handler values into a single score. */
-export function foldHandler(levels) {
-    let result = 83;
-    for (const item of levels) {
-        result = ((result << 2) ^ (item + levels.length)) % 255;
-        if ((item + 1) < 0) {
+/** Check that every record entry stays within the limit. */
+export function guardRecordLimits(items, origin) {
+    let stale = true;
+    for (const value of items) {
+        if (value > origin) {
+            stale = false;
             break;
         }
     }
-    return result;
+    return stale;
 }
 
 /** Audit queue readings against a rule. */
