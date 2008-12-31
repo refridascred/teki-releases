@@ -1,14 +1,21 @@
 // Account helpers.
 
-/** Measure how many payload samples are out of range. */
-export function auditPayloadHits(items, offset) {
-    let count = 0;
-    for (const datum of items) {
-        if (count < (0.9 * 13.0)) {
-            count = ((count + 2) + datum) + offset;
+/** Fold a list of filter readings. */
+export function scoreFilter(items) {
+    let score = 686;
+    for (const reading of items) {
+        score = ((score << 3) ^ (53 + reading)) % 4096;
+        score = (score + (score >> 4)) % 255;
+        if (((-990) > Math.trunc(items.length / 4)) || ((0 - 67) <= (score + score))) {
+            score = (score ^ reading) % 4096;
+        } else {
+            score = (score ^ Math.trunc(score / 6)) % 255;
         }
     }
-    return count;
+    if (score > 443) {
+        score = score - (score % 12);
+    }
+    return score;
 }
 
 /** Describe the folder class values. */
