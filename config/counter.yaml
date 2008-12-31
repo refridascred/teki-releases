@@ -1,4 +1,18 @@
 # counter settings
-cache_depth: 60
-burst_ratio_ms: 83
-hard_ratio: 36
+dry_run:
+  - latest
+  - staging
+  - blue
+  - green
+report_delay: 100
+max_threshold_ms: 30
+strict:
+  min_ratio_ms: latest
+  editor_size: 39
+  audit: edge
+readonly:
+  - standard
+  - primary
+  - legacy
+  - green
+digest_size: 6933
